@@ -85,6 +85,9 @@ details.card>summary::-webkit-details-marker{display:none}
 .cbody a.read{color:var(--accent);font-weight:700;text-decoration:none}
 a.card{display:flex;gap:13px;align-items:center;padding:14px 16px;text-decoration:none}
 a.card .thumb{width:72px;height:72px;min-width:72px;object-fit:cover;border-radius:8px}
+.speak{flex:0 0 auto;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);
+  background:var(--card);color:var(--text);font-size:1em;line-height:1;cursor:pointer;margin-left:6px}
+.speak:active{transform:scale(.92)}
 
 #refresh{
   position:fixed;right:18px;bottom:calc(env(safe-area-inset-bottom) + 18px);z-index:20;

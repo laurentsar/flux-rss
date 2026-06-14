@@ -17,6 +17,31 @@ const isNative = !!(window.Capacitor && window.Capacitor.isNativePlatform && win
 /* ---------- état ---------- */
 let DATA = null;
 let current = null;
+let RENDERED = [];
+let speakingBtn = null;
+const TTS_OK = isNative || (typeof window !== 'undefined' && 'speechSynthesis' in window);
+
+/* ---------- lecture audio (TTS) ---------- */
+const TTS = () => (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech) || null;
+async function stopSpeak(){
+  if (!speakingBtn) return;
+  try{ if (TTS()) await TTS().stop(); else if (window.speechSynthesis) window.speechSynthesis.cancel(); }catch(e){}
+  if (speakingBtn){ speakingBtn.textContent='🔊'; speakingBtn=null; }
+}
+async function toggleSpeak(btn, text){
+  if (speakingBtn === btn){ await stopSpeak(); return; }
+  await stopSpeak();
+  speakingBtn = btn; btn.textContent='⏹';
+  try{
+    if (TTS()){
+      await TTS().speak({ text, lang:'fr-FR', rate:1.0 });
+    } else if (window.speechSynthesis){
+      await new Promise((res)=>{ const u=new SpeechSynthesisUtterance(text); u.lang='fr-FR';
+        u.onend=res; u.onerror=res; window.speechSynthesis.cancel(); window.speechSynthesis.speak(u); });
+    }
+  }catch(e){}
+  if (speakingBtn === btn){ btn.textContent='🔊'; speakingBtn=null; }
+}
 
 const $ = (s) => document.querySelector(s);
 const elCats = $('#cats'), elArticles = $('#articles'), elStatus = $('#status'), elRefresh = $('#refresh');
@@ -135,23 +160,26 @@ function fmtDate(d){
 function esc(s){ return (s||'').replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
 function render(items, catId, ts){
+  RENDERED = items;
+  stopSpeak();
   const updated = ts ? `Mis à jour ${fmtDate(new Date(ts).toISOString())}` : '';
   elStatus.textContent = `${items.length} articles · ${updated}`;
   const html = items.map((it, i) => {
     const accent = PALETTE[i % PALETTE.length];
     const dateHtml = it.date ? `<span class="date">🕒 ${esc(fmtDate(it.date))}</span>` : '';
     const src = `<span class="src">${esc(it.source)}</span>`;
+    const spk = TTS_OK ? `<button class="speak" data-i="${i}" aria-label="Écouter">🔊</button>` : '';
     const excerpt = it.summary.length > 280 ? esc(it.summary.slice(0,280))+'…' : esc(it.summary);
     if (it.summary.length > 40){
       const img = it.image ? `<img class="lead" src="${esc(it.image)}" referrerpolicy="no-referrer" loading="lazy" onerror="this.remove()">` : '';
       return `<details class="card" style="--accent:${accent}">
-        <summary><span class="dot"></span><span class="ctitle"><b>${esc(it.title)}</b>${dateHtml}${src}</span><span class="chev">▾</span></summary>
+        <summary><span class="dot"></span><span class="ctitle"><b>${esc(it.title)}</b>${dateHtml}${src}</span>${spk}<span class="chev">▾</span></summary>
         <div class="cbody">${img}${excerpt}<br><a class="read" href="${esc(it.link)}" target="_blank" rel="noopener">Lire l'article →</a></div>
       </details>`;
     }
     const thumb = it.image ? `<img class="thumb" src="${esc(it.image)}" referrerpolicy="no-referrer" loading="lazy" onerror="this.remove()">` : '';
     return `<a class="card" style="--accent:${accent}" href="${esc(it.link)}" target="_blank" rel="noopener">
-      <span class="dot"></span>${thumb}<span class="ctitle"><b>${esc(it.title)}</b>${dateHtml}${src}</span></a>`;
+      <span class="dot"></span>${thumb}<span class="ctitle"><b>${esc(it.title)}</b>${dateHtml}${src}</span>${spk}</a>`;
   }).join('');
   elArticles.innerHTML = html;
   window.scrollTo({top:0, behavior:'smooth'});
@@ -288,6 +316,12 @@ async function init(){
   elRefresh.addEventListener('click', () => {
     const cat = DATA.categories.find(c => c.id === current);
     if (cat) loadCategory(cat);
+  });
+  elArticles.addEventListener('click', (e)=>{
+    const b = e.target.closest('.speak'); if(!b) return;
+    e.preventDefault(); e.stopPropagation();
+    const it = RENDERED[+b.dataset.i]; if(!it) return;
+    toggleSpeak(b, (it.title||'') + '. ' + (it.summary||''));
   });
   $('#settings-btn').addEventListener('click', openSettings);
   elCard.addEventListener('click', onSettingsClick);
