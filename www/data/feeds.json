@@ -1,5 +1,5 @@
 {
- "version": 2,
+ "version": 4,
  "generated": "2026-06-14",
  "categories": [
   {
@@ -10,10 +10,6 @@
     {
      "name": "AVEM",
      "url": "https://www.avem.fr/feed/"
-    },
-    {
-     "name": "Cleanrider",
-     "url": "https://www.cleanrider.com/feed/"
     },
     {
      "name": "Automobile Propre",
@@ -28,44 +24,20 @@
      "url": "https://www.avere-france.org/feed/"
     },
     {
-     "name": "01net Voiture Electrique",
+     "name": "Cleanrider",
+     "url": "https://www.cleanrider.com/feed/"
+    },
+    {
+     "name": "01net — Voiture électrique",
      "url": "https://www.01net.com/tag/voiture-electrique/feed/"
-    },
-    {
-     "name": "Ze Watt",
-     "url": "https://www.ze-watt.com/feed/"
-    },
-    {
-     "name": "Blogtesla",
-     "url": "https://www.blogtesla.fr/feed/"
-    },
-    {
-     "name": "tesla_mag",
-     "url": "https://www.tesla-mag.com/feed/"
-    },
-    {
-     "name": "Numerama Tesla",
-     "url": "https://www.numerama.com/tag/tesla/feed/"
-    },
-    {
-     "name": "Les Numeriques Tesla",
-     "url": "https://siftrss.com/f/oGz5avMg8e"
-    },
-    {
-     "name": "Automobile Propre Tesla",
-     "url": "https://siftrss.com/f/rbN8R1Mr6o"
-    },
-    {
-     "name": "Caradisiac Tesla",
-     "url": "https://siftrss.com/f/ddvaq55rn9"
-    },
-    {
-     "name": "Generation NT Tesla",
-     "url": "https://siftrss.com/f/7YGW8yj56j"
     },
     {
      "name": "Beev",
      "url": "https://www.beev.co/blog/feed/"
+    },
+    {
+     "name": "Blog Tesla",
+     "url": "https://www.blogtesla.fr/feed/"
     }
    ]
   },
@@ -75,16 +47,36 @@
    "lang": "fr",
    "feeds": [
     {
-     "name": "casques_vr",
+     "name": "Casques VR",
      "url": "https://casques-vr.com/rss"
     },
     {
-     "name": "Les Numeriques VR",
+     "name": "Les Numériques VR",
      "url": "https://www.lesnumeriques.com/casque-realite-virtuelle/rss.xml"
     },
     {
-     "name": "realite_virtuelle",
+     "name": "Réalité Virtuelle",
      "url": "https://www.realite-virtuelle.com/feed/"
+    },
+    {
+     "name": "Réalité virtuelle — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9alit%C3%A9+virtuelle"
+    },
+    {
+     "name": "Meta Quest — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Meta+Quest"
+    },
+    {
+     "name": "Apple Vision Pro — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Apple+Vision+Pro"
+    },
+    {
+     "name": "PlayStation VR — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=PlayStation+VR"
+    },
+    {
+     "name": "Réalité augmentée — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9alit%C3%A9+augment%C3%A9e"
     }
    ]
   },
@@ -94,64 +86,36 @@
    "lang": "fr",
    "feeds": [
     {
-     "name": "CLUSIF",
-     "url": "https://clusif.fr/feed/"
-    },
-    {
-     "name": "Club EBIOS",
-     "url": "https://club-ebios.org/site/feed/"
-    },
-    {
-     "name": "Zataz",
-     "url": "https://www.zataz.com/feed/"
-    },
-    {
-     "name": "LeMagIT Sécurité",
-     "url": "https://www.lemagit.fr/rss/ContentSyndication.xml"
-    },
-    {
-     "name": "clubic_cyber",
-     "url": "https://www.clubic.com/feed/antivirus-securite-informatique/rss"
-    },
-    {
-     "name": "Cyberguerre",
-     "url": "https://cyberguerre.numerama.com/feed"
-    },
-    {
-     "name": "Global Security Mag",
-     "url": "https://www.globalsecuritymag.fr/spip.php?page=backend"
-    },
-    {
-     "name": "journaldunet_securite",
-     "url": "https://www.journaldunet.com/cybersecurite/rss/"
-    },
-    {
-     "name": "01Net Sécurité",
-     "url": "https://www.01net.com/tag/cybersecurite/feed/"
-    },
-    {
-     "name": "CERT_FR",
+     "name": "CERT-FR",
      "url": "https://www.cert.ssi.gouv.fr/feed/"
     },
     {
-     "name": "LeMondeInformatique",
+     "name": "ZATAZ",
+     "url": "https://www.zataz.com/feed/"
+    },
+    {
+     "name": "LeMagIT — Sécurité",
+     "url": "https://www.lemagit.fr/rss/ContentSyndication.xml"
+    },
+    {
+     "name": "Le Monde Informatique",
      "url": "https://www.lemondeinformatique.fr/flux-rss/rss.xml"
     },
     {
-     "name": "Korben",
-     "url": "https://korben.info/feed"
-    },
-    {
-     "name": "IT Connect",
-     "url": "https://www.it-connect.fr/feed/"
-    },
-    {
-     "name": "UnderNews",
-     "url": "https://www.undernews.fr/feed"
+     "name": "01net — Sécurité",
+     "url": "https://www.01net.com/tag/cybersecurite/feed/"
     },
     {
      "name": "Numerama Cyber",
      "url": "https://www.numerama.com/tag/cybersecurite/feed/"
+    },
+    {
+     "name": "IT-Connect",
+     "url": "https://www.it-connect.fr/feed/"
+    },
+    {
+     "name": "Korben",
+     "url": "https://korben.info/feed"
     }
    ]
   },
@@ -169,35 +133,23 @@
      "url": "https://www.actuia.com/feed/"
     },
     {
-     "name": "Avenue de l IA",
-     "url": "https://avenuedelia.com/fr/rss/actu/"
-    },
-    {
      "name": "Numerama IA",
      "url": "https://www.numerama.com/tech/intelligence-artificielle/feed/"
     },
     {
-     "name": "Developpez IA",
-     "url": "https://intelligence-artificielle.developpez.com/index/rss"
-    },
-    {
-     "name": "Next IA",
+     "name": "Next — IA",
      "url": "https://next.ink/category/ia-algorithmes/feed/"
     },
     {
-     "name": "Presse Citron IA",
+     "name": "Presse-citron IA",
      "url": "https://www.presse-citron.net/tag/intelligence-artificielle/feed/"
     },
     {
-     "name": "01net IA",
+     "name": "01net — IA",
      "url": "https://www.01net.com/tag/intelligence-artificielle/feed/"
     },
     {
-     "name": "Les Numeriques",
-     "url": "https://www.lesnumeriques.com/rss.xml"
-    },
-    {
-     "name": "Siecle Digital",
+     "name": "Siècle Digital",
      "url": "https://siecledigital.fr/feed/"
     },
     {
@@ -216,7 +168,7 @@
      "url": "https://www.rugbyrama.fr/rss.xml"
     },
     {
-     "name": "lequipe_rugby",
+     "name": "L'Équipe — Rugby",
      "url": "https://dwh.lequipe.fr/api/edito/rss?path=/Rugby"
     },
     {
@@ -224,28 +176,24 @@
      "url": "https://www.rugby-transferts.com/feed"
     },
     {
-     "name": "rmcsport",
+     "name": "RMC Sport — Rugby",
      "url": "https://rmcsport.bfmtv.com/rss/rugby/"
     },
     {
-     "name": "radio_france",
+     "name": "Radio France — Rugby",
      "url": "https://www.radiofrance.fr/rss/sports/rugby"
     },
     {
-     "name": "le_parisien_rugby",
+     "name": "Le Parisien — Rugby",
      "url": "https://www.leparisien.fr/sports/rugby/rss.xml"
     },
     {
-     "name": "le_progres_rugby",
-     "url": "https://www.leprogres.fr/sport/rugby/rss"
-    },
-    {
-     "name": "quinze_mondial",
-     "url": "https://www.quinzemondial.com/feed/"
-    },
-    {
-     "name": "Sud Ouest Rugby",
+     "name": "Sud Ouest — Rugby",
      "url": "https://www.sudouest.fr/sport/rugby/rss.xml"
+    },
+    {
+     "name": "Quinze Mondial",
+     "url": "https://www.quinzemondial.com/feed/"
     }
    ]
   },
@@ -263,7 +211,7 @@
      "url": "https://www.journaldugeek.com/feed/"
     },
     {
-     "name": "Objet Connecte",
+     "name": "Objet Connecté",
      "url": "https://www.objetconnecte.com/feed/"
     },
     {
@@ -273,6 +221,18 @@
     {
      "name": "Domotique News",
      "url": "https://www.domotique-news.com/feed/"
+    },
+    {
+     "name": "Les Numériques Maison",
+     "url": "https://www.lesnumeriques.com/maison-connectee/rss.xml"
+    },
+    {
+     "name": "Domotique — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=domotique"
+    },
+    {
+     "name": "Maison connectée — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=maison+connect%C3%A9e"
     }
    ]
   },
@@ -282,7 +242,7 @@
    "lang": "fr",
    "feeds": [
     {
-     "name": "Revolution Energetique",
+     "name": "Révolution Énergétique",
      "url": "https://www.revolution-energetique.com/feed/"
     },
     {
@@ -290,16 +250,28 @@
      "url": "https://www.pv-magazine.fr/feed/"
     },
     {
-     "name": "L EnerGeek",
+     "name": "L'EnerGeek",
      "url": "https://lenergeek.com/feed/"
     },
     {
-     "name": "Connaissance des Energies",
+     "name": "Connaissance des Énergies",
      "url": "https://www.connaissancedesenergies.org/rss.xml"
     },
     {
      "name": "Enerzine",
      "url": "https://www.enerzine.com/feed"
+    },
+    {
+     "name": "Panneau solaire — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=panneau+solaire"
+    },
+    {
+     "name": "Photovoltaïque — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=photovolta%C3%AFque"
+    },
+    {
+     "name": "Autoconsommation — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=autoconsommation+solaire"
     }
    ]
   },
@@ -309,36 +281,36 @@
    "lang": "fr",
    "feeds": [
     {
-     "name": "dealabs_tous",
+     "name": "Dealabs — Tous",
      "url": "https://www.dealabs.com/rss/tous"
     },
     {
-     "name": "dealabs_tendance",
+     "name": "Dealabs — Tendances",
      "url": "https://www.dealabs.com/rss/tendance"
     },
     {
-     "name": "google_bon_plan",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bon%20plan"
-    },
-    {
-     "name": "google_promo",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=promo"
-    },
-    {
-     "name": "Frandroid Bons Plans",
+     "name": "Frandroid — Bons plans",
      "url": "https://www.frandroid.com/bons-plans/feed"
     },
     {
-     "name": "Les Numeriques Bons Plans",
+     "name": "Les Numériques — Bons plans",
      "url": "https://www.lesnumeriques.com/bons-plans/rss.xml"
     },
     {
-     "name": "01net Bon Plan",
+     "name": "01net — Bons plans",
      "url": "https://www.01net.com/tag/bon-plan/feed/"
     },
     {
-     "name": "Clubic Bons Plans",
+     "name": "Clubic — Bons plans",
      "url": "https://www.clubic.com/feed/bons-plans/rss"
+    },
+    {
+     "name": "Google Actu — Bons plans",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bon%20plan"
+    },
+    {
+     "name": "Google Actu — Promos",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=promo"
     }
    ]
   },
@@ -348,16 +320,24 @@
    "lang": "fr",
    "feeds": [
     {
-     "name": "Brawl Stars (Google News)",
+     "name": "Brawl Stars — Google Actu",
      "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Brawl+Stars"
     },
     {
-     "name": "Fortnite (Google News)",
+     "name": "Fortnite — Google Actu",
      "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Fortnite"
     },
     {
-     "name": "Roblox (Google News)",
+     "name": "Roblox — Google Actu",
      "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Roblox"
+    },
+    {
+     "name": "Minecraft — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Minecraft"
+    },
+    {
+     "name": "Clash Royale — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Clash+Royale"
     },
     {
      "name": "Dexerto",
@@ -366,6 +346,10 @@
     {
      "name": "JeuxVideo.com",
      "url": "https://www.jeuxvideo.com/rss/rss.xml"
+    },
+    {
+     "name": "Gameblog",
+     "url": "https://www.gameblog.fr/feed/"
     }
    ]
   },
@@ -379,19 +363,19 @@
      "url": "https://www.home-assistant.io/atom.xml"
     },
     {
-     "name": "bbc_sport_rugby",
+     "name": "BBC Sport — Rugby",
      "url": "https://feeds.bbci.co.uk/sport/rugby-union/rss.xml"
     },
     {
-     "name": "road_to_vr",
+     "name": "Road to VR",
      "url": "https://www.roadtovr.com/feed"
     },
     {
-     "name": "uploadvr",
+     "name": "UploadVR",
      "url": "https://www.uploadvr.com/feed"
     },
     {
-     "name": "digital_trends_vr",
+     "name": "Digital Trends — VR",
      "url": "https://www.digitaltrends.com/topic/virtual-reality/feed/"
     }
    ]

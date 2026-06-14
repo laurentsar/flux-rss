@@ -301,12 +301,27 @@ async function init(){
   DEFAULTS = await (await fetch('data/feeds.json')).json();
   const saved = localStorage.getItem('fluxConfig');
   DATA = saved ? JSON.parse(saved) : clone(DEFAULTS);
-  // migration : ajoute les nouvelles catégories par défaut absentes (ex. 🎮 Jeux)
+  // migration : ajoute les catégories par défaut absentes + resync des flux par défaut
+  // (noms harmonisés, 8/catégorie) en préservant tes ajouts perso et tes désactivations.
   if (saved){
     const have = new Set(DATA.categories.map(c=>c.id));
-    let added=false;
-    DEFAULTS.categories.forEach((c,i)=>{ if(!have.has(c.id)){ DATA.categories.splice(Math.min(i,DATA.categories.length),0,clone(c)); added=true; } });
-    if (added) saveConfig();
+    let changed=false;
+    DEFAULTS.categories.forEach((c,i)=>{ if(!have.has(c.id)){ DATA.categories.splice(Math.min(i,DATA.categories.length),0,clone(c)); changed=true; } });
+    const dv = DEFAULTS.version || 1;
+    if ((DATA.version||1) < dv){
+      const allDef = new Set(), defById = {};
+      DEFAULTS.categories.forEach(c=>{ defById[c.id]=c; c.feeds.forEach(f=>allDef.add(f.url)); });
+      const offUrl = new Set();
+      DATA.categories.forEach(c=> c.feeds.forEach(f=>{ if(f.off) offUrl.add(f.url); }));
+      DATA.categories.forEach(c=>{
+        const dc = defById[c.id]; if(!dc) return;
+        const userAdded = c.feeds.filter(f=> !allDef.has(f.url));
+        const synced = dc.feeds.map(f=> offUrl.has(f.url) ? {name:f.name,url:f.url,off:true} : {name:f.name,url:f.url});
+        c.feeds = synced.concat(userAdded);
+      });
+      DATA.version = dv; changed=true;
+    }
+    if (changed) saveConfig();
   }
   renderChips();
   const last = localStorage.getItem('lastCat');
