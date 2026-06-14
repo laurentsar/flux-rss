@@ -175,9 +175,96 @@ function selectCat(id){
   loadCategory(cat);
 }
 
+/* ---------- configuration personnalisable ---------- */
+let DEFAULTS = null;
+const clone = (o) => JSON.parse(JSON.stringify(o));
+const slug = (s) => (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
+  .replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'') || 'cat';
+function saveConfig(){ localStorage.setItem('fluxConfig', JSON.stringify(DATA)); }
+function newCatId(base){ let id=slug(base), n=2; while(DATA.categories.some(c=>c.id===id)){ id=slug(base)+'_'+n; n++; } return id; }
+
+function refreshAfterConfig(){
+  if (!DATA.categories.length){ DATA.categories=clone(DEFAULTS.categories); saveConfig(); }
+  renderChips();
+  const cat = DATA.categories.find(c=>c.id===current) || DATA.categories[0];
+  selectCat(cat.id);
+}
+
+/* ---------- menu réglages ---------- */
+const elModal = $('#modal'), elCard = $('#modal-card');
+function openSettings(){ renderSettings(); elModal.hidden=false; }
+function closeSettings(){ elModal.hidden=true; refreshAfterConfig(); }
+
+function renderSettings(){
+  const cats = DATA.categories.map((c,ci) => {
+    const color = (CAT_COLORS[c.id]||['#F26522'])[0];
+    const feeds = c.feeds.map((f,fi) => `
+      <div class="feed-row">
+        <input class="f-name" data-ci="${ci}" data-fi="${fi}" value="${esc(f.name)}">
+        <input class="f-url" data-ci="${ci}" data-fi="${fi}" value="${esc(f.url)}">
+        <button class="iconbtn" data-act="del-feed" data-ci="${ci}" data-fi="${fi}">✕</button>
+      </div>`).join('');
+    return `<div class="cat-block" style="--accent:${color}">
+      <div class="cat-head">
+        <input class="cat-label" data-ci="${ci}" value="${esc(c.label)}">
+        <button class="iconbtn" data-act="del-cat" data-ci="${ci}">🗑️</button>
+      </div>
+      ${feeds}
+      <div class="feed-add">
+        <input class="nf-name" data-ci="${ci}" placeholder="Nom du flux">
+        <input class="nf-url" data-ci="${ci}" placeholder="https://…/feed">
+        <button class="btn add" data-act="add-feed" data-ci="${ci}">+ Ajouter</button>
+      </div>
+    </div>`;
+  }).join('');
+  elCard.innerHTML = `
+    <div class="modal-head"><h2>⚙️ Personnaliser</h2><button data-act="close">✕</button></div>
+    <div class="modal-body">
+      <div class="hint">Ajoute, modifie ou supprime catégories et flux. Sauvegarde auto sur cet appareil.</div>
+      ${cats}
+      <div class="add-cat">
+        <input id="new-cat" placeholder="Nouvelle catégorie (ex : 🎮 Jeux)">
+        <button class="btn cat" data-act="add-cat">+ Catégorie</button>
+      </div>
+      <button class="btn reset" data-act="reset">↺ Restaurer les flux par défaut</button>
+    </div>`;
+}
+
+function onSettingsChange(e){
+  const t=e.target, ci=+t.dataset.ci, fi=+t.dataset.fi, v=t.value.trim();
+  if (t.classList.contains('cat-label')) DATA.categories[ci].label=v;
+  else if (t.classList.contains('f-name')) DATA.categories[ci].feeds[fi].name=v;
+  else if (t.classList.contains('f-url')) DATA.categories[ci].feeds[fi].url=v;
+  else return;
+  saveConfig();
+}
+function onSettingsClick(e){
+  const btn=e.target.closest('[data-act]'); if(!btn) return;
+  const act=btn.dataset.act, ci=+btn.dataset.ci, fi=+btn.dataset.fi;
+  if (act==='close'){ closeSettings(); return; }
+  if (act==='del-feed'){ DATA.categories[ci].feeds.splice(fi,1); }
+  else if (act==='del-cat'){ if(!confirm('Supprimer cette catégorie ?')) return; DATA.categories.splice(ci,1); }
+  else if (act==='add-feed'){
+    const name=elCard.querySelector(`.nf-name[data-ci="${ci}"]`).value.trim();
+    const url=elCard.querySelector(`.nf-url[data-ci="${ci}"]`).value.trim();
+    if(!name||!/^https?:\/\//i.test(url)){ alert('Indique un nom et une URL valide (http…).'); return; }
+    DATA.categories[ci].feeds.push({name,url});
+  }
+  else if (act==='add-cat'){
+    const label=elCard.querySelector('#new-cat').value.trim();
+    if(!label){ alert('Donne un nom de catégorie.'); return; }
+    DATA.categories.push({id:newCatId(label),label,lang:'fr',feeds:[]});
+  }
+  else if (act==='reset'){ if(!confirm('Restaurer les catégories et flux d\'origine ?')) return; DATA=clone(DEFAULTS); }
+  else return;
+  saveConfig(); renderSettings();
+}
+
 /* ---------- init ---------- */
 async function init(){
-  DATA = await (await fetch('data/feeds.json')).json();
+  DEFAULTS = await (await fetch('data/feeds.json')).json();
+  const saved = localStorage.getItem('fluxConfig');
+  DATA = saved ? JSON.parse(saved) : clone(DEFAULTS);
   renderChips();
   const last = localStorage.getItem('lastCat');
   const start = DATA.categories.find(c=>c.id===last) ? last : DATA.categories[0].id;
@@ -186,6 +273,10 @@ async function init(){
     const cat = DATA.categories.find(c => c.id === current);
     if (cat) loadCategory(cat);
   });
+  $('#settings-btn').addEventListener('click', openSettings);
+  elCard.addEventListener('click', onSettingsClick);
+  elCard.addEventListener('change', onSettingsChange);
+  elModal.addEventListener('click', (e)=>{ if(e.target===elModal) closeSettings(); });
   if ('serviceWorker' in navigator){ try{ navigator.serviceWorker.register('sw.js'); }catch(e){} }
 }
 init();

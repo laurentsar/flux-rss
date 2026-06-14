@@ -12,11 +12,16 @@
 <body>
   <header id="topbar">
     <div id="hero">
-      <div id="hero-title">Flux RSS</div>
-      <div id="hero-sub">📰 Veille multi-thèmes</div>
+      <div>
+        <div id="hero-title">Flux RSS</div>
+        <div id="hero-sub">📰 Veille multi-thèmes</div>
+      </div>
+      <button id="settings-btn" title="Réglages" aria-label="Réglages">⚙️</button>
     </div>
     <div id="cats" class="chips"></div>
   </header>
+
+  <div id="modal" class="modal" hidden><div id="modal-card" class="modal-card"></div></div>
 
   <main id="main">
     <div id="status" class="status"></div>
