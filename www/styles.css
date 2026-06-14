@@ -39,6 +39,9 @@ body{
 .feed-row .f-url,.feed-add .nf-url{flex:1;min-width:0}
 .modal input{background:#1e293b;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:9px 10px;font-size:.9em;width:100%}
 .modal .iconbtn{flex:0 0 auto;width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:#1e293b;color:#fca5a5;font-size:1em;cursor:pointer}
+.modal .iconbtn.tg{color:var(--text)}
+.cat-block.off .cat-label{text-decoration:line-through;color:var(--muted)}
+.feed-row.off .f-name,.feed-row.off .f-url{opacity:.45;text-decoration:line-through}
 .feed-add{margin-top:8px;flex-wrap:wrap}
 .feed-add .nf-name{flex:0 0 34%}
 .btn{border:none;border-radius:9px;padding:10px 14px;font-weight:700;cursor:pointer;font-size:.92em}

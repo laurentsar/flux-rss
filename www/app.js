@@ -6,6 +6,7 @@ const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
   ia:['#6366F1','#312E81'], rugby:['#16A34A','#0B5D2A'], domotique:['#0EA5E9','#075985'],
   solaire:['#F59E0B','#92600A'], deals_fr:['#27AE60','#145F34'], anglais:['#1E3A8A','#0C1E4A'],
+  jeux:['#8b5cf6','#4c1d95'],
 };
 const PER_FEED = 12;       // articles gardés par flux
 const MAX_SHOW = 60;       // articles affichés par catégorie
@@ -99,7 +100,8 @@ async function loadCategory(cat, {silent=false}={}){
   }
 
   elRefresh.classList.add('spinning');
-  const results = await Promise.allSettled(cat.feeds.map(async (f) => {
+  const activeFeeds = cat.feeds.filter(f => !f.off);
+  const results = await Promise.allSettled(activeFeeds.map(async (f) => {
     const xml = await httpGet(f.url);
     return parseFeed(xml, f.name);
   }));
@@ -157,7 +159,7 @@ function render(items, catId, ts){
 
 /* ---------- catégories ---------- */
 function renderChips(){
-  elCats.innerHTML = DATA.categories.map(c =>
+  elCats.innerHTML = DATA.categories.filter(c => !c.off).map(c =>
     `<button class="chip" data-id="${c.id}">${esc(c.label)}</button>`).join('');
   elCats.querySelectorAll('.chip').forEach(btn => {
     btn.addEventListener('click', () => selectCat(btn.dataset.id));
@@ -183,11 +185,13 @@ const slug = (s) => (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''
 function saveConfig(){ localStorage.setItem('fluxConfig', JSON.stringify(DATA)); }
 function newCatId(base){ let id=slug(base), n=2; while(DATA.categories.some(c=>c.id===id)){ id=slug(base)+'_'+n; n++; } return id; }
 
+function firstEnabled(){ return DATA.categories.find(c=>!c.off); }
 function refreshAfterConfig(){
   if (!DATA.categories.length){ DATA.categories=clone(DEFAULTS.categories); saveConfig(); }
   renderChips();
-  const cat = DATA.categories.find(c=>c.id===current) || DATA.categories[0];
-  selectCat(cat.id);
+  let cat = DATA.categories.find(c=>c.id===current && !c.off) || firstEnabled();
+  if (cat){ selectCat(cat.id); }
+  else { elCats.innerHTML=''; elArticles.innerHTML=''; elStatus.textContent='Toutes les catégories sont désactivées (⚙️).'; }
 }
 
 /* ---------- menu réglages ---------- */
@@ -199,13 +203,15 @@ function renderSettings(){
   const cats = DATA.categories.map((c,ci) => {
     const color = (CAT_COLORS[c.id]||['#F26522'])[0];
     const feeds = c.feeds.map((f,fi) => `
-      <div class="feed-row">
+      <div class="feed-row ${f.off?'off':''}">
+        <button class="iconbtn tg" data-act="toggle-feed" data-ci="${ci}" data-fi="${fi}" title="${f.off?'Activer':'Désactiver'}">${f.off?'🚫':'👁️'}</button>
         <input class="f-name" data-ci="${ci}" data-fi="${fi}" value="${esc(f.name)}">
         <input class="f-url" data-ci="${ci}" data-fi="${fi}" value="${esc(f.url)}">
         <button class="iconbtn" data-act="del-feed" data-ci="${ci}" data-fi="${fi}">✕</button>
       </div>`).join('');
-    return `<div class="cat-block" style="--accent:${color}">
+    return `<div class="cat-block ${c.off?'off':''}" style="--accent:${color}">
       <div class="cat-head">
+        <button class="iconbtn tg" data-act="toggle-cat" data-ci="${ci}" title="${c.off?'Activer la catégorie':'Désactiver la catégorie'}">${c.off?'🚫':'👁️'}</button>
         <input class="cat-label" data-ci="${ci}" value="${esc(c.label)}">
         <button class="iconbtn" data-act="del-cat" data-ci="${ci}">🗑️</button>
       </div>
@@ -220,7 +226,7 @@ function renderSettings(){
   elCard.innerHTML = `
     <div class="modal-head"><h2>⚙️ Personnaliser</h2><button data-act="close">✕</button></div>
     <div class="modal-body">
-      <div class="hint">Ajoute, modifie ou supprime catégories et flux. Sauvegarde auto sur cet appareil.</div>
+      <div class="hint">👁️ activer / 🚫 désactiver · ✏️ modifier · ✕/🗑️ supprimer. Sauvegarde auto sur cet appareil.</div>
       ${cats}
       <div class="add-cat">
         <input id="new-cat" placeholder="Nouvelle catégorie (ex : 🎮 Jeux)">
@@ -244,6 +250,8 @@ function onSettingsClick(e){
   if (act==='close'){ closeSettings(); return; }
   if (act==='del-feed'){ DATA.categories[ci].feeds.splice(fi,1); }
   else if (act==='del-cat'){ if(!confirm('Supprimer cette catégorie ?')) return; DATA.categories.splice(ci,1); }
+  else if (act==='toggle-cat'){ const c=DATA.categories[ci]; c.off=!c.off; }
+  else if (act==='toggle-feed'){ const f=DATA.categories[ci].feeds[fi]; f.off=!f.off; }
   else if (act==='add-feed'){
     const name=elCard.querySelector(`.nf-name[data-ci="${ci}"]`).value.trim();
     const url=elCard.querySelector(`.nf-url[data-ci="${ci}"]`).value.trim();
@@ -265,10 +273,18 @@ async function init(){
   DEFAULTS = await (await fetch('data/feeds.json')).json();
   const saved = localStorage.getItem('fluxConfig');
   DATA = saved ? JSON.parse(saved) : clone(DEFAULTS);
+  // migration : ajoute les nouvelles catégories par défaut absentes (ex. 🎮 Jeux)
+  if (saved){
+    const have = new Set(DATA.categories.map(c=>c.id));
+    let added=false;
+    DEFAULTS.categories.forEach((c,i)=>{ if(!have.has(c.id)){ DATA.categories.splice(Math.min(i,DATA.categories.length),0,clone(c)); added=true; } });
+    if (added) saveConfig();
+  }
   renderChips();
   const last = localStorage.getItem('lastCat');
-  const start = DATA.categories.find(c=>c.id===last) ? last : DATA.categories[0].id;
-  selectCat(start);
+  const startCat = DATA.categories.find(c=>c.id===last && !c.off) || firstEnabled();
+  if (startCat) selectCat(startCat.id);
+  else elStatus.textContent='Toutes les catégories sont désactivées (⚙️).';
   elRefresh.addEventListener('click', () => {
     const cat = DATA.categories.find(c => c.id === current);
     if (cat) loadCategory(cat);

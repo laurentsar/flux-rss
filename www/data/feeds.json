@@ -1,5 +1,5 @@
 {
- "version": 1,
+ "version": 2,
  "generated": "2026-06-14",
  "categories": [
   {
@@ -339,6 +339,33 @@
     {
      "name": "Clubic Bons Plans",
      "url": "https://www.clubic.com/feed/bons-plans/rss"
+    }
+   ]
+  },
+  {
+   "id": "jeux",
+   "label": "🎮 Jeux",
+   "lang": "fr",
+   "feeds": [
+    {
+     "name": "Brawl Stars (Google News)",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Brawl+Stars"
+    },
+    {
+     "name": "Fortnite (Google News)",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Fortnite"
+    },
+    {
+     "name": "Roblox (Google News)",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Roblox"
+    },
+    {
+     "name": "Dexerto",
+     "url": "https://www.dexerto.fr/feed/"
+    },
+    {
+     "name": "JeuxVideo.com",
+     "url": "https://www.jeuxvideo.com/rss/rss.xml"
     }
    ]
   },
