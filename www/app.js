@@ -19,7 +19,13 @@ let DATA = null;
 let current = null;
 let RENDERED = [];
 let speakingBtn = null;
+let lang = localStorage.getItem('srcLang') || 'fr';
 const TTS_OK = isNative || (typeof window !== 'undefined' && 'speechSynthesis' in window);
+
+/* sources actives d'une catégorie selon la langue choisie (repli FR) */
+function feedsFor(cat){
+  return (lang === 'en' && cat.feeds_en && cat.feeds_en.length) ? cat.feeds_en : (cat.feeds || []);
+}
 
 /* ---------- lecture audio (TTS) ---------- */
 const TTS = () => (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech) || null;
@@ -32,11 +38,12 @@ async function toggleSpeak(btn, text){
   if (speakingBtn === btn){ await stopSpeak(); return; }
   await stopSpeak();
   speakingBtn = btn; btn.textContent='⏹';
+  const vlang = (lang === 'en') ? 'en-US' : 'fr-FR';
   try{
     if (TTS()){
-      await TTS().speak({ text, lang:'fr-FR', rate:1.0 });
+      await TTS().speak({ text, lang:vlang, rate:1.0 });
     } else if (window.speechSynthesis){
-      await new Promise((res)=>{ const u=new SpeechSynthesisUtterance(text); u.lang='fr-FR';
+      await new Promise((res)=>{ const u=new SpeechSynthesisUtterance(text); u.lang=vlang;
         u.onend=res; u.onerror=res; window.speechSynthesis.cancel(); window.speechSynthesis.speak(u); });
     }
   }catch(e){}
@@ -125,7 +132,7 @@ async function loadCategory(cat, {silent=false}={}){
   }
 
   elRefresh.classList.add('spinning');
-  const activeFeeds = cat.feeds.filter(f => !f.off);
+  const activeFeeds = feedsFor(cat).filter(f => !f.off);
   const results = await Promise.allSettled(activeFeeds.map(async (f) => {
     const xml = await httpGet(f.url);
     return parseFeed(xml, f.name);
@@ -227,10 +234,16 @@ const elModal = $('#modal'), elCard = $('#modal-card');
 function openSettings(){ renderSettings(); elModal.hidden=false; }
 function closeSettings(){ elModal.hidden=true; refreshAfterConfig(); }
 
+/* tableau de sources édité = celui de la langue active */
+function catFeeds(ci){
+  const c = DATA.categories[ci];
+  if (lang === 'en'){ if(!c.feeds_en) c.feeds_en = []; return c.feeds_en; }
+  return c.feeds;
+}
 function renderSettings(){
   const cats = DATA.categories.map((c,ci) => {
     const color = (CAT_COLORS[c.id]||['#F26522'])[0];
-    const feeds = c.feeds.map((f,fi) => `
+    const feeds = catFeeds(ci).map((f,fi) => `
       <div class="feed-row ${f.off?'off':''}">
         <button class="iconbtn tg" data-act="toggle-feed" data-ci="${ci}" data-fi="${fi}" title="${f.off?'Activer':'Désactiver'}">${f.off?'🚫':'👁️'}</button>
         <input class="f-name" data-ci="${ci}" data-fi="${fi}" value="${esc(f.name)}">
@@ -252,9 +265,9 @@ function renderSettings(){
     </div>`;
   }).join('');
   elCard.innerHTML = `
-    <div class="modal-head"><h2>⚙️ Personnaliser</h2><button data-act="close">✕</button></div>
+    <div class="modal-head"><h2>⚙️ Sources ${lang==='en'?'🇬🇧 EN':'🇫🇷 FR'}</h2><button data-act="close">✕</button></div>
     <div class="modal-body">
-      <div class="hint">👁️ activer / 🚫 désactiver · ✏️ modifier · ✕/🗑️ supprimer. Sauvegarde auto sur cet appareil.</div>
+      <div class="hint">Tu édites les sources <b>${lang==='en'?'anglaises 🇬🇧':'françaises 🇫🇷'}</b> (bascule via le drapeau en haut). 👁️/🚫 activer/désactiver · ✕/🗑️ supprimer. Sauvegarde auto.</div>
       ${cats}
       <div class="add-cat">
         <input id="new-cat" placeholder="Nouvelle catégorie (ex : 🎮 Jeux)">
@@ -267,8 +280,8 @@ function renderSettings(){
 function onSettingsChange(e){
   const t=e.target, ci=+t.dataset.ci, fi=+t.dataset.fi, v=t.value.trim();
   if (t.classList.contains('cat-label')) DATA.categories[ci].label=v;
-  else if (t.classList.contains('f-name')) DATA.categories[ci].feeds[fi].name=v;
-  else if (t.classList.contains('f-url')) DATA.categories[ci].feeds[fi].url=v;
+  else if (t.classList.contains('f-name')) catFeeds(ci)[fi].name=v;
+  else if (t.classList.contains('f-url')) catFeeds(ci)[fi].url=v;
   else return;
   saveConfig();
 }
@@ -276,20 +289,20 @@ function onSettingsClick(e){
   const btn=e.target.closest('[data-act]'); if(!btn) return;
   const act=btn.dataset.act, ci=+btn.dataset.ci, fi=+btn.dataset.fi;
   if (act==='close'){ closeSettings(); return; }
-  if (act==='del-feed'){ DATA.categories[ci].feeds.splice(fi,1); }
+  if (act==='del-feed'){ catFeeds(ci).splice(fi,1); }
   else if (act==='del-cat'){ if(!confirm('Supprimer cette catégorie ?')) return; DATA.categories.splice(ci,1); }
   else if (act==='toggle-cat'){ const c=DATA.categories[ci]; c.off=!c.off; }
-  else if (act==='toggle-feed'){ const f=DATA.categories[ci].feeds[fi]; f.off=!f.off; }
+  else if (act==='toggle-feed'){ const f=catFeeds(ci)[fi]; f.off=!f.off; }
   else if (act==='add-feed'){
     const name=elCard.querySelector(`.nf-name[data-ci="${ci}"]`).value.trim();
     const url=elCard.querySelector(`.nf-url[data-ci="${ci}"]`).value.trim();
     if(!name||!/^https?:\/\//i.test(url)){ alert('Indique un nom et une URL valide (http…).'); return; }
-    DATA.categories[ci].feeds.push({name,url});
+    catFeeds(ci).push({name,url});
   }
   else if (act==='add-cat'){
     const label=elCard.querySelector('#new-cat').value.trim();
     if(!label){ alert('Donne un nom de catégorie.'); return; }
-    DATA.categories.push({id:newCatId(label),label,lang:'fr',feeds:[]});
+    DATA.categories.push({id:newCatId(label),label,lang:'fr',feeds:[],feeds_en:[]});
   }
   else if (act==='reset'){ if(!confirm('Restaurer les catégories et flux d\'origine ?')) return; DATA=clone(DEFAULTS); }
   else return;
@@ -309,15 +322,20 @@ async function init(){
     DEFAULTS.categories.forEach((c,i)=>{ if(!have.has(c.id)){ DATA.categories.splice(Math.min(i,DATA.categories.length),0,clone(c)); changed=true; } });
     const dv = DEFAULTS.version || 1;
     if ((DATA.version||1) < dv){
+      // l'ancien fourre-tout 'anglais' est remplacé par l'interrupteur de langue
+      DATA.categories = DATA.categories.filter(c=> c.id!=='anglais');
       const allDef = new Set(), defById = {};
-      DEFAULTS.categories.forEach(c=>{ defById[c.id]=c; c.feeds.forEach(f=>allDef.add(f.url)); });
+      DEFAULTS.categories.forEach(c=>{ defById[c.id]=c; (c.feeds||[]).forEach(f=>allDef.add(f.url)); (c.feeds_en||[]).forEach(f=>allDef.add(f.url)); });
       const offUrl = new Set();
-      DATA.categories.forEach(c=> c.feeds.forEach(f=>{ if(f.off) offUrl.add(f.url); }));
+      DATA.categories.forEach(c=> [...(c.feeds||[]),...(c.feeds_en||[])].forEach(f=>{ if(f.off) offUrl.add(f.url); }));
+      const syncArr = (userArr, defArr) => {
+        const userAdded = (userArr||[]).filter(f=> !allDef.has(f.url));
+        return (defArr||[]).map(f=> offUrl.has(f.url) ? {name:f.name,url:f.url,off:true} : {name:f.name,url:f.url}).concat(userAdded);
+      };
       DATA.categories.forEach(c=>{
         const dc = defById[c.id]; if(!dc) return;
-        const userAdded = c.feeds.filter(f=> !allDef.has(f.url));
-        const synced = dc.feeds.map(f=> offUrl.has(f.url) ? {name:f.name,url:f.url,off:true} : {name:f.name,url:f.url});
-        c.feeds = synced.concat(userAdded);
+        c.feeds = syncArr(c.feeds, dc.feeds);
+        c.feeds_en = syncArr(c.feeds_en, dc.feeds_en);
       });
       DATA.version = dv; changed=true;
     }
@@ -337,6 +355,16 @@ async function init(){
     e.preventDefault(); e.stopPropagation();
     const it = RENDERED[+b.dataset.i]; if(!it) return;
     toggleSpeak(b, (it.title||'') + '. ' + (it.summary||''));
+  });
+  const langBtn = $('#lang-btn');
+  const updateLangBtn = ()=>{ langBtn.textContent = lang==='en' ? '🇬🇧' : '🇫🇷'; langBtn.classList.toggle('en', lang==='en'); };
+  updateLangBtn();
+  langBtn.addEventListener('click', ()=>{
+    lang = (lang==='en') ? 'fr' : 'en';
+    localStorage.setItem('srcLang', lang);
+    updateLangBtn(); stopSpeak();
+    const cat = DATA.categories.find(c=>c.id===current && !c.off) || firstEnabled();
+    if (cat) loadCategory(cat);
   });
   $('#settings-btn').addEventListener('click', openSettings);
   elCard.addEventListener('click', onSettingsClick);

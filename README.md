@@ -1,7 +1,7 @@
 # Flux RSS
 
 Lecteur de **flux RSS multi-thèmes** (FR + EN), autonome, dérivé du système Home Assistant.
-9 catégories, 76 flux vérifiés. Récupération **native dans l'APK** (CapacitorHttp → pas de CORS).
+Catégories thématiques avec interrupteur de langue 🇫🇷/🇬🇧 (sources FR ou EN). Récupération **native dans l'APK** (CapacitorHttp → pas de CORS).
 
 - Web pur dans `www/` (HTML/CSS/JS vanilla, 0 dépendance runtime) = PWA + contenu embarqué dans l'APK.
 - Données : `www/data/feeds.json` (catégories + flux).

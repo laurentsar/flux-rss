@@ -1,5 +1,5 @@
 {
- "version": 4,
+ "version": 5,
  "generated": "2026-06-14",
  "categories": [
   {
@@ -38,6 +38,40 @@
     {
      "name": "Blog Tesla",
      "url": "https://www.blogtesla.fr/feed/"
+    }
+   ],
+   "feeds_en": [
+    {
+     "name": "Electrek",
+     "url": "https://electrek.co/feed/"
+    },
+    {
+     "name": "InsideEVs",
+     "url": "https://insideevs.com/rss/articles/all/"
+    },
+    {
+     "name": "Teslarati",
+     "url": "https://www.teslarati.com/feed/"
+    },
+    {
+     "name": "Electrive",
+     "url": "https://www.electrive.com/feed/"
+    },
+    {
+     "name": "Tesla — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla"
+    },
+    {
+     "name": "Electric vehicle — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=electric+vehicle"
+    },
+    {
+     "name": "EV charging — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=EV+charging"
+    },
+    {
+     "name": "Battery tech — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=EV+battery+technology"
     }
    ]
   },
@@ -78,6 +112,40 @@
      "name": "Réalité augmentée — Google Actu",
      "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9alit%C3%A9+augment%C3%A9e"
     }
+   ],
+   "feeds_en": [
+    {
+     "name": "Road to VR",
+     "url": "https://www.roadtovr.com/feed"
+    },
+    {
+     "name": "UploadVR",
+     "url": "https://www.uploadvr.com/feed"
+    },
+    {
+     "name": "MIXED",
+     "url": "https://mixed-news.com/en/feed/"
+    },
+    {
+     "name": "Virtual reality — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=virtual+reality"
+    },
+    {
+     "name": "Meta Quest — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Meta+Quest"
+    },
+    {
+     "name": "Apple Vision Pro — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Apple+Vision+Pro"
+    },
+    {
+     "name": "Augmented reality — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=augmented+reality"
+    },
+    {
+     "name": "PlayStation VR — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=PlayStation+VR"
+    }
    ]
   },
   {
@@ -116,6 +184,40 @@
     {
      "name": "Korben",
      "url": "https://korben.info/feed"
+    }
+   ],
+   "feeds_en": [
+    {
+     "name": "The Hacker News",
+     "url": "https://thehackernews.com/feeds/posts/default"
+    },
+    {
+     "name": "Krebs on Security",
+     "url": "https://krebsonsecurity.com/feed/"
+    },
+    {
+     "name": "Dark Reading",
+     "url": "https://www.darkreading.com/rss.xml"
+    },
+    {
+     "name": "The Register — Security",
+     "url": "https://www.theregister.com/security/headlines.atom"
+    },
+    {
+     "name": "Cybersecurity — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=cybersecurity"
+    },
+    {
+     "name": "Ransomware — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=ransomware"
+    },
+    {
+     "name": "Data breach — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=data+breach"
+    },
+    {
+     "name": "Vulnerability — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=security+vulnerability"
     }
    ]
   },
@@ -156,6 +258,40 @@
      "name": "LeBigData",
      "url": "https://www.lebigdata.fr/feed"
     }
+   ],
+   "feeds_en": [
+    {
+     "name": "TechCrunch AI",
+     "url": "https://techcrunch.com/category/artificial-intelligence/feed/"
+    },
+    {
+     "name": "The Verge AI",
+     "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
+    },
+    {
+     "name": "VentureBeat AI",
+     "url": "https://venturebeat.com/category/ai/feed/"
+    },
+    {
+     "name": "MIT Tech Review",
+     "url": "https://www.technologyreview.com/feed/"
+    },
+    {
+     "name": "Artificial intelligence — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=artificial+intelligence"
+    },
+    {
+     "name": "OpenAI — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=OpenAI"
+    },
+    {
+     "name": "Machine learning — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=machine+learning"
+    },
+    {
+     "name": "ChatGPT — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=ChatGPT"
+    }
    ]
   },
   {
@@ -194,6 +330,40 @@
     {
      "name": "Quinze Mondial",
      "url": "https://www.quinzemondial.com/feed/"
+    }
+   ],
+   "feeds_en": [
+    {
+     "name": "BBC Sport — Rugby",
+     "url": "https://feeds.bbci.co.uk/sport/rugby-union/rss.xml"
+    },
+    {
+     "name": "The Guardian — Rugby",
+     "url": "https://www.theguardian.com/sport/rugby-union/rss"
+    },
+    {
+     "name": "ESPN — Rugby",
+     "url": "https://www.espn.com/espn/rss/rugby/news"
+    },
+    {
+     "name": "Rugby union — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=rugby+union"
+    },
+    {
+     "name": "Six Nations — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Six+Nations+rugby"
+    },
+    {
+     "name": "Rugby World Cup — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Rugby+World+Cup"
+    },
+    {
+     "name": "Premiership Rugby — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Premiership+Rugby"
+    },
+    {
+     "name": "URC — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=United+Rugby+Championship"
     }
    ]
   },
@@ -234,6 +404,40 @@
      "name": "Maison connectée — Google Actu",
      "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=maison+connect%C3%A9e"
     }
+   ],
+   "feeds_en": [
+    {
+     "name": "Stacey on IoT",
+     "url": "https://staceyoniot.com/feed/"
+    },
+    {
+     "name": "Home Assistant Blog",
+     "url": "https://www.home-assistant.io/atom.xml"
+    },
+    {
+     "name": "The Verge — Smart Home",
+     "url": "https://www.theverge.com/rss/smart-home/index.xml"
+    },
+    {
+     "name": "Smart home — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=smart+home"
+    },
+    {
+     "name": "Home automation — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=home+automation"
+    },
+    {
+     "name": "Home Assistant — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Home+Assistant"
+    },
+    {
+     "name": "Matter — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Matter+smart+home"
+    },
+    {
+     "name": "Google Home — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Google+Home"
+    }
    ]
   },
   {
@@ -272,6 +476,40 @@
     {
      "name": "Autoconsommation — Google Actu",
      "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=autoconsommation+solaire"
+    }
+   ],
+   "feeds_en": [
+    {
+     "name": "Electrek — Energy",
+     "url": "https://electrek.co/feed/"
+    },
+    {
+     "name": "Solar power — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=solar+power"
+    },
+    {
+     "name": "Photovoltaic — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=photovoltaic"
+    },
+    {
+     "name": "Rooftop solar — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=rooftop+solar"
+    },
+    {
+     "name": "Solar panels — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=solar+panels"
+    },
+    {
+     "name": "Renewable energy — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=renewable+energy"
+    },
+    {
+     "name": "Home battery — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=home+battery+storage"
+    },
+    {
+     "name": "Clean energy — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=clean+energy"
     }
    ]
   },
@@ -312,6 +550,40 @@
      "name": "Google Actu — Promos",
      "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=promo"
     }
+   ],
+   "feeds_en": [
+    {
+     "name": "Deals — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=best+deals"
+    },
+    {
+     "name": "Discount — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=discount"
+    },
+    {
+     "name": "Tech deals — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=tech+deals"
+    },
+    {
+     "name": "Amazon deals — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Amazon+deals"
+    },
+    {
+     "name": "Coupons — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=coupons"
+    },
+    {
+     "name": "Sale — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=online+sale"
+    },
+    {
+     "name": "Gaming deals — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=gaming+deals"
+    },
+    {
+     "name": "Black Friday — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Black+Friday+deals"
+    }
    ]
   },
   {
@@ -351,32 +623,39 @@
      "name": "Gameblog",
      "url": "https://www.gameblog.fr/feed/"
     }
-   ]
-  },
-  {
-   "id": "anglais",
-   "label": "🇬🇧 Anglais",
-   "lang": "en",
-   "feeds": [
+   ],
+   "feeds_en": [
     {
-     "name": "Home Assistant Blog",
-     "url": "https://www.home-assistant.io/atom.xml"
+     "name": "IGN",
+     "url": "https://feeds.ign.com/ign/all"
     },
     {
-     "name": "BBC Sport — Rugby",
-     "url": "https://feeds.bbci.co.uk/sport/rugby-union/rss.xml"
+     "name": "Eurogamer",
+     "url": "https://www.eurogamer.net/feed"
     },
     {
-     "name": "Road to VR",
-     "url": "https://www.roadtovr.com/feed"
+     "name": "Kotaku",
+     "url": "https://kotaku.com/rss"
     },
     {
-     "name": "UploadVR",
-     "url": "https://www.uploadvr.com/feed"
+     "name": "Brawl Stars — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Brawl+Stars"
     },
     {
-     "name": "Digital Trends — VR",
-     "url": "https://www.digitaltrends.com/topic/virtual-reality/feed/"
+     "name": "Fortnite — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Fortnite"
+    },
+    {
+     "name": "Roblox — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Roblox"
+    },
+    {
+     "name": "Minecraft — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Minecraft"
+    },
+    {
+     "name": "Video games — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=video+games"
     }
    ]
   }
