@@ -1,0 +1,7 @@
+{
+  "appId": "com.laurent.fluxrss",
+  "appName": "Flux RSS",
+  "webDir": "www",
+  "android": { "allowMixedContent": true },
+  "plugins": { "CapacitorHttp": { "enabled": true } }
+}

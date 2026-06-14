@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#0f172a" />
+<title>Flux RSS</title>
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="img/icon-192.png" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header id="topbar">
+    <div id="hero">
+      <div id="hero-title">Flux RSS</div>
+      <div id="hero-sub">📰 Veille multi-thèmes</div>
+    </div>
+    <div id="cats" class="chips"></div>
+  </header>
+
+  <main id="main">
+    <div id="status" class="status"></div>
+    <div id="articles"></div>
+  </main>
+
+  <button id="refresh" title="Actualiser" aria-label="Actualiser">⟳</button>
+
+  <script src="app.js"></script>
+</body>
+</html>

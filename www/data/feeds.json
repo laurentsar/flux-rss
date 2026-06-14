@@ -1,0 +1,373 @@
+{
+ "version": 1,
+ "generated": "2026-06-14",
+ "categories": [
+  {
+   "id": "ve",
+   "label": "🚗 Tesla & Recharge",
+   "lang": "fr",
+   "feeds": [
+    {
+     "name": "AVEM",
+     "url": "https://www.avem.fr/feed/"
+    },
+    {
+     "name": "Cleanrider",
+     "url": "https://www.cleanrider.com/feed/"
+    },
+    {
+     "name": "Automobile Propre",
+     "url": "https://www.automobile-propre.com/feed/"
+    },
+    {
+     "name": "Numerama Vroom",
+     "url": "https://www.numerama.com/vroom/feed/"
+    },
+    {
+     "name": "Avere France",
+     "url": "https://www.avere-france.org/feed/"
+    },
+    {
+     "name": "01net Voiture Electrique",
+     "url": "https://www.01net.com/tag/voiture-electrique/feed/"
+    },
+    {
+     "name": "Ze Watt",
+     "url": "https://www.ze-watt.com/feed/"
+    },
+    {
+     "name": "Blogtesla",
+     "url": "https://www.blogtesla.fr/feed/"
+    },
+    {
+     "name": "tesla_mag",
+     "url": "https://www.tesla-mag.com/feed/"
+    },
+    {
+     "name": "Numerama Tesla",
+     "url": "https://www.numerama.com/tag/tesla/feed/"
+    },
+    {
+     "name": "Les Numeriques Tesla",
+     "url": "https://siftrss.com/f/oGz5avMg8e"
+    },
+    {
+     "name": "Automobile Propre Tesla",
+     "url": "https://siftrss.com/f/rbN8R1Mr6o"
+    },
+    {
+     "name": "Caradisiac Tesla",
+     "url": "https://siftrss.com/f/ddvaq55rn9"
+    },
+    {
+     "name": "Generation NT Tesla",
+     "url": "https://siftrss.com/f/7YGW8yj56j"
+    },
+    {
+     "name": "Beev",
+     "url": "https://www.beev.co/blog/feed/"
+    }
+   ]
+  },
+  {
+   "id": "vr",
+   "label": "🥽 Casque VR / XR",
+   "lang": "fr",
+   "feeds": [
+    {
+     "name": "casques_vr",
+     "url": "https://casques-vr.com/rss"
+    },
+    {
+     "name": "Les Numeriques VR",
+     "url": "https://www.lesnumeriques.com/casque-realite-virtuelle/rss.xml"
+    },
+    {
+     "name": "realite_virtuelle",
+     "url": "https://www.realite-virtuelle.com/feed/"
+    }
+   ]
+  },
+  {
+   "id": "cyber",
+   "label": "🛡️ Cyber",
+   "lang": "fr",
+   "feeds": [
+    {
+     "name": "CLUSIF",
+     "url": "https://clusif.fr/feed/"
+    },
+    {
+     "name": "Club EBIOS",
+     "url": "https://club-ebios.org/site/feed/"
+    },
+    {
+     "name": "Zataz",
+     "url": "https://www.zataz.com/feed/"
+    },
+    {
+     "name": "LeMagIT Sécurité",
+     "url": "https://www.lemagit.fr/rss/ContentSyndication.xml"
+    },
+    {
+     "name": "clubic_cyber",
+     "url": "https://www.clubic.com/feed/antivirus-securite-informatique/rss"
+    },
+    {
+     "name": "Cyberguerre",
+     "url": "https://cyberguerre.numerama.com/feed"
+    },
+    {
+     "name": "Global Security Mag",
+     "url": "https://www.globalsecuritymag.fr/spip.php?page=backend"
+    },
+    {
+     "name": "journaldunet_securite",
+     "url": "https://www.journaldunet.com/cybersecurite/rss/"
+    },
+    {
+     "name": "01Net Sécurité",
+     "url": "https://www.01net.com/tag/cybersecurite/feed/"
+    },
+    {
+     "name": "CERT_FR",
+     "url": "https://www.cert.ssi.gouv.fr/feed/"
+    },
+    {
+     "name": "LeMondeInformatique",
+     "url": "https://www.lemondeinformatique.fr/flux-rss/rss.xml"
+    },
+    {
+     "name": "Korben",
+     "url": "https://korben.info/feed"
+    },
+    {
+     "name": "IT Connect",
+     "url": "https://www.it-connect.fr/feed/"
+    },
+    {
+     "name": "UnderNews",
+     "url": "https://www.undernews.fr/feed"
+    },
+    {
+     "name": "Numerama Cyber",
+     "url": "https://www.numerama.com/tag/cybersecurite/feed/"
+    }
+   ]
+  },
+  {
+   "id": "ia",
+   "label": "🤖 IA",
+   "lang": "fr",
+   "feeds": [
+    {
+     "name": "ZDNet IA",
+     "url": "https://www.zdnet.fr/feeds/rss/actualites/intelligence-artificielle/"
+    },
+    {
+     "name": "ActuIA",
+     "url": "https://www.actuia.com/feed/"
+    },
+    {
+     "name": "Avenue de l IA",
+     "url": "https://avenuedelia.com/fr/rss/actu/"
+    },
+    {
+     "name": "Numerama IA",
+     "url": "https://www.numerama.com/tech/intelligence-artificielle/feed/"
+    },
+    {
+     "name": "Developpez IA",
+     "url": "https://intelligence-artificielle.developpez.com/index/rss"
+    },
+    {
+     "name": "Next IA",
+     "url": "https://next.ink/category/ia-algorithmes/feed/"
+    },
+    {
+     "name": "Presse Citron IA",
+     "url": "https://www.presse-citron.net/tag/intelligence-artificielle/feed/"
+    },
+    {
+     "name": "01net IA",
+     "url": "https://www.01net.com/tag/intelligence-artificielle/feed/"
+    },
+    {
+     "name": "Les Numeriques",
+     "url": "https://www.lesnumeriques.com/rss.xml"
+    },
+    {
+     "name": "Siecle Digital",
+     "url": "https://siecledigital.fr/feed/"
+    },
+    {
+     "name": "LeBigData",
+     "url": "https://www.lebigdata.fr/feed"
+    }
+   ]
+  },
+  {
+   "id": "rugby",
+   "label": "🏉 Rugby",
+   "lang": "fr",
+   "feeds": [
+    {
+     "name": "Rugbyrama",
+     "url": "https://www.rugbyrama.fr/rss.xml"
+    },
+    {
+     "name": "lequipe_rugby",
+     "url": "https://dwh.lequipe.fr/api/edito/rss?path=/Rugby"
+    },
+    {
+     "name": "Rugby Transferts",
+     "url": "https://www.rugby-transferts.com/feed"
+    },
+    {
+     "name": "rmcsport",
+     "url": "https://rmcsport.bfmtv.com/rss/rugby/"
+    },
+    {
+     "name": "radio_france",
+     "url": "https://www.radiofrance.fr/rss/sports/rugby"
+    },
+    {
+     "name": "le_parisien_rugby",
+     "url": "https://www.leparisien.fr/sports/rugby/rss.xml"
+    },
+    {
+     "name": "le_progres_rugby",
+     "url": "https://www.leprogres.fr/sport/rugby/rss"
+    },
+    {
+     "name": "quinze_mondial",
+     "url": "https://www.quinzemondial.com/feed/"
+    },
+    {
+     "name": "Sud Ouest Rugby",
+     "url": "https://www.sudouest.fr/sport/rugby/rss.xml"
+    }
+   ]
+  },
+  {
+   "id": "domotique",
+   "label": "🏠 Domotique",
+   "lang": "fr",
+   "feeds": [
+    {
+     "name": "Maison et Domotique",
+     "url": "https://www.maison-et-domotique.com/feed/"
+    },
+    {
+     "name": "Journal du Geek",
+     "url": "https://www.journaldugeek.com/feed/"
+    },
+    {
+     "name": "Objet Connecte",
+     "url": "https://www.objetconnecte.com/feed/"
+    },
+    {
+     "name": "Les Alexiens",
+     "url": "https://www.lesalexiens.fr/feed/"
+    },
+    {
+     "name": "Domotique News",
+     "url": "https://www.domotique-news.com/feed/"
+    }
+   ]
+  },
+  {
+   "id": "solaire",
+   "label": "☀️ Énergie / Solaire",
+   "lang": "fr",
+   "feeds": [
+    {
+     "name": "Revolution Energetique",
+     "url": "https://www.revolution-energetique.com/feed/"
+    },
+    {
+     "name": "PV Magazine France",
+     "url": "https://www.pv-magazine.fr/feed/"
+    },
+    {
+     "name": "L EnerGeek",
+     "url": "https://lenergeek.com/feed/"
+    },
+    {
+     "name": "Connaissance des Energies",
+     "url": "https://www.connaissancedesenergies.org/rss.xml"
+    },
+    {
+     "name": "Enerzine",
+     "url": "https://www.enerzine.com/feed"
+    }
+   ]
+  },
+  {
+   "id": "deals_fr",
+   "label": "🔥 Deals FR",
+   "lang": "fr",
+   "feeds": [
+    {
+     "name": "dealabs_tous",
+     "url": "https://www.dealabs.com/rss/tous"
+    },
+    {
+     "name": "dealabs_tendance",
+     "url": "https://www.dealabs.com/rss/tendance"
+    },
+    {
+     "name": "google_bon_plan",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bon%20plan"
+    },
+    {
+     "name": "google_promo",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=promo"
+    },
+    {
+     "name": "Frandroid Bons Plans",
+     "url": "https://www.frandroid.com/bons-plans/feed"
+    },
+    {
+     "name": "Les Numeriques Bons Plans",
+     "url": "https://www.lesnumeriques.com/bons-plans/rss.xml"
+    },
+    {
+     "name": "01net Bon Plan",
+     "url": "https://www.01net.com/tag/bon-plan/feed/"
+    },
+    {
+     "name": "Clubic Bons Plans",
+     "url": "https://www.clubic.com/feed/bons-plans/rss"
+    }
+   ]
+  },
+  {
+   "id": "anglais",
+   "label": "🇬🇧 Anglais",
+   "lang": "en",
+   "feeds": [
+    {
+     "name": "Home Assistant Blog",
+     "url": "https://www.home-assistant.io/atom.xml"
+    },
+    {
+     "name": "bbc_sport_rugby",
+     "url": "https://feeds.bbci.co.uk/sport/rugby-union/rss.xml"
+    },
+    {
+     "name": "road_to_vr",
+     "url": "https://www.roadtovr.com/feed"
+    },
+    {
+     "name": "uploadvr",
+     "url": "https://www.uploadvr.com/feed"
+    },
+    {
+     "name": "digital_trends_vr",
+     "url": "https://www.digitaltrends.com/topic/virtual-reality/feed/"
+    }
+   ]
+  }
+ ]
+}
