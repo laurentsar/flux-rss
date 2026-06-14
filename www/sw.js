@@ -1,4 +1,4 @@
-const CACHE = 'flux-rss-v6';
+const CACHE = 'flux-rss-v7';
 const SHELL = [
   './', './index.html', './styles.css', './app.js',
   './data/feeds.json', './manifest.webmanifest',
