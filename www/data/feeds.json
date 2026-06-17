@@ -1,5 +1,5 @@
 {
- "version": 9,
+ "version": 10,
  "generated": "2026-06-14",
  "categories": [
   {
@@ -661,20 +661,12 @@
   },
   {
    "id": "voyage",
-   "label": "✈️ Voyage & bons plans",
+   "label": "🏷️ Deals voyage",
    "lang": "fr",
    "feeds": [
     {
      "name": "Voyage Pirate",
      "url": "https://www.lesvoyagespirates.com/feed"
-    },
-    {
-     "name": "Generation Voyage",
-     "url": "https://generationvoyage.fr/feed/"
-    },
-    {
-     "name": "Un Sac Sur Le Dos",
-     "url": "https://www.unsacsurledos.com/feed/"
     },
     {
      "name": "Billet avion pas cher — Google Actu",
@@ -697,12 +689,12 @@
      "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=week-end+pas+cher"
     },
     {
-     "name": "Bons plans voyage — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bon+plan+voyage"
+     "name": "Hôtel pas cher — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=h%C3%B4tel+pas+cher+promo"
     },
     {
-     "name": "Voyage — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=voyage"
+     "name": "Croisière pas cher — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=croisi%C3%A8re+pas+cher"
     }
    ],
    "feeds_en": [
@@ -719,14 +711,6 @@
      "url": "https://www.theflightdeal.com/feed/"
     },
     {
-     "name": "The Points Guy",
-     "url": "https://thepointsguy.com/feed/"
-    },
-    {
-     "name": "Nomadic Matt",
-     "url": "https://www.nomadicmatt.com/travel-blog/feed/"
-    },
-    {
      "name": "Flight deals — Google News",
      "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=flight+deals"
     },
@@ -739,8 +723,12 @@
      "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=cheap+flights"
     },
     {
-     "name": "Travel deals — Google News",
-     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=travel+deals"
+     "name": "Vacation deals — Google News",
+     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=vacation+deals"
+    },
+    {
+     "name": "Cruise deals — Google News",
+     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=cruise+deals"
     }
    ]
   },

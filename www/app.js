@@ -339,6 +339,9 @@ async function init(){
         c.feeds = syncArr(c.feeds, dc.feeds);
         c.feeds_en = syncArr(c.feeds_en, dc.feeds_en);
       });
+      // recentrage « voyage » sur les deals uniquement (on retire les blogs/news généralistes)
+      const vCat = DATA.categories.find(c=>c.id==='voyage'), vDef = defById['voyage'];
+      if (vCat && vDef){ vCat.label = vDef.label; vCat.feeds = clone(vDef.feeds); vCat.feeds_en = clone(vDef.feeds_en); }
       DATA.version = dv; changed=true;
     }
     if (changed) saveConfig();
