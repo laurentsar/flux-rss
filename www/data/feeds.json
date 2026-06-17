@@ -1,5 +1,5 @@
 {
- "version": 7,
+ "version": 8,
  "generated": "2026-06-14",
  "categories": [
   {
@@ -775,6 +775,79 @@
     }
    ],
    "feeds_en": []
+  },
+  {
+   "id": "deals_voyage",
+   "label": "🏷️ Deals voyage",
+   "lang": "fr",
+   "feeds": [
+    {
+     "name": "Voyage Pirate",
+     "url": "https://www.lesvoyagespirates.com/feed"
+    },
+    {
+     "name": "Billet avion pas cher — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=billet+avion+pas+cher+promo"
+    },
+    {
+     "name": "Séjour pas cher — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=s%C3%A9jour+pas+cher"
+    },
+    {
+     "name": "Vente flash voyage — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=vente+flash+voyage"
+    },
+    {
+     "name": "Week-end pas cher — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=week-end+pas+cher"
+    },
+    {
+     "name": "Promo vacances — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=promo+vacances"
+    },
+    {
+     "name": "Hôtel pas cher — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=h%C3%B4tel+pas+cher+promo"
+    },
+    {
+     "name": "Croisière pas cher — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=croisi%C3%A8re+pas+cher"
+    }
+   ],
+   "feeds_en": [
+    {
+     "name": "The Flight Deal",
+     "url": "https://www.theflightdeal.com/feed/"
+    },
+    {
+     "name": "Secret Flying",
+     "url": "https://www.secretflying.com/feed/"
+    },
+    {
+     "name": "Fly4free",
+     "url": "https://www.fly4free.com/feed/"
+    },
+    {
+     "name": "Flight deals — Google News",
+     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=flight+deals"
+    },
+    {
+     "name": "Hotel deals — Google News",
+     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=hotel+deals"
+    },
+    {
+     "name": "Vacation deals — Google News",
+     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=vacation+deals"
+    },
+    {
+     "name": "Cruise deals — Google News",
+     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=cruise+deals"
+    },
+    {
+     "name": "Travel deals — Google News",
+     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=travel+deals"
+    }
+   ]
   }
  ]
 }
