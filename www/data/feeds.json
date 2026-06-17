@@ -1,5 +1,5 @@
 {
- "version": 5,
+ "version": 6,
  "generated": "2026-06-14",
  "categories": [
   {
@@ -656,6 +656,79 @@
     {
      "name": "Video games — Google News",
      "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=video+games"
+    }
+   ]
+  },
+  {
+   "id": "voyage",
+   "label": "✈️ Voyage & vols pirates",
+   "lang": "fr",
+   "feeds": [
+    {
+     "name": "Voyage Pirate",
+     "url": "https://www.lesvoyagespirates.com/feed"
+    },
+    {
+     "name": "Voyage Pirate — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=%22voyage+pirate%22"
+    },
+    {
+     "name": "Erreur de prix billet avion — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=erreur+de+prix+billet+avion"
+    },
+    {
+     "name": "Vol pas cher — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=vol+pas+cher"
+    },
+    {
+     "name": "Generation Voyage",
+     "url": "https://generationvoyage.fr/feed/"
+    },
+    {
+     "name": "Un Sac Sur Le Dos",
+     "url": "https://www.unsacsurledos.com/feed/"
+    },
+    {
+     "name": "Bons plans voyage — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bon+plan+voyage"
+    },
+    {
+     "name": "Voyage — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=voyage"
+    }
+   ],
+   "feeds_en": [
+    {
+     "name": "Secret Flying",
+     "url": "https://www.secretflying.com/feed/"
+    },
+    {
+     "name": "Fly4free",
+     "url": "https://www.fly4free.com/feed/"
+    },
+    {
+     "name": "The Points Guy",
+     "url": "https://thepointsguy.com/feed/"
+    },
+    {
+     "name": "Nomadic Matt",
+     "url": "https://www.nomadicmatt.com/travel-blog/feed/"
+    },
+    {
+     "name": "Error fare — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=flight+error+fare"
+    },
+    {
+     "name": "Cheap flights — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=cheap+flights"
+    },
+    {
+     "name": "Travel deals — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=travel+deals"
+    },
+    {
+     "name": "Travel — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=travel"
     }
    ]
   }

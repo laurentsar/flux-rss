@@ -6,7 +6,7 @@ const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
   ia:['#6366F1','#312E81'], rugby:['#16A34A','#0B5D2A'], domotique:['#0EA5E9','#075985'],
   solaire:['#F59E0B','#92600A'], deals_fr:['#27AE60','#145F34'], anglais:['#1E3A8A','#0C1E4A'],
-  jeux:['#8b5cf6','#4c1d95'],
+  jeux:['#8b5cf6','#4c1d95'], voyage:['#0D9488','#0F5D57'],
 };
 const PER_FEED = 12;       // articles gardés par flux
 const MAX_SHOW = 60;       // articles affichés par catégorie
@@ -177,14 +177,14 @@ function render(items, catId, ts){
     const src = `<span class="src">${esc(it.source)}</span>`;
     const spk = TTS_OK ? `<button class="speak" data-i="${i}" aria-label="Écouter">🔊</button>` : '';
     const excerpt = it.summary.length > 280 ? esc(it.summary.slice(0,280))+'…' : esc(it.summary);
+    const thumb = it.image ? `<img class="thumb" src="${esc(it.image)}" referrerpolicy="no-referrer" loading="lazy" onerror="this.remove()">` : '';
     if (it.summary.length > 40){
       const img = it.image ? `<img class="lead" src="${esc(it.image)}" referrerpolicy="no-referrer" loading="lazy" onerror="this.remove()">` : '';
       return `<details class="card" style="--accent:${accent}">
-        <summary><span class="dot"></span><span class="ctitle"><b>${esc(it.title)}</b>${dateHtml}${src}</span>${spk}<span class="chev">▾</span></summary>
+        <summary><span class="dot"></span>${thumb}<span class="ctitle"><b>${esc(it.title)}</b>${dateHtml}${src}</span>${spk}<span class="chev">▾</span></summary>
         <div class="cbody">${img}${excerpt}<br><a class="read" href="${esc(it.link)}" target="_blank" rel="noopener">Lire l'article →</a></div>
       </details>`;
     }
-    const thumb = it.image ? `<img class="thumb" src="${esc(it.image)}" referrerpolicy="no-referrer" loading="lazy" onerror="this.remove()">` : '';
     return `<a class="card" style="--accent:${accent}" href="${esc(it.link)}" target="_blank" rel="noopener">
       <span class="dot"></span>${thumb}<span class="ctitle"><b>${esc(it.title)}</b>${dateHtml}${src}</span>${spk}</a>`;
   }).join('');

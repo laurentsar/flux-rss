@@ -98,3 +98,6 @@ a.card .thumb{width:72px;height:72px;min-width:72px;object-fit:cover;border-radi
   box-shadow:0 6px 18px rgba(0,0,0,0.4);
 }
 #refresh.spinning{animation:spin 1s linear infinite}
+
+/* vignette photo dans les articles dépliables */
+details.card>summary .thumb{width:60px;height:60px;min-width:60px;object-fit:cover;border-radius:8px}
