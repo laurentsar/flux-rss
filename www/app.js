@@ -18,37 +18,24 @@ const isNative = !!(window.Capacitor && window.Capacitor.isNativePlatform && win
 let DATA = null;
 let current = null;
 let RENDERED = [];
-let speakingBtn = null;
 let lang = localStorage.getItem('srcLang') || 'fr';
-const TTS_OK = isNative || (typeof window !== 'undefined' && 'speechSynthesis' in window);
+let lastUpdated = '';
+
+/* ---------- articles lus (masqués une fois consultés) ---------- */
+const READ_KEY = 'readArticles';
+let READ = (() => { try { return new Set(JSON.parse(localStorage.getItem(READ_KEY) || '[]')); } catch (e) { return new Set(); } })();
+function saveRead(){
+  let arr = [...READ];
+  if (arr.length > 3000) { arr = arr.slice(arr.length - 3000); READ = new Set(arr); }
+  try { localStorage.setItem(READ_KEY, JSON.stringify(arr)); } catch (e) {}
+}
+function markRead(link){ if (link && !READ.has(link)) { READ.add(link); saveRead(); } }
 
 /* sources actives d'une catégorie selon la langue choisie (repli FR) */
 function feedsFor(cat){
   return (lang === 'en' && cat.feeds_en && cat.feeds_en.length) ? cat.feeds_en : (cat.feeds || []);
 }
 
-/* ---------- lecture audio (TTS) ---------- */
-const TTS = () => (window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech) || null;
-async function stopSpeak(){
-  if (!speakingBtn) return;
-  try{ if (TTS()) await TTS().stop(); else if (window.speechSynthesis) window.speechSynthesis.cancel(); }catch(e){}
-  if (speakingBtn){ speakingBtn.textContent='🔊'; speakingBtn=null; }
-}
-async function toggleSpeak(btn, text){
-  if (speakingBtn === btn){ await stopSpeak(); return; }
-  await stopSpeak();
-  speakingBtn = btn; btn.textContent='⏹';
-  const vlang = (lang === 'en') ? 'en-US' : 'fr-FR';
-  try{
-    if (TTS()){
-      await TTS().speak({ text, lang:vlang, rate:1.0 });
-    } else if (window.speechSynthesis){
-      await new Promise((res)=>{ const u=new SpeechSynthesisUtterance(text); u.lang=vlang;
-        u.onend=res; u.onerror=res; window.speechSynthesis.cancel(); window.speechSynthesis.speak(u); });
-    }
-  }catch(e){}
-  if (speakingBtn === btn){ btn.textContent='🔊'; speakingBtn=null; }
-}
 
 const $ = (s) => document.querySelector(s);
 const elCats = $('#cats'), elArticles = $('#articles'), elStatus = $('#status'), elRefresh = $('#refresh');
@@ -166,27 +153,29 @@ function fmtDate(d){
 }
 function esc(s){ return (s||'').replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
+function setStatus(n){
+  elStatus.textContent = n ? `${n} articles · ${lastUpdated}` : `Tous les articles lus 🎉 · ${lastUpdated}`;
+}
 function render(items, catId, ts){
+  items = items.filter(it => !READ.has(it.link));
   RENDERED = items;
-  stopSpeak();
-  const updated = ts ? `Mis à jour ${fmtDate(new Date(ts).toISOString())}` : '';
-  elStatus.textContent = `${items.length} articles · ${updated}`;
+  lastUpdated = ts ? `Mis à jour ${fmtDate(new Date(ts).toISOString())}` : '';
+  setStatus(items.length);
   const html = items.map((it, i) => {
     const accent = PALETTE[i % PALETTE.length];
     const dateHtml = it.date ? `<span class="date">🕒 ${esc(fmtDate(it.date))}</span>` : '';
     const src = `<span class="src">${esc(it.source)}</span>`;
-    const spk = TTS_OK ? `<button class="speak" data-i="${i}" aria-label="Écouter">🔊</button>` : '';
     const excerpt = it.summary.length > 280 ? esc(it.summary.slice(0,280))+'…' : esc(it.summary);
     const thumb = it.image ? `<img class="thumb" src="${esc(it.image)}" referrerpolicy="no-referrer" loading="lazy" onerror="this.remove()">` : '';
     if (it.summary.length > 40){
       const img = it.image ? `<img class="lead" src="${esc(it.image)}" referrerpolicy="no-referrer" loading="lazy" onerror="this.remove()">` : '';
       return `<details class="card" style="--accent:${accent}">
-        <summary><span class="dot"></span>${thumb}<span class="ctitle"><b>${esc(it.title)}</b>${dateHtml}${src}</span>${spk}<span class="chev">▾</span></summary>
+        <summary><span class="dot"></span>${thumb}<span class="ctitle"><b>${esc(it.title)}</b>${dateHtml}${src}</span><span class="chev">▾</span></summary>
         <div class="cbody">${img}${excerpt}<br><a class="read" href="${esc(it.link)}" target="_blank" rel="noopener">Lire l'article →</a></div>
       </details>`;
     }
     return `<a class="card" style="--accent:${accent}" href="${esc(it.link)}" target="_blank" rel="noopener">
-      <span class="dot"></span>${thumb}<span class="ctitle"><b>${esc(it.title)}</b>${dateHtml}${src}</span>${spk}</a>`;
+      <span class="dot"></span>${thumb}<span class="ctitle"><b>${esc(it.title)}</b>${dateHtml}${src}</span></a>`;
   }).join('');
   elArticles.innerHTML = html;
   window.scrollTo({top:0, behavior:'smooth'});
@@ -350,11 +339,13 @@ async function init(){
     const cat = DATA.categories.find(c => c.id === current);
     if (cat) loadCategory(cat);
   });
+  // article ouvert (carte courte ou « Lire l'article ») = consulté -> masqué et mémorisé
   elArticles.addEventListener('click', (e)=>{
-    const b = e.target.closest('.speak'); if(!b) return;
-    e.preventDefault(); e.stopPropagation();
-    const it = RENDERED[+b.dataset.i]; if(!it) return;
-    toggleSpeak(b, (it.title||'') + '. ' + (it.summary||''));
+    const a = e.target.closest('a.card, a.read'); if(!a) return;
+    markRead(a.getAttribute('href'));
+    const card = a.closest('.card'); if (card) card.remove();
+    RENDERED = RENDERED.filter(it => !READ.has(it.link));
+    setStatus(elArticles.querySelectorAll('.card').length);
   });
   const langBtn = $('#lang-btn');
   const updateLangBtn = ()=>{ langBtn.textContent = lang==='en' ? '🇬🇧' : '🇫🇷'; langBtn.classList.toggle('en', lang==='en'); };
@@ -362,7 +353,7 @@ async function init(){
   langBtn.addEventListener('click', ()=>{
     lang = (lang==='en') ? 'fr' : 'en';
     localStorage.setItem('srcLang', lang);
-    updateLangBtn(); stopSpeak();
+    updateLangBtn();
     const cat = DATA.categories.find(c=>c.id===current && !c.off) || firstEnabled();
     if (cat) loadCategory(cat);
   });
