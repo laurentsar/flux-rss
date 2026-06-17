@@ -1,5 +1,5 @@
 {
- "version": 8,
+ "version": 9,
  "generated": "2026-06-14",
  "categories": [
   {
@@ -661,24 +661,12 @@
   },
   {
    "id": "voyage",
-   "label": "✈️ Voyage & vols pirates",
+   "label": "✈️ Voyage & bons plans",
    "lang": "fr",
    "feeds": [
     {
      "name": "Voyage Pirate",
      "url": "https://www.lesvoyagespirates.com/feed"
-    },
-    {
-     "name": "Voyage Pirate — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=%22voyage+pirate%22"
-    },
-    {
-     "name": "Erreur de prix billet avion — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=erreur+de+prix+billet+avion"
-    },
-    {
-     "name": "Vol pas cher — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=vol+pas+cher"
     },
     {
      "name": "Generation Voyage",
@@ -687,6 +675,26 @@
     {
      "name": "Un Sac Sur Le Dos",
      "url": "https://www.unsacsurledos.com/feed/"
+    },
+    {
+     "name": "Billet avion pas cher — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=billet+avion+pas+cher+promo"
+    },
+    {
+     "name": "Vol pas cher — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=vol+pas+cher"
+    },
+    {
+     "name": "Séjour pas cher — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=s%C3%A9jour+pas+cher"
+    },
+    {
+     "name": "Vente flash voyage — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=vente+flash+voyage"
+    },
+    {
+     "name": "Week-end pas cher — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=week-end+pas+cher"
     },
     {
      "name": "Bons plans voyage — Google Actu",
@@ -707,6 +715,10 @@
      "url": "https://www.fly4free.com/feed/"
     },
     {
+     "name": "The Flight Deal",
+     "url": "https://www.theflightdeal.com/feed/"
+    },
+    {
      "name": "The Points Guy",
      "url": "https://thepointsguy.com/feed/"
     },
@@ -715,20 +727,20 @@
      "url": "https://www.nomadicmatt.com/travel-blog/feed/"
     },
     {
-     "name": "Error fare — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=flight+error+fare"
+     "name": "Flight deals — Google News",
+     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=flight+deals"
+    },
+    {
+     "name": "Hotel deals — Google News",
+     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=hotel+deals"
     },
     {
      "name": "Cheap flights — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=cheap+flights"
+     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=cheap+flights"
     },
     {
      "name": "Travel deals — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=travel+deals"
-    },
-    {
-     "name": "Travel — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=travel"
+     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=travel+deals"
     }
    ]
   },
@@ -775,79 +787,6 @@
     }
    ],
    "feeds_en": []
-  },
-  {
-   "id": "deals_voyage",
-   "label": "🏷️ Deals voyage",
-   "lang": "fr",
-   "feeds": [
-    {
-     "name": "Voyage Pirate",
-     "url": "https://www.lesvoyagespirates.com/feed"
-    },
-    {
-     "name": "Billet avion pas cher — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=billet+avion+pas+cher+promo"
-    },
-    {
-     "name": "Séjour pas cher — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=s%C3%A9jour+pas+cher"
-    },
-    {
-     "name": "Vente flash voyage — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=vente+flash+voyage"
-    },
-    {
-     "name": "Week-end pas cher — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=week-end+pas+cher"
-    },
-    {
-     "name": "Promo vacances — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=promo+vacances"
-    },
-    {
-     "name": "Hôtel pas cher — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=h%C3%B4tel+pas+cher+promo"
-    },
-    {
-     "name": "Croisière pas cher — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=croisi%C3%A8re+pas+cher"
-    }
-   ],
-   "feeds_en": [
-    {
-     "name": "The Flight Deal",
-     "url": "https://www.theflightdeal.com/feed/"
-    },
-    {
-     "name": "Secret Flying",
-     "url": "https://www.secretflying.com/feed/"
-    },
-    {
-     "name": "Fly4free",
-     "url": "https://www.fly4free.com/feed/"
-    },
-    {
-     "name": "Flight deals — Google News",
-     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=flight+deals"
-    },
-    {
-     "name": "Hotel deals — Google News",
-     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=hotel+deals"
-    },
-    {
-     "name": "Vacation deals — Google News",
-     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=vacation+deals"
-    },
-    {
-     "name": "Cruise deals — Google News",
-     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=cruise+deals"
-    },
-    {
-     "name": "Travel deals — Google News",
-     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=travel+deals"
-    }
-   ]
   }
  ]
 }

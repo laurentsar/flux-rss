@@ -306,8 +306,21 @@ async function init(){
   // migration : ajoute les catégories par défaut absentes + resync des flux par défaut
   // (noms harmonisés, 8/catégorie) en préservant tes ajouts perso et tes désactivations.
   if (saved){
-    const have = new Set(DATA.categories.map(c=>c.id));
     let changed=false;
+    // fusion des deux anciennes catégories voyage en une seule (« Voyage & bons plans »)
+    const dvCat = DATA.categories.find(c=>c.id==='deals_voyage');
+    if (dvCat){
+      const v = DATA.categories.find(c=>c.id==='voyage');
+      if (v){
+        const urls = new Set([...(v.feeds||[]),...(v.feeds_en||[])].map(f=>f.url));
+        (dvCat.feeds||[]).forEach(f=>{ if(!urls.has(f.url)){ (v.feeds=v.feeds||[]).push(f); urls.add(f.url); } });
+        (dvCat.feeds_en||[]).forEach(f=>{ if(!urls.has(f.url)){ (v.feeds_en=v.feeds_en||[]).push(f); urls.add(f.url); } });
+        DATA.categories = DATA.categories.filter(c=>c.id!=='deals_voyage');
+      } else { dvCat.id='voyage'; }
+      if (localStorage.getItem('lastCat')==='deals_voyage') localStorage.setItem('lastCat','voyage');
+      changed=true;
+    }
+    const have = new Set(DATA.categories.map(c=>c.id));
     DEFAULTS.categories.forEach((c,i)=>{ if(!have.has(c.id)){ DATA.categories.splice(Math.min(i,DATA.categories.length),0,clone(c)); changed=true; } });
     const dv = DEFAULTS.version || 1;
     if ((DATA.version||1) < dv){
