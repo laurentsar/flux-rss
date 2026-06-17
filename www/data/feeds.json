@@ -1,6 +1,6 @@
 {
- "version": 10,
- "generated": "2026-06-14",
+ "version": 11,
+ "generated": "2026-06-17",
  "categories": [
   {
    "id": "ve",
@@ -729,6 +729,79 @@
     {
      "name": "Cruise deals — Google News",
      "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=cruise+deals"
+    }
+   ]
+  },
+  {
+   "id": "podcasts",
+   "label": "🎙️ Podcasts",
+   "lang": "fr",
+   "feeds": [
+    {
+     "name": "Choses à Savoir",
+     "url": "https://www.chosesasavoir.com/feed/podcast/"
+    },
+    {
+     "name": "La Story (Les Echos)",
+     "url": "https://rss.art19.com/la-story"
+    },
+    {
+     "name": "L'Heure du Monde (Le Monde)",
+     "url": "https://rss.art19.com/l-heure-du-monde"
+    },
+    {
+     "name": "Affaires Sensibles (France Inter)",
+     "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml"
+    },
+    {
+     "name": "Les Grosses Têtes (RTL)",
+     "url": "https://podcast.rtl.fr/grosses-tetes/rss"
+    },
+    {
+     "name": "Génération Do It Yourself",
+     "url": "https://rss.acast.com/generationdoityourself"
+    },
+    {
+     "name": "Transfert (Slate.fr)",
+     "url": "https://feeds.audiomeans.fr/feed/87476e72-eb04-4f8f-8cf9-51d7e6a8ec29.xml"
+    },
+    {
+     "name": "Le Masque et la Plume (France Inter)",
+     "url": "https://radiofrance-podcast.net/podcast09/rss_10078.xml"
+    }
+   ],
+   "feeds_en": [
+    {
+     "name": "The Daily (NYT)",
+     "url": "https://feeds.simplecast.com/54nAGcIl"
+    },
+    {
+     "name": "NPR News Now",
+     "url": "https://feeds.npr.org/500005/podcast.xml"
+    },
+    {
+     "name": "Planet Money (NPR)",
+     "url": "https://feeds.npr.org/510289/podcast.xml"
+    },
+    {
+     "name": "Fresh Air (NPR)",
+     "url": "https://feeds.npr.org/381444908/podcast.xml"
+    },
+    {
+     "name": "TED Talks Daily",
+     "url": "https://feeds.feedburner.com/TedTalks_audio"
+    },
+    {
+     "name": "This American Life",
+     "url": "https://feeds.thisamericanlife.org/talpodcast"
+    },
+    {
+     "name": "Radiolab (WNYC)",
+     "url": "https://feeds.wnyc.org/radiolab"
+    },
+    {
+     "name": "99% Invisible",
+     "url": "https://feeds.simplecast.com/BqbsxVfO"
     }
    ]
   },
