@@ -1,5 +1,5 @@
 {
- "version": 6,
+ "version": 7,
  "generated": "2026-06-14",
  "categories": [
   {
@@ -731,6 +731,50 @@
      "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=travel"
     }
    ]
+  },
+  {
+   "id": "youtube",
+   "label": "▶️ YouTube FR",
+   "lang": "fr",
+   "feeds": [
+    {
+     "name": "France Info",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCO6K_kkdP-lnSCiO3tPx7WA"
+    },
+    {
+     "name": "Brut",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCYti3yTb2QWvLQExSmxnE2A"
+    },
+    {
+     "name": "Konbini",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCHQda5vLxrH0Ff0I0kMq4zw"
+    },
+    {
+     "name": "Squeezie",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCWeg2Pkate69NFdBeuRFTAw"
+    },
+    {
+     "name": "Cyprien",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCyWqModMQlbIo8274Wh_ZsQ"
+    },
+    {
+     "name": "Inoxtag",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCL9aTJb0ur4sovxcppAopEw"
+    },
+    {
+     "name": "Amixem",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCgvqvBoSHB1ctlyyhoHrGwQ"
+    },
+    {
+     "name": "Tibo InShape",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCpWaR3gNAQGsX48cIlQC0qw"
+    },
+    {
+     "name": "Michou",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCo3i0nUzZjjLuM7VjAVz4zA"
+    }
+   ],
+   "feeds_en": []
   }
  ]
 }
