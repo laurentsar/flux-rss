@@ -74,9 +74,10 @@ async function fetchJson(url){
   const BROWSER_UA = 'Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36';
   if (isNative && window.Capacitor.Plugins && window.Capacitor.Plugins.CapacitorHttp){
     const r = await window.Capacitor.Plugins.CapacitorHttp.get({
-      url, headers:{'User-Agent':BROWSER_UA,'Accept':'application/json, */*','Referer':'https://www.sofascore.com/'},
+      url, headers:{'User-Agent':BROWSER_UA,'Accept':'application/json, */*'},
       responseType:'text', connectTimeout:10000, readTimeout:10000,
     });
+    if (r.status && r.status >= 400) throw new Error('HTTP '+r.status);
     const text = typeof r.data === 'string' ? r.data : JSON.stringify(r.data);
     return JSON.parse(text);
   }
@@ -198,7 +199,7 @@ function renderRLResults(tables, label, count=2){
   const moreBtn = remaining > 0
     ? `<button class="rl-more-btn">📋 +${Math.min(3,remaining)} journée${Math.min(3,remaining)>1?'s':''}</button>`
     : '';
-  return `<details class="rl-section rl-results-top14" open><summary class="rl-sh">🏉 ${esc(label)}</summary>${matchesHtml}${moreBtn}</details>`;
+  return `<details class="rl-section rl-results-top14"><summary class="rl-sh">🏉 ${esc(label)}</summary>${matchesHtml}${moreBtn}</details>`;
 }
 
 /* --- SofaScore : live + journée en cours (hier/aujourd'hui/demain) --- */
@@ -209,14 +210,15 @@ async function fetchSofaEvents(){
     fetchJson('https://api.sofascore.com/api/v1/sport/rugby-union/events/live').then(d=>d.events||[]),
     ...dates.map(date=>fetchJson(`https://api.sofascore.com/api/v1/sport/rugby-union/scheduled-events/${date}`).then(d=>d.events||[])),
   ]);
+  const anyOk = liveRes.status==='fulfilled' || dayRes.some(r=>r.status==='fulfilled');
+  if (!anyOk) return {events:[], error: liveRes.reason?.message||'API indisponible'};
   const live = liveRes.status==='fulfilled' ? liveRes.value : [];
   const dayEvts = dayRes.flatMap(r=>r.status==='fulfilled'?r.value:[]);
   const seen = new Set();
   const all = [...live,...dayEvts].filter(e=>!seen.has(e.id)&&seen.add(e.id));
   const FR_TOURN = /top.?14|pro.?d2|six.?nations|autumn|test|summer|tour|france|ffr|lnr|nation/i;
   const FR_TEAM  = /france|toulouse|clermont|bordeaux|racing|lyon|toulon|montpellier|castres|perpignan|pau|brive|colomiers/i;
-  // trier : live en premier, puis terminés, puis à venir
-  return all
+  const events = all
     .filter(e=>{
       const t=e.tournament?.name||e.tournament?.uniqueTournament?.name||'';
       const h=e.homeTeam?.name||'', a=e.awayTeam?.name||'';
@@ -226,6 +228,7 @@ async function fetchSofaEvents(){
       const order=t=>t==='inprogress'?0:t==='finished'?1:2;
       return order(a.status?.type)-order(b.status?.type)||(a.startTimestamp-b.startTimestamp);
     });
+  return {events, error: null};
 }
 
 function renderLiveScores(events){
@@ -319,7 +322,7 @@ async function loadRugbyLive(){
   const season = rugbySeason();
   const top14 = `Championnat de France de rugby à XV ${season}`;
 
-  const [r1, r2, sofaEvts, franceXV, proD2] = await Promise.all([
+  const [r1, r2, sofa, franceXV, proD2] = await Promise.all([
     fetch(wikiUrl(top14,6)).then(r=>r.json()).catch(()=>null),
     fetch(wikiUrl(top14,7)).then(r=>r.json()).catch(()=>null),
     fetchSofaEvents(),
@@ -328,7 +331,8 @@ async function loadRugbyLive(){
   ]);
 
   let html = '';
-  if (sofaEvts.length) html += renderLiveScores(sofaEvts);
+  if (sofa.error) html += `<details class="rl-section" open><summary class="rl-sh">📡 Scores live</summary><div class="rl-loading">⚠️ ${esc(sofa.error)}</div></details>`;
+  else if (sofa.events.length) html += renderLiveScores(sofa.events);
   if (r1){
     const tbls = parseWikitables(r1?.parse?.text?.['*']||'');
     if (tbls[0]) html += renderRLStandings(tbls[0],'Classement Top 14',14,6,2);
