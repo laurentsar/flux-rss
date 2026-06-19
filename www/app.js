@@ -131,10 +131,8 @@ function parseWikitables(html){
   return tables;
 }
 
-function calcPts(row){
-  const v = parseInt(row[3])||0, n = parseInt(row[4])||0;
-  const bo = parseInt(row[row.length-2])||0, bd = parseInt(row[row.length-1])||0;
-  return v*4 + n*2 + bo + bd;
+function parsePts(row){
+  return parseInt((row[row.length-1]||'').replace(/[^\d]/g,''))||0;
 }
 
 function renderRLStandings(rows, label, maxRows=14, topN=6, botN=2){
@@ -142,9 +140,9 @@ function renderRLStandings(rows, label, maxRows=14, topN=6, botN=2){
   const total = Math.min(rows.length - 1, maxRows);
   const body = rows.slice(1, total+1).map((r,i)=>{
     const rank = parseInt(r[0])||i+1;
-    const club = (r[1]||'').replace(/[A-Z]\d?\s*$|[CTPB]\d?\s*$/,'').trim();
+    const club = (r[1]||'').replace(/\s+[A-ZTCPBMR]+\d*$/, '').trim();
     const cls = rank<=topN?'rl-top':botN>0&&rank>total-botN?'rl-bot':'';
-    return `<tr class="${cls}"><td>${rank}</td><td class="rl-club">${esc(club)}</td><td>${r[2]||'-'}</td><td>${r[3]||'-'}</td><td>${r[4]||'-'}</td><td>${r[5]||'-'}</td><td><b>${calcPts(r)}</b></td></tr>`;
+    return `<tr class="${cls}"><td>${rank}</td><td class="rl-club">${esc(club)}</td><td>${r[2]||'-'}</td><td>${r[3]||'-'}</td><td>${r[4]||'-'}</td><td>${r[5]||'-'}</td><td><b>${parsePts(r)}</b></td></tr>`;
   }).join('');
   return `<details class="rl-section" open>
     <summary class="rl-sh">🏆 ${esc(label)}</summary>
@@ -201,6 +199,7 @@ async function loadChampionsCupStandings(page){
     if (r.status!=='fulfilled') continue;
     for (const t of parseWikitables(r.value?.parse?.text?.['*']||'')){
       if (t.length<7 || (t[0]||[]).length<5) continue;
+      if (!(parseInt((t[1]||[])[0])>=1)) continue; // exclut matrices de résultats croisés
       const key=(t[0]||[]).join('|')+'||'+(t[1]||[]).slice(0,3).join('|');
       if (seen.has(key)) continue;
       seen.add(key); tables.push(t);
@@ -245,7 +244,7 @@ async function loadRugbyLive(){
     html += renderRLStandings(t,'Champions Cup — Phase de ligue',Math.min(t.length-1,24),8,0);
   } else if (champTables.length>1){
     champTables.forEach((t,i)=>{
-      html += renderRLStandings(t,`Champions Cup — Poule ${String.fromCharCode(65+i)}`,Math.min(t.length-1,8),3,0);
+      html += renderRLStandings(t,`Champions Cup — Poule ${String.fromCharCode(65+i)}`,6,4,2);
     });
   }
   elRugbyLive.innerHTML = html || '<div class="rl-loading">Données non disponibles.</div>';
