@@ -40,6 +40,7 @@ function feedsFor(cat){
 
 const $ = (s) => document.querySelector(s);
 const elCats = $('#cats'), elArticles = $('#articles'), elStatus = $('#status'), elRefresh = $('#refresh');
+const elRugbyLive = document.getElementById('rugby-live');
 
 /* ---------- réseau ---------- */
 async function httpGet(url){
@@ -100,6 +101,115 @@ function parseFeed(xmlText, source){
   return out.slice(0, PER_FEED);
 }
 
+/* ---------- rugby live (classements + résultats via Wikipedia) ---------- */
+function rugbySeason(){
+  const m = new Date().getMonth(); // 0=jan
+  const y = new Date().getFullYear();
+  const start = m >= 7 ? y : y - 1; // saison commence en août
+  return `${start}-${start+1}`;
+}
+
+function wikiUrl(page, section){
+  return `https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=text&section=${section}&format=json&origin=*`;
+}
+
+function parseWikitables(html){
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html;
+  const tables = [];
+  tmp.querySelectorAll('table.wikitable').forEach(tbl => {
+    const rows = [];
+    tbl.querySelectorAll('tr').forEach(tr => {
+      const cells = [];
+      tr.querySelectorAll('td,th').forEach(td => cells.push(td.textContent.replace(/\s+/g,' ').trim()));
+      if (cells.length) rows.push(cells);
+    });
+    if (rows.length > 1) tables.push(rows);
+  });
+  return tables;
+}
+
+function calcPts(row){
+  const v = parseInt(row[3])||0, n = parseInt(row[4])||0;
+  const bo = parseInt(row[row.length-2])||0, bd = parseInt(row[row.length-1])||0;
+  return v*4 + n*2 + bo + bd;
+}
+
+function renderRLStandings(rows, label, maxRows=14){
+  if (!rows || rows.length < 2) return '';
+  const body = rows.slice(1, maxRows+1).map((r,i)=>{
+    const rank = parseInt(r[0])||i+1;
+    const club = (r[1]||'').replace(/[A-Z]\d?\s*$|[CTPB]\d?\s*$/,'').trim();
+    const cls = rank<=6?'rl-top':rank>=13?'rl-bot':'';
+    return `<tr class="${cls}"><td>${rank}</td><td class="rl-club">${esc(club)}</td><td>${r[2]||'-'}</td><td>${r[3]||'-'}</td><td>${r[4]||'-'}</td><td>${r[5]||'-'}</td><td><b>${calcPts(r)}</b></td></tr>`;
+  }).join('');
+  return `<div class="rl-section">
+    <div class="rl-sh">🏆 ${esc(label)}</div>
+    <div class="rl-table-wrap"><table class="rl-table">
+      <thead><tr><th>#</th><th>Équipe</th><th>J</th><th>V</th><th>N</th><th>D</th><th>Pts</th></tr></thead>
+      <tbody>${body}</tbody>
+    </table></div>
+  </div>`;
+}
+
+function renderRLResults(tables, label, count=2){
+  if (!tables || !tables.length) return '';
+  const recent = tables.slice(-count);
+  const matchesHtml = recent.map((rows, ji)=>{
+    const jn = tables.length - count + ji + 1;
+    const cards = rows.map(r=>{
+      if (r.length < 5) return '';
+      const home = r[1], hs = r[2], as_ = r[3], away = r[4];
+      const hw = parseInt(hs)>parseInt(as_), aw = parseInt(as_)>parseInt(hs);
+      return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(home)}</span><span class="rl-sb"><b>${esc(hs)}</b><span class="rl-vs">–</span><b>${esc(as_)}</b></span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(away)}</span></div>`;
+    }).filter(Boolean).join('');
+    return `<div class="rl-journee"><span class="rl-jlbl">Journée ${jn}</span>${cards}</div>`;
+  }).join('');
+  return `<div class="rl-section"><div class="rl-sh">🏉 ${esc(label)}</div>${matchesHtml}</div>`;
+}
+
+async function loadRugbyLive(){
+  if (!elRugbyLive) return;
+  elRugbyLive.hidden = false;
+  elRugbyLive.innerHTML = '<div class="rl-loading"><span class="spinner"></span>Scores & classements…</div>';
+  const season = rugbySeason();
+  const top14 = `Championnat de France de rugby à XV ${season}`;
+  const champ = `Champions Cup ${season}`;
+  const [r1,r2,rA,rB,rC,rD] = await Promise.allSettled([
+    fetch(wikiUrl(top14,6)).then(r=>r.json()),   // Top 14 classement
+    fetch(wikiUrl(top14,7)).then(r=>r.json()),   // Top 14 résultats
+    fetch(wikiUrl(champ,10)).then(r=>r.json()),  // Champions Cup Poule A
+    fetch(wikiUrl(champ,11)).then(r=>r.json()),  // Champions Cup Poule B
+    fetch(wikiUrl(champ,12)).then(r=>r.json()),  // Champions Cup Poule C
+    fetch(wikiUrl(champ,13)).then(r=>r.json()),  // Champions Cup Poule D
+  ]);
+  let html = '';
+  // Top 14 classement
+  if (r1.status==='fulfilled'){
+    const tbls = parseWikitables(r1.value?.parse?.text?.['*']||'');
+    if (tbls[0]) html += renderRLStandings(tbls[0],'Classement Top 14');
+  }
+  // Top 14 résultats (on garde les 2 dernières journées)
+  if (r2.status==='fulfilled'){
+    const tbls = parseWikitables(r2.value?.parse?.text?.['*']||'');
+    // les journées ont 7 lignes (7 matchs par journée en Top 14)
+    const jtbls = tbls.filter(t=>t.length>=5 && t.length<=10 && t[0].length<=6);
+    if (jtbls.length) html += renderRLResults(jtbls,'Résultats récents Top 14',2);
+  }
+  // Champions Cup poules A–D
+  for (const [rP,pool] of [[rA,'A'],[rB,'B'],[rC,'C'],[rD,'D']]){
+    if (rP.status==='fulfilled'){
+      const tbls = parseWikitables(rP.value?.parse?.text?.['*']||'');
+      if (tbls[0]) html += renderRLStandings(tbls[0],`Champions Cup — Poule ${pool}`,6);
+    }
+  }
+  elRugbyLive.innerHTML = html || '<div class="rl-loading">Données non disponibles.</div>';
+}
+
+function hideRugbyLive(){
+  if (elRugbyLive){ elRugbyLive.hidden=true; elRugbyLive.innerHTML=''; }
+}
+
 /* ---------- chargement catégorie ---------- */
 function cacheKey(id){ return 'feedcache:'+id; }
 
@@ -109,6 +219,7 @@ async function loadCategory(cat, {silent=false}={}){
   document.documentElement.style.setProperty('--a',a);
   document.documentElement.style.setProperty('--b',b);
   $('#hero-sub').textContent = cat.label;
+  if (cat.id==='rugby') loadRugbyLive(); else hideRugbyLive();
 
   // cache immédiat
   const cached = JSON.parse(localStorage.getItem(cacheKey(cat.id)) || 'null');
