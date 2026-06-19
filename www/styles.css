@@ -132,3 +132,5 @@ details.rl-section>.rl-table-wrap,details.rl-section>.rl-journee{margin-top:2px}
 .rl-w{font-weight:700;color:var(--text)}
 .rl-sb{display:flex;align-items:center;justify-content:center;gap:4px;font-size:1rem;font-weight:700;white-space:nowrap;flex:0 0 auto}
 .rl-vs{color:var(--muted);font-weight:400;font-size:.85rem}
+.rl-more-btn{display:block;width:100%;margin-top:6px;padding:8px;background:#1e293b;border:1px solid var(--line);color:var(--a,#16A34A);border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer;text-align:center}
+.rl-more-btn:active{transform:scale(.98)}

@@ -21,6 +21,8 @@ let current = null;
 let RENDERED = [];
 let lang = localStorage.getItem('srcLang') || 'fr';
 let lastUpdated = '';
+let _rlTop14Journees = [];
+let _rlTop14Shown = 2;
 
 /* ---------- articles lus (masqués une fois consultés) ---------- */
 const READ_KEY = 'readArticles';
@@ -155,9 +157,11 @@ function renderRLStandings(rows, label, maxRows=14, topN=6, botN=2){
 
 function renderRLResults(tables, label, count=2){
   if (!tables || !tables.length) return '';
-  const recent = tables.slice(-count);
+  const total = tables.length;
+  const shown = Math.min(count, total);
+  const recent = tables.slice(Math.max(0, total - shown));
   const matchesHtml = recent.map((rows, ji)=>{
-    const jn = tables.length - count + ji + 1;
+    const jn = total - shown + ji + 1;
     const cards = rows.map(r=>{
       if (r.length < 5) return '';
       const home = r[1], hs = r[2], as_ = r[3], away = r[4];
@@ -166,7 +170,43 @@ function renderRLResults(tables, label, count=2){
     }).filter(Boolean).join('');
     return `<div class="rl-journee"><span class="rl-jlbl">Journée ${jn}</span>${cards}</div>`;
   }).join('');
-  return `<details class="rl-section" open><summary class="rl-sh">🏉 ${esc(label)}</summary>${matchesHtml}</details>`;
+  const remaining = total - shown;
+  const moreBtn = remaining > 0
+    ? `<button class="rl-more-btn">📋 +${Math.min(3,remaining)} journée${Math.min(3,remaining)>1?'s':''}</button>`
+    : '';
+  return `<details class="rl-section rl-results-top14" open><summary class="rl-sh">🏉 ${esc(label)}</summary>${matchesHtml}${moreBtn}</details>`;
+}
+
+async function loadChampionsCupStandings(page){
+  // Étape 1 : récupère la liste des sections pour trouver les bonnes
+  let indices = [];
+  try {
+    const data = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
+    const sects = data?.parse?.sections || [];
+    // Cherche "classement", "phase de ligue", "poule X"
+    indices = sects.filter(s=>/classement|phase de ligue|poule\s*[a-z]/i.test(s.line)).map(s=>parseInt(s.index));
+    // Fallback : toute section de niveau 1-2 contenant "phase", "groupe", "ligue", "pool"
+    if (!indices.length)
+      indices = sects.filter(s=>s.toclevel<=2 && /phase|groupe|ligue|pool/i.test(s.line)).map(s=>parseInt(s.index));
+    // Dernier recours : sections 2-6
+    if (!indices.length) indices = [2,3,4,5,6];
+  } catch(e){ indices = [2,3,4,5,6]; }
+
+  // Étape 2 : fetch des sections ciblées
+  const results = await Promise.allSettled(indices.map(n=>fetch(wikiUrl(page,n)).then(r=>r.json())));
+
+  // Étape 3 : collecte des tables de classement uniques
+  const seen = new Set(), tables = [];
+  for (const r of results){
+    if (r.status!=='fulfilled') continue;
+    for (const t of parseWikitables(r.value?.parse?.text?.['*']||'')){
+      if (t.length<7 || (t[0]||[]).length<5) continue;
+      const key=(t[0]||[]).join('|')+'||'+(t[1]||[]).slice(0,3).join('|');
+      if (seen.has(key)) continue;
+      seen.add(key); tables.push(t);
+    }
+  }
+  return tables;
 }
 
 async function loadRugbyLive(){
@@ -176,51 +216,34 @@ async function loadRugbyLive(){
   const season = rugbySeason();
   const top14 = `Championnat de France de rugby à XV ${season}`;
   const champ = `Champions Cup ${season}`;
-  // Sections 1-7 pour Champions Cup (format phase de ligue depuis 2023-24, pas de poules fixes)
-  const [r1, r2, ...rChamp] = await Promise.allSettled([
-    fetch(wikiUrl(top14,6)).then(r=>r.json()),
-    fetch(wikiUrl(top14,7)).then(r=>r.json()),
-    fetch(wikiUrl(champ,1)).then(r=>r.json()),
-    fetch(wikiUrl(champ,2)).then(r=>r.json()),
-    fetch(wikiUrl(champ,3)).then(r=>r.json()),
-    fetch(wikiUrl(champ,4)).then(r=>r.json()),
-    fetch(wikiUrl(champ,5)).then(r=>r.json()),
-    fetch(wikiUrl(champ,6)).then(r=>r.json()),
-    fetch(wikiUrl(champ,7)).then(r=>r.json()),
+
+  const [r1, r2, champTables] = await Promise.all([
+    fetch(wikiUrl(top14,6)).then(r=>r.json()).catch(()=>null),
+    fetch(wikiUrl(top14,7)).then(r=>r.json()).catch(()=>null),
+    loadChampionsCupStandings(champ),
   ]);
+
   let html = '';
   // Top 14 classement
-  if (r1.status==='fulfilled'){
-    const tbls = parseWikitables(r1.value?.parse?.text?.['*']||'');
+  if (r1){
+    const tbls = parseWikitables(r1?.parse?.text?.['*']||'');
     if (tbls[0]) html += renderRLStandings(tbls[0],'Classement Top 14',14,6,2);
   }
-  // Top 14 résultats (2 dernières journées)
-  if (r2.status==='fulfilled'){
-    const tbls = parseWikitables(r2.value?.parse?.text?.['*']||'');
+  // Top 14 résultats avec "voir plus"
+  if (r2){
+    const tbls = parseWikitables(r2?.parse?.text?.['*']||'');
     const jtbls = tbls.filter(t=>t.length>=5 && t.length<=10 && t[0].length<=6);
-    if (jtbls.length) html += renderRLResults(jtbls,'Résultats récents Top 14',2);
-  }
-  // Champions Cup — collecte toutes les tables de classement uniques
-  const seen = new Set();
-  const champTables = [];
-  for (const r of rChamp){
-    if (r.status !== 'fulfilled') continue;
-    for (const t of parseWikitables(r.value?.parse?.text?.['*']||'')){
-      if (t.length < 7 || (t[0]||[]).length < 5) continue;
-      // clé = header + 1ère ligne de données (évite doublons inter-sections)
-      const key = (t[0]||[]).join('|') + '||' + (t[1]||[]).slice(0,3).join('|');
-      if (seen.has(key)) continue;
-      seen.add(key);
-      champTables.push(t);
+    if (jtbls.length){
+      _rlTop14Journees = jtbls;
+      _rlTop14Shown = 2;
+      html += renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown);
     }
   }
-  if (champTables.length === 1){
-    // Format phase de ligue (depuis 2023-24) : une seule grande table ~24 équipes
+  // Champions Cup
+  if (champTables.length===1){
     const t = champTables[0];
-    const rows = Math.min(t.length - 1, 24);
-    html += renderRLStandings(t,'Champions Cup — Phase de ligue',rows,8,0);
-  } else if (champTables.length > 1){
-    // Ancien format à poules
+    html += renderRLStandings(t,'Champions Cup — Phase de ligue',Math.min(t.length-1,24),8,0);
+  } else if (champTables.length>1){
     champTables.forEach((t,i)=>{
       html += renderRLStandings(t,`Champions Cup — Poule ${String.fromCharCode(65+i)}`,Math.min(t.length-1,8),3,0);
     });
@@ -511,6 +534,12 @@ async function init(){
   elCard.addEventListener('click', onSettingsClick);
   elCard.addEventListener('change', onSettingsChange);
   elModal.addEventListener('click', (e)=>{ if(e.target===elModal) closeSettings(); });
+  elRugbyLive.addEventListener('click', e=>{
+    if (!e.target.classList.contains('rl-more-btn')) return;
+    _rlTop14Shown = Math.min(_rlTop14Shown + 3, _rlTop14Journees.length);
+    const el = elRugbyLive.querySelector('.rl-results-top14');
+    if (el) el.outerHTML = renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown);
+  });
   if ('serviceWorker' in navigator){ try{ navigator.serviceWorker.register('sw.js'); }catch(e){} }
 }
 init();
