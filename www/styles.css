@@ -105,8 +105,13 @@ details.card>summary .thumb{width:60px;height:60px;min-width:60px;object-fit:cov
 /* ---- Rugby Live (scores & classements) ---- */
 #rugby-live{padding:0 0 4px}
 .rl-loading{color:var(--muted);font-size:.9em;text-align:center;padding:14px 0}
-.rl-section{margin-bottom:14px}
-.rl-sh{font-weight:700;font-size:.9rem;color:var(--a,#16A34A);padding:6px 10px;background:color-mix(in srgb,var(--a,#16A34A) 14%,transparent);border-radius:8px;margin-bottom:8px}
+details.rl-section{margin-bottom:10px;display:block}
+details.rl-section>summary.rl-sh{list-style:none;cursor:pointer;font-weight:700;font-size:.9rem;color:var(--a,#16A34A);padding:6px 10px;background:color-mix(in srgb,var(--a,#16A34A) 14%,transparent);border-radius:8px;display:flex;align-items:center;justify-content:space-between;user-select:none;-webkit-user-select:none}
+details.rl-section>summary.rl-sh::-webkit-details-marker{display:none}
+details.rl-section>summary.rl-sh::after{content:"▾";font-size:1em;opacity:.7;transition:transform .2s}
+details.rl-section:not([open])>summary.rl-sh::after{transform:rotate(-90deg)}
+details.rl-section[open]>summary.rl-sh{border-radius:8px 8px 0 0}
+details.rl-section>.rl-table-wrap,details.rl-section>.rl-journee{margin-top:2px}
 .rl-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .rl-table{width:100%;border-collapse:collapse;font-size:.82rem;white-space:nowrap}
 .rl-table thead th{background:#1e293b;color:var(--muted);font-weight:600;padding:6px 8px;text-align:center;border-bottom:1px solid var(--line)}
@@ -119,7 +124,7 @@ details.card>summary .thumb{width:60px;height:60px;min-width:60px;object-fit:cov
 .rl-top .rl-club::before{content:"▲ ";font-size:.7em;color:#16a34a}
 .rl-bot td{color:#9aa0a6}
 .rl-bot .rl-club::before{content:"▼ ";font-size:.7em;color:#ef4444}
-.rl-journee{margin-bottom:10px}
+.rl-journee{margin-bottom:6px;margin-top:6px}
 .rl-jlbl{display:block;font-size:.78rem;font-weight:700;color:var(--muted);margin-bottom:4px;padding:0 2px}
 .rl-match{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:6px;padding:7px 10px;background:#1e293b;border-radius:8px;margin-bottom:4px}
 .rl-tn{font-size:.85rem;color:#c7ccd6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

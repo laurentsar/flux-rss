@@ -1,6 +1,6 @@
 {
- "version": 11,
- "generated": "2026-06-17",
+ "version": 12,
+ "generated": "2026-06-19",
  "categories": [
   {
    "id": "ve",
@@ -72,6 +72,79 @@
     {
      "name": "Battery tech — Google News",
      "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=EV+battery+technology"
+    }
+   ]
+  },
+  {
+   "id": "tesla",
+   "label": "⚡ Tesla",
+   "lang": "fr",
+   "feeds": [
+    {
+     "name": "Blog Tesla",
+     "url": "https://www.blogtesla.fr/feed/"
+    },
+    {
+     "name": "Tesla — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla"
+    },
+    {
+     "name": "Tesla Model Y — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Model+Y"
+    },
+    {
+     "name": "Tesla Model 3 — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Model+3"
+    },
+    {
+     "name": "Tesla FSD — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+FSD+autonomie"
+    },
+    {
+     "name": "Elon Musk — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Elon+Musk"
+    },
+    {
+     "name": "Tesla Cybertruck — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Cybertruck"
+    },
+    {
+     "name": "Superchargeur — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Superchargeur"
+    }
+   ],
+   "feeds_en": [
+    {
+     "name": "Teslarati",
+     "url": "https://www.teslarati.com/feed/"
+    },
+    {
+     "name": "Tesla — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla"
+    },
+    {
+     "name": "Tesla FSD — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla+FSD+self-driving"
+    },
+    {
+     "name": "Tesla Model Y — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla+Model+Y"
+    },
+    {
+     "name": "Elon Musk — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Elon+Musk"
+    },
+    {
+     "name": "Tesla earnings — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla+earnings+stock"
+    },
+    {
+     "name": "Tesla Cybertruck — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla+Cybertruck"
+    },
+    {
+     "name": "Tesla Supercharger — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla+Supercharger"
     }
    ]
   },
