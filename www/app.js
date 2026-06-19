@@ -244,6 +244,8 @@ async function loadCategory(cat, {silent=false}={}){
   let items = [];
   let ok = 0;
   results.forEach((r) => { if (r.status==='fulfilled'){ ok++; items = items.concat(r.value); } });
+  const _seen = new Set();
+  items = items.filter(it => it.link && !_seen.has(it.link) && _seen.add(it.link));
   items.sort((x,y)=> y.ts - x.ts);
   items = items.slice(0, MAX_SHOW);
 
