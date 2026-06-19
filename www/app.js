@@ -213,10 +213,15 @@ async function fetchSofaEvents(){
   const dayEvts = dayRes.flatMap(r=>r.status==='fulfilled'?r.value:[]);
   const seen = new Set();
   const all = [...live,...dayEvts].filter(e=>!seen.has(e.id)&&seen.add(e.id));
-  const FR = /top.?14|pro.?d2|six.?nations|autumn|test\s+match|france|ffr|lnr/i;
+  const FR_TOURN = /top.?14|pro.?d2|six.?nations|autumn|test|summer|tour|france|ffr|lnr|nation/i;
+  const FR_TEAM  = /france|toulouse|clermont|bordeaux|racing|lyon|toulon|montpellier|castres|perpignan|pau|brive|colomiers/i;
   // trier : live en premier, puis terminés, puis à venir
   return all
-    .filter(e=>FR.test(e.tournament?.name||e.tournament?.uniqueTournament?.name||'')||e.homeTeam?.national||e.awayTeam?.national)
+    .filter(e=>{
+      const t=e.tournament?.name||e.tournament?.uniqueTournament?.name||'';
+      const h=e.homeTeam?.name||'', a=e.awayTeam?.name||'';
+      return FR_TOURN.test(t)||FR_TEAM.test(h)||FR_TEAM.test(a)||e.homeTeam?.national||e.awayTeam?.national;
+    })
     .sort((a,b)=>{
       const order=t=>t==='inprogress'?0:t==='finished'?1:2;
       return order(a.status?.type)-order(b.status?.type)||(a.startTimestamp-b.startTimestamp);
