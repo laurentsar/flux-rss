@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '3.7';
+const APP_VERSION = '3.8';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
@@ -204,32 +204,45 @@ function renderRLResults(tables, label, count=2){
 
 /* --- TheSportsDB : résultats rugby jour J-1/J/J+1 --- */
 async function fetchSportsEvents(){
-  const now = new Date();
-  const dates = [-1,0,1].map(i=>{ const d=new Date(now); d.setDate(d.getDate()+i); return d.toISOString().split('T')[0]; });
+  const API = 'https://www.thesportsdb.com/api/v1/json/3';
   const RL_EXCL = /rugby\s+league|super\s+league|\bnrl\b|\bxiii\b|toulouse.*olympique|catalans\s+dragons|wigan|warrington|leeds/i;
-  const BASE = 'https://www.thesportsdb.com/api/v1/json/3/eventsday.php';
-  async function tryFetch(url){ try{ const d=await fetchJson(url); return d.events||[]; }catch(e){ return []; } }
-  async function fetchDate(date){
-    // 1) Specific French rugby union leagues (most reliable)
-    const [top14,prod2,ruU] = await Promise.all([
-      tryFetch(`${BASE}?d=${date}&s=Rugby&l=Top+14`),
-      tryFetch(`${BASE}?d=${date}&s=Rugby&l=Pro+D2`),
-      tryFetch(`${BASE}?d=${date}&s=Rugby+Union`),
-    ]);
-    const specific = [...top14, ...prod2, ...ruU];
-    if (specific.length) return specific;
-    // 2) Fallback: all Rugby events, exclude XIII
-    const all = await tryFetch(`${BASE}?d=${date}&s=Rugby`);
-    return all.filter(e=>!RL_EXCL.test([e.strLeague,e.strHomeTeam,e.strAwayTeam].join('|')));
+  async function tj(url,key='events'){ try{const d=await fetchJson(url);return d[key]||[];}catch(e){return [];} }
+
+  // Step 1: discover Top 14 / Pro D2 league IDs via search
+  const frLeagues = await tj(`${API}/search_all_leagues.php?s=Rugby&c=France`,'countrys');
+  const targets = frLeagues.filter(l=>/top.?14|pro.?d2/i.test(l.strLeague||''));
+
+  // Step 2: fetch by league ID (next + past events) — more reliable than day-based
+  const now = Date.now()/1000, WEEK = 7*24*3600;
+  let events = [];
+  if (targets.length){
+    const evts = await Promise.all(targets.flatMap(l=>[
+      tj(`${API}/eventsnextleague.php?id=${l.idLeague}`),
+      tj(`${API}/eventspastleague.php?id=${l.idLeague}`),
+    ]));
+    events = evts.flat().filter(e=>{
+      const ts = e.strTimestamp ? new Date(e.strTimestamp).getTime()/1000 : now;
+      return Math.abs(ts-now) < WEEK;
+    });
   }
-  const results = await Promise.allSettled(dates.map(date=>fetchDate(date)));
-  const anyOk = results.some(r=>r.status==='fulfilled');
-  if (!anyOk) return {events:[], error: results[0].reason?.message||'API indisponible'};
+
+  // Step 3: fallback — day-based search (yesterday/today/tomorrow)
+  if (!events.length){
+    const dates = [-1,0,1].map(i=>{const d=new Date();d.setDate(d.getDate()+i);return d.toISOString().split('T')[0];});
+    const dayEvts = await Promise.all(dates.map(async date=>{
+      const [ruU,ru] = await Promise.all([
+        tj(`${API}/eventsday.php?d=${date}&s=Rugby+Union`),
+        tj(`${API}/eventsday.php?d=${date}&s=Rugby`),
+      ]);
+      return [...ruU, ...ru.filter(e=>!RL_EXCL.test([e.strLeague,e.strHomeTeam,e.strAwayTeam].join('|')))];
+    }));
+    events = dayEvts.flat();
+  }
+
   const FR_TEAM   = /france|toulouse|clermont|bordeaux|racing|lyon|toulon|montpellier|castres|perpignan|pau|brive|colomiers/i;
   const FR_LEAGUE = /top.?14|pro.?d2|six.?nations|autumn|test|summer|france|ffr|lnr/i;
   const seen = new Set();
-  const events = results
-    .flatMap(r=>r.status==='fulfilled'?r.value:[])
+  const filtered = events
     .filter(e=>e && !seen.has(e.idEvent) && seen.add(e.idEvent))
     .filter(e=>FR_LEAGUE.test(e.strLeague||'')||FR_TEAM.test(e.strHomeTeam||'')||FR_TEAM.test(e.strAwayTeam||''))
     .map(e=>{
@@ -248,7 +261,8 @@ async function fetchSportsEvents(){
       const ord=t=>t==='inprogress'?0:t==='finished'?1:2;
       return ord(a.status.type)-ord(b.status.type)||(a.startTimestamp-b.startTimestamp);
     });
-  return {events, error:null};
+  if (!filtered.length) return {events:[], error:'Aucun match rugby trouvé (TheSportsDB)'};
+  return {events:filtered, error:null};
 }
 
 function renderLiveScores(events){
