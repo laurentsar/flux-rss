@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '3.4';
+const APP_VERSION = '3.5';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
@@ -207,7 +207,7 @@ async function fetchSportsEvents(){
   const now = new Date();
   const dates = [-1,0,1].map(i=>{ const d=new Date(now); d.setDate(d.getDate()+i); return d.toISOString().split('T')[0]; });
   const results = await Promise.allSettled(
-    dates.map(date=>fetchJson(`https://www.thesportsdb.com/api/v1/json/3/eventsday.php?d=${date}&s=Rugby`).then(d=>d.events||[]))
+    dates.map(date=>fetchJson(`https://www.thesportsdb.com/api/v1/json/3/eventsday.php?d=${date}&s=Rugby+Union`).then(d=>d.events||[]))
   );
   const anyOk = results.some(r=>r.status==='fulfilled');
   if (!anyOk) return {events:[], error: results[0].reason?.message||'API indisponible'};
