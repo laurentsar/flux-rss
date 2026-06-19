@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '3.5';
+const APP_VERSION = '3.6';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
@@ -206,9 +206,17 @@ function renderRLResults(tables, label, count=2){
 async function fetchSportsEvents(){
   const now = new Date();
   const dates = [-1,0,1].map(i=>{ const d=new Date(now); d.setDate(d.getDate()+i); return d.toISOString().split('T')[0]; });
-  const results = await Promise.allSettled(
-    dates.map(date=>fetchJson(`https://www.thesportsdb.com/api/v1/json/3/eventsday.php?d=${date}&s=Rugby+Union`).then(d=>d.events||[]))
-  );
+  // rugby league names to exclude when falling back to s=Rugby
+  const RL_EXCL = /rugby\s+league|super\s+league|\bnrl\b|\bxiii\b|toulouse.*olympique|catalans\s+dragons|wigan|warrington|leeds\s+rhi/i;
+  async function fetchDate(date){
+    // try Rugby Union first; fall back to Rugby with RL exclusion
+    const d1 = await fetchJson(`https://www.thesportsdb.com/api/v1/json/3/eventsday.php?d=${date}&s=Rugby+Union`).catch(()=>({events:[]}));
+    const ev1 = (d1.events||[]);
+    if (ev1.length) return ev1;
+    const d2 = await fetchJson(`https://www.thesportsdb.com/api/v1/json/3/eventsday.php?d=${date}&s=Rugby`).catch(()=>({events:[]}));
+    return (d2.events||[]).filter(e=>!RL_EXCL.test(e.strLeague||''+'|'+e.strHomeTeam||''+'|'+e.strAwayTeam||''));
+  }
+  const results = await Promise.allSettled(dates.map(date=>fetchDate(date)));
   const anyOk = results.some(r=>r.status==='fulfilled');
   if (!anyOk) return {events:[], error: results[0].reason?.message||'API indisponible'};
   const FR_TEAM   = /france|toulouse|clermont|bordeaux|racing|lyon|toulon|montpellier|castres|perpignan|pau|brive|colomiers/i;
