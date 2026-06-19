@@ -1,5 +1,5 @@
 {
- "version": 12,
+ "version": 13,
  "generated": "2026-06-19",
  "categories": [
   {
@@ -34,10 +34,6 @@
     {
      "name": "Beev",
      "url": "https://www.beev.co/blog/feed/"
-    },
-    {
-     "name": "Blog Tesla",
-     "url": "https://www.blogtesla.fr/feed/"
     }
    ],
    "feeds_en": [
@@ -50,16 +46,8 @@
      "url": "https://insideevs.com/rss/articles/all/"
     },
     {
-     "name": "Teslarati",
-     "url": "https://www.teslarati.com/feed/"
-    },
-    {
      "name": "Electrive",
      "url": "https://www.electrive.com/feed/"
-    },
-    {
-     "name": "Tesla — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla"
     },
     {
      "name": "Electric vehicle — Google News",
@@ -921,6 +909,63 @@
     }
    ],
    "feeds_en": []
+  },
+  {
+   "id": "placement",
+   "label": "📈 Placements",
+   "lang": "fr",
+   "feeds": [
+    {
+     "name": "Capital — Épargne",
+     "url": "https://www.capital.fr/rss"
+    },
+    {
+     "name": "MoneyVox",
+     "url": "https://www.moneyvox.fr/actu/rss.php"
+    },
+    {
+     "name": "Café de la Bourse",
+     "url": "https://www.cafedelabourse.com/feed/"
+    },
+    {
+     "name": "Boursorama — Actualités",
+     "url": "https://www.boursorama.com/bourse/actualites/rss/actualites"
+    },
+    {
+     "name": "Bourse — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bourse+investissement"
+    },
+    {
+     "name": "ETF — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=ETF+indice+tracker"
+    },
+    {
+     "name": "SCPI — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=SCPI+immobilier"
+    },
+    {
+     "name": "Assurance-vie — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=assurance-vie+rendement"
+    }
+   ],
+   "feeds_en": [
+    {
+     "name": "ETF — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=ETF+investing"
+    },
+    {
+     "name": "Dividend investing — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=dividend+investing"
+    },
+    {
+     "name": "S&P 500 — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=S%26P+500+index"
+    },
+    {
+     "name": "Real estate investing — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=real+estate+investing"
+    }
+   ]
   }
  ]
 }

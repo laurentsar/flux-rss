@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '2.6';
+const APP_VERSION = '2.7';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
@@ -9,6 +9,7 @@ const CAT_COLORS = {
   solaire:['#F59E0B','#92600A'], deals_fr:['#27AE60','#145F34'], anglais:['#1E3A8A','#0C1E4A'],
   jeux:['#8b5cf6','#4c1d95'], voyage:['#0D9488','#0F5D57'], youtube:['#FF0000','#7A0B0B'], deals_voyage:['#EA580C','#7C2D12'],
   podcasts:['#7C3AED','#3B0764'], tesla:['#CC0000','#7A0000'],
+  placement:['#D97706','#78350F'],
 };
 const PER_FEED = 12;       // articles gardés par flux
 const MAX_SHOW = 60;       // articles affichés par catégorie
@@ -176,51 +177,16 @@ function renderRLResults(tables, label, count=2){
   return `<details class="rl-section rl-results-top14" open><summary class="rl-sh">🏉 ${esc(label)}</summary>${matchesHtml}${moreBtn}</details>`;
 }
 
-async function loadChampionsCupStandings(page){
-  // Étape 1 : récupère la liste des sections pour trouver les bonnes
-  let indices = [];
-  try {
-    const data = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
-    const sects = data?.parse?.sections || [];
-    // Cherche "classement", "phase de ligue", "poule X"
-    indices = sects.filter(s=>/classement|phase de ligue|poule\s*[a-z]/i.test(s.line)).map(s=>parseInt(s.index));
-    // Fallback : toute section de niveau 1-2 contenant "phase", "groupe", "ligue", "pool"
-    if (!indices.length)
-      indices = sects.filter(s=>s.toclevel<=2 && /phase|groupe|ligue|pool/i.test(s.line)).map(s=>parseInt(s.index));
-    // Dernier recours : sections 2-6
-    if (!indices.length) indices = [2,3,4,5,6];
-  } catch(e){ indices = [2,3,4,5,6]; }
-
-  // Étape 2 : fetch des sections ciblées
-  const results = await Promise.allSettled(indices.map(n=>fetch(wikiUrl(page,n)).then(r=>r.json())));
-
-  // Étape 3 : collecte des tables de classement uniques
-  const seen = new Set(), tables = [];
-  for (const r of results){
-    if (r.status!=='fulfilled') continue;
-    for (const t of parseWikitables(r.value?.parse?.text?.['*']||'')){
-      if (t.length<7 || (t[0]||[]).length<5) continue;
-      if (!(parseInt((t[1]||[])[0])>=1)) continue; // exclut matrices de résultats croisés
-      const key=(t[0]||[]).join('|')+'||'+(t[1]||[]).slice(0,3).join('|');
-      if (seen.has(key)) continue;
-      seen.add(key); tables.push(t);
-    }
-  }
-  return tables;
-}
-
 async function loadRugbyLive(){
   if (!elRugbyLive) return;
   elRugbyLive.hidden = false;
   elRugbyLive.innerHTML = '<div class="rl-loading"><span class="spinner"></span>Scores & classements…</div>';
   const season = rugbySeason();
   const top14 = `Championnat de France de rugby à XV ${season}`;
-  const champ = `Champions Cup ${season}`;
 
-  const [r1, r2, champTables] = await Promise.all([
+  const [r1, r2] = await Promise.all([
     fetch(wikiUrl(top14,6)).then(r=>r.json()).catch(()=>null),
     fetch(wikiUrl(top14,7)).then(r=>r.json()).catch(()=>null),
-    loadChampionsCupStandings(champ),
   ]);
 
   let html = '';
@@ -238,15 +204,6 @@ async function loadRugbyLive(){
       _rlTop14Shown = 2;
       html += renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown);
     }
-  }
-  // Champions Cup
-  if (champTables.length===1){
-    const t = champTables[0];
-    html += renderRLStandings(t,'Champions Cup — Phase de ligue',Math.min(t.length-1,24),8,0);
-  } else if (champTables.length>1){
-    champTables.forEach((t,i)=>{
-      html += renderRLStandings(t,`Champions Cup — Poule ${String.fromCharCode(65+i)}`,6,4,2);
-    });
   }
   elRugbyLive.innerHTML = html || '<div class="rl-loading">Données non disponibles.</div>';
 }
@@ -396,10 +353,13 @@ function renderSettings(){
         <input class="f-url" data-ci="${ci}" data-fi="${fi}" value="${esc(f.url)}">
         <button class="iconbtn" data-act="del-feed" data-ci="${ci}" data-fi="${fi}">✕</button>
       </div>`).join('');
+    const isFirst = ci === 0, isLast = ci === DATA.categories.length - 1;
     return `<div class="cat-block ${c.off?'off':''}" style="--accent:${color}">
       <div class="cat-head">
         <button class="iconbtn tg" data-act="toggle-cat" data-ci="${ci}" title="${c.off?'Activer la catégorie':'Désactiver la catégorie'}">${c.off?'🚫':'👁️'}</button>
         <input class="cat-label" data-ci="${ci}" value="${esc(c.label)}">
+        <button class="iconbtn" data-act="cat-up" data-ci="${ci}" title="Monter" ${isFirst?'disabled':''}>↑</button>
+        <button class="iconbtn" data-act="cat-down" data-ci="${ci}" title="Descendre" ${isLast?'disabled':''}>↓</button>
         <button class="iconbtn" data-act="del-cat" data-ci="${ci}">🗑️</button>
       </div>
       ${feeds}
@@ -451,6 +411,8 @@ function onSettingsClick(e){
     if(!label){ alert('Donne un nom de catégorie.'); return; }
     DATA.categories.push({id:newCatId(label),label,lang:'fr',feeds:[],feeds_en:[]});
   }
+  else if (act==='cat-up'){ if(ci>0){ const tmp=DATA.categories[ci-1]; DATA.categories[ci-1]=DATA.categories[ci]; DATA.categories[ci]=tmp; } }
+  else if (act==='cat-down'){ if(ci<DATA.categories.length-1){ const tmp=DATA.categories[ci+1]; DATA.categories[ci+1]=DATA.categories[ci]; DATA.categories[ci]=tmp; } }
   else if (act==='reset'){ if(!confirm('Restaurer les catégories et flux d\'origine ?')) return; DATA=clone(DEFAULTS); }
   else return;
   saveConfig(); renderSettings();
