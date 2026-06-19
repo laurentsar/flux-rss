@@ -179,6 +179,105 @@ function renderRLResults(tables, label, count=2){
   return `<details class="rl-section rl-results-top14" open><summary class="rl-sh">🏉 ${esc(label)}</summary>${matchesHtml}${moreBtn}</details>`;
 }
 
+/* --- SofaScore live/today --- */
+async function fetchSofaEvents(){
+  const today = new Date().toISOString().split('T')[0];
+  const [liveRes, todayRes] = await Promise.allSettled([
+    httpGet('https://api.sofascore.com/api/v1/sport/rugby-union/events/live').then(d=>JSON.parse(d).events||[]),
+    httpGet(`https://api.sofascore.com/api/v1/sport/rugby-union/scheduled-events/${today}`).then(d=>JSON.parse(d).events||[]),
+  ]);
+  const live = liveRes.status==='fulfilled' ? liveRes.value : [];
+  const todayEvts = todayRes.status==='fulfilled' ? todayRes.value : [];
+  const liveIds = new Set(live.map(e=>e.id));
+  const all = [...live, ...todayEvts.filter(e=>!liveIds.has(e.id))];
+  const FR = /top.?14|pro.?d2|six.?nations|autumn|test\s+match|france/i;
+  return all.filter(e=>FR.test(e.tournament?.name||e.tournament?.uniqueTournament?.name||'') || e.homeTeam?.national || e.awayTeam?.national);
+}
+
+function renderLiveScores(events){
+  if (!events.length) return '';
+  const hasLive = events.some(e=>e.status?.type==='inprogress');
+  const cards = events.map(e=>{
+    const st = e.status?.type;
+    const live = st==='inprogress', fin = st==='finished';
+    const hs = e.homeScore?.current??'', as_ = e.awayScore?.current??'';
+    const hw = fin && parseInt(hs)>parseInt(as_), aw = fin && parseInt(as_)>parseInt(hs);
+    const badge = live ? '<span class="rl-live-dot"></span>' : '';
+    const time = live ? (e.status.description||'⏱') : fin ? '' :
+      new Date((e.startTimestamp||0)*1000).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+    const score = (live||fin) ? `<b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b>${time?`<span class="rl-time"> ${time}</span>`:''}` : `<span class="rl-vs">${time}</span>`;
+    return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(e.homeTeam?.name||'?')}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(e.awayTeam?.name||'?')}</span></div>`;
+  }).join('');
+  const label = hasLive ? '🔴 En direct' : '📅 Aujourd\'hui';
+  return `<details class="rl-section${hasLive?' rl-live-section':''}" open><summary class="rl-sh">${label}</summary>${cards}</details>`;
+}
+
+/* --- XV de France via Wikipedia --- */
+async function loadFranceXV(season){
+  const [y1,y2] = season.split('-');
+  const page = `Équipe de France de rugby à XV en ${y1}-${y2}`;
+  try{
+    const sectsData = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
+    const sects = sectsData?.parse?.sections||[];
+    const idx = sects.find(s=>/résultats|matchs/i.test(s.line))?.index;
+    if (!idx) return null;
+    const d = await fetch(wikiUrl(page,parseInt(idx))).then(r=>r.json());
+    return parseWikitables(d?.parse?.text?.['*']||'').filter(t=>t.length>=3);
+  } catch(e){ return null; }
+}
+
+function renderFranceXV(tables){
+  if (!tables?.length) return '';
+  const cards = tables.slice(-3).flatMap(rows=>
+    rows.slice(1).map(r=>{
+      if (r.length<3) return '';
+      const scoreCol = r.findIndex(c=>/\d+\s*[-–]\s*\d+/.test(c));
+      if (scoreCol<0) return '';
+      const opp = r.find((_,i)=>i>0 && i!==scoreCol && r[i].length>1 && !/\d{4}/.test(r[i]))||'?';
+      const [hs,as_] = r[scoreCol].split(/[-–]/).map(s=>parseInt(s)||0);
+      const win=hs>as_, loss=as_>hs;
+      return `<div class="rl-match"><span class="rl-tn ${win?'rl-w':''}">🇫🇷 France</span><span class="rl-sb"><b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b></span><span class="rl-tn rl-tnr ${loss?'rl-w':''}">${esc(opp)}</span></div>`;
+    }).filter(Boolean)
+  ).join('');
+  if (!cards) return '';
+  return `<details class="rl-section" open><summary class="rl-sh">🇫🇷 XV de France</summary>${cards}</details>`;
+}
+
+/* --- Pro D2 : Brive & Colomiers --- */
+const PRO_D2_TEAMS = ['Brive','Colomiers'];
+async function loadProD2Teams(season){
+  const page = `Pro D2 ${season}`;
+  try{
+    const sectsData = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
+    const sects = sectsData?.parse?.sections||[];
+    const idx = sects.find(s=>/résultats/i.test(s.line))?.index;
+    if (!idx) return [];
+    const d = await fetch(wikiUrl(page,parseInt(idx))).then(r=>r.json());
+    const tbls = parseWikitables(d?.parse?.text?.['*']||'').filter(t=>t.length>=3 && t[0].length<=6);
+    const matches = [];
+    tbls.forEach((rows,ji)=>{
+      rows.slice(1).forEach(r=>{
+        if (r.length<5) return;
+        if (PRO_D2_TEAMS.some(t=>(r[1]||'').toLowerCase().includes(t.toLowerCase())||(r[4]||'').toLowerCase().includes(t.toLowerCase())))
+          matches.push({jn:ji+1,r});
+      });
+    });
+    return matches;
+  } catch(e){ return []; }
+}
+
+function renderProD2Teams(matches){
+  if (!matches.length) return '';
+  const cards = matches.map(({r})=>{
+    const home=r[1],hs=r[2],as_=r[3],away=r[4];
+    const hw=parseInt(hs)>parseInt(as_), aw=parseInt(as_)>parseInt(hs);
+    const favH=PRO_D2_TEAMS.some(t=>(home||'').toLowerCase().includes(t.toLowerCase()));
+    const favA=PRO_D2_TEAMS.some(t=>(away||'').toLowerCase().includes(t.toLowerCase()));
+    return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(home)}${favH?' ⭐':''}</span><span class="rl-sb"><b>${esc(hs)}</b><span class="rl-vs">–</span><b>${esc(as_)}</b></span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(away)}${favA?' ⭐':''}</span></div>`;
+  }).join('');
+  return `<details class="rl-section" open><summary class="rl-sh">🏉 Brive & Colomiers — Pro D2</summary>${cards}</details>`;
+}
+
 async function loadRugbyLive(){
   if (!elRugbyLive) return;
   elRugbyLive.hidden = false;
@@ -186,18 +285,20 @@ async function loadRugbyLive(){
   const season = rugbySeason();
   const top14 = `Championnat de France de rugby à XV ${season}`;
 
-  const [r1, r2] = await Promise.all([
+  const [r1, r2, sofaEvts, franceXV, proD2] = await Promise.all([
     fetch(wikiUrl(top14,6)).then(r=>r.json()).catch(()=>null),
     fetch(wikiUrl(top14,7)).then(r=>r.json()).catch(()=>null),
+    fetchSofaEvents(),
+    loadFranceXV(season),
+    loadProD2Teams(season),
   ]);
 
   let html = '';
-  // Top 14 classement
+  if (sofaEvts.length) html += renderLiveScores(sofaEvts);
   if (r1){
     const tbls = parseWikitables(r1?.parse?.text?.['*']||'');
     if (tbls[0]) html += renderRLStandings(tbls[0],'Classement Top 14',14,6,2);
   }
-  // Top 14 résultats avec "voir plus"
   if (r2){
     const tbls = parseWikitables(r2?.parse?.text?.['*']||'');
     const jtbls = tbls.filter(t=>t.length>=5 && t.length<=10 && t[0].length<=6);
@@ -207,6 +308,8 @@ async function loadRugbyLive(){
       html += renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown);
     }
   }
+  if (franceXV?.length) html += renderFranceXV(franceXV);
+  if (proD2.length) html += renderProD2Teams(proD2);
   elRugbyLive.innerHTML = html || '<div class="rl-loading">Données non disponibles.</div>';
 }
 
