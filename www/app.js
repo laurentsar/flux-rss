@@ -57,6 +57,7 @@ async function httpGet(url){
     });
     return typeof r.data === 'string' ? r.data : JSON.stringify(r.data);
   }
+
   // navigateur : direct puis repli proxy CORS
   try{
     const r = await fetch(url, {redirect:'follow'});
@@ -66,6 +67,27 @@ async function httpGet(url){
     const r = await fetch(PROXY + encodeURIComponent(url));
     if (!r.ok) throw new Error('proxy '+r.status);
     return await r.text();
+  }
+}
+
+async function fetchJson(url){
+  const BROWSER_UA = 'Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36';
+  if (isNative && window.Capacitor.Plugins && window.Capacitor.Plugins.CapacitorHttp){
+    const r = await window.Capacitor.Plugins.CapacitorHttp.get({
+      url, headers:{'User-Agent':BROWSER_UA,'Accept':'application/json, */*','Referer':'https://www.sofascore.com/'},
+      responseType:'text', connectTimeout:10000, readTimeout:10000,
+    });
+    const text = typeof r.data === 'string' ? r.data : JSON.stringify(r.data);
+    return JSON.parse(text);
+  }
+  try{
+    const r = await fetch(url, {headers:{'Accept':'application/json'}});
+    if (r.ok) return await r.json();
+    throw new Error('http '+r.status);
+  }catch(e){
+    const r = await fetch(PROXY + encodeURIComponent(url));
+    if (!r.ok) throw new Error('proxy '+r.status);
+    return await r.json();
   }
 }
 
@@ -184,8 +206,8 @@ async function fetchSofaEvents(){
   const now = new Date();
   const dates = [-1,0,1].map(i=>{ const d=new Date(now); d.setDate(d.getDate()+i); return d.toISOString().split('T')[0]; });
   const [liveRes,...dayRes] = await Promise.allSettled([
-    httpGet('https://api.sofascore.com/api/v1/sport/rugby-union/events/live').then(d=>JSON.parse(d).events||[]),
-    ...dates.map(date=>httpGet(`https://api.sofascore.com/api/v1/sport/rugby-union/scheduled-events/${date}`).then(d=>JSON.parse(d).events||[])),
+    fetchJson('https://api.sofascore.com/api/v1/sport/rugby-union/events/live').then(d=>d.events||[]),
+    ...dates.map(date=>fetchJson(`https://api.sofascore.com/api/v1/sport/rugby-union/scheduled-events/${date}`).then(d=>d.events||[])),
   ]);
   const live = liveRes.status==='fulfilled' ? liveRes.value : [];
   const dayEvts = dayRes.flatMap(r=>r.status==='fulfilled'?r.value:[]);
