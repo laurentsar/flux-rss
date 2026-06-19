@@ -346,11 +346,14 @@ function catFeeds(ci){
 function renderSettings(){
   const cats = DATA.categories.map((c,ci) => {
     const color = (CAT_COLORS[c.id]||['#F26522'])[0];
-    const feeds = catFeeds(ci).map((f,fi) => `
+    const farr = catFeeds(ci);
+    const feeds = farr.map((f,fi) => `
       <div class="feed-row ${f.off?'off':''}">
         <button class="iconbtn tg" data-act="toggle-feed" data-ci="${ci}" data-fi="${fi}" title="${f.off?'Activer':'Désactiver'}">${f.off?'🚫':'👁️'}</button>
         <input class="f-name" data-ci="${ci}" data-fi="${fi}" value="${esc(f.name)}">
         <input class="f-url" data-ci="${ci}" data-fi="${fi}" value="${esc(f.url)}">
+        <button class="iconbtn mv" data-act="feed-up" data-ci="${ci}" data-fi="${fi}" title="Monter le flux" ${fi===0?'disabled':''}>↑</button>
+        <button class="iconbtn mv" data-act="feed-down" data-ci="${ci}" data-fi="${fi}" title="Descendre le flux" ${fi===farr.length-1?'disabled':''}>↓</button>
         <button class="iconbtn" data-act="del-feed" data-ci="${ci}" data-fi="${fi}">✕</button>
       </div>`).join('');
     const isFirst = ci === 0, isLast = ci === DATA.categories.length - 1;
@@ -373,7 +376,7 @@ function renderSettings(){
   elCard.innerHTML = `
     <div class="modal-head"><h2>⚙️ Sources ${lang==='en'?'🇬🇧 EN':'🇫🇷 FR'}</h2><button data-act="close">✕</button></div>
     <div class="modal-body">
-      <div class="hint">Tu édites les sources <b>${lang==='en'?'anglaises 🇬🇧':'françaises 🇫🇷'}</b> (bascule via le drapeau en haut). 👁️/🚫 activer/désactiver · ✕/🗑️ supprimer. Sauvegarde auto.</div>
+      <div class="hint">Tu édites les sources <b>${lang==='en'?'anglaises 🇬🇧':'françaises 🇫🇷'}</b> (bascule via le drapeau en haut). 👁️/🚫 activer/désactiver · ↑↓ réordonner · ✕/🗑️ supprimer. Sauvegarde auto (conservée lors des MAJ).</div>
       ${cats}
       <div class="add-cat">
         <input id="new-cat" placeholder="Nouvelle catégorie (ex : 🎮 Jeux)">
@@ -413,6 +416,8 @@ function onSettingsClick(e){
   }
   else if (act==='cat-up'){ if(ci>0){ const tmp=DATA.categories[ci-1]; DATA.categories[ci-1]=DATA.categories[ci]; DATA.categories[ci]=tmp; } }
   else if (act==='cat-down'){ if(ci<DATA.categories.length-1){ const tmp=DATA.categories[ci+1]; DATA.categories[ci+1]=DATA.categories[ci]; DATA.categories[ci]=tmp; } }
+  else if (act==='feed-up'){ const a=catFeeds(ci); if(fi>0){ const tmp=a[fi-1]; a[fi-1]=a[fi]; a[fi]=tmp; } }
+  else if (act==='feed-down'){ const a=catFeeds(ci); if(fi<a.length-1){ const tmp=a[fi+1]; a[fi+1]=a[fi]; a[fi]=tmp; } }
   else if (act==='reset'){ if(!confirm('Restaurer les catégories et flux d\'origine ?')) return; DATA=clone(DEFAULTS); }
   else return;
   saveConfig(); renderSettings();
@@ -440,30 +445,41 @@ async function init(){
       if (localStorage.getItem('lastCat')==='deals_voyage') localStorage.setItem('lastCat','voyage');
       changed=true;
     }
-    const have = new Set(DATA.categories.map(c=>c.id));
-    DEFAULTS.categories.forEach((c,i)=>{ if(!have.has(c.id)){ DATA.categories.splice(Math.min(i,DATA.categories.length),0,clone(c)); changed=true; } });
     const dv = DEFAULTS.version || 1;
-    if ((DATA.version||1) < dv){
-      // l'ancien fourre-tout 'anglais' est remplacé par l'interrupteur de langue
-      DATA.categories = DATA.categories.filter(c=> c.id!=='anglais');
-      const allDef = new Set(), defById = {};
-      DEFAULTS.categories.forEach(c=>{ defById[c.id]=c; (c.feeds||[]).forEach(f=>allDef.add(f.url)); (c.feeds_en||[]).forEach(f=>allDef.add(f.url)); });
-      const offUrl = new Set();
-      DATA.categories.forEach(c=> [...(c.feeds||[]),...(c.feeds_en||[])].forEach(f=>{ if(f.off) offUrl.add(f.url); }));
-      const syncArr = (userArr, defArr) => {
-        const userAdded = (userArr||[]).filter(f=> !allDef.has(f.url));
-        return (defArr||[]).map(f=> offUrl.has(f.url) ? {name:f.name,url:f.url,off:true} : {name:f.name,url:f.url}).concat(userAdded);
-      };
-      DATA.categories.forEach(c=>{
-        const dc = defById[c.id]; if(!dc) return;
-        c.feeds = syncArr(c.feeds, dc.feeds);
-        c.feeds_en = syncArr(c.feeds_en, dc.feeds_en);
-      });
-      // recentrage « voyage » sur les deals uniquement (on retire les blogs/news généralistes)
+    const prevVer = DATA.version || 1;
+    const defById = {};
+    DEFAULTS.categories.forEach(c=> defById[c.id]=c);
+    // migration ponctuelle (transition vers v10) : retrait de l'ancien fourre-tout 'anglais'
+    if (prevVer < 10) DATA.categories = DATA.categories.filter(c=> c.id!=='anglais');
+    // nouvelles catégories par défaut -> AJOUTÉES EN FIN (ne bouscule pas TON ordre)
+    const haveCats = new Set(DATA.categories.map(c=>c.id));
+    DEFAULTS.categories.forEach(c=>{ if(!haveCats.has(c.id)){ DATA.categories.push(clone(c)); haveCats.add(c.id); changed=true; } });
+    // nouveaux flux par défaut -> AJOUTÉS EN FIN de leur catégorie, en préservant TON ordre,
+    // tes renommages, tes désactivations ET tes suppressions (suivi via _knownDefaultFeeds).
+    const known = new Set(DATA._knownDefaultFeeds || []);
+    const firstTrack = !DATA._knownDefaultFeeds; // 1re exécution du suivi -> on n'ajoute rien (évite de ressusciter tes suppressions)
+    const mergeNew = (userArr, defArr) => {
+      userArr = userArr || [];
+      if (firstTrack) return userArr;
+      const haveUrls = new Set(userArr.map(f=>f.url));
+      (defArr||[]).forEach(f=>{ if(!haveUrls.has(f.url) && !known.has(f.url)){ userArr.push({name:f.name,url:f.url}); haveUrls.add(f.url); changed=true; } });
+      return userArr;
+    };
+    DATA.categories.forEach(c=>{
+      const dc = defById[c.id]; if(!dc) return;
+      c.feeds = mergeNew(c.feeds, dc.feeds);
+      c.feeds_en = mergeNew(c.feeds_en, dc.feeds_en);
+    });
+    // recentrage « voyage » sur les deals uniquement (une seule fois, transition v10)
+    if (prevVer < 10){
       const vCat = DATA.categories.find(c=>c.id==='voyage'), vDef = defById['voyage'];
       if (vCat && vDef){ vCat.label = vDef.label; vCat.feeds = clone(vDef.feeds); vCat.feeds_en = clone(vDef.feeds_en); }
-      DATA.version = dv; changed=true;
     }
+    // mémorise les URLs par défaut connues -> distingue « nouveau flux » de « flux que tu as supprimé » au prochain MAJ
+    const curDefUrls = [];
+    DEFAULTS.categories.forEach(c=>{ (c.feeds||[]).forEach(f=>curDefUrls.push(f.url)); (c.feeds_en||[]).forEach(f=>curDefUrls.push(f.url)); });
+    if (JSON.stringify(DATA._knownDefaultFeeds||[]) !== JSON.stringify(curDefUrls)){ DATA._knownDefaultFeeds = curDefUrls; changed=true; }
+    if (DATA.version !== dv){ DATA.version = dv; changed=true; }
     if (changed) saveConfig();
   }
   const verEl = document.getElementById('app-ver');
