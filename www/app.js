@@ -179,19 +179,26 @@ function renderRLResults(tables, label, count=2){
   return `<details class="rl-section rl-results-top14" open><summary class="rl-sh">🏉 ${esc(label)}</summary>${matchesHtml}${moreBtn}</details>`;
 }
 
-/* --- SofaScore live/today --- */
+/* --- SofaScore : live + journée en cours (hier/aujourd'hui/demain) --- */
 async function fetchSofaEvents(){
-  const today = new Date().toISOString().split('T')[0];
-  const [liveRes, todayRes] = await Promise.allSettled([
+  const now = new Date();
+  const dates = [-1,0,1].map(i=>{ const d=new Date(now); d.setDate(d.getDate()+i); return d.toISOString().split('T')[0]; });
+  const [liveRes,...dayRes] = await Promise.allSettled([
     httpGet('https://api.sofascore.com/api/v1/sport/rugby-union/events/live').then(d=>JSON.parse(d).events||[]),
-    httpGet(`https://api.sofascore.com/api/v1/sport/rugby-union/scheduled-events/${today}`).then(d=>JSON.parse(d).events||[]),
+    ...dates.map(date=>httpGet(`https://api.sofascore.com/api/v1/sport/rugby-union/scheduled-events/${date}`).then(d=>JSON.parse(d).events||[])),
   ]);
   const live = liveRes.status==='fulfilled' ? liveRes.value : [];
-  const todayEvts = todayRes.status==='fulfilled' ? todayRes.value : [];
-  const liveIds = new Set(live.map(e=>e.id));
-  const all = [...live, ...todayEvts.filter(e=>!liveIds.has(e.id))];
-  const FR = /top.?14|pro.?d2|six.?nations|autumn|test\s+match|france/i;
-  return all.filter(e=>FR.test(e.tournament?.name||e.tournament?.uniqueTournament?.name||'') || e.homeTeam?.national || e.awayTeam?.national);
+  const dayEvts = dayRes.flatMap(r=>r.status==='fulfilled'?r.value:[]);
+  const seen = new Set();
+  const all = [...live,...dayEvts].filter(e=>!seen.has(e.id)&&seen.add(e.id));
+  const FR = /top.?14|pro.?d2|six.?nations|autumn|test\s+match|france|ffr|lnr/i;
+  // trier : live en premier, puis terminés, puis à venir
+  return all
+    .filter(e=>FR.test(e.tournament?.name||e.tournament?.uniqueTournament?.name||'')||e.homeTeam?.national||e.awayTeam?.national)
+    .sort((a,b)=>{
+      const order=t=>t==='inprogress'?0:t==='finished'?1:2;
+      return order(a.status?.type)-order(b.status?.type)||(a.startTimestamp-b.startTimestamp);
+    });
 }
 
 function renderLiveScores(events){
@@ -208,7 +215,7 @@ function renderLiveScores(events){
     const score = (live||fin) ? `<b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b>${time?`<span class="rl-time"> ${time}</span>`:''}` : `<span class="rl-vs">${time}</span>`;
     return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(e.homeTeam?.name||'?')}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(e.awayTeam?.name||'?')}</span></div>`;
   }).join('');
-  const label = hasLive ? '🔴 En direct' : '📅 Aujourd\'hui';
+  const label = hasLive ? '🔴 En direct' : '📅 Journée en cours';
   return `<details class="rl-section${hasLive?' rl-live-section':''}" open><summary class="rl-sh">${label}</summary>${cards}</details>`;
 }
 
