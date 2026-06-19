@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '3.8';
+const APP_VERSION = '3.9';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
@@ -204,65 +204,78 @@ function renderRLResults(tables, label, count=2){
 
 /* --- TheSportsDB : résultats rugby jour J-1/J/J+1 --- */
 async function fetchSportsEvents(){
-  const API = 'https://www.thesportsdb.com/api/v1/json/3';
-  const RL_EXCL = /rugby\s+league|super\s+league|\bnrl\b|\bxiii\b|toulouse.*olympique|catalans\s+dragons|wigan|warrington|leeds/i;
-  async function tj(url,key='events'){ try{const d=await fetchJson(url);return d[key]||[];}catch(e){return [];} }
-
-  // Step 1: discover Top 14 / Pro D2 league IDs via search
-  const frLeagues = await tj(`${API}/search_all_leagues.php?s=Rugby&c=France`,'countrys');
-  const targets = frLeagues.filter(l=>/top.?14|pro.?d2/i.test(l.strLeague||''));
-
-  // Step 2: fetch by league ID (next + past events) — more reliable than day-based
-  const now = Date.now()/1000, WEEK = 7*24*3600;
-  let events = [];
-  if (targets.length){
-    const evts = await Promise.all(targets.flatMap(l=>[
-      tj(`${API}/eventsnextleague.php?id=${l.idLeague}`),
-      tj(`${API}/eventspastleague.php?id=${l.idLeague}`),
-    ]));
-    events = evts.flat().filter(e=>{
-      const ts = e.strTimestamp ? new Date(e.strTimestamp).getTime()/1000 : now;
-      return Math.abs(ts-now) < WEEK;
-    });
-  }
-
-  // Step 3: fallback — day-based search (yesterday/today/tomorrow)
-  if (!events.length){
-    const dates = [-1,0,1].map(i=>{const d=new Date();d.setDate(d.getDate()+i);return d.toISOString().split('T')[0];});
-    const dayEvts = await Promise.all(dates.map(async date=>{
-      const [ruU,ru] = await Promise.all([
-        tj(`${API}/eventsday.php?d=${date}&s=Rugby+Union`),
-        tj(`${API}/eventsday.php?d=${date}&s=Rugby`),
-      ]);
-      return [...ruU, ...ru.filter(e=>!RL_EXCL.test([e.strLeague,e.strHomeTeam,e.strAwayTeam].join('|')))];
-    }));
-    events = dayEvts.flat();
-  }
-
   const FR_TEAM   = /france|toulouse|clermont|bordeaux|racing|lyon|toulon|montpellier|castres|perpignan|pau|brive|colomiers/i;
   const FR_LEAGUE = /top.?14|pro.?d2|six.?nations|autumn|test|summer|france|ffr|lnr/i;
-  const seen = new Set();
-  const filtered = events
-    .filter(e=>e && !seen.has(e.idEvent) && seen.add(e.idEvent))
-    .filter(e=>FR_LEAGUE.test(e.strLeague||'')||FR_TEAM.test(e.strHomeTeam||'')||FR_TEAM.test(e.strAwayTeam||''))
-    .map(e=>{
-      const fin = (e.intHomeScore!==null && e.intHomeScore!=='') || /finished|terminé/i.test(e.strStatus||'');
-      const live = /progress|en cours|HT|mi.temps/i.test(e.strStatus||'');
-      const ts = e.strTimestamp ? new Date(e.strTimestamp).getTime()/1000 : 0;
-      return {
-        id: e.idEvent,
-        homeTeam:{name:e.strHomeTeam||'?'}, awayTeam:{name:e.strAwayTeam||'?'},
-        homeScore:{current:e.intHomeScore??''}, awayScore:{current:e.intAwayScore??''},
-        status:{type:live?'inprogress':fin?'finished':'notstarted', description:e.strStatus||''},
-        startTimestamp:ts, tournament:{name:e.strLeague||''},
-      };
-    })
-    .sort((a,b)=>{
-      const ord=t=>t==='inprogress'?0:t==='finished'?1:2;
-      return ord(a.status.type)-ord(b.status.type)||(a.startTimestamp-b.startTimestamp);
-    });
-  if (!filtered.length) return {events:[], error:'Aucun match rugby trouvé (TheSportsDB)'};
-  return {events:filtered, error:null};
+  async function tj(url,key='events'){ try{const d=await fetchJson(url);return d[key]||[];}catch(e){return [];} }
+
+  // --- Attempt 1: ESPN (covers Top 14 & Pro D2) ---
+  let events = [];
+  try {
+    // Generic rugby scoreboard — ESPN returns all rugby events for today
+    const espn = await fetchJson('https://site.api.espn.com/apis/site/v2/sports/rugby/scoreboard');
+    const raw = espn.events||[];
+    events = raw
+      .filter(e=>{
+        const comps = e.competitions?.[0]?.competitors||[];
+        const home = comps.find(c=>c.homeAway==='home')?.team?.name||'';
+        const away = comps.find(c=>c.homeAway==='away')?.team?.name||'';
+        const league = e.league?.name||e.season?.type?.name||'';
+        return FR_LEAGUE.test(league)||FR_TEAM.test(home)||FR_TEAM.test(away);
+      })
+      .map(e=>{
+        const comps = e.competitions?.[0]?.competitors||[];
+        const home = comps.find(c=>c.homeAway==='home');
+        const away = comps.find(c=>c.homeAway==='away');
+        const state = e.status?.type?.state||'';
+        const live = state==='in', fin = state==='post';
+        return {
+          id: e.id,
+          homeTeam:{name:home?.team?.name||'?'}, awayTeam:{name:away?.team?.name||'?'},
+          homeScore:{current:home?.score??''}, awayScore:{current:away?.score??''},
+          status:{type:live?'inprogress':fin?'finished':'notstarted', description:e.status?.type?.shortDetail||''},
+          startTimestamp:new Date(e.date||0).getTime()/1000,
+          tournament:{name:e.league?.name||''},
+        };
+      });
+  } catch(_){}
+
+  // --- Attempt 2: TheSportsDB by league ID ---
+  if (!events.length){
+    const TSDB = 'https://www.thesportsdb.com/api/v1/json/3';
+    const frLeagues = await tj(`${TSDB}/search_all_leagues.php?s=Rugby&c=France`,'countrys');
+    const targets = frLeagues.filter(l=>/top.?14|pro.?d2/i.test(l.strLeague||''));
+    if (targets.length){
+      const now = Date.now()/1000, WEEK = 7*24*3600;
+      const evts = await Promise.all(targets.flatMap(l=>[
+        tj(`${TSDB}/eventsnextleague.php?id=${l.idLeague}`),
+        tj(`${TSDB}/eventspastleague.php?id=${l.idLeague}`),
+      ]));
+      const tsdbEvts = evts.flat().filter(e=>{
+        const ts = e.strTimestamp ? new Date(e.strTimestamp).getTime()/1000 : now;
+        return Math.abs(ts-now) < WEEK;
+      });
+      const seen = new Set();
+      events = tsdbEvts
+        .filter(e=>e && !seen.has(e.idEvent) && seen.add(e.idEvent))
+        .filter(e=>FR_LEAGUE.test(e.strLeague||'')||FR_TEAM.test(e.strHomeTeam||'')||FR_TEAM.test(e.strAwayTeam||''))
+        .map(e=>{
+          const fin = (e.intHomeScore!==null && e.intHomeScore!=='') || /finished|terminé/i.test(e.strStatus||'');
+          const live = /progress|en cours|HT|mi.temps/i.test(e.strStatus||'');
+          return {
+            id:e.idEvent,
+            homeTeam:{name:e.strHomeTeam||'?'}, awayTeam:{name:e.strAwayTeam||'?'},
+            homeScore:{current:e.intHomeScore??''}, awayScore:{current:e.intAwayScore??''},
+            status:{type:live?'inprogress':fin?'finished':'notstarted', description:e.strStatus||''},
+            startTimestamp:e.strTimestamp ? new Date(e.strTimestamp).getTime()/1000 : 0,
+            tournament:{name:e.strLeague||''},
+          };
+        });
+    }
+  }
+
+  if (!events.length) return {events:[], error:'Scores live indisponibles — <a href="https://www.flashscore.fr/rugby/" target="_blank" style="color:var(--accent)">Flashscore Rugby</a>'};
+  events.sort((a,b)=>{const o=t=>t==='inprogress'?0:t==='finished'?1:2;return o(a.status.type)-o(b.status.type)||(a.startTimestamp-b.startTimestamp);});
+  return {events, error:null};
 }
 
 function renderLiveScores(events){
@@ -365,7 +378,7 @@ async function loadRugbyLive(){
   ]);
 
   let html = '';
-  if (sofa.error) html += `<details class="rl-section" open><summary class="rl-sh">📡 Scores live</summary><div class="rl-loading">⚠️ ${esc(sofa.error)}</div></details>`;
+  if (sofa.error) html += `<details class="rl-section" open><summary class="rl-sh">📡 Scores live</summary><div class="rl-loading">⚠️ ${sofa.error}</div></details>`;
   else if (sofa.events.length) html += renderLiveScores(sofa.events);
   if (r1){
     const tbls = parseWikitables(r1?.parse?.text?.['*']||'');
