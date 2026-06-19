@@ -148,7 +148,7 @@ function renderRLStandings(rows, label, maxRows=14, topN=6, botN=2){
     const cls = rank<=topN?'rl-top':botN>0&&rank>total-botN?'rl-bot':'';
     return `<tr class="${cls}"><td>${rank}</td><td class="rl-club">${esc(club)}</td><td>${r[2]||'-'}</td><td>${r[3]||'-'}</td><td>${r[4]||'-'}</td><td>${r[5]||'-'}</td><td><b>${parsePts(r)}</b></td></tr>`;
   }).join('');
-  return `<details class="rl-section" open>
+  return `<details class="rl-section">
     <summary class="rl-sh">🏆 ${esc(label)}</summary>
     <div class="rl-table-wrap"><table class="rl-table">
       <thead><tr><th>#</th><th>Équipe</th><th>J</th><th>V</th><th>N</th><th>D</th><th>Pts</th></tr></thead>
