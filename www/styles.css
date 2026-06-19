@@ -19,6 +19,8 @@ body{
 }
 #hero{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
 #hero-title{font-size:1.5em;font-weight:800;letter-spacing:.2px}
+#app-ver{font-size:.45em;font-weight:400;color:var(--muted);vertical-align:middle;letter-spacing:0}
+.app-version{text-align:center;color:var(--muted);font-size:.78em;margin-top:18px;padding-bottom:4px}
 #hero-sub{color:var(--muted);font-size:.9em}
 .hdr-btns{display:flex;gap:8px;flex:0 0 auto}
 #settings-btn,#lang-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:1.2em;cursor:pointer;padding:0}

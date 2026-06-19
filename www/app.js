@@ -1,6 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
+const APP_VERSION = '2.6';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
@@ -419,6 +420,7 @@ function renderSettings(){
         <button class="btn cat" data-act="add-cat">+ Catégorie</button>
       </div>
       <button class="btn reset" data-act="reset">↺ Restaurer les flux par défaut</button>
+      <div class="app-version">Flux RSS v${APP_VERSION}</div>
     </div>`;
 }
 
@@ -502,6 +504,8 @@ async function init(){
     }
     if (changed) saveConfig();
   }
+  const verEl = document.getElementById('app-ver');
+  if (verEl) verEl.textContent = 'v' + APP_VERSION;
   renderChips();
   const last = localStorage.getItem('lastCat');
   const startCat = DATA.categories.find(c=>c.id===last && !c.off) || firstEnabled();
