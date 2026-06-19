@@ -16,6 +16,8 @@ const MAX_SHOW = 60;       // articles affichés par catégorie
 const PROXY = 'https://api.allorigins.win/raw?url='; // repli CORS (PWA navigateur)
 
 const isNative = !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform());
+const isVR = /OculusBrowser/i.test(navigator.userAgent);
+if (isVR) document.body.classList.add('vr');
 
 /* ---------- état ---------- */
 let DATA = null;

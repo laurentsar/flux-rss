@@ -138,3 +138,30 @@ details.rl-section>.rl-table-wrap,details.rl-section>.rl-journee{margin-top:2px}
 .rl-vs{color:var(--muted);font-weight:400;font-size:.85rem}
 .rl-more-btn{display:block;width:100%;margin-top:6px;padding:8px;background:#1e293b;border:1px solid var(--line);color:var(--a,#16A34A);border-radius:8px;font-size:.85rem;font-weight:600;cursor:pointer;text-align:center}
 .rl-more-btn:active{transform:scale(.98)}
+
+/* ---- Mode VR (Meta Quest — OculusBrowser détecté) ---- */
+.vr{font-size:20px}
+.vr #topbar{padding-top:18px;padding-bottom:14px}
+.vr #hero-title{font-size:1.8em}
+.vr #hero-sub{font-size:1em}
+.vr #settings-btn,.vr #lang-btn{width:56px;height:56px;font-size:1.5em}
+.vr .chip{padding:14px 22px;font-size:1em;border-radius:999px}
+.vr #main{max-width:1200px;padding:20px 24px 120px}
+.vr details.card>summary{padding:20px 22px;gap:18px}
+.vr a.card{padding:20px 22px;gap:18px}
+.vr a.card .thumb,.vr details.card>summary .thumb{width:90px;height:90px;min-width:90px}
+.vr .ctitle b{font-size:1.15em}
+.vr .cbody{font-size:1.05em;padding:4px 22px 20px}
+.vr .dot{width:16px;height:16px}
+.vr #refresh{width:68px;height:68px;font-size:1.8em;bottom:calc(env(safe-area-inset-bottom) + 28px);right:28px}
+.vr .modal-card{border-radius:24px 24px 0 0}
+.vr .modal .iconbtn{width:52px;height:52px;font-size:1.1em}
+.vr .modal input{padding:12px 14px;font-size:1em}
+.vr .btn{padding:14px 18px;font-size:1em}
+.vr .rl-match{padding:12px 14px;border-radius:12px;gap:10px}
+.vr .rl-sb{font-size:1.2rem}
+.vr .rl-table td,.vr .rl-table th{padding:10px 12px}
+/* feedback ray-cast au survol */
+.vr .chip:hover,.vr details.card>summary:hover,.vr a.card:hover{outline:2px solid var(--accent,#F26522);outline-offset:2px}
+.vr .modal .iconbtn:hover:not([disabled]),.vr #settings-btn:hover,.vr #lang-btn:hover,.vr #refresh:hover{outline:2px solid var(--accent,#F26522);outline-offset:3px}
+.vr .rl-more-btn:hover{outline:2px solid var(--a,#16A34A);outline-offset:2px}
