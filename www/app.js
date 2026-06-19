@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '3.3';
+const APP_VERSION = '3.4';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
@@ -202,54 +202,39 @@ function renderRLResults(tables, label, count=2){
   return `<details class="rl-section rl-results-top14"><summary class="rl-sh">🏉 ${esc(label)}</summary>${matchesHtml}${moreBtn}</details>`;
 }
 
-/* --- ESPN Rugby : live + journée en cours --- */
-function parseESPNEvents(rawEvents){
-  const FR_TEAM = /france|toulouse|clermont|bordeaux|racing|lyon|toulon|montpellier|castres|perpignan|pau|brive|colomiers/i;
-  const FR_TOURN = /top.?14|pro.?d2|six.?nations|autumn|test|summer|france|ffr|lnr/i;
-  return rawEvents
-    .map(ev=>{
-      const comp = ev.competitions?.[0]; if (!comp) return null;
-      const home = comp.competitors?.find(c=>c.homeAway==='home');
-      const away = comp.competitors?.find(c=>c.homeAway==='away');
-      const st = comp.status?.type;
-      return {
-        id: ev.id,
-        homeTeam:{name: home?.team?.displayName||home?.team?.shortDisplayName||'?'},
-        awayTeam:{name: away?.team?.displayName||away?.team?.shortDisplayName||'?'},
-        homeScore:{current: home?.score??''},
-        awayScore:{current: away?.score??''},
-        status:{type: st?.state==='in'?'inprogress': st?.completed?'finished':'notstarted', description: comp.status?.displayClock||''},
-        startTimestamp: new Date(ev.date||0).getTime()/1000,
-        tournament:{name: ev.league?.name||ev.season?.type?.name||''},
-      };
-    })
-    .filter(e=>{
-      if (!e) return false;
-      const t=e.tournament.name, h=e.homeTeam.name, a=e.awayTeam.name;
-      return FR_TOURN.test(t)||FR_TEAM.test(h)||FR_TEAM.test(a);
-    });
-}
-
-async function fetchESPNEvents(){
+/* --- TheSportsDB : résultats rugby jour J-1/J/J+1 --- */
+async function fetchSportsEvents(){
   const now = new Date();
-  const dates = [-1,0,1].map(i=>{ const d=new Date(now); d.setDate(d.getDate()+i); return d.toISOString().split('T')[0].replace(/-/g,''); });
-  // essaie plusieurs slugs Top 14 ESPN + rugby international
-  const slugs = ['fra.top_14','fra.1','global.1'];
-  const urls = [
-    ...slugs.map(s=>`https://site.api.espn.com/apis/site/v2/sports/rugby-union/${s}/scoreboard`),
-    ...dates.map(d=>`https://site.api.espn.com/apis/site/v2/sports/rugby-union/scoreboard?dates=${d}`),
-  ];
-  const results = await Promise.allSettled(urls.map(u=>fetchJson(u).then(d=>d.events||[])));
+  const dates = [-1,0,1].map(i=>{ const d=new Date(now); d.setDate(d.getDate()+i); return d.toISOString().split('T')[0]; });
+  const results = await Promise.allSettled(
+    dates.map(date=>fetchJson(`https://www.thesportsdb.com/api/v1/json/3/eventsday.php?d=${date}&s=Rugby`).then(d=>d.events||[]))
+  );
   const anyOk = results.some(r=>r.status==='fulfilled');
   if (!anyOk) return {events:[], error: results[0].reason?.message||'API indisponible'};
+  const FR_TEAM   = /france|toulouse|clermont|bordeaux|racing|lyon|toulon|montpellier|castres|perpignan|pau|brive|colomiers/i;
+  const FR_LEAGUE = /top.?14|pro.?d2|six.?nations|autumn|test|summer|france|ffr|lnr/i;
   const seen = new Set();
-  const all = results.flatMap(r=>r.status==='fulfilled'?r.value:[]).filter(e=>!seen.has(e.id)&&seen.add(e.id));
-  const events = parseESPNEvents(all)
+  const events = results
+    .flatMap(r=>r.status==='fulfilled'?r.value:[])
+    .filter(e=>e && !seen.has(e.idEvent) && seen.add(e.idEvent))
+    .filter(e=>FR_LEAGUE.test(e.strLeague||'')||FR_TEAM.test(e.strHomeTeam||'')||FR_TEAM.test(e.strAwayTeam||''))
+    .map(e=>{
+      const fin = (e.intHomeScore!==null && e.intHomeScore!=='') || /finished|terminé/i.test(e.strStatus||'');
+      const live = /progress|en cours|HT|mi.temps/i.test(e.strStatus||'');
+      const ts = e.strTimestamp ? new Date(e.strTimestamp).getTime()/1000 : 0;
+      return {
+        id: e.idEvent,
+        homeTeam:{name:e.strHomeTeam||'?'}, awayTeam:{name:e.strAwayTeam||'?'},
+        homeScore:{current:e.intHomeScore??''}, awayScore:{current:e.intAwayScore??''},
+        status:{type:live?'inprogress':fin?'finished':'notstarted', description:e.strStatus||''},
+        startTimestamp:ts, tournament:{name:e.strLeague||''},
+      };
+    })
     .sort((a,b)=>{
-      const order=t=>t==='inprogress'?0:t==='finished'?1:2;
-      return order(a.status.type)-order(b.status.type)||(a.startTimestamp-b.startTimestamp);
+      const ord=t=>t==='inprogress'?0:t==='finished'?1:2;
+      return ord(a.status.type)-ord(b.status.type)||(a.startTimestamp-b.startTimestamp);
     });
-  return {events, error: null};
+  return {events, error:null};
 }
 
 function renderLiveScores(events){
@@ -346,7 +331,7 @@ async function loadRugbyLive(){
   const [r1, r2, sofa, franceXV, proD2] = await Promise.all([
     fetch(wikiUrl(top14,6)).then(r=>r.json()).catch(()=>null),
     fetch(wikiUrl(top14,7)).then(r=>r.json()).catch(()=>null),
-    fetchESPNEvents(),
+    fetchSportsEvents(),
     loadFranceXV(season),
     loadProD2Teams(season),
   ]);
