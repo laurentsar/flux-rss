@@ -1,10 +1,10 @@
 {
- "version": 15,
+ "version": 17,
  "generated": "2026-06-20",
  "categories": [
   {
    "id": "ve",
-   "label": "🚗 Tesla & Recharge",
+   "label": "🚗 Voiture électrique",
    "lang": "fr",
    "feeds": [
     {
@@ -66,6 +66,12 @@
     {
      "name": "Battery tech — Google News",
      "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=EV+battery+technology"
+    },
+    {
+     "name": "Out of Spec Reviews (video)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCVRZKu68-4tQIk7_3CJ_wKA",
+     "pod": true,
+     "kind": "video"
     }
    ]
   },
@@ -145,6 +151,18 @@
     {
      "name": "Tesla Supercharger — Google News",
      "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla+Supercharger"
+    },
+    {
+     "name": "Tesla Daily (video)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCgYkuL87rUwiBl7tqfN53Eg",
+     "pod": true,
+     "kind": "video"
+    },
+    {
+     "name": "Now You Know (video)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCnaDlsxg2S5u-zq0vrJN-BA",
+     "pod": true,
+     "kind": "video"
     }
    ]
   },
@@ -220,6 +238,12 @@
     {
      "name": "PlayStation VR — Google News",
      "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=PlayStation+VR"
+    },
+    {
+     "name": "Voices of VR",
+     "url": "https://voicesofvr.com/?feed=podcast",
+     "pod": true,
+     "kind": "audio"
     }
    ]
   },
@@ -311,6 +335,18 @@
     {
      "name": "Vulnerability — Google News",
      "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=security+vulnerability"
+    },
+    {
+     "name": "Darknet Diaries",
+     "url": "https://feeds.megaphone.fm/darknetdiaries",
+     "pod": true,
+     "kind": "audio"
+    },
+    {
+     "name": "Smashing Security",
+     "url": "https://www.smashingsecurity.com/rss",
+     "pod": true,
+     "kind": "audio"
     }
    ]
   },
@@ -396,6 +432,12 @@
     {
      "name": "ChatGPT — Google News",
      "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=ChatGPT"
+    },
+    {
+     "name": "Lex Fridman Podcast",
+     "url": "https://lexfridman.com/feed/podcast/",
+     "pod": true,
+     "kind": "audio"
     }
    ]
   },
@@ -469,6 +511,18 @@
     {
      "name": "URC — Google News",
      "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=United+Rugby+Championship"
+    },
+    {
+     "name": "World Rugby (video)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCE28rwYoaV7jvU6GVzdu_GQ",
+     "pod": true,
+     "kind": "video"
+    },
+    {
+     "name": "Six Nations (video)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCL5bAcVfbxSAs-UM5f5ncWg",
+     "pod": true,
+     "kind": "video"
     }
    ]
   },
@@ -554,6 +608,12 @@
     {
      "name": "Google Home — Google News",
      "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Google+Home"
+    },
+    {
+     "name": "Home Assistant Podcast",
+     "url": "https://hasspodcast.io/feed/podcast/",
+     "pod": true,
+     "kind": "audio"
     }
    ]
   },
@@ -629,6 +689,12 @@
     {
      "name": "Clean energy — Google News",
      "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=clean+energy"
+    },
+    {
+     "name": "Just Have a Think (video)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCRBwLPbXGsI2cJe9W1zfSjQ",
+     "pod": true,
+     "kind": "video"
     }
    ]
   },
@@ -781,6 +847,12 @@
     {
      "name": "Video games — Google News",
      "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=video+games"
+    },
+    {
+     "name": "Kinda Funny Gamescast",
+     "url": "https://feeds.megaphone.fm/kindafunnygamescast",
+     "pod": true,
+     "kind": "audio"
     }
    ]
   },
@@ -860,123 +932,14 @@
     {
      "name": "Cruise deals — Google News",
      "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=cruise+deals"
+    },
+    {
+     "name": "Zero To Travel",
+     "url": "https://feeds.megaphone.fm/zerototravel",
+     "pod": true,
+     "kind": "audio"
     }
    ]
-  },
-  {
-   "id": "podcasts",
-   "label": "🎙️ Podcasts",
-   "lang": "fr",
-   "feeds": [
-    {
-     "name": "La Science, CQFD (France Culture)",
-     "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml",
-     "pod": true,
-     "kind": "audio"
-    },
-    {
-     "name": "Les Pieds sur terre (France Culture)",
-     "url": "https://radiofrance-podcast.net/podcast09/rss_10078.xml",
-     "pod": true,
-     "kind": "audio"
-    },
-    {
-     "name": "NoLimitSecu",
-     "url": "https://www.nolimitsecu.fr/feed/",
-     "pod": true,
-     "kind": "audio"
-    },
-    {
-     "name": "Le Comptoir Sécu",
-     "url": "https://www.comptoirsecu.fr/feed/podcast/",
-     "pod": true,
-     "kind": "audio"
-    },
-    {
-     "name": "Trench Tech",
-     "url": "https://trench-tech.fr/feed/podcast/",
-     "pod": true,
-     "kind": "audio"
-    }
-   ],
-   "feeds_en": [
-    {
-     "name": "The Daily (NYT)",
-     "url": "https://feeds.simplecast.com/54nAGcIl"
-    },
-    {
-     "name": "NPR News Now",
-     "url": "https://feeds.npr.org/500005/podcast.xml"
-    },
-    {
-     "name": "Planet Money (NPR)",
-     "url": "https://feeds.npr.org/510289/podcast.xml"
-    },
-    {
-     "name": "Fresh Air (NPR)",
-     "url": "https://feeds.npr.org/381444908/podcast.xml"
-    },
-    {
-     "name": "TED Talks Daily",
-     "url": "https://feeds.feedburner.com/TedTalks_audio"
-    },
-    {
-     "name": "This American Life",
-     "url": "https://feeds.thisamericanlife.org/talpodcast"
-    },
-    {
-     "name": "Radiolab (WNYC)",
-     "url": "https://feeds.wnyc.org/radiolab"
-    },
-    {
-     "name": "99% Invisible",
-     "url": "https://feeds.simplecast.com/BqbsxVfO"
-    }
-   ]
-  },
-  {
-   "id": "youtube",
-   "label": "▶️ YouTube FR",
-   "lang": "fr",
-   "feeds": [
-    {
-     "name": "France Info",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCO6K_kkdP-lnSCiO3tPx7WA"
-    },
-    {
-     "name": "Brut",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCYti3yTb2QWvLQExSmxnE2A"
-    },
-    {
-     "name": "Konbini",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCHQda5vLxrH0Ff0I0kMq4zw"
-    },
-    {
-     "name": "Squeezie",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCWeg2Pkate69NFdBeuRFTAw"
-    },
-    {
-     "name": "Cyprien",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCyWqModMQlbIo8274Wh_ZsQ"
-    },
-    {
-     "name": "Inoxtag",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCL9aTJb0ur4sovxcppAopEw"
-    },
-    {
-     "name": "Amixem",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCgvqvBoSHB1ctlyyhoHrGwQ"
-    },
-    {
-     "name": "Tibo InShape",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCpWaR3gNAQGsX48cIlQC0qw"
-    },
-    {
-     "name": "Michou",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCo3i0nUzZjjLuM7VjAVz4zA"
-    }
-   ],
-   "feeds_en": []
   },
   {
    "id": "placement",
@@ -1038,6 +1001,18 @@
     {
      "name": "Real estate investing — Google News",
      "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=real+estate+investing"
+    },
+    {
+     "name": "The Plain Bagel (video)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCFCEuCsyWP0YkP3CZ3Mr01Q",
+     "pod": true,
+     "kind": "video"
+    },
+    {
+     "name": "Ben Felix (video)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCDXTQ8nWmx_EhZ2v-kp7QxA",
+     "pod": true,
+     "kind": "video"
     }
    ]
   }

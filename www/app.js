@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.1';
+const APP_VERSION = '4.2';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
@@ -697,6 +697,15 @@ async function init(){
           c[k].forEach(f=>{ if (RENAME[f.url]){ f.name=RENAME[f.url]; f.pod=true; f.kind='audio'; } });
         });
       });
+      changed=true;
+    }
+    // v16 : suppression catégories YouTube FR + Podcasts globale, renommage ve -> Voiture électrique (FR & EN)
+    if (prevVer < 16){
+      DATA.categories = DATA.categories.filter(c=> c.id!=='youtube' && c.id!=='podcasts');
+      const veCat = DATA.categories.find(c=>c.id==='ve');
+      if (veCat) veCat.label = '🚗 Voiture électrique';
+      const lc = localStorage.getItem('lastCat');
+      if (lc==='youtube' || lc==='podcasts') localStorage.removeItem('lastCat');
       changed=true;
     }
     // nouvelles catégories par défaut -> AJOUTÉES EN FIN (ne bouscule pas TON ordre)
