@@ -1,6 +1,6 @@
 {
- "version": 13,
- "generated": "2026-06-19",
+ "version": 15,
+ "generated": "2026-06-20",
  "categories": [
   {
    "id": "ve",
@@ -34,6 +34,12 @@
     {
      "name": "Beev",
      "url": "https://www.beev.co/blog/feed/"
+    },
+    {
+     "name": "Automobile Propre (vidéo)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCjsgbvUWf6_gYe5Fc4xpSBg",
+     "pod": true,
+     "kind": "video"
     }
    ],
    "feeds_en": [
@@ -99,6 +105,12 @@
     {
      "name": "Superchargeur — Google Actu",
      "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Superchargeur"
+    },
+    {
+     "name": "Automobile Propre (vidéo)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCjsgbvUWf6_gYe5Fc4xpSBg",
+     "pod": true,
+     "kind": "video"
     }
    ],
    "feeds_en": [
@@ -142,36 +154,38 @@
    "lang": "fr",
    "feeds": [
     {
-     "name": "Casques VR",
-     "url": "https://casques-vr.com/rss"
-    },
-    {
-     "name": "Les Numériques VR",
-     "url": "https://www.lesnumeriques.com/casque-realite-virtuelle/rss.xml"
-    },
-    {
      "name": "Réalité Virtuelle",
      "url": "https://www.realite-virtuelle.com/feed/"
     },
     {
+     "name": "Casque VR — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=casque%20VR"
+    },
+    {
      "name": "Réalité virtuelle — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9alit%C3%A9+virtuelle"
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9alit%C3%A9%20virtuelle"
     },
     {
      "name": "Meta Quest — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Meta+Quest"
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Meta%20Quest"
     },
     {
      "name": "Apple Vision Pro — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Apple+Vision+Pro"
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Apple%20Vision%20Pro"
     },
     {
      "name": "PlayStation VR — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=PlayStation+VR"
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=PlayStation%20VR"
     },
     {
      "name": "Réalité augmentée — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9alit%C3%A9+augment%C3%A9e"
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9alit%C3%A9%20augment%C3%A9e"
+    },
+    {
+     "name": "ETR — Réalité étendue (vidéo)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCAdEDlmlbFpWgRVSTQA3OmQ",
+     "pod": true,
+     "kind": "video"
     }
    ],
    "feeds_en": [
@@ -245,6 +259,24 @@
     {
      "name": "Korben",
      "url": "https://korben.info/feed"
+    },
+    {
+     "name": "NoLimitSecu",
+     "url": "https://www.nolimitsecu.fr/feed/",
+     "pod": true,
+     "kind": "audio"
+    },
+    {
+     "name": "Le Comptoir Sécu",
+     "url": "https://www.comptoirsecu.fr/feed/podcast/",
+     "pod": true,
+     "kind": "audio"
+    },
+    {
+     "name": "Micode (vidéo)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCYnvxJ-PKiGXo_tYXpWAC-w",
+     "pod": true,
+     "kind": "video"
     }
    ],
    "feeds_en": [
@@ -300,10 +332,6 @@
      "url": "https://www.numerama.com/tech/intelligence-artificielle/feed/"
     },
     {
-     "name": "Next — IA",
-     "url": "https://next.ink/category/ia-algorithmes/feed/"
-    },
-    {
      "name": "Presse-citron IA",
      "url": "https://www.presse-citron.net/tag/intelligence-artificielle/feed/"
     },
@@ -312,12 +340,28 @@
      "url": "https://www.01net.com/tag/intelligence-artificielle/feed/"
     },
     {
-     "name": "Siècle Digital",
-     "url": "https://siecledigital.fr/feed/"
+     "name": "Intelligence artificielle — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=intelligence%20artificielle"
     },
     {
-     "name": "LeBigData",
-     "url": "https://www.lebigdata.fr/feed"
+     "name": "ChatGPT — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=ChatGPT%20OpenAI"
+    },
+    {
+     "name": "IA générative — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=IA%20g%C3%A9n%C3%A9rative"
+    },
+    {
+     "name": "Trench Tech",
+     "url": "https://trench-tech.fr/feed/podcast/",
+     "pod": true,
+     "kind": "audio"
+    },
+    {
+     "name": "Underscore_ (vidéo)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCWedHS9qKebauVIK2J7383g",
+     "pod": true,
+     "kind": "video"
     }
    ],
    "feeds_en": [
@@ -438,14 +482,6 @@
      "url": "https://www.maison-et-domotique.com/feed/"
     },
     {
-     "name": "Journal du Geek",
-     "url": "https://www.journaldugeek.com/feed/"
-    },
-    {
-     "name": "Objet Connecté",
-     "url": "https://www.objetconnecte.com/feed/"
-    },
-    {
      "name": "Les Alexiens",
      "url": "https://www.lesalexiens.fr/feed/"
     },
@@ -454,16 +490,36 @@
      "url": "https://www.domotique-news.com/feed/"
     },
     {
-     "name": "Les Numériques Maison",
-     "url": "https://www.lesnumeriques.com/maison-connectee/rss.xml"
-    },
-    {
      "name": "Domotique — Google Actu",
      "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=domotique"
     },
     {
      "name": "Maison connectée — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=maison+connect%C3%A9e"
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=maison%20connect%C3%A9e"
+    },
+    {
+     "name": "Objet connecté — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=objet%20connect%C3%A9"
+    },
+    {
+     "name": "Home Assistant — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Home%20Assistant%20Matter"
+    },
+    {
+     "name": "Maison intelligente — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=maison%20intelligente%20domotique"
+    },
+    {
+     "name": "Les Alexiens (vidéo)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCR8D3c_6bGzJh3QyZr7p1WQ",
+     "pod": true,
+     "kind": "video"
+    },
+    {
+     "name": "Domadoo (vidéo)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCwgtuCmucgFRTxRwOLX0dng",
+     "pod": true,
+     "kind": "video"
     }
    ],
    "feeds_en": [
@@ -515,10 +571,6 @@
      "url": "https://www.pv-magazine.fr/feed/"
     },
     {
-     "name": "L'EnerGeek",
-     "url": "https://lenergeek.com/feed/"
-    },
-    {
      "name": "Connaissance des Énergies",
      "url": "https://www.connaissancedesenergies.org/rss.xml"
     },
@@ -537,6 +589,12 @@
     {
      "name": "Autoconsommation — Google Actu",
      "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=autoconsommation+solaire"
+    },
+    {
+     "name": "Le Réveilleur (vidéo)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC1EacOJoqsKaYxaDomTCTEQ",
+     "pod": true,
+     "kind": "video"
     }
    ],
    "feeds_en": [
@@ -592,10 +650,6 @@
      "url": "https://www.frandroid.com/bons-plans/feed"
     },
     {
-     "name": "Les Numériques — Bons plans",
-     "url": "https://www.lesnumeriques.com/bons-plans/rss.xml"
-    },
-    {
      "name": "01net — Bons plans",
      "url": "https://www.01net.com/tag/bon-plan/feed/"
     },
@@ -610,6 +664,10 @@
     {
      "name": "Google Actu — Promos",
      "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=promo"
+    },
+    {
+     "name": "Bons plans — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bon%20plan%20promo"
     }
    ],
    "feeds_en": [
@@ -683,6 +741,12 @@
     {
      "name": "Gameblog",
      "url": "https://www.gameblog.fr/feed/"
+    },
+    {
+     "name": "Jeuxvideo.com (vidéo)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC3_fHjAxelWsOll8RxWtUDg",
+     "pod": true,
+     "kind": "video"
     }
    ],
    "feeds_en": [
@@ -756,6 +820,12 @@
     {
      "name": "Croisière pas cher — Google Actu",
      "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=croisi%C3%A8re+pas+cher"
+    },
+    {
+     "name": "Bruno Maltor (vidéo)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCSdJiWi0tq9CAx1bizne6mA",
+     "pod": true,
+     "kind": "video"
     }
    ],
    "feeds_en": [
@@ -799,36 +869,34 @@
    "lang": "fr",
    "feeds": [
     {
-     "name": "Choses à Savoir",
-     "url": "https://www.chosesasavoir.com/feed/podcast/"
+     "name": "La Science, CQFD (France Culture)",
+     "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml",
+     "pod": true,
+     "kind": "audio"
     },
     {
-     "name": "La Story (Les Echos)",
-     "url": "https://rss.art19.com/la-story"
+     "name": "Les Pieds sur terre (France Culture)",
+     "url": "https://radiofrance-podcast.net/podcast09/rss_10078.xml",
+     "pod": true,
+     "kind": "audio"
     },
     {
-     "name": "L'Heure du Monde (Le Monde)",
-     "url": "https://rss.art19.com/l-heure-du-monde"
+     "name": "NoLimitSecu",
+     "url": "https://www.nolimitsecu.fr/feed/",
+     "pod": true,
+     "kind": "audio"
     },
     {
-     "name": "Affaires Sensibles (France Inter)",
-     "url": "https://radiofrance-podcast.net/podcast09/rss_14312.xml"
+     "name": "Le Comptoir Sécu",
+     "url": "https://www.comptoirsecu.fr/feed/podcast/",
+     "pod": true,
+     "kind": "audio"
     },
     {
-     "name": "Les Grosses Têtes (RTL)",
-     "url": "https://podcast.rtl.fr/grosses-tetes/rss"
-    },
-    {
-     "name": "Génération Do It Yourself",
-     "url": "https://rss.acast.com/generationdoityourself"
-    },
-    {
-     "name": "Transfert (Slate.fr)",
-     "url": "https://feeds.audiomeans.fr/feed/87476e72-eb04-4f8f-8cf9-51d7e6a8ec29.xml"
-    },
-    {
-     "name": "Le Masque et la Plume (France Inter)",
-     "url": "https://radiofrance-podcast.net/podcast09/rss_10078.xml"
+     "name": "Trench Tech",
+     "url": "https://trench-tech.fr/feed/podcast/",
+     "pod": true,
+     "kind": "audio"
     }
    ],
    "feeds_en": [
@@ -928,10 +996,6 @@
      "url": "https://www.cafedelabourse.com/feed/"
     },
     {
-     "name": "Boursorama — Actualités",
-     "url": "https://www.boursorama.com/bourse/actualites/rss/actualites"
-    },
-    {
      "name": "Bourse — Google Actu",
      "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bourse+investissement"
     },
@@ -946,6 +1010,16 @@
     {
      "name": "Assurance-vie — Google Actu",
      "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=assurance-vie+rendement"
+    },
+    {
+     "name": "Bourse — Boursorama (Google Actu)",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Boursorama%20bourse"
+    },
+    {
+     "name": "Heu?reka (vidéo)",
+     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC7sXGI8p8PvKosLWagkK9wQ",
+     "pod": true,
+     "kind": "video"
     }
    ],
    "feeds_en": [

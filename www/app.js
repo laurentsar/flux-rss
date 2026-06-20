@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.0';
+const APP_VERSION = '4.1';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
@@ -22,6 +22,7 @@ if (isVR) document.body.classList.add('vr');
 /* ---------- état ---------- */
 let DATA = null;
 let current = null;
+let currentTab = 'news';   // 'news' = articles · 'pods' = podcasts
 let RENDERED = [];
 let lang = localStorage.getItem('srcLang') || 'fr';
 let lastUpdated = '';
@@ -43,9 +44,18 @@ function feedsFor(cat){
   return (lang === 'en' && cat.feeds_en && cat.feeds_en.length) ? cat.feeds_en : (cat.feeds || []);
 }
 
+/* flux d'une catégorie pour l'onglet actif : articles (sans .pod) ou podcasts (.pod) */
+function feedsForTab(cat, tab){
+  const all = feedsFor(cat).filter(f => !f.off);
+  return (tab === 'pods') ? all.filter(f => f.pod) : all.filter(f => !f.pod);
+}
+function hasPods(cat){ return feedsFor(cat).some(f => f.pod && !f.off); }
+function hasNews(cat){ return feedsFor(cat).some(f => !f.pod && !f.off); }
+
 
 const $ = (s) => document.querySelector(s);
 const elCats = $('#cats'), elArticles = $('#articles'), elStatus = $('#status'), elRefresh = $('#refresh');
+const elSubtabs = $('#subtabs');
 const elRugbyLive = document.getElementById('rugby-live');
 
 /* ---------- réseau ---------- */
@@ -108,7 +118,19 @@ function extractImage(itemEl, html){
   return m ? m[1] : '';
 }
 
-function parseFeed(xmlText, source){
+function extractAudio(itemEl){
+  // enclosure / media:content de type audio
+  const cands = itemEl.getElementsByTagName('*');
+  for (const n of cands){
+    const t = n.tagName.toLowerCase();
+    const type = (n.getAttribute && (n.getAttribute('type')||n.getAttribute('medium'))) || '';
+    if ((t==='enclosure'||t==='media:content') && /audio|mpeg|mp3|m4a|ogg/i.test(type) && n.getAttribute('url'))
+      return n.getAttribute('url');
+  }
+  return '';
+}
+
+function parseFeed(xmlText, source, kind){
   let doc;
   try{ doc = new DOMParser().parseFromString(xmlText, 'text/xml'); }catch(e){ return []; }
   if (doc.querySelector('parsererror')) {
@@ -125,7 +147,8 @@ function parseFeed(xmlText, source){
     const rawSummary = txt(it,'description') || txt(it,'summary') || txt(it,'content') || '';
     const image = extractImage(it, rawSummary);
     const summary = rawSummary.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
-    if (title && link) out.push({ title, link, date, ts: Date.parse(date)||0, summary, image, source });
+    const audio = kind ? extractAudio(it) : '';
+    if (title && link) out.push({ title, link, date, ts: Date.parse(date)||0, summary, image, source, kind: kind||'news', audio });
   });
   return out.slice(0, PER_FEED);
 }
@@ -366,18 +389,31 @@ function hideRugbyLive(){
 }
 
 /* ---------- chargement catégorie ---------- */
-function cacheKey(id){ return 'feedcache:'+id; }
+function cacheKey(id, tab){ return 'feedcache:'+id+(tab==='pods'?':pod':''); }
+
+/* barre de sous-onglets Articles / Podcasts (affichée seulement si la catégorie a des podcasts) */
+function renderSubtabs(cat){
+  // sous-onglets seulement si la catégorie a À LA FOIS des articles et des podcasts
+  if (!(hasPods(cat) && hasNews(cat))){ elSubtabs.hidden=true; elSubtabs.innerHTML=''; return; }
+  elSubtabs.hidden=false;
+  elSubtabs.innerHTML =
+    `<button class="subtab${currentTab==='news'?' active':''}" data-tab="news">📰 Articles</button>`+
+    `<button class="subtab${currentTab==='pods'?' active':''}" data-tab="pods">🎙️ Podcasts</button>`;
+}
 
 async function loadCategory(cat, {silent=false}={}){
   current = cat.id;
+  if (!hasNews(cat) && hasPods(cat)) currentTab='pods';      // catégorie 100% podcasts (ex. Podcasts globale)
+  else if (currentTab==='pods' && !hasPods(cat)) currentTab='news';
   const [a,b] = CAT_COLORS[cat.id] || ['#F26522','#A8400F'];
   document.documentElement.style.setProperty('--a',a);
   document.documentElement.style.setProperty('--b',b);
   $('#hero-sub').textContent = cat.label;
-  if (cat.id==='rugby') loadRugbyLive(); else hideRugbyLive();
+  renderSubtabs(cat);
+  if (cat.id==='rugby' && currentTab==='news') loadRugbyLive(); else hideRugbyLive();
 
   // cache immédiat
-  const cached = JSON.parse(localStorage.getItem(cacheKey(cat.id)) || 'null');
+  const cached = JSON.parse(localStorage.getItem(cacheKey(cat.id, currentTab)) || 'null');
   if (cached && cached.items && cached.items.length){
     render(cached.items, cat.id, cached.ts);
   } else if (!silent){
@@ -386,13 +422,20 @@ async function loadCategory(cat, {silent=false}={}){
   }
 
   elRefresh.classList.add('spinning');
-  const activeFeeds = feedsFor(cat).filter(f => !f.off);
+  const tab = currentTab;
+  const activeFeeds = feedsForTab(cat, tab);
+  if (!activeFeeds.length){
+    elRefresh.classList.remove('spinning');
+    elArticles.innerHTML=''; RENDERED=[];
+    elStatus.textContent = tab==='pods' ? 'Aucun podcast dans cette catégorie pour l’instant.' : 'Aucune source.';
+    return;
+  }
   const results = await Promise.allSettled(activeFeeds.map(async (f) => {
     const xml = await httpGet(f.url);
-    return parseFeed(xml, f.name);
+    return parseFeed(xml, f.name, tab==='pods' ? (f.kind||'audio') : null);
   }));
   elRefresh.classList.remove('spinning');
-  if (current !== cat.id) return; // l'utilisateur a changé de catégorie
+  if (current !== cat.id || currentTab !== tab) return; // l'utilisateur a changé de catégorie/onglet
 
   let items = [];
   let ok = 0;
@@ -404,7 +447,7 @@ async function loadCategory(cat, {silent=false}={}){
 
   if (items.length){
     const ts = Date.now();
-    localStorage.setItem(cacheKey(cat.id), JSON.stringify({ts, items}));
+    localStorage.setItem(cacheKey(cat.id, tab), JSON.stringify({ts, items}));
     render(items, cat.id, ts);
   } else if (!cached){
     elStatus.textContent = isNative
@@ -423,9 +466,31 @@ function fmtDate(d){
 function esc(s){ return (s||'').replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 
 function setStatus(n){
+  if (currentTab==='pods'){ elStatus.textContent = `${n} épisode${n>1?'s':''} · ${lastUpdated}`; return; }
   elStatus.textContent = n ? `${n} articles · ${lastUpdated}` : `Tous les articles lus 🎉 · ${lastUpdated}`;
 }
+function renderPodcasts(items, ts){
+  RENDERED = items;
+  lastUpdated = ts ? `Mis à jour ${fmtDate(new Date(ts).toISOString())}` : '';
+  setStatus(items.length);
+  elArticles.innerHTML = items.map((it, i) => {
+    const accent = PALETTE[i % PALETTE.length];
+    const dateHtml = it.date ? `<span class="date">🕒 ${esc(fmtDate(it.date))}</span>` : '';
+    const src = `<span class="src">${esc(it.source)}</span>`;
+    const cover = it.image ? `<img class="pod-cover" src="${esc(it.image)}" referrerpolicy="no-referrer" loading="lazy" onerror="this.remove()">` : '';
+    const head = `<div class="pod-head">${cover}<span class="ctitle"><b>${esc(it.title)}</b>${dateHtml}${src}</span></div>`;
+    if (it.audio){
+      return `<div class="card pod" style="--accent:${accent}">${head}
+        <audio class="pod-audio" controls preload="none" src="${esc(it.audio)}"></audio></div>`;
+    }
+    // vidéo (YouTube) ou audio sans flux direct : vignette + ouverture externe
+    return `<a class="card pod podlink" style="--accent:${accent}" href="${esc(it.link)}" target="_blank" rel="noopener">
+      ${head}<span class="pod-play">▶︎ ${it.kind==='video'?'Voir la vidéo':'Écouter'}</span></a>`;
+  }).join('');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
 function render(items, catId, ts){
+  if (currentTab==='pods'){ renderPodcasts(items, ts); return; }
   items = items.filter(it => !READ.has(it.link));
   RENDERED = items;
   lastUpdated = ts ? `Mis à jour ${fmtDate(new Date(ts).toISOString())}` : '';
@@ -461,6 +526,7 @@ function renderChips(){
 function selectCat(id){
   const cat = DATA.categories.find(c => c.id === id);
   if (!cat) return;
+  currentTab = 'news';   // chaque changement de catégorie repart sur les articles
   localStorage.setItem('lastCat', id);
   elCats.querySelectorAll('.chip').forEach(b => {
     const on = b.dataset.id === id;
@@ -606,6 +672,33 @@ async function init(){
     DEFAULTS.categories.forEach(c=> defById[c.id]=c);
     // migration ponctuelle (transition vers v10) : retrait de l'ancien fourre-tout 'anglais'
     if (prevVer < 10) DATA.categories = DATA.categories.filter(c=> c.id!=='anglais');
+    // v15 : purge des flux morts/hors-sujet + correction des podcasts Radio France réassignés + ajout des podcasts
+    if (prevVer < 15){
+      const DEAD = new Set([
+        'https://www.journaldugeek.com/feed/','https://www.objetconnecte.com/feed/',
+        'https://www.lesnumeriques.com/maison-connectee/rss.xml','https://casques-vr.com/rss',
+        'https://www.lesnumeriques.com/casque-realite-virtuelle/rss.xml','https://www.lebigdata.fr/feed',
+        'https://next.ink/category/ia-algorithmes/feed/','https://siecledigital.fr/feed/',
+        'https://lenergeek.com/feed/','https://www.lesnumeriques.com/bons-plans/rss.xml',
+        'https://www.boursorama.com/bourse/actualites/rss/actualites',
+        'https://rss.art19.com/la-story','https://rss.art19.com/l-heure-du-monde',
+        'https://rss.acast.com/generationdoityourself','https://www.chosesasavoir.com/feed/podcast/',
+        'https://podcast.rtl.fr/grosses-tetes/rss',
+        'https://feeds.audiomeans.fr/feed/87476e72-eb04-4f8f-8cf9-51d7e6a8ec29.xml'
+      ]);
+      const RENAME = {
+        'https://radiofrance-podcast.net/podcast09/rss_14312.xml':'La Science, CQFD (France Culture)',
+        'https://radiofrance-podcast.net/podcast09/rss_10078.xml':'Les Pieds sur terre (France Culture)'
+      };
+      DATA.categories.forEach(c=>{
+        ['feeds','feeds_en'].forEach(k=>{
+          if (!Array.isArray(c[k])) return;
+          c[k] = c[k].filter(f=> !DEAD.has(f.url));
+          c[k].forEach(f=>{ if (RENAME[f.url]){ f.name=RENAME[f.url]; f.pod=true; f.kind='audio'; } });
+        });
+      });
+      changed=true;
+    }
     // nouvelles catégories par défaut -> AJOUTÉES EN FIN (ne bouscule pas TON ordre)
     const haveCats = new Set(DATA.categories.map(c=>c.id));
     DEFAULTS.categories.forEach(c=>{ if(!haveCats.has(c.id)){ DATA.categories.push(clone(c)); haveCats.add(c.id); changed=true; } });
@@ -617,7 +710,7 @@ async function init(){
       userArr = userArr || [];
       if (firstTrack) return userArr;
       const haveUrls = new Set(userArr.map(f=>f.url));
-      (defArr||[]).forEach(f=>{ if(!haveUrls.has(f.url) && !known.has(f.url)){ userArr.push({name:f.name,url:f.url}); haveUrls.add(f.url); changed=true; } });
+      (defArr||[]).forEach(f=>{ if(!haveUrls.has(f.url) && !known.has(f.url)){ const nf={name:f.name,url:f.url}; if(f.pod){ nf.pod=true; if(f.kind) nf.kind=f.kind; } userArr.push(nf); haveUrls.add(f.url); changed=true; } });
       return userArr;
     };
     DATA.categories.forEach(c=>{
@@ -649,8 +742,17 @@ async function init(){
     if (cat) loadCategory(cat);
   });
   // article ouvert (carte courte ou « Lire l'article ») = consulté -> masqué et mémorisé
+  elSubtabs.addEventListener('click', (e)=>{
+    const b = e.target.closest('.subtab'); if(!b) return;
+    const tab = b.dataset.tab;
+    if (tab === currentTab) return;
+    currentTab = tab;
+    elSubtabs.querySelectorAll('.subtab').forEach(x=>x.classList.toggle('active', x.dataset.tab===tab));
+    const cat = DATA.categories.find(c => c.id === current);
+    if (cat) loadCategory(cat);
+  });
   elArticles.addEventListener('click', (e)=>{
-    const a = e.target.closest('a.card, a.read'); if(!a) return;
+    const a = e.target.closest('a.card, a.read'); if(!a || a.classList.contains('podlink') || currentTab==='pods') return;
     markRead(a.getAttribute('href'));
     const card = a.closest('.card'); if (card) card.remove();
     RENDERED = RENDERED.filter(it => !READ.has(it.link));
