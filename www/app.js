@@ -279,7 +279,7 @@ function renderLiveScores(events){
     return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(e.homeTeam?.name||'?')}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(e.awayTeam?.name||'?')}</span></div>`;
   }).join('');
   const label = hasLive ? '🔴 En direct' : '📅 Journée en cours';
-  return `<details class="rl-section${hasLive?' rl-live-section':''}" open><summary class="rl-sh">${label}</summary>${cards}</details>`;
+  return `<details class="rl-section${hasLive?' rl-live-section':''}"${hasLive?' open':''}><summary class="rl-sh">${label}</summary>${cards}</details>`;
 }
 
 /* --- XV de France via Wikipedia --- */
