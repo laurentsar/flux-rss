@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.4';
+const APP_VERSION = '4.5';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
@@ -541,7 +541,15 @@ let DEFAULTS = null;
 const clone = (o) => JSON.parse(JSON.stringify(o));
 const slug = (s) => (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
   .replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'') || 'cat';
-function saveConfig(){ localStorage.setItem('fluxConfig', JSON.stringify(DATA)); }
+function saveConfig(){
+  const json = JSON.stringify(DATA);
+  localStorage.setItem('fluxConfig', json);
+  // Sauvegarde native (SharedPreferences) → incluse dans Google Auto Backup
+  if (isNative && window.Capacitor?.Plugins?.Preferences){
+    window.Capacitor.Plugins.Preferences.set({key:'fluxConfig', value:json});
+    window.Capacitor.Plugins.Preferences.set({key:'srcLang', value:lang});
+  }
+}
 function newCatId(base){ let id=slug(base), n=2; while(DATA.categories.some(c=>c.id===id)){ id=slug(base)+'_'+n; n++; } return id; }
 
 function firstEnabled(){ return DATA.categories.find(c=>!c.off); }
@@ -662,7 +670,26 @@ function onSettingsClick(e){
 async function init(){
   DEFAULTS = await (await fetch('data/feeds.json')).json();
   const saved = localStorage.getItem('fluxConfig');
-  DATA = saved ? JSON.parse(saved) : clone(DEFAULTS);
+  let restoredFromBackup = false;
+  if (saved){
+    DATA = JSON.parse(saved);
+  } else if (isNative && window.Capacitor?.Plugins?.Preferences){
+    // Pas de config localStorage → vérifier si un backup natif existe (Auto Backup Google)
+    try {
+      const {value: cfgVal} = await window.Capacitor.Plugins.Preferences.get({key:'fluxConfig'});
+      const {value: langVal} = await window.Capacitor.Plugins.Preferences.get({key:'srcLang'});
+      if (cfgVal){
+        DATA = JSON.parse(cfgVal);
+        if (langVal){ lang = langVal; localStorage.setItem('srcLang', lang); }
+        localStorage.setItem('fluxConfig', cfgVal); // recopie dans localStorage
+        restoredFromBackup = true;
+      } else {
+        DATA = clone(DEFAULTS);
+      }
+    } catch(e){ DATA = clone(DEFAULTS); }
+  } else {
+    DATA = clone(DEFAULTS);
+  }
   // migration : ajoute les catégories par défaut absentes + resync des flux par défaut
   // (noms harmonisés, 8/catégorie) en préservant tes ajouts perso et tes désactivations.
   if (saved){
@@ -760,6 +787,15 @@ async function init(){
   const startCat = DATA.categories.find(c=>c.id===last && !c.off) || firstEnabled();
   if (startCat) selectCat(startCat.id);
   else elStatus.textContent='Toutes les catégories sont désactivées (⚙️).';
+  if (restoredFromBackup){
+    setTimeout(()=>{
+      const t = document.createElement('div');
+      t.textContent = '✅ Réglages restaurés depuis le backup';
+      Object.assign(t.style,{position:'fixed',bottom:'calc(env(safe-area-inset-bottom)+80px)',left:'50%',transform:'translateX(-50%)',background:'#16a34a',color:'#fff',padding:'10px 18px',borderRadius:'12px',fontWeight:'700',fontSize:'.9em',zIndex:'999',boxShadow:'0 4px 14px rgba(0,0,0,.4)',opacity:'1',transition:'opacity 1s'});
+      document.body.appendChild(t);
+      setTimeout(()=>{ t.style.opacity='0'; setTimeout(()=>t.remove(),1000); }, 3000);
+    }, 800);
+  }
   elRefresh.addEventListener('click', () => {
     const cat = DATA.categories.find(c => c.id === current);
     if (cat) loadCategory(cat);
