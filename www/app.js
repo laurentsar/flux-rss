@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.3';
+const APP_VERSION = '4.4';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
@@ -604,6 +604,12 @@ function renderSettings(){
         <button class="btn cat" data-act="add-cat">+ Catégorie</button>
       </div>
       <button class="btn reset" data-act="reset">↺ Restaurer les flux par défaut</button>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <button class="btn" style="flex:1;background:#1e293b;border:1px solid var(--line);color:#86efac" data-act="export-cfg">⬇ Exporter mes réglages</button>
+        <label class="btn" style="flex:1;background:#1e293b;border:1px solid var(--line);color:#93c5fd;text-align:center;cursor:pointer">
+          ⬆ Importer un backup<input type="file" accept=".json" style="display:none" id="import-cfg-file">
+        </label>
+      </div>
       <div class="app-version">Flux RSS v${APP_VERSION}</div>
     </div>`;
 }
@@ -640,6 +646,14 @@ function onSettingsClick(e){
   else if (act==='feed-up'){ const a=catFeeds(ci); if(fi>0){ const tmp=a[fi-1]; a[fi-1]=a[fi]; a[fi]=tmp; } }
   else if (act==='feed-down'){ const a=catFeeds(ci); if(fi<a.length-1){ const tmp=a[fi+1]; a[fi+1]=a[fi]; a[fi]=tmp; } }
   else if (act==='reset'){ if(!confirm('Restaurer les catégories et flux d\'origine ?')) return; DATA=clone(DEFAULTS); }
+  else if (act==='export-cfg'){
+    const blob = new Blob([JSON.stringify({fluxConfig:DATA, srcLang:lang}, null, 2)], {type:'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `fluxrss-backup-${new Date().toISOString().slice(0,10)}.json`;
+    a.click(); URL.revokeObjectURL(a.href);
+    return;
+  }
   else return;
   saveConfig(); renderSettings();
 }
@@ -780,6 +794,24 @@ async function init(){
   $('#settings-btn').addEventListener('click', openSettings);
   elCard.addEventListener('click', onSettingsClick);
   elCard.addEventListener('change', onSettingsChange);
+  elModal.addEventListener('change', (e)=>{
+    if (e.target.id !== 'import-cfg-file') return;
+    const file = e.target.files[0]; if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      try {
+        const bk = JSON.parse(ev.target.result);
+        if (!bk.fluxConfig) { alert('Fichier invalide — pas de fluxConfig trouvé.'); return; }
+        if (!confirm('Importer ce backup ? Tes réglages actuels seront remplacés.')) return;
+        DATA = bk.fluxConfig;
+        if (bk.srcLang) { lang = bk.srcLang; localStorage.setItem('srcLang', lang); }
+        saveConfig();
+        renderSettings();
+        alert('Réglages importés avec succès !');
+      } catch(err) { alert('Erreur lors de la lecture du fichier : ' + err.message); }
+    };
+    reader.readAsText(file);
+  });
   elModal.addEventListener('click', (e)=>{ if(e.target===elModal) closeSettings(); });
   elRugbyLive.addEventListener('click', e=>{
     if (!e.target.classList.contains('rl-more-btn')) return;
