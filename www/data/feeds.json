@@ -1,5 +1,5 @@
 {
- "version": 18,
+ "version": 19,
  "generated": "2026-06-22",
  "categories": [
   {
@@ -1071,20 +1071,20 @@
      "url": "https://korben.info/feed"
     },
     {
-     "name": "Hackster.io",
-     "url": "https://www.hackster.io/rss"
+     "name": "MCHobby",
+     "url": "https://www.mchobby.be/blog/feed/"
     },
     {
-     "name": "Hackaday",
-     "url": "https://hackaday.com/blog/feed/"
+     "name": "Projets DIY — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=maker+DIY+%C3%A9lectronique+Arduino+Raspberry+Pi"
     },
     {
-     "name": "Arduino Blog",
-     "url": "https://blog.arduino.cc/feed/"
+     "name": "Impression 3D — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=impression+3D+imprimante+3D"
     },
     {
-     "name": "Maker — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=maker+DIY+%C3%A9lectronique+Arduino+Raspberry"
+     "name": "Électronique — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=%C3%A9lectronique+DIY+open+source+hardware"
     }
    ],
    "feeds_en": [
