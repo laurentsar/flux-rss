@@ -1,6 +1,6 @@
 {
- "version": 17,
- "generated": "2026-06-20",
+ "version": 18,
+ "generated": "2026-06-22",
  "categories": [
   {
    "id": "ve",
@@ -1013,6 +1013,104 @@
      "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCDXTQ8nWmx_EhZ2v-kp7QxA",
      "pod": true,
      "kind": "video"
+    }
+   ]
+  },
+  {
+   "id": "bricolage",
+   "label": "🔨 Bricolage",
+   "lang": "fr",
+   "feeds": [
+    {
+     "name": "Système D",
+     "url": "https://www.systemed.fr/feed/"
+    },
+    {
+     "name": "Côté Maison",
+     "url": "https://www.cotemaison.fr/feed/"
+    },
+    {
+     "name": "Batirama",
+     "url": "https://www.batirama.com/rss.xml"
+    },
+    {
+     "name": "Bricolage — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bricolage+r%C3%A9novation+maison"
+    },
+    {
+     "name": "Rénovation — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9novation+travaux+maison"
+    },
+    {
+     "name": "Jardinage & extérieur — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=jardinage+am%C3%A9nagement+ext%C3%A9rieur"
+    }
+   ],
+   "feeds_en": [
+    {
+     "name": "Instructables",
+     "url": "https://www.instructables.com/feed/"
+    },
+    {
+     "name": "DIY Network — Google News",
+     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=DIY+home+improvement"
+    }
+   ]
+  },
+  {
+   "id": "byd",
+   "label": "🛠️ Bring Your Device",
+   "lang": "fr",
+   "feeds": [
+    {
+     "name": "Framboise314",
+     "url": "https://www.framboise314.fr/feed/"
+    },
+    {
+     "name": "Korben",
+     "url": "https://korben.info/feed"
+    },
+    {
+     "name": "Hackster.io",
+     "url": "https://www.hackster.io/rss"
+    },
+    {
+     "name": "Hackaday",
+     "url": "https://hackaday.com/blog/feed/"
+    },
+    {
+     "name": "Arduino Blog",
+     "url": "https://blog.arduino.cc/feed/"
+    },
+    {
+     "name": "Maker — Google Actu",
+     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=maker+DIY+%C3%A9lectronique+Arduino+Raspberry"
+    }
+   ],
+   "feeds_en": [
+    {
+     "name": "Make Magazine",
+     "url": "https://makezine.com/feed/"
+    },
+    {
+     "name": "Hackaday",
+     "url": "https://hackaday.com/blog/feed/"
+    },
+    {
+     "name": "Hackster.io",
+     "url": "https://www.hackster.io/rss"
+    },
+    {
+     "name": "Arduino Blog",
+     "url": "https://blog.arduino.cc/feed/"
+    },
+    {
+     "name": "Instructables",
+     "url": "https://www.instructables.com/feed/"
+    },
+    {
+     "name": "Adafruit Blog",
+     "url": "https://blog.adafruit.com/feed/"
     }
    ]
   }
