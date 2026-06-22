@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.7';
+const APP_VERSION = '4.8';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
@@ -349,9 +349,15 @@ function renderProD2Teams(matches){
   return `<details class="rl-section" open><summary class="rl-sh">🏉 Brive & Colomiers — Pro D2</summary>${cards}</details>`;
 }
 
+let _rugbyLiveHtml = '', _rugbyLiveTs = 0;
 async function loadRugbyLive(){
   if (!elRugbyLive) return;
   elRugbyLive.hidden = false;
+  // Réutilise le cache mémoire si < 3 minutes
+  if (_rugbyLiveHtml && Date.now() - _rugbyLiveTs < 3 * 60 * 1000){
+    elRugbyLive.innerHTML = _rugbyLiveHtml;
+    return;
+  }
   elRugbyLive.innerHTML = '<div class="rl-loading"><span class="spinner"></span>Scores & classements…</div>';
   const season = rugbySeason();
   const top14 = `Championnat de France de rugby à XV ${season}`;
@@ -383,6 +389,8 @@ async function loadRugbyLive(){
   if (franceXV?.length) html += renderFranceXV(franceXV);
   if (proD2.length) html += renderProD2Teams(proD2);
   elRugbyLive.innerHTML = html || '<div class="rl-loading">Données non disponibles.</div>';
+  _rugbyLiveHtml = elRugbyLive.innerHTML;
+  _rugbyLiveTs = Date.now();
 }
 
 function hideRugbyLive(){
@@ -488,7 +496,7 @@ function renderPodcasts(items, ts){
     return `<a class="card pod podlink" style="--accent:${accent}" href="${esc(it.link)}" target="_blank" rel="noopener">
       ${head}<span class="pod-play">▶︎ ${it.kind==='video'?'Voir la vidéo':'Écouter'}</span></a>`;
   }).join('');
-  window.scrollTo({top:0, behavior:'smooth'});
+  window.scrollTo(0, 0);
 }
 function render(items, catId, ts){
   if (currentTab==='pods'){ renderPodcasts(items, ts); return; }
@@ -513,7 +521,7 @@ function render(items, catId, ts){
       <span class="dot"></span>${thumb}<span class="ctitle"><b>${esc(it.title)}</b>${dateHtml}${src}</span></a>`;
   }).join('');
   elArticles.innerHTML = html;
-  window.scrollTo({top:0, behavior:'smooth'});
+  window.scrollTo(0, 0);
 }
 
 /* ---------- catégories ---------- */
@@ -542,13 +550,18 @@ let DEFAULTS = null;
 const clone = (o) => JSON.parse(JSON.stringify(o));
 const slug = (s) => (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
   .replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'') || 'cat';
+let _savePrefTimer = null;
 function saveConfig(){
   const json = JSON.stringify(DATA);
   localStorage.setItem('fluxConfig', json);
   // Sauvegarde native (SharedPreferences) → incluse dans Google Auto Backup
+  // Debouncé 1 s pour éviter une écriture disque par frappe dans les settings
   if (isNative && window.Capacitor?.Plugins?.Preferences){
-    window.Capacitor.Plugins.Preferences.set({key:'fluxConfig', value:json});
-    window.Capacitor.Plugins.Preferences.set({key:'srcLang', value:lang});
+    clearTimeout(_savePrefTimer);
+    _savePrefTimer = setTimeout(()=>{
+      window.Capacitor.Plugins.Preferences.set({key:'fluxConfig', value:json});
+      window.Capacitor.Plugins.Preferences.set({key:'srcLang', value:lang});
+    }, 1000);
   }
 }
 function newCatId(base){ let id=slug(base), n=2; while(DATA.categories.some(c=>c.id===id)){ id=slug(base)+'_'+n; n++; } return id; }
@@ -857,5 +870,9 @@ async function init(){
     if (el) el.outerHTML = renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown);
   });
   if ('serviceWorker' in navigator){ try{ navigator.serviceWorker.register('sw.js'); }catch(e){} }
+  // Pause toutes les animations CSS quand l'écran est éteint / app en arrière-plan
+  document.addEventListener('visibilitychange', ()=>{
+    document.body.classList.toggle('page-hidden', document.hidden);
+  });
 }
 init();
