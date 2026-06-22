@@ -13,8 +13,7 @@ body{
 #topbar{
   position:sticky;top:0;z-index:10;
   padding:calc(env(safe-area-inset-top) + 12px) 14px 10px;
-  background:linear-gradient(180deg,#0b1220,rgba(15,23,42,0.96));
-  backdrop-filter:blur(8px);
+  background:#0b1220;
   border-bottom:1px solid var(--line);
 }
 #hero{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
@@ -156,6 +155,18 @@ details.rl-section>.rl-table-wrap,details.rl-section>.rl-journee{margin-top:2px}
 @keyframes livepulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
 .rl-live-section>summary.rl-sh{color:#ef4444;background:color-mix(in srgb,#ef4444 14%,transparent)}
 .rl-time{font-size:.75rem;color:var(--muted);font-weight:400;margin-left:4px}
+
+/* ---- Économie batterie : pause animations quand l'écran est éteint ---- */
+.page-hidden .rl-live-dot,
+.page-hidden .spinner,
+.page-hidden #refresh.spinning { animation-play-state:paused }
+
+/* Respecte le paramètre système "réduire les animations" */
+@media (prefers-reduced-motion: reduce) {
+  .spinner, #refresh.spinning, .rl-live-dot { animation:none }
+  details.rl-section>summary.rl-sh::after,
+  .chip, .subtab { transition:none }
+}
 
 /* ---- Mode VR (Meta Quest — OculusBrowser détecté) ---- */
 .vr{font-size:20px}
