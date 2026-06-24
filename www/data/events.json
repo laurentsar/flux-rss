@@ -1,0 +1,236 @@
+{
+  "version": 1,
+  "events": [
+    {
+      "id": "prime-day-2026",
+      "title": "Amazon Prime Day 2026",
+      "desc": "48h de promotions exclusives pour les membres Prime",
+      "date": "2026-07-08",
+      "dateEnd": "2026-07-09",
+      "cats": ["deals_fr"],
+      "url": "https://www.amazon.fr",
+      "loc": "En ligne",
+      "approx": true
+    },
+    {
+      "id": "blackhat-usa-2026",
+      "title": "Black Hat USA 2026",
+      "desc": "Conférence internationale de cybersécurité — recherche, outils et vulnérabilités",
+      "date": "2026-08-01",
+      "dateEnd": "2026-08-06",
+      "cats": ["cyber"],
+      "url": "https://www.blackhat.com",
+      "loc": "Las Vegas, USA",
+      "approx": true
+    },
+    {
+      "id": "defcon-34",
+      "title": "DEF CON 34",
+      "desc": "La plus grande convention de hackers au monde",
+      "date": "2026-08-06",
+      "dateEnd": "2026-08-09",
+      "cats": ["cyber"],
+      "url": "https://defcon.org",
+      "loc": "Las Vegas, USA",
+      "approx": true
+    },
+    {
+      "id": "top14-saison-2026-2027",
+      "title": "Top 14 — début de saison 2026-2027",
+      "desc": "Reprise du championnat de France de rugby à XV",
+      "date": "2026-08-29",
+      "cats": ["rugby"],
+      "url": "https://www.lnr.fr",
+      "loc": "France",
+      "approx": true
+    },
+    {
+      "id": "gamescom-2026",
+      "title": "Gamescom 2026",
+      "desc": "Le plus grand salon du jeu vidéo en Europe",
+      "date": "2026-08-19",
+      "dateEnd": "2026-08-23",
+      "cats": ["jeux"],
+      "url": "https://www.gamescom.de",
+      "loc": "Cologne, Allemagne",
+      "approx": true
+    },
+    {
+      "id": "solar-power-intl-2026",
+      "title": "Solar Power International 2026",
+      "desc": "Conférence & salon mondial de l'énergie solaire",
+      "date": "2026-09-14",
+      "dateEnd": "2026-09-17",
+      "cats": ["solaire"],
+      "loc": "Las Vegas, USA",
+      "approx": true
+    },
+    {
+      "id": "ifa-berlin-2026",
+      "title": "IFA Berlin 2026",
+      "desc": "Salon international de la tech et de l'électronique grand public",
+      "date": "2026-09-04",
+      "dateEnd": "2026-09-08",
+      "cats": ["domotique", "cyber", "ia"],
+      "url": "https://www.ifa-berlin.com",
+      "loc": "Berlin, Allemagne",
+      "approx": true
+    },
+    {
+      "id": "french-days-automne-2026",
+      "title": "French Days automne 2026",
+      "desc": "Soldes e-commerce des marques françaises — 5 jours de promos",
+      "date": "2026-09-23",
+      "dateEnd": "2026-09-28",
+      "cats": ["deals_fr"],
+      "loc": "En ligne",
+      "approx": true
+    },
+    {
+      "id": "mondial-auto-paris-2026",
+      "title": "Mondial de l'Automobile Paris 2026",
+      "desc": "Le grand salon automobile biennial — nombreuses premières mondiales EV",
+      "date": "2026-10-14",
+      "dateEnd": "2026-10-20",
+      "cats": ["ve", "tesla"],
+      "loc": "Paris, Villepinte",
+      "approx": true
+    },
+    {
+      "id": "maker-faire-paris-2026",
+      "title": "Maker Faire Paris 2026",
+      "desc": "Festival du DIY, de l'électronique et de la créativité",
+      "date": "2026-10-17",
+      "dateEnd": "2026-10-18",
+      "cats": ["bricolage", "byd"],
+      "loc": "Paris, France",
+      "approx": true
+    },
+    {
+      "id": "european-solar-week-2026",
+      "title": "European Solar Week 2026",
+      "desc": "Semaine européenne de promotion de l'énergie solaire photovoltaïque",
+      "date": "2026-10-26",
+      "dateEnd": "2026-10-31",
+      "cats": ["solaire"],
+      "loc": "Europe",
+      "approx": true
+    },
+    {
+      "id": "paris-games-week-2026",
+      "title": "Paris Games Week 2026",
+      "desc": "Le plus grand salon du jeu vidéo en France",
+      "date": "2026-10-28",
+      "dateEnd": "2026-11-01",
+      "cats": ["jeux"],
+      "url": "https://parisgamesweek.com",
+      "loc": "Paris, Villepinte",
+      "approx": true
+    },
+    {
+      "id": "la-auto-show-2026",
+      "title": "Los Angeles Auto Show 2026",
+      "desc": "Salon automobile — nombreuses premières mondiales sur les véhicules électriques",
+      "date": "2026-11-20",
+      "dateEnd": "2026-11-29",
+      "cats": ["ve", "tesla"],
+      "url": "https://laautoshow.com",
+      "loc": "Los Angeles, USA",
+      "approx": true
+    },
+    {
+      "id": "black-friday-2026",
+      "title": "Black Friday 2026",
+      "desc": "La plus grande journée de promotions de l'année",
+      "date": "2026-11-27",
+      "cats": ["deals_fr"],
+      "url": "https://www.amazon.fr",
+      "loc": "En ligne",
+      "approx": false
+    },
+    {
+      "id": "cyber-monday-2026",
+      "title": "Cyber Monday 2026",
+      "desc": "Prolongement du Black Friday axé high-tech",
+      "date": "2026-11-30",
+      "cats": ["deals_fr", "cyber"],
+      "url": "https://www.amazon.fr",
+      "loc": "En ligne",
+      "approx": false
+    },
+    {
+      "id": "game-awards-2026",
+      "title": "The Game Awards 2026",
+      "desc": "La cérémonie de remise des prix du jeu vidéo de l'année",
+      "date": "2026-12-10",
+      "cats": ["jeux"],
+      "url": "https://thegameawards.com",
+      "loc": "Los Angeles, USA",
+      "approx": true
+    },
+    {
+      "id": "ces-2027",
+      "title": "CES Las Vegas 2027",
+      "desc": "Le plus grand salon mondial de la tech, de l'IA et de la mobilité électrique",
+      "date": "2027-01-05",
+      "dateEnd": "2027-01-08",
+      "cats": ["ia", "domotique", "ve", "cyber"],
+      "url": "https://www.ces.tech",
+      "loc": "Las Vegas, USA",
+      "approx": true
+    },
+    {
+      "id": "six-nations-2027",
+      "title": "Tournoi des 6 Nations 2027",
+      "desc": "Début du tournoi annuel de rugby des meilleures nations européennes",
+      "date": "2027-02-06",
+      "dateEnd": "2027-03-20",
+      "cats": ["rugby"],
+      "url": "https://www.sixnationsrugby.com",
+      "loc": "Europe",
+      "approx": true
+    },
+    {
+      "id": "mwc-2027",
+      "title": "MWC Barcelona 2027",
+      "desc": "Mobile World Congress — salon mondial du mobile, de l'IA et de la connectivité",
+      "date": "2027-02-22",
+      "dateEnd": "2027-02-25",
+      "cats": ["cyber", "ia", "domotique"],
+      "url": "https://www.mwcbarcelona.com",
+      "loc": "Barcelone, Espagne",
+      "approx": true
+    },
+    {
+      "id": "google-io-2027",
+      "title": "Google I/O 2027",
+      "desc": "Conférence annuelle des développeurs Google — IA, Android, Gemini",
+      "date": "2027-05-11",
+      "cats": ["ia", "cyber"],
+      "url": "https://io.google",
+      "loc": "Mountain View, USA",
+      "approx": true
+    },
+    {
+      "id": "vivatech-2027",
+      "title": "VivaTech 2027",
+      "desc": "Le grand salon européen de l'innovation et de la tech",
+      "date": "2027-05-13",
+      "dateEnd": "2027-05-16",
+      "cats": ["ia", "ve", "domotique", "cyber"],
+      "url": "https://vivatechnology.com",
+      "loc": "Paris, France",
+      "approx": true
+    },
+    {
+      "id": "wwdc-2027",
+      "title": "WWDC 2027 (Apple)",
+      "desc": "Conférence annuelle des développeurs Apple — nouvelles plateformes, IA et Vision Pro",
+      "date": "2027-06-07",
+      "cats": ["ia", "cyber"],
+      "url": "https://developer.apple.com",
+      "loc": "Cupertino, USA",
+      "approx": true
+    }
+  ]
+}
