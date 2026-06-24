@@ -156,6 +156,21 @@ details.rl-section>.rl-table-wrap,details.rl-section>.rl-journee{margin-top:2px}
 .rl-live-section>summary.rl-sh{color:#ef4444;background:color-mix(in srgb,#ef4444 14%,transparent)}
 .rl-time{font-size:.75rem;color:var(--muted);font-weight:400;margin-left:4px}
 
+/* ---- Agenda ---- */
+.ag-month{margin-bottom:20px}
+.ag-month-lbl{font-weight:800;font-size:.85em;color:var(--muted);text-transform:capitalize;letter-spacing:.5px;padding:4px 0 8px;border-bottom:1px solid var(--line);margin-bottom:10px}
+.ag-card{display:flex;gap:12px;padding:12px 14px;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent,#6366F1);border-radius:12px;margin-bottom:8px;text-decoration:none;color:var(--text);box-shadow:0 2px 6px rgba(0,0,0,.18)}
+a.ag-card:active{opacity:.8}
+.ag-date{min-width:76px;font-size:.82em;font-weight:700;color:var(--accent,#6366F1);padding-top:2px;line-height:1.4}
+.ag-time{font-size:.85em;color:var(--muted);font-weight:400;margin-left:3px}
+.ag-approx{display:block;font-size:.72em;color:var(--muted);font-weight:400;margin-top:2px}
+.ag-body{flex:1;min-width:0}
+.ag-body b{display:block;font-weight:700;font-size:.97em;margin-bottom:3px;line-height:1.35}
+.ag-desc{font-size:.82em;color:#c7ccd6;margin-bottom:3px}
+.ag-loc{font-size:.78em;color:var(--muted);margin-bottom:4px}
+.ag-badges{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.ag-badge{font-size:.72em;font-weight:700;padding:2px 8px;border-radius:999px}
+
 /* ---- Économie batterie : pause animations quand l'écran est éteint ---- */
 .page-hidden .rl-live-dot,
 .page-hidden .spinner,

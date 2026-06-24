@@ -1,7 +1,7 @@
-const CACHE = 'flux-rss-v16';
+const CACHE = 'flux-rss-v17';
 const SHELL = [
   './', './index.html', './styles.css', './app.js',
-  './data/feeds.json', './manifest.webmanifest',
+  './data/feeds.json', './data/events.json', './manifest.webmanifest',
   './img/icon-192.png', './img/icon-512.png',
 ];
 self.addEventListener('install', (e) => {

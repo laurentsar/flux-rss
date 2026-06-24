@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.8';
+const APP_VERSION = '4.9';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
@@ -11,6 +11,13 @@ const CAT_COLORS = {
   podcasts:['#7C3AED','#3B0764'], tesla:['#CC0000','#7A0000'],
   placement:['#D97706','#78350F'],
   bricolage:['#B45309','#6B2E00'], byd:['#0F766E','#083A38'],
+  agenda:['#6366F1','#312E81'],
+};
+const CAT_LABELS = {
+  ve:'🚗 VE', rugby:'🏉 Rugby', cyber:'🔒 Cyber', ia:'🤖 IA',
+  domotique:'🏠 Domotique', solaire:'☀️ Solaire', deals_fr:'💸 Deals',
+  jeux:'🎮 Jeux', voyage:'✈️ Voyage', tesla:'⚡ Tesla',
+  placement:'💰 Placement', bricolage:'🔨 Bricolage', byd:'🛠️ BYD',
 };
 const PER_FEED = 12;       // articles gardés par flux
 const MAX_SHOW = 60;       // articles affichés par catégorie
@@ -524,24 +531,154 @@ function render(items, catId, ts){
   window.scrollTo(0, 0);
 }
 
+/* ---------- Agenda ---------- */
+let _agendaJson = null;
+let _upcomingRugby = null, _upcomingRugbyTs = 0;
+
+async function loadAgendaEvents(){
+  if (!_agendaJson){
+    try{ _agendaJson = await (await fetch('data/events.json')).json(); }
+    catch(e){ _agendaJson = {events:[]}; }
+  }
+  const now = Date.now() - 86400*1000; // hier
+  const horizon = Date.now() + 365*86400*1000;
+  return (_agendaJson.events||[])
+    .filter(ev=>{ const d=Date.parse(ev.date); return d>=now && d<=horizon; })
+    .sort((a,b)=>Date.parse(a.date)-Date.parse(b.date));
+}
+
+async function fetchUpcomingMatches(){
+  if (_upcomingRugby && Date.now()-_upcomingRugbyTs < 5*60*1000) return _upcomingRugby;
+  const ESPN_IDS = ['270559','180659','271937'];
+  const ESPN_BASE = 'https://site.api.espn.com/apis/site/v2/sports/rugby';
+  const results = await Promise.allSettled(
+    ESPN_IDS.map(id=>fetchJson(`${ESPN_BASE}/${id}/scoreboard`).then(d=>d.events||[]))
+  );
+  const seen = new Set();
+  const matches = results.flatMap(r=>r.status==='fulfilled'?r.value:[])
+    .filter(e=>{ const st=e.competitions?.[0]?.status?.type?.state||''; return st==='pre'; })
+    .filter(e=>!seen.has(e.id)&&seen.add(e.id))
+    .map(e=>{
+      const comps=e.competitions?.[0]?.competitors||[];
+      const home=comps.find(c=>c.homeAway==='home'), away=comps.find(c=>c.homeAway==='away');
+      const d=new Date(e.date||0);
+      const timeStr=d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+      return {
+        id:'espn-'+e.id,
+        title:`${home?.team?.displayName||home?.team?.name||'?'} — ${away?.team?.displayName||away?.team?.name||'?'}`,
+        desc:(e.league?.name||'Rugby')+(e.competitions?.[0]?.venue?.fullName?` · ${e.competitions[0].venue.fullName}`:''),
+        date:d.toISOString().slice(0,10),
+        time:timeStr,
+        cats:['rugby'],
+        approx:false,
+      };
+    });
+  _upcomingRugby = matches;
+  _upcomingRugbyTs = Date.now();
+  return matches;
+}
+
+function fmtEventDate(date, dateEnd){
+  const d=new Date(Date.parse(date));
+  const d1=d.toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
+  if (!dateEnd||dateEnd===date) return d1;
+  const d2=new Date(Date.parse(dateEnd));
+  if (d.getMonth()===d2.getMonth()&&d.getFullYear()===d2.getFullYear())
+    return `${d.getDate()}–${d2.toLocaleDateString('fr-FR',{day:'numeric',month:'short'})}`;
+  return `${d1} – ${d2.toLocaleDateString('fr-FR',{day:'numeric',month:'short'})}`;
+}
+
+function renderAgenda(staticEvents, matchEvents){
+  const all=[...staticEvents,...matchEvents]
+    .sort((a,b)=>Date.parse(a.date)-Date.parse(b.date));
+  if (!all.length) return '<div class="rl-loading">Aucun événement à venir.</div>';
+
+  const byMonth={};
+  all.forEach(ev=>{
+    const d=new Date(Date.parse(ev.date));
+    const key=`${d.getFullYear()}-${d.getMonth()}`;
+    if (!byMonth[key]) byMonth[key]={
+      label:d.toLocaleDateString('fr-FR',{month:'long',year:'numeric'}),
+      events:[]
+    };
+    byMonth[key].events.push(ev);
+  });
+
+  return Object.values(byMonth).map(month=>{
+    const cards=month.events.map(ev=>{
+      const cats=ev.cats||[];
+      const color=(CAT_COLORS[cats[0]]||['#6366F1'])[0];
+      const dateLabel=fmtEventDate(ev.date,ev.dateEnd);
+      const timeHtml=ev.time?`<span class="ag-time"> ${esc(ev.time)}</span>`:'';
+      const approxHtml=ev.approx?'<span class="ag-approx">~approx.</span>':'';
+      const locHtml=ev.loc?`<div class="ag-loc">📍 ${esc(ev.loc)}</div>`:'';
+      const badges=cats.map(cid=>{
+        const lbl=CAT_LABELS[cid]||cid;
+        const c=(CAT_COLORS[cid]||['#6366F1'])[0];
+        return `<span class="ag-badge" style="background:${c}22;color:${c}">${esc(lbl)}</span>`;
+      }).join('');
+      const Tag=ev.url?'a':'div';
+      const linkAttr=ev.url?` href="${esc(ev.url)}" target="_blank" rel="noopener"`:' ';
+      return `<${Tag} class="ag-card"${linkAttr}style="--accent:${color}">
+        <div class="ag-date">${esc(dateLabel)}${timeHtml}${approxHtml}</div>
+        <div class="ag-body">
+          <b>${esc(ev.title)}</b>
+          ${ev.desc?`<div class="ag-desc">${esc(ev.desc)}</div>`:''}
+          ${locHtml}
+          <div class="ag-badges">${badges}</div>
+        </div>
+      </${Tag}>`;
+    }).join('');
+    return `<div class="ag-month"><div class="ag-month-lbl">${esc(month.label)}</div>${cards}</div>`;
+  }).join('');
+}
+
+async function loadAgenda(){
+  hideRugbyLive();
+  elSubtabs.hidden=true; elSubtabs.innerHTML='';
+  elArticles.innerHTML='<div class="rl-loading"><span class="spinner"></span>Chargement de l\'agenda…</div>';
+  elStatus.textContent='';
+  const [staticEvents, matchEvents] = await Promise.all([
+    loadAgendaEvents(),
+    fetchUpcomingMatches().catch(()=>[]),
+  ]);
+  const total=staticEvents.length+matchEvents.length;
+  elArticles.innerHTML=renderAgenda(staticEvents,matchEvents);
+  elStatus.textContent=`${total} événement${total>1?'s':''} à venir`;
+}
+
 /* ---------- catégories ---------- */
 function renderChips(){
-  elCats.innerHTML = DATA.categories.filter(c => !c.off).map(c =>
-    `<button class="chip" data-id="${c.id}">${esc(c.label)}</button>`).join('');
-  elCats.querySelectorAll('.chip').forEach(btn => {
-    btn.addEventListener('click', () => selectCat(btn.dataset.id));
+  const [agA,agB]=CAT_COLORS.agenda;
+  const agOn=current==='agenda';
+  const agStyle=agOn?`style="--a:${agA};--b:${agB}"`:'';
+  elCats.innerHTML=
+    `<button class="chip${agOn?' active':''}" data-id="agenda" ${agStyle}>📅 Agenda</button>`+
+    DATA.categories.filter(c=>!c.off).map(c=>
+      `<button class="chip" data-id="${c.id}">${esc(c.label)}</button>`).join('');
+  elCats.querySelectorAll('.chip').forEach(btn=>{
+    btn.addEventListener('click', ()=>selectCat(btn.dataset.id));
   });
 }
 function selectCat(id){
-  const cat = DATA.categories.find(c => c.id === id);
-  if (!cat) return;
-  currentTab = 'news';   // chaque changement de catégorie repart sur les articles
   localStorage.setItem('lastCat', id);
-  elCats.querySelectorAll('.chip').forEach(b => {
-    const on = b.dataset.id === id;
+  elCats.querySelectorAll('.chip').forEach(b=>{
+    const on=b.dataset.id===id;
     b.classList.toggle('active', on);
     if (on){ const [a,b2]=CAT_COLORS[id]||['#F26522','#A8400F']; b.style.setProperty('--a',a); b.style.setProperty('--b',b2); }
   });
+  if (id==='agenda'){
+    current='agenda'; currentTab='news';
+    const [a,b]=CAT_COLORS.agenda;
+    document.documentElement.style.setProperty('--a',a);
+    document.documentElement.style.setProperty('--b',b);
+    $('#hero-sub').textContent='📅 Agenda';
+    loadAgenda();
+    return;
+  }
+  const cat = DATA.categories.find(c => c.id === id);
+  if (!cat) return;
+  currentTab = 'news';
   loadCategory(cat);
 }
 
@@ -570,6 +707,7 @@ function firstEnabled(){ return DATA.categories.find(c=>!c.off); }
 function refreshAfterConfig(){
   if (!DATA.categories.length){ DATA.categories=clone(DEFAULTS.categories); saveConfig(); }
   renderChips();
+  if (current==='agenda'){ selectCat('agenda'); return; }
   let cat = DATA.categories.find(c=>c.id===current && !c.off) || firstEnabled();
   if (cat){ selectCat(cat.id); }
   else { elCats.innerHTML=''; elArticles.innerHTML=''; elStatus.textContent='Toutes les catégories sont désactivées (⚙️).'; }
@@ -798,9 +936,13 @@ async function init(){
   if (verEl) verEl.textContent = 'v' + APP_VERSION;
   renderChips();
   const last = localStorage.getItem('lastCat');
-  const startCat = DATA.categories.find(c=>c.id===last && !c.off) || firstEnabled();
-  if (startCat) selectCat(startCat.id);
-  else elStatus.textContent='Toutes les catégories sont désactivées (⚙️).';
+  if (last==='agenda'){
+    selectCat('agenda');
+  } else {
+    const startCat = DATA.categories.find(c=>c.id===last && !c.off) || firstEnabled();
+    if (startCat) selectCat(startCat.id);
+    else elStatus.textContent='Toutes les catégories sont désactivées (⚙️).';
+  }
   if (restoredFromBackup){
     setTimeout(()=>{
       const t = document.createElement('div');
@@ -811,6 +953,7 @@ async function init(){
     }, 800);
   }
   elRefresh.addEventListener('click', () => {
+    if (current==='agenda'){ _upcomingRugby=null; loadAgenda(); return; }
     const cat = DATA.categories.find(c => c.id === current);
     if (cat) loadCategory(cat);
   });
