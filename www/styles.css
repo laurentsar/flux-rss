@@ -170,6 +170,7 @@ a.ag-card:active{opacity:.8}
 .ag-loc{font-size:.78em;color:var(--muted);margin-bottom:4px}
 .ag-badges{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
 .ag-badge{font-size:.72em;font-weight:700;padding:2px 8px;border-radius:999px}
+.ag-badge-local{background:#16a34a22!important;color:#16a34a!important}
 
 /* ---- Économie batterie : pause animations quand l'écran est éteint ---- */
 .page-hidden .rl-live-dot,

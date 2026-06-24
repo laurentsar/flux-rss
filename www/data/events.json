@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "events": [
     {
       "id": "prime-day-2026",
@@ -11,6 +11,17 @@
       "url": "https://www.amazon.fr",
       "loc": "En ligne",
       "approx": true
+    },
+    {
+      "id": "festival-carcassonne-2026",
+      "title": "Festival de Carcassonne 2026",
+      "desc": "Concerts, spectacles et danse dans la cité médiévale — programmation éclectique chaque été",
+      "date": "2026-07-03",
+      "dateEnd": "2026-07-22",
+      "cats": ["voyage"],
+      "loc": "Carcassonne — 90 km de Toulouse",
+      "approx": true,
+      "region": "Toulouse"
     },
     {
       "id": "blackhat-usa-2026",
@@ -87,6 +98,17 @@
       "approx": true
     },
     {
+      "id": "jazz-sur-son-31-2026",
+      "title": "Jazz sur son 31",
+      "desc": "Festival de jazz de Haute-Garonne — concerts gratuits et payants dans toute l'agglomération toulousaine",
+      "date": "2026-10-23",
+      "dateEnd": "2026-10-25",
+      "cats": ["voyage"],
+      "loc": "Toulouse et agglomération",
+      "approx": true,
+      "region": "Toulouse"
+    },
+    {
       "id": "mondial-auto-paris-2026",
       "title": "Mondial de l'Automobile Paris 2026",
       "desc": "Le grand salon automobile biennial — nombreuses premières mondiales EV",
@@ -126,6 +148,40 @@
       "url": "https://parisgamesweek.com",
       "loc": "Paris, Villepinte",
       "approx": true
+    },
+    {
+      "id": "salon-habitat-toulouse-2026",
+      "title": "Salon Habitat & Déco de Toulouse 2026",
+      "desc": "Salon de la maison, de la rénovation et de la décoration intérieure",
+      "date": "2026-11-06",
+      "dateEnd": "2026-11-09",
+      "cats": ["bricolage", "domotique"],
+      "loc": "Toulouse, MEETT Parc des Expositions",
+      "approx": true,
+      "region": "Toulouse"
+    },
+    {
+      "id": "capitole-du-libre-2026",
+      "title": "Capitole du Libre 2026",
+      "desc": "Conférence open source et logiciel libre — ateliers, conférences et contributions tech",
+      "date": "2026-11-21",
+      "dateEnd": "2026-11-22",
+      "cats": ["cyber", "byd"],
+      "url": "https://capitoledulibre.org",
+      "loc": "Toulouse, Université Paul Sabatier",
+      "approx": true,
+      "region": "Toulouse"
+    },
+    {
+      "id": "toulouse-game-show-2026",
+      "title": "Toulouse Game Show 2026",
+      "desc": "Convention jeux vidéo, manga et culture geek — compétitions, cosplay et exposants",
+      "date": "2026-11-28",
+      "dateEnd": "2026-11-29",
+      "cats": ["jeux"],
+      "loc": "Toulouse, Parc des Expositions",
+      "approx": true,
+      "region": "Toulouse"
     },
     {
       "id": "la-auto-show-2026",
@@ -221,6 +277,17 @@
       "url": "https://vivatechnology.com",
       "loc": "Paris, France",
       "approx": true
+    },
+    {
+      "id": "rio-loco-2027",
+      "title": "Rio Loco 2027",
+      "desc": "Festival de musiques du monde sur la Prairie des Filtres — scènes gratuites et payantes",
+      "date": "2027-06-11",
+      "dateEnd": "2027-06-14",
+      "cats": ["voyage"],
+      "loc": "Toulouse, Prairie des Filtres",
+      "approx": true,
+      "region": "Toulouse"
     },
     {
       "id": "wwdc-2027",
