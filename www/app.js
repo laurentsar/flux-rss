@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.9';
+const APP_VERSION = '4.10';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
@@ -617,6 +617,7 @@ function renderAgenda(staticEvents, matchEvents){
         const c=(CAT_COLORS[cid]||['#6366F1'])[0];
         return `<span class="ag-badge" style="background:${c}22;color:${c}">${esc(lbl)}</span>`;
       }).join('');
+      const regionBadge=ev.region?`<span class="ag-badge ag-badge-local">📍 Local</span>`:'';
       const Tag=ev.url?'a':'div';
       const linkAttr=ev.url?` href="${esc(ev.url)}" target="_blank" rel="noopener"`:' ';
       return `<${Tag} class="ag-card"${linkAttr}style="--accent:${color}">
@@ -625,7 +626,7 @@ function renderAgenda(staticEvents, matchEvents){
           <b>${esc(ev.title)}</b>
           ${ev.desc?`<div class="ag-desc">${esc(ev.desc)}</div>`:''}
           ${locHtml}
-          <div class="ag-badges">${badges}</div>
+          <div class="ag-badges">${badges}${regionBadge}</div>
         </div>
       </${Tag}>`;
     }).join('');
