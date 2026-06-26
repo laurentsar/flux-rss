@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.10';
+const APP_VERSION = '4.11';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
@@ -11,6 +11,7 @@ const CAT_COLORS = {
   podcasts:['#7C3AED','#3B0764'], tesla:['#CC0000','#7A0000'],
   placement:['#D97706','#78350F'],
   bricolage:['#B45309','#6B2E00'], byd:['#0F766E','#083A38'],
+  football:['#1E3A8A','#0C1E4A'],
   agenda:['#6366F1','#312E81'],
 };
 const CAT_LABELS = {
@@ -18,6 +19,7 @@ const CAT_LABELS = {
   domotique:'🏠 Domotique', solaire:'☀️ Solaire', deals_fr:'💸 Deals',
   jeux:'🎮 Jeux', voyage:'✈️ Voyage', tesla:'⚡ Tesla',
   placement:'💰 Placement', bricolage:'🔨 Bricolage', byd:'🛠️ BYD',
+  football:'⚽ Football',
 };
 const PER_FEED = 12;       // articles gardés par flux
 const MAX_SHOW = 60;       // articles affichés par catégorie
@@ -233,8 +235,9 @@ function renderRLResults(tables, label, count=2){
   return `<details class="rl-section rl-results-top14"><summary class="rl-sh">🏉 ${esc(label)}</summary>${matchesHtml}${moreBtn}</details>`;
 }
 
-/* --- TheSportsDB : résultats rugby jour J-1/J/J+1 --- */
+/* --- ESPN : résultats rugby (live + récents + à venir) --- */
 async function fetchSportsEvents(){
+  if (_espnCache && Date.now()-_espnCacheTs < 3*60*1000) return _espnCache;
   // ESPN league IDs (confirmed via API exploration):
   // 270559 = French Top 14 | 180659 = Six Nations | 271937 = Champions Cup
   const ESPN_IDS = ['270559','180659','271937'];
@@ -264,12 +267,17 @@ async function fetchSportsEvents(){
   );
   const events = espnResults.flatMap(r=>r.status==='fulfilled'?r.value:[]);
 
-  if (!events.length) return {events:[], error:'Scores live indisponibles — <a href="https://www.flashscore.fr/rugby/" target="_blank" style="color:var(--accent)">Flashscore Rugby</a>'};
+  if (!events.length){
+    const r={events:[], error:'Scores live indisponibles — <a href="https://www.flashscore.fr/rugby/" target="_blank" style="color:var(--accent)">Flashscore Rugby</a>'};
+    _espnCache=r; _espnCacheTs=Date.now(); return r;
+  }
   // dedup + sort: live first, then finished, then upcoming
   const seen = new Set();
   const deduped = events.filter(e=>!seen.has(e.id)&&seen.add(e.id));
   deduped.sort((a,b)=>{const o=t=>t==='inprogress'?0:t==='finished'?1:2;return o(a.status.type)-o(b.status.type)||(a.startTimestamp-b.startTimestamp);});
-  return {events:deduped, error:null};
+  const r={events:deduped, error:null};
+  _espnCache=r; _espnCacheTs=Date.now();
+  return r;
 }
 
 function renderLiveScores(events){
@@ -356,6 +364,8 @@ function renderProD2Teams(matches){
   return `<details class="rl-section" open><summary class="rl-sh">🏉 Brive & Colomiers — Pro D2</summary>${cards}</details>`;
 }
 
+let _espnCache = null, _espnCacheTs = 0;
+let _frSocCache = null, _frSocCacheTs = 0;
 let _rugbyLiveHtml = '', _rugbyLiveTs = 0;
 async function loadRugbyLive(){
   if (!elRugbyLive) return;
@@ -531,6 +541,68 @@ function render(items, catId, ts){
   window.scrollTo(0, 0);
 }
 
+function isFranceMatch(e){
+  const h=(e.homeTeam?.name||'').toLowerCase(), a=(e.awayTeam?.name||'').toLowerCase();
+  return h.includes('france')||a.includes('france');
+}
+
+async function fetchFranceSoccer(){
+  if (_frSocCache && Date.now()-_frSocCacheTs<5*60*1000) return _frSocCache;
+  const SOCCER_IDS=['fifa.world','uefa.nations'];
+  const BASE='https://site.api.espn.com/apis/site/v2/sports/soccer';
+  function isFR(comp){ const n=(comp?.team?.name||'').toLowerCase(),a=(comp?.team?.abbreviation||'').toUpperCase(); return n.includes('france')||a==='FRA'; }
+  const results=await Promise.allSettled(
+    SOCCER_IDS.map(id=>fetchJson(`${BASE}/${id}/scoreboard`).then(d=>d.events||[]))
+  );
+  const seen=new Set();
+  const events=results.flatMap(r=>r.status==='fulfilled'?r.value:[])
+    .filter(e=>(e.competitions?.[0]?.competitors||[]).some(c=>isFR(c)))
+    .filter(e=>!seen.has(e.id)&&seen.add(e.id))
+    .map(e=>{
+      const comps=e.competitions?.[0]?.competitors||[];
+      const home=comps.find(c=>c.homeAway==='home'),away=comps.find(c=>c.homeAway==='away');
+      const state=e.competitions?.[0]?.status?.type?.state||'';
+      const detail=e.competitions?.[0]?.status?.type?.shortDetail||'';
+      const live=state==='in',fin=state==='post';
+      const d=new Date(e.date||0);
+      return {
+        id:'espn-soc-'+e.id,
+        homeTeam:{name:home?.team?.displayName||home?.team?.name||'?'},
+        awayTeam:{name:away?.team?.displayName||away?.team?.name||'?'},
+        homeScore:{current:home?.score??''},
+        awayScore:{current:away?.score??''},
+        status:{type:live?'inprogress':fin?'finished':'notstarted',description:detail},
+        startTimestamp:d.getTime()/1000,
+        date:d.toISOString().slice(0,10),
+        tournament:{name:e.league?.name||'Football'},
+        sport:'football',
+      };
+    });
+  _frSocCache=events; _frSocCacheTs=Date.now();
+  return events;
+}
+
+function renderFranceLive(rugbyLive, soccerEvents){
+  const all=[
+    ...rugbyLive.map(e=>({...e,sport:'rugby'})),
+    ...soccerEvents.filter(e=>e.status?.type==='inprogress'||e.status?.type==='finished'),
+  ];
+  if(!all.length) return '';
+  const hasLive=all.some(e=>e.status?.type==='inprogress');
+  const cards=all.map(e=>{
+    const st=e.status?.type,live=st==='inprogress',fin=st==='finished';
+    const hs=e.homeScore?.current??'',as_=e.awayScore?.current??'';
+    const hw=fin&&parseInt(hs)>parseInt(as_),aw=fin&&parseInt(as_)>parseInt(hs);
+    const badge=live?'<span class="rl-live-dot"></span>':'';
+    const time=live?(e.status?.description||'⏱'):'';
+    const score=(live||fin)?`<b>${esc(hs)}</b><span class="rl-vs">–</span><b>${esc(as_)}</b>${time?`<span class="rl-time"> ${esc(time)}</span>`:''}`:''
+    const icon=e.sport==='football'?'⚽ ':'🏉 ';
+    return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${icon}${esc(e.homeTeam?.name||'?')}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(e.awayTeam?.name||'?')}</span></div>`;
+  }).join('');
+  const label=hasLive?'🔴 🇫🇷 France en direct':'🇫🇷 France — Résultats récents';
+  return `<details class="rl-section${hasLive?' rl-live-section':''}" open><summary class="rl-sh">${label}</summary>${cards}</details>`;
+}
+
 /* ---------- Agenda ---------- */
 let _agendaJson = null;
 let _upcomingRugby = null, _upcomingRugbyTs = 0;
@@ -639,12 +711,30 @@ async function loadAgenda(){
   elSubtabs.hidden=true; elSubtabs.innerHTML='';
   elArticles.innerHTML='<div class="rl-loading"><span class="spinner"></span>Chargement de l\'agenda…</div>';
   elStatus.textContent='';
-  const [staticEvents, matchEvents] = await Promise.all([
+  const [staticEvents, matchEvents, frSoccer, espnRugby] = await Promise.all([
     loadAgendaEvents(),
     fetchUpcomingMatches().catch(()=>[]),
+    fetchFranceSoccer().catch(()=>[]),
+    fetchSportsEvents().catch(()=>({events:[]})),
   ]);
-  const total=staticEvents.length+matchEvents.length;
-  elArticles.innerHTML=renderAgenda(staticEvents,matchEvents);
+  // France rugby live/finished → live section
+  const frRugbyLive=(espnRugby.events||[]).filter(e=>isFranceMatch(e)&&(e.status?.type==='inprogress'||e.status?.type==='finished'));
+  // France soccer upcoming → inject into agenda timeline
+  const frSocUpcoming=frSoccer
+    .filter(e=>e.status?.type==='notstarted')
+    .map(e=>({
+      id:e.id,
+      title:`⚽ ${e.homeTeam.name} — ${e.awayTeam.name}`,
+      desc:e.tournament?.name||'Football',
+      date:e.date,
+      time:new Date(e.startTimestamp*1000).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}),
+      cats:['football'],
+      approx:false,
+    }));
+  const liveHtml=renderFranceLive(frRugbyLive,frSoccer);
+  const allUpcoming=[...matchEvents,...frSocUpcoming];
+  const total=staticEvents.length+allUpcoming.length;
+  elArticles.innerHTML=(liveHtml?`<div id="ag-live">${liveHtml}</div>`:'')+renderAgenda(staticEvents,allUpcoming);
   elStatus.textContent=`${total} événement${total>1?'s':''} à venir`;
 }
 
@@ -954,7 +1044,7 @@ async function init(){
     }, 800);
   }
   elRefresh.addEventListener('click', () => {
-    if (current==='agenda'){ _upcomingRugby=null; loadAgenda(); return; }
+    if (current==='agenda'){ _upcomingRugby=null; _espnCache=null; _frSocCache=null; loadAgenda(); return; }
     const cat = DATA.categories.find(c => c.id === current);
     if (cat) loadCategory(cat);
   });

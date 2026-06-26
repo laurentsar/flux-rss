@@ -298,6 +298,39 @@
       "url": "https://developer.apple.com",
       "loc": "Cupertino, USA",
       "approx": true
+    },
+    {
+      "id": "france-cdm-2026-finale",
+      "title": "🇫🇷 France — Phase finale Coupe du Monde 2026",
+      "desc": "Huitièmes, quarts, demi-finales et finale — l'équipe de France en Coupe du Monde FIFA 2026",
+      "date": "2026-06-29",
+      "dateEnd": "2026-07-19",
+      "cats": ["football"],
+      "url": "https://www.fifa.com",
+      "loc": "USA / Canada / Mexique",
+      "approx": true
+    },
+    {
+      "id": "france-automne-rugby-2026",
+      "title": "🇫🇷 XV de France — Tournée d'automne 2026",
+      "desc": "Matchs tests internationaux de l'équipe de France de rugby à XV contre les équipes de l'hémisphère sud",
+      "date": "2026-11-07",
+      "dateEnd": "2026-11-22",
+      "cats": ["rugby"],
+      "url": "https://www.ffr.fr",
+      "loc": "France (Stade de France & stades de province)",
+      "approx": true
+    },
+    {
+      "id": "france-nations-league-2026-27",
+      "title": "🇫🇷 France — Ligue des Nations UEFA 2026-27",
+      "desc": "Phase de groupes de la Ligue des Nations UEFA — l'équipe de France en compétition internationale",
+      "date": "2026-09-03",
+      "dateEnd": "2026-11-17",
+      "cats": ["football"],
+      "url": "https://www.uefa.com",
+      "loc": "Europe",
+      "approx": true
     }
   ]
 }
