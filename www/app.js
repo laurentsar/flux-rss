@@ -2,6 +2,7 @@
 
 /* ---------- config ---------- */
 const APP_VERSION = '4.11';
+const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
@@ -909,6 +910,57 @@ function onSettingsClick(e){
   saveConfig(); renderSettings();
 }
 
+/* ---------- mise à jour automatique ---------- */
+function versionGt(tag, current){
+  const p = v => v.replace(/^v/,'').split('.').map(Number);
+  const [la, lb = 0] = p(tag), [ca, cb = 0] = p(current);
+  return la > ca || (la === ca && lb > cb);
+}
+
+function showUpdateBanner(tag, apkUrl){
+  const existing = document.getElementById('update-banner');
+  if (existing) existing.remove();
+  const el = document.createElement('div');
+  el.id = 'update-banner';
+  el.innerHTML =
+    `<span class="upd-msg">🆕 <b>${esc(tag)}</b> disponible</span>`+
+    `<button class="upd-btn" id="btn-update">⬇ Installer</button>`+
+    `<button class="upd-x" id="btn-dismiss-update">✕</button>`;
+  document.body.appendChild(el);
+
+  document.getElementById('btn-dismiss-update').addEventListener('click', ()=>{
+    localStorage.setItem('dismissedUpdate', tag);
+    el.remove();
+  });
+  document.getElementById('btn-update').addEventListener('click', async ()=>{
+    const btn = document.getElementById('btn-update');
+    btn.textContent = '⏳…'; btn.disabled = true;
+    try {
+      await window.Capacitor.Plugins.UpdatePlugin.downloadAndInstall({url: apkUrl});
+    } catch(e) {
+      btn.textContent = '⬇ Installer'; btn.disabled = false;
+      if (e && e.message && e.message.includes('permission')) {
+        alert('Autorise l\'installation d\'apps depuis cette source dans les paramètres Android, puis réessaie.');
+      } else {
+        alert('Erreur : ' + (e && e.message || e));
+      }
+    }
+  });
+}
+
+async function checkForUpdate(){
+  if (!isNative) return;
+  try {
+    const data = await fetchJson(`https://api.github.com/repos/${GITHUB_REPO}/releases/latest`);
+    const tag = data.tag_name || '';
+    if (!tag || !versionGt(tag, APP_VERSION)) return;
+    if (localStorage.getItem('dismissedUpdate') === tag) return;
+    const asset = (data.assets || []).find(a => a.name && a.name.endsWith('.apk'));
+    if (!asset) return;
+    showUpdateBanner(tag, asset.browser_download_url);
+  } catch(e) { /* pas de réseau ou API indispo — silencieux */ }
+}
+
 /* ---------- init ---------- */
 async function init(){
   DEFAULTS = await (await fetch('data/feeds.json')).json();
@@ -1108,5 +1160,7 @@ async function init(){
   document.addEventListener('visibilitychange', ()=>{
     document.body.classList.toggle('page-hidden', document.hidden);
   });
+  // Vérification de mise à jour non bloquante (3 s après le démarrage)
+  setTimeout(checkForUpdate, 3000);
 }
 init();
