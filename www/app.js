@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.13';
+const APP_VERSION = '4.14';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -658,6 +658,11 @@ const RUGBY_SHOWS = [
   {title:'Rugby Magazine Occitanie',chaine:'France 3 Occitanie',day:1, time:'',      desc:'Magazine régional consacré au rugby'},
 ];
 const RUGBY_SHOW_SEASON = [9,10,11,12,1,2,3,4,5,6]; // sept → juin
+// Date locale "YYYY-MM-DD" SANS passer par UTC (toISOString décalerait d'un
+// jour dans les fuseaux à offset positif comme Europe/Paris).
+function localISO(d){
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
 function upcomingRugbyShows(weeks){
   const out=[], today=new Date(); today.setHours(0,0,0,0);
   for (const s of RUGBY_SHOWS){
@@ -665,9 +670,10 @@ function upcomingRugbyShows(weeks){
       const d=new Date(today);
       d.setDate(d.getDate()+(((s.day - today.getDay())+7)%7)+i*7);
       if (!RUGBY_SHOW_SEASON.includes(d.getMonth()+1)) continue;
+      const iso=localISO(d);
       out.push({
-        id:`show-${s.title}-${d.toISOString().slice(0,10)}`.replace(/\s+/g,'-'),
-        title:s.title, desc:s.desc, date:d.toISOString().slice(0,10),
+        id:`show-${s.title}-${iso}`.replace(/\s+/g,'-'),
+        title:s.title, desc:s.desc, date:iso,
         time:s.time, cats:['rugby'], chaine:s.chaine, approx:true,
       });
     }
@@ -696,7 +702,7 @@ async function fetchUpcomingMatches(){
         id:'espn-'+e.id,
         title:`${home?.team?.displayName||home?.team?.name||'?'} — ${away?.team?.displayName||away?.team?.name||'?'}`,
         desc:(e.league?.name||'Rugby')+(comp.venue?.fullName?` · ${comp.venue.fullName}`:''),
-        date:d.toISOString().slice(0,10),
+        date:localISO(d),
         time:timeStr,
         cats:['rugby'],
         chaine:rugbyChannel(e.league?.name, comp.broadcasts||comp.geoBroadcasts),
@@ -718,9 +724,19 @@ function fmtEventDate(date, dateEnd){
   return `${d1} – ${d2.toLocaleDateString('fr-FR',{day:'numeric',month:'short'})}`;
 }
 
+// Horodatage de tri = jour + heure (sinon deux événements du même jour
+// s'affichent dans l'ordre d'insertion, pas chronologique).
+function eventTs(ev){
+  let t=Date.parse(ev.date)||0;
+  if (ev.time && /^\d{1,2}:\d{2}$/.test(ev.time)){
+    const [h,m]=ev.time.split(':').map(Number);
+    t+=(h*60+m)*60000;
+  }
+  return t;
+}
 function renderAgenda(staticEvents, matchEvents){
   const all=[...staticEvents,...matchEvents]
-    .sort((a,b)=>Date.parse(a.date)-Date.parse(b.date));
+    .sort((a,b)=>eventTs(a)-eventTs(b));
   if (!all.length) return '<div class="rl-loading">Aucun événement à venir.</div>';
 
   const byMonth={};
