@@ -1,6 +1,6 @@
-const CACHE = 'flux-rss-v19';
+const CACHE = 'flux-rss-v20';
 const SHELL = [
-  './', './index.html', './styles.css', './app.js',
+  './', './index.html', './styles.css', './app.js', './update-check.js',
   './data/feeds.json', './data/events.json', './manifest.webmanifest',
   './img/icon-192.png', './img/icon-512.png',
 ];
