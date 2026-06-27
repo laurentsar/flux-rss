@@ -7,7 +7,9 @@
       "desc": "48h de promotions exclusives pour les membres Prime",
       "date": "2026-07-08",
       "dateEnd": "2026-07-09",
-      "cats": ["deals_fr"],
+      "cats": [
+        "deals_fr"
+      ],
       "url": "https://www.amazon.fr",
       "loc": "En ligne",
       "approx": true
@@ -18,7 +20,9 @@
       "desc": "Concerts, spectacles et danse dans la cité médiévale — programmation éclectique chaque été",
       "date": "2026-07-03",
       "dateEnd": "2026-07-22",
-      "cats": ["voyage"],
+      "cats": [
+        "voyage"
+      ],
       "loc": "Carcassonne — 90 km de Toulouse",
       "approx": true,
       "region": "Toulouse"
@@ -29,7 +33,9 @@
       "desc": "Conférence internationale de cybersécurité — recherche, outils et vulnérabilités",
       "date": "2026-08-01",
       "dateEnd": "2026-08-06",
-      "cats": ["cyber"],
+      "cats": [
+        "cyber"
+      ],
       "url": "https://www.blackhat.com",
       "loc": "Las Vegas, USA",
       "approx": true
@@ -40,7 +46,9 @@
       "desc": "La plus grande convention de hackers au monde",
       "date": "2026-08-06",
       "dateEnd": "2026-08-09",
-      "cats": ["cyber"],
+      "cats": [
+        "cyber"
+      ],
       "url": "https://defcon.org",
       "loc": "Las Vegas, USA",
       "approx": true
@@ -50,10 +58,13 @@
       "title": "Top 14 — début de saison 2026-2027",
       "desc": "Reprise du championnat de France de rugby à XV",
       "date": "2026-08-29",
-      "cats": ["rugby"],
+      "cats": [
+        "rugby"
+      ],
       "url": "https://www.lnr.fr",
       "loc": "France",
-      "approx": true
+      "approx": true,
+      "chaine": "Canal+"
     },
     {
       "id": "gamescom-2026",
@@ -61,7 +72,9 @@
       "desc": "Le plus grand salon du jeu vidéo en Europe",
       "date": "2026-08-19",
       "dateEnd": "2026-08-23",
-      "cats": ["jeux"],
+      "cats": [
+        "jeux"
+      ],
       "url": "https://www.gamescom.de",
       "loc": "Cologne, Allemagne",
       "approx": true
@@ -72,7 +85,9 @@
       "desc": "Conférence & salon mondial de l'énergie solaire",
       "date": "2026-09-14",
       "dateEnd": "2026-09-17",
-      "cats": ["solaire"],
+      "cats": [
+        "solaire"
+      ],
       "loc": "Las Vegas, USA",
       "approx": true
     },
@@ -82,7 +97,11 @@
       "desc": "Salon international de la tech et de l'électronique grand public",
       "date": "2026-09-04",
       "dateEnd": "2026-09-08",
-      "cats": ["domotique", "cyber", "ia"],
+      "cats": [
+        "domotique",
+        "cyber",
+        "ia"
+      ],
       "url": "https://www.ifa-berlin.com",
       "loc": "Berlin, Allemagne",
       "approx": true
@@ -93,7 +112,9 @@
       "desc": "Soldes e-commerce des marques françaises — 5 jours de promos",
       "date": "2026-09-23",
       "dateEnd": "2026-09-28",
-      "cats": ["deals_fr"],
+      "cats": [
+        "deals_fr"
+      ],
       "loc": "En ligne",
       "approx": true
     },
@@ -103,7 +124,9 @@
       "desc": "Festival de jazz de Haute-Garonne — concerts gratuits et payants dans toute l'agglomération toulousaine",
       "date": "2026-10-23",
       "dateEnd": "2026-10-25",
-      "cats": ["voyage"],
+      "cats": [
+        "voyage"
+      ],
       "loc": "Toulouse et agglomération",
       "approx": true,
       "region": "Toulouse"
@@ -114,7 +137,10 @@
       "desc": "Le grand salon automobile biennial — nombreuses premières mondiales EV",
       "date": "2026-10-14",
       "dateEnd": "2026-10-20",
-      "cats": ["ve", "tesla"],
+      "cats": [
+        "ve",
+        "tesla"
+      ],
       "loc": "Paris, Villepinte",
       "approx": true
     },
@@ -124,7 +150,10 @@
       "desc": "Festival du DIY, de l'électronique et de la créativité",
       "date": "2026-10-17",
       "dateEnd": "2026-10-18",
-      "cats": ["bricolage", "byd"],
+      "cats": [
+        "bricolage",
+        "byd"
+      ],
       "loc": "Paris, France",
       "approx": true
     },
@@ -134,7 +163,9 @@
       "desc": "Semaine européenne de promotion de l'énergie solaire photovoltaïque",
       "date": "2026-10-26",
       "dateEnd": "2026-10-31",
-      "cats": ["solaire"],
+      "cats": [
+        "solaire"
+      ],
       "loc": "Europe",
       "approx": true
     },
@@ -144,7 +175,9 @@
       "desc": "Le plus grand salon du jeu vidéo en France",
       "date": "2026-10-28",
       "dateEnd": "2026-11-01",
-      "cats": ["jeux"],
+      "cats": [
+        "jeux"
+      ],
       "url": "https://parisgamesweek.com",
       "loc": "Paris, Villepinte",
       "approx": true
@@ -155,7 +188,10 @@
       "desc": "Salon de la maison, de la rénovation et de la décoration intérieure",
       "date": "2026-11-06",
       "dateEnd": "2026-11-09",
-      "cats": ["bricolage", "domotique"],
+      "cats": [
+        "bricolage",
+        "domotique"
+      ],
       "loc": "Toulouse, MEETT Parc des Expositions",
       "approx": true,
       "region": "Toulouse"
@@ -166,7 +202,10 @@
       "desc": "Conférence open source et logiciel libre — ateliers, conférences et contributions tech",
       "date": "2026-11-21",
       "dateEnd": "2026-11-22",
-      "cats": ["cyber", "byd"],
+      "cats": [
+        "cyber",
+        "byd"
+      ],
       "url": "https://capitoledulibre.org",
       "loc": "Toulouse, Université Paul Sabatier",
       "approx": true,
@@ -178,7 +217,9 @@
       "desc": "Convention jeux vidéo, manga et culture geek — compétitions, cosplay et exposants",
       "date": "2026-11-28",
       "dateEnd": "2026-11-29",
-      "cats": ["jeux"],
+      "cats": [
+        "jeux"
+      ],
       "loc": "Toulouse, Parc des Expositions",
       "approx": true,
       "region": "Toulouse"
@@ -189,7 +230,10 @@
       "desc": "Salon automobile — nombreuses premières mondiales sur les véhicules électriques",
       "date": "2026-11-20",
       "dateEnd": "2026-11-29",
-      "cats": ["ve", "tesla"],
+      "cats": [
+        "ve",
+        "tesla"
+      ],
       "url": "https://laautoshow.com",
       "loc": "Los Angeles, USA",
       "approx": true
@@ -199,7 +243,9 @@
       "title": "Black Friday 2026",
       "desc": "La plus grande journée de promotions de l'année",
       "date": "2026-11-27",
-      "cats": ["deals_fr"],
+      "cats": [
+        "deals_fr"
+      ],
       "url": "https://www.amazon.fr",
       "loc": "En ligne",
       "approx": false
@@ -209,7 +255,10 @@
       "title": "Cyber Monday 2026",
       "desc": "Prolongement du Black Friday axé high-tech",
       "date": "2026-11-30",
-      "cats": ["deals_fr", "cyber"],
+      "cats": [
+        "deals_fr",
+        "cyber"
+      ],
       "url": "https://www.amazon.fr",
       "loc": "En ligne",
       "approx": false
@@ -219,7 +268,9 @@
       "title": "The Game Awards 2026",
       "desc": "La cérémonie de remise des prix du jeu vidéo de l'année",
       "date": "2026-12-10",
-      "cats": ["jeux"],
+      "cats": [
+        "jeux"
+      ],
       "url": "https://thegameawards.com",
       "loc": "Los Angeles, USA",
       "approx": true
@@ -230,7 +281,12 @@
       "desc": "Le plus grand salon mondial de la tech, de l'IA et de la mobilité électrique",
       "date": "2027-01-05",
       "dateEnd": "2027-01-08",
-      "cats": ["ia", "domotique", "ve", "cyber"],
+      "cats": [
+        "ia",
+        "domotique",
+        "ve",
+        "cyber"
+      ],
       "url": "https://www.ces.tech",
       "loc": "Las Vegas, USA",
       "approx": true
@@ -241,10 +297,13 @@
       "desc": "Début du tournoi annuel de rugby des meilleures nations européennes",
       "date": "2027-02-06",
       "dateEnd": "2027-03-20",
-      "cats": ["rugby"],
+      "cats": [
+        "rugby"
+      ],
       "url": "https://www.sixnationsrugby.com",
       "loc": "Europe",
-      "approx": true
+      "approx": true,
+      "chaine": "France Télévisions"
     },
     {
       "id": "mwc-2027",
@@ -252,7 +311,11 @@
       "desc": "Mobile World Congress — salon mondial du mobile, de l'IA et de la connectivité",
       "date": "2027-02-22",
       "dateEnd": "2027-02-25",
-      "cats": ["cyber", "ia", "domotique"],
+      "cats": [
+        "cyber",
+        "ia",
+        "domotique"
+      ],
       "url": "https://www.mwcbarcelona.com",
       "loc": "Barcelone, Espagne",
       "approx": true
@@ -262,7 +325,10 @@
       "title": "Google I/O 2027",
       "desc": "Conférence annuelle des développeurs Google — IA, Android, Gemini",
       "date": "2027-05-11",
-      "cats": ["ia", "cyber"],
+      "cats": [
+        "ia",
+        "cyber"
+      ],
       "url": "https://io.google",
       "loc": "Mountain View, USA",
       "approx": true
@@ -273,7 +339,12 @@
       "desc": "Le grand salon européen de l'innovation et de la tech",
       "date": "2027-05-13",
       "dateEnd": "2027-05-16",
-      "cats": ["ia", "ve", "domotique", "cyber"],
+      "cats": [
+        "ia",
+        "ve",
+        "domotique",
+        "cyber"
+      ],
       "url": "https://vivatechnology.com",
       "loc": "Paris, France",
       "approx": true
@@ -284,7 +355,9 @@
       "desc": "Festival de musiques du monde sur la Prairie des Filtres — scènes gratuites et payantes",
       "date": "2027-06-11",
       "dateEnd": "2027-06-14",
-      "cats": ["voyage"],
+      "cats": [
+        "voyage"
+      ],
       "loc": "Toulouse, Prairie des Filtres",
       "approx": true,
       "region": "Toulouse"
@@ -294,7 +367,10 @@
       "title": "WWDC 2027 (Apple)",
       "desc": "Conférence annuelle des développeurs Apple — nouvelles plateformes, IA et Vision Pro",
       "date": "2027-06-07",
-      "cats": ["ia", "cyber"],
+      "cats": [
+        "ia",
+        "cyber"
+      ],
       "url": "https://developer.apple.com",
       "loc": "Cupertino, USA",
       "approx": true
@@ -305,7 +381,9 @@
       "desc": "Huitièmes, quarts, demi-finales et finale — l'équipe de France en Coupe du Monde FIFA 2026",
       "date": "2026-06-29",
       "dateEnd": "2026-07-19",
-      "cats": ["football"],
+      "cats": [
+        "football"
+      ],
       "url": "https://www.fifa.com",
       "loc": "USA / Canada / Mexique",
       "approx": true
@@ -316,10 +394,13 @@
       "desc": "Matchs tests internationaux de l'équipe de France de rugby à XV contre les équipes de l'hémisphère sud",
       "date": "2026-11-07",
       "dateEnd": "2026-11-22",
-      "cats": ["rugby"],
+      "cats": [
+        "rugby"
+      ],
       "url": "https://www.ffr.fr",
       "loc": "France (Stade de France & stades de province)",
-      "approx": true
+      "approx": true,
+      "chaine": "TF1 / La Chaîne L’Équipe"
     },
     {
       "id": "france-nations-league-2026-27",
@@ -327,7 +408,9 @@
       "desc": "Phase de groupes de la Ligue des Nations UEFA — l'équipe de France en compétition internationale",
       "date": "2026-09-03",
       "dateEnd": "2026-11-17",
-      "cats": ["football"],
+      "cats": [
+        "football"
+      ],
       "url": "https://www.uefa.com",
       "loc": "Europe",
       "approx": true

@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.12';
+const APP_VERSION = '4.13';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -620,6 +620,61 @@ async function loadAgendaEvents(){
     .sort((a,b)=>Date.parse(a.date)-Date.parse(b.date));
 }
 
+/* Chaînes TV des compétitions de rugby (France, droits 2025-2026) — ÉDITABLE.
+   Clé = motif sur le nom de ligue ESPN. Toutes les chaînes, Canal+ compris. */
+const RUGBY_TV = [
+  [/top\s*14/i,                         ['Canal+']],
+  [/pro\s*d2/i,                         ['Canal+']],
+  [/champions cup/i,                    ['beIN Sports', 'France 2']],
+  [/challenge cup/i,                    ['beIN Sports', 'France 3']],
+  [/six nations|6 nations|tournoi/i,    ['France TV', 'TF1']],
+  [/autumn|automne|test match|tourn[ée]e/i, ['TF1', 'La Chaîne L’Équipe']],
+  [/united rugby|\burc\b/i,             ['Canal+']],
+  [/premiership/i,                      ['Canal+']],
+  [/rugby championship/i,               ['beIN Sports']],
+  [/world cup|coupe du monde/i,         ['TF1', 'France TV', 'M6']],
+];
+// Renvoie la/les chaîne(s) : d'abord ESPN si renseigné, sinon la table ci-dessus.
+function rugbyChannel(league, espnBroadcasts){
+  if (espnBroadcasts && espnBroadcasts.length){
+    const names = espnBroadcasts
+      .map(b=>(b.names&&b.names.join('/'))||b.media?.shortName||b.shortName||b.name)
+      .filter(Boolean);
+    if (names.length) return [...new Set(names)];
+  }
+  for (const [re,ch] of RUGBY_TV){ if (re.test(league||'')) return ch; }
+  return null;
+}
+
+/* Émissions TV récurrentes consacrées au rugby (France) — ÉDITABLE.
+   day : 0=dimanche … 6=samedi. Générées seulement pendant la saison. */
+const RUGBY_SHOWS = [
+  // Canal+ (diffuseur du Top 14 / Pro D2)
+  {title:'Canal Rugby Club',        chaine:'Canal+',            day:0, time:'21:00', desc:'Le magazine du Top 14'},
+  {title:'Late Rugby Club',         chaine:'Canal+',            day:0, time:'22:45', desc:'Débrief en plateau de la journée'},
+  {title:'Jour de Rugby',           chaine:'Canal+ Sport',      day:6, time:'23:00', desc:'Résumés et temps forts du multiplex'},
+  // France Télévisions
+  {title:'Stade 2',                 chaine:'France 3',          day:0, time:'18:05', desc:'Magazine multisport, forte place au rugby'},
+  {title:'Rugby Magazine Occitanie',chaine:'France 3 Occitanie',day:1, time:'',      desc:'Magazine régional consacré au rugby'},
+];
+const RUGBY_SHOW_SEASON = [9,10,11,12,1,2,3,4,5,6]; // sept → juin
+function upcomingRugbyShows(weeks){
+  const out=[], today=new Date(); today.setHours(0,0,0,0);
+  for (const s of RUGBY_SHOWS){
+    for (let i=0;i<weeks;i++){
+      const d=new Date(today);
+      d.setDate(d.getDate()+(((s.day - today.getDay())+7)%7)+i*7);
+      if (!RUGBY_SHOW_SEASON.includes(d.getMonth()+1)) continue;
+      out.push({
+        id:`show-${s.title}-${d.toISOString().slice(0,10)}`.replace(/\s+/g,'-'),
+        title:s.title, desc:s.desc, date:d.toISOString().slice(0,10),
+        time:s.time, cats:['rugby'], chaine:s.chaine, approx:true,
+      });
+    }
+  }
+  return out;
+}
+
 async function fetchUpcomingMatches(){
   if (_upcomingRugby && Date.now()-_upcomingRugbyTs < 5*60*1000) return _upcomingRugby;
   const ESPN_IDS = ['270559','180659','271937'];
@@ -632,17 +687,19 @@ async function fetchUpcomingMatches(){
     .filter(e=>{ const st=e.competitions?.[0]?.status?.type?.state||''; return st==='pre'; })
     .filter(e=>!seen.has(e.id)&&seen.add(e.id))
     .map(e=>{
-      const comps=e.competitions?.[0]?.competitors||[];
+      const comp=e.competitions?.[0]||{};
+      const comps=comp.competitors||[];
       const home=comps.find(c=>c.homeAway==='home'), away=comps.find(c=>c.homeAway==='away');
       const d=new Date(e.date||0);
       const timeStr=d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
       return {
         id:'espn-'+e.id,
         title:`${home?.team?.displayName||home?.team?.name||'?'} — ${away?.team?.displayName||away?.team?.name||'?'}`,
-        desc:(e.league?.name||'Rugby')+(e.competitions?.[0]?.venue?.fullName?` · ${e.competitions[0].venue.fullName}`:''),
+        desc:(e.league?.name||'Rugby')+(comp.venue?.fullName?` · ${comp.venue.fullName}`:''),
         date:d.toISOString().slice(0,10),
         time:timeStr,
         cats:['rugby'],
+        chaine:rugbyChannel(e.league?.name, comp.broadcasts||comp.geoBroadcasts),
         approx:false,
       };
     });
@@ -691,6 +748,10 @@ function renderAgenda(staticEvents, matchEvents){
         return `<span class="ag-badge" style="background:${c}22;color:${c}">${esc(lbl)}</span>`;
       }).join('');
       const regionBadge=ev.region?`<span class="ag-badge ag-badge-local">📍 Local</span>`:'';
+      const chaines=ev.chaine?(Array.isArray(ev.chaine)?ev.chaine:[ev.chaine]):[];
+      const tvHtml=chaines.length
+        ? `<span class="ag-badge" style="background:#11182788;color:#fff;border:1px solid #ffffff2e">📺 ${chaines.map(esc).join(' / ')}</span>`
+        : '';
       const Tag=ev.url?'a':'div';
       const linkAttr=ev.url?` href="${esc(ev.url)}" target="_blank" rel="noopener"`:' ';
       return `<${Tag} class="ag-card"${linkAttr}style="--accent:${color}">
@@ -699,7 +760,7 @@ function renderAgenda(staticEvents, matchEvents){
           <b>${esc(ev.title)}</b>
           ${ev.desc?`<div class="ag-desc">${esc(ev.desc)}</div>`:''}
           ${locHtml}
-          <div class="ag-badges">${badges}${regionBadge}</div>
+          <div class="ag-badges">${badges}${regionBadge}${tvHtml}</div>
         </div>
       </${Tag}>`;
     }).join('');
@@ -733,7 +794,7 @@ async function loadAgenda(){
       approx:false,
     }));
   const liveHtml=renderFranceLive(frRugbyLive,frSoccer);
-  const allUpcoming=[...matchEvents,...frSocUpcoming];
+  const allUpcoming=[...matchEvents,...frSocUpcoming,...upcomingRugbyShows(4)];
   const total=staticEvents.length+allUpcoming.length;
   elArticles.innerHTML=(liveHtml?`<div id="ag-live">${liveHtml}</div>`:'')+renderAgenda(staticEvents,allUpcoming);
   elStatus.textContent=`${total} événement${total>1?'s':''} à venir`;
