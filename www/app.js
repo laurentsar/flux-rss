@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.14';
+const APP_VERSION = '4.15';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -646,6 +646,34 @@ function rugbyChannel(league, espnBroadcasts){
   return null;
 }
 
+/* Chaînes TV des compétitions de football suivies (France, 2025-2026) — ÉDITABLE. */
+const FOOT_TV = [
+  [/ligue 1/i,                              ['Ligue 1+', 'beIN Sports']],
+  [/ligue 2/i,                              ['beIN Sports']],
+  [/champions league|ligue des champions/i, ['Canal+', 'beIN Sports']],
+  [/europa league|ligue europa/i,           ['Canal+']],
+  [/conference league/i,                    ['Canal+']],
+  [/coupe de france/i,                       ['beIN Sports', 'France TV']],
+  [/nations league|ligue des nations/i,      ['TF1', 'M6']],
+  [/world cup|coupe du monde/i,              ['TF1', 'France TV', 'M6']],
+  [/euro|championnat d.europe/i,             ['TF1', 'M6']],
+  [/friendly|amical|france/i,                ['TF1', 'M6']],
+];
+function footChannel(comp){
+  for (const [re,ch] of FOOT_TV){ if (re.test(comp||'')) return ch; }
+  return null;
+}
+
+/* Lecteur IPTV : modèle d'URL fourni par l'utilisateur (aucun flux embarqué).
+   Variables {chaine} et {q}. Vide = pas de lien direct. */
+const IPTV_KEY = 'iptvTemplate';
+function getIptv(){ try{ return localStorage.getItem(IPTV_KEY) || ''; }catch(e){ return ''; } }
+function setIptv(v){ try{ v ? localStorage.setItem(IPTV_KEY, v) : localStorage.removeItem(IPTV_KEY); }catch(e){} }
+function iptvUrl(tpl, chaine, title){
+  return tpl.replace(/\{chaine\}/g, encodeURIComponent(chaine))
+            .replace(/\{q\}/g, encodeURIComponent(title || ''));
+}
+
 /* Émissions TV récurrentes consacrées au rugby (France) — ÉDITABLE.
    day : 0=dimanche … 6=samedi. Générées seulement pendant la saison. */
 const RUGBY_SHOWS = [
@@ -765,9 +793,18 @@ function renderAgenda(staticEvents, matchEvents){
       }).join('');
       const regionBadge=ev.region?`<span class="ag-badge ag-badge-local">📍 Local</span>`:'';
       const chaines=ev.chaine?(Array.isArray(ev.chaine)?ev.chaine:[ev.chaine]):[];
-      const tvHtml=chaines.length
-        ? `<span class="ag-badge" style="background:#11182788;color:#fff;border:1px solid #ffffff2e">📺 ${chaines.map(esc).join(' / ')}</span>`
-        : '';
+      const iptv=getIptv();
+      // Lien direct seulement si modèle IPTV renseigné ET carte non déjà cliquable
+      // (évite une balise <a> imbriquée dans le <a> de la carte).
+      const canLink=iptv && !ev.url;
+      const tvStyle='background:#11182788;color:#fff;border:1px solid #ffffff2e';
+      const tvHtml=chaines.map(ch=>{
+        if (canLink){
+          const url=iptvUrl(iptv, ch, ev.title);
+          return `<a class="ag-badge ag-tv" href="${esc(url)}" target="_blank" rel="noopener" title="Voir en direct (IPTV)" style="${tvStyle}">📺 ${esc(ch)} ▶</a>`;
+        }
+        return `<span class="ag-badge ag-tv" style="${tvStyle}">📺 ${esc(ch)}</span>`;
+      }).join('');
       const Tag=ev.url?'a':'div';
       const linkAttr=ev.url?` href="${esc(ev.url)}" target="_blank" rel="noopener"`:' ';
       return `<${Tag} class="ag-card"${linkAttr}style="--accent:${color}">
@@ -807,6 +844,7 @@ async function loadAgenda(){
       date:e.date,
       time:new Date(e.startTimestamp*1000).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}),
       cats:['football'],
+      chaine:footChannel(e.tournament?.name),
       approx:false,
     }));
   const liveHtml=renderFranceLive(frRugbyLive,frSoccer);
@@ -939,12 +977,17 @@ function renderSettings(){
           ⬆ Importer un backup<input type="file" accept=".json" style="display:none" id="import-cfg-file">
         </label>
       </div>
+      <div class="iptv-cfg" style="margin-top:14px;padding-top:12px;border-top:1px solid var(--line)">
+        <div class="hint">📺 <b>Lecteur IPTV</b> (optionnel) — modèle d'URL ouvert au clic sur une chaîne de l'agenda, pour voir le direct. Variables : <code>{chaine}</code> (nom de la chaîne), <code>{q}</code> (match). Aucun flux n'est fourni : renseigne ta propre source légale. Vide = pas de lien direct.</div>
+        <input id="iptv-tpl" placeholder="ex : http://mon-serveur/live/{chaine}.m3u8  ·  iptv://play?c={chaine}" value="${esc(getIptv())}" style="width:100%;margin-top:6px">
+      </div>
       <div class="app-version">Flux RSS v${APP_VERSION}</div>
     </div>`;
 }
 
 function onSettingsChange(e){
   const t=e.target, ci=+t.dataset.ci, fi=+t.dataset.fi, v=t.value.trim();
+  if (t.id==='iptv-tpl'){ setIptv(v); return; }
   if (t.classList.contains('cat-label')) DATA.categories[ci].label=v;
   else if (t.classList.contains('f-name')) catFeeds(ci)[fi].name=v;
   else if (t.classList.contains('f-url')) catFeeds(ci)[fi].url=v;
