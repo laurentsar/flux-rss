@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.15';
+const APP_VERSION = '4.16';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -821,14 +821,31 @@ function renderAgenda(staticEvents, matchEvents){
   }).join('');
 }
 
+/* Grille TV rugby = fichier généré par l'EPG (tools/rugby_epg.py, mis à jour
+   par cron). Récupéré au runtime depuis GitHub raw (toujours frais, sans
+   reconstruire l'APK), avec repli sur la copie embarquée puis sur rien. */
+const RUGBY_EPG_URL='https://raw.githubusercontent.com/laurentsar/flux-rss/master/www/data/rugby_tv.json';
+let _epgRugby=null, _epgRugbyTs=0;
+async function loadRugbyEpg(){
+  if (_epgRugby && Date.now()-_epgRugbyTs < 30*60*1000) return _epgRugby;
+  let data=null;
+  try{ data=await (await fetch(RUGBY_EPG_URL+'?_='+Date.now(),{cache:'no-store'})).json(); }catch(e){}
+  if (!data){ try{ data=await (await fetch('data/rugby_tv.json')).json(); }catch(e){} }
+  const list=(data&&data.programmes)||[];
+  const floor=Date.now()-86400000; // hier
+  const out=list.filter(p=>{ const d=Date.parse(p.date); return !isNaN(d) && d>=floor; });
+  _epgRugby=out; _epgRugbyTs=Date.now();
+  return out;
+}
+
 async function loadAgenda(){
   hideRugbyLive();
   elSubtabs.hidden=true; elSubtabs.innerHTML='';
   elArticles.innerHTML='<div class="rl-loading"><span class="spinner"></span>Chargement de l\'agenda…</div>';
   elStatus.textContent='';
-  const [staticEvents, matchEvents, frSoccer, espnRugby] = await Promise.all([
+  const [staticEvents, epgRugby, frSoccer, espnRugby] = await Promise.all([
     loadAgendaEvents(),
-    fetchUpcomingMatches().catch(()=>[]),
+    loadRugbyEpg().catch(()=>[]),
     fetchFranceSoccer().catch(()=>[]),
     fetchSportsEvents().catch(()=>({events:[]})),
   ]);
@@ -848,7 +865,9 @@ async function loadAgenda(){
       approx:false,
     }));
   const liveHtml=renderFranceLive(frRugbyLive,frSoccer);
-  const allUpcoming=[...matchEvents,...frSocUpcoming,...upcomingRugbyShows(4)];
+  // Rugby = grille TV réelle (EPG, toutes chaînes) ; repli sur la liste figée.
+  const rugbyAgenda = epgRugby.length ? epgRugby : upcomingRugbyShows(4);
+  const allUpcoming=[...rugbyAgenda,...frSocUpcoming];
   const total=staticEvents.length+allUpcoming.length;
   elArticles.innerHTML=(liveHtml?`<div id="ag-live">${liveHtml}</div>`:'')+renderAgenda(staticEvents,allUpcoming);
   elStatus.textContent=`${total} événement${total>1?'s':''} à venir`;

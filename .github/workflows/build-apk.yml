@@ -3,6 +3,10 @@ name: Build Android APK
 on:
   push:
     branches: [ main, master ]
+    # La grille TV rugby est rafraîchie par cron (commit data-only) : ne pas
+    # reconstruire l'APK pour ça, l'app la récupère au runtime via GitHub raw.
+    paths-ignore:
+      - 'www/data/rugby_tv.json'
   workflow_dispatch:
 
 jobs:

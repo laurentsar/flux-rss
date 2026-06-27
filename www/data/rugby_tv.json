@@ -1,0 +1,535 @@
+{
+ "generated": "2026-06-27T18:48:45+02:00",
+ "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
+ "count": 40,
+ "programmes": [
+  {
+   "title": "Rugby : après-match",
+   "date": "2026-06-27",
+   "time": "18:03",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club - 1re édition",
+   "date": "2026-06-27",
+   "time": "19:00",
+   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages inside et des interviews de personnalités du rugby afin de décrypter les enjeu",
+   "chaine": [
+    "Canal+",
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Avant-match Top 14",
+   "date": "2026-06-27",
+   "time": "20:30",
+   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
+   "chaine": [
+    "Canal+",
+    "Canal+ Live",
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Top 14",
+   "date": "2026-06-27",
+   "time": "20:35",
+   "desc": "Le Stade de France accueille la traditionnelle finale du championnat de France, le Top 14, une finale 100% Occitanie. Qui remportera le bout",
+   "chaine": [
+    "France 2"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / Montpellier",
+   "date": "2026-06-27",
+   "time": "21:00",
+   "desc": "Sur la pelouse du Stade de France, Toulouse défend de nouveau son titre acquis en 2025 contre l'UBB, mais cette fois face au Montpellier Hér",
+   "chaine": [
+    "Canal+",
+    "Canal+ Live",
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-06-27",
+   "time": "21:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Top 14",
+   "date": "2026-06-27",
+   "time": "21:00",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+",
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-06-27",
+   "time": "22:57",
+   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
+   "chaine": [
+    "Canal+",
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : State of Origin",
+   "date": "2026-06-27",
+   "time": "23:00",
+   "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / Montpellier",
+   "date": "2026-06-28",
+   "time": "06:49",
+   "desc": "Au Stade de France, la finale du Top 14 vient conclure plusieurs mois d'une lutte intense pour le Bouclier de Brennus. Champion en titre et ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Top 14",
+   "date": "2026-06-28",
+   "time": "06:52",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-06-28",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-06-28",
+   "time": "11:45",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Top 14",
+   "date": "2026-06-28",
+   "time": "14:32",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / Montpellier",
+   "date": "2026-06-28",
+   "time": "14:33",
+   "desc": "Sur la pelouse du Stade de France, Toulouse défend de nouveau son titre acquis en 2025 contre l'UBB, mais cette fois face au Montpellier Hér",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Romagnat / Stade Bordelais",
+   "date": "2026-06-28",
+   "time": "18:00",
+   "desc": "Depuis le Stade Aguiléra à Biarritz. Lors des demi-finales, l'ASM Romagnat a battu Blagnac et le Stade Bordelais a pris le dessus sur Toulou",
+   "chaine": [
+    "Canal+",
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club",
+   "date": "2026-06-28",
+   "time": "20:04",
+   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : State of Origin",
+   "date": "2026-06-28",
+   "time": "23:00",
+   "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Romagnat / Stade Bordelais",
+   "date": "2026-06-29",
+   "time": "00:58",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Romagnat / Stade Bordelais",
+   "date": "2026-06-29",
+   "time": "01:01",
+   "desc": "Depuis le Stade Aguiléra à Biarritz. Lors des demi-finales, l'ASM Romagnat a battu Blagnac et le Stade Bordelais a pris le dessus sur Toulou",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-06-29",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Romagnat / Stade Bordelais",
+   "date": "2026-06-29",
+   "time": "12:20",
+   "desc": "Depuis le Stade Aguiléra à Biarritz. Lors des demi-finales, l'ASM Romagnat a battu Blagnac et le Stade Bordelais a pris le dessus sur Toulou",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Romagnat / Stade Bordelais",
+   "date": "2026-06-29",
+   "time": "12:21",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat du monde U20",
+   "date": "2026-06-29",
+   "time": "13:07",
+   "desc": "La Géorgie accueille le rugby mondial de demain à l'occasion du Championnat du monde U20. Le tournoi réunit seize nations, réparties en quat",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Nouvelle-Zélande / Japon",
+   "date": "2026-06-29",
+   "time": "13:07",
+   "desc": "Rugby",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Le pacte des Louves (Bobigny Rugby)",
+   "date": "2026-06-29",
+   "time": "14:05",
+   "desc": "Elles sont agent de sécurité à la RATP, chargée de communication dans une ONG ou encore professeure d’E.P.S. le jour… Mais aussi joueuses de",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Vannes / Provence Rugby",
+   "date": "2026-06-29",
+   "time": "18:40",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Vannes / Provence Rugby",
+   "date": "2026-06-29",
+   "time": "18:50",
+   "desc": "Les seize clubs de Pro D2 sont de retour sur les pelouses de l'Hexagone et chaque journée promet son lot de chocs, de rebondissements et de ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Manager",
+   "date": "2026-06-29",
+   "time": "20:28",
+   "desc": "Une collection innovante centrée sur le décryptage tactique dans le rugby qui donne les clés des méthodes utilisées par les plus grands coac",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Manager",
+   "date": "2026-06-29",
+   "time": "20:29",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Romagnat / Stade Bordelais",
+   "date": "2026-06-29",
+   "time": "22:31",
+   "desc": "Depuis le Stade Aguiléra à Biarritz. Lors des demi-finales, l'ASM Romagnat a battu Blagnac et le Stade Bordelais a pris le dessus sur Toulou",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Romagnat / Stade Bordelais",
+   "date": "2026-06-29",
+   "time": "22:41",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Provence Rugby - Perpignan",
+   "date": "2026-06-30",
+   "time": "07:29",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Romagnat / Stade Bordelais",
+   "date": "2026-06-30",
+   "time": "09:11",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Top 14",
+   "date": "2026-06-30",
+   "time": "10:54",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-06-30",
+   "time": "12:57",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Afrique du Sud / Uruguay",
+   "date": "2026-06-30",
+   "time": "13:08",
+   "desc": "Rugby",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Romagnat / Stade Bordelais",
+   "date": "2026-06-30",
+   "time": "18:51",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-06-30",
+   "time": "20:38",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Super Rugby Pacific",
+   "date": "2026-06-30",
+   "time": "21:00",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  }
+ ]
+}
