@@ -461,34 +461,34 @@ async function loadCategory(cat, {silent=false}={}){
   if (cat.id==='rugby' && currentTab==='news') loadRugbyLive(); else hideRugbyLive();
 
   // cache immédiat
-  const cached = JSON.parse(localStorage.getItem(cacheKey(cat.id, currentTab)) || ‘null’);
+  const cached = JSON.parse(localStorage.getItem(cacheKey(cat.id, currentTab)) || 'null');
   const isSlowConn = slowConnection();
   if (cached && cached.items && cached.items.length){
     render(cached.items, cat.id, cached.ts);
     // Connexion lente + cache < 30 min → on garde le cache, pas de requête réseau
     if (isSlowConn && Date.now() - (cached.ts||0) < 30*60*1000){
-      elStatus.textContent += ‘ · 📶 cache (connexion lente)’;
+      elStatus.textContent += ' · 📶 cache (connexion lente)';
       return;
     }
   } else if (!silent){
-    elArticles.innerHTML = ‘’;
-    elStatus.innerHTML = ‘<span class="spinner"></span>Chargement des flux…’;
+    elArticles.innerHTML = '';
+    elStatus.innerHTML = '<span class="spinner"></span>Chargement des flux…';
   }
 
-  elRefresh.classList.add(‘spinning’);
+  elRefresh.classList.add('spinning');
   const tab = currentTab;
   const activeFeeds = feedsForTab(cat, tab);
   if (!activeFeeds.length){
-    elRefresh.classList.remove(‘spinning’);
-    elArticles.innerHTML=’’; RENDERED=[];
-    elStatus.textContent = tab===’pods’ ? ‘Aucun podcast dans cette catégorie pour l’instant.’ : ‘Aucune source.’;
+    elRefresh.classList.remove('spinning');
+    elArticles.innerHTML=''; RENDERED=[];
+    elStatus.textContent = tab==='pods' ? "Aucun podcast dans cette catégorie pour l'instant." : 'Aucune source.';
     return;
   }
   // Limite la concurrence : 2 requêtes simultanées sur connexion lente, 4 sinon
   const pool = makePool(isSlowConn ? 2 : 4);
   const results = await Promise.allSettled(activeFeeds.map(f => pool(async () => {
     const xml = await httpGet(f.url);
-    return parseFeed(xml, f.name, tab===’pods’ ? (f.kind||’audio’) : null);
+    return parseFeed(xml, f.name, tab==='pods' ? (f.kind||'audio') : null);
   })));
   elRefresh.classList.remove('spinning');
   if (current !== cat.id || currentTab !== tab) return; // l'utilisateur a changé de catégorie/onglet
@@ -508,7 +508,7 @@ async function loadCategory(cat, {silent=false}={}){
   } else if (!cached){
     elStatus.textContent = isNative
       ? 'Aucun article récupéré. Vérifie ta connexion.'
-      : 'Aucun article (le navigateur bloque souvent les flux : utilise l’APK).';
+      : "Aucun article (le navigateur bloque souvent les flux : utilise l'APK).";
   }
 }
 
@@ -657,7 +657,7 @@ const RUGBY_TV = [
   [/champions cup/i,                    ['beIN Sports', 'France 2']],
   [/challenge cup/i,                    ['beIN Sports', 'France 3']],
   [/six nations|6 nations|tournoi/i,    ['France TV', 'TF1']],
-  [/autumn|automne|test match|tourn[ée]e/i, ['TF1', 'La Chaîne L’Équipe']],
+  [/autumn|automne|test match|tourn[ée]e/i, ['TF1', "La Chaîne L'Équipe"]],
   [/united rugby|\burc\b/i,             ['Canal+']],
   [/premiership/i,                      ['Canal+']],
   [/rugby championship/i,               ['beIN Sports']],
