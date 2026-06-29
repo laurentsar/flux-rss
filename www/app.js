@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.16';
+const APP_VERSION = '4.17';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -70,22 +70,43 @@ const elSubtabs = $('#subtabs');
 const elRugbyLive = document.getElementById('rugby-live');
 
 /* ---------- réseau ---------- */
+
+// Timeout fetch via AbortController (navigateur uniquement)
+function fetchWithTimeout(url, opts={}, ms=10000){
+  const ctrl=new AbortController();
+  const t=setTimeout(()=>ctrl.abort(),ms);
+  return fetch(url,{...opts,signal:ctrl.signal}).finally(()=>clearTimeout(t));
+}
+
+// Détecte une connexion lente via Network Information API
+function slowConnection(){
+  const c=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+  return !!(c && (c.saveData || /slow-2g|2g/.test(c.effectiveType||'')));
+}
+
+// Limiteur de concurrence : n requêtes max en parallèle
+function makePool(n){
+  let r=0; const q=[];
+  const next=()=>{ if(r>=n||!q.length) return; r++; const{fn,res,rej}=q.shift(); fn().then(res,rej).finally(()=>{r--;next();}); };
+  return fn=>new Promise((res,rej)=>{q.push({fn,res,rej});next();});
+}
+
 async function httpGet(url){
   if (isNative && window.Capacitor.Plugins && window.Capacitor.Plugins.CapacitorHttp){
     const r = await window.Capacitor.Plugins.CapacitorHttp.get({
       url, headers:{'User-Agent':'FluxRSS/1.0','Accept':'application/rss+xml, application/atom+xml, application/xml, text/xml, */*'},
-      responseType:'text', connectTimeout:15000, readTimeout:15000,
+      responseType:'text', connectTimeout:8000, readTimeout:12000,
     });
     return typeof r.data === 'string' ? r.data : JSON.stringify(r.data);
   }
 
-  // navigateur : direct puis repli proxy CORS
+  // navigateur : direct avec timeout, puis repli proxy CORS avec timeout
   try{
-    const r = await fetch(url, {redirect:'follow'});
+    const r = await fetchWithTimeout(url, {redirect:'follow'}, 10000);
     if (r.ok) return await r.text();
     throw new Error('http '+r.status);
   }catch(e){
-    const r = await fetch(PROXY + encodeURIComponent(url));
+    const r = await fetchWithTimeout(PROXY + encodeURIComponent(url), {}, 10000);
     if (!r.ok) throw new Error('proxy '+r.status);
     return await r.text();
   }
@@ -96,18 +117,18 @@ async function fetchJson(url){
   if (isNative && window.Capacitor.Plugins && window.Capacitor.Plugins.CapacitorHttp){
     const r = await window.Capacitor.Plugins.CapacitorHttp.get({
       url, headers:{'User-Agent':BROWSER_UA,'Accept':'application/json, */*'},
-      responseType:'text', connectTimeout:10000, readTimeout:10000,
+      responseType:'text', connectTimeout:8000, readTimeout:10000,
     });
     if (r.status && r.status >= 400) throw new Error('HTTP '+r.status);
     const text = typeof r.data === 'string' ? r.data : JSON.stringify(r.data);
     return JSON.parse(text);
   }
   try{
-    const r = await fetch(url, {headers:{'Accept':'application/json'}});
+    const r = await fetchWithTimeout(url, {headers:{'Accept':'application/json'}}, 10000);
     if (r.ok) return await r.json();
     throw new Error('http '+r.status);
   }catch(e){
-    const r = await fetch(PROXY + encodeURIComponent(url));
+    const r = await fetchWithTimeout(PROXY + encodeURIComponent(url), {}, 10000);
     if (!r.ok) throw new Error('proxy '+r.status);
     return await r.json();
   }
@@ -440,27 +461,35 @@ async function loadCategory(cat, {silent=false}={}){
   if (cat.id==='rugby' && currentTab==='news') loadRugbyLive(); else hideRugbyLive();
 
   // cache immédiat
-  const cached = JSON.parse(localStorage.getItem(cacheKey(cat.id, currentTab)) || 'null');
+  const cached = JSON.parse(localStorage.getItem(cacheKey(cat.id, currentTab)) || ‘null’);
+  const isSlowConn = slowConnection();
   if (cached && cached.items && cached.items.length){
     render(cached.items, cat.id, cached.ts);
+    // Connexion lente + cache < 30 min → on garde le cache, pas de requête réseau
+    if (isSlowConn && Date.now() - (cached.ts||0) < 30*60*1000){
+      elStatus.textContent += ‘ · 📶 cache (connexion lente)’;
+      return;
+    }
   } else if (!silent){
-    elArticles.innerHTML = '';
-    elStatus.innerHTML = '<span class="spinner"></span>Chargement des flux…';
+    elArticles.innerHTML = ‘’;
+    elStatus.innerHTML = ‘<span class="spinner"></span>Chargement des flux…’;
   }
 
-  elRefresh.classList.add('spinning');
+  elRefresh.classList.add(‘spinning’);
   const tab = currentTab;
   const activeFeeds = feedsForTab(cat, tab);
   if (!activeFeeds.length){
-    elRefresh.classList.remove('spinning');
-    elArticles.innerHTML=''; RENDERED=[];
-    elStatus.textContent = tab==='pods' ? 'Aucun podcast dans cette catégorie pour l’instant.' : 'Aucune source.';
+    elRefresh.classList.remove(‘spinning’);
+    elArticles.innerHTML=’’; RENDERED=[];
+    elStatus.textContent = tab===’pods’ ? ‘Aucun podcast dans cette catégorie pour l’instant.’ : ‘Aucune source.’;
     return;
   }
-  const results = await Promise.allSettled(activeFeeds.map(async (f) => {
+  // Limite la concurrence : 2 requêtes simultanées sur connexion lente, 4 sinon
+  const pool = makePool(isSlowConn ? 2 : 4);
+  const results = await Promise.allSettled(activeFeeds.map(f => pool(async () => {
     const xml = await httpGet(f.url);
-    return parseFeed(xml, f.name, tab==='pods' ? (f.kind||'audio') : null);
-  }));
+    return parseFeed(xml, f.name, tab===’pods’ ? (f.kind||’audio’) : null);
+  })));
   elRefresh.classList.remove('spinning');
   if (current !== cat.id || currentTab !== tab) return; // l'utilisateur a changé de catégorie/onglet
 
@@ -843,11 +872,12 @@ async function loadAgenda(){
   elSubtabs.hidden=true; elSubtabs.innerHTML='';
   elArticles.innerHTML='<div class="rl-loading"><span class="spinner"></span>Chargement de l\'agenda…</div>';
   elStatus.textContent='';
+  const slow = slowConnection();
   const [staticEvents, epgRugby, frSoccer, espnRugby] = await Promise.all([
     loadAgendaEvents(),
-    loadRugbyEpg().catch(()=>[]),
-    fetchFranceSoccer().catch(()=>[]),
-    fetchSportsEvents().catch(()=>({events:[]})),
+    slow ? Promise.resolve([]) : loadRugbyEpg().catch(()=>[]),
+    slow ? Promise.resolve([]) : fetchFranceSoccer().catch(()=>[]),
+    slow ? Promise.resolve({events:[]}) : fetchSportsEvents().catch(()=>({events:[]})),
   ]);
   // France rugby live/finished → live section
   const frRugbyLive=(espnRugby.events||[]).filter(e=>isFranceMatch(e)&&(e.status?.type==='inprogress'||e.status?.type==='finished'));
@@ -1088,7 +1118,7 @@ function showUpdateBanner(tag, apkUrl){
 }
 
 async function checkForUpdate(){
-  if (!isNative) return;
+  if (!isNative || slowConnection()) return;
   try {
     const data = await fetchJson(`https://api.github.com/repos/${GITHUB_REPO}/releases/latest`);
     const tag = data.tag_name || '';
