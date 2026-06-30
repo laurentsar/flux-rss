@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.22';
+const APP_VERSION = '4.23';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -905,8 +905,7 @@ async function loadAgenda(){
 }
 
 /* ---------- Magazine / Cafeyn ---------- */
-const CAFEYN_PKG = 'fr.lekiosque';
-const CAFEYN_URL = 'https://www.cafeyn.co/fr/business/publication/home';
+const CAFEYN_URL = 'https://www.cafeyn.co';
 async function openMagazine(){
   const UP = window.Capacitor?.Plugins?.UpdatePlugin;
   if (isNative && UP){
@@ -915,19 +914,9 @@ async function openMagazine(){
     } catch(e){
       return; // annulé ou échec biométrique — on n'ouvre pas
     }
-  }
-  if (isNative){
-    const UP = window.Capacitor?.Plugins?.UpdatePlugin;
-    if (UP){
-      try {
-        await UP.launchApp({package: CAFEYN_PKG});
-        return; // app lancée avec succès
-      } catch(e){ /* app non installée → fallback web */ }
-    }
-    const B = window.Capacitor?.Plugins?.Browser;
-    if (B){ B.open({url:CAFEYN_URL, presentationStyle:'fullscreen', toolbarColor:'#7B3F00'}); }
+    UP.openInAppWebView({url: CAFEYN_URL, title: '📖 Cafeyn', barColor: '#7B3F00'});
   } else {
-    window.open(CAFEYN_URL,'_blank','noopener');
+    window.open(CAFEYN_URL, '_blank', 'noopener');
   }
 }
 
