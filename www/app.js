@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.30';
+const APP_VERSION = '4.31';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -568,7 +568,11 @@ function render(items, catId, ts){
     return `<a class="card" style="--accent:${accent}" href="${esc(it.link)}" target="_blank" rel="noopener">
       <span class="dot"></span>${thumb}<span class="ctitle"><b>${esc(it.title)}</b>${dateHtml}${src}</span></a>`;
   }).join('');
-  elArticles.innerHTML = html;
+  const mag = CAT_MAGAZINES[catId];
+  const magHtml = mag
+    ? `<button class="mag-launch" data-mag="${catId}">📖 <b>${esc(mag.title)}</b><span class="mag-sub">Magazine · Cafeyn</span><span class="mag-go">▸</span></button>`
+    : '';
+  elArticles.innerHTML = magHtml + html;
   window.scrollTo(0, 0);
 }
 
@@ -904,9 +908,13 @@ async function loadAgenda(){
   elStatus.textContent=`${total} événement${total>1?'s':''} à venir`;
 }
 
-/* ---------- Magazine / Cafeyn ---------- */
-const CAFEYN_URL   = 'https://www.cafeyn.co/fr/magazines/linformaticien';
-const CAFEYN_TITLE = "L'Informaticien";
+/* ---------- Magazines / Cafeyn ---------- */
+// Un magazine Cafeyn par catégorie (lanceur affiché en tête de l'onglet)
+const CAT_MAGAZINES = {
+  cyber:     { id:'informaticien', title:"L'Informaticien", url:'https://www.cafeyn.co/fr/magazines/linformaticien' },
+  placement: { id:'revenu',        title:'Le Revenu',       url:'https://www.cafeyn.co/fr/magazines/le-revenu-2' },
+  bricolage: { id:'systemed',      title:'Système D',       url:'https://www.cafeyn.co/fr/magazines/systeme-d' },
+};
 
 // URL de lecture exploitable pour « reprendre » (pas l'accueil / la home)
 function isResumableCafeyn(u){
@@ -917,14 +925,14 @@ function isResumableCafeyn(u){
 }
 
 // Mini-menu Reprendre / Dernier numéro (résout 'resume' | 'latest' | null)
-function magazineChoice(){
+function magazineChoice(title){
   return new Promise(resolve => {
     const ov = document.createElement('div');
     ov.className = 'modal';
     ov.innerHTML =
       `<div class="modal-card" style="max-width:480px">`+
         `<div class="modal-head" style="background:linear-gradient(180deg,#7B3F00,#3D1F00)">`+
-          `<h2>📖 ${CAFEYN_TITLE}</h2><button data-act="cancel" aria-label="Fermer">✕</button></div>`+
+          `<h2>📖 ${esc(title)}</h2><button data-act="cancel" aria-label="Fermer">✕</button></div>`+
         `<div class="modal-body" style="display:flex;flex-direction:column;gap:10px">`+
           `<button data-act="resume" style="padding:14px;border-radius:12px;border:1px solid var(--line);background:#1e293b;color:var(--text);font-size:1em;text-align:left;cursor:pointer">▶ Reprendre la lecture</button>`+
           `<button data-act="latest" style="padding:14px;border-radius:12px;border:1px solid var(--line);background:#1e293b;color:var(--text);font-size:1em;text-align:left;cursor:pointer">🗞 Dernier numéro</button>`+
@@ -941,24 +949,26 @@ function magazineChoice(){
   });
 }
 
-async function openMagazine(){
+async function openMagazine(mag){
+  if (!mag) return;
   const UP = window.Capacitor?.Plugins?.UpdatePlugin;
-  const resume = localStorage.getItem('cafeynLast');
-  let target = CAFEYN_URL;
+  const lastKey = 'cafeynLast_' + mag.id;
+  const resume = localStorage.getItem(lastKey);
+  let target = mag.url;
   if (resume){
-    const choice = await magazineChoice();   // menu seulement si une lecture en cours existe
+    const choice = await magazineChoice(mag.title);   // menu seulement si une lecture en cours existe
     if (choice === null) return;
-    target = choice === 'resume' ? resume : CAFEYN_URL;
+    target = choice === 'resume' ? resume : mag.url;
   }
   if (isNative && UP){
     try {
-      await UP.authenticate({reason: 'Accès à votre magazine Cafeyn'});
+      await UP.authenticate({reason: `Accès à ${mag.title}`});
     } catch(e){
       return;
     }
     try {
-      const res = await UP.openInAppWebView({url: target, title: `📖 ${CAFEYN_TITLE}`, barColor: '#7B3F00'});
-      if (res && isResumableCafeyn(res.lastUrl)) localStorage.setItem('cafeynLast', res.lastUrl);
+      const res = await UP.openInAppWebView({url: target, title: `📖 ${mag.title}`, barColor: '#7B3F00'});
+      if (res && isResumableCafeyn(res.lastUrl)) localStorage.setItem(lastKey, res.lastUrl);
     } catch(e){}
   } else {
     window.open(target, '_blank', 'noopener');
@@ -972,7 +982,6 @@ function renderChips(){
   const agStyle=agOn?`style="--a:${agA};--b:${agB}"`:'';
   elCats.innerHTML=
     `<button class="chip${agOn?' active':''}" data-id="agenda" ${agStyle}>📅 Agenda</button>`+
-    `<button class="chip chip-launcher" data-id="magazine" data-url="https://www.cafeyn.co/fr/business/publication/home" style="--a:#7B3F00;--b:#3D1F00">📖 Magazine</button>`+
     DATA.categories.filter(c=>!c.off).map(c=>
       `<button class="chip" data-id="${c.id}">${esc(c.label)}</button>`).join('');
   elCats.querySelectorAll('.chip').forEach(btn=>{
@@ -980,10 +989,6 @@ function renderChips(){
   });
 }
 function selectCat(id){
-  if (id==='magazine'){
-    openMagazine();
-    return;
-  }
   localStorage.setItem('lastCat', id);
   elCats.querySelectorAll('.chip').forEach(b=>{
     const on=b.dataset.id===id;
@@ -1347,6 +1352,8 @@ async function init(){
     if (cat) loadCategory(cat);
   });
   elArticles.addEventListener('click', (e)=>{
+    const ml = e.target.closest('.mag-launch');
+    if (ml){ e.preventDefault(); openMagazine(CAT_MAGAZINES[ml.dataset.mag]); return; }
     const a = e.target.closest('a.card, a.read'); if(!a || a.classList.contains('podlink') || currentTab==='pods') return;
     markRead(a.getAttribute('href'));
     const card = a.closest('.card'); if (card) card.remove();

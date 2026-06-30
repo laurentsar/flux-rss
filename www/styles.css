@@ -216,3 +216,10 @@ a.ag-card:active{opacity:.8}
 .vr .chip:hover,.vr details.card>summary:hover,.vr a.card:hover{outline:2px solid var(--accent,#F26522);outline-offset:2px}
 .vr .modal .iconbtn:hover:not([disabled]),.vr #settings-btn:hover,.vr #lang-btn:hover,.vr #refresh:hover{outline:2px solid var(--accent,#F26522);outline-offset:3px}
 .vr .rl-more-btn:hover{outline:2px solid var(--a,#16A34A);outline-offset:2px}
+
+/* ---- lanceur magazine Cafeyn (en tête d'onglet) ---- */
+.mag-launch{display:flex;align-items:center;gap:10px;width:100%;margin:0 0 12px;padding:13px 15px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(135deg,#7B3F00,#3D1F00);color:#fff;font-size:1em;text-align:left;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.35)}
+.mag-launch b{font-weight:700}
+.mag-launch .mag-sub{margin-left:6px;color:rgba(255,255,255,.72);font-size:.78em;font-weight:400}
+.mag-launch .mag-go{margin-left:auto;font-size:1.2em;opacity:.85}
+.vr .mag-launch:hover{outline:2px solid var(--accent,#F26522);outline-offset:2px}
