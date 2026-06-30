@@ -1,86 +1,8 @@
 {
- "generated": "2026-06-29T20:15:03+02:00",
+ "generated": "2026-06-30T08:15:04+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
  "count": 36,
  "programmes": [
-  {
-   "title": "Vannes / Provence Rugby",
-   "date": "2026-06-29",
-   "time": "18:40",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Vannes / Provence Rugby",
-   "date": "2026-06-29",
-   "time": "18:50",
-   "desc": "Les seize clubs de Pro D2 sont de retour sur les pelouses de l'Hexagone et chaque journée promet son lot de chocs, de rebondissements et de ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Manager",
-   "date": "2026-06-29",
-   "time": "20:28",
-   "desc": "Une collection innovante centrée sur le décryptage tactique dans le rugby qui donne les clés des méthodes utilisées par les plus grands coac",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Manager",
-   "date": "2026-06-29",
-   "time": "20:29",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "ASM Romagnat / Stade Bordelais",
-   "date": "2026-06-29",
-   "time": "22:31",
-   "desc": "Depuis le Stade Aguiléra à Biarritz. Lors des demi-finales, l'ASM Romagnat a battu Blagnac et le Stade Bordelais a pris le dessus sur Toulou",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "ASM Romagnat / Stade Bordelais",
-   "date": "2026-06-29",
-   "time": "22:41",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Provence Rugby - Perpignan",
    "date": "2026-06-30",
@@ -95,10 +17,10 @@
    "approx": false
   },
   {
-   "title": "Provence Rugby / Perpignan",
+   "title": "Toulouse / Montpellier",
    "date": "2026-06-30",
-   "time": "07:39",
-   "desc": "Qui de Provence Rugby ou de l'USA Perpignan sera en Top 14 pour la prochaine saison 2026/2027 ? Réponse à l'issue de ce barrage d'accession ",
+   "time": "07:55",
+   "desc": "Sur la pelouse du Stade de France, Toulouse défend de nouveau son titre acquis en 2025 contre l'UBB, mais cette fois face au Montpellier Hér",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -136,7 +58,7 @@
   {
    "title": "ASM Romagnat / Stade Bordelais",
    "date": "2026-06-30",
-   "time": "09:27",
+   "time": "09:38",
    "desc": "Depuis le Stade Aguiléra à Biarritz. Lors des demi-finales, l'ASM Romagnat a battu Blagnac et le Stade Bordelais a pris le dessus sur Toulou",
    "chaine": [
     "Canal+ Sport"
@@ -162,21 +84,8 @@
   {
    "title": "Toulouse / Montpellier",
    "date": "2026-06-30",
-   "time": "11:10",
+   "time": "11:21",
    "desc": "Au Stade de France, la finale du Top 14 vient conclure plusieurs mois d'une lutte intense pour le Bouclier de Brennus. Champion en titre et ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-06-30",
-   "time": "12:56",
-   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -190,6 +99,19 @@
    "date": "2026-06-30",
    "time": "12:57",
    "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-06-30",
+   "time": "13:07",
+   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -228,7 +150,7 @@
    "title": "ASM Romagnat / Stade Bordelais",
    "date": "2026-06-30",
    "time": "18:51",
-   "desc": "Depuis le Stade Aguiléra à Biarritz. Lors des demi-finales, l'ASM Romagnat a battu Blagnac et le Stade Bordelais a pris le dessus sur Toulou",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -241,6 +163,19 @@
    "title": "Fractionné Rugby",
    "date": "2026-06-30",
    "time": "20:38",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-06-30",
+   "time": "20:40",
    "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
@@ -251,10 +186,10 @@
    "approx": false
   },
   {
-   "title": "Super Rugby Pacific",
+   "title": "ASM Romagnat / Stade Bordelais",
    "date": "2026-06-30",
    "time": "21:00",
-   "desc": "Le Super Rugby Pacific livre son verdict. Qui soulèvera le trophée, un an après le sacre des Cruisaders, vainqueurs des Chiefs en finale la ",
+   "desc": "Depuis le Stade Aguiléra à Biarritz. Lors des demi-finales, l'ASM Romagnat a battu Blagnac et le Stade Bordelais a pris le dessus sur Toulou",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -277,10 +212,10 @@
    "approx": false
   },
   {
-   "title": "Rugby : Top 14",
+   "title": "Toulouse / Montpellier",
    "date": "2026-06-30",
-   "time": "23:00",
-   "desc": "Rugby",
+   "time": "22:43",
+   "desc": "Sur la pelouse du Stade de France, Toulouse défend de nouveau son titre acquis en 2025 contre l'UBB, mais cette fois face au Montpellier Hér",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -290,10 +225,10 @@
    "approx": false
   },
   {
-   "title": "Toulouse / Montpellier",
+   "title": "Rugby : Top 14",
    "date": "2026-06-30",
-   "time": "23:01",
-   "desc": "Au Stade de France, la finale du Top 14 vient conclure plusieurs mois d'une lutte intense pour le Bouclier de Brennus. Champion en titre et ",
+   "time": "23:00",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -446,6 +381,32 @@
    "approx": false
   },
   {
+   "title": "Rugby : Super Rugby Pacific",
+   "date": "2026-07-02",
+   "time": "10:30",
+   "desc": "Suivez des rencontres de la Super Rugby Pacific, un championnat qui met en opposition douze équipes issues de plusieurs pays de la zone Océa",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat du monde U20",
+   "date": "2026-07-02",
+   "time": "10:55",
+   "desc": "Après leur première sortie face aux Fidji, les Bleuets de Cédric Laborde enchaînent contre l'Espagne lors de la deuxième journée du Champion",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "France /  Espagne",
    "date": "2026-07-02",
    "time": "10:55",
@@ -465,6 +426,45 @@
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / Montpellier",
+   "date": "2026-07-02",
+   "time": "15:23",
+   "desc": "Sur la pelouse du Stade de France, Toulouse défend de nouveau son titre acquis en 2025 contre l'UBB, mais cette fois face au Montpellier Hér",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Penrith Panthers / South Sydney Rabbitohs",
+   "date": "2026-07-03",
+   "time": "11:55",
+   "desc": "En Direct.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Nouvelle-Zélande / Ecosse",
+   "date": "2026-07-03",
+   "time": "13:07",
+   "desc": "Rugby",
+   "chaine": [
+    "La Chaîne L'Équipe"
    ],
    "cats": [
     "rugby"
