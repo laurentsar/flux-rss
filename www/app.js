@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.19';
+const APP_VERSION = '4.21';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -904,6 +904,37 @@ async function loadAgenda(){
   elStatus.textContent=`${total} événement${total>1?'s':''} à venir`;
 }
 
+/* ---------- Magazine / Cafeyn ---------- */
+const CAFEYN_PKG = 'fr.lekiosque';
+const CAFEYN_URL = 'https://www.cafeyn.co/fr/business/publication/home';
+async function openMagazine(){
+  const Bio = window.Capacitor?.Plugins?.BiometricAuth;
+  if (isNative && Bio){
+    try {
+      await Bio.authenticate({
+        reason: 'Accès à votre magazine Cafeyn',
+        cancelTitle: 'Annuler',
+        allowDeviceCredential: true,
+      });
+    } catch(e){
+      return; // annulé ou échec — on n'ouvre pas
+    }
+  }
+  if (isNative){
+    const UP = window.Capacitor?.Plugins?.UpdatePlugin;
+    if (UP){
+      try {
+        await UP.launchApp({package: CAFEYN_PKG});
+        return; // app lancée avec succès
+      } catch(e){ /* app non installée → fallback web */ }
+    }
+    const B = window.Capacitor?.Plugins?.Browser;
+    if (B){ B.open({url:CAFEYN_URL, presentationStyle:'fullscreen', toolbarColor:'#7B3F00'}); }
+  } else {
+    window.open(CAFEYN_URL,'_blank','noopener');
+  }
+}
+
 /* ---------- catégories ---------- */
 function renderChips(){
   const [agA,agB]=CAT_COLORS.agenda;
@@ -920,10 +951,7 @@ function renderChips(){
 }
 function selectCat(id){
   if (id==='magazine'){
-    const url='https://www.cafeyn.co/fr/business/publication/home';
-    const B=window.Capacitor?.Plugins?.Browser;
-    if (isNative && B){ B.open({url, presentationStyle:'fullscreen', toolbarColor:'#7B3F00'}); }
-    else { window.open(url,'_blank','noopener'); }
+    openMagazine();
     return;
   }
   localStorage.setItem('lastCat', id);
