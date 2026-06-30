@@ -2,6 +2,7 @@ package com.laurent.fluxrss;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 
@@ -21,6 +22,27 @@ import java.net.URL;
 
 @CapacitorPlugin(name = "UpdatePlugin")
 public class UpdatePlugin extends Plugin {
+
+    @PluginMethod
+    public void launchApp(PluginCall call) {
+        String pkg = call.getString("package");
+        if (pkg == null || pkg.isEmpty()) { call.reject("package manquant"); return; }
+        Context ctx = getContext();
+        PackageManager pm = ctx.getPackageManager();
+        Intent launch = pm.getLaunchIntentForPackage(pkg);
+        if (launch != null) {
+            launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            ctx.startActivity(launch);
+            call.resolve();
+        } else {
+            // App non installée → ouvre la fiche Play Store
+            Intent store = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("https://play.google.com/store/apps/details?id=" + pkg));
+            store.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            ctx.startActivity(store);
+            call.reject("app_not_installed");
+        }
+    }
 
     @PluginMethod
     public void downloadAndInstall(PluginCall call) {
