@@ -29,6 +29,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.FragmentActivity;
 
+import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
@@ -281,10 +282,15 @@ public class UpdatePlugin extends Plugin {
                 return false;
             });
 
-            // Persister les cookies à la fermeture
+            // Persister les cookies + renvoyer la dernière URL lue à la fermeture
             dialog.setOnDismissListener(d -> {
+                String last = null;
+                try { last = webView.getUrl(); } catch (Exception ignored) {}
                 cm.flush();
                 webView.destroy();
+                JSObject ret = new JSObject();
+                if (last != null) ret.put("lastUrl", last);
+                call.resolve(ret);
             });
 
             // --- Mise en page ---
@@ -298,7 +304,8 @@ public class UpdatePlugin extends Plugin {
 
             dialog.setContentView(root);
             dialog.show();
-            call.resolve();
+            // call.resolve() est différé : il est appelé à la fermeture (setOnDismissListener)
+            // avec la dernière URL lue, pour reprendre la lecture au prochain lancement.
         });
     }
 

@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.29';
+const APP_VERSION = '4.30';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -908,17 +908,60 @@ async function loadAgenda(){
 const CAFEYN_URL   = 'https://www.cafeyn.co/fr/magazines/linformaticien';
 const CAFEYN_TITLE = "L'Informaticien";
 
+// URL de lecture exploitable pour « reprendre » (pas l'accueil / la home)
+function isResumableCafeyn(u){
+  if (!u || u.indexOf('cafeyn.co') < 0) return false;
+  if (/\/(home|accueil)/.test(u)) return false;
+  if (/cafeyn\.co\/fr\/?(\?|#|$)/.test(u)) return false;
+  return true;
+}
+
+// Mini-menu Reprendre / Dernier numéro (résout 'resume' | 'latest' | null)
+function magazineChoice(){
+  return new Promise(resolve => {
+    const ov = document.createElement('div');
+    ov.className = 'modal';
+    ov.innerHTML =
+      `<div class="modal-card" style="max-width:480px">`+
+        `<div class="modal-head" style="background:linear-gradient(180deg,#7B3F00,#3D1F00)">`+
+          `<h2>📖 ${CAFEYN_TITLE}</h2><button data-act="cancel" aria-label="Fermer">✕</button></div>`+
+        `<div class="modal-body" style="display:flex;flex-direction:column;gap:10px">`+
+          `<button data-act="resume" style="padding:14px;border-radius:12px;border:1px solid var(--line);background:#1e293b;color:var(--text);font-size:1em;text-align:left;cursor:pointer">▶ Reprendre la lecture</button>`+
+          `<button data-act="latest" style="padding:14px;border-radius:12px;border:1px solid var(--line);background:#1e293b;color:var(--text);font-size:1em;text-align:left;cursor:pointer">🗞 Dernier numéro</button>`+
+        `</div>`+
+      `</div>`;
+    const done = v => { ov.remove(); resolve(v); };
+    ov.addEventListener('click', e => {
+      if (e.target === ov) return done(null);
+      const b = e.target.closest('[data-act]');
+      if (!b) return;
+      done(b.dataset.act === 'cancel' ? null : b.dataset.act);
+    });
+    document.body.appendChild(ov);
+  });
+}
+
 async function openMagazine(){
   const UP = window.Capacitor?.Plugins?.UpdatePlugin;
+  const resume = localStorage.getItem('cafeynLast');
+  let target = CAFEYN_URL;
+  if (resume){
+    const choice = await magazineChoice();   // menu seulement si une lecture en cours existe
+    if (choice === null) return;
+    target = choice === 'resume' ? resume : CAFEYN_URL;
+  }
   if (isNative && UP){
     try {
       await UP.authenticate({reason: 'Accès à votre magazine Cafeyn'});
     } catch(e){
       return;
     }
-    UP.openInAppWebView({url: CAFEYN_URL, title: `📖 ${CAFEYN_TITLE}`, barColor: '#7B3F00'});
+    try {
+      const res = await UP.openInAppWebView({url: target, title: `📖 ${CAFEYN_TITLE}`, barColor: '#7B3F00'});
+      if (res && isResumableCafeyn(res.lastUrl)) localStorage.setItem('cafeynLast', res.lastUrl);
+    } catch(e){}
   } else {
-    window.open(CAFEYN_URL, '_blank', 'noopener');
+    window.open(target, '_blank', 'noopener');
   }
 }
 
