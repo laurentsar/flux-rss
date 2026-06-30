@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.18';
+const APP_VERSION = '4.19';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -920,9 +920,10 @@ function renderChips(){
 }
 function selectCat(id){
   if (id==='magazine'){
-    const btn=elCats.querySelector('[data-id="magazine"]');
-    const url=btn?.dataset.url||'https://www.cafeyn.co';
-    if (isNative){ window.open(url,'_system'); } else { window.open(url,'_blank','noopener'); }
+    const url='https://www.cafeyn.co/fr/business/publication/home';
+    const B=window.Capacitor?.Plugins?.Browser;
+    if (isNative && B){ B.open({url, presentationStyle:'fullscreen', toolbarColor:'#7B3F00'}); }
+    else { window.open(url,'_blank','noopener'); }
     return;
   }
   localStorage.setItem('lastCat', id);
