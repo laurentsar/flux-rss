@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.17';
+const APP_VERSION = '4.18';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -14,6 +14,7 @@ const CAT_COLORS = {
   bricolage:['#B45309','#6B2E00'], byd:['#0F766E','#083A38'],
   football:['#1E3A8A','#0C1E4A'],
   agenda:['#6366F1','#312E81'],
+  magazine:['#7B3F00','#3D1F00'],
 };
 const CAT_LABELS = {
   ve:'🚗 VE', rugby:'🏉 Rugby', cyber:'🔒 Cyber', ia:'🤖 IA',
@@ -910,6 +911,7 @@ function renderChips(){
   const agStyle=agOn?`style="--a:${agA};--b:${agB}"`:'';
   elCats.innerHTML=
     `<button class="chip${agOn?' active':''}" data-id="agenda" ${agStyle}>📅 Agenda</button>`+
+    `<button class="chip chip-launcher" data-id="magazine" data-url="https://www.cafeyn.co/fr/business/publication/home" style="--a:#7B3F00;--b:#3D1F00">📖 Magazine</button>`+
     DATA.categories.filter(c=>!c.off).map(c=>
       `<button class="chip" data-id="${c.id}">${esc(c.label)}</button>`).join('');
   elCats.querySelectorAll('.chip').forEach(btn=>{
@@ -917,6 +919,12 @@ function renderChips(){
   });
 }
 function selectCat(id){
+  if (id==='magazine'){
+    const btn=elCats.querySelector('[data-id="magazine"]');
+    const url=btn?.dataset.url||'https://www.cafeyn.co';
+    if (isNative){ window.open(url,'_system'); } else { window.open(url,'_blank','noopener'); }
+    return;
+  }
   localStorage.setItem('lastCat', id);
   elCats.querySelectorAll('.chip').forEach(b=>{
     const on=b.dataset.id===id;
