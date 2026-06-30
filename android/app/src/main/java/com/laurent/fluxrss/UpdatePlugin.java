@@ -196,12 +196,17 @@ public class UpdatePlugin extends Plugin {
             ws.setSupportZoom(false);
             ws.setUserAgentString("Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36");
 
+            // Après login Cafeyn redirige vers l'accueil — on mémorise si on doit ré-naviguer vers le mag
+            final boolean[] pendingTargetNav = {false};
+
             // JavascriptInterface pour capturer les identifiants saisis
             webView.addJavascriptInterface(new Object() {
                 @JavascriptInterface
                 public void onCredentials(String email, String pass) {
                     if (email != null && !email.isEmpty() && pass != null && !pass.isEmpty()) {
                         saveEncryptedCreds(ctx, email, pass);
+                        // La soumission du formulaire va déclencher une redirection vers l'accueil
+                        pendingTargetNav[0] = true;
                     }
                 }
             }, "FluxRSS");
@@ -214,6 +219,13 @@ public class UpdatePlugin extends Plugin {
 
                 @Override
                 public void onPageFinished(WebView view, String pageUrl) {
+                    // Si on vient de se connecter et qu'on est redirigé ailleurs que le mag cible → y aller
+                    if (pendingTargetNav[0] && !pageUrl.startsWith(url)) {
+                        pendingTargetNav[0] = false;
+                        view.loadUrl(url);
+                        return;
+                    }
+
                     // Pré-remplir les identifiants si disponibles
                     if (savedCreds != null) {
                         String email = savedCreds[0].replace("'", "\\'");

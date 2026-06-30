@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.25';
+const APP_VERSION = '4.26';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -905,41 +905,10 @@ async function loadAgenda(){
 }
 
 /* ---------- Magazine / Cafeyn ---------- */
-const CAFEYN_BASE = 'https://www.cafeyn.co';
-const CAFEYN_MAGAZINES = [
-  { label: "L'Informaticien", icon: '💻', url: 'https://www.cafeyn.co/fr/publication/l-informaticien' },
-  { label: 'Tout le kiosque',  icon: '🏠', url: CAFEYN_BASE },
-];
-
-function showMagazinePicker(){
-  return new Promise(resolve => {
-    elCard.innerHTML =
-      `<div style="padding:1.2rem 1rem .8rem">
-        <div style="font-weight:700;font-size:1.05rem;margin-bottom:1rem;color:#e2e8f0">📖 Choisir un magazine</div>
-        ${CAFEYN_MAGAZINES.map((m,i)=>
-          `<button data-idx="${i}" style="display:flex;align-items:center;gap:.75rem;width:100%;padding:.75rem 1rem;margin-bottom:.5rem;background:#1e293b;border:none;border-radius:.6rem;color:#e2e8f0;font-size:1rem;cursor:pointer;text-align:left">
-            <span style="font-size:1.4rem">${m.icon}</span>
-            <span>${m.label}</span>
-          </button>`).join('')}
-        <button id="mag-cancel" style="width:100%;margin-top:.25rem;padding:.6rem;background:transparent;border:1px solid #334155;border-radius:.6rem;color:#94a3b8;font-size:.9rem;cursor:pointer">Annuler</button>
-      </div>`;
-    elModal.hidden = false;
-    elCard.querySelectorAll('[data-idx]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        elModal.hidden = true;
-        resolve(CAFEYN_MAGAZINES[+btn.dataset.idx]);
-      });
-    });
-    $('#mag-cancel').addEventListener('click', () => {
-      elModal.hidden = true;
-      resolve(null);
-    });
-  });
-}
+const CAFEYN_URL   = 'https://www.cafeyn.co/fr/publication/l-informaticien';
+const CAFEYN_TITLE = "L'Informaticien";
 
 async function openMagazine(){
-  const mag = await showMagazinePicker();
-  if (!mag) return;
   const UP = window.Capacitor?.Plugins?.UpdatePlugin;
   if (isNative && UP){
     try {
@@ -947,9 +916,9 @@ async function openMagazine(){
     } catch(e){
       return;
     }
-    UP.openInAppWebView({url: mag.url, title: `📖 ${mag.label}`, barColor: '#7B3F00'});
+    UP.openInAppWebView({url: CAFEYN_URL, title: `📖 ${CAFEYN_TITLE}`, barColor: '#7B3F00'});
   } else {
-    window.open(mag.url, '_blank', 'noopener');
+    window.open(CAFEYN_URL, '_blank', 'noopener');
   }
 }
 
