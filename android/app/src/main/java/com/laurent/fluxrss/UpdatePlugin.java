@@ -6,7 +6,11 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.FragmentActivity;
 
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
@@ -22,6 +26,34 @@ import java.net.URL;
 
 @CapacitorPlugin(name = "UpdatePlugin")
 public class UpdatePlugin extends Plugin {
+
+    @PluginMethod
+    public void authenticate(PluginCall call) {
+        String reason = call.getString("reason", "Accès à votre magazine");
+        FragmentActivity activity = getActivity();
+        BiometricPrompt.PromptInfo promptInfo = new BiometricPrompt.PromptInfo.Builder()
+            .setTitle("📖 Magazine")
+            .setSubtitle(reason)
+            .setAllowedAuthenticators(
+                BiometricManager.Authenticators.BIOMETRIC_STRONG |
+                BiometricManager.Authenticators.DEVICE_CREDENTIAL)
+            .build();
+        BiometricPrompt prompt = new BiometricPrompt(activity,
+            ContextCompat.getMainExecutor(activity),
+            new BiometricPrompt.AuthenticationCallback() {
+                @Override
+                public void onAuthenticationSucceeded(BiometricPrompt.AuthenticationResult r) {
+                    call.resolve();
+                }
+                @Override
+                public void onAuthenticationError(int code, CharSequence msg) {
+                    call.reject("auth_error", msg.toString());
+                }
+                @Override
+                public void onAuthenticationFailed() { /* l'utilisateur réessaie */ }
+            });
+        activity.runOnUiThread(() -> prompt.authenticate(promptInfo));
+    }
 
     @PluginMethod
     public void launchApp(PluginCall call) {
