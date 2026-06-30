@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.31';
+const APP_VERSION = '4.32';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -914,6 +914,8 @@ const CAT_MAGAZINES = {
   cyber:     { id:'informaticien', title:"L'Informaticien", url:'https://www.cafeyn.co/fr/magazines/linformaticien' },
   placement: { id:'revenu',        title:'Le Revenu',       url:'https://www.cafeyn.co/fr/magazines/le-revenu-2' },
   bricolage: { id:'systemed',      title:'Système D',       url:'https://www.cafeyn.co/fr/magazines/systeme-d' },
+  jeux:      { id:'jeuxvideo',     title:'Jeux Vidéo Magazine', url:'https://www.cafeyn.co/fr/magazines/jeux-video-magazine' },
+  rugby:     { id:'rugby',         title:'Rugby Magazine',  url:'https://www.cafeyn.co/fr/magazines/rugby-magazine' },
 };
 
 // URL de lecture exploitable pour « reprendre » (pas l'accueil / la home)
