@@ -196,8 +196,9 @@ public class UpdatePlugin extends Plugin {
             ws.setSupportZoom(false);
             ws.setUserAgentString("Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36");
 
-            // Après login Cafeyn redirige vers l'accueil — on mémorise si on doit ré-naviguer vers le mag
-            final boolean[] pendingTargetNav = {false};
+            // Suivi de navigation pour gérer la redirection post-login de Cafeyn
+            final boolean[] wasOnAuthPage   = {false};
+            final boolean[] targetReached   = {false};
 
             // JavascriptInterface pour capturer les identifiants saisis
             webView.addJavascriptInterface(new Object() {
@@ -205,8 +206,6 @@ public class UpdatePlugin extends Plugin {
                 public void onCredentials(String email, String pass) {
                     if (email != null && !email.isEmpty() && pass != null && !pass.isEmpty()) {
                         saveEncryptedCreds(ctx, email, pass);
-                        // La soumission du formulaire va déclencher une redirection vers l'accueil
-                        pendingTargetNav[0] = true;
                     }
                 }
             }, "FluxRSS");
@@ -219,9 +218,17 @@ public class UpdatePlugin extends Plugin {
 
                 @Override
                 public void onPageFinished(WebView view, String pageUrl) {
-                    // Si on vient de se connecter et qu'on est redirigé ailleurs que le mag cible → y aller
-                    if (pendingTargetNav[0] && !pageUrl.startsWith(url)) {
-                        pendingTargetNav[0] = false;
+                    if (pageUrl.startsWith(url)) {
+                        // On est arrivé sur le magazine cible
+                        targetReached[0] = true;
+                    } else if (pageUrl.contains("/login") || pageUrl.contains("/signin")
+                            || pageUrl.contains("/connexion") || pageUrl.contains("/auth")
+                            || pageUrl.contains("/sso")) {
+                        // Page d'authentification Cafeyn
+                        wasOnAuthPage[0] = true;
+                    } else if (wasOnAuthPage[0] && !targetReached[0]) {
+                        // Redirection post-login vers l'accueil — on repart vers le magazine
+                        wasOnAuthPage[0] = false;
                         view.loadUrl(url);
                         return;
                     }
