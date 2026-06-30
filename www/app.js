@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.27';
+const APP_VERSION = '4.28';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -905,7 +905,7 @@ async function loadAgenda(){
 }
 
 /* ---------- Magazine / Cafeyn ---------- */
-const CAFEYN_URL   = 'https://www.cafeyn.co/fr/publication/l-informaticien';
+const CAFEYN_URL   = 'https://www.cafeyn.co/fr/magazines/l-informaticien';
 const CAFEYN_TITLE = "L'Informaticien";
 
 async function openMagazine(){
