@@ -1,10 +1,22 @@
 package com.laurent.fluxrss;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
+import android.view.KeyEvent;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
@@ -26,6 +38,8 @@ import java.net.URL;
 
 @CapacitorPlugin(name = "UpdatePlugin")
 public class UpdatePlugin extends Plugin {
+
+    /* ── Biométrie ─────────────────────────────────────────────────────── */
 
     @PluginMethod
     public void authenticate(PluginCall call) {
@@ -55,26 +69,91 @@ public class UpdatePlugin extends Plugin {
         activity.runOnUiThread(() -> prompt.authenticate(promptInfo));
     }
 
+    /* ── WebView in-app ─────────────────────────────────────────────────── */
+
     @PluginMethod
-    public void launchApp(PluginCall call) {
-        String pkg = call.getString("package");
-        if (pkg == null || pkg.isEmpty()) { call.reject("package manquant"); return; }
-        Context ctx = getContext();
-        PackageManager pm = ctx.getPackageManager();
-        Intent launch = pm.getLaunchIntentForPackage(pkg);
-        if (launch != null) {
-            launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            ctx.startActivity(launch);
+    public void openInAppWebView(PluginCall call) {
+        String url = call.getString("url", "https://www.cafeyn.co");
+        String title = call.getString("title", "Magazine");
+        int barColor = Color.parseColor(call.getString("barColor", "#7B3F00"));
+
+        FragmentActivity activity = getActivity();
+        activity.runOnUiThread(() -> {
+            Dialog dialog = new Dialog(activity, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+            // --- Barre du haut ---
+            LinearLayout topBar = new LinearLayout(activity);
+            topBar.setOrientation(LinearLayout.HORIZONTAL);
+            topBar.setBackgroundColor(barColor);
+            int dp8 = dp(activity, 8);
+            topBar.setPadding(dp8 * 2, dp8, dp8, dp8);
+
+            TextView titleView = new TextView(activity);
+            titleView.setText(title);
+            titleView.setTextColor(Color.WHITE);
+            titleView.setTextSize(16);
+            titleView.setTypeface(null, android.graphics.Typeface.BOLD);
+            LinearLayout.LayoutParams tp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
+            tp.gravity = android.view.Gravity.CENTER_VERTICAL;
+            titleView.setLayoutParams(tp);
+
+            ImageButton closeBtn = new ImageButton(activity);
+            closeBtn.setImageResource(android.R.drawable.ic_menu_close_clear_cancel);
+            closeBtn.setBackgroundColor(Color.TRANSPARENT);
+            closeBtn.setColorFilter(Color.WHITE);
+            closeBtn.setOnClickListener(v -> dialog.dismiss());
+
+            topBar.addView(titleView);
+            topBar.addView(closeBtn);
+
+            // --- WebView ---
+            WebView webView = new WebView(activity);
+            WebSettings ws = webView.getSettings();
+            ws.setJavaScriptEnabled(true);
+            ws.setDomStorageEnabled(true);
+            ws.setLoadWithOverviewMode(true);
+            ws.setUseWideViewPort(true);
+            ws.setBuiltInZoomControls(false);
+            ws.setSupportZoom(false);
+            ws.setUserAgentString("Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36");
+            webView.setWebViewClient(new WebViewClient() {
+                @Override
+                public boolean shouldOverrideUrlLoading(WebView v, WebResourceRequest req) {
+                    return false; // tout reste dans la WebView
+                }
+            });
+            webView.loadUrl(url);
+
+            // bouton retour Android navigue dans la WebView
+            dialog.setOnKeyListener((d, keyCode, event) -> {
+                if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+                    if (webView.canGoBack()) { webView.goBack(); return true; }
+                    dialog.dismiss(); return true;
+                }
+                return false;
+            });
+
+            // --- Mise en page ---
+            LinearLayout root = new LinearLayout(activity);
+            root.setOrientation(LinearLayout.VERTICAL);
+            LinearLayout.LayoutParams wvParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f);
+            webView.setLayoutParams(wvParams);
+            root.addView(topBar);
+            root.addView(webView);
+
+            dialog.setContentView(root);
+            dialog.show();
             call.resolve();
-        } else {
-            // App non installée → ouvre la fiche Play Store
-            Intent store = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("https://play.google.com/store/apps/details?id=" + pkg));
-            store.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            ctx.startActivity(store);
-            call.reject("app_not_installed");
-        }
+        });
     }
+
+    private int dp(Context ctx, int dp) {
+        return Math.round(dp * ctx.getResources().getDisplayMetrics().density);
+    }
+
+    /* ── Mise à jour APK ────────────────────────────────────────────────── */
 
     @PluginMethod
     public void downloadAndInstall(PluginCall call) {
@@ -103,7 +182,6 @@ public class UpdatePlugin extends Plugin {
 
     private void downloadFile(String urlStr, File dest) throws IOException {
         URL url = new URL(urlStr);
-        // Follow up to 5 redirects manually (GitHub assets redirect to CDN)
         int maxRedirects = 5;
         HttpURLConnection conn = null;
         while (maxRedirects-- > 0) {
