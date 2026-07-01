@@ -1,99 +1,8 @@
 {
- "generated": "2026-06-30T20:15:03+02:00",
+ "generated": "2026-07-01T08:15:04+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 25,
+ "count": 22,
  "programmes": [
-  {
-   "title": "ASM Romagnat / Stade Bordelais",
-   "date": "2026-06-30",
-   "time": "18:51",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-06-30",
-   "time": "20:38",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-06-30",
-   "time": "20:40",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "ASM Romagnat / Stade Bordelais",
-   "date": "2026-06-30",
-   "time": "21:00",
-   "desc": "Depuis le Stade Aguiléra à Biarritz. Lors des demi-finales, l'ASM Romagnat a battu Blagnac et le Stade Bordelais a pris le dessus sur Toulou",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Super Rugby Pacific",
-   "date": "2026-06-30",
-   "time": "21:00",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulouse / Montpellier",
-   "date": "2026-06-30",
-   "time": "22:43",
-   "desc": "Sur la pelouse du Stade de France, Toulouse défend de nouveau son titre acquis en 2025 contre l'UBB, mais cette fois face au Montpellier Hér",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Top 14",
-   "date": "2026-06-30",
-   "time": "23:00",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-07-01",
@@ -303,6 +212,19 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-03",
+   "time": "11:55",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Penrith Panthers / South Sydney Rabbitohs",
    "date": "2026-07-03",
    "time": "11:55",
@@ -316,12 +238,51 @@
    "approx": false
   },
   {
+   "title": "Rugby : Championnat du monde U20",
+   "date": "2026-07-03",
+   "time": "13:07",
+   "desc": "Après une première confrontation face au Japon, les Néo-Zélandais défient l'Ecosse dans ce Championnat du monde U20, organisé en Géorgie.",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Nouvelle-Zélande / Ecosse",
    "date": "2026-07-03",
    "time": "13:07",
    "desc": "Rugby",
    "chaine": [
     "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-03",
+   "time": "22:30",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Brisbane Broncos / Cronulla-Sutherland Sharks",
+   "date": "2026-07-04",
+   "time": "11:27",
+   "desc": "En Direct.",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
