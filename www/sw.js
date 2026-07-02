@@ -1,4 +1,4 @@
-const CACHE = 'flux-rss-v43';
+const CACHE = 'flux-rss-v44';
 const SHELL = [
   './', './index.html', './styles.css', './app.js', './update-check.js',
   './data/feeds.json', './data/events.json', './data/rugby_tv.json', './manifest.webmanifest',
@@ -8,7 +8,13 @@ self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(()=>self.skipWaiting()));
 });
 self.addEventListener('activate', (e) => {
-  e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));
+  e.waitUntil(
+    caches.keys()
+      .then(ks => Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k))))
+      .then(() => self.clients.claim())
+      .then(() => self.clients.matchAll({ type: 'window' }))
+      .then(clients => Promise.all(clients.map(c => { try{ return c.url && c.navigate(c.url); }catch(e){} })))
+  );
 });
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
