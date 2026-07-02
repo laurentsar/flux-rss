@@ -1,5 +1,5 @@
 {
-  "version": 19,
+  "version": 20,
   "generated": "2026-06-22",
   "categories": [
     {
@@ -179,8 +179,8 @@
       ],
       "feeds_changelog": [
         {
-          "name": "Tesla — mises à jour logicielles",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+logiciel+mise+%C3%A0+jour+nouvelles+fonctions"
+          "name": "Not a Tesla App — changelog firmware",
+          "url": "https://www.notateslaapp.com/rss"
         }
       ]
     },

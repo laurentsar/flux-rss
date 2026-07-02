@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.37';
+const APP_VERSION = '4.38';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -441,6 +441,29 @@ function hideRugbyLive(){
 /* ---------- Changelog Live ---------- */
 let _clHtml = null;
 
+function clBullets(text){
+  if (!text) return [];
+  // 1) Newline or bullet-character split
+  const byLine = text.split(/\n/).map(l => l.trim().replace(/^[-•·–]\s*/, '')).filter(s => s.length > 10);
+  if (byLine.length > 1) return byLine;
+  // 2) "includes X, Y, Z" / "apporte X, Y, Z" / "avec X, Y, Z"
+  const m = text.match(/(?:includes?|apporte|introduce[sd]?|avec)\s+(.+)/i);
+  if (m) {
+    const parts = m[1].split(/,\s*/).map(s => s.replace(/\.$/, '').trim()).filter(s => s.length > 3);
+    if (parts.length > 1) return parts;
+  }
+  // 3) Colon then comma list: "Nouveautés : X, Y, Z"
+  const mc = text.match(/:\s+([^.]{20,})/);
+  if (mc) {
+    const parts = mc[1].split(/,\s*/).map(s => s.trim()).filter(s => s.length > 3);
+    if (parts.length > 1) return parts;
+  }
+  // 4) Period-separated sentences
+  const bySentence = text.split(/\.\s+(?=[A-ZÀÂÉÈÊËÎÏÔÙÛÜ])/).map(s => s.trim()).filter(s => s.length > 15);
+  if (bySentence.length > 1) return bySentence;
+  return [];
+}
+
 async function loadChangelogLive(cat){
   if (!elChangelogLive) return;
   const feeds = (cat.feeds_changelog || []).filter(f => !f.off);
@@ -459,9 +482,7 @@ async function loadChangelogLive(cat){
   if (!items.length){ hideChangelogLive(); return; }
   const it = items[0];
   const label = cat.id==='ia' ? '🤖 Dernière release IA' : cat.id==='domotique' ? '🏠 Dernière version Home Assistant' : '⚡ Dernière mise à jour Tesla';
-  // Découpe la description en puces (séparateurs : newline, •, tiret en début de phrase, point entre phrases)
-  const bullets = (it.summary || '').split(/\n|(?:^|\s)[•·–-]\s+|(?<=\w)\.\s+(?=[A-ZÀÂÉÈÊËÎÏÔÙÛÜ])/m)
-    .map(s => s.replace(/^[-•·–]\s*/, '').trim()).filter(s => s.length > 15);
+  const bullets = clBullets(it.summary || '');
   const buller = bullets.length > 1
     ? `<ul class="cl-bullets">${bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>`
     : it.summary ? `<span class="cl-excerpt">${esc(it.summary)}</span>` : '';
