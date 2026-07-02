@@ -1,1118 +1,1130 @@
 {
- "version": 19,
- "generated": "2026-06-22",
- "categories": [
-  {
-   "id": "ve",
-   "label": "🚗 Voiture électrique",
-   "lang": "fr",
-   "feeds": [
+  "version": 19,
+  "generated": "2026-06-22",
+  "categories": [
     {
-     "name": "AVEM",
-     "url": "https://www.avem.fr/feed/"
+      "id": "ve",
+      "label": "🚗 Voiture électrique",
+      "lang": "fr",
+      "feeds": [
+        {
+          "name": "AVEM",
+          "url": "https://www.avem.fr/feed/"
+        },
+        {
+          "name": "Automobile Propre",
+          "url": "https://www.automobile-propre.com/feed/"
+        },
+        {
+          "name": "Numerama Vroom",
+          "url": "https://www.numerama.com/vroom/feed/"
+        },
+        {
+          "name": "Avere France",
+          "url": "https://www.avere-france.org/feed/"
+        },
+        {
+          "name": "Cleanrider",
+          "url": "https://www.cleanrider.com/feed/"
+        },
+        {
+          "name": "01net — Voiture électrique",
+          "url": "https://www.01net.com/tag/voiture-electrique/feed/"
+        },
+        {
+          "name": "Beev",
+          "url": "https://www.beev.co/blog/feed/"
+        },
+        {
+          "name": "Automobile Propre (vidéo)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCjsgbvUWf6_gYe5Fc4xpSBg",
+          "pod": true,
+          "kind": "video"
+        }
+      ],
+      "feeds_en": [
+        {
+          "name": "Electrek",
+          "url": "https://electrek.co/feed/"
+        },
+        {
+          "name": "InsideEVs",
+          "url": "https://insideevs.com/rss/articles/all/"
+        },
+        {
+          "name": "Electrive",
+          "url": "https://www.electrive.com/feed/"
+        },
+        {
+          "name": "Electric vehicle — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=electric+vehicle"
+        },
+        {
+          "name": "EV charging — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=EV+charging"
+        },
+        {
+          "name": "Battery tech — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=EV+battery+technology"
+        },
+        {
+          "name": "Out of Spec Reviews (video)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCVRZKu68-4tQIk7_3CJ_wKA",
+          "pod": true,
+          "kind": "video"
+        }
+      ]
     },
     {
-     "name": "Automobile Propre",
-     "url": "https://www.automobile-propre.com/feed/"
+      "id": "tesla",
+      "label": "⚡ Tesla",
+      "lang": "fr",
+      "feeds": [
+        {
+          "name": "Blog Tesla",
+          "url": "https://www.blogtesla.fr/feed/"
+        },
+        {
+          "name": "Tesla — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla"
+        },
+        {
+          "name": "Tesla Model Y — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Model+Y"
+        },
+        {
+          "name": "Tesla Model 3 — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Model+3"
+        },
+        {
+          "name": "Tesla FSD — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+FSD+autonomie"
+        },
+        {
+          "name": "Elon Musk — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Elon+Musk"
+        },
+        {
+          "name": "Tesla Cybertruck — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Cybertruck"
+        },
+        {
+          "name": "Superchargeur — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Superchargeur"
+        },
+        {
+          "name": "Automobile Propre (vidéo)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCjsgbvUWf6_gYe5Fc4xpSBg",
+          "pod": true,
+          "kind": "video"
+        },
+        {
+          "name": "Changelog Tesla — Not a Tesla App",
+          "url": "https://www.notateslaapp.com/rss"
+        },
+        {
+          "name": "Tesla Oracle (FSD & software)",
+          "url": "https://www.teslaoracle.com/feed/"
+        },
+        {
+          "name": "Tesla mise à jour logicielle — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+mise+%C3%A0+jour+logicielle+firmware"
+        }
+      ],
+      "feeds_en": [
+        {
+          "name": "Teslarati",
+          "url": "https://www.teslarati.com/feed/"
+        },
+        {
+          "name": "Tesla — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla"
+        },
+        {
+          "name": "Tesla FSD — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla+FSD+self-driving"
+        },
+        {
+          "name": "Tesla Model Y — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla+Model+Y"
+        },
+        {
+          "name": "Elon Musk — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Elon+Musk"
+        },
+        {
+          "name": "Tesla earnings — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla+earnings+stock"
+        },
+        {
+          "name": "Tesla Cybertruck — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla+Cybertruck"
+        },
+        {
+          "name": "Tesla Supercharger — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla+Supercharger"
+        },
+        {
+          "name": "Tesla Daily (video)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCgYkuL87rUwiBl7tqfN53Eg",
+          "pod": true,
+          "kind": "video"
+        },
+        {
+          "name": "Now You Know (video)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCnaDlsxg2S5u-zq0vrJN-BA",
+          "pod": true,
+          "kind": "video"
+        }
+      ]
     },
     {
-     "name": "Numerama Vroom",
-     "url": "https://www.numerama.com/vroom/feed/"
+      "id": "vr",
+      "label": "🥽 Casque VR / XR",
+      "lang": "fr",
+      "feeds": [
+        {
+          "name": "Réalité Virtuelle",
+          "url": "https://www.realite-virtuelle.com/feed/"
+        },
+        {
+          "name": "Casque VR — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=casque%20VR"
+        },
+        {
+          "name": "Réalité virtuelle — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9alit%C3%A9%20virtuelle"
+        },
+        {
+          "name": "Meta Quest — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Meta%20Quest"
+        },
+        {
+          "name": "Apple Vision Pro — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Apple%20Vision%20Pro"
+        },
+        {
+          "name": "PlayStation VR — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=PlayStation%20VR"
+        },
+        {
+          "name": "Réalité augmentée — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9alit%C3%A9%20augment%C3%A9e"
+        },
+        {
+          "name": "ETR — Réalité étendue (vidéo)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCAdEDlmlbFpWgRVSTQA3OmQ",
+          "pod": true,
+          "kind": "video"
+        }
+      ],
+      "feeds_en": [
+        {
+          "name": "Road to VR",
+          "url": "https://www.roadtovr.com/feed"
+        },
+        {
+          "name": "UploadVR",
+          "url": "https://www.uploadvr.com/feed"
+        },
+        {
+          "name": "MIXED",
+          "url": "https://mixed-news.com/en/feed/"
+        },
+        {
+          "name": "Virtual reality — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=virtual+reality"
+        },
+        {
+          "name": "Meta Quest — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Meta+Quest"
+        },
+        {
+          "name": "Apple Vision Pro — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Apple+Vision+Pro"
+        },
+        {
+          "name": "Augmented reality — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=augmented+reality"
+        },
+        {
+          "name": "PlayStation VR — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=PlayStation+VR"
+        },
+        {
+          "name": "Voices of VR",
+          "url": "https://voicesofvr.com/?feed=podcast",
+          "pod": true,
+          "kind": "audio"
+        }
+      ]
     },
     {
-     "name": "Avere France",
-     "url": "https://www.avere-france.org/feed/"
+      "id": "cyber",
+      "label": "🛡️ Cyber",
+      "lang": "fr",
+      "feeds": [
+        {
+          "name": "CERT-FR",
+          "url": "https://www.cert.ssi.gouv.fr/feed/"
+        },
+        {
+          "name": "ZATAZ",
+          "url": "https://www.zataz.com/feed/"
+        },
+        {
+          "name": "LeMagIT — Sécurité",
+          "url": "https://www.lemagit.fr/rss/ContentSyndication.xml"
+        },
+        {
+          "name": "Le Monde Informatique",
+          "url": "https://www.lemondeinformatique.fr/flux-rss/rss.xml"
+        },
+        {
+          "name": "01net — Sécurité",
+          "url": "https://www.01net.com/tag/cybersecurite/feed/"
+        },
+        {
+          "name": "Numerama Cyber",
+          "url": "https://www.numerama.com/tag/cybersecurite/feed/"
+        },
+        {
+          "name": "IT-Connect",
+          "url": "https://www.it-connect.fr/feed/"
+        },
+        {
+          "name": "Korben",
+          "url": "https://korben.info/feed"
+        },
+        {
+          "name": "NoLimitSecu",
+          "url": "https://www.nolimitsecu.fr/feed/",
+          "pod": true,
+          "kind": "audio"
+        },
+        {
+          "name": "Le Comptoir Sécu",
+          "url": "https://www.comptoirsecu.fr/feed/podcast/",
+          "pod": true,
+          "kind": "audio"
+        },
+        {
+          "name": "Micode (vidéo)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCYnvxJ-PKiGXo_tYXpWAC-w",
+          "pod": true,
+          "kind": "video"
+        }
+      ],
+      "feeds_en": [
+        {
+          "name": "The Hacker News",
+          "url": "https://thehackernews.com/feeds/posts/default"
+        },
+        {
+          "name": "Krebs on Security",
+          "url": "https://krebsonsecurity.com/feed/"
+        },
+        {
+          "name": "Dark Reading",
+          "url": "https://www.darkreading.com/rss.xml"
+        },
+        {
+          "name": "The Register — Security",
+          "url": "https://www.theregister.com/security/headlines.atom"
+        },
+        {
+          "name": "Cybersecurity — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=cybersecurity"
+        },
+        {
+          "name": "Ransomware — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=ransomware"
+        },
+        {
+          "name": "Data breach — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=data+breach"
+        },
+        {
+          "name": "Vulnerability — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=security+vulnerability"
+        },
+        {
+          "name": "Darknet Diaries",
+          "url": "https://feeds.megaphone.fm/darknetdiaries",
+          "pod": true,
+          "kind": "audio"
+        },
+        {
+          "name": "Smashing Security",
+          "url": "https://www.smashingsecurity.com/rss",
+          "pod": true,
+          "kind": "audio"
+        }
+      ]
     },
     {
-     "name": "Cleanrider",
-     "url": "https://www.cleanrider.com/feed/"
+      "id": "ia",
+      "label": "🤖 IA",
+      "lang": "fr",
+      "feeds": [
+        {
+          "name": "ZDNet IA",
+          "url": "https://www.zdnet.fr/feeds/rss/actualites/intelligence-artificielle/"
+        },
+        {
+          "name": "ActuIA",
+          "url": "https://www.actuia.com/feed/"
+        },
+        {
+          "name": "Numerama IA",
+          "url": "https://www.numerama.com/tech/intelligence-artificielle/feed/"
+        },
+        {
+          "name": "Presse-citron IA",
+          "url": "https://www.presse-citron.net/tag/intelligence-artificielle/feed/"
+        },
+        {
+          "name": "01net — IA",
+          "url": "https://www.01net.com/tag/intelligence-artificielle/feed/"
+        },
+        {
+          "name": "Intelligence artificielle — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=intelligence%20artificielle"
+        },
+        {
+          "name": "ChatGPT — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=ChatGPT%20OpenAI"
+        },
+        {
+          "name": "IA générative — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=IA%20g%C3%A9n%C3%A9rative"
+        },
+        {
+          "name": "Trench Tech",
+          "url": "https://trench-tech.fr/feed/podcast/",
+          "pod": true,
+          "kind": "audio"
+        },
+        {
+          "name": "Underscore_ (vidéo)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCWedHS9qKebauVIK2J7383g",
+          "pod": true,
+          "kind": "video"
+        }
+      ],
+      "feeds_en": [
+        {
+          "name": "TechCrunch AI",
+          "url": "https://techcrunch.com/category/artificial-intelligence/feed/"
+        },
+        {
+          "name": "The Verge AI",
+          "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
+        },
+        {
+          "name": "VentureBeat AI",
+          "url": "https://venturebeat.com/category/ai/feed/"
+        },
+        {
+          "name": "MIT Tech Review",
+          "url": "https://www.technologyreview.com/feed/"
+        },
+        {
+          "name": "Artificial intelligence — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=artificial+intelligence"
+        },
+        {
+          "name": "OpenAI — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=OpenAI"
+        },
+        {
+          "name": "Machine learning — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=machine+learning"
+        },
+        {
+          "name": "ChatGPT — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=ChatGPT"
+        },
+        {
+          "name": "Lex Fridman Podcast",
+          "url": "https://lexfridman.com/feed/podcast/",
+          "pod": true,
+          "kind": "audio"
+        }
+      ]
     },
     {
-     "name": "01net — Voiture électrique",
-     "url": "https://www.01net.com/tag/voiture-electrique/feed/"
+      "id": "rugby",
+      "label": "🏉 Rugby",
+      "lang": "fr",
+      "feeds": [
+        {
+          "name": "Rugbyrama",
+          "url": "https://www.rugbyrama.fr/rss.xml"
+        },
+        {
+          "name": "L'Équipe — Rugby",
+          "url": "https://dwh.lequipe.fr/api/edito/rss?path=/Rugby"
+        },
+        {
+          "name": "Rugby Transferts",
+          "url": "https://www.rugby-transferts.com/feed"
+        },
+        {
+          "name": "RMC Sport — Rugby",
+          "url": "https://rmcsport.bfmtv.com/rss/rugby/"
+        },
+        {
+          "name": "Radio France — Rugby",
+          "url": "https://www.radiofrance.fr/rss/sports/rugby"
+        },
+        {
+          "name": "Le Parisien — Rugby",
+          "url": "https://www.leparisien.fr/sports/rugby/rss.xml"
+        },
+        {
+          "name": "Sud Ouest — Rugby",
+          "url": "https://www.sudouest.fr/sport/rugby/rss.xml"
+        },
+        {
+          "name": "Quinze Mondial",
+          "url": "https://www.quinzemondial.com/feed/"
+        }
+      ],
+      "feeds_en": [
+        {
+          "name": "BBC Sport — Rugby",
+          "url": "https://feeds.bbci.co.uk/sport/rugby-union/rss.xml"
+        },
+        {
+          "name": "The Guardian — Rugby",
+          "url": "https://www.theguardian.com/sport/rugby-union/rss"
+        },
+        {
+          "name": "ESPN — Rugby",
+          "url": "https://www.espn.com/espn/rss/rugby/news"
+        },
+        {
+          "name": "Rugby union — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=rugby+union"
+        },
+        {
+          "name": "Six Nations — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Six+Nations+rugby"
+        },
+        {
+          "name": "Rugby World Cup — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Rugby+World+Cup"
+        },
+        {
+          "name": "Premiership Rugby — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Premiership+Rugby"
+        },
+        {
+          "name": "URC — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=United+Rugby+Championship"
+        },
+        {
+          "name": "World Rugby (video)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCE28rwYoaV7jvU6GVzdu_GQ",
+          "pod": true,
+          "kind": "video"
+        },
+        {
+          "name": "Six Nations (video)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCL5bAcVfbxSAs-UM5f5ncWg",
+          "pod": true,
+          "kind": "video"
+        }
+      ]
     },
     {
-     "name": "Beev",
-     "url": "https://www.beev.co/blog/feed/"
+      "id": "domotique",
+      "label": "🏠 Domotique",
+      "lang": "fr",
+      "feeds": [
+        {
+          "name": "Maison et Domotique",
+          "url": "https://www.maison-et-domotique.com/feed/"
+        },
+        {
+          "name": "Les Alexiens",
+          "url": "https://www.lesalexiens.fr/feed/"
+        },
+        {
+          "name": "Domotique News",
+          "url": "https://www.domotique-news.com/feed/"
+        },
+        {
+          "name": "Domotique — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=domotique"
+        },
+        {
+          "name": "Maison connectée — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=maison%20connect%C3%A9e"
+        },
+        {
+          "name": "Objet connecté — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=objet%20connect%C3%A9"
+        },
+        {
+          "name": "Home Assistant — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Home%20Assistant%20Matter"
+        },
+        {
+          "name": "Maison intelligente — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=maison%20intelligente%20domotique"
+        },
+        {
+          "name": "Les Alexiens (vidéo)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCR8D3c_6bGzJh3QyZr7p1WQ",
+          "pod": true,
+          "kind": "video"
+        },
+        {
+          "name": "Domadoo (vidéo)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCwgtuCmucgFRTxRwOLX0dng",
+          "pod": true,
+          "kind": "video"
+        }
+      ],
+      "feeds_en": [
+        {
+          "name": "Stacey on IoT",
+          "url": "https://staceyoniot.com/feed/"
+        },
+        {
+          "name": "Home Assistant Blog",
+          "url": "https://www.home-assistant.io/atom.xml"
+        },
+        {
+          "name": "The Verge — Smart Home",
+          "url": "https://www.theverge.com/rss/smart-home/index.xml"
+        },
+        {
+          "name": "Smart home — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=smart+home"
+        },
+        {
+          "name": "Home automation — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=home+automation"
+        },
+        {
+          "name": "Home Assistant — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Home+Assistant"
+        },
+        {
+          "name": "Matter — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Matter+smart+home"
+        },
+        {
+          "name": "Google Home — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Google+Home"
+        },
+        {
+          "name": "Home Assistant Podcast",
+          "url": "https://hasspodcast.io/feed/podcast/",
+          "pod": true,
+          "kind": "audio"
+        }
+      ]
     },
     {
-     "name": "Automobile Propre (vidéo)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCjsgbvUWf6_gYe5Fc4xpSBg",
-     "pod": true,
-     "kind": "video"
+      "id": "solaire",
+      "label": "☀️ Énergie / Solaire",
+      "lang": "fr",
+      "feeds": [
+        {
+          "name": "Révolution Énergétique",
+          "url": "https://www.revolution-energetique.com/feed/"
+        },
+        {
+          "name": "PV Magazine France",
+          "url": "https://www.pv-magazine.fr/feed/"
+        },
+        {
+          "name": "Connaissance des Énergies",
+          "url": "https://www.connaissancedesenergies.org/rss.xml"
+        },
+        {
+          "name": "Enerzine",
+          "url": "https://www.enerzine.com/feed"
+        },
+        {
+          "name": "Panneau solaire — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=panneau+solaire"
+        },
+        {
+          "name": "Photovoltaïque — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=photovolta%C3%AFque"
+        },
+        {
+          "name": "Autoconsommation — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=autoconsommation+solaire"
+        },
+        {
+          "name": "Le Réveilleur (vidéo)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC1EacOJoqsKaYxaDomTCTEQ",
+          "pod": true,
+          "kind": "video"
+        }
+      ],
+      "feeds_en": [
+        {
+          "name": "Electrek — Energy",
+          "url": "https://electrek.co/feed/"
+        },
+        {
+          "name": "Solar power — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=solar+power"
+        },
+        {
+          "name": "Photovoltaic — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=photovoltaic"
+        },
+        {
+          "name": "Rooftop solar — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=rooftop+solar"
+        },
+        {
+          "name": "Solar panels — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=solar+panels"
+        },
+        {
+          "name": "Renewable energy — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=renewable+energy"
+        },
+        {
+          "name": "Home battery — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=home+battery+storage"
+        },
+        {
+          "name": "Clean energy — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=clean+energy"
+        },
+        {
+          "name": "Just Have a Think (video)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCRBwLPbXGsI2cJe9W1zfSjQ",
+          "pod": true,
+          "kind": "video"
+        }
+      ]
+    },
+    {
+      "id": "deals_fr",
+      "label": "🔥 Deals FR",
+      "lang": "fr",
+      "feeds": [
+        {
+          "name": "Dealabs — Tous",
+          "url": "https://www.dealabs.com/rss/tous"
+        },
+        {
+          "name": "Dealabs — Tendances",
+          "url": "https://www.dealabs.com/rss/tendance"
+        },
+        {
+          "name": "Frandroid — Bons plans",
+          "url": "https://www.frandroid.com/bons-plans/feed"
+        },
+        {
+          "name": "01net — Bons plans",
+          "url": "https://www.01net.com/tag/bon-plan/feed/"
+        },
+        {
+          "name": "Clubic — Bons plans",
+          "url": "https://www.clubic.com/feed/bons-plans/rss"
+        },
+        {
+          "name": "Google Actu — Bons plans",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bon%20plan"
+        },
+        {
+          "name": "Google Actu — Promos",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=promo"
+        },
+        {
+          "name": "Bons plans — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bon%20plan%20promo"
+        }
+      ],
+      "feeds_en": [
+        {
+          "name": "Deals — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=best+deals"
+        },
+        {
+          "name": "Discount — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=discount"
+        },
+        {
+          "name": "Tech deals — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=tech+deals"
+        },
+        {
+          "name": "Amazon deals — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Amazon+deals"
+        },
+        {
+          "name": "Coupons — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=coupons"
+        },
+        {
+          "name": "Sale — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=online+sale"
+        },
+        {
+          "name": "Gaming deals — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=gaming+deals"
+        },
+        {
+          "name": "Black Friday — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Black+Friday+deals"
+        }
+      ]
+    },
+    {
+      "id": "jeux",
+      "label": "🎮 Jeux",
+      "lang": "fr",
+      "feeds": [
+        {
+          "name": "Brawl Stars — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Brawl+Stars"
+        },
+        {
+          "name": "Fortnite — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Fortnite"
+        },
+        {
+          "name": "Roblox — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Roblox"
+        },
+        {
+          "name": "Minecraft — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Minecraft"
+        },
+        {
+          "name": "Clash Royale — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Clash+Royale"
+        },
+        {
+          "name": "Dexerto",
+          "url": "https://www.dexerto.fr/feed/"
+        },
+        {
+          "name": "JeuxVideo.com",
+          "url": "https://www.jeuxvideo.com/rss/rss.xml"
+        },
+        {
+          "name": "Gameblog",
+          "url": "https://www.gameblog.fr/feed/"
+        },
+        {
+          "name": "Jeuxvideo.com (vidéo)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC3_fHjAxelWsOll8RxWtUDg",
+          "pod": true,
+          "kind": "video"
+        }
+      ],
+      "feeds_en": [
+        {
+          "name": "IGN",
+          "url": "https://feeds.ign.com/ign/all"
+        },
+        {
+          "name": "Eurogamer",
+          "url": "https://www.eurogamer.net/feed"
+        },
+        {
+          "name": "Kotaku",
+          "url": "https://kotaku.com/rss"
+        },
+        {
+          "name": "Brawl Stars — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Brawl+Stars"
+        },
+        {
+          "name": "Fortnite — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Fortnite"
+        },
+        {
+          "name": "Roblox — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Roblox"
+        },
+        {
+          "name": "Minecraft — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Minecraft"
+        },
+        {
+          "name": "Video games — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=video+games"
+        },
+        {
+          "name": "Kinda Funny Gamescast",
+          "url": "https://feeds.megaphone.fm/kindafunnygamescast",
+          "pod": true,
+          "kind": "audio"
+        }
+      ]
+    },
+    {
+      "id": "voyage",
+      "label": "🏷️ Deals voyage",
+      "lang": "fr",
+      "feeds": [
+        {
+          "name": "Voyage Pirate",
+          "url": "https://www.lesvoyagespirates.com/feed"
+        },
+        {
+          "name": "Billet avion pas cher — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=billet+avion+pas+cher+promo"
+        },
+        {
+          "name": "Vol pas cher — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=vol+pas+cher"
+        },
+        {
+          "name": "Séjour pas cher — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=s%C3%A9jour+pas+cher"
+        },
+        {
+          "name": "Vente flash voyage — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=vente+flash+voyage"
+        },
+        {
+          "name": "Week-end pas cher — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=week-end+pas+cher"
+        },
+        {
+          "name": "Hôtel pas cher — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=h%C3%B4tel+pas+cher+promo"
+        },
+        {
+          "name": "Croisière pas cher — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=croisi%C3%A8re+pas+cher"
+        },
+        {
+          "name": "Bruno Maltor (vidéo)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCSdJiWi0tq9CAx1bizne6mA",
+          "pod": true,
+          "kind": "video"
+        }
+      ],
+      "feeds_en": [
+        {
+          "name": "Secret Flying",
+          "url": "https://www.secretflying.com/feed/"
+        },
+        {
+          "name": "Fly4free",
+          "url": "https://www.fly4free.com/feed/"
+        },
+        {
+          "name": "The Flight Deal",
+          "url": "https://www.theflightdeal.com/feed/"
+        },
+        {
+          "name": "Flight deals — Google News",
+          "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=flight+deals"
+        },
+        {
+          "name": "Hotel deals — Google News",
+          "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=hotel+deals"
+        },
+        {
+          "name": "Cheap flights — Google News",
+          "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=cheap+flights"
+        },
+        {
+          "name": "Vacation deals — Google News",
+          "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=vacation+deals"
+        },
+        {
+          "name": "Cruise deals — Google News",
+          "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=cruise+deals"
+        },
+        {
+          "name": "Zero To Travel",
+          "url": "https://feeds.megaphone.fm/zerototravel",
+          "pod": true,
+          "kind": "audio"
+        }
+      ]
+    },
+    {
+      "id": "placement",
+      "label": "📈 Placements",
+      "lang": "fr",
+      "feeds": [
+        {
+          "name": "Capital — Épargne",
+          "url": "https://www.capital.fr/rss"
+        },
+        {
+          "name": "MoneyVox",
+          "url": "https://www.moneyvox.fr/actu/rss.php"
+        },
+        {
+          "name": "Café de la Bourse",
+          "url": "https://www.cafedelabourse.com/feed/"
+        },
+        {
+          "name": "Bourse — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bourse+investissement"
+        },
+        {
+          "name": "ETF — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=ETF+indice+tracker"
+        },
+        {
+          "name": "SCPI — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=SCPI+immobilier"
+        },
+        {
+          "name": "Assurance-vie — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=assurance-vie+rendement"
+        },
+        {
+          "name": "Bourse — Boursorama (Google Actu)",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Boursorama%20bourse"
+        },
+        {
+          "name": "Heu?reka (vidéo)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC7sXGI8p8PvKosLWagkK9wQ",
+          "pod": true,
+          "kind": "video"
+        }
+      ],
+      "feeds_en": [
+        {
+          "name": "ETF — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=ETF+investing"
+        },
+        {
+          "name": "Dividend investing — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=dividend+investing"
+        },
+        {
+          "name": "S&P 500 — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=S%26P+500+index"
+        },
+        {
+          "name": "Real estate investing — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=real+estate+investing"
+        },
+        {
+          "name": "The Plain Bagel (video)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCFCEuCsyWP0YkP3CZ3Mr01Q",
+          "pod": true,
+          "kind": "video"
+        },
+        {
+          "name": "Ben Felix (video)",
+          "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCDXTQ8nWmx_EhZ2v-kp7QxA",
+          "pod": true,
+          "kind": "video"
+        }
+      ]
+    },
+    {
+      "id": "bricolage",
+      "label": "🔨 Bricolage",
+      "lang": "fr",
+      "feeds": [
+        {
+          "name": "Système D",
+          "url": "https://www.systemed.fr/feed/"
+        },
+        {
+          "name": "Côté Maison",
+          "url": "https://www.cotemaison.fr/feed/"
+        },
+        {
+          "name": "Batirama",
+          "url": "https://www.batirama.com/rss.xml"
+        },
+        {
+          "name": "Bricolage — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bricolage+r%C3%A9novation+maison"
+        },
+        {
+          "name": "Rénovation — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9novation+travaux+maison"
+        },
+        {
+          "name": "Jardinage & extérieur — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=jardinage+am%C3%A9nagement+ext%C3%A9rieur"
+        }
+      ],
+      "feeds_en": [
+        {
+          "name": "Instructables",
+          "url": "https://www.instructables.com/feed/"
+        },
+        {
+          "name": "DIY Network — Google News",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=DIY+home+improvement"
+        }
+      ]
+    },
+    {
+      "id": "byd",
+      "label": "🛠️ Bring Your Device",
+      "lang": "fr",
+      "feeds": [
+        {
+          "name": "Framboise314",
+          "url": "https://www.framboise314.fr/feed/"
+        },
+        {
+          "name": "Korben",
+          "url": "https://korben.info/feed"
+        },
+        {
+          "name": "MCHobby",
+          "url": "https://www.mchobby.be/blog/feed/"
+        },
+        {
+          "name": "Projets DIY — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=maker+DIY+%C3%A9lectronique+Arduino+Raspberry+Pi"
+        },
+        {
+          "name": "Impression 3D — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=impression+3D+imprimante+3D"
+        },
+        {
+          "name": "Électronique — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=%C3%A9lectronique+DIY+open+source+hardware"
+        }
+      ],
+      "feeds_en": [
+        {
+          "name": "Make Magazine",
+          "url": "https://makezine.com/feed/"
+        },
+        {
+          "name": "Hackaday",
+          "url": "https://hackaday.com/blog/feed/"
+        },
+        {
+          "name": "Hackster.io",
+          "url": "https://www.hackster.io/rss"
+        },
+        {
+          "name": "Arduino Blog",
+          "url": "https://blog.arduino.cc/feed/"
+        },
+        {
+          "name": "Instructables",
+          "url": "https://www.instructables.com/feed/"
+        },
+        {
+          "name": "Adafruit Blog",
+          "url": "https://blog.adafruit.com/feed/"
+        }
+      ]
     }
-   ],
-   "feeds_en": [
-    {
-     "name": "Electrek",
-     "url": "https://electrek.co/feed/"
-    },
-    {
-     "name": "InsideEVs",
-     "url": "https://insideevs.com/rss/articles/all/"
-    },
-    {
-     "name": "Electrive",
-     "url": "https://www.electrive.com/feed/"
-    },
-    {
-     "name": "Electric vehicle — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=electric+vehicle"
-    },
-    {
-     "name": "EV charging — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=EV+charging"
-    },
-    {
-     "name": "Battery tech — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=EV+battery+technology"
-    },
-    {
-     "name": "Out of Spec Reviews (video)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCVRZKu68-4tQIk7_3CJ_wKA",
-     "pod": true,
-     "kind": "video"
-    }
-   ]
-  },
-  {
-   "id": "tesla",
-   "label": "⚡ Tesla",
-   "lang": "fr",
-   "feeds": [
-    {
-     "name": "Blog Tesla",
-     "url": "https://www.blogtesla.fr/feed/"
-    },
-    {
-     "name": "Tesla — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla"
-    },
-    {
-     "name": "Tesla Model Y — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Model+Y"
-    },
-    {
-     "name": "Tesla Model 3 — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Model+3"
-    },
-    {
-     "name": "Tesla FSD — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+FSD+autonomie"
-    },
-    {
-     "name": "Elon Musk — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Elon+Musk"
-    },
-    {
-     "name": "Tesla Cybertruck — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Cybertruck"
-    },
-    {
-     "name": "Superchargeur — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Superchargeur"
-    },
-    {
-     "name": "Automobile Propre (vidéo)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCjsgbvUWf6_gYe5Fc4xpSBg",
-     "pod": true,
-     "kind": "video"
-    }
-   ],
-   "feeds_en": [
-    {
-     "name": "Teslarati",
-     "url": "https://www.teslarati.com/feed/"
-    },
-    {
-     "name": "Tesla — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla"
-    },
-    {
-     "name": "Tesla FSD — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla+FSD+self-driving"
-    },
-    {
-     "name": "Tesla Model Y — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla+Model+Y"
-    },
-    {
-     "name": "Elon Musk — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Elon+Musk"
-    },
-    {
-     "name": "Tesla earnings — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla+earnings+stock"
-    },
-    {
-     "name": "Tesla Cybertruck — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla+Cybertruck"
-    },
-    {
-     "name": "Tesla Supercharger — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Tesla+Supercharger"
-    },
-    {
-     "name": "Tesla Daily (video)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCgYkuL87rUwiBl7tqfN53Eg",
-     "pod": true,
-     "kind": "video"
-    },
-    {
-     "name": "Now You Know (video)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCnaDlsxg2S5u-zq0vrJN-BA",
-     "pod": true,
-     "kind": "video"
-    }
-   ]
-  },
-  {
-   "id": "vr",
-   "label": "🥽 Casque VR / XR",
-   "lang": "fr",
-   "feeds": [
-    {
-     "name": "Réalité Virtuelle",
-     "url": "https://www.realite-virtuelle.com/feed/"
-    },
-    {
-     "name": "Casque VR — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=casque%20VR"
-    },
-    {
-     "name": "Réalité virtuelle — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9alit%C3%A9%20virtuelle"
-    },
-    {
-     "name": "Meta Quest — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Meta%20Quest"
-    },
-    {
-     "name": "Apple Vision Pro — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Apple%20Vision%20Pro"
-    },
-    {
-     "name": "PlayStation VR — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=PlayStation%20VR"
-    },
-    {
-     "name": "Réalité augmentée — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9alit%C3%A9%20augment%C3%A9e"
-    },
-    {
-     "name": "ETR — Réalité étendue (vidéo)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCAdEDlmlbFpWgRVSTQA3OmQ",
-     "pod": true,
-     "kind": "video"
-    }
-   ],
-   "feeds_en": [
-    {
-     "name": "Road to VR",
-     "url": "https://www.roadtovr.com/feed"
-    },
-    {
-     "name": "UploadVR",
-     "url": "https://www.uploadvr.com/feed"
-    },
-    {
-     "name": "MIXED",
-     "url": "https://mixed-news.com/en/feed/"
-    },
-    {
-     "name": "Virtual reality — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=virtual+reality"
-    },
-    {
-     "name": "Meta Quest — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Meta+Quest"
-    },
-    {
-     "name": "Apple Vision Pro — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Apple+Vision+Pro"
-    },
-    {
-     "name": "Augmented reality — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=augmented+reality"
-    },
-    {
-     "name": "PlayStation VR — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=PlayStation+VR"
-    },
-    {
-     "name": "Voices of VR",
-     "url": "https://voicesofvr.com/?feed=podcast",
-     "pod": true,
-     "kind": "audio"
-    }
-   ]
-  },
-  {
-   "id": "cyber",
-   "label": "🛡️ Cyber",
-   "lang": "fr",
-   "feeds": [
-    {
-     "name": "CERT-FR",
-     "url": "https://www.cert.ssi.gouv.fr/feed/"
-    },
-    {
-     "name": "ZATAZ",
-     "url": "https://www.zataz.com/feed/"
-    },
-    {
-     "name": "LeMagIT — Sécurité",
-     "url": "https://www.lemagit.fr/rss/ContentSyndication.xml"
-    },
-    {
-     "name": "Le Monde Informatique",
-     "url": "https://www.lemondeinformatique.fr/flux-rss/rss.xml"
-    },
-    {
-     "name": "01net — Sécurité",
-     "url": "https://www.01net.com/tag/cybersecurite/feed/"
-    },
-    {
-     "name": "Numerama Cyber",
-     "url": "https://www.numerama.com/tag/cybersecurite/feed/"
-    },
-    {
-     "name": "IT-Connect",
-     "url": "https://www.it-connect.fr/feed/"
-    },
-    {
-     "name": "Korben",
-     "url": "https://korben.info/feed"
-    },
-    {
-     "name": "NoLimitSecu",
-     "url": "https://www.nolimitsecu.fr/feed/",
-     "pod": true,
-     "kind": "audio"
-    },
-    {
-     "name": "Le Comptoir Sécu",
-     "url": "https://www.comptoirsecu.fr/feed/podcast/",
-     "pod": true,
-     "kind": "audio"
-    },
-    {
-     "name": "Micode (vidéo)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCYnvxJ-PKiGXo_tYXpWAC-w",
-     "pod": true,
-     "kind": "video"
-    }
-   ],
-   "feeds_en": [
-    {
-     "name": "The Hacker News",
-     "url": "https://thehackernews.com/feeds/posts/default"
-    },
-    {
-     "name": "Krebs on Security",
-     "url": "https://krebsonsecurity.com/feed/"
-    },
-    {
-     "name": "Dark Reading",
-     "url": "https://www.darkreading.com/rss.xml"
-    },
-    {
-     "name": "The Register — Security",
-     "url": "https://www.theregister.com/security/headlines.atom"
-    },
-    {
-     "name": "Cybersecurity — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=cybersecurity"
-    },
-    {
-     "name": "Ransomware — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=ransomware"
-    },
-    {
-     "name": "Data breach — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=data+breach"
-    },
-    {
-     "name": "Vulnerability — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=security+vulnerability"
-    },
-    {
-     "name": "Darknet Diaries",
-     "url": "https://feeds.megaphone.fm/darknetdiaries",
-     "pod": true,
-     "kind": "audio"
-    },
-    {
-     "name": "Smashing Security",
-     "url": "https://www.smashingsecurity.com/rss",
-     "pod": true,
-     "kind": "audio"
-    }
-   ]
-  },
-  {
-   "id": "ia",
-   "label": "🤖 IA",
-   "lang": "fr",
-   "feeds": [
-    {
-     "name": "ZDNet IA",
-     "url": "https://www.zdnet.fr/feeds/rss/actualites/intelligence-artificielle/"
-    },
-    {
-     "name": "ActuIA",
-     "url": "https://www.actuia.com/feed/"
-    },
-    {
-     "name": "Numerama IA",
-     "url": "https://www.numerama.com/tech/intelligence-artificielle/feed/"
-    },
-    {
-     "name": "Presse-citron IA",
-     "url": "https://www.presse-citron.net/tag/intelligence-artificielle/feed/"
-    },
-    {
-     "name": "01net — IA",
-     "url": "https://www.01net.com/tag/intelligence-artificielle/feed/"
-    },
-    {
-     "name": "Intelligence artificielle — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=intelligence%20artificielle"
-    },
-    {
-     "name": "ChatGPT — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=ChatGPT%20OpenAI"
-    },
-    {
-     "name": "IA générative — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=IA%20g%C3%A9n%C3%A9rative"
-    },
-    {
-     "name": "Trench Tech",
-     "url": "https://trench-tech.fr/feed/podcast/",
-     "pod": true,
-     "kind": "audio"
-    },
-    {
-     "name": "Underscore_ (vidéo)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCWedHS9qKebauVIK2J7383g",
-     "pod": true,
-     "kind": "video"
-    }
-   ],
-   "feeds_en": [
-    {
-     "name": "TechCrunch AI",
-     "url": "https://techcrunch.com/category/artificial-intelligence/feed/"
-    },
-    {
-     "name": "The Verge AI",
-     "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml"
-    },
-    {
-     "name": "VentureBeat AI",
-     "url": "https://venturebeat.com/category/ai/feed/"
-    },
-    {
-     "name": "MIT Tech Review",
-     "url": "https://www.technologyreview.com/feed/"
-    },
-    {
-     "name": "Artificial intelligence — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=artificial+intelligence"
-    },
-    {
-     "name": "OpenAI — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=OpenAI"
-    },
-    {
-     "name": "Machine learning — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=machine+learning"
-    },
-    {
-     "name": "ChatGPT — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=ChatGPT"
-    },
-    {
-     "name": "Lex Fridman Podcast",
-     "url": "https://lexfridman.com/feed/podcast/",
-     "pod": true,
-     "kind": "audio"
-    }
-   ]
-  },
-  {
-   "id": "rugby",
-   "label": "🏉 Rugby",
-   "lang": "fr",
-   "feeds": [
-    {
-     "name": "Rugbyrama",
-     "url": "https://www.rugbyrama.fr/rss.xml"
-    },
-    {
-     "name": "L'Équipe — Rugby",
-     "url": "https://dwh.lequipe.fr/api/edito/rss?path=/Rugby"
-    },
-    {
-     "name": "Rugby Transferts",
-     "url": "https://www.rugby-transferts.com/feed"
-    },
-    {
-     "name": "RMC Sport — Rugby",
-     "url": "https://rmcsport.bfmtv.com/rss/rugby/"
-    },
-    {
-     "name": "Radio France — Rugby",
-     "url": "https://www.radiofrance.fr/rss/sports/rugby"
-    },
-    {
-     "name": "Le Parisien — Rugby",
-     "url": "https://www.leparisien.fr/sports/rugby/rss.xml"
-    },
-    {
-     "name": "Sud Ouest — Rugby",
-     "url": "https://www.sudouest.fr/sport/rugby/rss.xml"
-    },
-    {
-     "name": "Quinze Mondial",
-     "url": "https://www.quinzemondial.com/feed/"
-    }
-   ],
-   "feeds_en": [
-    {
-     "name": "BBC Sport — Rugby",
-     "url": "https://feeds.bbci.co.uk/sport/rugby-union/rss.xml"
-    },
-    {
-     "name": "The Guardian — Rugby",
-     "url": "https://www.theguardian.com/sport/rugby-union/rss"
-    },
-    {
-     "name": "ESPN — Rugby",
-     "url": "https://www.espn.com/espn/rss/rugby/news"
-    },
-    {
-     "name": "Rugby union — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=rugby+union"
-    },
-    {
-     "name": "Six Nations — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Six+Nations+rugby"
-    },
-    {
-     "name": "Rugby World Cup — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Rugby+World+Cup"
-    },
-    {
-     "name": "Premiership Rugby — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Premiership+Rugby"
-    },
-    {
-     "name": "URC — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=United+Rugby+Championship"
-    },
-    {
-     "name": "World Rugby (video)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCE28rwYoaV7jvU6GVzdu_GQ",
-     "pod": true,
-     "kind": "video"
-    },
-    {
-     "name": "Six Nations (video)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCL5bAcVfbxSAs-UM5f5ncWg",
-     "pod": true,
-     "kind": "video"
-    }
-   ]
-  },
-  {
-   "id": "domotique",
-   "label": "🏠 Domotique",
-   "lang": "fr",
-   "feeds": [
-    {
-     "name": "Maison et Domotique",
-     "url": "https://www.maison-et-domotique.com/feed/"
-    },
-    {
-     "name": "Les Alexiens",
-     "url": "https://www.lesalexiens.fr/feed/"
-    },
-    {
-     "name": "Domotique News",
-     "url": "https://www.domotique-news.com/feed/"
-    },
-    {
-     "name": "Domotique — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=domotique"
-    },
-    {
-     "name": "Maison connectée — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=maison%20connect%C3%A9e"
-    },
-    {
-     "name": "Objet connecté — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=objet%20connect%C3%A9"
-    },
-    {
-     "name": "Home Assistant — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Home%20Assistant%20Matter"
-    },
-    {
-     "name": "Maison intelligente — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=maison%20intelligente%20domotique"
-    },
-    {
-     "name": "Les Alexiens (vidéo)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCR8D3c_6bGzJh3QyZr7p1WQ",
-     "pod": true,
-     "kind": "video"
-    },
-    {
-     "name": "Domadoo (vidéo)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCwgtuCmucgFRTxRwOLX0dng",
-     "pod": true,
-     "kind": "video"
-    }
-   ],
-   "feeds_en": [
-    {
-     "name": "Stacey on IoT",
-     "url": "https://staceyoniot.com/feed/"
-    },
-    {
-     "name": "Home Assistant Blog",
-     "url": "https://www.home-assistant.io/atom.xml"
-    },
-    {
-     "name": "The Verge — Smart Home",
-     "url": "https://www.theverge.com/rss/smart-home/index.xml"
-    },
-    {
-     "name": "Smart home — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=smart+home"
-    },
-    {
-     "name": "Home automation — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=home+automation"
-    },
-    {
-     "name": "Home Assistant — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Home+Assistant"
-    },
-    {
-     "name": "Matter — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Matter+smart+home"
-    },
-    {
-     "name": "Google Home — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Google+Home"
-    },
-    {
-     "name": "Home Assistant Podcast",
-     "url": "https://hasspodcast.io/feed/podcast/",
-     "pod": true,
-     "kind": "audio"
-    }
-   ]
-  },
-  {
-   "id": "solaire",
-   "label": "☀️ Énergie / Solaire",
-   "lang": "fr",
-   "feeds": [
-    {
-     "name": "Révolution Énergétique",
-     "url": "https://www.revolution-energetique.com/feed/"
-    },
-    {
-     "name": "PV Magazine France",
-     "url": "https://www.pv-magazine.fr/feed/"
-    },
-    {
-     "name": "Connaissance des Énergies",
-     "url": "https://www.connaissancedesenergies.org/rss.xml"
-    },
-    {
-     "name": "Enerzine",
-     "url": "https://www.enerzine.com/feed"
-    },
-    {
-     "name": "Panneau solaire — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=panneau+solaire"
-    },
-    {
-     "name": "Photovoltaïque — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=photovolta%C3%AFque"
-    },
-    {
-     "name": "Autoconsommation — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=autoconsommation+solaire"
-    },
-    {
-     "name": "Le Réveilleur (vidéo)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC1EacOJoqsKaYxaDomTCTEQ",
-     "pod": true,
-     "kind": "video"
-    }
-   ],
-   "feeds_en": [
-    {
-     "name": "Electrek — Energy",
-     "url": "https://electrek.co/feed/"
-    },
-    {
-     "name": "Solar power — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=solar+power"
-    },
-    {
-     "name": "Photovoltaic — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=photovoltaic"
-    },
-    {
-     "name": "Rooftop solar — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=rooftop+solar"
-    },
-    {
-     "name": "Solar panels — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=solar+panels"
-    },
-    {
-     "name": "Renewable energy — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=renewable+energy"
-    },
-    {
-     "name": "Home battery — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=home+battery+storage"
-    },
-    {
-     "name": "Clean energy — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=clean+energy"
-    },
-    {
-     "name": "Just Have a Think (video)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCRBwLPbXGsI2cJe9W1zfSjQ",
-     "pod": true,
-     "kind": "video"
-    }
-   ]
-  },
-  {
-   "id": "deals_fr",
-   "label": "🔥 Deals FR",
-   "lang": "fr",
-   "feeds": [
-    {
-     "name": "Dealabs — Tous",
-     "url": "https://www.dealabs.com/rss/tous"
-    },
-    {
-     "name": "Dealabs — Tendances",
-     "url": "https://www.dealabs.com/rss/tendance"
-    },
-    {
-     "name": "Frandroid — Bons plans",
-     "url": "https://www.frandroid.com/bons-plans/feed"
-    },
-    {
-     "name": "01net — Bons plans",
-     "url": "https://www.01net.com/tag/bon-plan/feed/"
-    },
-    {
-     "name": "Clubic — Bons plans",
-     "url": "https://www.clubic.com/feed/bons-plans/rss"
-    },
-    {
-     "name": "Google Actu — Bons plans",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bon%20plan"
-    },
-    {
-     "name": "Google Actu — Promos",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=promo"
-    },
-    {
-     "name": "Bons plans — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bon%20plan%20promo"
-    }
-   ],
-   "feeds_en": [
-    {
-     "name": "Deals — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=best+deals"
-    },
-    {
-     "name": "Discount — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=discount"
-    },
-    {
-     "name": "Tech deals — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=tech+deals"
-    },
-    {
-     "name": "Amazon deals — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Amazon+deals"
-    },
-    {
-     "name": "Coupons — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=coupons"
-    },
-    {
-     "name": "Sale — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=online+sale"
-    },
-    {
-     "name": "Gaming deals — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=gaming+deals"
-    },
-    {
-     "name": "Black Friday — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Black+Friday+deals"
-    }
-   ]
-  },
-  {
-   "id": "jeux",
-   "label": "🎮 Jeux",
-   "lang": "fr",
-   "feeds": [
-    {
-     "name": "Brawl Stars — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Brawl+Stars"
-    },
-    {
-     "name": "Fortnite — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Fortnite"
-    },
-    {
-     "name": "Roblox — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Roblox"
-    },
-    {
-     "name": "Minecraft — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Minecraft"
-    },
-    {
-     "name": "Clash Royale — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Clash+Royale"
-    },
-    {
-     "name": "Dexerto",
-     "url": "https://www.dexerto.fr/feed/"
-    },
-    {
-     "name": "JeuxVideo.com",
-     "url": "https://www.jeuxvideo.com/rss/rss.xml"
-    },
-    {
-     "name": "Gameblog",
-     "url": "https://www.gameblog.fr/feed/"
-    },
-    {
-     "name": "Jeuxvideo.com (vidéo)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC3_fHjAxelWsOll8RxWtUDg",
-     "pod": true,
-     "kind": "video"
-    }
-   ],
-   "feeds_en": [
-    {
-     "name": "IGN",
-     "url": "https://feeds.ign.com/ign/all"
-    },
-    {
-     "name": "Eurogamer",
-     "url": "https://www.eurogamer.net/feed"
-    },
-    {
-     "name": "Kotaku",
-     "url": "https://kotaku.com/rss"
-    },
-    {
-     "name": "Brawl Stars — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Brawl+Stars"
-    },
-    {
-     "name": "Fortnite — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Fortnite"
-    },
-    {
-     "name": "Roblox — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Roblox"
-    },
-    {
-     "name": "Minecraft — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Minecraft"
-    },
-    {
-     "name": "Video games — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=video+games"
-    },
-    {
-     "name": "Kinda Funny Gamescast",
-     "url": "https://feeds.megaphone.fm/kindafunnygamescast",
-     "pod": true,
-     "kind": "audio"
-    }
-   ]
-  },
-  {
-   "id": "voyage",
-   "label": "🏷️ Deals voyage",
-   "lang": "fr",
-   "feeds": [
-    {
-     "name": "Voyage Pirate",
-     "url": "https://www.lesvoyagespirates.com/feed"
-    },
-    {
-     "name": "Billet avion pas cher — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=billet+avion+pas+cher+promo"
-    },
-    {
-     "name": "Vol pas cher — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=vol+pas+cher"
-    },
-    {
-     "name": "Séjour pas cher — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=s%C3%A9jour+pas+cher"
-    },
-    {
-     "name": "Vente flash voyage — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=vente+flash+voyage"
-    },
-    {
-     "name": "Week-end pas cher — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=week-end+pas+cher"
-    },
-    {
-     "name": "Hôtel pas cher — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=h%C3%B4tel+pas+cher+promo"
-    },
-    {
-     "name": "Croisière pas cher — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=croisi%C3%A8re+pas+cher"
-    },
-    {
-     "name": "Bruno Maltor (vidéo)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCSdJiWi0tq9CAx1bizne6mA",
-     "pod": true,
-     "kind": "video"
-    }
-   ],
-   "feeds_en": [
-    {
-     "name": "Secret Flying",
-     "url": "https://www.secretflying.com/feed/"
-    },
-    {
-     "name": "Fly4free",
-     "url": "https://www.fly4free.com/feed/"
-    },
-    {
-     "name": "The Flight Deal",
-     "url": "https://www.theflightdeal.com/feed/"
-    },
-    {
-     "name": "Flight deals — Google News",
-     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=flight+deals"
-    },
-    {
-     "name": "Hotel deals — Google News",
-     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=hotel+deals"
-    },
-    {
-     "name": "Cheap flights — Google News",
-     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=cheap+flights"
-    },
-    {
-     "name": "Vacation deals — Google News",
-     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=vacation+deals"
-    },
-    {
-     "name": "Cruise deals — Google News",
-     "url": "https://news.google.com/rss/search?hl=en&gl=US&ceid=US:en&q=cruise+deals"
-    },
-    {
-     "name": "Zero To Travel",
-     "url": "https://feeds.megaphone.fm/zerototravel",
-     "pod": true,
-     "kind": "audio"
-    }
-   ]
-  },
-  {
-   "id": "placement",
-   "label": "📈 Placements",
-   "lang": "fr",
-   "feeds": [
-    {
-     "name": "Capital — Épargne",
-     "url": "https://www.capital.fr/rss"
-    },
-    {
-     "name": "MoneyVox",
-     "url": "https://www.moneyvox.fr/actu/rss.php"
-    },
-    {
-     "name": "Café de la Bourse",
-     "url": "https://www.cafedelabourse.com/feed/"
-    },
-    {
-     "name": "Bourse — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bourse+investissement"
-    },
-    {
-     "name": "ETF — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=ETF+indice+tracker"
-    },
-    {
-     "name": "SCPI — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=SCPI+immobilier"
-    },
-    {
-     "name": "Assurance-vie — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=assurance-vie+rendement"
-    },
-    {
-     "name": "Bourse — Boursorama (Google Actu)",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Boursorama%20bourse"
-    },
-    {
-     "name": "Heu?reka (vidéo)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UC7sXGI8p8PvKosLWagkK9wQ",
-     "pod": true,
-     "kind": "video"
-    }
-   ],
-   "feeds_en": [
-    {
-     "name": "ETF — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=ETF+investing"
-    },
-    {
-     "name": "Dividend investing — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=dividend+investing"
-    },
-    {
-     "name": "S&P 500 — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=S%26P+500+index"
-    },
-    {
-     "name": "Real estate investing — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=real+estate+investing"
-    },
-    {
-     "name": "The Plain Bagel (video)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCFCEuCsyWP0YkP3CZ3Mr01Q",
-     "pod": true,
-     "kind": "video"
-    },
-    {
-     "name": "Ben Felix (video)",
-     "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCDXTQ8nWmx_EhZ2v-kp7QxA",
-     "pod": true,
-     "kind": "video"
-    }
-   ]
-  },
-  {
-   "id": "bricolage",
-   "label": "🔨 Bricolage",
-   "lang": "fr",
-   "feeds": [
-    {
-     "name": "Système D",
-     "url": "https://www.systemed.fr/feed/"
-    },
-    {
-     "name": "Côté Maison",
-     "url": "https://www.cotemaison.fr/feed/"
-    },
-    {
-     "name": "Batirama",
-     "url": "https://www.batirama.com/rss.xml"
-    },
-    {
-     "name": "Bricolage — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bricolage+r%C3%A9novation+maison"
-    },
-    {
-     "name": "Rénovation — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9novation+travaux+maison"
-    },
-    {
-     "name": "Jardinage & extérieur — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=jardinage+am%C3%A9nagement+ext%C3%A9rieur"
-    }
-   ],
-   "feeds_en": [
-    {
-     "name": "Instructables",
-     "url": "https://www.instructables.com/feed/"
-    },
-    {
-     "name": "DIY Network — Google News",
-     "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=DIY+home+improvement"
-    }
-   ]
-  },
-  {
-   "id": "byd",
-   "label": "🛠️ Bring Your Device",
-   "lang": "fr",
-   "feeds": [
-    {
-     "name": "Framboise314",
-     "url": "https://www.framboise314.fr/feed/"
-    },
-    {
-     "name": "Korben",
-     "url": "https://korben.info/feed"
-    },
-    {
-     "name": "MCHobby",
-     "url": "https://www.mchobby.be/blog/feed/"
-    },
-    {
-     "name": "Projets DIY — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=maker+DIY+%C3%A9lectronique+Arduino+Raspberry+Pi"
-    },
-    {
-     "name": "Impression 3D — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=impression+3D+imprimante+3D"
-    },
-    {
-     "name": "Électronique — Google Actu",
-     "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=%C3%A9lectronique+DIY+open+source+hardware"
-    }
-   ],
-   "feeds_en": [
-    {
-     "name": "Make Magazine",
-     "url": "https://makezine.com/feed/"
-    },
-    {
-     "name": "Hackaday",
-     "url": "https://hackaday.com/blog/feed/"
-    },
-    {
-     "name": "Hackster.io",
-     "url": "https://www.hackster.io/rss"
-    },
-    {
-     "name": "Arduino Blog",
-     "url": "https://blog.arduino.cc/feed/"
-    },
-    {
-     "name": "Instructables",
-     "url": "https://www.instructables.com/feed/"
-    },
-    {
-     "name": "Adafruit Blog",
-     "url": "https://blog.adafruit.com/feed/"
-    }
-   ]
-  }
- ]
+  ]
 }
