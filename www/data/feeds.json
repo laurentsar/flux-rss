@@ -167,6 +167,14 @@
           "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCnaDlsxg2S5u-zq0vrJN-BA",
           "pod": true,
           "kind": "video"
+        },
+        {
+          "name": "Changelog Tesla — Not a Tesla App",
+          "url": "https://www.notateslaapp.com/rss"
+        },
+        {
+          "name": "Tesla Oracle (FSD & software)",
+          "url": "https://www.teslaoracle.com/feed/"
         }
       ],
       "feeds_changelog": [
@@ -460,6 +468,18 @@
           "url": "https://lexfridman.com/feed/podcast/",
           "pod": true,
           "kind": "audio"
+        },
+        {
+          "name": "OpenAI — Nouveautés & releases",
+          "url": "https://openai.com/news/rss.xml"
+        },
+        {
+          "name": "Google AI Blog — releases",
+          "url": "https://blog.google/technology/ai/rss/"
+        },
+        {
+          "name": "Hugging Face Blog — nouveaux modèles",
+          "url": "https://huggingface.co/blog/feed.xml"
         }
       ],
       "feeds_changelog": [
