@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.38';
+const APP_VERSION = '4.39';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -486,7 +486,9 @@ async function loadChangelogLive(cat){
   const buller = bullets.length > 1
     ? `<ul class="cl-bullets">${bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>`
     : it.summary ? `<span class="cl-excerpt">${esc(it.summary)}</span>` : '';
+  const imgHtml = it.image ? `<img class="cl-img" src="${esc(it.image)}" alt="" loading="lazy" onerror="this.remove()">` : '';
   const card = `<a class="cl-item" href="${esc(it.link)}" target="_blank" rel="noopener">
+    ${imgHtml}
     <span class="cl-title">${esc(it.title)}</span>
     ${buller}
     <span class="cl-meta">${it.date?`<span>🕒 ${esc(fmtDate(it.date))}</span>`:''}</span>
