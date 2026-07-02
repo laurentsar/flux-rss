@@ -1346,6 +1346,8 @@ async function init(){
       const dc = defById[c.id]; if(!dc) return;
       c.feeds = mergeNew(c.feeds, dc.feeds);
       c.feeds_en = mergeNew(c.feeds_en, dc.feeds_en);
+      // feeds_changelog n'est pas éditable par l'utilisateur : on le resync toujours depuis DEFAULTS
+      if (dc.feeds_changelog) c.feeds_changelog = clone(dc.feeds_changelog);
     });
     // recentrage « voyage » sur les deals uniquement (une seule fois, transition v10)
     if (prevVer < 10){
