@@ -1,86 +1,8 @@
 {
- "generated": "2026-07-02T08:15:03+02:00",
+ "generated": "2026-07-02T20:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 24,
+ "count": 18,
  "programmes": [
-  {
-   "title": "Hurricanes / Chiefs",
-   "date": "2026-07-02",
-   "time": "10:16",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Super Rugby Pacific",
-   "date": "2026-07-02",
-   "time": "10:30",
-   "desc": "Suivez des rencontres de la Super Rugby Pacific, un championnat qui met en opposition douze équipes issues de plusieurs pays de la zone Océa",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Championnat du monde U20",
-   "date": "2026-07-02",
-   "time": "10:55",
-   "desc": "Après leur première sortie face aux Fidji, les Bleuets de Cédric Laborde enchaînent contre l'Espagne lors de la deuxième journée du Champion",
-   "chaine": [
-    "La Chaîne L'Équipe"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "France /  Espagne",
-   "date": "2026-07-02",
-   "time": "10:55",
-   "desc": "En Direct.",
-   "chaine": [
-    "La Chaîne L'Équipe"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulouse / Montpellier",
-   "date": "2026-07-02",
-   "time": "14:46",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulouse / Montpellier",
-   "date": "2026-07-02",
-   "time": "15:23",
-   "desc": "Sur la pelouse du Stade de France, Toulouse défend de nouveau son titre acquis en 2025 contre l'UBB, mais cette fois face au Montpellier Hér",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-07-03",
