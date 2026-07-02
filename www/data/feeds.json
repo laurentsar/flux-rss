@@ -119,14 +119,6 @@
           "kind": "video"
         },
         {
-          "name": "Changelog Tesla — Not a Tesla App",
-          "url": "https://www.notateslaapp.com/rss"
-        },
-        {
-          "name": "Tesla Oracle (FSD & software)",
-          "url": "https://www.teslaoracle.com/feed/"
-        },
-        {
           "name": "Tesla mise à jour logicielle — Google Actu",
           "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+mise+%C3%A0+jour+logicielle+firmware"
         }
@@ -175,6 +167,16 @@
           "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCnaDlsxg2S5u-zq0vrJN-BA",
           "pod": true,
           "kind": "video"
+        }
+      ],
+      "feeds_changelog": [
+        {
+          "name": "Changelog Tesla — Not a Tesla App",
+          "url": "https://www.notateslaapp.com/rss"
+        },
+        {
+          "name": "Tesla Oracle (FSD & software)",
+          "url": "https://www.teslaoracle.com/feed/"
         }
       ]
     },
@@ -412,18 +414,6 @@
           "kind": "video"
         },
         {
-          "name": "OpenAI — Nouveautés & releases",
-          "url": "https://openai.com/news/rss.xml"
-        },
-        {
-          "name": "Google AI Blog — releases",
-          "url": "https://blog.google/technology/ai/rss/"
-        },
-        {
-          "name": "Hugging Face Blog — nouveaux modèles",
-          "url": "https://huggingface.co/blog/feed.xml"
-        },
-        {
           "name": "Claude / Anthropic — Google Actu",
           "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Claude+Anthropic+mise+%C3%A0+jour+nouveaut%C3%A9"
         },
@@ -470,6 +460,20 @@
           "url": "https://lexfridman.com/feed/podcast/",
           "pod": true,
           "kind": "audio"
+        }
+      ],
+      "feeds_changelog": [
+        {
+          "name": "OpenAI — Nouveautés & releases",
+          "url": "https://openai.com/news/rss.xml"
+        },
+        {
+          "name": "Google AI Blog — releases",
+          "url": "https://blog.google/technology/ai/rss/"
+        },
+        {
+          "name": "Hugging Face Blog — nouveaux modèles",
+          "url": "https://huggingface.co/blog/feed.xml"
         }
       ]
     },
@@ -616,10 +620,6 @@
           "url": "https://www.domo-blog.fr/feed/"
         },
         {
-          "name": "Home Assistant — Blog officiel (release notes)",
-          "url": "https://www.home-assistant.io/atom.xml"
-        },
-        {
           "name": "Home Assistant mise à jour — Google Actu",
           "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Home+Assistant+mise+%C3%A0+jour+release"
         }
@@ -662,6 +662,12 @@
           "url": "https://hasspodcast.io/feed/podcast/",
           "pod": true,
           "kind": "audio"
+        }
+      ],
+      "feeds_changelog": [
+        {
+          "name": "Home Assistant — Blog officiel (release notes)",
+          "url": "https://www.home-assistant.io/atom.xml"
         }
       ]
     },

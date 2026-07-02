@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.33';
+const APP_VERSION = '4.34';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -69,6 +69,7 @@ const $ = (s) => document.querySelector(s);
 const elCats = $('#cats'), elArticles = $('#articles'), elStatus = $('#status'), elRefresh = $('#refresh');
 const elSubtabs = $('#subtabs');
 const elRugbyLive = document.getElementById('rugby-live');
+const elChangelogLive = document.getElementById('changelog-live');
 
 /* ---------- réseau ---------- */
 
@@ -437,6 +438,41 @@ function hideRugbyLive(){
   if (elRugbyLive){ elRugbyLive.hidden=true; elRugbyLive.innerHTML=''; }
 }
 
+/* ---------- Changelog Live ---------- */
+let _clHtml = null;
+
+async function loadChangelogLive(cat){
+  if (!elChangelogLive) return;
+  const feeds = (cat.feeds_changelog || []).filter(f => !f.off);
+  if (!feeds.length){ hideChangelogLive(); return; }
+  if (_clHtml){ elChangelogLive.hidden=false; elChangelogLive.innerHTML=_clHtml; return; }
+  elChangelogLive.hidden = false;
+  elChangelogLive.innerHTML = '<div class="cl-loading"><span class="spinner"></span> Changelog…</div>';
+  const results = await Promise.allSettled(feeds.map(f =>
+    httpGet(f.url).then(xml => parseFeed(xml, f.name, null))
+  ));
+  let items = [];
+  results.forEach(r => { if (r.status==='fulfilled') items = items.concat(r.value); });
+  const seen = new Set();
+  items = items.filter(it => it.link && !seen.has(it.link) && seen.add(it.link));
+  items.sort((a,b) => b.ts - a.ts);
+  items = items.slice(0, 12);
+  if (!items.length){ hideChangelogLive(); return; }
+  const label = cat.id==='ia' ? '🤖 Releases IA' : cat.id==='domotique' ? '🏠 Home Assistant — releases' : '⚡ Tesla — firmware changelog';
+  const html = `<div class="cl-header">📋 ${label}</div>`
+    + items.map(it => `<a class="cl-item" href="${esc(it.link)}" target="_blank" rel="noopener">
+        <span class="cl-title">${esc(it.title)}</span>
+        <span class="cl-meta"><span>${esc(it.source)}</span>${it.date?`<span>🕒 ${esc(fmtDate(it.date))}</span>`:''}</span>
+      </a>`).join('');
+  elChangelogLive.innerHTML = html;
+  _clHtml = html;
+}
+
+function hideChangelogLive(){
+  if (elChangelogLive){ elChangelogLive.hidden=true; elChangelogLive.innerHTML=''; }
+  _clHtml = null;
+}
+
 /* ---------- chargement catégorie ---------- */
 function cacheKey(id, tab){ return 'feedcache:'+id+(tab==='pods'?':pod':''); }
 
@@ -451,6 +487,7 @@ function renderSubtabs(cat){
 }
 
 async function loadCategory(cat, {silent=false}={}){
+  _clHtml = null; // reset cache changelog à chaque changement de catégorie
   current = cat.id;
   if (!hasNews(cat) && hasPods(cat)) currentTab='pods';      // catégorie 100% podcasts (ex. Podcasts globale)
   else if (currentTab==='pods' && !hasPods(cat)) currentTab='news';
@@ -460,6 +497,7 @@ async function loadCategory(cat, {silent=false}={}){
   $('#hero-sub').textContent = cat.label;
   renderSubtabs(cat);
   if (cat.id==='rugby' && currentTab==='news') loadRugbyLive(); else hideRugbyLive();
+  if (cat.feeds_changelog?.length && currentTab==='news') loadChangelogLive(cat); else hideChangelogLive();
 
   // cache immédiat
   const cached = JSON.parse(localStorage.getItem(cacheKey(cat.id, currentTab)) || 'null');
