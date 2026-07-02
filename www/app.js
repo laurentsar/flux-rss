@@ -451,19 +451,22 @@ async function loadChangelogLive(cat){
   const results = await Promise.allSettled(feeds.map(f =>
     httpGet(f.url).then(xml => parseFeed(xml, f.name, null))
   ));
-  let items = [];
-  results.forEach(r => { if (r.status==='fulfilled') items = items.concat(r.value); });
-  const seen = new Set();
-  items = items.filter(it => it.link && !seen.has(it.link) && seen.add(it.link));
-  items.sort((a,b) => b.ts - a.ts);
-  items = items.slice(0, 12);
-  if (!items.length){ hideChangelogLive(); return; }
-  const label = cat.id==='ia' ? '🤖 Releases IA' : cat.id==='domotique' ? '🏠 Home Assistant — releases' : '⚡ Tesla — firmware changelog';
-  const html = `<div class="cl-header">📋 ${label}</div>`
-    + items.map(it => `<a class="cl-item" href="${esc(it.link)}" target="_blank" rel="noopener">
+  const sections = [];
+  results.forEach((r, i) => {
+    if (r.status !== 'fulfilled') return;
+    const seen = new Set();
+    const items = r.value.filter(it => it.link && !seen.has(it.link) && seen.add(it.link));
+    items.sort((a,b) => b.ts - a.ts);
+    if (!items.length) return;
+    const top = items.slice(0, 8);
+    const cards = top.map(it => `<a class="cl-item" href="${esc(it.link)}" target="_blank" rel="noopener">
         <span class="cl-title">${esc(it.title)}</span>
-        <span class="cl-meta"><span>${esc(it.source)}</span>${it.date?`<span>🕒 ${esc(fmtDate(it.date))}</span>`:''}</span>
+        <span class="cl-meta">${it.date?`<span>🕒 ${esc(fmtDate(it.date))}</span>`:''}</span>
       </a>`).join('');
+    sections.push(`<details class="rl-section" open><summary class="rl-sh">📋 ${esc(feeds[i].name)}</summary>${cards}</details>`);
+  });
+  if (!sections.length){ hideChangelogLive(); return; }
+  const html = sections.join('');
   elChangelogLive.innerHTML = html;
   _clHtml = html;
 }
