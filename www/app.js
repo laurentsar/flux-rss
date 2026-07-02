@@ -459,10 +459,15 @@ async function loadChangelogLive(cat){
   if (!items.length){ hideChangelogLive(); return; }
   const it = items[0];
   const label = cat.id==='ia' ? '🤖 Dernière release IA' : cat.id==='domotique' ? '🏠 Dernière version Home Assistant' : '⚡ Dernière mise à jour Tesla';
-  const excerpt = it.summary && it.summary.length > 20 ? `<span class="cl-excerpt">${esc(it.summary)}</span>` : '';
+  // Découpe la description en puces (séparateurs : newline, •, tiret en début de phrase, point entre phrases)
+  const bullets = (it.summary || '').split(/\n|(?:^|\s)[•·–-]\s+|(?<=\w)\.\s+(?=[A-ZÀÂÉÈÊËÎÏÔÙÛÜ])/m)
+    .map(s => s.replace(/^[-•·–]\s*/, '').trim()).filter(s => s.length > 15);
+  const buller = bullets.length > 1
+    ? `<ul class="cl-bullets">${bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>`
+    : it.summary ? `<span class="cl-excerpt">${esc(it.summary)}</span>` : '';
   const card = `<a class="cl-item" href="${esc(it.link)}" target="_blank" rel="noopener">
     <span class="cl-title">${esc(it.title)}</span>
-    ${excerpt}
+    ${buller}
     <span class="cl-meta">${it.date?`<span>🕒 ${esc(fmtDate(it.date))}</span>`:''}</span>
   </a>`;
   const html = `<details class="rl-section" open><summary class="rl-sh">${label}</summary>${card}</details>`;
