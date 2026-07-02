@@ -1442,11 +1442,16 @@ async function init(){
     if (el) el.outerHTML = renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown);
   });
   if ('serviceWorker' in navigator){
-    try{
-      navigator.serviceWorker.register('sw.js');
-      // Recharge la page quand un nouveau SW prend le relais (mise à jour APK/PWA)
-      navigator.serviceWorker.addEventListener('controllerchange', () => { window.location.reload(); });
-    }catch(e){}
+    if (isNative){
+      // Sur Capacitor Android, le SW cache les assets et bloque les mises à jour APK.
+      // On le désactive et on désinscrit tout SW existant.
+      navigator.serviceWorker.getRegistrations().then(regs => regs.forEach(r => r.unregister()));
+    } else {
+      try{
+        navigator.serviceWorker.register('sw.js');
+        navigator.serviceWorker.addEventListener('controllerchange', () => { window.location.reload(); });
+      }catch(e){}
+    }
   }
   // Pause toutes les animations CSS quand l'écran est éteint / app en arrière-plan
   document.addEventListener('visibilitychange', ()=>{
