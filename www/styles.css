@@ -122,8 +122,9 @@ details.card>summary .thumb{width:60px;height:60px;min-width:60px;object-fit:cov
 /* ---- Changelog Live ---- */
 #changelog-live{padding:0 0 6px}
 .cl-loading{color:var(--muted);font-size:.85em;text-align:center;padding:10px 0}
-.cl-item{display:flex;flex-direction:column;gap:2px;padding:8px 10px;background:#1e293b;border-left:3px solid var(--a,#F59E0B);border-radius:0 8px 8px 0;margin-bottom:5px;text-decoration:none;color:inherit}
+.cl-item{display:flex;flex-direction:column;gap:2px;padding:8px 10px;background:#1e293b;border-left:3px solid var(--a,#F59E0B);border-radius:0 8px 8px 0;margin-bottom:5px;text-decoration:none;color:inherit;overflow:hidden}
 .cl-item:last-child{margin-bottom:0}
+.cl-img{width:100%;max-height:180px;object-fit:cover;border-radius:4px;margin-bottom:4px}
 .cl-title{font-size:.88rem;font-weight:600;color:var(--text);line-height:1.3}
 .cl-excerpt{font-size:.8rem;color:var(--muted);line-height:1.4;margin-top:3px}
 .cl-bullets{margin:4px 0 2px 0;padding-left:18px;font-size:.8rem;color:var(--muted);line-height:1.5;list-style:disc}
