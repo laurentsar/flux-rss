@@ -1,25 +1,12 @@
 {
- "generated": "2026-07-01T20:15:04+02:00",
+ "generated": "2026-07-02T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 13,
+ "count": 24,
  "programmes": [
   {
-   "title": "Rugby à XIII : State of Origin",
-   "date": "2026-07-01",
-   "time": "23:00",
-   "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Super Rugby Pacific",
+   "title": "Hurricanes / Chiefs",
    "date": "2026-07-02",
-   "time": "10:15",
+   "time": "10:16",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
@@ -69,9 +56,9 @@
    "approx": false
   },
   {
-   "title": "Rugby : Top 14",
+   "title": "Toulouse / Montpellier",
    "date": "2026-07-02",
-   "time": "15:06",
+   "time": "14:46",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
@@ -160,12 +147,168 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-04",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-07-04",
+   "time": "08:50",
+   "desc": "Direction Christchurch pour suivre la rencontre qui oppose la Nouvelle-Zélande à la France, dans le cadre de la première édition du Champion",
+   "chaine": [
+    "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-04",
+   "time": "11:27",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Brisbane Broncos / Cronulla-Sutherland Sharks",
    "date": "2026-07-04",
    "time": "11:27",
    "desc": "En Direct.",
    "chaine": [
     "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-07-04",
+   "time": "12:00",
+   "desc": "Direction Sydney pour suivre la rencontre qui oppose l'équipe l'Australie au XV du Trèfle irlandais, dans le cadre de la première édition du",
+   "chaine": [
+    "TMC"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby magazine Occitanie",
+   "date": "2026-07-04",
+   "time": "12:37",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 3"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-07-04",
+   "time": "15:00",
+   "desc": "Direction Cardiff pour suivre la rencontre qui oppose l'équipe des Fidji au Pays de Galles, dans le cadre de la première édition du Champion",
+   "chaine": [
+    "TMC"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-07-04",
+   "time": "17:30",
+   "desc": "Direction l'Ellis Park Stadium de Johannesbourg pour suivre la rencontre qui oppose l'Afrique du Sud à l'Angleterre, dans le cadre du Champi",
+   "chaine": [
+    "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-07-04",
+   "time": "21:00",
+   "desc": "C'est au stade Mario-Alberto-Kempes, à Cordoba, en Argentine, que se déroule ce match de la première journée de la nouvelle compétition de r",
+   "chaine": [
+    "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-04",
+   "time": "22:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / Montpellier",
+   "date": "2026-07-05",
+   "time": "13:42",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-07-05",
+   "time": "15:27",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Romagnat / Stade Bordelais",
+   "date": "2026-07-05",
+   "time": "15:49",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
    ],
    "cats": [
     "rugby"
