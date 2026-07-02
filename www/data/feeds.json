@@ -410,6 +410,26 @@
           "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCWedHS9qKebauVIK2J7383g",
           "pod": true,
           "kind": "video"
+        },
+        {
+          "name": "OpenAI — Nouveautés & releases",
+          "url": "https://openai.com/news/rss.xml"
+        },
+        {
+          "name": "Google AI Blog — releases",
+          "url": "https://blog.google/technology/ai/rss/"
+        },
+        {
+          "name": "Hugging Face Blog — nouveaux modèles",
+          "url": "https://huggingface.co/blog/feed.xml"
+        },
+        {
+          "name": "Claude / Anthropic — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Claude+Anthropic+mise+%C3%A0+jour+nouveaut%C3%A9"
+        },
+        {
+          "name": "Gemini / Google — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Gemini+Google+IA+mise+%C3%A0+jour+nouveaut%C3%A9"
         }
       ],
       "feeds_en": [
