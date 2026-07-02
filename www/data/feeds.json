@@ -586,6 +586,22 @@
           "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCwgtuCmucgFRTxRwOLX0dng",
           "pod": true,
           "kind": "video"
+        },
+        {
+          "name": "HACF — Communauté Francophone HA",
+          "url": "https://www.hacf.fr/feed/"
+        },
+        {
+          "name": "Domo-blog — Releases Home Assistant",
+          "url": "https://www.domo-blog.fr/feed/"
+        },
+        {
+          "name": "Home Assistant — Blog officiel (release notes)",
+          "url": "https://www.home-assistant.io/atom.xml"
+        },
+        {
+          "name": "Home Assistant mise à jour — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Home+Assistant+mise+%C3%A0+jour+release"
         }
       ],
       "feeds_en": [
