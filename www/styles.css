@@ -119,6 +119,15 @@ a.card .thumb{width:72px;height:72px;min-width:72px;object-fit:cover;border-radi
 /* vignette photo dans les articles dépliables */
 details.card>summary .thumb{width:60px;height:60px;min-width:60px;object-fit:cover;border-radius:8px}
 
+/* ---- Changelog Live ---- */
+#changelog-live{padding:0 0 6px}
+.cl-header{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.85rem;color:var(--a,#F59E0B);padding:6px 10px;background:color-mix(in srgb,var(--a,#F59E0B) 12%,transparent);border-radius:8px;margin-bottom:6px;letter-spacing:.02em;text-transform:uppercase}
+.cl-loading{color:var(--muted);font-size:.85em;text-align:center;padding:10px 0}
+.cl-item{display:flex;flex-direction:column;gap:2px;padding:8px 10px;background:#1e293b;border-left:3px solid var(--a,#F59E0B);border-radius:0 8px 8px 0;margin-bottom:5px;text-decoration:none;color:inherit}
+.cl-item:last-child{margin-bottom:0}
+.cl-title{font-size:.88rem;font-weight:600;color:var(--text);line-height:1.3}
+.cl-meta{font-size:.75rem;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap}
+
 /* ---- Rugby Live (scores & classements) ---- */
 #rugby-live{padding:0 0 4px}
 .rl-loading{color:var(--muted);font-size:.9em;text-align:center;padding:14px 0}
