@@ -1441,7 +1441,13 @@ async function init(){
     const el = elRugbyLive.querySelector('.rl-results-top14');
     if (el) el.outerHTML = renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown);
   });
-  if ('serviceWorker' in navigator){ try{ navigator.serviceWorker.register('sw.js'); }catch(e){} }
+  if ('serviceWorker' in navigator){
+    try{
+      navigator.serviceWorker.register('sw.js');
+      // Recharge la page quand un nouveau SW prend le relais (mise à jour APK/PWA)
+      navigator.serviceWorker.addEventListener('controllerchange', () => { window.location.reload(); });
+    }catch(e){}
+  }
   // Pause toutes les animations CSS quand l'écran est éteint / app en arrière-plan
   document.addEventListener('visibilitychange', ()=>{
     document.body.classList.toggle('page-hidden', document.hidden);
