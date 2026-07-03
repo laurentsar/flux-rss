@@ -1,60 +1,8 @@
 {
- "generated": "2026-07-03T08:15:03+02:00",
+ "generated": "2026-07-03T20:15:04+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 21,
+ "count": 17,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-07-03",
-   "time": "11:55",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Penrith Panthers / South Sydney Rabbitohs",
-   "date": "2026-07-03",
-   "time": "11:55",
-   "desc": "En Direct.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Championnat du monde U20",
-   "date": "2026-07-03",
-   "time": "13:07",
-   "desc": "Après une première confrontation face au Japon, les Néo-Zélandais défient l'Ecosse dans ce Championnat du monde U20, organisé en Géorgie.",
-   "chaine": [
-    "La Chaîne L'Équipe"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Nouvelle-Zélande / Ecosse",
-   "date": "2026-07-03",
-   "time": "13:07",
-   "desc": "Rugby",
-   "chaine": [
-    "La Chaîne L'Équipe"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-07-03",
