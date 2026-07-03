@@ -1,7 +1,7 @@
 {
- "generated": "2026-07-02T20:15:05+02:00",
+ "generated": "2026-07-03T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 18,
+ "count": 21,
  "programmes": [
   {
    "title": "Rugby à XIII : NRL",
@@ -134,19 +134,6 @@
    "approx": false
   },
   {
-   "title": "Rugby magazine Occitanie",
-   "date": "2026-07-04",
-   "time": "12:37",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "France 3"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
    "title": "Rugby : Championnat des nations",
    "date": "2026-07-04",
    "time": "15:00",
@@ -199,6 +186,19 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-05",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Toulouse / Montpellier",
    "date": "2026-07-05",
    "time": "13:42",
@@ -231,6 +231,45 @@
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-05",
+   "time": "22:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Manager",
+   "date": "2026-07-06",
+   "time": "13:07",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Angleterre / United States of America",
+   "date": "2026-07-06",
+   "time": "13:30",
+   "desc": "Rugby",
+   "chaine": [
+    "La Chaîne L'Équipe"
    ],
    "cats": [
     "rugby"
