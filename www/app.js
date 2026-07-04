@@ -544,24 +544,43 @@ function parseFeatureSections(html, tagName='h3', baseUrl=''){
 
 function featureIcon(title){
   const t = (title||'').toLowerCase();
-  if (/angle mort|blind.?spot/.test(t))                    return '👁️';
-  if (/caméra|camera|dashcam|clip/.test(t))                return '📷';
-  if (/chiffr|encrypt|verrou|lock/.test(t))                return '🔐';
-  if (/sécurité|security/.test(t))                         return '🛡️';
-  if (/parent|famille|family|enfant|child/.test(t))        return '👨‍👩‍👧';
-  if (/grok|gemini|chatgpt|copilot/.test(t))               return '🤖';
-  if (/voice|voix|hey\s|commande\s+vocale/.test(t))        return '🎙️';
-  if (/navigation|nav|itinér|route|map|carte/.test(t))     return '🗺️';
-  if (/music|média|media|spotify|audio|son|radio/.test(t)) return '🎵';
-  if (/autopilot|fsd|conduite|pilotage|driving/.test(t))   return '🚗';
-  if (/énergie|energy|charge|batterie|battery|recharge/.test(t)) return '🔋';
-  if (/température|climate|clim|chauffage|heat|vent/.test(t)) return '🌡️';
-  if (/service|maintenance|diagnostic|mode\s+atelier/.test(t)) return '🔧';
-  if (/bluetooth|wifi|connect|wireless/.test(t))           return '📡';
-  if (/phone|téléphone|mobile/.test(t))                    return '📱';
-  if (/light|lumière|phare|éclairage/.test(t))             return '💡';
-  if (/parking|stationnement|parc/.test(t))                return '🅿️';
-  if (/update|mise\s+à\s+jour|version/.test(t))            return '⚡';
+  // Tesla
+  if (/angle mort|blind.?spot/.test(t))                         return '👁️';
+  if (/dashcam|clip/.test(t))                                   return '📷';
+  if (/chiffr|encrypt|verrou/.test(t))                          return '🔐';
+  if (/autopilot|fsd|conduite|pilotage|driving/.test(t))        return '🚗';
+  if (/parking|stationnement/.test(t))                          return '🅿️';
+  if (/grok|gemini|chatgpt|copilot/.test(t))                    return '🤖';
+  if (/phone|téléphone|mobile/.test(t))                         return '📱';
+  if (/phare|éclairage/.test(t))                                return '💡';
+  if (/service|maintenance|diagnostic|mode\s+atelier/.test(t))  return '🔧';
+  // Home Assistant
+  if (/automati|workflow|déclench|trigger/.test(t))             return '🔄';
+  if (/tableau\s+de\s+bord|dashboard|lovelace|interface|ux|expérience/.test(t)) return '🖥️';
+  if (/intégration|integration|protocole/.test(t))              return '🔌';
+  if (/appareil|device|matériel|hardware/.test(t))              return '📟';
+  if (/zigbee|zha|z-wave|zwave|matter|thread/.test(t))          return '📡';
+  if (/infrarouge|radiofréq|rf\b/.test(t))                      return '📶';
+  if (/journal|activité|log|histor/.test(t))                    return '📋';
+  if (/mise\s+à\s+jour|maj\b|update|version/.test(t))           return '⬆️';
+  if (/performance|débogage|debug|optimis/.test(t))             return '⚡';
+  if (/utilisateur|user|profil|compte|accès/.test(t))           return '👤';
+  if (/notification|alerte|alert/.test(t))                      return '🔔';
+  if (/alarme|alarm|sirène/.test(t))                            return '🚨';
+  if (/scène|scene|ambiance/.test(t))                           return '🎬';
+  if (/script|action|service/.test(t))                          return '⚙️';
+  if (/calendrier|agenda|schedule|planifi/.test(t))             return '📅';
+  // Commun Tesla + HA
+  if (/caméra|camera/.test(t))                                  return '📷';
+  if (/sécurité|security/.test(t))                              return '🛡️';
+  if (/parent|famille|family|enfant|child/.test(t))             return '👨‍👩‍👧';
+  if (/voice|voix|hey\s|vocale|speech/.test(t))                 return '🎙️';
+  if (/navigation|nav|itinér|route|map|carte/.test(t))          return '🗺️';
+  if (/music|média|media|spotify|audio|son|radio/.test(t))      return '🎵';
+  if (/énergie|energy|charge|batterie|battery|recharge|conso/.test(t)) return '🔋';
+  if (/température|climate|clim|chauffage|heat|thermostat/.test(t)) return '🌡️';
+  if (/lumière|light/.test(t))                                  return '💡';
+  if (/bluetooth|wifi|connect|wireless|réseau|network/.test(t)) return '📡';
   return '✦';
 }
 
