@@ -710,34 +710,40 @@ async function loadClaudeChangelog(){
 }
 
 async function loadQuestChangelog(){
-  // Find latest Horizon OS update article via roadtovr Horizon OS tag RSS
-  let articleUrl = null, version = null;
-  try {
-    const rssXml = await httpGet('https://roadtovr.com/tag/horizon-os/feed/');
-    const itemM = rssXml.match(/<item>([\s\S]*?)<\/item>/);
-    if (itemM) {
-      const item = itemM[1];
-      const linkM = item.match(/<link>([^<]+)<\/link>/);
-      const titleM = item.match(/<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/s);
-      if (linkM) articleUrl = linkM[1].trim();
-      if (titleM) {
-        const t = titleM[1].replace(/<[^>]+>/g,'').trim();
-        const vM = t.match(/v\d+[\d.]*/i) || t.match(/horizon os\s*([\d.]+)/i);
-        version = vM ? vM[0] : t.replace(/\s*[-–|].*$/,'').trim();
+  // Try French source first (realite-virtuelle.com), fallback to roadtovr (EN)
+  const sources = [
+    { rss: 'https://www.realite-virtuelle.com/tag/horizon-os/feed/', base: 'https://www.realite-virtuelle.com' },
+    { rss: 'https://www.realite-virtuelle.com/tag/meta-quest/feed/', base: 'https://www.realite-virtuelle.com' },
+    { rss: 'https://roadtovr.com/tag/horizon-os/feed/', base: 'https://roadtovr.com' },
+  ];
+  for (const src of sources) {
+    let articleUrl = null, version = null;
+    try {
+      const rssXml = await httpGet(src.rss);
+      const itemM = rssXml.match(/<item>([\s\S]*?)<\/item>/);
+      if (itemM) {
+        const item = itemM[1];
+        const linkM = item.match(/<link>([^<]+)<\/link>/);
+        const titleM = item.match(/<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/s);
+        if (linkM) articleUrl = linkM[1].trim();
+        if (titleM) {
+          const t = titleM[1].replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').trim();
+          const vM = t.match(/v\d+[\d.]*/i) || t.match(/horizon os\s*([\d.]+)/i);
+          version = vM ? vM[0] : t.replace(/\s*[-–|].*$/,'').trim();
+        }
       }
-    }
-  } catch(e){}
-  if (!articleUrl) return null;
-  let html;
-  try { html = await httpGet(articleUrl); } catch(e){ return null; }
-  // Parse h2/h3 sections with images from the article
-  let features = parseFeatureSections(html, 'h2', 'https://roadtovr.com');
-  if (!features.length) features = parseFeatureSections(html, 'h3', 'https://roadtovr.com');
-  features = features.filter(f => f.image)
-    .filter(f => !/^(related|share|tags|comment|about the author|more from)/i.test(f.title))
-    .slice(0, 8);
-  if (!features.length) return null;
-  return { version: version || 'Horizon OS', features, pageLink: articleUrl };
+    } catch(e){}
+    if (!articleUrl) continue;
+    let html;
+    try { html = await httpGet(articleUrl); } catch(e){ continue; }
+    let features = parseFeatureSections(html, 'h2', src.base);
+    if (!features.length) features = parseFeatureSections(html, 'h3', src.base);
+    features = features.filter(f => f.image)
+      .filter(f => !/^(related|partager|share|tags|comment|about the author|more from|à lire aussi)/i.test(f.title))
+      .slice(0, 8);
+    if (features.length) return { version: version || 'Horizon OS', features, pageLink: articleUrl };
+  }
+  return null;
 }
 
 async function loadChangelogLive(cat){
