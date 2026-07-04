@@ -263,8 +263,8 @@ function renderRLResults(tables, label, count=2){
 async function fetchSportsEvents(){
   if (_espnCache && Date.now()-_espnCacheTs < 3*60*1000) return _espnCache;
   // ESPN league IDs (confirmed via API exploration):
-  // 270559 = French Top 14 | 180659 = Six Nations | 271937 = Champions Cup
-  const ESPN_IDS = ['270559','180659','271937'];
+  // 270559 = French Top 14 | 180659 = Six Nations | 271937 = Champions Cup | 289688 = Autumn Nations
+  const ESPN_IDS = ['270559','180659','271937','289688'];
   const ESPN_BASE = 'https://site.api.espn.com/apis/site/v2/sports/rugby';
 
   function parseEspnEvent(e){
@@ -325,15 +325,30 @@ function renderLiveScores(events){
 /* --- XV de France via Wikipedia --- */
 async function loadFranceXV(season){
   const [y1,y2] = season.split('-');
-  const page = `Équipe de France de rugby à XV en ${y1}-${y2}`;
-  try{
-    const sectsData = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
-    const sects = sectsData?.parse?.sections||[];
-    const idx = sects.find(s=>/résultats|matchs/i.test(s.line))?.index;
-    if (!idx) return null;
-    const d = await fetch(wikiUrl(page,parseInt(idx))).then(r=>r.json());
-    return parseWikitables(d?.parse?.text?.['*']||'').filter(t=>t.length>=3);
-  } catch(e){ return null; }
+  // Also try previous season page as fallback (covers summer tours)
+  const pages = [
+    `Équipe de France de rugby à XV en ${y1}-${y2}`,
+    `Équipe de France de rugby à XV en ${y2}-${parseInt(y2)+1}`,
+  ];
+  const SECT_RE = /résultats|matchs|tournée|tour|test\s+match|saison/i;
+  for (const page of pages){
+    try{
+      const sectsData = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
+      const sects = sectsData?.parse?.sections||[];
+      if (!sects.length) continue;
+      // Collect ALL sections that look like results/matches/tours (not just the first)
+      const matchingSects = sects.filter(s=>SECT_RE.test(s.line));
+      if (!matchingSects.length) continue;
+      const allTables = (await Promise.allSettled(
+        matchingSects.map(s=>fetch(wikiUrl(page,parseInt(s.index))).then(r=>r.json()))
+      )).flatMap(r=>r.status==='fulfilled'
+        ? parseWikitables(r.value?.parse?.text?.['*']||'').filter(t=>t.length>=3)
+        : []
+      );
+      if (allTables.length) return allTables;
+    } catch(e){ continue; }
+  }
+  return null;
 }
 
 function renderFranceXV(tables){
@@ -844,7 +859,7 @@ function upcomingRugbyShows(weeks){
 
 async function fetchUpcomingMatches(){
   if (_upcomingRugby && Date.now()-_upcomingRugbyTs < 5*60*1000) return _upcomingRugby;
-  const ESPN_IDS = ['270559','180659','271937'];
+  const ESPN_IDS = ['270559','180659','271937','289688'];
   const ESPN_BASE = 'https://site.api.espn.com/apis/site/v2/sports/rugby';
   const results = await Promise.allSettled(
     ESPN_IDS.map(id=>fetchJson(`${ESPN_BASE}/${id}/scoreboard`).then(d=>d.events||[]))
