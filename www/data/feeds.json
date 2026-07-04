@@ -529,6 +529,14 @@
         {
           "name": "Quinze Mondial",
           "url": "https://www.quinzemondial.com/feed/"
+        },
+        {
+          "name": "XV de France — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=XV+de+France+rugby"
+        },
+        {
+          "name": "Équipe de France Rugby — FFR",
+          "url": "https://www.ffr.fr/feed/"
         }
       ],
       "feeds_en": [
