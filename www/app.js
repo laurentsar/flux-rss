@@ -9,7 +9,7 @@ const CAT_COLORS = {
   ia:['#6366F1','#312E81'], rugby:['#16A34A','#0B5D2A'], domotique:['#0EA5E9','#075985'],
   solaire:['#F59E0B','#92600A'], deals_fr:['#27AE60','#145F34'], anglais:['#1E3A8A','#0C1E4A'],
   jeux:['#8b5cf6','#4c1d95'], voyage:['#0D9488','#0F5D57'], youtube:['#FF0000','#7A0B0B'], deals_voyage:['#EA580C','#7C2D12'],
-  podcasts:['#7C3AED','#3B0764'], tesla:['#CC0000','#7A0000'],
+  podcasts:['#7C3AED','#3B0764'], tesla:['#CC0000','#7A0000'], xv_direct:['#EF4444','#7F1D1D'],
   placement:['#D97706','#78350F'],
   bricolage:['#B45309','#6B2E00'], byd:['#0F766E','#083A38'],
   football:['#1E3A8A','#0C1E4A'],
