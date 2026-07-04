@@ -353,6 +353,24 @@ function renderFranceXV(tables){
   return `<details class="rl-section" open><summary class="rl-sh">🇫🇷 XV de France</summary>${cards}</details>`;
 }
 
+/* --- XV de France — résultats live ESPN (filtrés) --- */
+function renderFranceXVLive(events){
+  if (!events.length) return '';
+  const hasLive = events.some(e=>e.status?.type==='inprogress');
+  const cards = events.map(e=>{
+    const st=e.status?.type;
+    const live=st==='inprogress', fin=st==='finished';
+    const hs=e.homeScore?.current??'', as_=e.awayScore?.current??'';
+    const hw=fin&&parseInt(hs)>parseInt(as_), aw=fin&&parseInt(as_)>parseInt(hs);
+    const badge=live?'<span class="rl-live-dot"></span>':'';
+    const time=live?(e.status.description||'⏱'):fin?'':new Date((e.startTimestamp||0)*1000).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+    const score=(live||fin)?`<b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b>${time?`<span class="rl-time"> ${time}</span>`:''}`: `<span class="rl-vs">${time}</span>`;
+    return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(e.homeTeam?.name||'?')}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(e.awayTeam?.name||'?')}</span></div>`;
+  }).join('');
+  const label=hasLive?'🔴 🇫🇷 XV de France — En direct':'🇫🇷 XV de France — Résultats récents';
+  return `<details class="rl-section${hasLive?' rl-live-section':''}" open><summary class="rl-sh">${label}</summary>${cards}</details>`;
+}
+
 /* --- Pro D2 : Brive & Colomiers --- */
 const PRO_D2_TEAMS = ['Brive','Colomiers'];
 async function loadProD2Teams(season){
@@ -412,8 +430,16 @@ async function loadRugbyLive(){
   ]);
 
   let html = '';
+  // XV de France EN TÊTE : matchs France filtrés depuis ESPN, fallback Wikipedia
+  const frEvents = sofa.events.filter(e=>{
+    const h=(e.homeTeam?.name||'').toLowerCase(), a=(e.awayTeam?.name||'').toLowerCase();
+    return h.includes('france')||a.includes('france');
+  });
+  const otherEvents = sofa.events.filter(e=>!frEvents.includes(e));
+  if (frEvents.length) html += renderFranceXVLive(frEvents);
+  else if (franceXV?.length) html += renderFranceXV(franceXV);
   if (sofa.error) html += `<details class="rl-section" open><summary class="rl-sh">📡 Scores live</summary><div class="rl-loading">⚠️ ${sofa.error}</div></details>`;
-  else if (sofa.events.length) html += renderLiveScores(sofa.events);
+  else if (otherEvents.length) html += renderLiveScores(otherEvents);
   if (r1){
     const tbls = parseWikitables(r1?.parse?.text?.['*']||'');
     if (tbls[0]) html += renderRLStandings(tbls[0],'Classement Top 14',14,6,2);
@@ -427,7 +453,6 @@ async function loadRugbyLive(){
       html += renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown);
     }
   }
-  if (franceXV?.length) html += renderFranceXV(franceXV);
   if (proD2.length) html += renderProD2Teams(proD2);
   elRugbyLive.innerHTML = html || '<div class="rl-loading">Données non disponibles.</div>';
   _rugbyLiveHtml = elRugbyLive.innerHTML;
