@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.64';
+const APP_VERSION = '4.65';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -504,6 +504,49 @@ function hideRugbyLive(){
 /* ---------- Changelog Live ---------- */
 let _clHtml = null;
 
+async function loadTeslaReleaseNotes(){
+  // Step 1: find latest firmware version from the RSS
+  let version = null;
+  try {
+    const rssXml = await httpGet('https://www.notateslaapp.com/rss');
+    const rssItems = parseFeed(rssXml, 'notateslaapp', null);
+    const swItem = rssItems.find(it => /\/software-updates\/version\//.test(it.link||''));
+    if (swItem){ const m=(swItem.link||'').match(/\/version\/([^\/]+)\//); if(m) version=m[1]; }
+  } catch(e){}
+  if (!version) return null;
+
+  // Step 2: fetch the French release notes page
+  const pageLink = `https://www.notateslaapp.com/fr/mises-a-jour-logicielles/version/${version}/notes-de-mise-a-jour`;
+  let html;
+  try { html = await httpGet(pageLink); } catch(e){ return null; }
+
+  // Step 3: parse features — pattern: <h2>title</h2> <img> <p>Disponible…</p> <p>Modèles:…</p> <p>description</p>
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html;
+  const features = [];
+  tmp.querySelectorAll('h2').forEach(h2 => {
+    const title = h2.textContent.trim();
+    if (!title || title.length < 3) return;
+    let imgSrc = null;
+    const descParts = [];
+    let el = h2.nextElementSibling;
+    while (el && el.tagName !== 'H2'){
+      if (!imgSrc && el.tagName === 'IMG'){
+        imgSrc = el.getAttribute('src')||'';
+        if (imgSrc.startsWith('/')) imgSrc = 'https://www.notateslaapp.com' + imgSrc;
+      }
+      if (el.tagName === 'P'){
+        const txt = el.textContent.trim();
+        if (txt.length > 20 && !/^(Disponible|Modèles?:|Models?:)/i.test(txt)) descParts.push(txt);
+      }
+      el = el.nextElementSibling;
+    }
+    features.push({ title, image: imgSrc, desc: descParts.join(' ') });
+  });
+
+  return features.length ? { version, features, pageLink } : null;
+}
+
 function clBullets(text){
   if (!text) return [];
   // 1) Newline or bullet-character split
@@ -534,6 +577,29 @@ async function loadChangelogLive(cat){
   if (_clHtml){ elChangelogLive.hidden=false; elChangelogLive.innerHTML=_clHtml; return; }
   elChangelogLive.hidden = false;
   elChangelogLive.innerHTML = '<div class="cl-loading"><span class="spinner"></span> Changelog…</div>';
+
+  const label = cat.id==='ia' ? '🤖 Dernière release IA' : cat.id==='domotique' ? '🏠 Dernière version Home Assistant' : '⚡ Mise à jour Tesla';
+
+  // Tesla : scrape notateslaapp.com en priorité (images + features structurées)
+  if (cat.id === 'tesla') {
+    const release = await loadTeslaReleaseNotes();
+    if (release) {
+      const verBadge = `<span class="cl-ver">${esc(release.version)}</span>`;
+      const sections = release.features.map(f => {
+        const imgHtml = f.image ? `<img class="cl-feat-img" src="${esc(f.image)}" alt="" loading="lazy" onerror="this.remove()">` : '';
+        const descHtml = f.desc ? `<p class="cl-excerpt">${esc(f.desc)}</p>` : '';
+        return `<details class="rl-section cl-feat-section"><summary class="rl-sh">${esc(f.title)}</summary>
+          <a class="cl-feature" href="${esc(release.pageLink)}" target="_blank" rel="noopener">${imgHtml}${descHtml}<span class="cl-feat-link">🔗 Voir les détails</span></a>
+        </details>`;
+      }).join('');
+      const html = `<details class="rl-section" open><summary class="rl-sh">${label} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
+      elChangelogLive.innerHTML = html;
+      _clHtml = html;
+      return;
+    }
+  }
+
+  // Fallback RSS (IA, Domotique, ou si Tesla scraping échoue)
   const results = await Promise.allSettled(feeds.map(f =>
     httpGet(f.url).then(xml => parseFeed(xml, f.name, null).map(it => ({...it, _lang: f.lang||'en'})))
   ));
@@ -544,10 +610,7 @@ async function loadChangelogLive(cat){
   items.sort((a,b) => b.ts - a.ts);
   if (!items.length){ hideChangelogLive(); return; }
 
-  const label = cat.id==='ia' ? '🤖 Dernière release IA' : cat.id==='domotique' ? '🏠 Dernière version Home Assistant' : '⚡ Mise à jour Tesla';
   const verRe = /(\d{4}\.\d+\.\d+(?:\.\d+)?|v?\d+\.\d+\.\d+)/i;
-
-  // Group items by version; take all items matching the most recent version
   const firstVer = (items[0].title.match(verRe)||[])[1] || null;
   const versionItems = firstVer
     ? items.filter(it => (it.title.match(verRe)||[])[1] === firstVer)
@@ -556,7 +619,6 @@ async function loadChangelogLive(cat){
 
   let html;
   if (versionItems.length > 1) {
-    // Multi-feature release: one collapsible section per feature with image
     const sections = versionItems.map(it => {
       const featTitle = it.title.replace(verRe,'').replace(/^\s*[-–·:,]\s*/,'').replace(/\s*[-–·:,]\s*$/,'').trim() || it.title;
       const imgHtml = it.image ? `<img class="cl-feat-img" src="${esc(it.image)}" alt="" loading="lazy" onerror="this.remove()">` : '';
@@ -570,7 +632,6 @@ async function loadChangelogLive(cat){
     }).join('');
     html = `<details class="rl-section" open><summary class="rl-sh">${label} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
   } else {
-    // Single item fallback (IA, Domotique, ou version sans features multiples)
     const it = versionItems[0];
     const bullets = clBullets(it.summary||'').slice(0,5);
     const buller = bullets.length > 1
