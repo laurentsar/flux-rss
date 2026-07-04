@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.56';
+const APP_VERSION = '4.57';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -324,7 +324,8 @@ function renderLiveScores(events, extraIntlHtml=''){
       const time = live ? (e.status.description||'⏱') : fin ? '' :
         new Date((e.startTimestamp||0)*1000).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
       const score = (live||fin) ? `<b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b>${time?`<span class="rl-time"> ${time}</span>`:''}` : `<span class="rl-vs">${time}</span>`;
-      return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(e.homeTeam?.name||'?')}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(e.awayTeam?.name||'?')}</span></div>`;
+      const hn=e.homeTeam?.name||'?', an=e.awayTeam?.name||'?';
+      return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${teamBadge(hn)}${esc(hn)}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${teamBadge(an)}${esc(an)}</span></div>`;
     }).join('');
     const lbl = hasLive ? `🔴 ${label} — En direct` : label;
     return `<details class="rl-section${hasLive?' rl-live-section':''}"${hasLive?' open':''}><summary class="rl-sh">${lbl}</summary>${cards}${extra}</details>`;
@@ -333,6 +334,13 @@ function renderLiveScores(events, extraIntlHtml=''){
 }
 
 const FR_RE = /\bfrance\b/i;
+
+function teamBadge(name){
+  const n = name||'';
+  if (FR_RE.test(n)) return '🇫🇷 ';
+  if (/toulouse/i.test(n)) return '🔴 ';
+  return '';
+}
 
 /* --- Pro D2 : Brive & Colomiers --- */
 const PRO_D2_TEAMS = ['Brive','Colomiers'];
@@ -402,8 +410,7 @@ function renderChampionnatNations(journees){
       const m = r[scoreCol].match(SCORE_FIND);
       const hs=parseInt(m[1]), as_=parseInt(m[2]);
       const hw=hs>as_, aw=as_>hs;
-      const frH=FR_RE.test(home), frA=FR_RE.test(away);
-      return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${frH?'🇫🇷 ':''}${esc(home)}</span><span class="rl-sb"><b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b></span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${frA?'🇫🇷 ':''}${esc(away)}</span></div>`;
+      return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${teamBadge(home)}${esc(home)}</span><span class="rl-sb"><b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b></span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${teamBadge(away)}${esc(away)}</span></div>`;
     }).filter(Boolean)).join('');
     if (!cards) return '';
     return `<div class="rl-journee"><span class="rl-jlbl">🌍 Championnat des nations — ${esc(cleanLabel(label))}</span>${cards}</div>`;
@@ -730,7 +737,8 @@ function renderFranceLive(rugbyLive, soccerEvents){
     const time=live?(e.status?.description||'⏱'):'';
     const score=(live||fin)?`<b>${esc(hs)}</b><span class="rl-vs">–</span><b>${esc(as_)}</b>${time?`<span class="rl-time"> ${esc(time)}</span>`:''}`:''
     const icon=e.sport==='football'?'⚽ ':'🏉 ';
-    return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${icon}${esc(e.homeTeam?.name||'?')}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(e.awayTeam?.name||'?')}</span></div>`;
+    const hn2=e.homeTeam?.name||'?', an2=e.awayTeam?.name||'?';
+    return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${icon}${teamBadge(hn2)}${esc(hn2)}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${teamBadge(an2)}${esc(an2)}</span></div>`;
   }).join('');
   const allNames = all.map(e=>`${e.homeTeam?.name||''} ${e.awayTeam?.name||''}`).join(' ');
   const hasYouthA = /u\s*\d+|under|moins\s*de|junior/i.test(allNames);
