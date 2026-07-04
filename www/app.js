@@ -474,6 +474,43 @@ function renderProD2Teams(matches){
   return `<details class="rl-section" open><summary class="rl-sh">🏉 Brive & Colomiers — Pro D2</summary>${cards}</details>`;
 }
 
+/* --- Championnat des nations : toutes les équipes --- */
+async function loadChampionnatNations(year){
+  const page = `Championnat des nations ${year}`;
+  try{
+    const sd = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
+    const sects = (sd?.parse?.sections||[]).filter(s=>/journée/i.test(s.line));
+    if (!sects.length) return null;
+    const results = await Promise.allSettled(
+      sects.map(s=>fetch(wikiUrl(page,parseInt(s.index))).then(r=>r.json()).then(d=>({label:s.line, html:d?.parse?.text?.['*']||''})))
+    );
+    return results.filter(r=>r.status==='fulfilled').map(r=>r.value).filter(v=>v.html);
+  } catch(e){ return null; }
+}
+
+function renderChampionnatNations(journees){
+  if (!journees?.length) return '';
+  const SCORE_RE = /^\d+\s*[-–]\s*\d+$/;
+  const blocks = journees.map(({label, html})=>{
+    const tables = parseWikitables(html).filter(t=>t.length>=2);
+    if (!tables.length) return '';
+    const cards = tables.flatMap(rows=>rows.slice(1).map(r=>{
+      const scoreCol = r.findIndex(c=>SCORE_RE.test(c.trim()));
+      if (scoreCol<0) return '';
+      const home = r[scoreCol-1]||r[0]||'?';
+      const away = r[scoreCol+1]||r[r.length-1]||'?';
+      if (home==='?' && away==='?') return '';
+      const [hs,as_] = r[scoreCol].trim().split(/[-–]/).map(s=>parseInt(s)||0);
+      const hw=hs>as_, aw=as_>hs;
+      const frH=/france/i.test(home), frA=/france/i.test(away);
+      return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${frH?'🇫🇷 ':''  }${esc(home)}</span><span class="rl-sb"><b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b></span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${frA?'🇫🇷 ':''}${esc(away)}</span></div>`;
+    }).filter(Boolean)).join('');
+    if (!cards) return '';
+    return `<details class="rl-section"><summary class="rl-sh">🌍 Champ. des nations — ${esc(label)}</summary>${cards}</details>`;
+  }).filter(Boolean).join('');
+  return blocks;
+}
+
 let _espnCache = null, _espnCacheTs = 0;
 let _frSocCache = null, _frSocCacheTs = 0;
 let _rugbyLiveHtml = '', _rugbyLiveTs = 0;
@@ -489,12 +526,14 @@ async function loadRugbyLive(){
   const season = rugbySeason();
   const top14 = `Championnat de France de rugby à XV ${season}`;
 
-  const [r1, r2, sofa, franceXV, proD2] = await Promise.all([
+  const currentYear = new Date().getFullYear();
+  const [r1, r2, sofa, franceXV, proD2, champNations] = await Promise.all([
     fetch(wikiUrl(top14,6)).then(r=>r.json()).catch(()=>null),
     fetch(wikiUrl(top14,7)).then(r=>r.json()).catch(()=>null),
     fetchSportsEvents(),
     loadFranceXV(season),
     loadProD2Teams(season),
+    loadChampionnatNations(currentYear),
   ]);
 
   let html = '';
@@ -522,6 +561,8 @@ async function loadRugbyLive(){
     }
   }
   if (proD2.length) html += renderProD2Teams(proD2);
+  const champHtml = renderChampionnatNations(champNations);
+  if (champHtml) html += champHtml;
   elRugbyLive.innerHTML = html || '<div class="rl-loading">Données non disponibles.</div>';
   _rugbyLiveHtml = elRugbyLive.innerHTML;
   _rugbyLiveTs = Date.now();
