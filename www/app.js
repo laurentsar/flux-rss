@@ -267,11 +267,13 @@ async function fetchSportsEvents(){
   const ESPN_IDS = ['270559','180659','271937','289688'];
   const ESPN_BASE = 'https://site.api.espn.com/apis/site/v2/sports/rugby';
 
-  function parseEspnEvent(e){
+  // Club IDs (Top 14, Champions Cup) vs international IDs
+  const CLUB_IDS = new Set(['270559','271937']);
+
+  function parseEspnEvent(e, leagueId){
     const comps = e.competitions?.[0]?.competitors||[];
     const home = comps.find(c=>c.homeAway==='home');
     const away = comps.find(c=>c.homeAway==='away');
-    // status is inside competitions[0].status, not e.status
     const state = e.competitions?.[0]?.status?.type?.state||'';
     const detail = e.competitions?.[0]?.status?.type?.shortDetail||'';
     const live = state==='in', fin = state==='post';
@@ -282,12 +284,14 @@ async function fetchSportsEvents(){
       status:{type:live?'inprogress':fin?'finished':'notstarted', description:detail},
       startTimestamp:new Date(e.date||0).getTime()/1000,
       tournament:{name:e.league?.name||''},
+      leagueId,
+      isClub: CLUB_IDS.has(leagueId),
     };
   }
 
   // Fetch all ESPN league scoreboards in parallel
   const espnResults = await Promise.allSettled(
-    ESPN_IDS.map(id=>fetchJson(`${ESPN_BASE}/${id}/scoreboard`).then(d=>(d.events||[]).map(parseEspnEvent)))
+    ESPN_IDS.map(id=>fetchJson(`${ESPN_BASE}/${id}/scoreboard`).then(d=>(d.events||[]).map(e=>parseEspnEvent(e,id))))
   );
   const events = espnResults.flatMap(r=>r.status==='fulfilled'?r.value:[]);
 
@@ -306,10 +310,9 @@ async function fetchSportsEvents(){
 
 function renderLiveScores(events){
   if (!events.length) return '';
-  // Dissocier Top 14 / Champions Cup des compétitions internationales
-  const TOP14_RE = /top 14|pro d2|champions cup/i;
-  const top14Events = events.filter(e=>TOP14_RE.test(e.tournament?.name||''));
-  const intlEvents  = events.filter(e=>!TOP14_RE.test(e.tournament?.name||''));
+  // Dissocier clubs (Top 14, Champions Cup) des compétitions internationales par ID ESPN
+  const top14Events = events.filter(e=>e.isClub);
+  const intlEvents  = events.filter(e=>!e.isClub);
 
   function section(evts, label){
     if (!evts.length) return '';
