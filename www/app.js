@@ -542,25 +542,19 @@ function parseFeatureSections(html, tagName='h3', baseUrl=''){
 
 async function loadTeslaReleaseNotes(){
   // Step 1: sitemap → première URL /software-updates/version/{VER}/release-notes = version la plus récente
+  // Use regex on raw XML text to avoid Chrome/Android namespace issues with querySelectorAll on XML docs
   let version = null;
   try {
     const sitemapXml = await httpGet('https://www.notateslaapp.com/sitemap.xml');
-    const doc = new DOMParser().parseFromString(sitemapXml, 'text/xml');
-    for (const loc of doc.querySelectorAll('loc')){
-      const m = loc.textContent.trim().match(/\/software-updates\/version\/([^\/]+)\/release-notes/);
-      if (m){ version = m[1]; break; }
-    }
+    const m = sitemapXml.match(/\/software-updates\/version\/([^\/]+)\/release-notes/);
+    if (m) version = m[1];
   } catch(e){}
   // Fallback : scan RSS brut si le sitemap échoue
   if (!version){
     try {
       const rssXml = await httpGet('https://www.notateslaapp.com/rss');
-      const doc = new DOMParser().parseFromString(rssXml, 'text/xml');
-      for (const item of doc.querySelectorAll('item')){
-        const link = item.querySelector('link')?.textContent?.trim() || '';
-        const m = link.match(/\/software-updates\/version\/([^\/]+)\//);
-        if (m){ version = m[1]; break; }
-      }
+      const m = rssXml.match(/\/software-updates\/version\/([^\/]+)\//);
+      if (m) version = m[1];
     } catch(e){}
   }
   if (!version) return null;
@@ -570,11 +564,14 @@ async function loadTeslaReleaseNotes(){
   let html;
   try { html = await httpGet(pageLink); } catch(e){ return null; }
 
-  // Step 3: parse features (h3 + img + description, skip "Disponible/Modèles" paragraphs)
+  // Step 3: parse features (h3 + img + description)
+  // Filter out statistics h3s (Number of Cars, Percent...) and news headlines (start with "Tesla ")
   const features = parseFeatureSections(html, 'h3', 'https://www.notateslaapp.com').map(f=>({
     ...f,
     desc: f.desc.replace(/^(Disponible|Modèles?:|Models?:)[^\n]*/gim,'').trim()
-  })).filter(f=>f.image);
+  })).filter(f=>f.image)
+    .filter(f=>!/^(Number|Percent|Installs|Rollout|Statistics|Overview)/i.test(f.title))
+    .filter(f=>!/^Tesla\s/i.test(f.title));
 
   return features.length ? { version, features, pageLink } : null;
 }
