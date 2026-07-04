@@ -9,7 +9,7 @@ const CAT_COLORS = {
   ia:['#6366F1','#312E81'], rugby:['#16A34A','#0B5D2A'], domotique:['#0EA5E9','#075985'],
   solaire:['#F59E0B','#92600A'], deals_fr:['#27AE60','#145F34'], anglais:['#1E3A8A','#0C1E4A'],
   jeux:['#8b5cf6','#4c1d95'], voyage:['#0D9488','#0F5D57'], youtube:['#FF0000','#7A0B0B'], deals_voyage:['#EA580C','#7C2D12'],
-  podcasts:['#7C3AED','#3B0764'], tesla:['#CC0000','#7A0000'], xv_direct:['#EF4444','#7F1D1D'],
+  podcasts:['#7C3AED','#3B0764'], tesla:['#CC0000','#7A0000'],
   placement:['#D97706','#78350F'],
   bricolage:['#B45309','#6B2E00'], byd:['#0F766E','#083A38'],
   football:['#1E3A8A','#0C1E4A'],
@@ -1358,16 +1358,24 @@ async function init(){
     // nouvelles catégories par défaut -> AJOUTÉES EN FIN (ne bouscule pas TON ordre)
     const haveCats = new Set(DATA.categories.map(c=>c.id));
     DEFAULTS.categories.forEach(c=>{ if(!haveCats.has(c.id)){ DATA.categories.push(clone(c)); haveCats.add(c.id); changed=true; } });
-    // v21 : xv_direct doit être juste avant rugby (catégorie live isolée en tête de l'onglet rugby)
-    if (prevVer < 21){
-      const rugbyIdx = DATA.categories.findIndex(c=>c.id==='rugby');
-      const xvIdx = DATA.categories.findIndex(c=>c.id==='xv_direct');
-      if (rugbyIdx > -1 && xvIdx > -1 && xvIdx !== rugbyIdx - 1){
-        const [xvCat] = DATA.categories.splice(xvIdx, 1);
-        const newRugbyIdx = DATA.categories.findIndex(c=>c.id==='rugby');
-        DATA.categories.splice(newRugbyIdx, 0, xvCat);
-        changed=true;
+    // v22 : fusion xv_direct dans rugby (en tête de liste) + suppression catégorie séparée
+    if (prevVer < 22){
+      const XV_URLS = [
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=XV+de+France+rugby+direct',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=France+rugby+score+en+direct',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=France+rugby+r%C3%A9sultat+match',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=test+match+XV+de+France'
+      ];
+      const XV_NAMES = ['XV de France — direct','France rugby — score en direct','France rugby — résultat','Test match XV de France'];
+      const rugbyCat = DATA.categories.find(c=>c.id==='rugby');
+      if (rugbyCat){
+        const haveUrls = new Set((rugbyCat.feeds||[]).map(f=>f.url));
+        const toAdd = XV_URLS.map((url,i)=>({name:XV_NAMES[i],url})).filter(f=>!haveUrls.has(f.url));
+        if (toAdd.length){ rugbyCat.feeds = [...toAdd, ...(rugbyCat.feeds||[])]; changed=true; }
       }
+      const xvIdx = DATA.categories.findIndex(c=>c.id==='xv_direct');
+      if (xvIdx > -1){ DATA.categories.splice(xvIdx,1); changed=true; }
+      if (localStorage.getItem('lastCat')==='xv_direct') localStorage.setItem('lastCat','rugby');
     }
     // nouveaux flux par défaut -> AJOUTÉS EN FIN de leur catégorie, en préservant TON ordre,
     // tes renommages, tes désactivations ET tes suppressions (suivi via _knownDefaultFeeds).
