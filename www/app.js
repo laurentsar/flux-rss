@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.63';
+const APP_VERSION = '4.64';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -543,26 +543,46 @@ async function loadChangelogLive(cat){
   items = items.filter(it => it.link && !seen.has(it.link) && seen.add(it.link));
   items.sort((a,b) => b.ts - a.ts);
   if (!items.length){ hideChangelogLive(); return; }
-  // Préfère un item en français récent (dans les 30 derniers jours) sinon le plus récent
-  const threshold = Date.now() - 30*24*60*60*1000;
-  const frItem = items.find(it => it._lang==='fr' && it.ts > threshold);
-  const it = frItem || items[0];
-  const label = cat.id==='ia' ? '🤖 Dernière release IA' : cat.id==='domotique' ? '🏠 Dernière version Home Assistant' : '⚡ Dernière mise à jour Tesla';
-  // Extrait le numéro de version Tesla (format YYYY.NN.N ou vX.Y.Z) depuis le titre
-  const verMatch = it.title.match(/(\d{4}\.\d+\.\d+(?:\.\d+)?|v?\d+\.\d+\.\d+)/i);
-  const verBadge = verMatch ? `<span class="cl-ver">${esc(verMatch[1])}</span>` : '';
-  const bullets = clBullets(it.summary || '').slice(0, 5); // max 5 puces
-  const buller = bullets.length > 1
-    ? `<ul class="cl-bullets">${bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>`
-    : it.summary ? `<span class="cl-excerpt">${esc(it.summary.slice(0,200))}${it.summary.length>200?'…':''}</span>` : '';
-  const imgHtml = it.image ? `<img class="cl-img" src="${esc(it.image)}" alt="" loading="lazy" onerror="this.remove()">` : '';
-  const card = `<a class="cl-item" href="${esc(it.link)}" target="_blank" rel="noopener">
-    ${imgHtml}
-    <span class="cl-title">${verBadge}${esc(it.title)}</span>
-    ${buller}
-    <span class="cl-meta">${it.date?`<span>🕒 ${esc(fmtDate(it.date))}</span>`:''}</span>
-  </a>`;
-  const html = `<details class="rl-section" open><summary class="rl-sh">${label}</summary>${card}</details>`;
+
+  const label = cat.id==='ia' ? '🤖 Dernière release IA' : cat.id==='domotique' ? '🏠 Dernière version Home Assistant' : '⚡ Mise à jour Tesla';
+  const verRe = /(\d{4}\.\d+\.\d+(?:\.\d+)?|v?\d+\.\d+\.\d+)/i;
+
+  // Group items by version; take all items matching the most recent version
+  const firstVer = (items[0].title.match(verRe)||[])[1] || null;
+  const versionItems = firstVer
+    ? items.filter(it => (it.title.match(verRe)||[])[1] === firstVer)
+    : items.slice(0, 1);
+  const verBadge = firstVer ? `<span class="cl-ver">${esc(firstVer)}</span>` : '';
+
+  let html;
+  if (versionItems.length > 1) {
+    // Multi-feature release: one collapsible section per feature with image
+    const sections = versionItems.map(it => {
+      const featTitle = it.title.replace(verRe,'').replace(/^\s*[-–·:,]\s*/,'').replace(/\s*[-–·:,]\s*$/,'').trim() || it.title;
+      const imgHtml = it.image ? `<img class="cl-feat-img" src="${esc(it.image)}" alt="" loading="lazy" onerror="this.remove()">` : '';
+      const bullets = clBullets(it.summary||'').slice(0,4);
+      const body = bullets.length > 1
+        ? `<ul class="cl-bullets">${bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>`
+        : it.summary ? `<p class="cl-excerpt">${esc(it.summary.slice(0,280))}${it.summary.length>280?'…':''}</p>` : '';
+      return `<details class="rl-section cl-feat-section"><summary class="rl-sh">${esc(featTitle)}</summary>
+        <a class="cl-feature" href="${esc(it.link)}" target="_blank" rel="noopener">${imgHtml}${body}<span class="cl-feat-link">🔗 Voir les détails</span></a>
+      </details>`;
+    }).join('');
+    html = `<details class="rl-section" open><summary class="rl-sh">${label} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
+  } else {
+    // Single item fallback (IA, Domotique, ou version sans features multiples)
+    const it = versionItems[0];
+    const bullets = clBullets(it.summary||'').slice(0,5);
+    const buller = bullets.length > 1
+      ? `<ul class="cl-bullets">${bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>`
+      : it.summary ? `<span class="cl-excerpt">${esc(it.summary.slice(0,200))}${it.summary.length>200?'…':''}</span>` : '';
+    const imgHtml = it.image ? `<img class="cl-img" src="${esc(it.image)}" alt="" loading="lazy" onerror="this.remove()">` : '';
+    const card = `<a class="cl-item" href="${esc(it.link)}" target="_blank" rel="noopener">
+      ${imgHtml}<span class="cl-title">${verBadge}${esc(it.title)}</span>${buller}
+      <span class="cl-meta">${it.date?`<span>🕒 ${esc(fmtDate(it.date))}</span>`:''}</span>
+    </a>`;
+    html = `<details class="rl-section" open><summary class="rl-sh">${label}</summary>${card}</details>`;
+  }
   elChangelogLive.innerHTML = html;
   _clHtml = html;
 }
