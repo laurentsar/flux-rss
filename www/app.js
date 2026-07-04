@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.53';
+const APP_VERSION = '4.54';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -308,14 +308,12 @@ async function fetchSportsEvents(){
   return r;
 }
 
-function renderLiveScores(events){
-  if (!events.length) return '';
-  // Dissocier clubs (Top 14, Champions Cup) des compétitions internationales par ID ESPN
+function renderLiveScores(events, extraIntlHtml=''){
   const top14Events = events.filter(e=>e.isClub);
   const intlEvents  = events.filter(e=>!e.isClub);
 
-  function section(evts, label){
-    if (!evts.length) return '';
+  function section(evts, label, extra=''){
+    if (!evts.length && !extra) return '';
     const hasLive = evts.some(e=>e.status?.type==='inprogress');
     const cards = evts.map(e=>{
       const st = e.status?.type;
@@ -329,9 +327,9 @@ function renderLiveScores(events){
       return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(e.homeTeam?.name||'?')}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(e.awayTeam?.name||'?')}</span></div>`;
     }).join('');
     const lbl = hasLive ? `🔴 ${label} — En direct` : label;
-    return `<details class="rl-section${hasLive?' rl-live-section':''}"${hasLive?' open':''}><summary class="rl-sh">${lbl}</summary>${cards}</details>`;
+    return `<details class="rl-section${hasLive?' rl-live-section':''}"${hasLive?' open':''}><summary class="rl-sh">${lbl}</summary>${cards}${extra}</details>`;
   }
-  return section(top14Events,'🏆 Top 14 / Champions Cup') + section(intlEvents,'🌐 Matchs internationaux');
+  return section(top14Events,'🏆 Top 14 / Champions Cup') + section(intlEvents,'🌐 Matchs internationaux', extraIntlHtml);
 }
 
 const FR_RE = /\bfrance\b/i;
@@ -522,11 +520,11 @@ function renderChampionnatNations(journees){
       const m = r[scoreCol].match(SCORE_FIND);
       const hs=parseInt(m[1]), as_=parseInt(m[2]);
       const hw=hs>as_, aw=as_>hs;
-      const frH=/france/i.test(home), frA=/france/i.test(away);
+      const frH=FR_RE.test(home), frA=FR_RE.test(away);
       return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${frH?'🇫🇷 ':''}${esc(home)}</span><span class="rl-sb"><b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b></span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${frA?'🇫🇷 ':''}${esc(away)}</span></div>`;
     }).filter(Boolean)).join('');
     if (!cards) return '';
-    return `<details class="rl-section"><summary class="rl-sh">🌍 Champ. des nations — ${esc(label)}</summary>${cards}</details>`;
+    return `<div class="rl-journee"><span class="rl-jlbl">🌍 Champ. des nations — ${esc(label)}</span>${cards}</div>`;
   }).filter(Boolean).join('');
   return blocks;
 }
@@ -565,8 +563,9 @@ async function loadRugbyLive(){
   const otherEvents = sofa.events.filter(e=>!frEvents.includes(e));
   if (frEvents.length) html += renderFranceXVLive(frEvents);
   else if (franceXV) html += renderFranceXV(franceXV);
+  const champHtml = renderChampionnatNations(champNations);
   if (sofa.error) html += `<details class="rl-section" open><summary class="rl-sh">📡 Scores live</summary><div class="rl-loading">⚠️ ${sofa.error}</div></details>`;
-  else if (otherEvents.length) html += renderLiveScores(otherEvents);
+  else if (otherEvents.length || champHtml) html += renderLiveScores(otherEvents, champHtml);
   if (r1){
     const tbls = parseWikitables(r1?.parse?.text?.['*']||'');
     if (tbls[0]) html += renderRLStandings(tbls[0],'Classement Top 14',14,6,2);
@@ -581,8 +580,6 @@ async function loadRugbyLive(){
     }
   }
   if (proD2.length) html += renderProD2Teams(proD2);
-  const champHtml = renderChampionnatNations(champNations);
-  if (champHtml) html += champHtml;
   elRugbyLive.innerHTML = html || '<div class="rl-loading">Données non disponibles.</div>';
   _rugbyLiveHtml = elRugbyLive.innerHTML;
   _rugbyLiveTs = Date.now();
