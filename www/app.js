@@ -710,40 +710,64 @@ async function loadClaudeChangelog(){
 }
 
 async function loadQuestChangelog(){
-  // Try French source first (realite-virtuelle.com), fallback to roadtovr (EN)
-  const sources = [
-    { rss: 'https://www.realite-virtuelle.com/tag/horizon-os/feed/', base: 'https://www.realite-virtuelle.com' },
-    { rss: 'https://www.realite-virtuelle.com/tag/meta-quest/feed/', base: 'https://www.realite-virtuelle.com' },
-    { rss: 'https://roadtovr.com/tag/horizon-os/feed/', base: 'https://roadtovr.com' },
-  ];
-  for (const src of sources) {
-    let articleUrl = null, version = null;
-    try {
-      const rssXml = await httpGet(src.rss);
-      const itemM = rssXml.match(/<item>([\s\S]*?)<\/item>/);
-      if (itemM) {
-        const item = itemM[1];
-        const linkM = item.match(/<link>([^<]+)<\/link>/);
-        const titleM = item.match(/<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/s);
-        if (linkM) articleUrl = linkM[1].trim();
-        if (titleM) {
-          const t = titleM[1].replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').trim();
-          const vM = t.match(/v\d+[\d.]*/i) || t.match(/horizon os\s*([\d.]+)/i);
-          version = vM ? vM[0] : t.replace(/\s*[-–|].*$/,'').trim();
-        }
-      }
-    } catch(e){}
-    if (!articleUrl) continue;
-    let html;
-    try { html = await httpGet(articleUrl); } catch(e){ continue; }
-    let features = parseFeatureSections(html, 'h2', src.base);
-    if (!features.length) features = parseFeatureSections(html, 'h3', src.base);
-    features = features.filter(f => f.image)
-      .filter(f => !/^(related|partager|share|tags|comment|about the author|more from|à lire aussi)/i.test(f.title))
-      .slice(0, 8);
-    if (features.length) return { version: version || 'Horizon OS', features, pageLink: articleUrl };
+  // roadtovr horizon-os tag RSS → parse full article content:encoded for features
+  let rssXml;
+  try { rssXml = await httpGet('https://roadtovr.com/tag/horizon-os/feed/'); } catch(e){ return null; }
+  const itemM = rssXml.match(/<item>([\s\S]*?)<\/item>/);
+  if (!itemM) return null;
+  const item = itemM[1];
+
+  const titleM = item.match(/<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/s);
+  const linkM  = item.match(/<link>([^<]+)<\/link>/);
+  if (!linkM) return null;
+  const articleUrl = linkM[1].trim();
+
+  let version = 'Horizon OS';
+  if (titleM) {
+    const t = titleM[1].replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').trim();
+    const vM = t.match(/v\d+[\d.]*/i) || t.match(/horizon os\s*([\d.]+)/i);
+    version = vM ? vM[0] : t.replace(/\s*[-–|].*$/,'').trim().slice(0, 50);
   }
-  return null;
+
+  // Get full article HTML from content:encoded (avoids scraping the article page)
+  const contentM = item.match(/<content:encoded>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/content:encoded>/);
+  if (!contentM) return null;
+  const contentHtml = contentM[1]
+    .replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&')
+    .replace(/&quot;/g,'"').replace(/&#038;/g,'&').replace(/&#8217;/g,"'").replace(/&#8216;/g,"'");
+
+  const tmp = document.createElement('div');
+  tmp.innerHTML = contentHtml;
+
+  // Header image shared by all features
+  const headerImg = tmp.querySelector('img');
+  let sharedImg = headerImg ? imgRealSrc(headerImg) : '';
+  if (sharedImg && sharedImg.startsWith('/')) sharedImg = 'https://roadtovr.com' + sharedImg;
+  // Strip WordPress resize params to get clean image URL
+  if (sharedImg) sharedImg = sharedImg.replace(/\?.*$/, '');
+
+  // Parse features: <strong>Feature</strong> followed by a <p> description
+  const features = [];
+  const skips = /^(update\s*\(|settings[,\s]|system$|keyboard$|experimental$|general$|\d{4})/i;
+  tmp.querySelectorAll('strong').forEach(strong => {
+    const title = strong.textContent.replace(/[,;]\s*$/, '').trim();
+    if (!title || title.length < 4 || skips.test(title)) return;
+
+    // Find the closest following <p> with meaningful text
+    let desc = '';
+    let el = strong.closest('p') ? strong.closest('p').nextElementSibling : strong.nextElementSibling;
+    while (el && !desc) {
+      if (el.tagName === 'P') {
+        const txt = el.textContent.trim();
+        if (txt.length > 30 && !/^(check it out|—\s|settings\s*>)/i.test(txt)) desc = txt.slice(0, 200);
+      }
+      el = el.nextElementSibling;
+    }
+    features.push({ title, image: sharedImg, desc, link: articleUrl });
+  });
+
+  if (!features.length) return null;
+  return { version, features: features.slice(0, 8), pageLink: articleUrl };
 }
 
 async function loadChangelogLive(cat){
