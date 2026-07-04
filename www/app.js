@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.60';
+const APP_VERSION = '4.61';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -264,7 +264,7 @@ async function fetchSportsEvents(){
   if (_espnCache && Date.now()-_espnCacheTs < 3*60*1000) return _espnCache;
   // ESPN league IDs (confirmed via API exploration):
   // 270559 = French Top 14 | 180659 = Six Nations | 271937 = Champions Cup | 289688 = Autumn Nations
-  const ESPN_IDS = ['270559','180659','271937','289688'];
+  const ESPN_IDS = ['270559','180659','271937','289688','17567'];
   const ESPN_BASE = 'https://site.api.espn.com/apis/site/v2/sports/rugby';
 
   // Club IDs (Top 14, Champions Cup) vs international IDs
@@ -880,7 +880,7 @@ function upcomingRugbyShows(weeks){
 
 async function fetchUpcomingMatches(){
   if (_upcomingRugby && Date.now()-_upcomingRugbyTs < 5*60*1000) return _upcomingRugby;
-  const ESPN_IDS = ['270559','180659','271937','289688'];
+  const ESPN_IDS = ['270559','180659','271937','289688','17567'];
   const ESPN_BASE = 'https://site.api.espn.com/apis/site/v2/sports/rugby';
   const results = await Promise.allSettled(
     ESPN_IDS.map(id=>fetchJson(`${ESPN_BASE}/${id}/scoreboard`).then(d=>d.events||[]))
