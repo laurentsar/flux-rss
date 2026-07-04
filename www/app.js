@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.61';
+const APP_VERSION = '4.62';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -301,7 +301,10 @@ async function fetchSportsEvents(){
   }
   // dedup + sort: live first, then finished, then upcoming
   const seen = new Set();
-  const deduped = events.filter(e=>!seen.has(e.id)&&seen.add(e.id));
+  const cutoff = Date.now()/1000 - 7*24*3600;
+  const deduped = events
+    .filter(e=>!seen.has(e.id)&&seen.add(e.id))
+    .filter(e=>e.status.type!=='finished' || e.startTimestamp>cutoff);
   deduped.sort((a,b)=>{const o=t=>t==='inprogress'?0:t==='finished'?1:2;return o(a.status.type)-o(b.status.type)||(a.startTimestamp-b.startTimestamp);});
   const r={events:deduped, error:null};
   _espnCache=r; _espnCacheTs=Date.now();
@@ -881,14 +884,20 @@ function upcomingRugbyShows(weeks){
 async function fetchUpcomingMatches(){
   if (_upcomingRugby && Date.now()-_upcomingRugbyTs < 5*60*1000) return _upcomingRugby;
   const ESPN_IDS = ['270559','180659','271937','289688','17567'];
+  const CLUB_IDS_UP = new Set(['270559','271937']);
   const ESPN_BASE = 'https://site.api.espn.com/apis/site/v2/sports/rugby';
   const results = await Promise.allSettled(
-    ESPN_IDS.map(id=>fetchJson(`${ESPN_BASE}/${id}/scoreboard`).then(d=>d.events||[]))
+    ESPN_IDS.map(id=>fetchJson(`${ESPN_BASE}/${id}/scoreboard`).then(d=>(d.events||[]).map(e=>({...e,_lid:id}))))
   );
   const seen = new Set();
   const matches = results.flatMap(r=>r.status==='fulfilled'?r.value:[])
     .filter(e=>{ const st=e.competitions?.[0]?.status?.type?.state||''; return st==='pre'; })
     .filter(e=>!seen.has(e.id)&&seen.add(e.id))
+    .filter(e=>{
+      if (CLUB_IDS_UP.has(e._lid)) return true;
+      const comps=e.competitions?.[0]?.competitors||[];
+      return comps.some(c=>/france/i.test(c.team?.displayName||c.team?.name||''));
+    })
     .map(e=>{
       const comp=e.competitions?.[0]||{};
       const comps=comp.competitors||[];
