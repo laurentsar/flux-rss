@@ -325,57 +325,100 @@ function renderLiveScores(events){
 /* --- XV de France via Wikipedia --- */
 async function loadFranceXV(season){
   const [y1,y2] = season.split('-');
-  // Wikipedia pages for France XV use the calendar year (en 2026), not the season (en 2025-2026)
-  const pages = [
-    `Équipe de France de rugby à XV en ${y2}`,          // current year — primary (e.g. "en 2026")
-    `Équipe de France de rugby à XV en ${y1}-${y2}`,    // season format fallback
-    `Équipe de France de rugby à XV en ${y1}`,          // previous year fallback (Six Nations etc.)
+  const FR_RE = /france/i;
+
+  // 1) Try competition-wide pages first (Championnat des nations, etc.)
+  // These contain ALL teams → must filter France rows + detect home/away
+  const COMP_PAGES = [
+    `Championnat des nations ${y2}`,
+    `Championnat des nations ${parseInt(y2)+1}`,
   ];
-  // Section names seen on Wikipedia: Résultats, Matchs, Tournée, Match amical, Championnat des nations, Phase aller/retour, Classement
-  const SECT_RE = /résultats|matchs|tournée|tour|test\s+match|saison|match\s+amical|championnat\s+des\s+nations|phase\s+(aller|retour)|classement/i;
-  for (const page of pages){
+  const COMP_SECT_RE = /journée|résultats|phase/i;
+  for (const page of COMP_PAGES){
     try{
-      const sectsData = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
-      const sects = sectsData?.parse?.sections||[];
+      const sd = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
+      const sects = (sd?.parse?.sections||[]).filter(s=>COMP_SECT_RE.test(s.line));
       if (!sects.length) continue;
-      // Collect ALL sections that look like results/matches/tours (not just the first)
-      const matchingSects = sects.filter(s=>SECT_RE.test(s.line));
-      if (!matchingSects.length) continue;
-      const allTables = (await Promise.allSettled(
-        matchingSects.map(s=>fetch(wikiUrl(page,parseInt(s.index))).then(r=>r.json()))
+      const rows = (await Promise.allSettled(
+        sects.map(s=>fetch(wikiUrl(page,parseInt(s.index))).then(r=>r.json()))
+      )).flatMap(r=>r.status==='fulfilled'
+        ? parseWikitables(r.value?.parse?.text?.['*']||'').flatMap(t=>t.slice(1))
+        : []
+      ).filter(r=>r.some(c=>FR_RE.test(c)));
+      if (rows.length) return {mode:'comp', rows};
+    } catch(e){ continue; }
+  }
+
+  // 2) Fall back to France team page (calendar year, then season format)
+  const TEAM_PAGES = [
+    `Équipe de France de rugby à XV en ${y2}`,
+    `Équipe de France de rugby à XV en ${y1}-${y2}`,
+    `Équipe de France de rugby à XV en ${y1}`,
+  ];
+  const TEAM_SECT_RE = /résultats|matchs|tournée|tour|test\s+match|saison|match\s+amical|championnat\s+des\s+nations|phase\s+(aller|retour)|classement/i;
+  for (const page of TEAM_PAGES){
+    try{
+      const sd = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
+      const sects = (sd?.parse?.sections||[]).filter(s=>TEAM_SECT_RE.test(s.line));
+      if (!sects.length) continue;
+      const tables = (await Promise.allSettled(
+        sects.map(s=>fetch(wikiUrl(page,parseInt(s.index))).then(r=>r.json()))
       )).flatMap(r=>r.status==='fulfilled'
         ? parseWikitables(r.value?.parse?.text?.['*']||'').filter(t=>t.length>=3)
         : []
       );
-      if (allTables.length) return allTables;
+      if (tables.length) return {mode:'team', tables};
     } catch(e){ continue; }
   }
   return null;
 }
 
-function renderFranceXV(tables){
-  if (!tables?.length) return '';
-  // Build from all tables, show scored matches AND upcoming fixtures (with date only)
-  const cards = tables.slice(-5).flatMap(rows=>
-    rows.slice(1).map(r=>{
-      if (r.length<3) return '';
-      const scoreCol = r.findIndex(c=>/\d+\s*[-–]\s*\d+/.test(c));
-      const dateCol = r.findIndex(c=>/\d{1,2}[\s/]\w+[\s/]\d{4}|\d{4}-\d{2}-\d{2}/.test(c));
-      // Try to find opponent: non-date, non-score cell with >1 char that isn't pure numbers
-      const opp = r.find((_,i)=>i>0 && i!==scoreCol && i!==dateCol && r[i].length>1 && !/^\d+$/.test(r[i]) && !/^\w$/.test(r[i]))||'?';
-      if (opp==='?') return '';
-      if (scoreCol>=0){
-        const [hs,as_] = r[scoreCol].split(/[-–]/).map(s=>parseInt(s)||0);
-        const win=hs>as_, loss=as_>hs;
-        return `<div class="rl-match"><span class="rl-tn ${win?'rl-w':''}">🇫🇷 France</span><span class="rl-sb"><b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b></span><span class="rl-tn rl-tnr ${loss?'rl-w':''}">${esc(opp)}</span></div>`;
-      }
-      // Upcoming/recent fixture with no score yet
-      const dateStr = dateCol>=0 ? r[dateCol] : '';
+function renderFranceXV(data){
+  if (!data) return '';
+  const SCORE_RE = /^\d+\s*[-–]\s*\d+$/;
+  const DATE_RE = /\d{1,2}[\s/]\w+[\s/]\d{4}|\d{4}-\d{2}-\d{2}/;
+  const FR_RE = /france/i;
+
+  function matchCard(r, isFranceLeft){
+    const scoreCol = r.findIndex(c=>SCORE_RE.test(c.trim()));
+    const dateStr = (r.find(c=>DATE_RE.test(c))||'');
+    const opp = r.find((_,i)=>{
+      const v=r[i]; if (!v||v.length<2) return false;
+      if (SCORE_RE.test(v.trim()||DATE_RE.test(v)||/^\d+$/.test(v))) return false;
+      if (FR_RE.test(v)) return false;
+      if (i===scoreCol) return false;
+      return true;
+    })||'?';
+    if (opp==='?') return '';
+    if (scoreCol<0){
       return `<div class="rl-match"><span class="rl-tn">🇫🇷 France</span><span class="rl-sb"><span class="rl-vs">${esc(dateStr||'—')}</span></span><span class="rl-tn rl-tnr">${esc(opp)}</span></div>`;
-    }).filter(Boolean)
-  ).join('');
+    }
+    const parts = r[scoreCol].trim().split(/[-–]/).map(s=>parseInt(s)||0);
+    const frScore = isFranceLeft ? parts[0] : parts[1];
+    const oppScore = isFranceLeft ? parts[1] : parts[0];
+    const win=frScore>oppScore, loss=oppScore>frScore;
+    return `<div class="rl-match"><span class="rl-tn ${win?'rl-w':''}">🇫🇷 France</span><span class="rl-sb"><b>${frScore}</b><span class="rl-vs">–</span><b>${oppScore}</b></span><span class="rl-tn rl-tnr ${loss?'rl-w':''}">${esc(opp)}</span></div>`;
+  }
+
+  let cards, label;
+  if (data.mode==='comp'){
+    // Competition page: France can be home or away — detect by position relative to score
+    cards = data.rows.map(r=>{
+      const frIdx = r.findIndex(c=>FR_RE.test(c));
+      const scoreCol = r.findIndex(c=>SCORE_RE.test(c.trim()));
+      const isFranceLeft = scoreCol<0 || frIdx<scoreCol;
+      return matchCard(r, isFranceLeft);
+    }).filter(Boolean).join('');
+    label = '🇫🇷 XV de France — Championnat des nations';
+  } else {
+    // Team page: France is always the subject (left side)
+    cards = (data.tables||[]).slice(-5).flatMap(rows=>
+      rows.slice(1).map(r=>r.length>=3 ? matchCard(r,true) : '').filter(Boolean)
+    ).join('');
+    label = '🇫🇷 XV de France';
+  }
   if (!cards) return '';
-  return `<details class="rl-section" open><summary class="rl-sh">🇫🇷 XV de France</summary>${cards}</details>`;
+  return `<details class="rl-section" open><summary class="rl-sh">${label}</summary>${cards}</details>`;
 }
 
 /* --- XV de France — résultats live ESPN (filtrés) --- */
@@ -462,7 +505,7 @@ async function loadRugbyLive(){
   });
   const otherEvents = sofa.events.filter(e=>!frEvents.includes(e));
   if (frEvents.length) html += renderFranceXVLive(frEvents);
-  else if (franceXV?.length) html += renderFranceXV(franceXV);
+  else if (franceXV) html += renderFranceXV(franceXV);
   if (sofa.error) html += `<details class="rl-section" open><summary class="rl-sh">📡 Scores live</summary><div class="rl-loading">⚠️ ${sofa.error}</div></details>`;
   else if (otherEvents.length) html += renderLiveScores(otherEvents);
   if (r1){
