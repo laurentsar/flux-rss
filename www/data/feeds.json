@@ -531,12 +531,20 @@
           "url": "https://www.quinzemondial.com/feed/"
         },
         {
-          "name": "XV de France — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=XV+de+France+rugby"
+          "name": "XV de France — direct",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=XV+de+France+rugby+direct"
         },
         {
-          "name": "Équipe de France Rugby — FFR",
-          "url": "https://www.ffr.fr/feed/"
+          "name": "France rugby — score en direct",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=France+rugby+score+en+direct"
+        },
+        {
+          "name": "France rugby — résultat",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=France+rugby+r%C3%A9sultat+match"
+        },
+        {
+          "name": "Test match XV de France",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=test+match+XV+de+France"
         }
       ],
       "feeds_en": [
