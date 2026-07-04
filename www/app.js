@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.62';
+const APP_VERSION = '4.63';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -313,7 +313,10 @@ async function fetchSportsEvents(){
 
 function renderLiveScores(events, extraIntlHtml=''){
   const top14Events = events.filter(e=>e.isClub);
-  const intlEvents  = events.filter(e=>!e.isClub);
+  const intlEvents  = events.filter(e=>!e.isClub).filter(e=>
+    e.status?.type!=='notstarted' ||
+    FR_RE.test(e.homeTeam?.name||'') || FR_RE.test(e.awayTeam?.name||'')
+  );
 
   function section(evts, label, extra=''){
     if (!evts.length && !extra) return '';
