@@ -542,6 +542,29 @@ function parseFeatureSections(html, tagName='h3', baseUrl=''){
   return features;
 }
 
+function featureIcon(title){
+  const t = (title||'').toLowerCase();
+  if (/angle mort|blind.?spot/.test(t))                    return '👁️';
+  if (/caméra|camera|dashcam|clip/.test(t))                return '📷';
+  if (/chiffr|encrypt|verrou|lock/.test(t))                return '🔐';
+  if (/sécurité|security/.test(t))                         return '🛡️';
+  if (/parent|famille|family|enfant|child/.test(t))        return '👨‍👩‍👧';
+  if (/grok|gemini|chatgpt|copilot/.test(t))               return '🤖';
+  if (/voice|voix|hey\s|commande\s+vocale/.test(t))        return '🎙️';
+  if (/navigation|nav|itinér|route|map|carte/.test(t))     return '🗺️';
+  if (/music|média|media|spotify|audio|son|radio/.test(t)) return '🎵';
+  if (/autopilot|fsd|conduite|pilotage|driving/.test(t))   return '🚗';
+  if (/énergie|energy|charge|batterie|battery|recharge/.test(t)) return '🔋';
+  if (/température|climate|clim|chauffage|heat|vent/.test(t)) return '🌡️';
+  if (/service|maintenance|diagnostic|mode\s+atelier/.test(t)) return '🔧';
+  if (/bluetooth|wifi|connect|wireless/.test(t))           return '📡';
+  if (/phone|téléphone|mobile/.test(t))                    return '📱';
+  if (/light|lumière|phare|éclairage/.test(t))             return '💡';
+  if (/parking|stationnement|parc/.test(t))                return '🅿️';
+  if (/update|mise\s+à\s+jour|version/.test(t))            return '⚡';
+  return '✦';
+}
+
 async function loadTeslaReleaseNotes(){
   // Step 1: sitemap → première URL /software-updates/version/{VER}/release-notes = version la plus récente
   // Use regex on raw XML text to avoid Chrome/Android namespace issues with querySelectorAll on XML docs
@@ -644,7 +667,8 @@ async function loadChangelogLive(cat){
       const sections = release.features.map(f => {
         const imgHtml = f.image ? `<img class="cl-feat-img" src="${esc(f.image)}" alt="" loading="lazy" onerror="this.remove()">` : '';
         const descHtml = f.desc ? `<p class="cl-feat-desc">${esc(f.desc)}</p>` : '';
-        return `<details class="rl-section cl-feat-section"><summary class="rl-sh">${esc(f.title)}</summary>
+        const icon = featureIcon(f.title);
+        return `<details class="rl-section cl-feat-section"><summary class="rl-sh"><span class="cl-feat-icon">${icon}</span>${esc(f.title)}</summary>
           <a class="cl-feature" href="${esc(release.pageLink)}" target="_blank" rel="noopener">${imgHtml}${descHtml}<span class="cl-feat-link">🔗 Voir les détails</span></a>
         </details>`;
       }).join('');

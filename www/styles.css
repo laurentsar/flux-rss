@@ -143,6 +143,7 @@ details.cl-feat-section[open]:last-child>summary.rl-sh{border-radius:0}
 .cl-feat-img{width:100%;border-radius:10px;object-fit:cover;max-height:220px;display:block;margin-bottom:12px}
 .cl-feat-desc{font-size:.84rem;color:var(--text);line-height:1.65;margin:0 0 12px;padding:10px 13px;background:rgba(127,127,127,.09);border-radius:8px;border-left:3px solid var(--a,#F26522);opacity:.92}
 .cl-feat-link{display:block;text-align:center;margin-top:2px;padding:9px 12px;background:rgba(127,127,127,.13);border-radius:8px;font-size:.8rem;font-weight:700;color:var(--a,#F26522);letter-spacing:.02em}
+.cl-feat-icon{display:inline-block;margin-right:6px;font-size:.95em;line-height:1}
 
 /* ---- Rugby Live (scores & classements) ---- */
 #rugby-live{padding:0 0 4px}
