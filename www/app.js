@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.66';
+const APP_VERSION = '4.67';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -504,6 +504,41 @@ function hideRugbyLive(){
 /* ---------- Changelog Live ---------- */
 let _clHtml = null;
 
+// Extrait le vrai src d'une balise img (gère WordPress lazy-load : data-lazy-src / data-src)
+function imgRealSrc(el){
+  const s = el.getAttribute('data-lazy-src') || el.getAttribute('data-src') || el.getAttribute('src') || '';
+  return s.startsWith('data:') ? '' : s; // ignore SVG placeholder
+}
+
+// Parse les sections d'une page : cherche h3 (ou h2) → img → description
+function parseFeatureSections(html, tagName='h3', baseUrl=''){
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html;
+  const features = [];
+  tmp.querySelectorAll(tagName).forEach(hEl => {
+    const title = hEl.textContent.trim();
+    if (!title || title.length < 3) return;
+    let imgSrc = '';
+    const descParts = [];
+    let el = hEl.nextElementSibling;
+    while (el && el.tagName !== tagName.toUpperCase() && el.tagName !== 'H2' && el.tagName !== 'H1'){
+      // cherche img directement ou imbriquée (ex: <a><img></a>, <figure><img></figure>)
+      const imgEl = (el.tagName === 'IMG') ? el : el.querySelector('img');
+      if (!imgSrc && imgEl){
+        imgSrc = imgRealSrc(imgEl);
+        if (imgSrc && imgSrc.startsWith('/')) imgSrc = baseUrl + imgSrc;
+      }
+      if (el.tagName === 'P'){
+        const txt = el.textContent.trim();
+        if (txt.length > 20) descParts.push(txt);
+      }
+      el = el.nextElementSibling;
+    }
+    if (imgSrc) features.push({ title, image: imgSrc, desc: descParts.slice(0,2).join(' ') });
+  });
+  return features;
+}
+
 async function loadTeslaReleaseNotes(){
   // Step 1: find latest firmware version from the RSS
   let version = null;
@@ -520,32 +555,37 @@ async function loadTeslaReleaseNotes(){
   let html;
   try { html = await httpGet(pageLink); } catch(e){ return null; }
 
-  // Step 3: parse features — pattern: <h3>title</h3> <img> <p>Disponible…</p> <p>Modèles:…</p> <p>description</p>
-  const tmp = document.createElement('div');
-  tmp.innerHTML = html;
-  const features = [];
-  tmp.querySelectorAll('h3').forEach(h3 => {
-    const title = h3.textContent.trim();
-    if (!title || title.length < 3) return;
-    let imgSrc = null;
-    const descParts = [];
-    let el = h3.nextElementSibling;
-    while (el && el.tagName !== 'H3' && el.tagName !== 'H2'){
-      if (!imgSrc && el.tagName === 'IMG'){
-        imgSrc = el.getAttribute('src')||'';
-        if (imgSrc && imgSrc.startsWith('/')) imgSrc = 'https://www.notateslaapp.com' + imgSrc;
-      }
-      if (el.tagName === 'P'){
-        const txt = el.textContent.trim();
-        if (txt.length > 20 && !/^(Disponible|Modèles?:|Models?:)/i.test(txt)) descParts.push(txt);
-      }
-      el = el.nextElementSibling;
-    }
-    // n'inclure que les features avec image (filtre les h3 de sections sans contenu)
-    if (imgSrc) features.push({ title, image: imgSrc, desc: descParts.join(' ') });
-  });
+  // Step 3: parse features (h3 + img + description, skip "Disponible/Modèles" paragraphs)
+  const features = parseFeatureSections(html, 'h3', 'https://www.notateslaapp.com').map(f=>({
+    ...f,
+    desc: f.desc.replace(/^(Disponible|Modèles?:|Models?:)[^\n]*/gim,'').trim()
+  })).filter(f=>f.image);
 
   return features.length ? { version, features, pageLink } : null;
+}
+
+async function loadHAChangelog(){
+  // Step 1: trouver le dernier article HA release sur domo-blog.fr via RSS
+  let articleUrl = null, version = null;
+  try {
+    const rssXml = await httpGet('https://www.domo-blog.fr/feed/');
+    const rssItems = parseFeed(rssXml, 'domo-blog', null);
+    const haItem = rssItems.find(it => /home[\s-]?assistant\s+\d{4}\.\d+/i.test(it.title||''));
+    if (haItem){
+      articleUrl = haItem.link;
+      const m = (haItem.title||'').match(/(\d{4}\.\d+)/);
+      if (m) version = m[1];
+    }
+  } catch(e){}
+  if (!articleUrl) return null;
+
+  // Step 2: récupérer la page de l'article
+  let html;
+  try { html = await httpGet(articleUrl); } catch(e){ return null; }
+
+  // Step 3: parser les sections h3 avec images (WordPress lazy-load géré par imgRealSrc)
+  const features = parseFeatureSections(html, 'h3', 'https://www.domo-blog.fr');
+  return features.length ? { version: version||'HA', features, pageLink: articleUrl } : null;
 }
 
 function clBullets(text){
@@ -581,9 +621,10 @@ async function loadChangelogLive(cat){
 
   const label = cat.id==='ia' ? '🤖 Dernière release IA' : cat.id==='domotique' ? '🏠 Dernière version Home Assistant' : '⚡ Mise à jour Tesla';
 
-  // Tesla : scrape notateslaapp.com en priorité (images + features structurées)
-  if (cat.id === 'tesla') {
-    const release = await loadTeslaReleaseNotes();
+  // Tesla & Domotique : scrape pages de release structurées (images + features)
+  const scraperFn = cat.id==='tesla' ? loadTeslaReleaseNotes : cat.id==='domotique' ? loadHAChangelog : null;
+  if (scraperFn) {
+    const release = await scraperFn();
     if (release) {
       const verBadge = `<span class="cl-ver">${esc(release.version)}</span>`;
       const sections = release.features.map(f => {
