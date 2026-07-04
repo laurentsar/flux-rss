@@ -570,6 +570,23 @@ function featureIcon(title){
   if (/scène|scene|ambiance/.test(t))                           return '🎬';
   if (/script|action|service/.test(t))                          return '⚙️';
   if (/calendrier|agenda|schedule|planifi/.test(t))             return '📅';
+  // Claude / IA
+  if (/claude|sonnet|opus|haiku|fable/.test(t))                 return '🤖';
+  if (/agent|agentic|tool use|computer use/.test(t))            return '🦾';
+  if (/api|sdk|developer|développeur/.test(t))                  return '🔗';
+  if (/benchmark|eval|évaluation|test/.test(t))                 return '📊';
+  if (/safety|safeguard|jailbreak|alignment/.test(t))           return '🛡️';
+  if (/context|window|token|mémoire/.test(t))                   return '🧠';
+  if (/image|vision|multimodal|pdf/.test(t))                    return '🖼️';
+  if (/pricing|prix|cost|gratuit|free/.test(t))                 return '💰';
+  if (/science|research|recherche/.test(t))                     return '🔬';
+  // VR / Quest
+  if (/quest|vr\b|casque|headset|horizon os/.test(t))           return '🥽';
+  if (/game|jeu|play|gaming|titre/.test(t))                     return '🎮';
+  if (/discord|social|friend|multi.?joueur|multijoueur/.test(t)) return '👥';
+  if (/controller|manette|joystick|touch/.test(t))              return '🕹️';
+  if (/mixed.?reality|passthrough|ar\b|réalité\s+mixte/.test(t)) return '🔀';
+  if (/sale|deal|promo|discount|réduction/.test(t))             return '🏷️';
   // Commun Tesla + HA
   if (/caméra|camera/.test(t))                                  return '📷';
   if (/sécurité|security/.test(t))                              return '🛡️';
@@ -667,18 +684,76 @@ function clBullets(text){
   return [];
 }
 
+async function loadClaudeChangelog(){
+  // Find latest Claude article from Anthropic news listing
+  let articleUrl = null, version = null;
+  try {
+    const newsHtml = await httpGet('https://www.anthropic.com/news');
+    const m = newsHtml.match(/href="(\/news\/claude[-\w]+)"/);
+    if (m) {
+      articleUrl = 'https://www.anthropic.com' + m[1];
+      version = m[1].replace('/news/','').replace(/-/g,' ').replace(/\b\w/g, c=>c.toUpperCase());
+    }
+  } catch(e){}
+  if (!articleUrl) return null;
+  let html;
+  try { html = await httpGet(articleUrl); } catch(e){ return null; }
+  // Decode Next.js image optimization URLs → original CDN URLs
+  // /_next/image?url=ENCODED_CDN_URL&... → CDN_URL
+  html = html.replace(/\/_next\/image\?url=([^&"'\s]+)[^"']*/g, (_, enc) => {
+    try { return decodeURIComponent(enc); } catch(e){ return _; }
+  });
+  const features = parseFeatureSections(html, 'h2', 'https://www.anthropic.com')
+    .filter(f => f.image)
+    .filter(f => !/^(related|availability|pricing|feedback|working with)/i.test(f.title));
+  return features.length ? { version, features, pageLink: articleUrl } : null;
+}
+
+async function loadQuestChangelog(){
+  let rssXml;
+  try { rssXml = await httpGet('https://roadtovr.com/sections/meta-quest-3-news-reviews/feed/'); } catch(e){ return null; }
+  const features = [];
+  const itemRe = /<item>([\s\S]*?)<\/item>/g;
+  let m;
+  while ((m = itemRe.exec(rssXml)) !== null && features.length < 6) {
+    const item = m[1];
+    const titleM = item.match(/<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/s);
+    const linkM  = item.match(/<link>([^<]+)<\/link>/);
+    const descM  = item.match(/<description>([\s\S]*?)<\/description>/);
+    const title = titleM ? titleM[1].replace(/&amp;/g,'&').replace(/&#(\d+);/g,(_,n)=>String.fromCharCode(n)).replace(/<[^>]+>/g,'').trim() : '';
+    const link  = linkM ? linkM[1].trim() : '';
+    if (!title || !link) continue;
+    let imgSrc = '', desc = '';
+    if (descM) {
+      const raw = descM[1].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&').replace(/&quot;/g,'"');
+      const iM = raw.match(/src="(https?:\/\/[^"]+\.(?:jpg|png|webp|jpeg)[^"]*)"/i);
+      if (iM) imgSrc = iM[1].replace(/\?.*$/,''); // strip resize params
+      const pM = raw.match(/<p[^>]*>([^<]{30,})<\/p>/);
+      if (pM) desc = pM[1].replace(/<[^>]+>/g,'').trim().slice(0, 200);
+    }
+    if (imgSrc) features.push({ title, image: imgSrc, desc, link });
+  }
+  if (!features.length) return null;
+  const vM = features.find(f => /v\d{2}|horizon os/i.test(f.title));
+  const version = vM ? (vM.title.match(/v\d[\d.]*/i)||['Quest 3'])[0] : 'Quest 3';
+  return { version, features, pageLink: 'https://roadtovr.com/sections/meta-quest-3-news-reviews/' };
+}
+
 async function loadChangelogLive(cat){
   if (!elChangelogLive) return;
   const feeds = (cat.feeds_changelog || []).filter(f => !f.off);
-  if (!feeds.length){ hideChangelogLive(); return; }
+  const scraperFn = cat.id==='tesla' ? loadTeslaReleaseNotes
+    : cat.id==='domotique' ? loadHAChangelog
+    : cat.id==='ia'        ? loadClaudeChangelog
+    : cat.id==='vr'        ? loadQuestChangelog
+    : null;
+  if (!feeds.length && !scraperFn){ hideChangelogLive(); return; }
   if (_clHtml){ elChangelogLive.hidden=false; elChangelogLive.innerHTML=_clHtml; return; }
   elChangelogLive.hidden = false;
   elChangelogLive.innerHTML = '<div class="cl-loading"><span class="spinner"></span> Changelog…</div>';
 
-  const label = cat.id==='ia' ? '🤖 Dernière release IA' : cat.id==='domotique' ? '🏠 Dernière version Home Assistant' : '⚡ Mise à jour Tesla';
+  const label = cat.id==='ia' ? '🤖 Dernière release Claude' : cat.id==='domotique' ? '🏠 Dernière version Home Assistant' : cat.id==='vr' ? '🥽 Dernières actus Quest 3' : '⚡ Mise à jour Tesla';
 
-  // Tesla & Domotique : scrape pages de release structurées (images + features)
-  const scraperFn = cat.id==='tesla' ? loadTeslaReleaseNotes : cat.id==='domotique' ? loadHAChangelog : null;
   if (scraperFn) {
     const release = await scraperFn();
     if (release) {
@@ -687,8 +762,9 @@ async function loadChangelogLive(cat){
         const imgHtml = f.image ? `<img class="cl-feat-img" src="${esc(f.image)}" alt="" loading="lazy" onerror="this.remove()">` : '';
         const descHtml = f.desc ? `<p class="cl-feat-desc">${esc(f.desc)}</p>` : '';
         const icon = featureIcon(f.title);
+        const href = esc(f.link || release.pageLink);
         return `<details class="rl-section cl-feat-section"><summary class="rl-sh"><span class="cl-feat-icon">${icon}</span>${esc(f.title)}</summary>
-          <a class="cl-feature" href="${esc(release.pageLink)}" target="_blank" rel="noopener">${imgHtml}${descHtml}<span class="cl-feat-link">🔗 Voir les détails</span></a>
+          <a class="cl-feature" href="${href}" target="_blank" rel="noopener">${imgHtml}${descHtml}<span class="cl-feat-link">🔗 Voir les détails</span></a>
         </details>`;
       }).join('');
       const html = `<details class="rl-section" open><summary class="rl-sh">${label} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
@@ -776,7 +852,8 @@ async function loadCategory(cat, {silent=false}={}){
   $('#hero-sub').textContent = cat.label;
   renderSubtabs(cat);
   if (cat.id==='rugby' && currentTab==='news') loadRugbyLive(); else hideRugbyLive();
-  if (cat.feeds_changelog?.length && currentTab==='news') loadChangelogLive(cat); else hideChangelogLive();
+  const _hasChangelog = cat.feeds_changelog?.length || ['tesla','domotique','ia','vr'].includes(cat.id);
+  if (_hasChangelog && currentTab==='news') loadChangelogLive(cat); else hideChangelogLive();
 
   // cache immédiat
   const cached = JSON.parse(localStorage.getItem(cacheKey(cat.id, currentTab)) || 'null');
