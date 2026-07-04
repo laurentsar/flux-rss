@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.67';
+const APP_VERSION = '4.68';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -540,14 +540,28 @@ function parseFeatureSections(html, tagName='h3', baseUrl=''){
 }
 
 async function loadTeslaReleaseNotes(){
-  // Step 1: find latest firmware version from the RSS
+  // Step 1: sitemap → première URL /software-updates/version/{VER}/release-notes = version la plus récente
   let version = null;
   try {
-    const rssXml = await httpGet('https://www.notateslaapp.com/rss');
-    const rssItems = parseFeed(rssXml, 'notateslaapp', null);
-    const swItem = rssItems.find(it => /\/software-updates\/version\//.test(it.link||''));
-    if (swItem){ const m=(swItem.link||'').match(/\/version\/([^\/]+)\//); if(m) version=m[1]; }
+    const sitemapXml = await httpGet('https://www.notateslaapp.com/sitemap.xml');
+    const doc = new DOMParser().parseFromString(sitemapXml, 'text/xml');
+    for (const loc of doc.querySelectorAll('loc')){
+      const m = loc.textContent.trim().match(/\/software-updates\/version\/([^\/]+)\/release-notes/);
+      if (m){ version = m[1]; break; }
+    }
   } catch(e){}
+  // Fallback : scan RSS brut si le sitemap échoue
+  if (!version){
+    try {
+      const rssXml = await httpGet('https://www.notateslaapp.com/rss');
+      const doc = new DOMParser().parseFromString(rssXml, 'text/xml');
+      for (const item of doc.querySelectorAll('item')){
+        const link = item.querySelector('link')?.textContent?.trim() || '';
+        const m = link.match(/\/software-updates\/version\/([^\/]+)\//);
+        if (m){ version = m[1]; break; }
+      }
+    } catch(e){}
+  }
   if (!version) return null;
 
   // Step 2: fetch the French release notes page
