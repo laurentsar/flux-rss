@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.57';
+const APP_VERSION = '4.58';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -421,6 +421,12 @@ function renderChampionnatNations(journees){
 let _espnCache = null, _espnCacheTs = 0;
 let _frSocCache = null, _frSocCacheTs = 0;
 let _rugbyLiveHtml = '', _rugbyLiveTs = 0;
+let _hasLiveSports = false;
+
+function updateLiveBadge(){
+  const chip = elCats?.querySelector('[data-id="rugby"]');
+  if (chip) chip.classList.toggle('chip-has-live', _hasLiveSports);
+}
 async function loadRugbyLive(){
   if (!elRugbyLive) return;
   elRugbyLive.hidden = false;
@@ -442,6 +448,8 @@ async function loadRugbyLive(){
     loadChampionnatNations(currentYear),
   ]);
 
+  _hasLiveSports = sofa.events.some(e=>e.status?.type==='inprogress');
+  updateLiveBadge();
   let html = '';
   const champHtml = renderChampionnatNations(champNations);
   if (sofa.error) html += `<details class="rl-section" open><summary class="rl-sh">📡 Scores live</summary><div class="rl-loading">⚠️ ${sofa.error}</div></details>`;
@@ -1098,6 +1106,7 @@ function renderChips(){
   elCats.querySelectorAll('.chip').forEach(btn=>{
     btn.addEventListener('click', ()=>selectCat(btn.dataset.id));
   });
+  updateLiveBadge();
 }
 function selectCat(id){
   localStorage.setItem('lastCat', id);
