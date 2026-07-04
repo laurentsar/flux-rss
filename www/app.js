@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.59';
+const APP_VERSION = '4.60';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -402,12 +402,18 @@ function renderChampionnatNations(journees){
     if (!tables.length) return '';
     const cards = tables.flatMap(rows=>rows.map(r=>{
       if (r.length<3) return '';
-      const scoreCol = r.findIndex(c=>SCORE_FIND.test(c));
+      // Score cell: either "X – Y" (played) or lone "–" (live/upcoming)
+      const LONE_DASH = /^\s*[-–]\s*$/;
+      const scoreCol = r.findIndex(c=>SCORE_FIND.test(c)||LONE_DASH.test(c));
       if (scoreCol<0||scoreCol===0||scoreCol===r.length-1) return '';
       const home = cleanTeam(r[scoreCol-1]||'');
       const away = cleanTeam(r[scoreCol+1]||'');
       if (home.length<2||away.length<2) return '';
       const m = r[scoreCol].match(SCORE_FIND);
+      if (!m){
+        // Upcoming or live (no score yet)
+        return `<div class="rl-match"><span class="rl-tn">${teamBadge(home)}${esc(home)}</span><span class="rl-sb"><span class="rl-vs">⏱</span></span><span class="rl-tn rl-tnr">${teamBadge(away)}${esc(away)}</span></div>`;
+      }
       const hs=parseInt(m[1]), as_=parseInt(m[2]);
       const hw=hs>as_, aw=as_>hs;
       return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${teamBadge(home)}${esc(home)}</span><span class="rl-sb"><b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b></span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${teamBadge(away)}${esc(away)}</span></div>`;
