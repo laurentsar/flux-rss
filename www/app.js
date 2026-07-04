@@ -705,38 +705,39 @@ async function loadClaudeChangelog(){
   });
   const features = parseFeatureSections(html, 'h2', 'https://www.anthropic.com')
     .filter(f => f.image)
-    .filter(f => !/^(related|availability|pricing|feedback|working with)/i.test(f.title));
+    .filter(f => !/^(related|availability|pricing|feedback)/i.test(f.title));
   return features.length ? { version, features, pageLink: articleUrl } : null;
 }
 
 async function loadQuestChangelog(){
-  let rssXml;
-  try { rssXml = await httpGet('https://roadtovr.com/sections/meta-quest-3-news-reviews/feed/'); } catch(e){ return null; }
-  const features = [];
-  const itemRe = /<item>([\s\S]*?)<\/item>/g;
-  let m;
-  while ((m = itemRe.exec(rssXml)) !== null && features.length < 6) {
-    const item = m[1];
-    const titleM = item.match(/<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/s);
-    const linkM  = item.match(/<link>([^<]+)<\/link>/);
-    const descM  = item.match(/<description>([\s\S]*?)<\/description>/);
-    const title = titleM ? titleM[1].replace(/&amp;/g,'&').replace(/&#(\d+);/g,(_,n)=>String.fromCharCode(n)).replace(/<[^>]+>/g,'').trim() : '';
-    const link  = linkM ? linkM[1].trim() : '';
-    if (!title || !link) continue;
-    let imgSrc = '', desc = '';
-    if (descM) {
-      const raw = descM[1].replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&').replace(/&quot;/g,'"');
-      const iM = raw.match(/src="(https?:\/\/[^"]+\.(?:jpg|png|webp|jpeg)[^"]*)"/i);
-      if (iM) imgSrc = iM[1].replace(/\?.*$/,''); // strip resize params
-      const pM = raw.match(/<p[^>]*>([^<]{30,})<\/p>/);
-      if (pM) desc = pM[1].replace(/<[^>]+>/g,'').trim().slice(0, 200);
+  // Find latest Horizon OS update article via roadtovr Horizon OS tag RSS
+  let articleUrl = null, version = null;
+  try {
+    const rssXml = await httpGet('https://roadtovr.com/tag/horizon-os/feed/');
+    const itemM = rssXml.match(/<item>([\s\S]*?)<\/item>/);
+    if (itemM) {
+      const item = itemM[1];
+      const linkM = item.match(/<link>([^<]+)<\/link>/);
+      const titleM = item.match(/<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/s);
+      if (linkM) articleUrl = linkM[1].trim();
+      if (titleM) {
+        const t = titleM[1].replace(/<[^>]+>/g,'').trim();
+        const vM = t.match(/v\d+[\d.]*/i) || t.match(/horizon os\s*([\d.]+)/i);
+        version = vM ? vM[0] : t.replace(/\s*[-–|].*$/,'').trim();
+      }
     }
-    if (imgSrc) features.push({ title, image: imgSrc, desc, link });
-  }
+  } catch(e){}
+  if (!articleUrl) return null;
+  let html;
+  try { html = await httpGet(articleUrl); } catch(e){ return null; }
+  // Parse h2/h3 sections with images from the article
+  let features = parseFeatureSections(html, 'h2', 'https://roadtovr.com');
+  if (!features.length) features = parseFeatureSections(html, 'h3', 'https://roadtovr.com');
+  features = features.filter(f => f.image)
+    .filter(f => !/^(related|share|tags|comment|about the author|more from)/i.test(f.title))
+    .slice(0, 8);
   if (!features.length) return null;
-  const vM = features.find(f => /v\d{2}|horizon os/i.test(f.title));
-  const version = vM ? (vM.title.match(/v\d[\d.]*/i)||['Quest 3'])[0] : 'Quest 3';
-  return { version, features, pageLink: 'https://roadtovr.com/sections/meta-quest-3-news-reviews/' };
+  return { version: version || 'Horizon OS', features, pageLink: articleUrl };
 }
 
 async function loadChangelogLive(cat){
@@ -752,7 +753,7 @@ async function loadChangelogLive(cat){
   elChangelogLive.hidden = false;
   elChangelogLive.innerHTML = '<div class="cl-loading"><span class="spinner"></span> Changelog…</div>';
 
-  const label = cat.id==='ia' ? '🤖 Dernière release Claude' : cat.id==='domotique' ? '🏠 Dernière version Home Assistant' : cat.id==='vr' ? '🥽 Dernières actus Quest 3' : '⚡ Mise à jour Tesla';
+  const label = cat.id==='ia' ? '🤖 Dernière release Claude' : cat.id==='domotique' ? '🏠 Dernière version Home Assistant' : cat.id==='vr' ? '🥽 Dernière mise à jour Horizon OS' : '⚡ Mise à jour Tesla';
 
   if (scraperFn) {
     const release = await scraperFn();
