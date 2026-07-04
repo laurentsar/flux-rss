@@ -564,13 +564,13 @@ async function loadTeslaReleaseNotes(){
   let html;
   try { html = await httpGet(pageLink); } catch(e){ return null; }
 
-  // Step 3: parse features (h3 + img + description)
-  // Filter out statistics h3s (Number of Cars, Percent...) and news headlines (start with "Tesla ")
-  const features = parseFeatureSections(html, 'h3', 'https://www.notateslaapp.com').map(f=>({
+  // Step 3: parse features — actual feature sections use h2 (with images), h3s are nav overview links
+  // Filter out section headers (Update Stats, Recent News, Details...) and news (Tesla Videos, etc.)
+  const features = parseFeatureSections(html, 'h2', 'https://www.notateslaapp.com').map(f=>({
     ...f,
     desc: f.desc.replace(/^(Disponible|Modèles?:|Models?:)[^\n]*/gim,'').trim()
   })).filter(f=>f.image)
-    .filter(f=>!/^(Number|Percent|Installs|Rollout|Statistics|Overview)/i.test(f.title))
+    .filter(f=>!/^(Update Stats|Recent News|Details|Statistics|Overview|\d{4}\.\d)/i.test(f.title))
     .filter(f=>!/^Tesla\s/i.test(f.title));
 
   return features.length ? { version, features, pageLink } : null;
