@@ -339,10 +339,11 @@ async function loadFranceXV(season){
       const sd = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
       const sects = (sd?.parse?.sections||[]).filter(s=>COMP_SECT_RE.test(s.line));
       if (!sects.length) continue;
+      // No slice(1): first row IS the data (no header row in these tables)
       const rows = (await Promise.allSettled(
         sects.map(s=>fetch(wikiUrl(page,parseInt(s.index))).then(r=>r.json()))
       )).flatMap(r=>r.status==='fulfilled'
-        ? parseWikitables(r.value?.parse?.text?.['*']||'').flatMap(t=>t.slice(1))
+        ? parseWikitables(r.value?.parse?.text?.['*']||'').flatMap(t=>t)
         : []
       ).filter(r=>r.some(c=>FR_RE.test(c)));
       if (rows.length) return {mode:'comp', rows};
@@ -495,7 +496,8 @@ function renderChampionnatNations(journees){
   const blocks = journees.map(({label, html})=>{
     const tables = parseWikitables(html).filter(t=>t.length>=2);
     if (!tables.length) return '';
-    const cards = tables.flatMap(rows=>rows.slice(1).map(r=>{
+    // No slice(1): first row IS the data (no header in these tables)
+    const cards = tables.flatMap(rows=>rows.map(r=>{
       if (r.length<3) return '';
       const scoreCol = r.findIndex(c=>SCORE_FIND.test(c));
       if (scoreCol<0||scoreCol===0||scoreCol===r.length-1) return '';
