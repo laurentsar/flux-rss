@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.58';
+const APP_VERSION = '4.59';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -422,10 +422,22 @@ let _espnCache = null, _espnCacheTs = 0;
 let _frSocCache = null, _frSocCacheTs = 0;
 let _rugbyLiveHtml = '', _rugbyLiveTs = 0;
 let _hasLiveSports = false;
+let _autoSwitchedToLive = false;
 
 function updateLiveBadge(){
   const chip = elCats?.querySelector('[data-id="rugby"]');
   if (chip) chip.classList.toggle('chip-has-live', _hasLiveSports);
+}
+
+function checkLiveAndSwitch(){
+  fetchSportsEvents().then(data=>{
+    const live = data.events.some(e=>e.status?.type==='inprogress');
+    if (live !== _hasLiveSports){ _hasLiveSports=live; updateLiveBadge(); }
+    if (live && current!=='rugby' && !_autoSwitchedToLive){
+      _autoSwitchedToLive = true;
+      selectCat('rugby');
+    }
+  }).catch(()=>{});
 }
 async function loadRugbyLive(){
   if (!elRugbyLive) return;
@@ -1468,6 +1480,8 @@ async function init(){
     if (startCat) selectCat(startCat.id);
     else elStatus.textContent='Toutes les catégories sont désactivées (⚙️).';
   }
+  // Vérifie les matchs en direct en arrière-plan et bascule sur Rugby si besoin
+  checkLiveAndSwitch();
   if (restoredFromBackup){
     setTimeout(()=>{
       const t = document.createElement('div');
