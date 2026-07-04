@@ -643,7 +643,7 @@ async function loadChangelogLive(cat){
       const verBadge = `<span class="cl-ver">${esc(release.version)}</span>`;
       const sections = release.features.map(f => {
         const imgHtml = f.image ? `<img class="cl-feat-img" src="${esc(f.image)}" alt="" loading="lazy" onerror="this.remove()">` : '';
-        const descHtml = f.desc ? `<p class="cl-excerpt">${esc(f.desc)}</p>` : '';
+        const descHtml = f.desc ? `<p class="cl-feat-desc">${esc(f.desc)}</p>` : '';
         return `<details class="rl-section cl-feat-section"><summary class="rl-sh">${esc(f.title)}</summary>
           <a class="cl-feature" href="${esc(release.pageLink)}" target="_blank" rel="noopener">${imgHtml}${descHtml}<span class="cl-feat-link">🔗 Voir les détails</span></a>
         </details>`;

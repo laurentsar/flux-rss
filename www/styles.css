@@ -132,16 +132,17 @@ details.card>summary .thumb{width:60px;height:60px;min-width:60px;object-fit:cov
 .cl-bullets{margin:4px 0 2px 0;padding-left:18px;font-size:.8rem;color:var(--muted);line-height:1.5;list-style:disc}
 .cl-meta{font-size:.75rem;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
 .cl-ver{display:inline-block;font-size:.72rem;font-weight:700;background:var(--a,#F59E0B);color:#fff;border-radius:4px;padding:1px 6px;margin-right:6px;vertical-align:middle;letter-spacing:.03em}
-/* Changelog multi-features (Tesla) */
+/* Changelog multi-features (Tesla / HA) */
 .cl-feat-list{padding:4px 0 2px}
 details.cl-feat-section{margin:3px 0 0}
 details.cl-feat-section>summary.rl-sh{font-size:.82rem;font-weight:600;border-radius:0}
 details.cl-feat-section:first-child>summary.rl-sh{border-radius:0}
 details.cl-feat-section:last-child:not([open])>summary.rl-sh{border-radius:0 0 8px 8px}
 details.cl-feat-section[open]:last-child>summary.rl-sh{border-radius:0}
-.cl-feature{display:block;padding:10px 10px 12px;text-decoration:none;color:inherit}
-.cl-feat-img{width:100%;border-radius:8px;object-fit:cover;max-height:240px;display:block;margin-bottom:10px}
-.cl-feat-link{display:inline-block;margin-top:8px;font-size:.75rem;color:var(--a);font-weight:600}
+.cl-feature{display:block;padding:10px 10px 14px;text-decoration:none;color:inherit}
+.cl-feat-img{width:100%;border-radius:10px;object-fit:cover;max-height:220px;display:block;margin-bottom:12px}
+.cl-feat-desc{font-size:.84rem;color:var(--text);line-height:1.65;margin:0 0 12px;padding:10px 13px;background:rgba(127,127,127,.09);border-radius:8px;border-left:3px solid var(--a,#F26522);opacity:.92}
+.cl-feat-link{display:block;text-align:center;margin-top:2px;padding:9px 12px;background:rgba(127,127,127,.13);border-radius:8px;font-size:.8rem;font-weight:700;color:var(--a,#F26522);letter-spacing:.02em}
 
 /* ---- Rugby Live (scores & classements) ---- */
 #rugby-live{padding:0 0 4px}
