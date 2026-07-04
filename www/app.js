@@ -199,11 +199,11 @@ function wikiUrl(page, section){
   return `https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=text&section=${section}&format=json&origin=*`;
 }
 
-function parseWikitables(html){
+function parseWikitables(html, selector='table.wikitable'){
   const tmp = document.createElement('div');
   tmp.innerHTML = html;
   const tables = [];
-  tmp.querySelectorAll('table.wikitable').forEach(tbl => {
+  tmp.querySelectorAll(selector).forEach(tbl => {
     const rows = [];
     tbl.querySelectorAll('tr').forEach(tr => {
       const cells = [];
@@ -306,20 +306,29 @@ async function fetchSportsEvents(){
 
 function renderLiveScores(events){
   if (!events.length) return '';
-  const hasLive = events.some(e=>e.status?.type==='inprogress');
-  const cards = events.map(e=>{
-    const st = e.status?.type;
-    const live = st==='inprogress', fin = st==='finished';
-    const hs = e.homeScore?.current??'', as_ = e.awayScore?.current??'';
-    const hw = fin && parseInt(hs)>parseInt(as_), aw = fin && parseInt(as_)>parseInt(hs);
-    const badge = live ? '<span class="rl-live-dot"></span>' : '';
-    const time = live ? (e.status.description||'⏱') : fin ? '' :
-      new Date((e.startTimestamp||0)*1000).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
-    const score = (live||fin) ? `<b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b>${time?`<span class="rl-time"> ${time}</span>`:''}` : `<span class="rl-vs">${time}</span>`;
-    return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(e.homeTeam?.name||'?')}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(e.awayTeam?.name||'?')}</span></div>`;
-  }).join('');
-  const label = hasLive ? '🔴 En direct' : '📅 Journée en cours';
-  return `<details class="rl-section${hasLive?' rl-live-section':''}"${hasLive?' open':''}><summary class="rl-sh">${label}</summary>${cards}</details>`;
+  // Dissocier Top 14 / Champions Cup des compétitions internationales
+  const TOP14_RE = /top 14|pro d2|champions cup/i;
+  const top14Events = events.filter(e=>TOP14_RE.test(e.tournament?.name||''));
+  const intlEvents  = events.filter(e=>!TOP14_RE.test(e.tournament?.name||''));
+
+  function section(evts, label){
+    if (!evts.length) return '';
+    const hasLive = evts.some(e=>e.status?.type==='inprogress');
+    const cards = evts.map(e=>{
+      const st = e.status?.type;
+      const live = st==='inprogress', fin = st==='finished';
+      const hs = e.homeScore?.current??'', as_ = e.awayScore?.current??'';
+      const hw = fin && parseInt(hs)>parseInt(as_), aw = fin && parseInt(as_)>parseInt(hs);
+      const badge = live ? '<span class="rl-live-dot"></span>' : '';
+      const time = live ? (e.status.description||'⏱') : fin ? '' :
+        new Date((e.startTimestamp||0)*1000).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+      const score = (live||fin) ? `<b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b>${time?`<span class="rl-time"> ${time}</span>`:''}` : `<span class="rl-vs">${time}</span>`;
+      return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(e.homeTeam?.name||'?')}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(e.awayTeam?.name||'?')}</span></div>`;
+    }).join('');
+    const lbl = hasLive ? `🔴 ${label} — En direct` : label;
+    return `<details class="rl-section${hasLive?' rl-live-section':''}"${hasLive?' open':''}><summary class="rl-sh">${lbl}</summary>${cards}</details>`;
+  }
+  return section(top14Events,'🏆 Top 14 / Champions Cup') + section(intlEvents,'🌐 Matchs internationaux');
 }
 
 /* --- XV de France via Wikipedia --- */
@@ -343,7 +352,7 @@ async function loadFranceXV(season){
       const rows = (await Promise.allSettled(
         sects.map(s=>fetch(wikiUrl(page,parseInt(s.index))).then(r=>r.json()))
       )).flatMap(r=>r.status==='fulfilled'
-        ? parseWikitables(r.value?.parse?.text?.['*']||'').flatMap(t=>t)
+        ? parseWikitables(r.value?.parse?.text?.['*']||'','table').flatMap(t=>t)
         : []
       ).filter(r=>r.some(c=>FR_RE.test(c)));
       if (rows.length) return {mode:'comp', rows};
@@ -494,7 +503,8 @@ function renderChampionnatNations(journees){
   if (!journees?.length) return '';
   const SCORE_FIND = /\b(\d+)\s*[-–]\s*(\d+)\b/;
   const blocks = journees.map(({label, html})=>{
-    const tables = parseWikitables(html).filter(t=>t.length>=2);
+    // Championnat des nations tables have no wikitable class — use 'table' selector
+    const tables = parseWikitables(html,'table').filter(t=>t.length>=2);
     if (!tables.length) return '';
     // No slice(1): first row IS the data (no header in these tables)
     const cards = tables.flatMap(rows=>rows.map(r=>{
