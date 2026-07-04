@@ -325,12 +325,14 @@ function renderLiveScores(events){
 /* --- XV de France via Wikipedia --- */
 async function loadFranceXV(season){
   const [y1,y2] = season.split('-');
-  // Also try previous season page as fallback (covers summer tours)
+  // Wikipedia pages for France XV use the calendar year (en 2026), not the season (en 2025-2026)
   const pages = [
-    `Équipe de France de rugby à XV en ${y1}-${y2}`,
-    `Équipe de France de rugby à XV en ${y2}-${parseInt(y2)+1}`,
+    `Équipe de France de rugby à XV en ${y2}`,          // current year — primary (e.g. "en 2026")
+    `Équipe de France de rugby à XV en ${y1}-${y2}`,    // season format fallback
+    `Équipe de France de rugby à XV en ${y1}`,          // previous year fallback (Six Nations etc.)
   ];
-  const SECT_RE = /résultats|matchs|tournée|tour|test\s+match|saison/i;
+  // Section names seen on Wikipedia: Résultats, Matchs, Tournée, Match amical, Championnat des nations, Phase aller/retour, Classement
+  const SECT_RE = /résultats|matchs|tournée|tour|test\s+match|saison|match\s+amical|championnat\s+des\s+nations|phase\s+(aller|retour)|classement/i;
   for (const page of pages){
     try{
       const sectsData = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
@@ -353,15 +355,23 @@ async function loadFranceXV(season){
 
 function renderFranceXV(tables){
   if (!tables?.length) return '';
-  const cards = tables.slice(-3).flatMap(rows=>
+  // Build from all tables, show scored matches AND upcoming fixtures (with date only)
+  const cards = tables.slice(-5).flatMap(rows=>
     rows.slice(1).map(r=>{
       if (r.length<3) return '';
       const scoreCol = r.findIndex(c=>/\d+\s*[-–]\s*\d+/.test(c));
-      if (scoreCol<0) return '';
-      const opp = r.find((_,i)=>i>0 && i!==scoreCol && r[i].length>1 && !/\d{4}/.test(r[i]))||'?';
-      const [hs,as_] = r[scoreCol].split(/[-–]/).map(s=>parseInt(s)||0);
-      const win=hs>as_, loss=as_>hs;
-      return `<div class="rl-match"><span class="rl-tn ${win?'rl-w':''}">🇫🇷 France</span><span class="rl-sb"><b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b></span><span class="rl-tn rl-tnr ${loss?'rl-w':''}">${esc(opp)}</span></div>`;
+      const dateCol = r.findIndex(c=>/\d{1,2}[\s/]\w+[\s/]\d{4}|\d{4}-\d{2}-\d{2}/.test(c));
+      // Try to find opponent: non-date, non-score cell with >1 char that isn't pure numbers
+      const opp = r.find((_,i)=>i>0 && i!==scoreCol && i!==dateCol && r[i].length>1 && !/^\d+$/.test(r[i]) && !/^\w$/.test(r[i]))||'?';
+      if (opp==='?') return '';
+      if (scoreCol>=0){
+        const [hs,as_] = r[scoreCol].split(/[-–]/).map(s=>parseInt(s)||0);
+        const win=hs>as_, loss=as_>hs;
+        return `<div class="rl-match"><span class="rl-tn ${win?'rl-w':''}">🇫🇷 France</span><span class="rl-sb"><b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b></span><span class="rl-tn rl-tnr ${loss?'rl-w':''}">${esc(opp)}</span></div>`;
+      }
+      // Upcoming/recent fixture with no score yet
+      const dateStr = dateCol>=0 ? r[dateCol] : '';
+      return `<div class="rl-match"><span class="rl-tn">🇫🇷 France</span><span class="rl-sb"><span class="rl-vs">${esc(dateStr||'—')}</span></span><span class="rl-tn rl-tnr">${esc(opp)}</span></div>`;
     }).filter(Boolean)
   ).join('');
   if (!cards) return '';
