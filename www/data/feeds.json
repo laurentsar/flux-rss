@@ -179,6 +179,16 @@
       ],
       "feeds_changelog": [
         {
+          "name": "Blog Tesla FR — MAJ logiciel",
+          "url": "https://www.blogtesla.fr/feed/",
+          "lang": "fr"
+        },
+        {
+          "name": "Tesla MAJ — Google Actualités FR",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+mise+%C3%A0+jour+logiciel+firmware",
+          "lang": "fr"
+        },
+        {
           "name": "Not a Tesla App — changelog firmware",
           "url": "https://www.notateslaapp.com/rss"
         }

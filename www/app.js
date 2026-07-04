@@ -497,7 +497,7 @@ async function loadChangelogLive(cat){
   elChangelogLive.hidden = false;
   elChangelogLive.innerHTML = '<div class="cl-loading"><span class="spinner"></span> Changelog…</div>';
   const results = await Promise.allSettled(feeds.map(f =>
-    httpGet(f.url).then(xml => parseFeed(xml, f.name, null))
+    httpGet(f.url).then(xml => parseFeed(xml, f.name, null).map(it => ({...it, _lang: f.lang||'en'})))
   ));
   let items = [];
   results.forEach(r => { if (r.status === 'fulfilled') items = items.concat(r.value); });
@@ -505,7 +505,10 @@ async function loadChangelogLive(cat){
   items = items.filter(it => it.link && !seen.has(it.link) && seen.add(it.link));
   items.sort((a,b) => b.ts - a.ts);
   if (!items.length){ hideChangelogLive(); return; }
-  const it = items[0];
+  // Préfère un item en français récent (dans les 30 derniers jours) sinon le plus récent
+  const threshold = Date.now() - 30*24*60*60*1000;
+  const frItem = items.find(it => it._lang==='fr' && it.ts > threshold);
+  const it = frItem || items[0];
   const label = cat.id==='ia' ? '🤖 Dernière release IA' : cat.id==='domotique' ? '🏠 Dernière version Home Assistant' : '⚡ Dernière mise à jour Tesla';
   // Extrait le numéro de version Tesla (format YYYY.NN.N ou vX.Y.Z) depuis le titre
   const verMatch = it.title.match(/(\d{4}\.\d+\.\d+(?:\.\d+)?|v?\d+\.\d+\.\d+)/i);
