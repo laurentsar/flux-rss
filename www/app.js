@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.54';
+const APP_VERSION = '4.55';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -334,125 +334,6 @@ function renderLiveScores(events, extraIntlHtml=''){
 
 const FR_RE = /\bfrance\b/i;
 
-/* --- XV de France via Wikipedia --- */
-async function loadFranceXV(season){
-  const [y1,y2] = season.split('-');
-  // 1) Try competition-wide pages first (Championnat des nations, etc.)
-  // These contain ALL teams → must filter France rows + detect home/away
-  const COMP_PAGES = [
-    `Championnat des nations ${y2}`,
-    `Championnat des nations ${parseInt(y2)+1}`,
-  ];
-  const COMP_SECT_RE = /journée|résultats|phase/i;
-  for (const page of COMP_PAGES){
-    try{
-      const sd = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
-      const sects = (sd?.parse?.sections||[]).filter(s=>COMP_SECT_RE.test(s.line));
-      if (!sects.length) continue;
-      // No slice(1): first row IS the data (no header row in these tables)
-      const rows = (await Promise.allSettled(
-        sects.map(s=>fetch(wikiUrl(page,parseInt(s.index))).then(r=>r.json()))
-      )).flatMap(r=>r.status==='fulfilled'
-        ? parseWikitables(r.value?.parse?.text?.['*']||'','table').flatMap(t=>t)
-        : []
-      ).filter(r=>r.some(c=>FR_RE.test(c)));
-      if (rows.length) return {mode:'comp', rows};
-    } catch(e){ continue; }
-  }
-
-  // 2) Fall back to France team page (calendar year, then season format)
-  const TEAM_PAGES = [
-    `Équipe de France de rugby à XV en ${y2}`,
-    `Équipe de France de rugby à XV en ${y1}-${y2}`,
-    `Équipe de France de rugby à XV en ${y1}`,
-  ];
-  const TEAM_SECT_RE = /résultats|matchs|tournée|tour|test\s+match|saison|match\s+amical|championnat\s+des\s+nations|phase\s+(aller|retour)|classement/i;
-  for (const page of TEAM_PAGES){
-    try{
-      const sd = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
-      const sects = (sd?.parse?.sections||[]).filter(s=>TEAM_SECT_RE.test(s.line));
-      if (!sects.length) continue;
-      const tables = (await Promise.allSettled(
-        sects.map(s=>fetch(wikiUrl(page,parseInt(s.index))).then(r=>r.json()))
-      )).flatMap(r=>r.status==='fulfilled'
-        ? parseWikitables(r.value?.parse?.text?.['*']||'').filter(t=>t.length>=3)
-        : []
-      );
-      if (tables.length) return {mode:'team', tables};
-    } catch(e){ continue; }
-  }
-  return null;
-}
-
-function renderFranceXV(data){
-  if (!data) return '';
-  const SCORE_FIND = /\b(\d+)\s*[-–]\s*(\d+)\b/;
-  const DATE_RE = /\d{1,2}[\s/]\w+[\s/]\d{4}|\d{4}-\d{2}-\d{2}/;
-
-  function extractScore(cell){ return cell.match(SCORE_FIND); }
-
-  function matchCard(r, isFranceLeft){
-    const scoreCol = r.findIndex(c=>SCORE_FIND.test(c));
-    const dateStr = (r.find(c=>DATE_RE.test(c))||'');
-    const frName = r.find(c=>FR_RE.test(c) && !DATE_RE.test(c) && !/^\d+$/.test(c.trim())) || 'France';
-    const opp = r.find((_,i)=>{
-      const v=r[i]; if (!v||v.length<2||i===scoreCol) return false;
-      if (DATE_RE.test(v)||/^\d+$/.test(v.trim())) return false;
-      if (FR_RE.test(v)) return false;
-      return true;
-    })||'?';
-    if (opp==='?') return '';
-    if (scoreCol<0){
-      return `<div class="rl-match"><span class="rl-tn">🇫🇷 ${esc(frName)}</span><span class="rl-sb"><span class="rl-vs">${esc(dateStr||'—')}</span></span><span class="rl-tn rl-tnr">${esc(opp)}</span></div>`;
-    }
-    const m = extractScore(r[scoreCol]);
-    const left=parseInt(m[1]), right=parseInt(m[2]);
-    const frScore = isFranceLeft ? left : right;
-    const oppScore = isFranceLeft ? right : left;
-    const win=frScore>oppScore, loss=oppScore>frScore;
-    return `<div class="rl-match"><span class="rl-tn ${win?'rl-w':''}">🇫🇷 ${esc(frName)}</span><span class="rl-sb"><b>${frScore}</b><span class="rl-vs">–</span><b>${oppScore}</b></span><span class="rl-tn rl-tnr ${loss?'rl-w':''}">${esc(opp)}</span></div>`;
-  }
-
-  let cards, label;
-  if (data.mode==='comp'){
-    cards = data.rows.map(r=>{
-      const frIdx = r.findIndex(c=>FR_RE.test(c));
-      const scoreCol = r.findIndex(c=>SCORE_FIND.test(c));
-      const isFranceLeft = scoreCol<0 || frIdx<scoreCol;
-      return matchCard(r, isFranceLeft);
-    }).filter(Boolean).join('');
-    label = '🇫🇷 XV de France — Championnat des nations';
-  } else {
-    cards = (data.tables||[]).slice(-5).flatMap(rows=>
-      rows.slice(1).map(r=>r.length>=3 ? matchCard(r,true) : '').filter(Boolean)
-    ).join('');
-    label = '🇫🇷 XV de France';
-  }
-  if (!cards) return '';
-  return `<details class="rl-section" open><summary class="rl-sh">${label}</summary>${cards}</details>`;
-}
-
-/* --- XV de France — résultats live ESPN (filtrés) --- */
-function renderFranceXVLive(events){
-  if (!events.length) return '';
-  const hasLive = events.some(e=>e.status?.type==='inprogress');
-  const cards = events.map(e=>{
-    const st=e.status?.type;
-    const live=st==='inprogress', fin=st==='finished';
-    const hs=e.homeScore?.current??'', as_=e.awayScore?.current??'';
-    const hw=fin&&parseInt(hs)>parseInt(as_), aw=fin&&parseInt(as_)>parseInt(hs);
-    const badge=live?'<span class="rl-live-dot"></span>':'';
-    const time=live?(e.status.description||'⏱'):fin?'':new Date((e.startTimestamp||0)*1000).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
-    const score=(live||fin)?`<b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b>${time?`<span class="rl-time"> ${time}</span>`:''}`: `<span class="rl-vs">${time}</span>`;
-    return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(e.homeTeam?.name||'?')}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(e.awayTeam?.name||'?')}</span></div>`;
-  }).join('');
-  const allFrance = events.map(e=>`${e.homeTeam?.name||''} ${e.awayTeam?.name||''}`).join(' ');
-  const hasYouth = /u\s*\d+|under|moins\s*de|junior/i.test(allFrance);
-  const frLabel = hasYouth ? '🇫🇷 Équipes de France' : '🇫🇷 XV de France';
-  const label=hasLive?`🔴 ${frLabel} — En direct`:`${frLabel} — Résultats récents`;
-  return `<details class="rl-section${hasLive?' rl-live-section':''}" open><summary class="rl-sh">${label}</summary>${cards}</details>`;
-}
-
 /* --- Pro D2 : Brive & Colomiers --- */
 const PRO_D2_TEAMS = ['Brive','Colomiers'];
 async function loadProD2Teams(season){
@@ -524,7 +405,7 @@ function renderChampionnatNations(journees){
       return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${frH?'🇫🇷 ':''}${esc(home)}</span><span class="rl-sb"><b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b></span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${frA?'🇫🇷 ':''}${esc(away)}</span></div>`;
     }).filter(Boolean)).join('');
     if (!cards) return '';
-    return `<div class="rl-journee"><span class="rl-jlbl">🌍 Champ. des nations — ${esc(label)}</span>${cards}</div>`;
+    return `<div class="rl-journee"><span class="rl-jlbl">🌍 Championnat des nations — ${esc(label)}</span>${cards}</div>`;
   }).filter(Boolean).join('');
   return blocks;
 }
@@ -545,27 +426,18 @@ async function loadRugbyLive(){
   const top14 = `Championnat de France de rugby à XV ${season}`;
 
   const currentYear = new Date().getFullYear();
-  const [r1, r2, sofa, franceXV, proD2, champNations] = await Promise.all([
+  const [r1, r2, sofa, proD2, champNations] = await Promise.all([
     fetch(wikiUrl(top14,6)).then(r=>r.json()).catch(()=>null),
     fetch(wikiUrl(top14,7)).then(r=>r.json()).catch(()=>null),
     fetchSportsEvents(),
-    loadFranceXV(season),
     loadProD2Teams(season),
     loadChampionnatNations(currentYear),
   ]);
 
   let html = '';
-  // XV de France EN TÊTE : matchs France filtrés depuis ESPN, fallback Wikipedia
-  const frEvents = sofa.events.filter(e=>{
-    const h=(e.homeTeam?.name||'').toLowerCase(), a=(e.awayTeam?.name||'').toLowerCase();
-    return h.includes('france')||a.includes('france');
-  });
-  const otherEvents = sofa.events.filter(e=>!frEvents.includes(e));
-  if (frEvents.length) html += renderFranceXVLive(frEvents);
-  else if (franceXV) html += renderFranceXV(franceXV);
   const champHtml = renderChampionnatNations(champNations);
   if (sofa.error) html += `<details class="rl-section" open><summary class="rl-sh">📡 Scores live</summary><div class="rl-loading">⚠️ ${sofa.error}</div></details>`;
-  else if (otherEvents.length || champHtml) html += renderLiveScores(otherEvents, champHtml);
+  else if (sofa.events.length || champHtml) html += renderLiveScores(sofa.events, champHtml);
   if (r1){
     const tbls = parseWikitables(r1?.parse?.text?.['*']||'');
     if (tbls[0]) html += renderRLStandings(tbls[0],'Classement Top 14',14,6,2);
