@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.65';
+const APP_VERSION = '4.66';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -520,20 +520,20 @@ async function loadTeslaReleaseNotes(){
   let html;
   try { html = await httpGet(pageLink); } catch(e){ return null; }
 
-  // Step 3: parse features — pattern: <h2>title</h2> <img> <p>Disponible…</p> <p>Modèles:…</p> <p>description</p>
+  // Step 3: parse features — pattern: <h3>title</h3> <img> <p>Disponible…</p> <p>Modèles:…</p> <p>description</p>
   const tmp = document.createElement('div');
   tmp.innerHTML = html;
   const features = [];
-  tmp.querySelectorAll('h2').forEach(h2 => {
-    const title = h2.textContent.trim();
+  tmp.querySelectorAll('h3').forEach(h3 => {
+    const title = h3.textContent.trim();
     if (!title || title.length < 3) return;
     let imgSrc = null;
     const descParts = [];
-    let el = h2.nextElementSibling;
-    while (el && el.tagName !== 'H2'){
+    let el = h3.nextElementSibling;
+    while (el && el.tagName !== 'H3' && el.tagName !== 'H2'){
       if (!imgSrc && el.tagName === 'IMG'){
         imgSrc = el.getAttribute('src')||'';
-        if (imgSrc.startsWith('/')) imgSrc = 'https://www.notateslaapp.com' + imgSrc;
+        if (imgSrc && imgSrc.startsWith('/')) imgSrc = 'https://www.notateslaapp.com' + imgSrc;
       }
       if (el.tagName === 'P'){
         const txt = el.textContent.trim();
@@ -541,7 +541,8 @@ async function loadTeslaReleaseNotes(){
       }
       el = el.nextElementSibling;
     }
-    features.push({ title, image: imgSrc, desc: descParts.join(' ') });
+    // n'inclure que les features avec image (filtre les h3 de sections sans contenu)
+    if (imgSrc) features.push({ title, image: imgSrc, desc: descParts.join(' ') });
   });
 
   return features.length ? { version, features, pageLink } : null;
