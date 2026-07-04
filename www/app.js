@@ -529,13 +529,15 @@ function parseFeatureSections(html, tagName='h3', baseUrl=''){
         imgSrc = imgRealSrc(imgEl);
         if (imgSrc && imgSrc.startsWith('/')) imgSrc = baseUrl + imgSrc;
       }
-      if (el.tagName === 'P'){
-        const txt = el.textContent.trim();
+      // look for <p> both as direct sibling and nested inside container divs
+      const pEls = el.tagName === 'P' ? [el] : [...el.querySelectorAll('p')];
+      for (const p of pEls){
+        const txt = p.textContent.trim();
         if (txt.length > 20) descParts.push(txt);
       }
       el = el.nextElementSibling;
     }
-    if (imgSrc) features.push({ title, image: imgSrc, desc: descParts.slice(0,2).join(' ') });
+    if (imgSrc) features.push({ title, image: imgSrc, desc: descParts.slice(0,3).join(' ') });
   });
   return features;
 }
