@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.55';
+const APP_VERSION = '4.56';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -386,17 +386,18 @@ async function loadChampionnatNations(year){
 function renderChampionnatNations(journees){
   if (!journees?.length) return '';
   const SCORE_FIND = /\b(\d+)\s*[-–]\s*(\d+)\b/;
+  // Strip HTML tags (e.g. <sup>re</sup>) and parenthetical annotations (bo, bd, etc.)
+  const cleanLabel = s => s.replace(/<[^>]*>/g,'').trim();
+  const cleanTeam  = s => s.replace(/\s*\([^)]+\)/g,'').trim();
   const blocks = journees.map(({label, html})=>{
-    // Championnat des nations tables have no wikitable class — use 'table' selector
     const tables = parseWikitables(html,'table').filter(t=>t.length>=2);
     if (!tables.length) return '';
-    // No slice(1): first row IS the data (no header in these tables)
     const cards = tables.flatMap(rows=>rows.map(r=>{
       if (r.length<3) return '';
       const scoreCol = r.findIndex(c=>SCORE_FIND.test(c));
       if (scoreCol<0||scoreCol===0||scoreCol===r.length-1) return '';
-      const home = r[scoreCol-1]||'?';
-      const away = r[scoreCol+1]||'?';
+      const home = cleanTeam(r[scoreCol-1]||'');
+      const away = cleanTeam(r[scoreCol+1]||'');
       if (home.length<2||away.length<2) return '';
       const m = r[scoreCol].match(SCORE_FIND);
       const hs=parseInt(m[1]), as_=parseInt(m[2]);
@@ -405,7 +406,7 @@ function renderChampionnatNations(journees){
       return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${frH?'🇫🇷 ':''}${esc(home)}</span><span class="rl-sb"><b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b></span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${frA?'🇫🇷 ':''}${esc(away)}</span></div>`;
     }).filter(Boolean)).join('');
     if (!cards) return '';
-    return `<div class="rl-journee"><span class="rl-jlbl">🌍 Championnat des nations — ${esc(label)}</span>${cards}</div>`;
+    return `<div class="rl-journee"><span class="rl-jlbl">🌍 Championnat des nations — ${esc(cleanLabel(label))}</span>${cards}</div>`;
   }).filter(Boolean).join('');
   return blocks;
 }
