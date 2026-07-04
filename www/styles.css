@@ -129,6 +129,7 @@ details.card>summary .thumb{width:60px;height:60px;min-width:60px;object-fit:cov
 .cl-excerpt{font-size:.8rem;color:var(--muted);line-height:1.4;margin-top:3px}
 .cl-bullets{margin:4px 0 2px 0;padding-left:18px;font-size:.8rem;color:var(--muted);line-height:1.5;list-style:disc}
 .cl-meta{font-size:.75rem;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+.cl-ver{display:inline-block;font-size:.72rem;font-weight:700;background:var(--a,#F59E0B);color:#fff;border-radius:4px;padding:1px 6px;margin-right:6px;vertical-align:middle;letter-spacing:.03em}
 
 /* ---- Rugby Live (scores & classements) ---- */
 #rugby-live{padding:0 0 4px}

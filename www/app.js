@@ -507,14 +507,17 @@ async function loadChangelogLive(cat){
   if (!items.length){ hideChangelogLive(); return; }
   const it = items[0];
   const label = cat.id==='ia' ? '🤖 Dernière release IA' : cat.id==='domotique' ? '🏠 Dernière version Home Assistant' : '⚡ Dernière mise à jour Tesla';
-  const bullets = clBullets(it.summary || '');
+  // Extrait le numéro de version Tesla (format YYYY.NN.N ou vX.Y.Z) depuis le titre
+  const verMatch = it.title.match(/(\d{4}\.\d+\.\d+(?:\.\d+)?|v?\d+\.\d+\.\d+)/i);
+  const verBadge = verMatch ? `<span class="cl-ver">${esc(verMatch[1])}</span>` : '';
+  const bullets = clBullets(it.summary || '').slice(0, 5); // max 5 puces
   const buller = bullets.length > 1
     ? `<ul class="cl-bullets">${bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>`
-    : it.summary ? `<span class="cl-excerpt">${esc(it.summary)}</span>` : '';
+    : it.summary ? `<span class="cl-excerpt">${esc(it.summary.slice(0,200))}${it.summary.length>200?'…':''}</span>` : '';
   const imgHtml = it.image ? `<img class="cl-img" src="${esc(it.image)}" alt="" loading="lazy" onerror="this.remove()">` : '';
   const card = `<a class="cl-item" href="${esc(it.link)}" target="_blank" rel="noopener">
     ${imgHtml}
-    <span class="cl-title">${esc(it.title)}</span>
+    <span class="cl-title">${verBadge}${esc(it.title)}</span>
     ${buller}
     <span class="cl-meta">${it.date?`<span>🕒 ${esc(fmtDate(it.date))}</span>`:''}</span>
   </a>`;
