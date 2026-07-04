@@ -1358,6 +1358,17 @@ async function init(){
     // nouvelles catégories par défaut -> AJOUTÉES EN FIN (ne bouscule pas TON ordre)
     const haveCats = new Set(DATA.categories.map(c=>c.id));
     DEFAULTS.categories.forEach(c=>{ if(!haveCats.has(c.id)){ DATA.categories.push(clone(c)); haveCats.add(c.id); changed=true; } });
+    // v21 : xv_direct doit être juste avant rugby (catégorie live isolée en tête de l'onglet rugby)
+    if (prevVer < 21){
+      const rugbyIdx = DATA.categories.findIndex(c=>c.id==='rugby');
+      const xvIdx = DATA.categories.findIndex(c=>c.id==='xv_direct');
+      if (rugbyIdx > -1 && xvIdx > -1 && xvIdx !== rugbyIdx - 1){
+        const [xvCat] = DATA.categories.splice(xvIdx, 1);
+        const newRugbyIdx = DATA.categories.findIndex(c=>c.id==='rugby');
+        DATA.categories.splice(newRugbyIdx, 0, xvCat);
+        changed=true;
+      }
+    }
     // nouveaux flux par défaut -> AJOUTÉS EN FIN de leur catégorie, en préservant TON ordre,
     // tes renommages, tes désactivations ET tes suppressions (suivi via _knownDefaultFeeds).
     const known = new Set(DATA._knownDefaultFeeds || []);
