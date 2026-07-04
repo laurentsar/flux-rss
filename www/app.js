@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.68';
+const APP_VERSION = '4.69';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -417,7 +417,8 @@ function renderChampionnatNations(journees){
       if (home.length<2||away.length<2) return '';
       const m = r[scoreCol].match(SCORE_FIND);
       if (!m){
-        // Upcoming or live (no score yet)
+        // Upcoming / live : n'afficher que les matchs France
+        if (!FR_RE.test(home) && !FR_RE.test(away)) return '';
         return `<div class="rl-match"><span class="rl-tn">${teamBadge(home)}${esc(home)}</span><span class="rl-sb"><span class="rl-vs">⏱</span></span><span class="rl-tn rl-tnr">${teamBadge(away)}${esc(away)}</span></div>`;
       }
       const hs=parseInt(m[1]), as_=parseInt(m[2]);
