@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.42';
+const APP_VERSION = '4.53';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -334,11 +334,11 @@ function renderLiveScores(events){
   return section(top14Events,'🏆 Top 14 / Champions Cup') + section(intlEvents,'🌐 Matchs internationaux');
 }
 
+const FR_RE = /\bfrance\b/i;
+
 /* --- XV de France via Wikipedia --- */
 async function loadFranceXV(season){
   const [y1,y2] = season.split('-');
-  const FR_RE = /france/i;
-
   // 1) Try competition-wide pages first (Championnat des nations, etc.)
   // These contain ALL teams → must filter France rows + detect home/away
   const COMP_PAGES = [
@@ -388,16 +388,15 @@ async function loadFranceXV(season){
 
 function renderFranceXV(data){
   if (!data) return '';
-  // Search regex — handles "34 - 32 (19 - 13)" extra text in score cell
   const SCORE_FIND = /\b(\d+)\s*[-–]\s*(\d+)\b/;
   const DATE_RE = /\d{1,2}[\s/]\w+[\s/]\d{4}|\d{4}-\d{2}-\d{2}/;
-  const FR_RE = /france/i;
 
   function extractScore(cell){ return cell.match(SCORE_FIND); }
 
   function matchCard(r, isFranceLeft){
     const scoreCol = r.findIndex(c=>SCORE_FIND.test(c));
     const dateStr = (r.find(c=>DATE_RE.test(c))||'');
+    const frName = r.find(c=>FR_RE.test(c) && !DATE_RE.test(c) && !/^\d+$/.test(c.trim())) || 'France';
     const opp = r.find((_,i)=>{
       const v=r[i]; if (!v||v.length<2||i===scoreCol) return false;
       if (DATE_RE.test(v)||/^\d+$/.test(v.trim())) return false;
@@ -406,14 +405,14 @@ function renderFranceXV(data){
     })||'?';
     if (opp==='?') return '';
     if (scoreCol<0){
-      return `<div class="rl-match"><span class="rl-tn">🇫🇷 France</span><span class="rl-sb"><span class="rl-vs">${esc(dateStr||'—')}</span></span><span class="rl-tn rl-tnr">${esc(opp)}</span></div>`;
+      return `<div class="rl-match"><span class="rl-tn">🇫🇷 ${esc(frName)}</span><span class="rl-sb"><span class="rl-vs">${esc(dateStr||'—')}</span></span><span class="rl-tn rl-tnr">${esc(opp)}</span></div>`;
     }
     const m = extractScore(r[scoreCol]);
     const left=parseInt(m[1]), right=parseInt(m[2]);
     const frScore = isFranceLeft ? left : right;
     const oppScore = isFranceLeft ? right : left;
     const win=frScore>oppScore, loss=oppScore>frScore;
-    return `<div class="rl-match"><span class="rl-tn ${win?'rl-w':''}">🇫🇷 France</span><span class="rl-sb"><b>${frScore}</b><span class="rl-vs">–</span><b>${oppScore}</b></span><span class="rl-tn rl-tnr ${loss?'rl-w':''}">${esc(opp)}</span></div>`;
+    return `<div class="rl-match"><span class="rl-tn ${win?'rl-w':''}">🇫🇷 ${esc(frName)}</span><span class="rl-sb"><b>${frScore}</b><span class="rl-vs">–</span><b>${oppScore}</b></span><span class="rl-tn rl-tnr ${loss?'rl-w':''}">${esc(opp)}</span></div>`;
   }
 
   let cards, label;
@@ -449,7 +448,10 @@ function renderFranceXVLive(events){
     const score=(live||fin)?`<b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b>${time?`<span class="rl-time"> ${time}</span>`:''}`: `<span class="rl-vs">${time}</span>`;
     return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(e.homeTeam?.name||'?')}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(e.awayTeam?.name||'?')}</span></div>`;
   }).join('');
-  const label=hasLive?'🔴 🇫🇷 XV de France — En direct':'🇫🇷 XV de France — Résultats récents';
+  const allFrance = events.map(e=>`${e.homeTeam?.name||''} ${e.awayTeam?.name||''}`).join(' ');
+  const hasYouth = /u\s*\d+|under|moins\s*de|junior/i.test(allFrance);
+  const frLabel = hasYouth ? '🇫🇷 Équipes de France' : '🇫🇷 XV de France';
+  const label=hasLive?`🔴 ${frLabel} — En direct`:`${frLabel} — Résultats récents`;
   return `<details class="rl-section${hasLive?' rl-live-section':''}" open><summary class="rl-sh">${label}</summary>${cards}</details>`;
 }
 
@@ -860,7 +862,10 @@ function renderFranceLive(rugbyLive, soccerEvents){
     const icon=e.sport==='football'?'⚽ ':'🏉 ';
     return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${icon}${esc(e.homeTeam?.name||'?')}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(e.awayTeam?.name||'?')}</span></div>`;
   }).join('');
-  const label=hasLive?'🔴 🇫🇷 France en direct':'🇫🇷 France — Résultats récents';
+  const allNames = all.map(e=>`${e.homeTeam?.name||''} ${e.awayTeam?.name||''}`).join(' ');
+  const hasYouthA = /u\s*\d+|under|moins\s*de|junior/i.test(allNames);
+  const agLabel = hasYouthA ? '🇫🇷 Équipes de France' : '🇫🇷 France';
+  const label=hasLive?`🔴 ${agLabel} en direct`:`${agLabel} — Résultats récents`;
   return `<details class="rl-section${hasLive?' rl-live-section':''}" open><summary class="rl-sh">${label}</summary>${cards}</details>`;
 }
 
