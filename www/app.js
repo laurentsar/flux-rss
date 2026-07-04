@@ -375,43 +375,44 @@ async function loadFranceXV(season){
 
 function renderFranceXV(data){
   if (!data) return '';
-  const SCORE_RE = /^\d+\s*[-–]\s*\d+$/;
+  // Search regex — handles "34 - 32 (19 - 13)" extra text in score cell
+  const SCORE_FIND = /\b(\d+)\s*[-–]\s*(\d+)\b/;
   const DATE_RE = /\d{1,2}[\s/]\w+[\s/]\d{4}|\d{4}-\d{2}-\d{2}/;
   const FR_RE = /france/i;
 
+  function extractScore(cell){ return cell.match(SCORE_FIND); }
+
   function matchCard(r, isFranceLeft){
-    const scoreCol = r.findIndex(c=>SCORE_RE.test(c.trim()));
+    const scoreCol = r.findIndex(c=>SCORE_FIND.test(c));
     const dateStr = (r.find(c=>DATE_RE.test(c))||'');
     const opp = r.find((_,i)=>{
-      const v=r[i]; if (!v||v.length<2) return false;
-      if (SCORE_RE.test(v.trim()||DATE_RE.test(v)||/^\d+$/.test(v))) return false;
+      const v=r[i]; if (!v||v.length<2||i===scoreCol) return false;
+      if (DATE_RE.test(v)||/^\d+$/.test(v.trim())) return false;
       if (FR_RE.test(v)) return false;
-      if (i===scoreCol) return false;
       return true;
     })||'?';
     if (opp==='?') return '';
     if (scoreCol<0){
       return `<div class="rl-match"><span class="rl-tn">🇫🇷 France</span><span class="rl-sb"><span class="rl-vs">${esc(dateStr||'—')}</span></span><span class="rl-tn rl-tnr">${esc(opp)}</span></div>`;
     }
-    const parts = r[scoreCol].trim().split(/[-–]/).map(s=>parseInt(s)||0);
-    const frScore = isFranceLeft ? parts[0] : parts[1];
-    const oppScore = isFranceLeft ? parts[1] : parts[0];
+    const m = extractScore(r[scoreCol]);
+    const left=parseInt(m[1]), right=parseInt(m[2]);
+    const frScore = isFranceLeft ? left : right;
+    const oppScore = isFranceLeft ? right : left;
     const win=frScore>oppScore, loss=oppScore>frScore;
     return `<div class="rl-match"><span class="rl-tn ${win?'rl-w':''}">🇫🇷 France</span><span class="rl-sb"><b>${frScore}</b><span class="rl-vs">–</span><b>${oppScore}</b></span><span class="rl-tn rl-tnr ${loss?'rl-w':''}">${esc(opp)}</span></div>`;
   }
 
   let cards, label;
   if (data.mode==='comp'){
-    // Competition page: France can be home or away — detect by position relative to score
     cards = data.rows.map(r=>{
       const frIdx = r.findIndex(c=>FR_RE.test(c));
-      const scoreCol = r.findIndex(c=>SCORE_RE.test(c.trim()));
+      const scoreCol = r.findIndex(c=>SCORE_FIND.test(c));
       const isFranceLeft = scoreCol<0 || frIdx<scoreCol;
       return matchCard(r, isFranceLeft);
     }).filter(Boolean).join('');
     label = '🇫🇷 XV de France — Championnat des nations';
   } else {
-    // Team page: France is always the subject (left side)
     cards = (data.tables||[]).slice(-5).flatMap(rows=>
       rows.slice(1).map(r=>r.length>=3 ? matchCard(r,true) : '').filter(Boolean)
     ).join('');
@@ -490,20 +491,22 @@ async function loadChampionnatNations(year){
 
 function renderChampionnatNations(journees){
   if (!journees?.length) return '';
-  const SCORE_RE = /^\d+\s*[-–]\s*\d+$/;
+  const SCORE_FIND = /\b(\d+)\s*[-–]\s*(\d+)\b/;
   const blocks = journees.map(({label, html})=>{
     const tables = parseWikitables(html).filter(t=>t.length>=2);
     if (!tables.length) return '';
     const cards = tables.flatMap(rows=>rows.slice(1).map(r=>{
-      const scoreCol = r.findIndex(c=>SCORE_RE.test(c.trim()));
-      if (scoreCol<0) return '';
-      const home = r[scoreCol-1]||r[0]||'?';
-      const away = r[scoreCol+1]||r[r.length-1]||'?';
-      if (home==='?' && away==='?') return '';
-      const [hs,as_] = r[scoreCol].trim().split(/[-–]/).map(s=>parseInt(s)||0);
+      if (r.length<3) return '';
+      const scoreCol = r.findIndex(c=>SCORE_FIND.test(c));
+      if (scoreCol<0||scoreCol===0||scoreCol===r.length-1) return '';
+      const home = r[scoreCol-1]||'?';
+      const away = r[scoreCol+1]||'?';
+      if (home.length<2||away.length<2) return '';
+      const m = r[scoreCol].match(SCORE_FIND);
+      const hs=parseInt(m[1]), as_=parseInt(m[2]);
       const hw=hs>as_, aw=as_>hs;
       const frH=/france/i.test(home), frA=/france/i.test(away);
-      return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${frH?'🇫🇷 ':''  }${esc(home)}</span><span class="rl-sb"><b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b></span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${frA?'🇫🇷 ':''}${esc(away)}</span></div>`;
+      return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${frH?'🇫🇷 ':''}${esc(home)}</span><span class="rl-sb"><b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b></span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${frA?'🇫🇷 ':''}${esc(away)}</span></div>`;
     }).filter(Boolean)).join('');
     if (!cards) return '';
     return `<details class="rl-section"><summary class="rl-sh">🌍 Champ. des nations — ${esc(label)}</summary>${cards}</details>`;
