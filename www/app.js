@@ -504,6 +504,16 @@ function hideRugbyLive(){
 
 /* ---------- Changelog Live ---------- */
 let _clHtml = null;
+let _clSeen = JSON.parse(localStorage.getItem('cl_seen') || '{}');
+function _showClNewBadge(catId, version){
+  const chip = document.querySelector(`.chip[data-id="${catId}"]`);
+  if (chip) chip.classList.add('chip-has-new');
+  setTimeout(() => {
+    _clSeen[catId] = version;
+    try { localStorage.setItem('cl_seen', JSON.stringify(_clSeen)); } catch(e){}
+    if (chip) chip.classList.remove('chip-has-new');
+  }, 6000);
+}
 
 // Extrait le vrai src d'une balise img (gère WordPress lazy-load : data-lazy-src / data-src)
 function imgRealSrc(el){
@@ -788,7 +798,10 @@ async function loadChangelogLive(cat){
   if (scraperFn) {
     const release = await scraperFn();
     if (release) {
-      const verBadge = `<span class="cl-ver">${esc(release.version)}</span>`;
+      const isNew = _clSeen[cat.id] !== release.version;
+      if (isNew) _showClNewBadge(cat.id, release.version);
+      const newBadge = isNew ? ' <span class="cl-new">NEW</span>' : '';
+      const verBadge = `<span class="cl-ver">${esc(release.version)}</span>${newBadge}`;
       const sections = release.features.map(f => {
         const imgHtml = f.image ? `<img class="cl-feat-img" src="${esc(f.image)}" alt="" loading="lazy" onerror="this.remove()">` : '';
         const descHtml = f.desc ? `<p class="cl-feat-desc">${esc(f.desc)}</p>` : '';
@@ -821,7 +834,10 @@ async function loadChangelogLive(cat){
   const versionItems = firstVer
     ? items.filter(it => (it.title.match(verRe)||[])[1] === firstVer)
     : items.slice(0, 1);
-  const verBadge = firstVer ? `<span class="cl-ver">${esc(firstVer)}</span>` : '';
+  const rssIsNew = firstVer && _clSeen[cat.id] !== firstVer;
+  if (rssIsNew) _showClNewBadge(cat.id, firstVer);
+  const rssNewBadge = rssIsNew ? ' <span class="cl-new">NEW</span>' : '';
+  const verBadge = firstVer ? `<span class="cl-ver">${esc(firstVer)}</span>${rssNewBadge}` : '';
 
   let html;
   if (versionItems.length > 1) {
@@ -1025,6 +1041,14 @@ async function fetchFranceSoccer(){
       const detail=e.competitions?.[0]?.status?.type?.shortDetail||'';
       const live=state==='in',fin=state==='post';
       const d=new Date(e.date||0);
+      const details=e.competitions?.[0]?.details||[];
+      const goals=details
+        .filter(dv=>/^goal/i.test(dv.type?.text||''))
+        .map(dv=>{
+          const min=dv.clock?.displayValue||(dv.clock?.value!=null?dv.clock.value+"'":'');
+          const nm=(dv.athletesInvolved?.[0]?.displayName||'').split(' ').slice(-1)[0];
+          return {nm,min,isHome:dv.team?.id===home?.team?.id};
+        });
       return {
         id:'espn-soc-'+e.id,
         homeTeam:{name:home?.team?.displayName||home?.team?.name||'?'},
@@ -1036,6 +1060,7 @@ async function fetchFranceSoccer(){
         date:d.toISOString().slice(0,10),
         tournament:{name:e.league?.name||'Football'},
         sport:'football',
+        goals,
       };
     });
   _frSocCache=events; _frSocCacheTs=Date.now();
@@ -1058,7 +1083,12 @@ function renderFranceLive(rugbyLive, soccerEvents){
     const score=(live||fin)?`<b>${esc(hs)}</b><span class="rl-vs">–</span><b>${esc(as_)}</b>${time?`<span class="rl-time"> ${esc(time)}</span>`:''}`:''
     const icon=e.sport==='football'?'⚽ ':'🏉 ';
     const hn2=e.homeTeam?.name||'?', an2=e.awayTeam?.name||'?';
-    return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${icon}${teamBadge(hn2)}${esc(hn2)}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${teamBadge(an2)}${esc(an2)}</span></div>`;
+    const matchCard=`<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${icon}${teamBadge(hn2)}${esc(hn2)}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${teamBadge(an2)}${esc(an2)}</span></div>`;
+    const gs=e.goals||[];
+    const hg=gs.filter(g=>g.isHome).map(g=>`${g.nm} ${g.min}`).join(', ');
+    const ag=gs.filter(g=>!g.isHome).map(g=>`${g.nm} ${g.min}`).join(', ');
+    const scorerLine=(live||fin)&&gs.length?`<div class="rl-scorers"><span>${esc(hg)}</span><span>${esc(ag)}</span></div>`:'';
+    return matchCard+scorerLine;
   }).join('');
   const allNames = all.map(e=>`${e.homeTeam?.name||''} ${e.awayTeam?.name||''}`).join(' ');
   const hasYouthA = /u\s*\d+|under|moins\s*de|junior/i.test(allNames);
@@ -1308,6 +1338,7 @@ async function loadRugbyEpg(){
 }
 
 async function loadAgenda(){
+  hideChangelogLive();
   hideRugbyLive();
   elSubtabs.hidden=true; elSubtabs.innerHTML='';
   elArticles.innerHTML='<div class="rl-loading"><span class="spinner"></span>Chargement de l\'agenda…</div>';
