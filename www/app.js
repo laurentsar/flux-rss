@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.69';
+const APP_VERSION = '4.81';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -505,14 +505,16 @@ function hideRugbyLive(){
 /* ---------- Changelog Live ---------- */
 let _clHtml = null;
 let _clSeen = JSON.parse(localStorage.getItem('cl_seen') || '{}');
-function _showClNewBadge(catId, version){
-  const chip = document.querySelector(`.chip[data-id="${catId}"]`);
-  if (chip) chip.classList.add('chip-has-new');
-  setTimeout(() => {
-    _clSeen[catId] = version;
-    try { localStorage.setItem('cl_seen', JSON.stringify(_clSeen)); } catch(e){}
-    if (chip) chip.classList.remove('chip-has-new');
-  }, 6000);
+function _showClNewBadge(catId){
+  document.querySelector(`.chip[data-id="${catId}"]`)?.classList.add('chip-has-new');
+}
+function _clMarkSeen(catId, version, el){
+  _clSeen[catId] = version;
+  try { localStorage.setItem('cl_seen', JSON.stringify(_clSeen)); } catch(e){}
+  document.querySelector(`.chip[data-id="${catId}"]`)?.classList.remove('chip-has-new');
+  el.querySelectorAll('.cl-new').forEach(b => b.remove());
+  el.ontoggle = null;
+  _clHtml = document.getElementById('changelog-live')?.innerHTML || null;
 }
 
 // Extrait le vrai src d'une balise img (gère WordPress lazy-load : data-lazy-src / data-src)
@@ -799,7 +801,7 @@ async function loadChangelogLive(cat){
     const release = await scraperFn();
     if (release) {
       const isNew = _clSeen[cat.id] !== release.version;
-      if (isNew) _showClNewBadge(cat.id, release.version);
+      if (isNew) _showClNewBadge(cat.id);
       const newBadge = isNew ? ' <span class="cl-new">NEW</span>' : '';
       const verBadge = `<span class="cl-ver">${esc(release.version)}</span>${newBadge}`;
       const sections = release.features.map(f => {
@@ -811,9 +813,12 @@ async function loadChangelogLive(cat){
           <a class="cl-feature" href="${href}" target="_blank" rel="noopener">${imgHtml}${descHtml}<span class="cl-feat-link">🔗 Voir les détails</span></a>
         </details>`;
       }).join('');
-      const html = `<details class="rl-section" open><summary class="rl-sh">${label} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
+      const detailsAttr = isNew
+        ? `data-cl-cat="${cat.id}" data-cl-ver="${esc(release.version)}" ontoggle="if(this.open)_clMarkSeen(this.dataset.clCat,this.dataset.clVer,this)"`
+        : 'open';
+      const html = `<details class="rl-section" ${detailsAttr}><summary class="rl-sh">${label} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
       elChangelogLive.innerHTML = html;
-      _clHtml = html;
+      if (!isNew) _clHtml = html;
       return;
     }
   }
@@ -835,7 +840,7 @@ async function loadChangelogLive(cat){
     ? items.filter(it => (it.title.match(verRe)||[])[1] === firstVer)
     : items.slice(0, 1);
   const rssIsNew = firstVer && _clSeen[cat.id] !== firstVer;
-  if (rssIsNew) _showClNewBadge(cat.id, firstVer);
+  if (rssIsNew) _showClNewBadge(cat.id);
   const rssNewBadge = rssIsNew ? ' <span class="cl-new">NEW</span>' : '';
   const verBadge = firstVer ? `<span class="cl-ver">${esc(firstVer)}</span>${rssNewBadge}` : '';
 
@@ -852,7 +857,10 @@ async function loadChangelogLive(cat){
         <a class="cl-feature" href="${esc(it.link)}" target="_blank" rel="noopener">${imgHtml}${body}<span class="cl-feat-link">🔗 Voir les détails</span></a>
       </details>`;
     }).join('');
-    html = `<details class="rl-section" open><summary class="rl-sh">${label} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
+    const rssDetailsAttr = rssIsNew
+      ? `data-cl-cat="${cat.id}" data-cl-ver="${esc(firstVer)}" ontoggle="if(this.open)_clMarkSeen(this.dataset.clCat,this.dataset.clVer,this)"`
+      : 'open';
+    html = `<details class="rl-section" ${rssDetailsAttr}><summary class="rl-sh">${label} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
   } else {
     const it = versionItems[0];
     const bullets = clBullets(it.summary||'').slice(0,5);
@@ -864,10 +872,13 @@ async function loadChangelogLive(cat){
       ${imgHtml}<span class="cl-title">${verBadge}${esc(it.title)}</span>${buller}
       <span class="cl-meta">${it.date?`<span>🕒 ${esc(fmtDate(it.date))}</span>`:''}</span>
     </a>`;
-    html = `<details class="rl-section" open><summary class="rl-sh">${label}</summary>${card}</details>`;
+    const rssDetailsAttr = rssIsNew
+      ? `data-cl-cat="${cat.id}" data-cl-ver="${esc(firstVer||'')}" ontoggle="if(this.open)_clMarkSeen(this.dataset.clCat,this.dataset.clVer,this)"`
+      : 'open';
+    html = `<details class="rl-section" ${rssDetailsAttr}><summary class="rl-sh">${label}</summary>${card}</details>`;
   }
   elChangelogLive.innerHTML = html;
-  _clHtml = html;
+  if (!rssIsNew) _clHtml = html;
 }
 
 function hideChangelogLive(){
@@ -1027,8 +1038,13 @@ async function fetchFranceSoccer(){
   const SOCCER_IDS=['fifa.world','uefa.nations'];
   const BASE='https://site.api.espn.com/apis/site/v2/sports/soccer';
   function isFR(comp){ const n=(comp?.team?.name||'').toLowerCase(),a=(comp?.team?.abbreviation||'').toUpperCase(); return n.includes('france')||a==='FRA'; }
+  const yesterday=new Date(Date.now()-86400000);
+  const yDate=yesterday.toISOString().slice(0,10).replace(/-/g,'');
   const results=await Promise.allSettled(
-    SOCCER_IDS.map(id=>fetchJson(`${BASE}/${id}/scoreboard`).then(d=>d.events||[]))
+    SOCCER_IDS.flatMap(id=>[
+      fetchJson(`${BASE}/${id}/scoreboard`).then(d=>d.events||[]),
+      fetchJson(`${BASE}/${id}/scoreboard?dates=${yDate}`).then(d=>d.events||[]),
+    ])
   );
   const seen=new Set();
   const events=results.flatMap(r=>r.status==='fulfilled'?r.value:[])
