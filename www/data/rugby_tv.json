@@ -1,60 +1,8 @@
 {
- "generated": "2026-07-05T08:15:03+02:00",
+ "generated": "2026-07-05T20:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 29,
+ "count": 25,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-07-05",
-   "time": "08:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulouse / Montpellier",
-   "date": "2026-07-05",
-   "time": "13:42",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-07-05",
-   "time": "15:27",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "ASM Romagnat / Stade Bordelais",
-   "date": "2026-07-05",
-   "time": "15:49",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-07-05",
