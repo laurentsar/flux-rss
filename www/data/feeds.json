@@ -1,5 +1,5 @@
 {
-  "version": 23,
+  "version": 24,
   "generated": "2026-07-05",
   "categories": [
     {
@@ -1238,6 +1238,36 @@
         {
           "name": "Ligue 1 — Google Actu",
           "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Ligue+1+football+France"
+        },
+        {
+          "name": "L'After Foot",
+          "url": "https://feeds.simplecast.com/VVMraBM_",
+          "pod": true,
+          "kind": "audio"
+        },
+        {
+          "name": "Rothen s'enflamme",
+          "url": "https://feeds.simplecast.com/Z04e1HPg",
+          "pod": true,
+          "kind": "audio"
+        },
+        {
+          "name": "Intégrale Foot",
+          "url": "https://feeds.simplecast.com/cuUVB0_z",
+          "pod": true,
+          "kind": "audio"
+        },
+        {
+          "name": "Canal Football Club",
+          "url": "https://feeds.acast.com/public/shows/canal-football-club",
+          "pod": true,
+          "kind": "audio"
+        },
+        {
+          "name": "Big 5 — L'Équipe",
+          "url": "https://feed.ausha.co/brEVGUqJWM04",
+          "pod": true,
+          "kind": "audio"
         }
       ]
     }
