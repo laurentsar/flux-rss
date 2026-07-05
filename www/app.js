@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.81';
+const APP_VERSION = '4.82';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -70,6 +70,7 @@ const elCats = $('#cats'), elArticles = $('#articles'), elStatus = $('#status'),
 const elSubtabs = $('#subtabs');
 const elRugbyLive = document.getElementById('rugby-live');
 const elChangelogLive = document.getElementById('changelog-live');
+const elFootballLive = document.getElementById('football-live');
 
 /* ---------- réseau ---------- */
 
@@ -886,6 +887,109 @@ function hideChangelogLive(){
   _clHtml = null;
 }
 
+/* ---------- Football Live (France + Toulouse) ---------- */
+let _footLiveHtml = null, _footLiveTs = 0;
+let _toulouseCache = null, _toulouseCacheTs = 0;
+
+function isToulouseTeam(comp){
+  const n=(comp?.team?.name||'').toLowerCase(), a=(comp?.team?.abbreviation||'').toUpperCase();
+  return n.includes('toulouse') || a==='TOU';
+}
+
+async function fetchToulouseMatches(){
+  if (_toulouseCache && Date.now()-_toulouseCacheTs<5*60*1000) return _toulouseCache;
+  const LIGUE_IDS=['fra.1','uefa.europa','uefa.conference'];
+  const BASE='https://site.api.espn.com/apis/site/v2/sports/soccer';
+  const yesterday=new Date(Date.now()-86400000);
+  const yDate=yesterday.toISOString().slice(0,10).replace(/-/g,'');
+  const results=await Promise.allSettled(
+    LIGUE_IDS.flatMap(id=>[
+      fetchJson(`${BASE}/${id}/scoreboard`).then(d=>d.events||[]),
+      fetchJson(`${BASE}/${id}/scoreboard?dates=${yDate}`).then(d=>d.events||[]),
+    ])
+  );
+  const seen=new Set();
+  const events=results.flatMap(r=>r.status==='fulfilled'?r.value:[])
+    .filter(e=>(e.competitions?.[0]?.competitors||[]).some(c=>isToulouseTeam(c)))
+    .filter(e=>!seen.has(e.id)&&seen.add(e.id))
+    .map(e=>{
+      const comps=e.competitions?.[0]?.competitors||[];
+      const home=comps.find(c=>c.homeAway==='home'), away=comps.find(c=>c.homeAway==='away');
+      const state=e.competitions?.[0]?.status?.type?.state||'';
+      const detail=e.competitions?.[0]?.status?.type?.shortDetail||'';
+      const live=state==='in', fin=state==='post';
+      const d=new Date(e.date||0);
+      const details=e.competitions?.[0]?.details||[];
+      const goals=details
+        .filter(dv=>/^goal/i.test(dv.type?.text||''))
+        .map(dv=>{
+          const min=dv.clock?.displayValue||(dv.clock?.value!=null?dv.clock.value+"'":'');
+          const nm=(dv.athletesInvolved?.[0]?.displayName||'').split(' ').slice(-1)[0];
+          return {nm, min, isHome:dv.team?.id===home?.team?.id};
+        });
+      return {
+        id:'espn-tou-'+e.id,
+        homeTeam:{name:home?.team?.displayName||home?.team?.name||'?'},
+        awayTeam:{name:away?.team?.displayName||away?.team?.name||'?'},
+        homeScore:{current:home?.score??''},
+        awayScore:{current:away?.score??''},
+        status:{type:live?'inprogress':fin?'finished':'notstarted', description:detail},
+        startTimestamp:d.getTime()/1000,
+        date:d.toISOString().slice(0,10),
+        tournament:{name:e.league?.name||'Football'},
+        goals,
+      };
+    });
+  _toulouseCache=events; _toulouseCacheTs=Date.now();
+  return events;
+}
+
+function renderFootMatchSection(title, events){
+  const hasLive=events.some(e=>e.status?.type==='inprogress');
+  const cards=events.map(e=>{
+    const st=e.status?.type, live=st==='inprogress', fin=st==='finished';
+    const hs=e.homeScore?.current??'', as_=e.awayScore?.current??'';
+    const hw=fin&&parseInt(hs)>parseInt(as_), aw=fin&&parseInt(as_)>parseInt(hs);
+    const badge=live?'<span class="rl-live-dot"></span>':'';
+    const time=live?(e.status?.description||'⏱'):'';
+    const score=(live||fin)?`<b>${esc(hs)}</b><span class="rl-vs">–</span><b>${esc(as_)}</b>${time?`<span class="rl-time"> ${esc(time)}</span>`:''}`:''
+    const hn2=e.homeTeam?.name||'?', an2=e.awayTeam?.name||'?';
+    const matchCard=`<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${teamBadge(hn2)}${esc(hn2)}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${teamBadge(an2)}${esc(an2)}</span></div>`;
+    const gs=e.goals||[];
+    const hg=gs.filter(g=>g.isHome).map(g=>`${g.nm} ${g.min}`).join(', ');
+    const ag=gs.filter(g=>!g.isHome).map(g=>`${g.nm} ${g.min}`).join(', ');
+    const scorerLine=(live||fin)&&gs.length?`<div class="rl-scorers"><span>${esc(hg)}</span><span>${esc(ag)}</span></div>`:'';
+    const compLine=e.tournament?.name?`<div class="rl-jlbl">⚽ ${esc(e.tournament.name)}</div>`:'';
+    return compLine+matchCard+scorerLine;
+  }).join('');
+  const sectionLabel=hasLive?`🔴 ${title} — En direct`:`${title} — Résultats récents`;
+  return `<details class="rl-section${hasLive?' rl-live-section':''}" open><summary class="rl-sh">${sectionLabel}</summary>${cards}</details>`;
+}
+
+async function loadFootballLive(){
+  if (!elFootballLive) return;
+  if (_footLiveHtml && Date.now()-_footLiveTs<5*60*1000){
+    elFootballLive.hidden=false; elFootballLive.innerHTML=_footLiveHtml; return;
+  }
+  const [frSoccer, toulouse]=await Promise.all([
+    fetchFranceSoccer().catch(()=>[]),
+    fetchToulouseMatches().catch(()=>[]),
+  ]);
+  const frMatches=frSoccer.filter(e=>e.status?.type==='inprogress'||e.status?.type==='finished');
+  const touMatches=toulouse.filter(e=>e.status?.type==='inprogress'||e.status?.type==='finished');
+  let html='';
+  if (frMatches.length) html+=renderFootMatchSection('🇫🇷 Équipe de France',frMatches);
+  if (touMatches.length) html+=renderFootMatchSection('🔴 Toulouse FC',touMatches);
+  elFootballLive.hidden=!html;
+  elFootballLive.innerHTML=html;
+  if (html){ _footLiveHtml=html; _footLiveTs=Date.now(); }
+}
+
+function hideFootballLive(){
+  if (elFootballLive){ elFootballLive.hidden=true; elFootballLive.innerHTML=''; }
+  _footLiveHtml=null;
+}
+
 /* ---------- chargement catégorie ---------- */
 function cacheKey(id, tab){ return 'feedcache:'+id+(tab==='pods'?':pod':''); }
 
@@ -900,7 +1004,8 @@ function renderSubtabs(cat){
 }
 
 async function loadCategory(cat, {silent=false}={}){
-  _clHtml = null; // reset cache changelog à chaque changement de catégorie
+  _clHtml = null;
+  _footLiveHtml = null;
   current = cat.id;
   if (!hasNews(cat) && hasPods(cat)) currentTab='pods';      // catégorie 100% podcasts (ex. Podcasts globale)
   else if (currentTab==='pods' && !hasPods(cat)) currentTab='news';
@@ -910,6 +1015,7 @@ async function loadCategory(cat, {silent=false}={}){
   $('#hero-sub').textContent = cat.label;
   renderSubtabs(cat);
   if (cat.id==='rugby' && currentTab==='news') loadRugbyLive(); else hideRugbyLive();
+  if (cat.id==='football' && currentTab==='news') loadFootballLive(); else hideFootballLive();
   const _hasChangelog = cat.feeds_changelog?.length || ['tesla','domotique','ia','vr'].includes(cat.id);
   if (_hasChangelog && currentTab==='news') loadChangelogLive(cat); else hideChangelogLive();
 

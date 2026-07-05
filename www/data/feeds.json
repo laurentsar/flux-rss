@@ -1,6 +1,6 @@
 {
-  "version": 22,
-  "generated": "2026-06-22",
+  "version": 23,
+  "generated": "2026-07-05",
   "categories": [
     {
       "id": "ve",
@@ -1207,6 +1207,37 @@
         {
           "name": "Adafruit Blog",
           "url": "https://blog.adafruit.com/feed/"
+        }
+      ]
+    },
+    {
+      "id": "football",
+      "label": "⚽ Football",
+      "lang": "fr",
+      "feeds": [
+        {
+          "name": "L'Équipe Football",
+          "url": "https://www.lequipe.fr/rss/actu_rss_Football.xml"
+        },
+        {
+          "name": "Foot Mercato",
+          "url": "https://www.footmercato.net/rss/"
+        },
+        {
+          "name": "So Foot",
+          "url": "https://www.sofoot.com/rss/"
+        },
+        {
+          "name": "Toulouse FC — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Toulouse+FC+TFC+football"
+        },
+        {
+          "name": "Équipe de France — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=%C3%A9quipe+de+France+football+%22les+bleus%22"
+        },
+        {
+          "name": "Ligue 1 — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Ligue+1+football+France"
         }
       ]
     }
