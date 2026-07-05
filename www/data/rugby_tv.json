@@ -1,34 +1,8 @@
 {
- "generated": "2026-07-04T20:15:04+02:00",
+ "generated": "2026-07-05T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 21,
+ "count": 29,
  "programmes": [
-  {
-   "title": "Rugby : Championnat des nations",
-   "date": "2026-07-04",
-   "time": "21:00",
-   "desc": "C'est au stade Mario-Alberto-Kempes, à Cordoba, en Argentine, que se déroule ce match de la première journée de la nouvelle compétition de r",
-   "chaine": [
-    "TF1"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-07-04",
-   "time": "22:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-07-05",
@@ -160,6 +134,45 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-07",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Major League Rugby",
+   "date": "2026-07-07",
+   "time": "10:00",
+   "desc": "Affiche à définir de la finale de la Major League Rugby 2026.",
+   "chaine": [
+    "Sport en France"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat du monde U20",
+   "date": "2026-07-07",
+   "time": "13:30",
+   "desc": "A suivre, des rencontres disputées dans le cadre de cette compétition qui se déroule tous les ans et réservée aux espoirs du rugby âgés de m",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Argentine / Angleterre",
    "date": "2026-07-07",
    "time": "13:30",
@@ -177,6 +190,19 @@
    "date": "2026-07-07",
    "time": "15:31",
    "desc": "Magazine sportif",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat du monde U20",
+   "date": "2026-07-07",
+   "time": "18:00",
+   "desc": "A suivre, des rencontres disputées dans le cadre de cette compétition qui se déroule tous les ans et réservée aux espoirs du rugby âgés de m",
    "chaine": [
     "La Chaîne L'Équipe"
    ],
@@ -205,6 +231,19 @@
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat du monde U20",
+   "date": "2026-07-07",
+   "time": "19:00",
+   "desc": "A suivre, des rencontres disputées dans le cadre de cette compétition qui se déroule tous les ans et réservée aux espoirs du rugby âgés de m",
+   "chaine": [
+    "La Chaîne L'Équipe"
    ],
    "cats": [
     "rugby"
@@ -251,10 +290,36 @@
    "approx": false
   },
   {
+   "title": "Rugby : Championnat du monde U20",
+   "date": "2026-07-07",
+   "time": "22:07",
+   "desc": "Ce championnat du monde U20 se déroule en Géorgie et cette rencontre entre les jeunes All Blacks et les Italiens prenait place dans l'Arena ",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Nouvelle-Zélande / Italie",
    "date": "2026-07-07",
    "time": "22:07",
    "desc": "Rugby",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat du monde U20",
+   "date": "2026-07-07",
+   "time": "23:00",
+   "desc": "Ce championnat du monde U20 se déroule en Géorgie et cette rencontre entre les jeunes All Blacks et les Italiens prenait place dans l'Arena ",
    "chaine": [
     "La Chaîne L'Équipe"
    ],
@@ -270,6 +335,45 @@
    "desc": "Rugby",
    "chaine": [
     "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "France / Australie",
+   "date": "2026-07-08",
+   "time": "13:30",
+   "desc": "Rugby",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Vannes / Provence Rugby",
+   "date": "2026-07-08",
+   "time": "16:16",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Top 14",
+   "date": "2026-07-08",
+   "time": "18:08",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
    ],
    "cats": [
     "rugby"
