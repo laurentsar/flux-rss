@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.87';
+const APP_VERSION = '4.88';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -1247,6 +1247,43 @@ function renderFranceLive(rugbyLive, soccerEvents){
 /* ---------- Agenda ---------- */
 let _agendaJson = null;
 let _upcomingRugby = null, _upcomingRugbyTs = 0;
+let _toulouseLiveCache = null, _toulouseLiveCacheTs = 0;
+
+async function loadToulouseLiveEvents(){
+  if (_toulouseLiveCache && Date.now()-_toulouseLiveCacheTs < 30*60*1000) return _toulouseLiveCache;
+  const today = new Date().toISOString().slice(0,10);
+  const q = encodeURIComponent(`date_fin >= '${today}'`);
+  const url = `https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets/agenda-des-manifestations-culturelles-so-toulouse/records?limit=50&order_by=date_debut%20ASC&where=${q}&timezone=Europe%2FParis`;
+  try {
+    const data = await fetchJson(url);
+    const events = (data.results || []).map((r, i) => {
+      const title = r.nom_de_la_manifestation || r.titre || r.title || 'Événement';
+      const startRaw = r.date_debut || '';
+      const endRaw = r.date_fin || '';
+      const date = startRaw.slice(0,10);
+      const dateEnd = endRaw ? endRaw.slice(0,10) : undefined;
+      const desc = r.descriptif_court || r.description || r.resume || '';
+      const locRaw = r.nom_du_lieu || r.lieu_nom || r.lieu || r.adresse || 'Toulouse';
+      const loc = typeof locRaw === 'object' ? (locRaw.nom || 'Toulouse') : String(locRaw);
+      const link = r.url || r.url_de_la_page_web_de_l_evenement || undefined;
+      return {
+        id: 'tls-' + (r.identifiant || r.id_manifestation || i),
+        title: String(title),
+        desc: String(desc),
+        date,
+        dateEnd: dateEnd && dateEnd !== date ? dateEnd : undefined,
+        cats: ['voyage'],
+        loc,
+        approx: false,
+        region: 'Toulouse',
+        url: link || undefined,
+      };
+    }).filter(e => e.date && e.title);
+    _toulouseLiveCache = events;
+    _toulouseLiveCacheTs = Date.now();
+    return events;
+  } catch(e) { return []; }
+}
 
 async function loadAgendaEvents(){
   if (!_agendaJson){
@@ -1491,18 +1528,23 @@ async function loadAgenda(){
   elArticles.innerHTML='<div class="rl-loading"><span class="spinner"></span>Chargement de l\'agenda…</div>';
   elStatus.textContent='';
   const slow = slowConnection();
-  const [staticEvents, epgRugby, espnRugby] = await Promise.all([
+  const [staticEvents, epgRugby, espnRugby, toulouseLive] = await Promise.all([
     loadAgendaEvents(),
     slow ? Promise.resolve([]) : loadRugbyEpg().catch(()=>[]),
     slow ? Promise.resolve({events:[]}) : fetchSportsEvents().catch(()=>({events:[]})),
+    slow ? Promise.resolve([]) : loadToulouseLiveEvents().catch(()=>[]),
   ]);
   // France rugby live/finished → live section
   const frRugbyLive=(espnRugby.events||[]).filter(e=>isFranceMatch(e)&&(e.status?.type==='inprogress'||e.status?.type==='finished'));
   const liveHtml=renderFranceLive(frRugbyLive,[]);
   // Rugby = grille TV réelle (EPG, toutes chaînes) ; repli sur la liste figée.
   const rugbyAgenda = epgRugby.length ? epgRugby : upcomingRugbyShows(4);
-  const total=staticEvents.length+rugbyAgenda.length;
-  elArticles.innerHTML=(liveHtml?`<div id="ag-live">${liveHtml}</div>`:'')+renderAgenda(staticEvents,rugbyAgenda);
+  // Fusion événements statiques + live Toulouse (dédoublonnage par titre+date)
+  const seenTls = new Set(staticEvents.map(e => e.title+'|'+e.date));
+  const tlsNew = toulouseLive.filter(e => !seenTls.has(e.title+'|'+e.date));
+  const allStatic = [...staticEvents, ...tlsNew];
+  const total=allStatic.length+rugbyAgenda.length;
+  elArticles.innerHTML=(liveHtml?`<div id="ag-live">${liveHtml}</div>`:'')+renderAgenda(allStatic,rugbyAgenda);
   elStatus.textContent=`${total} événement${total>1?'s':''} à venir`;
 }
 
