@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.83';
+const APP_VERSION = '4.84';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -1491,33 +1491,18 @@ async function loadAgenda(){
   elArticles.innerHTML='<div class="rl-loading"><span class="spinner"></span>Chargement de l\'agenda…</div>';
   elStatus.textContent='';
   const slow = slowConnection();
-  const [staticEvents, epgRugby, frSoccer, espnRugby] = await Promise.all([
+  const [staticEvents, epgRugby, espnRugby] = await Promise.all([
     loadAgendaEvents(),
     slow ? Promise.resolve([]) : loadRugbyEpg().catch(()=>[]),
-    slow ? Promise.resolve([]) : fetchFranceSoccer().catch(()=>[]),
     slow ? Promise.resolve({events:[]}) : fetchSportsEvents().catch(()=>({events:[]})),
   ]);
   // France rugby live/finished → live section
   const frRugbyLive=(espnRugby.events||[]).filter(e=>isFranceMatch(e)&&(e.status?.type==='inprogress'||e.status?.type==='finished'));
-  // France soccer upcoming → inject into agenda timeline
-  const frSocUpcoming=frSoccer
-    .filter(e=>e.status?.type==='notstarted')
-    .map(e=>({
-      id:e.id,
-      title:`⚽ ${e.homeTeam.name} — ${e.awayTeam.name}`,
-      desc:e.tournament?.name||'Football',
-      date:e.date,
-      time:new Date(e.startTimestamp*1000).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}),
-      cats:['football'],
-      chaine:footChannel(e.tournament?.name),
-      approx:false,
-    }));
-  const liveHtml=renderFranceLive(frRugbyLive,frSoccer);
+  const liveHtml=renderFranceLive(frRugbyLive,[]);
   // Rugby = grille TV réelle (EPG, toutes chaînes) ; repli sur la liste figée.
   const rugbyAgenda = epgRugby.length ? epgRugby : upcomingRugbyShows(4);
-  const allUpcoming=[...rugbyAgenda,...frSocUpcoming];
-  const total=staticEvents.length+allUpcoming.length;
-  elArticles.innerHTML=(liveHtml?`<div id="ag-live">${liveHtml}</div>`:'')+renderAgenda(staticEvents,allUpcoming);
+  const total=staticEvents.length+rugbyAgenda.length;
+  elArticles.innerHTML=(liveHtml?`<div id="ag-live">${liveHtml}</div>`:'')+renderAgenda(staticEvents,rugbyAgenda);
   elStatus.textContent=`${total} événement${total>1?'s':''} à venir`;
 }
 
