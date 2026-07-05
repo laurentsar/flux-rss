@@ -15,6 +15,38 @@
       "approx": true
     },
     {
+      "id": "fete-nationale-toulouse-2026",
+      "title": "Fête Nationale — Toulouse",
+      "desc": "Feu d'artifice sur la Garonne, bal des pompiers et concert Place du Capitole",
+      "date": "2026-07-14",
+      "cats": ["voyage"],
+      "loc": "Toulouse — Place du Capitole / Garonne",
+      "approx": false,
+      "region": "Toulouse"
+    },
+    {
+      "id": "toulouse-plage-2026",
+      "title": "Toulouse Plage 2026",
+      "desc": "Plage éphémère sur les berges de la Garonne — activités, concerts et animations gratuites tout l'été",
+      "date": "2026-07-05",
+      "dateEnd": "2026-08-23",
+      "cats": ["voyage"],
+      "loc": "Toulouse — Prairie des Filtres / Garonne",
+      "approx": true,
+      "region": "Toulouse"
+    },
+    {
+      "id": "festival-garonne-2026",
+      "title": "Festival Garonne 2026",
+      "desc": "Festival de spectacles vivants en plein air sur les berges de la Garonne — musique, cirque et arts de rue gratuits",
+      "date": "2026-07-03",
+      "dateEnd": "2026-07-19",
+      "cats": ["voyage"],
+      "loc": "Toulouse — Berges de la Garonne",
+      "approx": true,
+      "region": "Toulouse"
+    },
+    {
       "id": "festival-carcassonne-2026",
       "title": "Festival de Carcassonne 2026",
       "desc": "Concerts, spectacles et danse dans la cité médiévale — programmation éclectique chaque été",
@@ -117,6 +149,73 @@
       ],
       "loc": "En ligne",
       "approx": true
+    },
+    {
+      "id": "journees-patrimoine-toulouse-2026",
+      "title": "Journées Européennes du Patrimoine",
+      "desc": "Portes ouvertes exceptionnelles sur les monuments et sites historiques de Toulouse et Haute-Garonne",
+      "date": "2026-09-19",
+      "dateEnd": "2026-09-20",
+      "cats": ["voyage"],
+      "loc": "Toulouse et Haute-Garonne",
+      "approx": false,
+      "region": "Toulouse"
+    },
+    {
+      "id": "vendanges-gaillac-2026",
+      "title": "Vendanges à Gaillac",
+      "desc": "Fête des vendanges dans l'un des plus anciens vignobles de France — dégustations, animations et marchés",
+      "date": "2026-09-27",
+      "dateEnd": "2026-09-28",
+      "cats": ["voyage"],
+      "loc": "Gaillac — 50 km de Toulouse",
+      "approx": true,
+      "region": "Toulouse"
+    },
+    {
+      "id": "marathon-toulouse-2026",
+      "title": "Marathon de Toulouse Métropole 2026",
+      "desc": "Course à pied à travers Toulouse — marathon, semi-marathon et 10 km ouverts à tous",
+      "date": "2026-10-04",
+      "cats": ["voyage"],
+      "loc": "Toulouse",
+      "approx": true,
+      "region": "Toulouse",
+      "url": "https://www.marathon-toulouse.com"
+    },
+    {
+      "id": "la-novela-2026",
+      "title": "La Novela — Festival des Sciences",
+      "desc": "Festival des sciences et de la société à Toulouse — conférences, expositions et ateliers (Airbus, CNES, ISAE-SUPAERO…)",
+      "date": "2026-10-08",
+      "dateEnd": "2026-10-18",
+      "cats": ["ia", "cyber"],
+      "loc": "Toulouse — divers lieux",
+      "approx": true,
+      "region": "Toulouse",
+      "url": "https://lanovela.fr"
+    },
+    {
+      "id": "cinespana-toulouse-2026",
+      "title": "Cinespana — Festival du Cinéma Espagnol",
+      "desc": "Festival dédié au cinéma espagnol et latino-américain au Cinéma ABC de Toulouse",
+      "date": "2026-10-08",
+      "dateEnd": "2026-10-18",
+      "cats": ["voyage"],
+      "loc": "Toulouse — Cinéma ABC",
+      "approx": true,
+      "region": "Toulouse"
+    },
+    {
+      "id": "toulouse-les-orgues-2026",
+      "title": "Toulouse les Orgues 2026",
+      "desc": "Festival international d'orgue — concerts dans les plus belles églises et édifices de Toulouse",
+      "date": "2026-10-09",
+      "dateEnd": "2026-10-18",
+      "cats": ["voyage"],
+      "loc": "Toulouse — Basilique Saint-Sernin et autres",
+      "approx": true,
+      "region": "Toulouse"
     },
     {
       "id": "jazz-sur-son-31-2026",
@@ -290,6 +389,28 @@
       "url": "https://www.ces.tech",
       "loc": "Las Vegas, USA",
       "approx": true
+    },
+    {
+      "id": "fete-violette-toulouse-2027",
+      "title": "Fête de la Violette de Toulouse 2027",
+      "desc": "Marché aux fleurs, producteurs et artisans autour de la violette de Toulouse — Place du Capitole",
+      "date": "2027-02-06",
+      "dateEnd": "2027-02-07",
+      "cats": ["voyage"],
+      "loc": "Toulouse — Place du Capitole",
+      "approx": true,
+      "region": "Toulouse"
+    },
+    {
+      "id": "salon-agriculture-sudouest-2027",
+      "title": "Salon de l'Agriculture du Sud-Ouest 2027",
+      "desc": "Grand rendez-vous régional de l'élevage, des productions locales et du terroir occitan",
+      "date": "2027-02-20",
+      "dateEnd": "2027-02-23",
+      "cats": ["voyage"],
+      "loc": "Toulouse — MEETT Parc des Expositions",
+      "approx": true,
+      "region": "Toulouse"
     },
     {
       "id": "six-nations-2027",

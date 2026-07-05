@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '4.86';
+const APP_VERSION = '4.87';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -1429,6 +1429,7 @@ function renderAgenda(staticEvents, matchEvents){
       const cats=ev.cats||[];
       const color=(CAT_COLORS[cats[0]]||['#6366F1'])[0];
       const dateLabel=fmtEventDate(ev.date,ev.dateEnd);
+      const timeHtml=ev.time?`<span class="ag-time"> ${esc(ev.time)}</span>`:'';
       const approxHtml=ev.approx?'<span class="ag-approx">~approx.</span>':'';
       const locHtml=ev.loc?`<div class="ag-loc">📍 ${esc(ev.loc)}</div>`:'';
       const badges=cats.map(cid=>{
@@ -1453,7 +1454,7 @@ function renderAgenda(staticEvents, matchEvents){
       const Tag=ev.url?'a':'div';
       const linkAttr=ev.url?` href="${esc(ev.url)}" target="_blank" rel="noopener"`:' ';
       return `<${Tag} class="ag-card"${linkAttr}style="--accent:${color}">
-        <div class="ag-date">${esc(dateLabel)}${approxHtml}</div>
+        <div class="ag-date">${esc(dateLabel)}${timeHtml}${approxHtml}</div>
         <div class="ag-body">
           <b>${esc(ev.title)}</b>
           ${ev.desc?`<div class="ag-desc">${esc(ev.desc)}</div>`:''}
