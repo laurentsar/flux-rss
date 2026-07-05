@@ -1253,7 +1253,7 @@ async function loadToulouseLiveEvents(){
   if (_toulouseLiveCache && Date.now()-_toulouseLiveCacheTs < 30*60*1000) return _toulouseLiveCache;
   const today = new Date().toISOString().slice(0,10);
   const q = encodeURIComponent(`date_fin >= '${today}'`);
-  const url = `https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets/agenda-des-manifestations-culturelles-so-toulouse/records?limit=50&order_by=date_debut%20ASC&where=${q}&timezone=Europe%2FParis`;
+  const url = `https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets/agenda-des-manifestations-culturelles-so-toulouse/records?limit=100&order_by=date_debut%20ASC&where=${q}&timezone=Europe%2FParis`;
   try {
     const data = await fetchJson(url);
     const events = (data.results || []).map((r, i) => {
@@ -1263,9 +1263,14 @@ async function loadToulouseLiveEvents(){
       const date = startRaw.slice(0,10);
       const dateEnd = endRaw ? endRaw.slice(0,10) : undefined;
       const desc = r.descriptif_court || r.description || r.resume || '';
-      const locRaw = r.nom_du_lieu || r.lieu_nom || r.lieu || r.adresse || 'Toulouse';
-      const loc = typeof locRaw === 'object' ? (locRaw.nom || 'Toulouse') : String(locRaw);
+      const commune = r.commune || r.ville || r.nom_commune || '';
+      const locRaw = r.nom_du_lieu || r.lieu_nom || r.lieu || r.adresse || commune || 'Toulouse';
+      const loc = typeof locRaw === 'object' ? (locRaw.nom || String(commune) || 'Toulouse') : String(locRaw);
       const link = r.url || r.url_de_la_page_web_de_l_evenement || undefined;
+      const communeStr = String(commune).toLowerCase();
+      const region = /colomiers/i.test(communeStr) ? 'Colomiers'
+        : communeStr ? 'Toulouse'
+        : 'Toulouse';
       return {
         id: 'tls-' + (r.identifiant || r.id_manifestation || i),
         title: String(title),
@@ -1275,7 +1280,7 @@ async function loadToulouseLiveEvents(){
         cats: ['voyage'],
         loc,
         approx: false,
-        region: 'Toulouse',
+        region,
         url: link || undefined,
       };
     }).filter(e => e.date && e.title);
@@ -1290,10 +1295,14 @@ async function loadAgendaEvents(){
     try{ _agendaJson = await (await fetch('data/events.json')).json(); }
     catch(e){ _agendaJson = {events:[]}; }
   }
-  const now = Date.now() - 86400*1000; // hier
+  const now = Date.now();
   const horizon = Date.now() + 365*86400*1000;
   return (_agendaJson.events||[])
-    .filter(ev=>{ const d=Date.parse(ev.date); return d>=now && d<=horizon; })
+    .filter(ev=>{
+      const end = Date.parse(ev.dateEnd || ev.date);
+      const start = Date.parse(ev.date);
+      return end >= now && start <= horizon;
+    })
     .sort((a,b)=>Date.parse(a.date)-Date.parse(b.date));
 }
 
