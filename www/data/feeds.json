@@ -1,5 +1,5 @@
 {
-  "version": 25,
+  "version": 26,
   "generated": "2026-07-05",
   "categories": [
     {
@@ -799,6 +799,24 @@
           "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCRBwLPbXGsI2cJe9W1zfSjQ",
           "pod": true,
           "kind": "video"
+        }
+      ],
+      "feeds_changelog": [
+        {
+          "name": "Home Assistant — Blog officiel (énergie & solaire)",
+          "url": "https://www.home-assistant.io/atom.xml"
+        },
+        {
+          "name": "Victron Energy — Blog (Venus OS & firmware)",
+          "url": "https://www.victronenergy.com/blog/feed/"
+        },
+        {
+          "name": "SolarEdge — Mise à jour firmware (Google Actu)",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=SolarEdge+firmware+mise+%C3%A0+jour+release"
+        },
+        {
+          "name": "Enphase — Mise à jour firmware (Google Actu)",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Enphase+firmware+mise+%C3%A0+jour+IQ"
         }
       ]
     },
