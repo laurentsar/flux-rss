@@ -816,7 +816,7 @@ async function loadChangelogLive(cat){
       }).join('');
       const detailsAttr = isNew
         ? `data-cl-cat="${cat.id}" data-cl-ver="${esc(release.version)}" ontoggle="if(this.open)_clMarkSeen(this.dataset.clCat,this.dataset.clVer,this)"`
-        : 'open';
+        : '';
       const html = `<details class="rl-section" ${detailsAttr}><summary class="rl-sh">${label} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
       elChangelogLive.innerHTML = html;
       if (!isNew) _clHtml = html;
