@@ -1,5 +1,5 @@
 {
-  "version": 28,
+  "version": 29,
   "generated": "2026-07-05",
   "categories": [
     {
@@ -803,12 +803,16 @@
       ],
       "feeds_changelog": [
         {
-          "name": "Enphase — Blog officiel",
-          "url": "https://enphase.com/rss.xml"
+          "name": "Enphase — Installer Portal Release Notes",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=%22Enphase%22+%22Release+Notes%22+%22Installer+Portal%22+site%3Asupport.enphase.com"
         },
         {
-          "name": "Enphase — Release notes & firmware (Google News EN)",
-          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Enphase+release+notes+firmware+update+Envoy+IQ"
+          "name": "Enphase — Firmware & software updates",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Enphase+%22release+notes%22+Envoy+IQ+firmware+update"
+        },
+        {
+          "name": "Enphase — Blog officiel",
+          "url": "https://enphase.com/rss.xml"
         }
       ]
     },
