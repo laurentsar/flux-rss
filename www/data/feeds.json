@@ -1,5 +1,5 @@
 {
-  "version": 27,
+  "version": 28,
   "generated": "2026-07-05",
   "categories": [
     {
@@ -803,24 +803,12 @@
       ],
       "feeds_changelog": [
         {
-          "name": "Home Assistant — Blog officiel (énergie & solaire)",
-          "url": "https://www.home-assistant.io/atom.xml"
-        },
-        {
-          "name": "Victron Energy — Blog (Venus OS & firmware)",
-          "url": "https://www.victronenergy.com/blog/feed/"
-        },
-        {
           "name": "Enphase — Blog officiel",
-          "url": "https://enphase.com/en-us/rss.xml"
+          "url": "https://enphase.com/rss.xml"
         },
         {
-          "name": "Enphase — Firmware & release notes (Google Actu)",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Enphase+firmware+IQ+mise+%C3%A0+jour+release"
-        },
-        {
-          "name": "Enphase — Google News EN",
-          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Enphase+firmware+update+IQ+release"
+          "name": "Enphase — Release notes & firmware (Google News EN)",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Enphase+release+notes+firmware+update+Envoy+IQ"
         }
       ]
     },
