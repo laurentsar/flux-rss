@@ -1,5 +1,5 @@
 {
-  "version": 24,
+  "version": 25,
   "generated": "2026-07-05",
   "categories": [
     {
@@ -710,6 +710,14 @@
         {
           "name": "Home Assistant — Blog officiel (release notes)",
           "url": "https://www.home-assistant.io/atom.xml"
+        },
+        {
+          "name": "Zigbee2MQTT — Releases",
+          "url": "https://github.com/Koenkk/zigbee2mqtt/releases.atom"
+        },
+        {
+          "name": "Zigbee2MQTT — Nouveaux appareils supportés",
+          "url": "https://github.com/Koenkk/zigbee-herdsman-converters/releases.atom"
         }
       ]
     },
