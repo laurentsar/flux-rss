@@ -1248,6 +1248,7 @@ function renderFranceLive(rugbyLive, soccerEvents){
 let _agendaJson = null;
 let _upcomingRugby = null, _upcomingRugbyTs = 0;
 let _toulouseLiveCache = null, _toulouseLiveCacheTs = 0;
+let _agendaTimer = null;
 
 async function loadToulouseLiveEvents(){
   if (_toulouseLiveCache && Date.now()-_toulouseLiveCacheTs < 30*60*1000) return _toulouseLiveCache;
@@ -1470,7 +1471,7 @@ function renderAgenda(staticEvents, matchEvents){
     byMonth[key].events.push(ev);
   });
 
-  return Object.values(byMonth).map(month=>{
+  return Object.values(byMonth).map((month,idx)=>{
     const cards=month.events.map(ev=>{
       const cats=ev.cats||[];
       const color=(CAT_COLORS[cats[0]]||['#6366F1'])[0];
@@ -1509,7 +1510,7 @@ function renderAgenda(staticEvents, matchEvents){
         </div>
       </${Tag}>`;
     }).join('');
-    return `<div class="ag-month"><div class="ag-month-lbl">${esc(month.label)}</div>${cards}</div>`;
+    return `<details class="ag-month"${idx===0?' open':''}><summary class="ag-month-lbl">${esc(month.label)} <span class="ag-chev">▾</span></summary><div class="ag-month-body">${cards}</div></details>`;
   }).join('');
 }
 
@@ -1555,6 +1556,8 @@ async function loadAgenda(){
   const total=allStatic.length+rugbyAgenda.length;
   elArticles.innerHTML=(liveHtml?`<div id="ag-live">${liveHtml}</div>`:'')+renderAgenda(allStatic,rugbyAgenda);
   elStatus.textContent=`${total} événement${total>1?'s':''} à venir`;
+  if (_agendaTimer) clearTimeout(_agendaTimer);
+  _agendaTimer = setTimeout(()=>{ if(current==='agenda'){ _toulouseLiveCache=null; loadAgenda(); } }, 3600000);
 }
 
 /* ---------- Magazines / Cafeyn ---------- */
@@ -1641,6 +1644,7 @@ function renderChips(){
   updateLiveBadge();
 }
 function selectCat(id){
+  if (_agendaTimer) { clearTimeout(_agendaTimer); _agendaTimer = null; }
   localStorage.setItem('lastCat', id);
   elCats.querySelectorAll('.chip').forEach(b=>{
     const on=b.dataset.id===id;

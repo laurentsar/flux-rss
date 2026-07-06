@@ -190,7 +190,12 @@ details.rl-section>.rl-table-wrap,details.rl-section>.rl-journee{margin-top:2px}
 
 /* ---- Agenda ---- */
 .ag-month{margin-bottom:20px}
-.ag-month-lbl{font-weight:800;font-size:.85em;color:var(--muted);text-transform:capitalize;letter-spacing:.5px;padding:4px 0 8px;border-bottom:1px solid var(--line);margin-bottom:10px}
+.ag-month>summary{cursor:pointer;list-style:none}
+.ag-month>summary::-webkit-details-marker{display:none}
+.ag-month-lbl{font-weight:800;font-size:.85em;color:var(--muted);text-transform:capitalize;letter-spacing:.5px;padding:4px 0 8px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.ag-month-body{padding-top:10px}
+.ag-chev{transition:transform .2s;display:inline-block}
+.ag-month[open] .ag-chev{transform:rotate(180deg)}
 .ag-card{display:flex;gap:12px;padding:12px 14px;background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent,#6366F1);border-radius:12px;margin-bottom:8px;text-decoration:none;color:var(--text);box-shadow:0 2px 6px rgba(0,0,0,.18)}
 a.ag-card:active{opacity:.8}
 .ag-date{min-width:76px;font-size:.82em;font-weight:700;color:var(--accent,#6366F1);padding-top:2px;line-height:1.4}
