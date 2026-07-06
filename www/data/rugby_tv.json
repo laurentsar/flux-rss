@@ -1,73 +1,8 @@
 {
- "generated": "2026-07-06T08:15:03+02:00",
+ "generated": "2026-07-06T20:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 35,
+ "count": 30,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-07-06",
-   "time": "08:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : State of Origin",
-   "date": "2026-07-06",
-   "time": "12:00",
-   "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Manager",
-   "date": "2026-07-06",
-   "time": "13:07",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Championnat du monde U20",
-   "date": "2026-07-06",
-   "time": "13:30",
-   "desc": "A suivre, des rencontres disputées dans le cadre de cette compétition qui se déroule tous les ans et réservée aux espoirs du rugby âgés de m",
-   "chaine": [
-    "La Chaîne L'Équipe"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Angleterre / United States of America",
-   "date": "2026-07-06",
-   "time": "13:30",
-   "desc": "Rugby",
-   "chaine": [
-    "La Chaîne L'Équipe"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-07-07",
