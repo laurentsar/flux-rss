@@ -1,5 +1,5 @@
 {
-  "version": 26,
+  "version": 27,
   "generated": "2026-07-05",
   "categories": [
     {
@@ -811,12 +811,16 @@
           "url": "https://www.victronenergy.com/blog/feed/"
         },
         {
-          "name": "SolarEdge — Mise à jour firmware (Google Actu)",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=SolarEdge+firmware+mise+%C3%A0+jour+release"
+          "name": "Enphase — Blog officiel",
+          "url": "https://enphase.com/en-us/rss.xml"
         },
         {
-          "name": "Enphase — Mise à jour firmware (Google Actu)",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Enphase+firmware+mise+%C3%A0+jour+IQ"
+          "name": "Enphase — Firmware & release notes (Google Actu)",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Enphase+firmware+IQ+mise+%C3%A0+jour+release"
+        },
+        {
+          "name": "Enphase — Google News EN",
+          "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Enphase+firmware+update+IQ+release"
         }
       ]
     },
