@@ -1,7 +1,7 @@
 {
- "generated": "2026-07-06T20:15:03+02:00",
+ "generated": "2026-07-07T08:15:04+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 30,
+ "count": 36,
  "programmes": [
   {
    "title": "Rugby à XIII : NRL",
@@ -342,12 +342,51 @@
    "approx": false
   },
   {
+   "title": "Rugby : Challenge Cup",
+   "date": "2026-07-09",
+   "time": "12:15",
+   "desc": "La finale de la Challenge Cup se déroule au stade San Mamés de Bilbao, en Espagne. Le Montpellier Hérault Rugby va-t-il soulever le trophée ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat du monde U20",
+   "date": "2026-07-09",
+   "time": "13:30",
+   "desc": "A suivre, des rencontres disputées dans le cadre de cette compétition qui se déroule tous les ans et réservée aux espoirs du rugby âgés de m",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Afrique du Sud / Pays de Galles",
    "date": "2026-07-09",
    "time": "13:30",
    "desc": "Rugby",
    "chaine": [
     "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Champions Cup",
+   "date": "2026-07-09",
+   "time": "14:30",
+   "desc": "Tenants du titre depuis leur victoire en 2025 contre les Northampton Saints, les joueurs de l'UBB sont de nouveau en finale de la Champions ",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -384,6 +423,45 @@
    "title": "Rugby : Elite 1 féminine",
    "date": "2026-07-09",
    "time": "21:00",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Nouvelle-Zélande / Italie",
+   "date": "2026-07-10",
+   "time": "13:30",
+   "desc": "Rugby",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Le pacte des Louves (Bobigny Rugby)",
+   "date": "2026-07-10",
+   "time": "18:06",
+   "desc": "Elles sont agent de sécurité à la RATP, chargée de communication dans une ONG ou encore professeure d'E.P.S. le jour, mais aussi joueuses de",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Elite 1 féminine",
+   "date": "2026-07-10",
+   "time": "18:36",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
