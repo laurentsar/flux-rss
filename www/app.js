@@ -791,14 +791,13 @@ async function loadChangelogLive(cat){
   const scraperFn = cat.id==='tesla' ? loadTeslaReleaseNotes
     : cat.id==='domotique' ? loadHAChangelog
     : cat.id==='ia'        ? loadClaudeChangelog
-    : cat.id==='vr'        ? loadQuestChangelog
     : null;
   if (!feeds.length && !scraperFn){ hideChangelogLive(); return; }
   if (_clHtml){ elChangelogLive.hidden=false; elChangelogLive.innerHTML=_clHtml; return; }
   elChangelogLive.hidden = false;
   elChangelogLive.innerHTML = '<div class="cl-loading"><span class="spinner"></span> Changelog…</div>';
 
-  const label = cat.id==='ia' ? '🤖 Dernière release Claude' : cat.id==='domotique' ? '🏠 Dernière version Home Assistant' : cat.id==='vr' ? '🥽 Dernière mise à jour Horizon OS' : '⚡ Mise à jour Tesla';
+  const label = cat.id==='ia' ? '🤖 Dernière release Claude' : cat.id==='domotique' ? '🏠 Dernière version Home Assistant' : cat.id==='vr' ? '🥽 Dernière mise à jour Meta Quest' : '⚡ Mise à jour Tesla';
 
   if (scraperFn) {
     const release = await scraperFn();
@@ -1093,7 +1092,7 @@ async function loadCategory(cat, {silent=false}={}){
   renderSubtabs(cat);
   if (cat.id==='rugby' && currentTab==='news') loadRugbyLive(); else hideRugbyLive();
   if (cat.id==='football' && currentTab==='news') loadFootballLive(); else hideFootballLive();
-  const _hasChangelog = cat.feeds_changelog?.length || ['tesla','domotique','ia','vr'].includes(cat.id);
+  const _hasChangelog = cat.feeds_changelog?.length || ['tesla','domotique','ia'].includes(cat.id);
   if (_hasChangelog && currentTab==='news') loadChangelogLive(cat); else hideChangelogLive();
 
   // cache immédiat
