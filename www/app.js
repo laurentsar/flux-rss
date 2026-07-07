@@ -284,7 +284,7 @@ async function fetchSportsEvents(){
       homeScore:{current:home?.score??''}, awayScore:{current:away?.score??''},
       status:{type:live?'inprogress':fin?'finished':'notstarted', description:detail},
       startTimestamp:new Date(e.date||0).getTime()/1000,
-      tournament:{name:e.league?.name||''},
+      tournament:{name:e.league?.name||'', round:e.competitions?.[0]?.notes?.[0]?.headline||''},
       leagueId,
       isClub: CLUB_IDS.has(leagueId),
     };
@@ -332,7 +332,9 @@ function renderLiveScores(events, extraIntlHtml=''){
         new Date((e.startTimestamp||0)*1000).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
       const score = (live||fin) ? `<b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b>${time?`<span class="rl-time"> ${time}</span>`:''}` : `<span class="rl-vs">${time}</span>`;
       const hn=e.homeTeam?.name||'?', an=e.awayTeam?.name||'?';
-      return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${teamBadge(hn)}${esc(hn)}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${teamBadge(an)}${esc(an)}</span></div>`;
+      const roundLbl=e.tournament?.round?` · ${esc(e.tournament.round)}`:'';
+      const compLine=e.tournament?.name?`<div class="rl-jlbl">🏉 ${esc(e.tournament.name)}${roundLbl}</div>`:'';
+      return compLine+`<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${teamBadge(hn)}${esc(hn)}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${teamBadge(an)}${esc(an)}</span></div>`;
     }).join('');
     const lbl = hasLive ? `🔴 ${label} — En direct` : label;
     return `<details class="rl-section${hasLive?' rl-live-section':''}"${hasLive?' open':''}><summary class="rl-sh">${lbl}</summary>${cards}${extra}</details>`;
