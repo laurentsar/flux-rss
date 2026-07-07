@@ -960,7 +960,7 @@ async function fetchToulouseMatches(){
       status:{type:live?'inprogress':fin?'finished':'notstarted', description:detail},
       startTimestamp:d.getTime()/1000,
       date:d.toISOString().slice(0,10),
-      tournament:{name:e.league?.name||'Football'},
+      tournament:{name:e.league?.name||'Football',round:e.competitions?.[0]?.notes?.[0]?.headline||''},
       goals,
     };
   }));
@@ -983,7 +983,8 @@ function renderFootMatchSection(title, events){
     const hg=gs.filter(g=>g.isHome).map(g=>`${g.nm} ${g.min}`).join(', ');
     const ag=gs.filter(g=>!g.isHome).map(g=>`${g.nm} ${g.min}`).join(', ');
     const scorerLine=(live||fin)&&gs.length?`<div class="rl-scorers"><span>${esc(hg)}</span><span>${esc(ag)}</span></div>`:'';
-    const compLine=e.tournament?.name?`<div class="rl-jlbl">⚽ ${esc(e.tournament.name)}</div>`:'';
+    const roundLbl=e.tournament?.round?` · ${esc(e.tournament.round)}`:'';
+    const compLine=e.tournament?.name?`<div class="rl-jlbl">⚽ ${esc(e.tournament.name)}${roundLbl}</div>`:'';
     return compLine+matchCard+scorerLine;
   }).join('');
   const sectionLabel=hasLive?`🔴 ${title} — En direct`:`${title} — Résultats récents`;
@@ -1027,7 +1028,7 @@ async function fetchWorldCupMatches(){
       status:{type:live?'inprogress':fin?'finished':'notstarted',description:detail},
       startTimestamp:d.getTime()/1000,
       date:d.toISOString().slice(0,10),
-      tournament:{name:e.league?.name||'FIFA World Cup'},
+      tournament:{name:e.league?.name||'FIFA World Cup',round:e.competitions?.[0]?.notes?.[0]?.headline||''},
       goals,
     };
   }));
@@ -1256,7 +1257,7 @@ async function fetchFranceSoccer(){
       status:{type:live?'inprogress':fin?'finished':'notstarted',description:detail},
       startTimestamp:d.getTime()/1000,
       date:d.toISOString().slice(0,10),
-      tournament:{name:e.league?.name||'Football'},
+      tournament:{name:e.league?.name||'Football',round:e.competitions?.[0]?.notes?.[0]?.headline||''},
       sport:'football',
       goals,
     };
