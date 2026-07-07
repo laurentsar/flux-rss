@@ -635,19 +635,29 @@ async function loadTeslaReleaseNotes(){
   }
   if (!version) return null;
 
-  // Step 2: fetch the French release notes page
-  const pageLink = `https://www.notateslaapp.com/fr/mises-a-jour-logicielles/version/${version}/notes-de-mise-a-jour`;
-  let html;
-  try { html = await httpGet(pageLink); } catch(e){ return null; }
+  // Step 2: fetch the French page, fallback to English if French fails
+  let html, pageLink;
+  try {
+    pageLink = `https://www.notateslaapp.com/fr/mises-a-jour-logicielles/version/${version}/notes-de-mise-a-jour`;
+    html = await httpGet(pageLink);
+  } catch(e){}
+  if (!html) {
+    try {
+      pageLink = `https://www.notateslaapp.com/software-updates/version/${version}/release-notes`;
+      html = await httpGet(pageLink);
+    } catch(e){ return null; }
+  }
+  if (!html) return null;
 
-  // Step 3: parse features — actual feature sections use h2 (with images), h3s are nav overview links
+  // Step 3: parse features — actual feature sections use h2, h3s are nav overview links
   // Filter out section headers (Update Stats, Recent News, Details...) and news (Tesla Videos, etc.)
   const features = parseFeatureSections(html, 'h2', 'https://www.notateslaapp.com').map(f=>({
     ...f,
     desc: f.desc.replace(/^(Disponible|Modèles?:|Models?:)[^\n]*/gim,'').trim()
-  })).filter(f=>f.image)
+  }))
     .filter(f=>!/^(Update Stats|Recent News|Details|Statistics|Overview|\d{4}\.\d)/i.test(f.title))
-    .filter(f=>!/^Tesla\s/i.test(f.title));
+    .filter(f=>!/^Tesla\s/i.test(f.title))
+    .filter(f=> f.title && (f.image || f.desc));
 
   return features.length ? { version, features, pageLink } : null;
 }
@@ -719,7 +729,7 @@ async function loadClaudeChangelog(){
     try { return decodeURIComponent(enc); } catch(e){ return _; }
   });
   const features = parseFeatureSections(html, 'h2', 'https://www.anthropic.com')
-    .filter(f => f.image)
+    .filter(f => f.title && (f.image || f.desc))
     .filter(f => !/^(related|availability|pricing|feedback)/i.test(f.title));
   return features.length ? { version, features, pageLink: articleUrl } : null;
 }
