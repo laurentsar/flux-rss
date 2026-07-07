@@ -890,6 +890,7 @@ function hideChangelogLive(){
 /* ---------- Football Live (France + Toulouse) ---------- */
 let _footLiveHtml = null, _footLiveTs = 0;
 let _toulouseCache = null, _toulouseCacheTs = 0;
+let _worldCupCache = null, _worldCupCacheTs = 0;
 
 function isToulouseTeam(comp){
   const n=(comp?.team?.name||'').toLowerCase(), a=(comp?.team?.abbreviation||'').toUpperCase();
@@ -989,18 +990,68 @@ function renderFootMatchSection(title, events){
   return `<details class="rl-section${hasLive?' rl-live-section':''}" open><summary class="rl-sh">${sectionLabel}</summary>${cards}</details>`;
 }
 
+async function fetchWorldCupMatches(){
+  if (_worldCupCache && Date.now()-_worldCupCacheTs<5*60*1000) return _worldCupCache;
+  const BASE='https://site.api.espn.com/apis/site/v2/sports/soccer';
+  const WC_ID='fifa.world';
+  const dates=Array.from({length:7},(_,i)=>{
+    const d=new Date(Date.now()-i*86400000);
+    return d.toISOString().slice(0,10).replace(/-/g,'');
+  });
+  const results=await Promise.allSettled(
+    dates.map(dt=>fetchJson(`${BASE}/${WC_ID}/scoreboard?dates=${dt}`).then(r=>(r.events||[]).map(e=>({...e,_lid:WC_ID}))))
+  );
+  const seen=new Set();
+  const raw=results.flatMap(r=>r.status==='fulfilled'?r.value:[])
+    .filter(e=>!seen.has(e.id)&&seen.add(e.id));
+  const events=await Promise.all(raw.map(async e=>{
+    const comps=e.competitions?.[0]?.competitors||[];
+    const home=comps.find(c=>c.homeAway==='home'),away=comps.find(c=>c.homeAway==='away');
+    const state=e.competitions?.[0]?.status?.type?.state||'';
+    const detail=e.competitions?.[0]?.status?.type?.shortDetail||'';
+    const live=state==='in',fin=state==='post';
+    const d=new Date(e.date||0);
+    const sbDetails=e.competitions?.[0]?.details||[];
+    let goals=sbDetails.filter(dv=>/^goal/i.test(dv.type?.text||'')).map(dv=>{
+      const min=dv.clock?.displayValue||(dv.clock?.value!=null?dv.clock.value+"'":'');
+      const nm=(dv.athletesInvolved?.[0]?.displayName||'').split(' ').slice(-1)[0];
+      return {nm,min,isHome:String(dv.team?.id)===String(home?.team?.id)};
+    });
+    if (!goals.length&&(live||fin)) goals=await fetchMatchGoals(WC_ID,e.id,home?.team?.id);
+    return {
+      id:'espn-wc-'+e.id,
+      homeTeam:{name:home?.team?.displayName||home?.team?.name||'?'},
+      awayTeam:{name:away?.team?.displayName||away?.team?.name||'?'},
+      homeScore:{current:home?.score??''},
+      awayScore:{current:away?.score??''},
+      status:{type:live?'inprogress':fin?'finished':'notstarted',description:detail},
+      startTimestamp:d.getTime()/1000,
+      date:d.toISOString().slice(0,10),
+      tournament:{name:e.league?.name||'FIFA World Cup'},
+      goals,
+    };
+  }));
+  _worldCupCache=events; _worldCupCacheTs=Date.now();
+  return events;
+}
+
 async function loadFootballLive(){
   if (!elFootballLive) return;
   if (_footLiveHtml && Date.now()-_footLiveTs<5*60*1000){
     elFootballLive.hidden=false; elFootballLive.innerHTML=_footLiveHtml; return;
   }
-  const [frSoccer, toulouse]=await Promise.all([
+  const [frSoccer, toulouse, worldCup]=await Promise.all([
     fetchFranceSoccer().catch(()=>[]),
     fetchToulouseMatches().catch(()=>[]),
+    fetchWorldCupMatches().catch(()=>[]),
   ]);
   const frMatches=frSoccer.filter(e=>e.status?.type==='inprogress'||e.status?.type==='finished');
   const touMatches=toulouse.filter(e=>e.status?.type==='inprogress'||e.status?.type==='finished');
+  const wcMatches=worldCup
+    .filter(e=>e.status?.type==='inprogress'||e.status?.type==='finished')
+    .sort((a,b)=>b.startTimestamp-a.startTimestamp);
   let html='';
+  if (wcMatches.length) html+=renderFootMatchSection('🌍 Coupe du Monde',wcMatches);
   if (frMatches.length) html+=renderFootMatchSection('🇫🇷 Équipe de France',frMatches);
   if (touMatches.length) html+=renderFootMatchSection('🔴 Toulouse FC',touMatches);
   elFootballLive.hidden=!html;
