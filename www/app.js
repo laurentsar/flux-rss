@@ -725,64 +725,45 @@ async function loadClaudeChangelog(){
 }
 
 async function loadQuestChangelog(){
-  // roadtovr horizon-os tag RSS → parse full article content:encoded for features
-  let rssXml;
-  try { rssXml = await httpGet('https://roadtovr.com/tag/horizon-os/feed/'); } catch(e){ return null; }
-  const itemM = rssXml.match(/<item>([\s\S]*?)<\/item>/);
-  if (!itemM) return null;
-  const item = itemM[1];
-
-  const titleM = item.match(/<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/s);
-  const linkM  = item.match(/<link>([^<]+)<\/link>/);
-  if (!linkM) return null;
-  const articleUrl = linkM[1].trim();
-
-  let version = 'Horizon OS';
-  if (titleM) {
-    const t = titleM[1].replace(/<[^>]+>/g,'').replace(/&amp;/g,'&').trim();
-    const vM = t.match(/v\d+[\d.]*/i) || t.match(/horizon os\s*([\d.]+)/i);
-    version = vM ? vM[0] : t.replace(/\s*[-–|].*$/,'').trim().slice(0, 50);
-  }
-
-  // Get full article HTML from content:encoded (avoids scraping the article page)
-  const contentM = item.match(/<content:encoded>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/content:encoded>/);
-  if (!contentM) return null;
-  const contentHtml = contentM[1]
-    .replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&')
-    .replace(/&quot;/g,'"').replace(/&#038;/g,'&').replace(/&#8217;/g,"'").replace(/&#8216;/g,"'");
-
-  const tmp = document.createElement('div');
-  tmp.innerHTML = contentHtml;
-
-  // Header image shared by all features
-  const headerImg = tmp.querySelector('img');
-  let sharedImg = headerImg ? imgRealSrc(headerImg) : '';
-  if (sharedImg && sharedImg.startsWith('/')) sharedImg = 'https://roadtovr.com' + sharedImg;
-  // Strip WordPress resize params to get clean image URL
-  if (sharedImg) sharedImg = sharedImg.replace(/\?.*$/, '');
-
-  // Parse features: <strong>Feature</strong> followed by a <p> description
-  const features = [];
-  const skips = /^(update\s*\(|settings[,\s]|system$|keyboard$|experimental$|general$|\d{4})/i;
-  tmp.querySelectorAll('strong').forEach(strong => {
-    const title = strong.textContent.replace(/[,;]\s*$/, '').trim();
-    if (!title || title.length < 4 || skips.test(title)) return;
-
-    // Find the closest following <p> with meaningful text
-    let desc = '';
-    let el = strong.closest('p') ? strong.closest('p').nextElementSibling : strong.nextElementSibling;
-    while (el && !desc) {
-      if (el.tagName === 'P') {
-        const txt = el.textContent.trim();
-        if (txt.length > 30 && !/^(check it out|—\s|settings\s*>)/i.test(txt)) desc = txt.slice(0, 200);
-      }
-      el = el.nextElementSibling;
+  // Step 1: trouver le dernier article Horizon OS sur UploadVR via RSS
+  let articleUrl = null, version = null;
+  try {
+    const rssXml = await httpGet('https://www.uploadvr.com/feed/');
+    const rssItems = parseFeed(rssXml, 'uploadvr', null);
+    const item = rssItems.find(it => /horizon\s*os\s+v?\d+/i.test(it.title||'') || /meta\s+quest.*v?\d+.*update/i.test(it.title||''));
+    if (item) {
+      articleUrl = item.link;
+      const m = (item.title||'').match(/v?(\d+[\d.]*)/i);
+      if (m) version = 'Horizon OS v' + m[1];
     }
-    features.push({ title, image: sharedImg, desc, link: articleUrl });
-  });
+  } catch(e){}
+  // Fallback : Road to VR
+  if (!articleUrl) {
+    try {
+      const rssXml = await httpGet('https://www.roadtovr.com/tag/horizon-os/feed/');
+      const rssItems = parseFeed(rssXml, 'roadtovr', null);
+      const item = rssItems.find(it => /horizon\s*os|meta\s+quest.*update/i.test(it.title||''));
+      if (item) {
+        articleUrl = item.link;
+        const m = (item.title||'').match(/v?(\d+[\d.]*)/i);
+        if (m) version = 'Horizon OS v' + m[1];
+      }
+    } catch(e){}
+  }
+  if (!articleUrl) return null;
 
-  if (!features.length) return null;
-  return { version, features: features.slice(0, 8), pageLink: articleUrl };
+  // Step 2: récupérer la page de l'article
+  let html;
+  try { html = await httpGet(articleUrl); } catch(e){ return null; }
+
+  // Step 3: parser les sections — UploadVR utilise des <h2>/<h3> pour chaque feature
+  const BASE = articleUrl.match(/^https?:\/\/[^/]+/)?.[0] || '';
+  const features = parseFeatureSections(html, 'h2', BASE);
+  const featuresH3 = features.length < 2 ? parseFeatureSections(html, 'h3', BASE) : [];
+  const best = features.length >= featuresH3.length ? features : featuresH3;
+
+  if (!best.length) return null;
+  return { version: version || 'Horizon OS', features: best.slice(0, 10), pageLink: articleUrl };
 }
 
 async function loadChangelogLive(cat){
@@ -791,6 +772,7 @@ async function loadChangelogLive(cat){
   const scraperFn = cat.id==='tesla' ? loadTeslaReleaseNotes
     : cat.id==='domotique' ? loadHAChangelog
     : cat.id==='ia'        ? loadClaudeChangelog
+    : cat.id==='vr'        ? loadQuestChangelog
     : null;
   if (!feeds.length && !scraperFn){ hideChangelogLive(); return; }
   if (_clHtml){ elChangelogLive.hidden=false; elChangelogLive.innerHTML=_clHtml; return; }
@@ -1077,7 +1059,7 @@ async function loadCategory(cat, {silent=false}={}){
   renderSubtabs(cat);
   if (cat.id==='rugby' && currentTab==='news') loadRugbyLive(); else hideRugbyLive();
   if (cat.id==='football' && currentTab==='news') loadFootballLive(); else hideFootballLive();
-  const _hasChangelog = cat.feeds_changelog?.length || ['tesla','domotique','ia'].includes(cat.id);
+  const _hasChangelog = cat.feeds_changelog?.length || ['tesla','domotique','ia','vr'].includes(cat.id);
   if (_hasChangelog && currentTab==='news') loadChangelogLive(cat); else hideChangelogLive();
 
   // cache immédiat
@@ -1713,7 +1695,11 @@ function selectCat(id){
   elCats.querySelectorAll('.chip').forEach(b=>{
     const on=b.dataset.id===id;
     b.classList.toggle('active', on);
-    if (on){ const [a,b2]=CAT_COLORS[id]||['#F26522','#A8400F']; b.style.setProperty('--a',a); b.style.setProperty('--b',b2); }
+    if (on){
+      const [a,b2]=CAT_COLORS[id]||['#F26522','#A8400F'];
+      b.style.setProperty('--a',a); b.style.setProperty('--b',b2);
+      b.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+    }
   });
   if (id==='agenda'){
     current='agenda'; currentTab='news';

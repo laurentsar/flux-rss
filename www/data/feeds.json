@@ -1,5 +1,5 @@
 {
- "version": 30,
+ "version": 31,
  "generated": "2026-07-05",
  "categories": [
   {
@@ -275,16 +275,6 @@
     }
    ],
    "feeds_changelog": [
-    {
-     "name": "Horizon OS — Google News",
-     "url": "https://news.google.com/rss/search?q=%22Horizon+OS%22+release+notes&hl=en-US&gl=US&ceid=US:en",
-     "lang": "en"
-    },
-    {
-     "name": "Meta Quest — Google News",
-     "url": "https://news.google.com/rss/search?q=%22Meta+Quest%22+software+update+changelog&hl=en-US&gl=US&ceid=US:en",
-     "lang": "en"
-    },
     {
      "name": "Meta Blog",
      "url": "https://www.meta.com/blog/rss/",
