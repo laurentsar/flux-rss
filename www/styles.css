@@ -203,6 +203,7 @@ a.ag-card:active{opacity:.8}
 .ag-approx{display:block;font-size:.72em;color:var(--muted);font-weight:400;margin-top:2px}
 .ag-body{flex:1;min-width:0}
 .ag-body b{display:block;font-weight:700;font-size:.97em;margin-bottom:3px;line-height:1.35}
+.ag-comp{font-size:.76em;font-weight:700;color:var(--muted);margin-bottom:3px}
 .ag-desc{font-size:.82em;color:#c7ccd6;margin-bottom:3px}
 .ag-loc{font-size:.78em;color:var(--muted);margin-bottom:4px}
 .ag-badges{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}

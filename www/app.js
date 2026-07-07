@@ -1556,10 +1556,11 @@ function renderAgenda(staticEvents, matchEvents){
       }).join('');
       const Tag=ev.url?'a':'div';
       const linkAttr=ev.url?` href="${esc(ev.url)}" target="_blank" rel="noopener"`:' ';
+      const compLine=ev.competition?`<div class="ag-comp">🏉 ${esc(ev.competition)}</div>`:'';
       return `<${Tag} class="ag-card"${linkAttr}style="--accent:${color}">
         <div class="ag-date">${esc(dateLabel)}${timeHtml}${approxHtml}</div>
         <div class="ag-body">
-          <b>${esc(ev.title)}</b>
+          ${compLine}<b>${esc(ev.title)}</b>
           ${ev.desc?`<div class="ag-desc">${esc(ev.desc)}</div>`:''}
           ${locHtml}
           <div class="ag-badges">${badges}${regionBadge}${tvHtml}</div>
@@ -1581,8 +1582,31 @@ async function loadRugbyEpg(){
   try{ data=await (await fetch(RUGBY_EPG_URL+'?_='+Date.now(),{cache:'no-store'})).json(); }catch(e){}
   if (!data){ try{ data=await (await fetch('data/rugby_tv.json')).json(); }catch(e){} }
   const list=(data&&data.programmes)||[];
-  const floor=Date.now()-86400000; // hier
-  const out=list.filter(p=>{ const d=Date.parse(p.date); return !isNaN(d) && d>=floor; });
+  const floor=Date.now()-86400000;
+  const filtered=list.filter(p=>{ const d=Date.parse(p.date); return !isNaN(d) && d>=floor; });
+  // Group by date+time+channel: pair generic "Rugby : Competition" with specific match titles
+  const groups={};
+  filtered.forEach(p=>{
+    const key=`${p.date}|${p.time}|${(p.chaine||[]).join(',')}`;
+    if (!groups[key]) groups[key]=[];
+    groups[key].push(p);
+  });
+  const exclude=new Set();
+  filtered.forEach(p=>{
+    const key=`${p.date}|${p.time}|${(p.chaine||[]).join(',')}`;
+    const grp=groups[key];
+    if (grp.length>=2){
+      const compEntry=grp.find(q=>q.title.includes(' : '));
+      const matchEntry=grp.find(q=>!q.title.includes(' : '));
+      if (compEntry && matchEntry){
+        matchEntry.competition=compEntry.title.split(' : ').slice(1).join(' : ');
+        exclude.add(compEntry);
+      }
+    } else if (p.title.includes(' : ')){
+      p.competition=p.title.split(' : ').slice(1).join(' : ');
+    }
+  });
+  const out=filtered.filter(p=>!exclude.has(p));
   _epgRugby=out; _epgRugbyTs=Date.now();
   return out;
 }
