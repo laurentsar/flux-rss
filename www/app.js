@@ -1289,7 +1289,9 @@ function renderFranceLive(rugbyLive, soccerEvents){
     const hg=gs.filter(g=>g.isHome).map(g=>`${g.nm} ${g.min}`).join(', ');
     const ag=gs.filter(g=>!g.isHome).map(g=>`${g.nm} ${g.min}`).join(', ');
     const scorerLine=(live||fin)&&gs.length?`<div class="rl-scorers"><span>${esc(hg)}</span><span>${esc(ag)}</span></div>`:'';
-    return matchCard+scorerLine;
+    const roundLbl=e.tournament?.round?` · ${esc(e.tournament.round)}`:'';
+    const compLine=e.tournament?.name?`<div class="rl-jlbl">${icon}${esc(e.tournament.name)}${roundLbl}</div>`:'';
+    return compLine+matchCard+scorerLine;
   }).join('');
   const allNames = all.map(e=>`${e.homeTeam?.name||''} ${e.awayTeam?.name||''}`).join(' ');
   const hasYouthA = /u\s*\d+|under|moins\s*de|junior/i.test(allNames);
