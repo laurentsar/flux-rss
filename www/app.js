@@ -838,47 +838,32 @@ async function loadChangelogLive(cat){
 
   const verRe = /(\d{4}\.\d+\.\d+(?:\.\d+)?|v?\d+\.\d+\.\d+)/i;
   const firstVer = (items[0].title.match(verRe)||[])[1] || null;
+  // Grouper par version si elle existe, sinon afficher toutes les entrées (mode flux d'actualités)
   const versionItems = firstVer
     ? items.filter(it => (it.title.match(verRe)||[])[1] === firstVer)
-    : items.slice(0, 1);
+    : items.slice(0, 8);
   const rssIsNew = firstVer && _clSeen[cat.id] !== firstVer;
   if (rssIsNew) _showClNewBadge(cat.id);
   const rssNewBadge = rssIsNew ? ' <span class="cl-new">NEW</span>' : '';
   const verBadge = firstVer ? `<span class="cl-ver">${esc(firstVer)}</span>${rssNewBadge}` : '';
 
-  let html;
-  if (versionItems.length > 1) {
-    const sections = versionItems.map(it => {
-      const featTitle = it.title.replace(verRe,'').replace(/^\s*[-–·:,]\s*/,'').replace(/\s*[-–·:,]\s*$/,'').trim() || it.title;
-      const imgHtml = it.image ? `<img class="cl-feat-img" src="${esc(it.image)}" alt="" loading="lazy" onerror="this.remove()">` : '';
-      const bullets = clBullets(it.summary||'').slice(0,4);
-      const body = bullets.length > 1
-        ? `<ul class="cl-bullets">${bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>`
-        : it.summary ? `<p class="cl-excerpt">${esc(it.summary.slice(0,280))}${it.summary.length>280?'…':''}</p>` : '';
-      return `<details class="rl-section cl-feat-section"><summary class="rl-sh">${esc(featTitle)}</summary>
-        <a class="cl-feature" href="${esc(it.link)}" target="_blank" rel="noopener">${imgHtml}${body}<span class="cl-feat-link">🔗 Voir les détails</span></a>
-      </details>`;
-    }).join('');
-    const rssDetailsAttr = rssIsNew
-      ? `data-cl-cat="${cat.id}" data-cl-ver="${esc(firstVer)}" ontoggle="if(this.open)_clMarkSeen(this.dataset.clCat,this.dataset.clVer,this)"`
-      : 'open';
-    html = `<details class="rl-section" ${rssDetailsAttr}><summary class="rl-sh">${label} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
-  } else {
-    const it = versionItems[0];
-    const bullets = clBullets(it.summary||'').slice(0,5);
-    const buller = bullets.length > 1
+  // Toujours afficher en mode sous-sections (une idée par entrée, photo si disponible)
+  const sections = versionItems.map(it => {
+    const featTitle = it.title.replace(verRe,'').replace(/^\s*[-–·:,]\s*/,'').replace(/\s*[-–·:,]\s*$/,'').trim() || it.title;
+    const imgHtml = it.image ? `<img class="cl-feat-img" src="${esc(it.image)}" alt="" loading="lazy" onerror="this.remove()">` : '';
+    const bullets = clBullets(it.summary||'').slice(0,4);
+    const body = bullets.length > 1
       ? `<ul class="cl-bullets">${bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul>`
-      : it.summary ? `<span class="cl-excerpt">${esc(it.summary.slice(0,200))}${it.summary.length>200?'…':''}</span>` : '';
-    const imgHtml = it.image ? `<img class="cl-img" src="${esc(it.image)}" alt="" loading="lazy" onerror="this.remove()">` : '';
-    const card = `<a class="cl-item" href="${esc(it.link)}" target="_blank" rel="noopener">
-      ${imgHtml}<span class="cl-title">${verBadge}${esc(it.title)}</span>${buller}
-      <span class="cl-meta">${it.date?`<span>🕒 ${esc(fmtDate(it.date))}</span>`:''}</span>
-    </a>`;
-    const rssDetailsAttr = rssIsNew
-      ? `data-cl-cat="${cat.id}" data-cl-ver="${esc(firstVer||'')}" ontoggle="if(this.open)_clMarkSeen(this.dataset.clCat,this.dataset.clVer,this)"`
-      : 'open';
-    html = `<details class="rl-section" ${rssDetailsAttr}><summary class="rl-sh">${label}</summary>${card}</details>`;
-  }
+      : it.summary ? `<p class="cl-excerpt">${esc(it.summary.slice(0,280))}${it.summary.length>280?'…':''}</p>` : '';
+    const dateLbl = it.date ? `<span class="cl-meta-date">🕒 ${esc(fmtDate(it.date))}</span>` : '';
+    return `<details class="rl-section cl-feat-section"><summary class="rl-sh">${esc(featTitle)}</summary>
+      <a class="cl-feature" href="${esc(it.link)}" target="_blank" rel="noopener">${imgHtml}${body}${dateLbl}<span class="cl-feat-link">🔗 Voir les détails</span></a>
+    </details>`;
+  }).join('');
+  const rssDetailsAttr = rssIsNew
+    ? `data-cl-cat="${cat.id}" data-cl-ver="${esc(firstVer||'')}" ontoggle="if(this.open)_clMarkSeen(this.dataset.clCat,this.dataset.clVer,this)"`
+    : 'open';
+  const html = `<details class="rl-section" ${rssDetailsAttr}><summary class="rl-sh">${label} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
   elChangelogLive.innerHTML = html;
   if (!rssIsNew) _clHtml = html;
 }
