@@ -2169,6 +2169,22 @@ async function init(){
       }catch(e){}
     }
   }
+  // Swipe horizontal → onglet suivant/précédent
+  let _txStart=null, _tyStart=null;
+  document.addEventListener('touchstart', e=>{ _txStart=e.touches[0].clientX; _tyStart=e.touches[0].clientY; },{passive:true});
+  document.addEventListener('touchend', e=>{
+    if (_txStart===null) return;
+    const dx=e.changedTouches[0].clientX-_txStart;
+    const dy=e.changedTouches[0].clientY-_tyStart;
+    _txStart=null; _tyStart=null;
+    if (Math.abs(dx)<60||Math.abs(dy)>Math.abs(dx)*0.8) return;
+    const ids=['agenda',...DATA.categories.filter(c=>!c.off).map(c=>c.id)];
+    const idx=ids.indexOf(current);
+    if (idx===-1) return;
+    const next=ids[idx+(dx<0?1:-1)];
+    if (next) selectCat(next);
+  },{passive:true});
+
   // Pause toutes les animations CSS quand l'écran est éteint / app en arrière-plan
   document.addEventListener('visibilitychange', ()=>{
     document.body.classList.toggle('page-hidden', document.hidden);
