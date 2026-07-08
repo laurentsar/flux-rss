@@ -854,7 +854,7 @@ async function loadChangelogLive(cat){
   }).join('');
   const rssDetailsAttr = rssIsNew
     ? `data-cl-cat="${cat.id}" data-cl-ver="${esc(firstVer||'')}" ontoggle="if(this.open)_clMarkSeen(this.dataset.clCat,this.dataset.clVer,this)"`
-    : 'open';
+    : '';
   const html = `<details class="rl-section" ${rssDetailsAttr}><summary class="rl-sh">${label} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
   elChangelogLive.innerHTML = html;
   if (!rssIsNew) _clHtml = html;
