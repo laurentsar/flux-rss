@@ -191,6 +191,24 @@ div.rl-live-section>.rl-sh{font-weight:700;font-size:.9rem;color:#ef4444;padding
 .rl-scorers span{flex:1}
 .rl-scorers span:last-child{text-align:right}
 
+/* ---- Offres bancaires (placement) ---- */
+.bk-section{margin-bottom:12px}
+.bk-section>summary.rl-sh{color:var(--a,#D97706);background:color-mix(in srgb,var(--a,#D97706) 12%,transparent)}
+.bk-upd{margin-left:auto;font-size:.72rem;font-weight:400;opacity:.65}
+.bk-body{padding:8px 10px 12px;background:#1e293b;border-radius:0 0 8px 8px}
+.bk-group-lbl{font-size:.78rem;font-weight:700;color:var(--a,#D97706);margin:6px 0 4px;letter-spacing:.02em}
+.bk-header{display:grid;grid-template-columns:1fr .6fr .8fr 1.8fr;gap:4px 8px;font-size:.72rem;font-weight:600;color:var(--muted);padding:0 4px 4px;border-bottom:1px solid var(--line)}
+.bk-row{display:grid;grid-template-columns:1fr .6fr .8fr 1.8fr;gap:4px 8px;align-items:start;padding:6px 4px;border-bottom:1px solid rgba(127,127,127,.1);font-size:.82rem;color:#c7ccd6;text-decoration:none}
+.bk-row:last-child{border:none}
+.bk-link{cursor:pointer;transition:background .15s}
+.bk-link:hover{background:rgba(255,255,255,.04);border-radius:6px}
+.bk-name{font-weight:600;color:var(--text)}
+.bk-rate{font-weight:700;font-size:.9rem;color:#22c55e}
+.bk-net::after{content:'net';font-size:.65rem;font-weight:400;margin-left:2px;opacity:.7}
+.bk-bonus{color:#f59e0b}
+.bk-cap{color:var(--muted);font-size:.78rem}
+.bk-note{color:var(--muted);font-size:.75rem;line-height:1.3}
+
 /* ---- Agenda ---- */
 .ag-month{margin-bottom:20px}
 .ag-month>summary{cursor:pointer;list-style:none}

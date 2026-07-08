@@ -71,6 +71,7 @@ const elSubtabs = $('#subtabs');
 const elRugbyLive = document.getElementById('rugby-live');
 const elChangelogLive = document.getElementById('changelog-live');
 const elFootballLive = document.getElementById('football-live');
+const elPlacementLive = document.getElementById('placement-live');
 
 /* ---------- réseau ---------- */
 
@@ -1083,6 +1084,89 @@ function renderSubtabs(cat){
     `<button class="subtab${currentTab==='pods'?' active':''}" data-tab="pods">🎙️ Podcasts</button>`;
 }
 
+/* ---------- Offres bancaires (placement) ---------- */
+const BANKING_OFFERS = {
+  updated: '2025-02-01',
+  livrets: [
+    { nom:'Livret A',  taux:'2,40 %', plafond:'22 950 €',  net:true,  note:'Garanti, disponible à tout moment, défiscalisé' },
+    { nom:'LDDS',      taux:'2,40 %', plafond:'12 000 €',  net:true,  note:'Résidents fiscaux FR uniquement' },
+    { nom:'LEP',       taux:'3,50 %', plafond:'10 000 €',  net:true,  note:'Sous conditions de revenus (RFR ≤ 21 393 €)' },
+    { nom:'PEL',       taux:'1,75 %', plafond:'61 200 €',  net:false, note:'Taux brut — bloqué 4 ans minimum' },
+    { nom:'CEL',       taux:'1,25 %', plafond:'15 300 €',  net:false, note:'Taux brut — lié à un PEL' },
+  ],
+  primes: [
+    { banque:'BoursoBank',    offre:'Compte + CB Welcome', prime:'160 €', fin:'2025-06-30', cond:'Dépôt 300 € sous 30 jours',      lien:'https://www.boursobank.com' },
+    { banque:'Fortuneo',      offre:'Compte + CB Fosfo',   prime:'80 €',  fin:'2025-09-30', cond:'Virement salaire dans les 3 mois', lien:'https://www.fortuneo.fr' },
+    { banque:'Monabanq',      offre:'Compte courant',      prime:'120 €', fin:'2025-12-31', cond:'1 opération CB/mois × 3 mois',    lien:'https://www.monabanq.com' },
+    { banque:'Hello bank!',   offre:'Compte + CB One',     prime:'80 €',  fin:'2025-06-30', cond:'Dépôt 500 € sous 45 jours',       lien:'https://www.hellobank.fr' },
+    { banque:'Orange Bank',   offre:'Compte courant',      prime:'100 €', fin:'2025-12-31', cond:'10 opérations CB sous 3 mois',    lien:'https://www.orangebank.fr' },
+  ],
+  livrets_boostes: [
+    { banque:'Distingo Bank',      taux:'3,50 %', duree:'3 mois', plafond:'150 000 €', lien:'https://www.distingo.com' },
+    { banque:'Placement Direct',   taux:'3,00 %', duree:'3 mois', plafond:'100 000 €', lien:'https://www.placementdirect.fr' },
+    { banque:'Cashbee',            taux:'3,20 %', duree:'2 mois', plafond:'75 000 €',  lien:'https://www.cashbee.fr' },
+    { banque:'Ramify',             taux:'3,10 %', duree:'2 mois', plafond:'100 000 €', lien:'https://www.ramify.fr' },
+  ],
+};
+
+function renderPlacementOffers(){
+  const o = BANKING_OFFERS;
+  const updDate = new Date(o.updated).toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+
+  const livretRows = o.livrets.map(l=>`
+    <div class="bk-row">
+      <span class="bk-name">${esc(l.nom)}</span>
+      <span class="bk-rate ${l.net?'bk-net':''}">${esc(l.taux)}</span>
+      <span class="bk-cap">${esc(l.plafond)}</span>
+      <span class="bk-note">${esc(l.note)}</span>
+    </div>`).join('');
+
+  const primeRows = o.primes.map(p=>{
+    const fin = new Date(p.fin+'T00:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'});
+    return `<a class="bk-row bk-link" href="${esc(p.lien)}" target="_blank" rel="noopener">
+      <span class="bk-name">${esc(p.banque)}</span>
+      <span class="bk-rate bk-bonus">${esc(p.prime)}</span>
+      <span class="bk-cap">${esc(p.offre)}</span>
+      <span class="bk-note">${esc(p.cond)} · jusqu'au ${fin}</span>
+    </a>`;
+  }).join('');
+
+  const boostRows = o.livrets_boostes.map(b=>`
+    <a class="bk-row bk-link" href="${esc(b.lien)}" target="_blank" rel="noopener">
+      <span class="bk-name">${esc(b.banque)}</span>
+      <span class="bk-rate bk-net">${esc(b.taux)}</span>
+      <span class="bk-cap">${esc(b.plafond)}</span>
+      <span class="bk-note">Boosté ${esc(b.duree)} puis taux de base</span>
+    </a>`).join('');
+
+  return `<details class="rl-section bk-section" open>
+    <summary class="rl-sh">💰 Meilleures offres bancaires <span class="bk-upd">vérifié ${updDate}</span></summary>
+    <div class="bk-body">
+      <div class="bk-group-lbl">📈 Livrets réglementés (taux nets, garantis)</div>
+      <div class="bk-header"><span>Produit</span><span>Taux</span><span>Plafond</span><span>Note</span></div>
+      ${livretRows}
+      <div class="bk-group-lbl" style="margin-top:12px">🎁 Primes de bienvenue — banques en ligne</div>
+      <div class="bk-header"><span>Banque</span><span>Prime</span><span>Offre</span><span>Conditions</span></div>
+      ${primeRows}
+      <div class="bk-group-lbl" style="margin-top:12px">🚀 Livrets boostés (taux temporaires)</div>
+      <div class="bk-header"><span>Banque</span><span>Taux</span><span>Plafond</span><span>Durée</span></div>
+      ${boostRows}
+    </div>
+  </details>`;
+}
+
+function loadPlacementLive(){
+  if (!elPlacementLive) return;
+  elPlacementLive.hidden = false;
+  elPlacementLive.innerHTML = renderPlacementOffers();
+}
+
+function hidePlacementLive(){
+  if (!elPlacementLive) return;
+  elPlacementLive.hidden = true;
+  elPlacementLive.innerHTML = '';
+}
+
 async function loadCategory(cat, {silent=false}={}){
   _clHtml = null;
   _footLiveHtml = null;
@@ -1096,6 +1180,7 @@ async function loadCategory(cat, {silent=false}={}){
   renderSubtabs(cat);
   if (cat.id==='rugby' && currentTab==='news') loadRugbyLive(); else hideRugbyLive();
   if (cat.id==='football' && currentTab==='news') loadFootballLive(); else hideFootballLive();
+  if (cat.id==='placement' && currentTab==='news') loadPlacementLive(); else hidePlacementLive();
   const _hasChangelog = cat.feeds_changelog?.length || ['tesla','domotique','ia','vr'].includes(cat.id);
   if (_hasChangelog && currentTab==='news') loadChangelogLive(cat); else hideChangelogLive();
 
