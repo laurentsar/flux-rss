@@ -1610,15 +1610,25 @@ async function loadAgenda(){
   elArticles.innerHTML='<div class="rl-loading"><span class="spinner"></span>Chargement de l\'agenda…</div>';
   elStatus.textContent='';
   const slow = slowConnection();
-  const [staticEvents, epgRugby, espnRugby, toulouseLive] = await Promise.all([
+  const [staticEvents, epgRugby, espnRugby, toulouseLive, frSoccer, touFootball, worldCup] = await Promise.all([
     loadAgendaEvents(),
     slow ? Promise.resolve([]) : loadRugbyEpg().catch(()=>[]),
     slow ? Promise.resolve({events:[]}) : fetchSportsEvents().catch(()=>({events:[]})),
     slow ? Promise.resolve([]) : loadToulouseLiveEvents().catch(()=>[]),
+    slow ? Promise.resolve([]) : fetchFranceSoccer().catch(()=>[]),
+    slow ? Promise.resolve([]) : fetchToulouseMatches().catch(()=>[]),
+    slow ? Promise.resolve([]) : fetchWorldCupMatches().catch(()=>[]),
   ]);
-  // France rugby live/finished → live section
-  const frRugbyLive=(espnRugby.events||[]).filter(e=>isFranceMatch(e)&&(e.status?.type==='inprogress'||e.status?.type==='finished'));
-  const liveHtml=renderFranceLive(frRugbyLive,[]);
+  // Tous les sports France live/terminés (rugby national + clubs FR + football)
+  const allRugbyLive=(espnRugby.events||[]).filter(e=>{
+    if (e.status?.type!=='inprogress'&&e.status?.type!=='finished') return false;
+    const n=`${e.homeTeam?.name||''} ${e.awayTeam?.name||''}`.toLowerCase();
+    return isFranceMatch(e)||/toulouse|brive|colomiers/i.test(n);
+  });
+  const seenSoc=new Set();
+  const allSoccerLive=[...frSoccer,...touFootball,...worldCup.filter(e=>isFranceMatch(e))]
+    .filter(e=>!seenSoc.has(e.id)&&seenSoc.add(e.id));
+  const liveHtml=renderFranceLive(allRugbyLive, allSoccerLive);
   // Rugby = grille TV réelle (EPG, toutes chaînes) ; repli sur la liste figée.
   const rugbyAgenda = epgRugby.length ? epgRugby : upcomingRugbyShows(4);
   // Fusion événements statiques + live Toulouse (dédoublonnage par titre+date)
@@ -2092,7 +2102,7 @@ async function init(){
     }, 800);
   }
   elRefresh.addEventListener('click', () => {
-    if (current==='agenda'){ _upcomingRugby=null; _espnCache=null; _frSocCache=null; loadAgenda(); return; }
+    if (current==='agenda'){ _upcomingRugby=null; _espnCache=null; _frSocCache=null; _toulouseCache=null; _worldCupCache=null; loadAgenda(); return; }
     const cat = DATA.categories.find(c => c.id === current);
     if (cat) loadCategory(cat);
   });
