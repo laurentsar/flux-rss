@@ -1,125 +1,8 @@
 {
- "generated": "2026-07-07T20:15:05+02:00",
+ "generated": "2026-07-08T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 29,
+ "count": 27,
  "programmes": [
-  {
-   "title": "Provence Rugby - Perpignan",
-   "date": "2026-07-07",
-   "time": "18:47",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Championnat du monde U20",
-   "date": "2026-07-07",
-   "time": "19:00",
-   "desc": "A suivre, des rencontres disputées dans le cadre de cette compétition qui se déroule tous les ans et réservée aux espoirs du rugby âgés de m",
-   "chaine": [
-    "La Chaîne L'Équipe"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "France / Australie",
-   "date": "2026-07-07",
-   "time": "19:00",
-   "desc": "Rugby",
-   "chaine": [
-    "La Chaîne L'Équipe"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-07-07",
-   "time": "20:38",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Top 14",
-   "date": "2026-07-07",
-   "time": "21:00",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Championnat du monde U20",
-   "date": "2026-07-07",
-   "time": "22:07",
-   "desc": "Ce championnat du monde U20 se déroule en Géorgie et cette rencontre entre les jeunes All Blacks et les Italiens prenait place dans l'Arena ",
-   "chaine": [
-    "La Chaîne L'Équipe"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Nouvelle-Zélande / Italie",
-   "date": "2026-07-07",
-   "time": "22:07",
-   "desc": "Rugby",
-   "chaine": [
-    "La Chaîne L'Équipe"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Championnat du monde U20",
-   "date": "2026-07-07",
-   "time": "23:00",
-   "desc": "Ce championnat du monde U20 se déroule en Géorgie et cette rencontre entre les jeunes All Blacks et les Italiens prenait place dans l'Arena ",
-   "chaine": [
-    "La Chaîne L'Équipe"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Nouvelle-Zélande / Italie",
-   "date": "2026-07-07",
-   "time": "23:00",
-   "desc": "Rugby",
-   "chaine": [
-    "La Chaîne L'Équipe"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-07-08",
@@ -218,6 +101,19 @@
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : State of Origin féminin",
+   "date": "2026-07-09",
+   "time": "08:00",
+   "desc": "Retransmission du State of Origin féminin, une compétition de rugby à XIII, opposant deux équipes australiennes, représentant deux états riv",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -342,12 +238,51 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-10",
+   "time": "12:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat du monde U20",
+   "date": "2026-07-10",
+   "time": "13:30",
+   "desc": "A suivre, des rencontres disputées dans le cadre de cette compétition qui se déroule tous les ans et réservée aux espoirs du rugby âgés de m",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Nouvelle-Zélande / Italie",
    "date": "2026-07-10",
    "time": "13:30",
    "desc": "Rugby",
    "chaine": [
     "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Major League Rugby",
+   "date": "2026-07-10",
+   "time": "15:00",
+   "desc": "Affiche à définir de la finale de la Major League Rugby 2026.",
+   "chaine": [
+    "Sport en France"
    ],
    "cats": [
     "rugby"
@@ -371,6 +306,45 @@
    "title": "Rugby : Elite 1 féminine",
    "date": "2026-07-10",
    "time": "18:36",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : State of Origin féminin",
+   "date": "2026-07-10",
+   "time": "19:30",
+   "desc": "Retransmission du State of Origin féminin, une compétition de rugby à XIII, opposant deux équipes australiennes, représentant deux états riv",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-10",
+   "time": "22:30",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Super Rugby Pacific",
+   "date": "2026-07-11",
+   "time": "16:40",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
