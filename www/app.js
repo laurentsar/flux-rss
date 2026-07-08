@@ -1603,6 +1603,77 @@ async function loadRugbyEpg(){
   return out;
 }
 
+/* ---------- Autres sports France (agenda) ---------- */
+let _otherSportsCache=null, _otherSportsCacheTs=0;
+
+async function fetchOtherSportsFrance(){
+  if (_otherSportsCache && Date.now()-_otherSportsCacheTs<5*60*1000) return _otherSportsCache;
+  const fmt=d=>d.toISOString().slice(0,10);
+  const dates=[fmt(new Date()), fmt(new Date(Date.now()-86400000))];
+  const SPORTS=[
+    {slug:'basketball', icon:'🏀'},
+    {slug:'handball',   icon:'🤾'},
+    {slug:'volleyball', icon:'🏐'},
+    {slug:'ice-hockey', icon:'🏒'},
+  ];
+  const FR=/\bfrance\b/i;
+  const results=await Promise.allSettled(
+    SPORTS.flatMap(s=>dates.map(date=>
+      fetchJson(`https://api.sofascore.com/api/v1/sport/${s.slug}/scheduled-events/${date}`)
+        .then(d=>(d.events||[])
+          .filter(e=>FR.test(e.homeTeam?.name||'')||FR.test(e.awayTeam?.name||''))
+          .map(e=>{
+            const code=e.status?.code??-1;
+            const isLive=e.status?.type==='inprogress'||(code>=1&&code<100);
+            const isFin=e.status?.type==='finished'||code===100;
+            return {
+              id:`sofa-${s.slug}-${e.id}`,
+              homeTeam:{name:e.homeTeam?.name||'?'},
+              awayTeam:{name:e.awayTeam?.name||'?'},
+              homeScore:{current:e.homeScore?.current??e.homeScore?.display??''},
+              awayScore:{current:e.awayScore?.current??e.awayScore?.display??''},
+              status:{type:isLive?'inprogress':isFin?'finished':'notstarted', description:e.status?.description||''},
+              startTimestamp:e.startTimestamp||0,
+              tournament:{name:e.tournament?.name||s.slug, round:e.roundInfo?.name||''},
+              sportIcon:s.icon,
+            };
+          })
+        )
+    ))
+  );
+  const seen=new Set();
+  const events=results
+    .flatMap(r=>r.status==='fulfilled'?r.value:[])
+    .filter(e=>(e.status.type==='inprogress'||e.status.type==='finished')&&!seen.has(e.id)&&seen.add(e.id));
+  _otherSportsCache=events; _otherSportsCacheTs=Date.now();
+  return events;
+}
+
+function renderOtherSportsLive(events){
+  if (!events.length) return '';
+  const renderCard=e=>{
+    const live=e.status?.type==='inprogress', fin=e.status?.type==='finished';
+    const hs=String(e.homeScore?.current??''), as_=String(e.awayScore?.current??'');
+    const hw=fin&&parseInt(hs)>parseInt(as_), aw=fin&&parseInt(as_)>parseInt(hs);
+    const badge=live?'<span class="rl-live-dot"></span>':'';
+    const time=live?(e.status?.description||'⏱'):'';
+    const score=(live||fin)?`<b>${esc(hs)}</b><span class="rl-vs">–</span><b>${esc(as_)}</b>${time?`<span class="rl-time"> ${esc(time)}</span>`:''}`:'' ;
+    const icon=e.sportIcon||'🏅';
+    const hn=e.homeTeam?.name||'?', an=e.awayTeam?.name||'?';
+    const roundLbl=e.tournament?.round?` · ${esc(e.tournament.round)}`:'';
+    const compLine=e.tournament?.name?`<div class="rl-jlbl">${icon} ${esc(e.tournament.name)}${roundLbl}</div>`:'';
+    return compLine+`<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${icon} ${esc(hn)}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(an)}</span></div>`;
+  };
+  const liveEvts=events.filter(e=>e.status?.type==='inprogress');
+  const doneEvts=events.filter(e=>e.status?.type!=='inprogress');
+  let html='';
+  if(liveEvts.length)
+    html+=`<div class="rl-section rl-live-section"><div class="rl-sh">🔴 🇫🇷 France — En direct</div>${liveEvts.map(renderCard).join('')}</div>`;
+  if(doneEvts.length)
+    html+=`<details class="rl-section"><summary class="rl-sh">🇫🇷 France — Résultats récents</summary>${doneEvts.map(renderCard).join('')}</details>`;
+  return html;
+}
+
 async function loadAgenda(){
   hideChangelogLive();
   hideRugbyLive();
@@ -1610,25 +1681,18 @@ async function loadAgenda(){
   elArticles.innerHTML='<div class="rl-loading"><span class="spinner"></span>Chargement de l\'agenda…</div>';
   elStatus.textContent='';
   const slow = slowConnection();
-  const [staticEvents, epgRugby, espnRugby, toulouseLive, frSoccer, touFootball, worldCup] = await Promise.all([
+  const [staticEvents, epgRugby, espnRugby, toulouseLive, otherSports] = await Promise.all([
     loadAgendaEvents(),
     slow ? Promise.resolve([]) : loadRugbyEpg().catch(()=>[]),
     slow ? Promise.resolve({events:[]}) : fetchSportsEvents().catch(()=>({events:[]})),
     slow ? Promise.resolve([]) : loadToulouseLiveEvents().catch(()=>[]),
-    slow ? Promise.resolve([]) : fetchFranceSoccer().catch(()=>[]),
-    slow ? Promise.resolve([]) : fetchToulouseMatches().catch(()=>[]),
-    slow ? Promise.resolve([]) : fetchWorldCupMatches().catch(()=>[]),
+    slow ? Promise.resolve([]) : fetchOtherSportsFrance().catch(()=>[]),
   ]);
-  // Tous les sports France live/terminés (rugby national + clubs FR + football)
-  const allRugbyLive=(espnRugby.events||[]).filter(e=>{
-    if (e.status?.type!=='inprogress'&&e.status?.type!=='finished') return false;
-    const n=`${e.homeTeam?.name||''} ${e.awayTeam?.name||''}`.toLowerCase();
-    return isFranceMatch(e)||/toulouse|brive|colomiers/i.test(n);
-  });
-  const seenSoc=new Set();
-  const allSoccerLive=[...frSoccer,...touFootball,...worldCup.filter(e=>isFranceMatch(e))]
-    .filter(e=>!seenSoc.has(e.id)&&seenSoc.add(e.id));
-  const liveHtml=renderFranceLive(allRugbyLive, allSoccerLive);
+  // France rugby national live/terminé (inchangé)
+  const frRugbyLive=(espnRugby.events||[]).filter(e=>isFranceMatch(e)&&(e.status?.type==='inprogress'||e.status?.type==='finished'));
+  const rugbyLiveHtml=renderFranceLive(frRugbyLive,[]);
+  const otherSportsHtml=renderOtherSportsLive(otherSports);
+  const liveHtml=rugbyLiveHtml+otherSportsHtml;
   // Rugby = grille TV réelle (EPG, toutes chaînes) ; repli sur la liste figée.
   const rugbyAgenda = epgRugby.length ? epgRugby : upcomingRugbyShows(4);
   // Fusion événements statiques + live Toulouse (dédoublonnage par titre+date)
@@ -2102,7 +2166,7 @@ async function init(){
     }, 800);
   }
   elRefresh.addEventListener('click', () => {
-    if (current==='agenda'){ _upcomingRugby=null; _espnCache=null; _frSocCache=null; _toulouseCache=null; _worldCupCache=null; loadAgenda(); return; }
+    if (current==='agenda'){ _upcomingRugby=null; _espnCache=null; _frSocCache=null; loadAgenda(); return; }
     const cat = DATA.categories.find(c => c.id === current);
     if (cat) loadCategory(cat);
   });
