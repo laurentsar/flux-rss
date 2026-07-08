@@ -1139,7 +1139,7 @@ function renderPlacementOffers(){
       <span class="bk-note">Boosté ${esc(b.duree)} puis taux de base</span>
     </a>`).join('');
 
-  return `<details class="rl-section bk-section" open>
+  return `<details class="rl-section bk-section">
     <summary class="rl-sh">💰 Meilleures offres bancaires <span class="bk-upd">vérifié ${updDate}</span></summary>
     <div class="bk-body">
       <div class="bk-group-lbl">📈 Livrets réglementés (taux nets, garantis)</div>
