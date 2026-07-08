@@ -966,7 +966,7 @@ function renderFootMatchSection(title, events){
     return compLine+matchCard+scorerLine;
   }).join('');
   const sectionLabel=hasLive?`🔴 ${title} — En direct`:`${title} — Résultats récents`;
-  return `<details class="rl-section${hasLive?' rl-live-section':''}" open><summary class="rl-sh">${sectionLabel}</summary>${cards}</details>`;
+  return `<details class="rl-section${hasLive?' rl-live-section':''}"${hasLive?' open':''}><summary class="rl-sh">${sectionLabel}</summary>${cards}</details>`;
 }
 
 async function fetchWorldCupMatches(){
@@ -1273,7 +1273,7 @@ function renderFranceLive(rugbyLive, soccerEvents){
   const hasYouthA = /u\s*\d+|under|moins\s*de|junior/i.test(allNames);
   const agLabel = hasYouthA ? '🇫🇷 Équipes de France' : '🇫🇷 France';
   const label=hasLive?`🔴 ${agLabel} en direct`:`${agLabel} — Résultats récents`;
-  return `<details class="rl-section${hasLive?' rl-live-section':''}" open><summary class="rl-sh">${label}</summary>${cards}</details>`;
+  return `<details class="rl-section${hasLive?' rl-live-section':''}"${hasLive?' open':''}><summary class="rl-sh">${label}</summary>${cards}</details>`;
 }
 
 /* ---------- Agenda ---------- */
