@@ -1523,7 +1523,9 @@ function eventTs(ev){
   return t;
 }
 function renderAgenda(staticEvents, matchEvents){
+  const _now=Date.now();
   const all=[...staticEvents,...matchEvents]
+    .filter(ev=>{ const end=Date.parse(ev.dateEnd||ev.date); return end>=_now-3600000; })
     .sort((a,b)=>eventTs(a)-eventTs(b));
   if (!all.length) return '<div class="rl-loading">Aucun événement à venir.</div>';
 
@@ -1593,7 +1595,7 @@ async function loadRugbyEpg(){
   try{ data=await (await fetch(RUGBY_EPG_URL+'?_='+Date.now(),{cache:'no-store'})).json(); }catch(e){}
   if (!data){ try{ data=await (await fetch('data/rugby_tv.json')).json(); }catch(e){} }
   const list=(data&&data.programmes)||[];
-  const floor=Date.now()-86400000;
+  const floor=Date.now()-3600000;
   const filtered=list.filter(p=>{ const d=Date.parse(p.date); return !isNaN(d) && d>=floor; });
   // Group by date+time+channel: pair generic "Rugby : Competition" with specific match titles
   const groups={};
