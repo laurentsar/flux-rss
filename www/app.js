@@ -1085,7 +1085,7 @@ async function loadCategory(cat, {silent=false}={}){
 
   // cache immédiat
   const cached = JSON.parse(localStorage.getItem(cacheKey(cat.id, currentTab)) || 'null');
-  if (cached?.items) { const _c=Date.now()-7*24*3600*1000; cached.items=cached.items.filter(it=>!it.ts||it.ts>=_c); }
+  if (cached?.items) { const _c=Date.now()-15*24*3600*1000; cached.items=cached.items.filter(it=>!it.ts||it.ts>=_c); }
   const isSlowConn = slowConnection();
   if (cached && cached.items && cached.items.length){
     render(cached.items, cat.id, cached.ts);
@@ -1121,7 +1121,7 @@ async function loadCategory(cat, {silent=false}={}){
   let ok = 0;
   results.forEach((r) => { if (r.status==='fulfilled'){ ok++; items = items.concat(r.value); } });
   const _seen = new Set();
-  const _cutoff = Date.now() - 7*24*3600*1000;
+  const _cutoff = Date.now() - 15*24*3600*1000;
   items = items.filter(it => it.link && !_seen.has(it.link) && _seen.add(it.link));
   items = items.filter(it => !it.ts || it.ts >= _cutoff);
   items.sort((x,y)=> y.ts - x.ts);
