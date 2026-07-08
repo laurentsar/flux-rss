@@ -1607,9 +1607,9 @@ async function loadRugbyEpg(){
 let _otherSportsCache=null, _otherSportsCacheTs=0;
 
 async function fetchOtherSportsFrance(){
-  if (_otherSportsCache && Date.now()-_otherSportsCacheTs<5*60*1000) return _otherSportsCache;
+  if (_otherSportsCache && Date.now()-_otherSportsCacheTs<60*60*1000) return _otherSportsCache;
   const fmt=d=>d.toISOString().slice(0,10);
-  const dates=[fmt(new Date()), fmt(new Date(Date.now()-86400000))];
+  const dates=Array.from({length:7},(_,i)=>fmt(new Date(Date.now()-i*86400000)));
   const SPORTS=[
     {slug:'basketball', icon:'🏀'},
     {slug:'handball',   icon:'🤾'},
