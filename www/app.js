@@ -339,7 +339,7 @@ function renderLiveScores(events, extraIntlHtml=''){
     const doneEvts = evts.filter(e=>e.status?.type!=='inprogress');
     let html = '';
     if(liveEvts.length)
-      html += `<div class="rl-section rl-live-section"><div class="rl-sh">🔴 ${label} — En direct</div>${liveEvts.map(renderCard).join('')}</div>`;
+      html += `<div class="rl-section rl-live-section"><div class="rl-sh">🔴 ${label} — En direct<button class="rl-refresh-btn" onclick="manualRefreshLive()" title="Actualiser">⟳</button></div>${liveEvts.map(renderCard).join('')}</div>`;
     const doneCards = doneEvts.map(renderCard).join('');
     if(doneCards || extra)
       html += `<details class="rl-section"><summary class="rl-sh">${label}</summary>${doneCards}${extra}</details>`;
@@ -444,6 +444,9 @@ let _espnCache = null, _espnCacheTs = 0;
 let _frSocCache = null, _frSocCacheTs = 0;
 let _rugbyLiveHtml = '', _rugbyLiveTs = 0;
 let _hasLiveSports = false;
+let _liveRefreshTimer = null;
+function stopLiveRefresh(){ if(_liveRefreshTimer){clearTimeout(_liveRefreshTimer);_liveRefreshTimer=null;} }
+function scheduleLiveRefresh(fn){ stopLiveRefresh(); _liveRefreshTimer=setTimeout(fn,20000); }
 let _autoSwitchedToLive = false;
 
 function updateLiveBadge(){
@@ -461,15 +464,22 @@ function checkLiveAndSwitch(){
     }
   }).catch(()=>{});
 }
-async function loadRugbyLive(){
+function manualRefreshLive(){
+  stopLiveRefresh();
+  if (current==='rugby'){ _espnCache=null; loadRugbyLive({liveRefresh:true}); }
+  else if (current==='football'){ _footLiveHtml=null; _frSocCache=null; _toulouseCache=null; _worldCupCache=null; loadFootballLive({liveRefresh:true}); }
+  else if (current==='agenda') reloadAgendaLive();
+}
+
+async function loadRugbyLive(opts={}){
   if (!elRugbyLive) return;
   elRugbyLive.hidden = false;
-  // Réutilise le cache mémoire si < 3 minutes
-  if (_rugbyLiveHtml && Date.now() - _rugbyLiveTs < 3 * 60 * 1000){
+  if (_rugbyLiveHtml && Date.now() - _rugbyLiveTs < 3 * 60 * 1000 && !opts.liveRefresh){
     elRugbyLive.innerHTML = _rugbyLiveHtml;
     return;
   }
-  elRugbyLive.innerHTML = '<div class="rl-loading"><span class="spinner"></span>Scores & classements…</div>';
+  if (opts.liveRefresh) _espnCache = null;
+  else elRugbyLive.innerHTML = '<div class="rl-loading"><span class="spinner"></span>Scores & classements…</div>';
   const season = rugbySeason();
   const top14 = `Championnat de France de rugby à XV ${season}`;
 
@@ -505,10 +515,12 @@ async function loadRugbyLive(){
   elRugbyLive.innerHTML = html || '<div class="rl-loading">Données non disponibles.</div>';
   _rugbyLiveHtml = elRugbyLive.innerHTML;
   _rugbyLiveTs = Date.now();
+  if (_hasLiveSports) scheduleLiveRefresh(()=>loadRugbyLive({liveRefresh:true}));
 }
 
 function hideRugbyLive(){
   if (elRugbyLive){ elRugbyLive.hidden=true; elRugbyLive.innerHTML=''; }
+  stopLiveRefresh();
 }
 
 /* ---------- Changelog Live ---------- */
@@ -974,7 +986,7 @@ function renderFootMatchSection(title, events){
   const doneEvs=events.filter(e=>e.status?.type!=='inprogress');
   let html='';
   if(liveEvs.length)
-    html+=`<div class="rl-section rl-live-section"><div class="rl-sh">🔴 ${esc(title)} — En direct</div>${liveEvs.map(renderCard).join('')}</div>`;
+    html+=`<div class="rl-section rl-live-section"><div class="rl-sh">🔴 ${esc(title)} — En direct<button class="rl-refresh-btn" onclick="manualRefreshLive()" title="Actualiser">⟳</button></div>${liveEvs.map(renderCard).join('')}</div>`;
   if(doneEvs.length)
     html+=`<details class="rl-section"><summary class="rl-sh">${esc(title)} — Résultats récents</summary>${doneEvs.map(renderCard).join('')}</details>`;
   return html;
@@ -1025,11 +1037,12 @@ async function fetchWorldCupMatches(){
   return events;
 }
 
-async function loadFootballLive(){
+async function loadFootballLive(opts={}){
   if (!elFootballLive) return;
-  if (_footLiveHtml && Date.now()-_footLiveTs<5*60*1000){
+  if (_footLiveHtml && Date.now()-_footLiveTs<5*60*1000 && !opts.liveRefresh){
     elFootballLive.hidden=false; elFootballLive.innerHTML=_footLiveHtml; return;
   }
+  if (opts.liveRefresh){ _frSocCache=null; _toulouseCache=null; _worldCupCache=null; }
   const [frSoccer, toulouse, worldCup]=await Promise.all([
     fetchFranceSoccer().catch(()=>[]),
     fetchToulouseMatches().catch(()=>[]),
@@ -1047,11 +1060,14 @@ async function loadFootballLive(){
   elFootballLive.hidden=!html;
   elFootballLive.innerHTML=html;
   if (html){ _footLiveHtml=html; _footLiveTs=Date.now(); }
+  const hasLive=[...frSoccer,...toulouse,...worldCup].some(e=>e.status?.type==='inprogress');
+  if (hasLive) scheduleLiveRefresh(()=>loadFootballLive({liveRefresh:true}));
 }
 
 function hideFootballLive(){
   if (elFootballLive){ elFootballLive.hidden=true; elFootballLive.innerHTML=''; }
   _footLiveHtml=null;
+  stopLiveRefresh();
 }
 
 /* ---------- chargement catégorie ---------- */
@@ -1289,7 +1305,7 @@ function renderFranceLive(rugbyLive, soccerEvents){
   const doneAll=all.filter(e=>e.status?.type!=='inprogress');
   let html='';
   if(liveAll.length)
-    html+=`<div class="rl-section rl-live-section"><div class="rl-sh">🔴 ${agLabel} en direct</div>${liveAll.map(renderCard).join('')}</div>`;
+    html+=`<div class="rl-section rl-live-section"><div class="rl-sh">🔴 ${agLabel} en direct<button class="rl-refresh-btn" onclick="manualRefreshLive()" title="Actualiser">⟳</button></div>${liveAll.map(renderCard).join('')}</div>`;
   if(doneAll.length)
     html+=`<details class="rl-section"><summary class="rl-sh">${agLabel} — Résultats récents</summary>${doneAll.map(renderCard).join('')}</details>`;
   return html;
@@ -1671,10 +1687,27 @@ function renderOtherSportsLive(events){
   const doneEvts=events.filter(e=>e.status?.type!=='inprogress');
   let html='';
   if(liveEvts.length)
-    html+=`<div class="rl-section rl-live-section"><div class="rl-sh">🔴 🇫🇷 France — En direct</div>${liveEvts.map(renderCard).join('')}</div>`;
+    html+=`<div class="rl-section rl-live-section"><div class="rl-sh">🔴 🇫🇷 France — En direct<button class="rl-refresh-btn" onclick="manualRefreshLive()" title="Actualiser">⟳</button></div>${liveEvts.map(renderCard).join('')}</div>`;
   if(doneEvts.length)
     html+=`<details class="rl-section"><summary class="rl-sh">🇫🇷 France — Résultats récents</summary>${doneEvts.map(renderCard).join('')}</details>`;
   return html;
+}
+
+async function reloadAgendaLive(){
+  const agLiveEl = document.getElementById('ag-live');
+  if (!agLiveEl) return;
+  const slow = slowConnection();
+  const [espnRugby, otherSports] = await Promise.all([
+    slow ? Promise.resolve({events:[]}) : fetchSportsEvents().catch(()=>({events:[]})),
+    slow ? Promise.resolve([]) : fetchOtherSportsFrance().catch(()=>[]),
+  ]);
+  const frRugbyLive=(espnRugby.events||[]).filter(e=>isFranceMatch(e)&&(e.status?.type==='inprogress'||e.status?.type==='finished'));
+  const rugbyLiveHtml=renderFranceLive(frRugbyLive,[]);
+  const otherSportsHtml=renderOtherSportsLive(otherSports);
+  const liveHtml=rugbyLiveHtml+otherSportsHtml;
+  agLiveEl.innerHTML=liveHtml;
+  const hasLive=[...(espnRugby.events||[]),...otherSports].some(e=>e.status?.type==='inprogress');
+  if (hasLive) scheduleLiveRefresh(()=>reloadAgendaLive());
 }
 
 async function loadAgenda(){
@@ -1705,6 +1738,8 @@ async function loadAgenda(){
   const total=allStatic.length+rugbyAgenda.length;
   elArticles.innerHTML=(liveHtml?`<div id="ag-live">${liveHtml}</div>`:'')+renderAgenda(allStatic,rugbyAgenda);
   elStatus.textContent=`${total} événement${total>1?'s':''} à venir`;
+  const hasAgendaLive=[...(espnRugby.events||[]),...otherSports].some(e=>e.status?.type==='inprogress');
+  if (hasAgendaLive) scheduleLiveRefresh(()=>reloadAgendaLive());
   if (_agendaTimer) clearTimeout(_agendaTimer);
   _agendaTimer = setTimeout(()=>{ if(current==='agenda'){ _toulouseLiveCache=null; loadAgenda(); } }, 3600000);
 }
@@ -1793,6 +1828,7 @@ function renderChips(){
   updateLiveBadge();
 }
 function selectCat(id){
+  stopLiveRefresh();
   if (_agendaTimer) { clearTimeout(_agendaTimer); _agendaTimer = null; }
   localStorage.setItem('lastCat', id);
   elCats.querySelectorAll('.chip').forEach(b=>{
