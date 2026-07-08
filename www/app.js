@@ -947,8 +947,7 @@ async function fetchToulouseMatches(){
 }
 
 function renderFootMatchSection(title, events){
-  const hasLive=events.some(e=>e.status?.type==='inprogress');
-  const cards=events.map(e=>{
+  const renderCard = e => {
     const st=e.status?.type, live=st==='inprogress', fin=st==='finished';
     const hs=e.homeScore?.current??'', as_=e.awayScore?.current??'';
     const hw=fin&&parseInt(hs)>parseInt(as_), aw=fin&&parseInt(as_)>parseInt(hs);
@@ -964,9 +963,15 @@ function renderFootMatchSection(title, events){
     const roundLbl=e.tournament?.round?` · ${esc(e.tournament.round)}`:'';
     const compLine=e.tournament?.name?`<div class="rl-jlbl">⚽ ${esc(e.tournament.name)}${roundLbl}</div>`:'';
     return compLine+matchCard+scorerLine;
-  }).join('');
-  const sectionLabel=hasLive?`🔴 ${title} — En direct`:`${title} — Résultats récents`;
-  return `<details class="rl-section${hasLive?' rl-live-section':''}"${hasLive?' open':''}><summary class="rl-sh">${sectionLabel}</summary>${cards}</details>`;
+  };
+  const liveEvs=events.filter(e=>e.status?.type==='inprogress');
+  const doneEvs=events.filter(e=>e.status?.type!=='inprogress');
+  let html='';
+  if(liveEvs.length)
+    html+=`<div class="rl-section rl-live-section"><div class="rl-sh">🔴 ${esc(title)} — En direct</div>${liveEvs.map(renderCard).join('')}</div>`;
+  if(doneEvs.length)
+    html+=`<details class="rl-section"><summary class="rl-sh">${esc(title)} — Résultats récents</summary>${doneEvs.map(renderCard).join('')}</details>`;
+  return html;
 }
 
 async function fetchWorldCupMatches(){
@@ -1250,8 +1255,10 @@ function renderFranceLive(rugbyLive, soccerEvents){
     ...soccerEvents.filter(e=>e.status?.type==='inprogress'||e.status?.type==='finished'),
   ];
   if(!all.length) return '';
-  const hasLive=all.some(e=>e.status?.type==='inprogress');
-  const cards=all.map(e=>{
+  const allNames=all.map(e=>`${e.homeTeam?.name||''} ${e.awayTeam?.name||''}`).join(' ');
+  const hasYouthA=/u\s*\d+|under|moins\s*de|junior/i.test(allNames);
+  const agLabel=hasYouthA?'🇫🇷 Équipes de France':'🇫🇷 France';
+  const renderCard = e => {
     const st=e.status?.type,live=st==='inprogress',fin=st==='finished';
     const hs=e.homeScore?.current??'',as_=e.awayScore?.current??'';
     const hw=fin&&parseInt(hs)>parseInt(as_),aw=fin&&parseInt(as_)>parseInt(hs);
@@ -1268,12 +1275,15 @@ function renderFranceLive(rugbyLive, soccerEvents){
     const roundLbl=e.tournament?.round?` · ${esc(e.tournament.round)}`:'';
     const compLine=e.tournament?.name?`<div class="rl-jlbl">${icon}${esc(e.tournament.name)}${roundLbl}</div>`:'';
     return compLine+matchCard+scorerLine;
-  }).join('');
-  const allNames = all.map(e=>`${e.homeTeam?.name||''} ${e.awayTeam?.name||''}`).join(' ');
-  const hasYouthA = /u\s*\d+|under|moins\s*de|junior/i.test(allNames);
-  const agLabel = hasYouthA ? '🇫🇷 Équipes de France' : '🇫🇷 France';
-  const label=hasLive?`🔴 ${agLabel} en direct`:`${agLabel} — Résultats récents`;
-  return `<details class="rl-section${hasLive?' rl-live-section':''}"${hasLive?' open':''}><summary class="rl-sh">${label}</summary>${cards}</details>`;
+  };
+  const liveAll=all.filter(e=>e.status?.type==='inprogress');
+  const doneAll=all.filter(e=>e.status?.type!=='inprogress');
+  let html='';
+  if(liveAll.length)
+    html+=`<div class="rl-section rl-live-section"><div class="rl-sh">🔴 ${agLabel} en direct</div>${liveAll.map(renderCard).join('')}</div>`;
+  if(doneAll.length)
+    html+=`<details class="rl-section"><summary class="rl-sh">${agLabel} — Résultats récents</summary>${doneAll.map(renderCard).join('')}</details>`;
+  return html;
 }
 
 /* ---------- Agenda ---------- */
