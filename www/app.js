@@ -1524,14 +1524,18 @@ function eventTs(ev){
 }
 function renderAgenda(staticEvents, matchEvents){
   const _now=Date.now();
+  const _today=new Date(); _today.setHours(0,0,0,0);
   const all=[...staticEvents,...matchEvents]
-    .filter(ev=>{ const end=Date.parse(ev.dateEnd||ev.date); return end>=_now-3600000; })
+    // Use end-of-day (T23:59:59 = local time) to avoid midnight-UTC vs local-time confusion
+    .filter(ev=>{ const end=new Date(`${ev.dateEnd||ev.date}T23:59:59`).getTime(); return end>=_now; })
     .sort((a,b)=>eventTs(a)-eventTs(b));
   if (!all.length) return '<div class="rl-loading">Aucun événement à venir.</div>';
 
   const byMonth={};
   all.forEach(ev=>{
-    const d=new Date(Date.parse(ev.date));
+    const startD=new Date(Date.parse(ev.date));
+    // Events started in a past month → group under current month to avoid archive sections
+    const d=startD<_today && startD.getMonth()!==_today.getMonth() ? _today : startD;
     const key=`${d.getFullYear()}-${d.getMonth()}`;
     if (!byMonth[key]) byMonth[key]={
       label:d.toLocaleDateString('fr-FR',{month:'long',year:'numeric'}),
@@ -1596,7 +1600,11 @@ async function loadRugbyEpg(){
   if (!data){ try{ data=await (await fetch('data/rugby_tv.json')).json(); }catch(e){} }
   const list=(data&&data.programmes)||[];
   const floor=Date.now()-3600000;
-  const filtered=list.filter(p=>{ const d=Date.parse(p.date); return !isNaN(d) && d>=floor; });
+  const filtered=list.filter(p=>{
+    // Combine date+time so "2026-07-08T08:00:00" is parsed as LOCAL time (no timezone = local per spec)
+    const ts=p.time ? new Date(`${p.date}T${p.time}:00`).getTime() : new Date(`${p.date}T23:59:59`).getTime();
+    return !isNaN(ts) && ts>=floor;
+  });
   // Group by date+time+channel: pair generic "Rugby : Competition" with specific match titles
   const groups={};
   filtered.forEach(p=>{
