@@ -321,8 +321,7 @@ function renderLiveScores(events, extraIntlHtml=''){
 
   function section(evts, label, extra=''){
     if (!evts.length && !extra) return '';
-    const hasLive = evts.some(e=>e.status?.type==='inprogress');
-    const cards = evts.map(e=>{
+    const renderCard = e => {
       const st = e.status?.type;
       const live = st==='inprogress', fin = st==='finished';
       const hs = e.homeScore?.current??'', as_ = e.awayScore?.current??'';
@@ -335,9 +334,16 @@ function renderLiveScores(events, extraIntlHtml=''){
       const roundLbl=e.tournament?.round?` · ${esc(e.tournament.round)}`:'';
       const compLine=e.tournament?.name?`<div class="rl-jlbl">🏉 ${esc(e.tournament.name)}${roundLbl}</div>`:'';
       return compLine+`<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${teamBadge(hn)}${esc(hn)}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${teamBadge(an)}${esc(an)}</span></div>`;
-    }).join('');
-    const lbl = hasLive ? `🔴 ${label} — En direct` : label;
-    return `<details class="rl-section${hasLive?' rl-live-section':''}"${hasLive?' open':''}><summary class="rl-sh">${lbl}</summary>${cards}${extra}</details>`;
+    };
+    const liveEvts = evts.filter(e=>e.status?.type==='inprogress');
+    const doneEvts = evts.filter(e=>e.status?.type!=='inprogress');
+    let html = '';
+    if(liveEvts.length)
+      html += `<div class="rl-section rl-live-section"><div class="rl-sh">🔴 ${label} — En direct</div>${liveEvts.map(renderCard).join('')}</div>`;
+    const doneCards = doneEvts.map(renderCard).join('');
+    if(doneCards || extra)
+      html += `<details class="rl-section"><summary class="rl-sh">${label}</summary>${doneCards}${extra}</details>`;
+    return html;
   }
   return section(top14Events,'🏆 Top 14 / Champions Cup') + section(intlEvents,'🌐 Matchs internationaux', extraIntlHtml);
 }
@@ -383,7 +389,7 @@ function renderProD2Teams(matches){
     const favA=PRO_D2_TEAMS.some(t=>(away||'').toLowerCase().includes(t.toLowerCase()));
     return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(home)}${favH?' ⭐':''}</span><span class="rl-sb"><b>${esc(hs)}</b><span class="rl-vs">–</span><b>${esc(as_)}</b></span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(away)}${favA?' ⭐':''}</span></div>`;
   }).join('');
-  return `<details class="rl-section" open><summary class="rl-sh">🏉 Brive & Colomiers — Pro D2</summary>${cards}</details>`;
+  return `<details class="rl-section"><summary class="rl-sh">🏉 Brive & Colomiers — Pro D2</summary>${cards}</details>`;
 }
 
 /* --- Championnat des nations : toutes les équipes --- */
@@ -480,7 +486,7 @@ async function loadRugbyLive(){
   updateLiveBadge();
   let html = '';
   const champHtml = renderChampionnatNations(champNations);
-  if (sofa.error) html += `<details class="rl-section" open><summary class="rl-sh">📡 Scores live</summary><div class="rl-loading">⚠️ ${sofa.error}</div></details>`;
+  if (sofa.error) html += `<details class="rl-section"><summary class="rl-sh">📡 Scores live</summary><div class="rl-loading">⚠️ ${sofa.error}</div></details>`;
   else if (sofa.events.length || champHtml) html += renderLiveScores(sofa.events, champHtml);
   if (r1){
     const tbls = parseWikitables(r1?.parse?.text?.['*']||'');
