@@ -57,5 +57,17 @@
     {"nom": "LVMH",          "ticker": "MC",  "condition": "1 action + présence AG","avantage": "Accès AG privé · cadeaux maisons du groupe (mode, champagne…)",        "lien": "https://www.boursorama.com/cours/1rPMC/"},
     {"nom": "Pernod Ricard", "ticker": "RI",  "condition": "1 action + présence AG","avantage": "Coffret de spiritueux offert à l'assemblée générale (~60 €)",           "lien": "https://www.boursorama.com/cours/1rPRI/"},
     {"nom": "Michelin",      "ticker": "ML",  "condition": "Nominatif ≥ 4 ans",     "avantage": "30 % de réduction sur pneumatiques via réseau Euromaster",             "lien": "https://www.boursorama.com/cours/1rPML/"}
+  ],
+  "etf_dividendes": [
+    {"nom": "iShares MSCI Eur. High Dividend", "ticker": "IDVY", "eligible": "PEA", "rendement": "~4,5 %", "ter": "0,40 %", "frequence": "Trim.", "isin": "IE00B0M63284", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00B0M63284"},
+    {"nom": "BNP Easy MSCI Europe Dividend+",  "ticker": "EDIV", "eligible": "PEA", "rendement": "~4,5 %", "ter": "0,30 %", "frequence": "Sem.",  "isin": "FR0011550185", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=FR0011550185"},
+    {"nom": "Amundi MSCI Eur. High Dividend",  "ticker": "EHDV", "eligible": "PEA", "rendement": "~4,0 %", "ter": "0,30 %", "frequence": "Sem.",  "isin": "LU1681041114", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=LU1681041114"},
+    {"nom": "Lyxor MSCI Europe Value",         "ticker": "LVAL", "eligible": "PEA", "rendement": "~3,5 %", "ter": "0,20 %", "frequence": "Ann.",  "isin": "LU1215454460", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=LU1215454460"},
+    {"nom": "iShares STOXX Global Select Div", "ticker": "ISPA", "eligible": "CTO", "rendement": "~4,5 %", "ter": "0,46 %", "frequence": "Trim.", "isin": "DE0002635299", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=DE0002635299"},
+    {"nom": "Vanguard FTSE All-World Hi Div",  "ticker": "VHYL", "eligible": "CTO", "rendement": "~3,5 %", "ter": "0,29 %", "frequence": "Trim.", "isin": "IE00B8GKDB10", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00B8GKDB10"},
+    {"nom": "SPDR Global Dividend Aristocrats","ticker": "GBDV", "eligible": "CTO", "rendement": "~4,0 %", "ter": "0,45 %", "frequence": "Trim.", "isin": "IE00B9CQXS71", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00B9CQXS71"},
+    {"nom": "iShares MSCI World Quality Div",  "ticker": "WQDV", "eligible": "CTO", "rendement": "~3,5 %", "ter": "0,38 %", "frequence": "Trim.", "isin": "IE00BYYHSQ67", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00BYYHSQ67"},
+    {"nom": "Global X SuperDividend UCITS",    "ticker": "SDVD", "eligible": "CTO", "rendement": "~7,0 %", "ter": "0,45 %", "frequence": "Mens.", "isin": "IE00077FRP95", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00077FRP95"},
+    {"nom": "WisdomTree Global Qual. Div Gr.", "ticker": "GGRG", "eligible": "CTO", "rendement": "~2,5 %", "ter": "0,38 %", "frequence": "Trim.", "isin": "IE00BZ56RN96", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00BZ56RN96"}
   ]
 }

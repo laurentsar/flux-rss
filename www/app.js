@@ -1145,6 +1145,18 @@ const BANKING_OFFERS = {
     { nom:'Pernod Ricard',  ticker:'RI',   condition:'1 action + présence AG',     avantage:'Coffret de spiritueux offert à l\'assemblée générale (~60 €)',           lien:'https://www.boursorama.com/cours/1rPRI/' },
     { nom:'Michelin',       ticker:'ML',   condition:'Nominatif ≥ 4 ans',          avantage:'30 % de réduction sur pneumatiques via réseau Euromaster',              lien:'https://www.boursorama.com/cours/1rPML/' },
   ],
+  etf_dividendes: [
+    { nom:'iShares MSCI Eur. High Dividend', ticker:'IDVY',  eligible:'PEA', rendement:'~4,5 %', ter:'0,40 %', frequence:'Trim.', isin:'IE00B0M63284', lien:'https://www.justetf.com/fr/etf-profile.html?isin=IE00B0M63284' },
+    { nom:'BNP Easy MSCI Europe Dividend+',  ticker:'EDIV',  eligible:'PEA', rendement:'~4,5 %', ter:'0,30 %', frequence:'Sem.',  isin:'FR0011550185', lien:'https://www.justetf.com/fr/etf-profile.html?isin=FR0011550185' },
+    { nom:'Amundi MSCI Eur. High Dividend',  ticker:'EHDV',  eligible:'PEA', rendement:'~4,0 %', ter:'0,30 %', frequence:'Sem.',  isin:'LU1681041114', lien:'https://www.justetf.com/fr/etf-profile.html?isin=LU1681041114' },
+    { nom:'Lyxor MSCI Europe Value',         ticker:'LVAL',  eligible:'PEA', rendement:'~3,5 %', ter:'0,20 %', frequence:'Ann.',  isin:'LU1215454460', lien:'https://www.justetf.com/fr/etf-profile.html?isin=LU1215454460' },
+    { nom:'iShares STOXX Global Select Div', ticker:'ISPA',  eligible:'CTO', rendement:'~4,5 %', ter:'0,46 %', frequence:'Trim.', isin:'DE0002635299', lien:'https://www.justetf.com/fr/etf-profile.html?isin=DE0002635299' },
+    { nom:'Vanguard FTSE All-World Hi Div',  ticker:'VHYL',  eligible:'CTO', rendement:'~3,5 %', ter:'0,29 %', frequence:'Trim.', isin:'IE00B8GKDB10', lien:'https://www.justetf.com/fr/etf-profile.html?isin=IE00B8GKDB10' },
+    { nom:'SPDR Global Dividend Aristocrats',ticker:'GBDV',  eligible:'CTO', rendement:'~4,0 %', ter:'0,45 %', frequence:'Trim.', isin:'IE00B9CQXS71', lien:'https://www.justetf.com/fr/etf-profile.html?isin=IE00B9CQXS71' },
+    { nom:'iShares MSCI World Quality Div',  ticker:'WQDV',  eligible:'CTO', rendement:'~3,5 %', ter:'0,38 %', frequence:'Trim.', isin:'IE00BYYHSQ67', lien:'https://www.justetf.com/fr/etf-profile.html?isin=IE00BYYHSQ67' },
+    { nom:'Global X SuperDividend UCITS',    ticker:'SDVD',  eligible:'CTO', rendement:'~7,0 %', ter:'0,45 %', frequence:'Mens.', isin:'IE00077FRP95', lien:'https://www.justetf.com/fr/etf-profile.html?isin=IE00077FRP95' },
+    { nom:'WisdomTree Global Qual. Div Gr.', ticker:'GGRG',  eligible:'CTO', rendement:'~2,5 %', ter:'0,38 %', frequence:'Trim.', isin:'IE00BZ56RN96', lien:'https://www.justetf.com/fr/etf-profile.html?isin=IE00BZ56RN96' },
+  ],
 };
 
 const BANKING_JSON_URL='https://raw.githubusercontent.com/laurentsar/flux-rss/master/www/data/banking.json';
@@ -1213,6 +1225,14 @@ function renderPlacementOffers(o){
       <span class="bk-note bk-av-span">${esc(a.avantage)}</span>
     </a>`).join('');
 
+  const etfRows = (o.etf_dividendes||[]).map(e=>`
+    <a class="bk-row bk-link" href="${esc(e.lien)}" target="_blank" rel="noopener">
+      <span class="bk-name">${esc(e.nom)} <span class="bk-ticker">${esc(e.ticker)}</span></span>
+      <span class="bk-rate bk-net">${esc(e.rendement)}</span>
+      <span class="bk-cap">${esc(e.ter)} · ${esc(e.frequence)}</span>
+      <span class="bk-note"><span class="bk-badge ${e.eligible==='PEA'?'bk-badge-pea':'bk-badge-cto'}">${esc(e.eligible)}</span> ${esc(e.isin||'')}</span>
+    </a>`).join('');
+
   const noteHtml = (o.note || o.note_livrets) ? `<div class="bk-alert">${esc(o.note || o.note_livrets)}</div>` : '';
   const primeEpSection = primeEpRows ? `
       <div class="bk-group-lbl" style="margin-top:12px">🏦 Primes d'ouverture — comptes d'épargne</div>
@@ -1244,7 +1264,11 @@ function renderPlacementOffers(o){
       ${primeRows}${primeEpSection}
       <div class="bk-group-lbl" style="margin-top:12px">🚀 Livrets boostés (taux temporaires)</div>
       <div class="bk-header"><span>Banque</span><span>Taux</span><span>Plafond</span><span>Durée</span></div>
-      ${boostRows}${actionSection}${brokerSection}${avSection}
+      ${boostRows}${actionSection}
+      ${etfRows.length ? `<div class="bk-group-lbl" style="margin-top:14px">🧩 ETF à fort dividende — PEA &amp; CTO <span style="font-weight:400;opacity:.6;font-size:.72rem">rendements indicatifs · ${updDate}</span></div>
+      <div class="bk-header"><span>ETF</span><span>Rendement</span><span>TER · Fréq.</span><span>Éligibilité · ISIN</span></div>
+      ${etfRows}
+      <div class="bk-disclaimer">💡 ETF PEA : dividendes réinvestis automatiquement, fiscalité allégée après 5 ans. ETF CTO : distribution soumise au PFU 30 %. Rendements nets de frais ETF, bruts de fiscalité personnelle.</div>` : ''}${brokerSection}${avSection}
     </div>
   </details>`;
 }
