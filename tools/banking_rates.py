@@ -57,16 +57,37 @@ FALLBACK_BOOSTES = [
 ]
 
 FALLBACK_TOP_ACTIONS = [
-    {"nom": "Orange",           "ticker": "ORA",  "rendement": "~8,5 %", "dividende": "0,70 €", "secteur": "Télécom",    "lien": "https://www.boursorama.com/cours/1rPORA/"},
-    {"nom": "BNP Paribas",      "ticker": "BNP",  "rendement": "~8,0 %", "dividende": "4,60 €", "secteur": "Banque",     "lien": "https://www.boursorama.com/cours/1rPBNP/"},
-    {"nom": "Société Générale", "ticker": "GLE",  "rendement": "~7,5 %", "dividende": "1,75 €", "secteur": "Banque",     "lien": "https://www.boursorama.com/cours/1rPGLE/"},
-    {"nom": "Crédit Agricole",  "ticker": "ACA",  "rendement": "~7,0 %", "dividende": "1,05 €", "secteur": "Banque",     "lien": "https://www.boursorama.com/cours/1rPACA/"},
-    {"nom": "Engie",            "ticker": "ENGI", "rendement": "~6,8 %", "dividende": "0,68 €", "secteur": "Énergie",    "lien": "https://www.boursorama.com/cours/1rPENGI/"},
-    {"nom": "Klépierre",        "ticker": "LI",   "rendement": "~6,5 %", "dividende": "1,75 €", "secteur": "Immobilier", "lien": "https://www.boursorama.com/cours/1rPLI/"},
-    {"nom": "TotalEnergies",    "ticker": "TTE",  "rendement": "~5,8 %", "dividende": "3,22 €", "secteur": "Énergie",    "lien": "https://www.boursorama.com/cours/1rPFP/"},
-    {"nom": "AXA",              "ticker": "CS",   "rendement": "~5,5 %", "dividende": "1,98 €", "secteur": "Assurance",  "lien": "https://www.boursorama.com/cours/1rPCS/"},
-    {"nom": "Sanofi",           "ticker": "SAN",  "rendement": "~3,8 %", "dividende": "3,76 €", "secteur": "Santé",      "lien": "https://www.boursorama.com/cours/1rPSAN/"},
-    {"nom": "Publicis",         "ticker": "PUB",  "rendement": "~3,5 %", "dividende": "3,40 €", "secteur": "Médias",     "lien": "https://www.boursorama.com/cours/1rPPUB/"},
+    {"nom": "Brit. American Tobacco", "ticker": "BATS", "pays": "🇬🇧", "rendement": "~9,5 %", "dividende": "2,24 £",  "secteur": "Tabac",   "marche": "LSE",      "lien": "https://www.boursorama.com/cours/1rPBATS/"},
+    {"nom": "Vodafone",               "ticker": "VOD",  "pays": "🇬🇧", "rendement": "~9,0 %", "dividende": "0,09 €",  "secteur": "Télécom", "marche": "LSE",      "lien": "https://www.boursorama.com/cours/1rPVOD/"},
+    {"nom": "Orange",                 "ticker": "ORA",  "pays": "🇫🇷", "rendement": "~8,5 %", "dividende": "0,70 €",  "secteur": "Télécom", "marche": "Euronext", "lien": "https://www.boursorama.com/cours/1rPORA/"},
+    {"nom": "Altria",                 "ticker": "MO",   "pays": "🇺🇸", "rendement": "~8,5 %", "dividende": "4,08 $",  "secteur": "Tabac",   "marche": "NYSE",     "lien": "https://www.boursorama.com/cours/1rDMO/"},
+    {"nom": "Rio Tinto",              "ticker": "RIO",  "pays": "🇦🇺", "rendement": "~8,0 %", "dividende": "5,84 $",  "secteur": "Mines",   "marche": "LSE/ASX",  "lien": "https://www.boursorama.com/cours/1rPRIO/"},
+    {"nom": "BNP Paribas",            "ticker": "BNP",  "pays": "🇫🇷", "rendement": "~8,0 %", "dividende": "4,60 €",  "secteur": "Banque",  "marche": "Euronext", "lien": "https://www.boursorama.com/cours/1rPBNP/"},
+    {"nom": "Enbridge",               "ticker": "ENB",  "pays": "🇨🇦", "rendement": "~7,0 %", "dividende": "3,78 CA$","secteur": "Énergie", "marche": "TSX",      "lien": "https://www.boursorama.com/cours/1rDENB/"},
+    {"nom": "AT&T",                   "ticker": "T",    "pays": "🇺🇸", "rendement": "~6,5 %", "dividende": "1,11 $",  "secteur": "Télécom", "marche": "NYSE",     "lien": "https://www.boursorama.com/cours/1rDT/"},
+    {"nom": "BASF",                   "ticker": "BAS",  "pays": "🇩🇪", "rendement": "~6,5 %", "dividende": "2,25 €",  "secteur": "Chimie",  "marche": "XETRA",    "lien": "https://www.boursorama.com/cours/1zBBAS/"},
+    {"nom": "Verizon",                "ticker": "VZ",   "pays": "🇺🇸", "rendement": "~6,5 %", "dividende": "2,66 $",  "secteur": "Télécom", "marche": "NYSE",     "lien": "https://www.boursorama.com/cours/1rDVZ/"},
+]
+
+FALLBACK_BROKERS = [
+    {"nom": "Trade Republic",      "pays": "🇩🇪", "frais_ordre": "1 €",              "garde": "0 €/an", "atouts": "PEA · CTO · épargne programmée · fractionnées · intérêts sur liquidités",            "lien": "https://www.traderepublic.com/fr-fr"},
+    {"nom": "DEGIRO",              "pays": "🇳🇱", "frais_ordre": "0,50 € + 0,004 %", "garde": "0 €/an", "atouts": "30+ bourses mondiales · app mobile · ETF Core gratuits",                             "lien": "https://www.degiro.fr"},
+    {"nom": "Bourse Direct",       "pays": "🇫🇷", "frais_ordre": "0,99 €",            "garde": "0 €/an", "atouts": "PEA · SRD · meilleur service client FR · courtier agréé AMF",                       "lien": "https://www.boursedirect.fr"},
+    {"nom": "XTB",                 "pays": "🇵🇱", "frais_ordre": "0 € < 100k €/mois","garde": "0 €/an", "atouts": "ETF gratuits · formation · CTO · levier · démo gratuite",                            "lien": "https://www.xtb.com/fr"},
+    {"nom": "Interactive Brokers", "pays": "🇺🇸", "frais_ordre": "0,35–0,65 €",      "garde": "0 €/an", "atouts": "150+ marchés · multi-devises · options · professionnel · intérêts liquidités 4,5 %",  "lien": "https://www.interactivebrokers.com"},
+    {"nom": "Boursorama Bourse",   "pays": "🇫🇷", "frais_ordre": "1,99 €",            "garde": "0 €/an", "atouts": "PEA · SRD · intégré au compte bancaire BoursoBank · bons plans",                    "lien": "https://www.boursorama.com/bourse"},
+    {"nom": "Saxo Banque",         "pays": "🇩🇰", "frais_ordre": "dès 3 €",           "garde": "0 €/an", "atouts": "Options · devises · CFD · gamme pro · analyse intégrée",                             "lien": "https://www.home.saxo/fr-fr"},
+]
+
+FALLBACK_AVANTAGES = [
+    {"nom": "Eurotunnel",    "ticker": "GET", "condition": "1 action nominative",   "avantage": "30 traversées Eurotunnel gratuites par an (valeur ~900 €)",           "lien": "https://www.boursorama.com/cours/1rPGET/"},
+    {"nom": "TotalEnergies", "ticker": "TTE", "condition": "Nominatif pur ≥ 2 ans", "avantage": "Dividende majoré +10 % (plafond 0,5 % du capital)",                   "lien": "https://www.boursorama.com/cours/1rPFP/"},
+    {"nom": "Accor",         "ticker": "AC",  "condition": "Nominatif ≥ 1 an",      "avantage": "Carte Accor Plus offerte — 30 % de remise dans les hôtels du groupe", "lien": "https://www.boursorama.com/cours/1rPAC/"},
+    {"nom": "Air France-KLM","ticker": "AF",  "condition": "Nominatif pur ≥ 2 ans", "avantage": "Réduction sur billets Air France + dividende majoré +10 %",           "lien": "https://www.boursorama.com/cours/1rPAF/"},
+    {"nom": "Renault",       "ticker": "RNO", "condition": "Nominatif pur ≥ 4 ans", "avantage": "1 000 € de remise sur l'achat d'un véhicule neuf Renault/Dacia",      "lien": "https://www.boursorama.com/cours/1rPRNO/"},
+    {"nom": "LVMH",          "ticker": "MC",  "condition": "1 action + présence AG","avantage": "Accès AG privé · cadeaux maisons du groupe (mode, champagne…)",       "lien": "https://www.boursorama.com/cours/1rPMC/"},
+    {"nom": "Pernod Ricard", "ticker": "RI",  "condition": "1 action + présence AG","avantage": "Coffret de spiritueux offert à l'assemblée générale (~60 €)",          "lien": "https://www.boursorama.com/cours/1rPRI/"},
+    {"nom": "Michelin",      "ticker": "ML",  "condition": "Nominatif ≥ 4 ans",     "avantage": "30 % de réduction sur pneumatiques via réseau Euromaster",            "lien": "https://www.boursorama.com/cours/1rPML/"},
 ]
 
 
@@ -297,7 +318,7 @@ def build_note(livrets):
 
 def main():
     now_str = datetime.datetime.now(PARIS).isoformat(timespec="seconds")
-    data = {"generated": now_str, "livrets": None, "primes": None, "primes_epargne": None, "livrets_boostes": None, "top_actions": None, "note": ""}
+    data = {"generated": now_str, "livrets": None, "primes": None, "primes_epargne": None, "livrets_boostes": None, "top_actions": None, "brokers": None, "avantages_actionnaires": None, "note": ""}
 
     print("=== Livrets réglementés ===")
     try:
@@ -325,10 +346,17 @@ def main():
         print(f"  ÉCHEC scraping boostés ({e}) → repli sur données hardcodées")
         data["livrets_boostes"] = FALLBACK_BOOSTES
 
-    print("=== Top actions à dividende ===")
-    # Pas de scraping temps-réel — rendements indicatifs mis à jour manuellement
+    print("=== Top actions à dividende (mondial) ===")
     data["top_actions"] = FALLBACK_TOP_ACTIONS
     print(f"    {len(FALLBACK_TOP_ACTIONS)} actions (hardcodées)")
+
+    print("=== Brokers & plateformes ===")
+    data["brokers"] = FALLBACK_BROKERS
+    print(f"    {len(FALLBACK_BROKERS)} brokers (hardcodés)")
+
+    print("=== Avantages actionnaires ===")
+    data["avantages_actionnaires"] = FALLBACK_AVANTAGES
+    print(f"    {len(FALLBACK_AVANTAGES)} avantages (hardcodés)")
 
     data["note"] = build_note(data["livrets"])
 
