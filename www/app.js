@@ -1262,12 +1262,12 @@ function renderPlacementOffers(o){
     <summary class="rl-sh">💰 Meilleures offres bancaires &amp; placement <span class="bk-upd">vérifié ${updDate}</span></summary>
     <div class="bk-body">
       ${noteHtml}
-      <details class="bk-sub" open>
+      <details class="bk-sub">
         <summary class="bk-sub-sh">📈 Livrets réglementés <span class="bk-sub-detail">taux nets · garantis</span></summary>
         <div class="bk-header"><span>Produit</span><span>Taux</span><span>Plafond</span><span>Note</span></div>
         ${livretRows}
       </details>
-      <details class="bk-sub" open>
+      <details class="bk-sub">
         <summary class="bk-sub-sh">🎁 Primes de bienvenue <span class="bk-sub-detail">comptes courants &amp; épargne</span></summary>
         <div class="bk-header"><span>Banque</span><span>Prime</span><span>Offre</span><span>Conditions</span></div>
         ${primeRows}
@@ -1275,29 +1275,29 @@ function renderPlacementOffers(o){
         <div class="bk-header"><span>Banque</span><span>Prime</span><span>Produit</span><span>Conditions</span></div>
         ${primeEpRows}` : ''}
       </details>
-      <details class="bk-sub" open>
+      <details class="bk-sub">
         <summary class="bk-sub-sh">🚀 Livrets boostés <span class="bk-sub-detail">taux temporaires</span></summary>
         <div class="bk-header"><span>Banque</span><span>Taux</span><span>Plafond</span><span>Durée</span></div>
         ${boostRows}
       </details>
-      ${actionRows ? `<details class="bk-sub" open>
+      ${actionRows ? `<details class="bk-sub">
         <summary class="bk-sub-sh">📊 Top 10 actions à dividende <span class="bk-sub-detail">Mondial · ${updDate}</span></summary>
         <div class="bk-header"><span>Société</span><span>Rendement</span><span>Dividende</span><span>Secteur · Marché</span></div>
         ${actionRows}
         <div class="bk-disclaimer">⚠️ Rendements indicatifs basés sur le cours actuel — varient quotidiennement. Hors fiscalité (PFU 30 % sauf PEA/PEA-PME). Retenue à la source pour actions étrangères.</div>
       </details>` : ''}
-      ${etfRows.length ? `<details class="bk-sub" open>
+      ${etfRows.length ? `<details class="bk-sub">
         <summary class="bk-sub-sh">🧩 ETF à fort dividende <span class="bk-sub-detail">PEA &amp; CTO · ${updDate}</span></summary>
         <div class="bk-header"><span>ETF</span><span>Rendement</span><span>TER · Fréq.</span><span>Éligibilité · ISIN</span></div>
         ${etfRows}
         <div class="bk-disclaimer">💡 ETF PEA : dividendes réinvestis automatiquement, fiscalité allégée après 5 ans. ETF CTO : distribution soumise au PFU 30 %. Rendements nets de frais ETF, bruts de fiscalité personnelle.</div>
       </details>` : ''}
-      ${brokerRows ? `<details class="bk-sub" open>
+      ${brokerRows ? `<details class="bk-sub">
         <summary class="bk-sub-sh">🏛️ Brokers &amp; plateformes <span class="bk-sub-detail">gestion de portefeuille</span></summary>
         <div class="bk-header"><span>Broker</span><span>Frais/ordre</span><span>Garde/an</span><span>Atouts</span></div>
         ${brokerRows}
       </details>` : ''}
-      ${avRows ? `<details class="bk-sub" open>
+      ${avRows ? `<details class="bk-sub">
         <summary class="bk-sub-sh">🎖️ Avantages actionnaires</summary>
         <div class="bk-header bk-av-header"><span>Société</span><span>Condition</span><span>Avantage</span></div>
         <div class="bk-g-av">${avRows}${avMoreBtn}</div>
