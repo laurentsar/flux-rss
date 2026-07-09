@@ -1238,12 +1238,16 @@ function renderPlacementOffers(o){
       <span class="bk-note">${esc(b.atouts)}</span>
     </a>`).join('');
 
-  const avRows = (o.avantages_actionnaires||[]).map(a=>`
-    <a class="bk-row bk-link bk-av-row" href="${esc(a.lien)}" target="_blank" rel="noopener">
+  const _avList = o.avantages_actionnaires||[];
+  const SHOW_AV = 7;
+  const avRows = _avList.map((a,i)=>`
+    <a class="bk-row bk-link bk-av-row${i>=SHOW_AV?' bk-hidden':''}" href="${esc(a.lien)}" target="_blank" rel="noopener">
       <span class="bk-name">${a.pays||''} ${esc(a.nom)} <span class="bk-ticker">${esc(a.ticker)}</span></span>
       <span class="bk-cap">${esc(a.condition)}</span>
       <span class="bk-note bk-av-span">${esc(a.avantage)}</span>
     </a>`).join('');
+  const _avMore = Math.max(0,_avList.length-SHOW_AV);
+  const avMoreBtn = _avMore>0?`<button class="bk-more-btn" onclick="this.closest('.bk-g-av').querySelectorAll('.bk-hidden').forEach(el=>el.classList.remove('bk-hidden'));this.remove()">Voir les ${_avMore} autres avantages ↓</button>`:'';
 
   const etfRows = (o.etf_dividendes||[]).map(e=>`
     <a class="bk-row bk-link" href="${esc(e.lien)}" target="_blank" rel="noopener">
@@ -1270,7 +1274,7 @@ function renderPlacementOffers(o){
   const avSection = avRows ? `
       <div class="bk-group-lbl" style="margin-top:14px">🎖️ Avantages actionnaires</div>
       <div class="bk-header bk-av-header"><span>Société</span><span>Condition</span><span>Avantage</span></div>
-      ${avRows}
+      <div class="bk-g-av">${avRows}${avMoreBtn}</div>
       <div class="bk-disclaimer">ℹ️ Avantages soumis à conditions — consultez les sites des émetteurs. Certains nécessitent l'inscription en nominatif pur (via votre broker ou directement chez l'émetteur).</div>` : '';
   return `<details class="rl-section bk-section">
     <summary class="rl-sh">💰 Meilleures offres bancaires &amp; placement <span class="bk-upd">vérifié ${updDate}</span></summary>

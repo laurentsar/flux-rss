@@ -214,6 +214,9 @@ div.rl-live-section>.rl-sh{font-weight:700;font-size:.9rem;color:#ef4444;padding
 .bk-badge{font-size:.68rem;font-weight:700;padding:1px 5px;border-radius:3px;letter-spacing:.03em;vertical-align:middle}
 .bk-badge-pea{background:color-mix(in srgb,#22c55e 20%,transparent);color:#22c55e}
 .bk-badge-cto{background:color-mix(in srgb,#60a5fa 20%,transparent);color:#60a5fa}
+.bk-hidden{display:none!important}
+.bk-more-btn{width:100%;margin-top:6px;padding:7px;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:6px;color:var(--a,#D97706);font-size:.8rem;font-weight:600;cursor:pointer;transition:background .15s}
+.bk-more-btn:hover{background:rgba(255,255,255,.09)}
 .bk-av-header{grid-template-columns:1fr 1fr 2.5fr!important}
 .bk-av-row{grid-template-columns:1fr 1fr 2.5fr!important}
 .bk-av-span{grid-column:auto}
