@@ -1258,41 +1258,51 @@ function renderPlacementOffers(o){
     </a>`).join('');
 
   const noteHtml = (o.note || o.note_livrets) ? `<div class="bk-alert">${esc(o.note || o.note_livrets)}</div>` : '';
-  const primeEpSection = primeEpRows ? `
-      <div class="bk-group-lbl" style="margin-top:12px">🏦 Primes d'ouverture — comptes d'épargne</div>
-      <div class="bk-header"><span>Banque</span><span>Prime</span><span>Produit</span><span>Conditions</span></div>
-      ${primeEpRows}` : '';
-  const actionSection = actionRows ? `
-      <div class="bk-group-lbl" style="margin-top:14px">📊 Top 10 actions à dividende — Mondial <span style="font-weight:400;opacity:.6;font-size:.72rem">rendements indicatifs · ${updDate}</span></div>
-      <div class="bk-header"><span>Société</span><span>Rendement</span><span>Dividende</span><span>Secteur · Marché</span></div>
-      ${actionRows}
-      <div class="bk-disclaimer">⚠️ Rendements indicatifs basés sur le cours actuel — varient quotidiennement. Hors fiscalité (PFU 30 % sauf PEA/PEA-PME). Retenue à la source pour actions étrangères.</div>` : '';
-  const brokerSection = brokerRows ? `
-      <div class="bk-group-lbl" style="margin-top:14px">🏛️ Brokers &amp; plateformes d'investissement</div>
-      <div class="bk-header"><span>Broker</span><span>Frais/ordre</span><span>Garde/an</span><span>Atouts</span></div>
-      ${brokerRows}` : '';
-  const avSection = avRows ? `
-      <div class="bk-group-lbl" style="margin-top:14px">🎖️ Avantages actionnaires</div>
-      <div class="bk-header bk-av-header"><span>Société</span><span>Condition</span><span>Avantage</span></div>
-      <div class="bk-g-av">${avRows}${avMoreBtn}</div>
-      <div class="bk-disclaimer">ℹ️ Avantages soumis à conditions — consultez les sites des émetteurs. Certains nécessitent l'inscription en nominatif pur (via votre broker ou directement chez l'émetteur).</div>` : '';
   return `<details class="rl-section bk-section">
     <summary class="rl-sh">💰 Meilleures offres bancaires &amp; placement <span class="bk-upd">vérifié ${updDate}</span></summary>
     <div class="bk-body">
       ${noteHtml}
-      <div class="bk-group-lbl">📈 Livrets réglementés (taux nets, garantis)</div>
-      <div class="bk-header"><span>Produit</span><span>Taux</span><span>Plafond</span><span>Note</span></div>
-      ${livretRows}
-      <div class="bk-group-lbl" style="margin-top:12px">🎁 Primes de bienvenue — comptes courants</div>
-      <div class="bk-header"><span>Banque</span><span>Prime</span><span>Offre</span><span>Conditions</span></div>
-      ${primeRows}${primeEpSection}
-      <div class="bk-group-lbl" style="margin-top:12px">🚀 Livrets boostés (taux temporaires)</div>
-      <div class="bk-header"><span>Banque</span><span>Taux</span><span>Plafond</span><span>Durée</span></div>
-      ${boostRows}${actionSection}
-      ${etfRows.length ? `<div class="bk-group-lbl" style="margin-top:14px">🧩 ETF à fort dividende — PEA &amp; CTO <span style="font-weight:400;opacity:.6;font-size:.72rem">rendements indicatifs · ${updDate}</span></div>
-      <div class="bk-header"><span>ETF</span><span>Rendement</span><span>TER · Fréq.</span><span>Éligibilité · ISIN</span></div>
-      ${etfRows}
-      <div class="bk-disclaimer">💡 ETF PEA : dividendes réinvestis automatiquement, fiscalité allégée après 5 ans. ETF CTO : distribution soumise au PFU 30 %. Rendements nets de frais ETF, bruts de fiscalité personnelle.</div>` : ''}${brokerSection}${avSection}
+      <details class="bk-sub" open>
+        <summary class="bk-sub-sh">📈 Livrets réglementés <span class="bk-sub-detail">taux nets · garantis</span></summary>
+        <div class="bk-header"><span>Produit</span><span>Taux</span><span>Plafond</span><span>Note</span></div>
+        ${livretRows}
+      </details>
+      <details class="bk-sub" open>
+        <summary class="bk-sub-sh">🎁 Primes de bienvenue <span class="bk-sub-detail">comptes courants &amp; épargne</span></summary>
+        <div class="bk-header"><span>Banque</span><span>Prime</span><span>Offre</span><span>Conditions</span></div>
+        ${primeRows}
+        ${primeEpRows ? `<div class="bk-group-lbl" style="margin-top:10px">🏦 Comptes d'épargne</div>
+        <div class="bk-header"><span>Banque</span><span>Prime</span><span>Produit</span><span>Conditions</span></div>
+        ${primeEpRows}` : ''}
+      </details>
+      <details class="bk-sub" open>
+        <summary class="bk-sub-sh">🚀 Livrets boostés <span class="bk-sub-detail">taux temporaires</span></summary>
+        <div class="bk-header"><span>Banque</span><span>Taux</span><span>Plafond</span><span>Durée</span></div>
+        ${boostRows}
+      </details>
+      ${actionRows ? `<details class="bk-sub" open>
+        <summary class="bk-sub-sh">📊 Top 10 actions à dividende <span class="bk-sub-detail">Mondial · ${updDate}</span></summary>
+        <div class="bk-header"><span>Société</span><span>Rendement</span><span>Dividende</span><span>Secteur · Marché</span></div>
+        ${actionRows}
+        <div class="bk-disclaimer">⚠️ Rendements indicatifs basés sur le cours actuel — varient quotidiennement. Hors fiscalité (PFU 30 % sauf PEA/PEA-PME). Retenue à la source pour actions étrangères.</div>
+      </details>` : ''}
+      ${etfRows.length ? `<details class="bk-sub" open>
+        <summary class="bk-sub-sh">🧩 ETF à fort dividende <span class="bk-sub-detail">PEA &amp; CTO · ${updDate}</span></summary>
+        <div class="bk-header"><span>ETF</span><span>Rendement</span><span>TER · Fréq.</span><span>Éligibilité · ISIN</span></div>
+        ${etfRows}
+        <div class="bk-disclaimer">💡 ETF PEA : dividendes réinvestis automatiquement, fiscalité allégée après 5 ans. ETF CTO : distribution soumise au PFU 30 %. Rendements nets de frais ETF, bruts de fiscalité personnelle.</div>
+      </details>` : ''}
+      ${brokerRows ? `<details class="bk-sub" open>
+        <summary class="bk-sub-sh">🏛️ Brokers &amp; plateformes <span class="bk-sub-detail">gestion de portefeuille</span></summary>
+        <div class="bk-header"><span>Broker</span><span>Frais/ordre</span><span>Garde/an</span><span>Atouts</span></div>
+        ${brokerRows}
+      </details>` : ''}
+      ${avRows ? `<details class="bk-sub" open>
+        <summary class="bk-sub-sh">🎖️ Avantages actionnaires</summary>
+        <div class="bk-header bk-av-header"><span>Société</span><span>Condition</span><span>Avantage</span></div>
+        <div class="bk-g-av">${avRows}${avMoreBtn}</div>
+        <div class="bk-disclaimer">ℹ️ Avantages soumis à conditions — consultez les sites des émetteurs. Certains nécessitent l'inscription en nominatif pur (via votre broker ou directement chez l'émetteur).</div>
+      </details>` : ''}
     </div>
   </details>`;
 }
