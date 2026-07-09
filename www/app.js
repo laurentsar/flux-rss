@@ -1136,14 +1136,34 @@ const BANKING_OFFERS = {
     { nom:'Saxo Banque',    pays:'🇩🇰', frais_ordre:'dès 3 €',          garde:'0 €/an', atouts:'Options · devises · CFD · gamme pro · analyse intégrée',                           lien:'https://www.home.saxo/fr-fr' },
   ],
   avantages_actionnaires: [
-    { nom:'Eurotunnel',     ticker:'GET',  condition:'1 action nominative',        avantage:'30 traversées Eurotunnel gratuites par an (valeur ~900 €)',             lien:'https://www.boursorama.com/cours/1rPGET/' },
-    { nom:'TotalEnergies',  ticker:'TTE',  condition:'Nominatif pur ≥ 2 ans',      avantage:'Dividende majoré +10 % (plafond 0,5 % du capital)',                     lien:'https://www.boursorama.com/cours/1rPFP/' },
-    { nom:'Accor',          ticker:'AC',   condition:'Nominatif ≥ 1 an',           avantage:'Carte Accor Plus offerte — 30 % de remise dans les hôtels du groupe',   lien:'https://www.boursorama.com/cours/1rPAC/' },
-    { nom:'Air France-KLM', ticker:'AF',   condition:'Nominatif pur ≥ 2 ans',      avantage:'Réduction sur billets Air France + dividende majoré +10 %',             lien:'https://www.boursorama.com/cours/1rPAF/' },
-    { nom:'Renault',        ticker:'RNO',  condition:'Nominatif pur ≥ 4 ans',      avantage:'1 000 € de remise sur l\'achat d\'un véhicule neuf Renault/Dacia',      lien:'https://www.boursorama.com/cours/1rPRNO/' },
-    { nom:'LVMH',           ticker:'MC',   condition:'1 action + présence AG',     avantage:'Accès AG privé · cadeaux maisons du groupe (mode, champagne…)',         lien:'https://www.boursorama.com/cours/1rPMC/' },
-    { nom:'Pernod Ricard',  ticker:'RI',   condition:'1 action + présence AG',     avantage:'Coffret de spiritueux offert à l\'assemblée générale (~60 €)',           lien:'https://www.boursorama.com/cours/1rPRI/' },
-    { nom:'Michelin',       ticker:'ML',   condition:'Nominatif ≥ 4 ans',          avantage:'30 % de réduction sur pneumatiques via réseau Euromaster',              lien:'https://www.boursorama.com/cours/1rPML/' },
+    // France — avantages en nature
+    { nom:'Eurotunnel',      ticker:'GET',  pays:'🇫🇷', condition:'1 action nominative',     avantage:'30 traversées Eurotunnel gratuites / an (valeur ~900 €)',                         lien:'https://www.boursorama.com/cours/1rPGET/' },
+    { nom:'Accor',           ticker:'AC',   pays:'🇫🇷', condition:'Nominatif ≥ 1 an',        avantage:'Carte Accor Plus offerte — 30 % de remise dans les hôtels du groupe',            lien:'https://www.boursorama.com/cours/1rPAC/' },
+    { nom:'Renault',         ticker:'RNO',  pays:'🇫🇷', condition:'Nominatif pur ≥ 4 ans',   avantage:'1 000 € de remise sur l\'achat d\'un véhicule neuf Renault ou Dacia',           lien:'https://www.boursorama.com/cours/1rPRNO/' },
+    { nom:'SEB',             ticker:'SK',   pays:'🇫🇷', condition:'Nominatif pur ≥ 4 ans',   avantage:'-20 % sur les produits du groupe (Tefal, Krups, Rowenta, Moulinex…)',           lien:'https://www.boursorama.com/cours/1rPSK/' },
+    { nom:'Hermès',          ticker:'RMS',  pays:'🇫🇷', condition:'1 action + présence AG',  avantage:'Objet artisanal signé offert à l\'AG (foulard, accessoire…) — très exclusif',   lien:'https://www.boursorama.com/cours/1rPRMS/' },
+    { nom:'LVMH',            ticker:'MC',   pays:'🇫🇷', condition:'1 action + présence AG',  avantage:'Accès AG privé + cadeaux des maisons du groupe (mode, champagne…)',             lien:'https://www.boursorama.com/cours/1rPMC/' },
+    { nom:'Pernod Ricard',   ticker:'RI',   pays:'🇫🇷', condition:'1 action + présence AG',  avantage:'Coffret de spiritueux offert à l\'assemblée générale (~60 €)',                   lien:'https://www.boursorama.com/cours/1rPRI/' },
+    { nom:'Michelin',        ticker:'ML',   pays:'🇫🇷', condition:'Nominatif ≥ 4 ans',       avantage:'-30 % sur les pneumatiques via le réseau Euromaster',                           lien:'https://www.boursorama.com/cours/1rPML/' },
+    { nom:'Air France-KLM',  ticker:'AF',   pays:'🇫🇷', condition:'Nominatif pur ≥ 2 ans',   avantage:'Réduction sur billets Air France + dividende majoré +10 %',                     lien:'https://www.boursorama.com/cours/1rPAF/' },
+    // France — dividende majoré +10 %
+    { nom:'TotalEnergies',   ticker:'TTE',  pays:'🇫🇷', condition:'Nominatif pur ≥ 2 ans',   avantage:'Dividende majoré +10 % (plafond 0,5 % du capital social)',                      lien:'https://www.boursorama.com/cours/1rPFP/' },
+    { nom:'Saint-Gobain',    ticker:'SGO',  pays:'🇫🇷', condition:'Nominatif pur ≥ 2 ans',   avantage:'Dividende majoré +10 % (plafond 0,5 % du capital social)',                      lien:'https://www.boursorama.com/cours/1rPSGO/' },
+    { nom:'Vinci',           ticker:'DG',   pays:'🇫🇷', condition:'Nominatif pur ≥ 2 ans',   avantage:'Dividende majoré +10 % (plafond 0,5 % du capital social)',                      lien:'https://www.boursorama.com/cours/1rPDG/' },
+    { nom:'L\'Oréal',        ticker:'OR',   pays:'🇫🇷', condition:'Nominatif pur ≥ 2 ans',   avantage:'Dividende majoré +10 % (plafond 0,5 % du capital social)',                      lien:'https://www.boursorama.com/cours/1rPOR/' },
+    { nom:'Danone',          ticker:'BN',   pays:'🇫🇷', condition:'Nominatif pur ≥ 2 ans',   avantage:'Dividende majoré +10 % (plafond 0,5 % du capital social)',                      lien:'https://www.boursorama.com/cours/1rPBN/' },
+    // International — croisières
+    { nom:'Royal Caribbean',  ticker:'RCL',  pays:'🇺🇸', condition:'≥ 100 actions',           avantage:'$100–$250 de crédit à bord par croisière réservée (valable toutes compagnies)',  lien:'https://www.boursorama.com/cours/1rDRCL/' },
+    { nom:'Carnival Corp.',   ticker:'CCL',  pays:'🇺🇸', condition:'≥ 100 actions',           avantage:'$50–$250 de crédit à bord par croisière (Carnival, Costa, MSC, P&O…)',          lien:'https://www.boursorama.com/cours/1rDCCL/' },
+    { nom:'Norwegian Cruise', ticker:'NCLH', pays:'🇺🇸', condition:'≥ 100 actions',           avantage:'$50–$250 de crédit à bord par croisière Norwegian/Regent/Oceania',              lien:'https://www.boursorama.com/cours/1rDNCLH/' },
+    // International — Berkshire Hathaway
+    { nom:'Berkshire Hathaway',ticker:'BRK.B',pays:'🇺🇸',condition:'1 action',               avantage:'AG Omaha : -8 % GEICO assurance · remises Nebraska Furniture Mart, See\'s Candies, Borsheims bijouterie…', lien:'https://www.boursorama.com/cours/1rDBRK/' },
+    // Japon — système kabunushi yutai (優待)
+    { nom:'ANA Holdings',     ticker:'9202', pays:'🇯🇵', condition:'100 actions',             avantage:'2 certificats de vol domestique à -50 % / an (système kabunushi yutai)',          lien:'https://finance.yahoo.com/quote/9202.T/' },
+    { nom:'JAL',              ticker:'9201', pays:'🇯🇵', condition:'100 actions',             avantage:'2 certificats de vol domestique à -50 % / an (système kabunushi yutai)',          lien:'https://finance.yahoo.com/quote/9201.T/' },
+    { nom:'Oriental Land',    ticker:'4661', pays:'🇯🇵', condition:'100 actions',             avantage:'1 billet d\'entrée Disneyland Tokyo ou DisneySea / an (yutai)',                  lien:'https://finance.yahoo.com/quote/4661.T/' },
+    // Royaume-Uni
+    { nom:'Whitbread',        ticker:'WTB',  pays:'🇬🇧', condition:'1 action nominative',     avantage:'Carte de réduction Premier Inn + restaurants Beefeater/Bar+Block',               lien:'https://www.boursorama.com/cours/1rPWTB/' },
   ],
   etf_dividendes: [
     { nom:'iShares MSCI Eur. High Dividend', ticker:'IDVY',  eligible:'PEA', rendement:'~4,5 %', ter:'0,40 %', frequence:'Trim.', isin:'IE00B0M63284', lien:'https://www.justetf.com/fr/etf-profile.html?isin=IE00B0M63284' },
@@ -1220,7 +1240,7 @@ function renderPlacementOffers(o){
 
   const avRows = (o.avantages_actionnaires||[]).map(a=>`
     <a class="bk-row bk-link bk-av-row" href="${esc(a.lien)}" target="_blank" rel="noopener">
-      <span class="bk-name">${esc(a.nom)} <span class="bk-ticker">${esc(a.ticker)}</span></span>
+      <span class="bk-name">${a.pays||''} ${esc(a.nom)} <span class="bk-ticker">${esc(a.ticker)}</span></span>
       <span class="bk-cap">${esc(a.condition)}</span>
       <span class="bk-note bk-av-span">${esc(a.avantage)}</span>
     </a>`).join('');
