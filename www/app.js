@@ -1086,26 +1086,27 @@ function renderSubtabs(cat){
 
 /* ---------- Offres bancaires (placement) ---------- */
 const BANKING_OFFERS = {
-  updated: '2025-02-01',
+  updated: '2026-07-08',
+  note_livrets: '⚠️ Hausse du Livret A attendue au 1er août 2026 (vers 1,70–2,00 %)',
   livrets: [
-    { nom:'Livret A',  taux:'2,40 %', plafond:'22 950 €',  net:true,  note:'Garanti, disponible à tout moment, défiscalisé' },
-    { nom:'LDDS',      taux:'2,40 %', plafond:'12 000 €',  net:true,  note:'Résidents fiscaux FR uniquement' },
-    { nom:'LEP',       taux:'3,50 %', plafond:'10 000 €',  net:true,  note:'Sous conditions de revenus (RFR ≤ 21 393 €)' },
-    { nom:'PEL',       taux:'1,75 %', plafond:'61 200 €',  net:false, note:'Taux brut — bloqué 4 ans minimum' },
-    { nom:'CEL',       taux:'1,25 %', plafond:'15 300 €',  net:false, note:'Taux brut — lié à un PEL' },
+    { nom:'Livret A',  taux:'1,50 %', plafond:'22 950 €',  net:true,  note:'Garanti, disponible, défiscalisé — hausse attendue le 1er août' },
+    { nom:'LDDS',      taux:'1,50 %', plafond:'12 000 €',  net:true,  note:'Même taux que le Livret A — résidents fiscaux FR' },
+    { nom:'LEP',       taux:'2,50 %', plafond:'10 000 €',  net:true,  note:'Sous conditions de revenus — hausse attendue le 1er août' },
+    { nom:'PEL',       taux:'2,25 %', plafond:'61 200 €',  net:false, note:'Taux brut (ouvertures 2024+) — bloqué 4 ans minimum' },
+    { nom:'CEL',       taux:'1,00 %', plafond:'15 300 €',  net:false, note:'Taux brut — droit à prêt immobilier' },
   ],
   primes: [
-    { banque:'BoursoBank',    offre:'Compte + CB Welcome', prime:'160 €', fin:'2025-06-30', cond:'Dépôt 300 € sous 30 jours',      lien:'https://www.boursobank.com' },
-    { banque:'Fortuneo',      offre:'Compte + CB Fosfo',   prime:'80 €',  fin:'2025-09-30', cond:'Virement salaire dans les 3 mois', lien:'https://www.fortuneo.fr' },
-    { banque:'Monabanq',      offre:'Compte courant',      prime:'120 €', fin:'2025-12-31', cond:'1 opération CB/mois × 3 mois',    lien:'https://www.monabanq.com' },
-    { banque:'Hello bank!',   offre:'Compte + CB One',     prime:'80 €',  fin:'2025-06-30', cond:'Dépôt 500 € sous 45 jours',       lien:'https://www.hellobank.fr' },
-    { banque:'Orange Bank',   offre:'Compte courant',      prime:'100 €', fin:'2025-12-31', cond:'10 opérations CB sous 3 mois',    lien:'https://www.orangebank.fr' },
+    { banque:'Hello bank!',  offre:'Compte + Hello Prime offerte', prime:'jusqu\'à 300 €', fin:'2026-08-10', cond:'Conditions sur le site',          lien:'https://www.hellobank.fr' },
+    { banque:'BNP Paribas',  offre:'Compte courant',               prime:'jusqu\'à 270 €', fin:'2026-12-31', cond:'Voir conditions sur le site',     lien:'https://mabanque.bnpparibas.com' },
+    { banque:'Fortuneo',     offre:'Compte + CB (25 ans)',          prime:'jusqu\'à 250 €', fin:'2026-12-31', cond:'Mobilité bancaire neoChange',      lien:'https://www.fortuneo.fr' },
+    { banque:'Monabanq',     offre:'Compte courant',                prime:'jusqu\'à 200 €', fin:'2026-12-31', cond:'80 € souscription + CB Visa Prem', lien:'https://www.monabanq.com' },
   ],
   livrets_boostes: [
-    { banque:'Distingo Bank',      taux:'3,50 %', duree:'3 mois', plafond:'150 000 €', lien:'https://www.distingo.com' },
-    { banque:'Placement Direct',   taux:'3,00 %', duree:'3 mois', plafond:'100 000 €', lien:'https://www.placementdirect.fr' },
-    { banque:'Cashbee',            taux:'3,20 %', duree:'2 mois', plafond:'75 000 €',  lien:'https://www.cashbee.fr' },
-    { banque:'Ramify',             taux:'3,10 %', duree:'2 mois', plafond:'100 000 €', lien:'https://www.ramify.fr' },
+    { banque:'Distingo Bank',     taux:'voir site', duree:'boosté',  plafond:'150 000 €',  lien:'https://www.distingo.com' },
+    { banque:'Zesto (Renault)',   taux:'voir site', duree:'boosté',  plafond:'100 000 €',  lien:'https://www.renaultbank.fr' },
+    { banque:'Cashbee',           taux:'voir site', duree:'boosté',  plafond:'75 000 €',   lien:'https://www.cashbee.fr' },
+    { banque:'Placement Direct',  taux:'voir site', duree:'boosté',  plafond:'100 000 €',  lien:'https://www.placementdirect.fr' },
+    { banque:'Meilleurtaux',      taux:'voir site', duree:'boosté',  plafond:'100 000 €',  lien:'https://placement.meilleurtaux.com' },
   ],
 };
 
@@ -1139,9 +1140,11 @@ function renderPlacementOffers(){
       <span class="bk-note">Boosté ${esc(b.duree)} puis taux de base</span>
     </a>`).join('');
 
+  const noteHtml = o.note_livrets ? `<div class="bk-alert">${esc(o.note_livrets)}</div>` : '';
   return `<details class="rl-section bk-section">
     <summary class="rl-sh">💰 Meilleures offres bancaires <span class="bk-upd">vérifié ${updDate}</span></summary>
     <div class="bk-body">
+      ${noteHtml}
       <div class="bk-group-lbl">📈 Livrets réglementés (taux nets, garantis)</div>
       <div class="bk-header"><span>Produit</span><span>Taux</span><span>Plafond</span><span>Note</span></div>
       ${livretRows}
