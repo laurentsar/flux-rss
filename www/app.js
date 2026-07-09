@@ -1158,10 +1158,6 @@ const BANKING_OFFERS = {
     { nom:'Norwegian Cruise', ticker:'NCLH', pays:'🇺🇸', condition:'≥ 100 actions',           avantage:'$50–$250 de crédit à bord par croisière Norwegian/Regent/Oceania',              lien:'https://www.boursorama.com/cours/1rDNCLH/' },
     // International — Berkshire Hathaway
     { nom:'Berkshire Hathaway',ticker:'BRK.B',pays:'🇺🇸',condition:'1 action',               avantage:'AG Omaha : -8 % GEICO assurance · remises Nebraska Furniture Mart, See\'s Candies, Borsheims bijouterie…', lien:'https://www.boursorama.com/cours/1rDBRK/' },
-    // Japon — système kabunushi yutai (優待)
-    { nom:'ANA Holdings',     ticker:'9202', pays:'🇯🇵', condition:'100 actions',             avantage:'2 certificats de vol domestique à -50 % / an (système kabunushi yutai)',          lien:'https://finance.yahoo.com/quote/9202.T/' },
-    { nom:'JAL',              ticker:'9201', pays:'🇯🇵', condition:'100 actions',             avantage:'2 certificats de vol domestique à -50 % / an (système kabunushi yutai)',          lien:'https://finance.yahoo.com/quote/9201.T/' },
-    { nom:'Oriental Land',    ticker:'4661', pays:'🇯🇵', condition:'100 actions',             avantage:'1 billet d\'entrée Disneyland Tokyo ou DisneySea / an (yutai)',                  lien:'https://finance.yahoo.com/quote/4661.T/' },
     // Royaume-Uni
     { nom:'Whitbread',        ticker:'WTB',  pays:'🇬🇧', condition:'1 action nominative',     avantage:'Carte de réduction Premier Inn + restaurants Beefeater/Bar+Block',               lien:'https://www.boursorama.com/cours/1rPWTB/' },
   ],
