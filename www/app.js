@@ -1110,9 +1110,12 @@ const BANKING_OFFERS = {
   ],
 };
 
-function renderPlacementOffers(){
-  const o = BANKING_OFFERS;
-  const updDate = new Date(o.updated).toLocaleDateString('fr-FR',{month:'long',year:'numeric'});
+const BANKING_JSON_URL='https://raw.githubusercontent.com/laurentsar/flux-rss/master/www/data/banking.json';
+
+function renderPlacementOffers(o){
+  if (!o) o = BANKING_OFFERS;
+  const rawDate = o.generated || o.updated || '';
+  const updDate = rawDate ? new Date(rawDate).toLocaleDateString('fr-FR',{month:'long',year:'numeric'}) : '';
 
   const livretRows = o.livrets.map(l=>`
     <div class="bk-row">
@@ -1140,7 +1143,7 @@ function renderPlacementOffers(){
       <span class="bk-note">Boosté ${esc(b.duree)} puis taux de base</span>
     </a>`).join('');
 
-  const noteHtml = o.note_livrets ? `<div class="bk-alert">${esc(o.note_livrets)}</div>` : '';
+  const noteHtml = (o.note || o.note_livrets) ? `<div class="bk-alert">${esc(o.note || o.note_livrets)}</div>` : '';
   return `<details class="rl-section bk-section">
     <summary class="rl-sh">💰 Meilleures offres bancaires <span class="bk-upd">vérifié ${updDate}</span></summary>
     <div class="bk-body">
@@ -1158,10 +1161,14 @@ function renderPlacementOffers(){
   </details>`;
 }
 
-function loadPlacementLive(){
+async function loadPlacementLive(){
   if (!elPlacementLive) return;
   elPlacementLive.hidden = false;
-  elPlacementLive.innerHTML = renderPlacementOffers();
+  elPlacementLive.innerHTML = renderPlacementOffers();  // fallback rapide
+  let data = null;
+  try{ data=await (await fetch(BANKING_JSON_URL+'?_='+Date.now(),{cache:'no-store'})).json(); }catch(e){}
+  if (!data){ try{ data=await (await fetch('data/banking.json')).json(); }catch(e){} }
+  if (data) elPlacementLive.innerHTML = renderPlacementOffers(data);
 }
 
 function hidePlacementLive(){

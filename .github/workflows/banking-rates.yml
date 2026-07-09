@@ -1,0 +1,31 @@
+name: Update Banking Rates
+
+on:
+  schedule:
+    # Tous les lundis à 7h00 UTC (9h Paris)
+    - cron: '0 7 * * 1'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run banking rates scraper
+        run: python3 tools/banking_rates.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add www/data/banking.json
+          if git diff --cached --quiet; then
+            echo "Aucune modification — rien à committer"
+          else
+            git commit -m "data(banking): mise à jour taux et offres bancaires [skip ci]"
+            git push
+          fi
