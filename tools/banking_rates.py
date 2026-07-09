@@ -41,6 +41,13 @@ FALLBACK_PRIMES = [
     {"banque": "Monabanq",     "offre": "Compte courant",                "prime": "jusqu'à 200 €", "fin": "2026-12-31", "cond": "80 € souscription + CB Visa Premier", "lien": "https://www.monabanq.com"},
 ]
 
+FALLBACK_PRIMES_EPARGNE = [
+    {"banque": "Cashbee",          "offre": "Livret Cashbee Plus",   "prime": "50 €",          "fin": "2026-12-31", "cond": "Prime parrainage + taux boosté 3 mois",   "lien": "https://www.cashbee.fr"},
+    {"banque": "Fortuneo",         "offre": "Livret Fortuneo+",      "prime": "jusqu'à 80 €",  "fin": "2026-12-31", "cond": "Offre couplée à l'ouverture d'un compte", "lien": "https://www.fortuneo.fr"},
+    {"banque": "BoursoBank",       "offre": "Livret BoursoLivret",   "prime": "voir site",     "fin": "2026-12-31", "cond": "Conditions selon offre en cours",          "lien": "https://www.boursobank.com"},
+    {"banque": "Placement Direct", "offre": "Livret bienvenue",      "prime": "taux boosté",   "fin": "2026-12-31", "cond": "Taux préférentiel garanti 3 mois",         "lien": "https://www.placementdirect.fr"},
+]
+
 FALLBACK_BOOSTES = [
     {"banque": "Distingo Bank",    "taux": "voir site", "duree": "boosté", "plafond": "150 000 €", "lien": "https://www.distingo.com"},
     {"banque": "Zesto (Renault)",  "taux": "voir site", "duree": "boosté", "plafond": "100 000 €", "lien": "https://www.renaultbank.fr"},
@@ -277,7 +284,7 @@ def build_note(livrets):
 
 def main():
     now_str = datetime.datetime.now(PARIS).isoformat(timespec="seconds")
-    data = {"generated": now_str, "livrets": None, "primes": None, "livrets_boostes": None, "note": ""}
+    data = {"generated": now_str, "livrets": None, "primes": None, "primes_epargne": None, "livrets_boostes": None, "note": ""}
 
     print("=== Livrets réglementés ===")
     try:
@@ -292,6 +299,11 @@ def main():
     except Exception as e:
         print(f"  ÉCHEC scraping primes ({e}) → repli sur données hardcodées")
         data["primes"] = FALLBACK_PRIMES
+
+    print("=== Primes d'épargne ===")
+    # Pas de scraping dédié pour l'instant — utilise le fallback hardcodé
+    data["primes_epargne"] = FALLBACK_PRIMES_EPARGNE
+    print(f"    {len(FALLBACK_PRIMES_EPARGNE)} primes épargne (hardcodées)")
 
     print("=== Livrets boostés ===")
     try:

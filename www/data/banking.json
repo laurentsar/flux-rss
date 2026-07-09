@@ -14,6 +14,12 @@
     {"banque": "Fortuneo",     "offre": "Compte + CB (25 ans)",          "prime": "jusqu'à 250 €", "fin": "2026-12-31", "cond": "Mobilité bancaire neoChange",      "lien": "https://www.fortuneo.fr"},
     {"banque": "Monabanq",     "offre": "Compte courant",                "prime": "jusqu'à 200 €", "fin": "2026-12-31", "cond": "80 € souscription + CB Visa Prem", "lien": "https://www.monabanq.com"}
   ],
+  "primes_epargne": [
+    {"banque": "Cashbee",          "offre": "Livret Cashbee Plus",   "prime": "50 €",          "fin": "2026-12-31", "cond": "Prime parrainage + taux boosté 3 mois",     "lien": "https://www.cashbee.fr"},
+    {"banque": "Fortuneo",         "offre": "Livret Fortuneo+",      "prime": "jusqu'à 80 €",  "fin": "2026-12-31", "cond": "Offre couplée à l'ouverture d'un compte",   "lien": "https://www.fortuneo.fr"},
+    {"banque": "BoursoBank",       "offre": "Livret BoursoLivret",   "prime": "voir site",     "fin": "2026-12-31", "cond": "Conditions selon offre en cours",            "lien": "https://www.boursobank.com"},
+    {"banque": "Placement Direct", "offre": "Livret bienvenue",      "prime": "taux boosté",   "fin": "2026-12-31", "cond": "Taux préférentiel garanti 3 mois",           "lien": "https://www.placementdirect.fr"}
+  ],
   "livrets_boostes": [
     {"banque": "Distingo Bank",    "taux": "voir site", "duree": "boosté", "plafond": "150 000 €",  "lien": "https://www.distingo.com"},
     {"banque": "Zesto (Renault)",  "taux": "voir site", "duree": "boosté", "plafond": "100 000 €",  "lien": "https://www.renaultbank.fr"},

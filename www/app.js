@@ -1101,6 +1101,12 @@ const BANKING_OFFERS = {
     { banque:'Fortuneo',     offre:'Compte + CB (25 ans)',          prime:'jusqu\'à 250 €', fin:'2026-12-31', cond:'Mobilité bancaire neoChange',      lien:'https://www.fortuneo.fr' },
     { banque:'Monabanq',     offre:'Compte courant',                prime:'jusqu\'à 200 €', fin:'2026-12-31', cond:'80 € souscription + CB Visa Prem', lien:'https://www.monabanq.com' },
   ],
+  primes_epargne: [
+    { banque:'Cashbee',          offre:'Livret Cashbee Plus',    prime:'50 €',          fin:'2026-12-31', cond:'Prime parrainage + taux boosté 3 mois',     lien:'https://www.cashbee.fr' },
+    { banque:'Fortuneo',         offre:'Livret Fortuneo+',       prime:'jusqu\'à 80 €', fin:'2026-12-31', cond:'Offre couplée à l\'ouverture d\'un compte', lien:'https://www.fortuneo.fr' },
+    { banque:'BoursoBank',       offre:'Livret BoursoLivret',    prime:'voir site',     fin:'2026-12-31', cond:'Conditions selon offre en cours',            lien:'https://www.boursobank.com' },
+    { banque:'Placement Direct', offre:'Livret bienvenue',       prime:'taux boosté',   fin:'2026-12-31', cond:'Taux préférentiel garanti 3 mois',           lien:'https://www.placementdirect.fr' },
+  ],
   livrets_boostes: [
     { banque:'Distingo Bank',     taux:'voir site', duree:'boosté',  plafond:'150 000 €',  lien:'https://www.distingo.com' },
     { banque:'Zesto (Renault)',   taux:'voir site', duree:'boosté',  plafond:'100 000 €',  lien:'https://www.renaultbank.fr' },
@@ -1135,6 +1141,16 @@ function renderPlacementOffers(o){
     </a>`;
   }).join('');
 
+  const primeEpRows = (o.primes_epargne||[]).map(p=>{
+    const fin = p.fin ? new Date(p.fin+'T00:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'}) : '';
+    return `<a class="bk-row bk-link" href="${esc(p.lien)}" target="_blank" rel="noopener">
+      <span class="bk-name">${esc(p.banque)}</span>
+      <span class="bk-rate bk-bonus">${esc(p.prime)}</span>
+      <span class="bk-cap">${esc(p.offre)}</span>
+      <span class="bk-note">${esc(p.cond)}${fin?' · jusqu\'au '+fin:''}</span>
+    </a>`;
+  }).join('');
+
   const boostRows = o.livrets_boostes.map(b=>`
     <a class="bk-row bk-link" href="${esc(b.lien)}" target="_blank" rel="noopener">
       <span class="bk-name">${esc(b.banque)}</span>
@@ -1144,6 +1160,10 @@ function renderPlacementOffers(o){
     </a>`).join('');
 
   const noteHtml = (o.note || o.note_livrets) ? `<div class="bk-alert">${esc(o.note || o.note_livrets)}</div>` : '';
+  const primeEpSection = primeEpRows ? `
+      <div class="bk-group-lbl" style="margin-top:12px">🏦 Primes d'ouverture — comptes d'épargne</div>
+      <div class="bk-header"><span>Banque</span><span>Prime</span><span>Produit</span><span>Conditions</span></div>
+      ${primeEpRows}` : '';
   return `<details class="rl-section bk-section">
     <summary class="rl-sh">💰 Meilleures offres bancaires <span class="bk-upd">vérifié ${updDate}</span></summary>
     <div class="bk-body">
@@ -1151,9 +1171,9 @@ function renderPlacementOffers(o){
       <div class="bk-group-lbl">📈 Livrets réglementés (taux nets, garantis)</div>
       <div class="bk-header"><span>Produit</span><span>Taux</span><span>Plafond</span><span>Note</span></div>
       ${livretRows}
-      <div class="bk-group-lbl" style="margin-top:12px">🎁 Primes de bienvenue — banques en ligne</div>
+      <div class="bk-group-lbl" style="margin-top:12px">🎁 Primes de bienvenue — comptes courants</div>
       <div class="bk-header"><span>Banque</span><span>Prime</span><span>Offre</span><span>Conditions</span></div>
-      ${primeRows}
+      ${primeRows}${primeEpSection}
       <div class="bk-group-lbl" style="margin-top:12px">🚀 Livrets boostés (taux temporaires)</div>
       <div class="bk-header"><span>Banque</span><span>Taux</span><span>Plafond</span><span>Durée</span></div>
       ${boostRows}
