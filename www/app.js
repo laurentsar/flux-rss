@@ -1114,6 +1114,18 @@ const BANKING_OFFERS = {
     { banque:'Placement Direct',  taux:'voir site', duree:'boosté',  plafond:'100 000 €',  lien:'https://www.placementdirect.fr' },
     { banque:'Meilleurtaux',      taux:'voir site', duree:'boosté',  plafond:'100 000 €',  lien:'https://placement.meilleurtaux.com' },
   ],
+  top_actions: [
+    { nom:'Orange',          ticker:'ORA',   rendement:'~8,5 %', dividende:'0,70 €', secteur:'Télécom',   lien:'https://www.boursorama.com/cours/1rPORA/' },
+    { nom:'BNP Paribas',     ticker:'BNP',   rendement:'~8,0 %', dividende:'4,60 €', secteur:'Banque',    lien:'https://www.boursorama.com/cours/1rPBNP/' },
+    { nom:'Société Générale',ticker:'GLE',   rendement:'~7,5 %', dividende:'1,75 €', secteur:'Banque',    lien:'https://www.boursorama.com/cours/1rPGLE/' },
+    { nom:'Crédit Agricole', ticker:'ACA',   rendement:'~7,0 %', dividende:'1,05 €', secteur:'Banque',    lien:'https://www.boursorama.com/cours/1rPACA/' },
+    { nom:'Engie',           ticker:'ENGI',  rendement:'~6,8 %', dividende:'0,68 €', secteur:'Énergie',   lien:'https://www.boursorama.com/cours/1rPENGI/'},
+    { nom:'Klépierre',       ticker:'LI',    rendement:'~6,5 %', dividende:'1,75 €', secteur:'Immobilier',lien:'https://www.boursorama.com/cours/1rPLI/'},
+    { nom:'TotalEnergies',   ticker:'TTE',   rendement:'~5,8 %', dividende:'3,22 €', secteur:'Énergie',   lien:'https://www.boursorama.com/cours/1rPFP/' },
+    { nom:'AXA',             ticker:'CS',    rendement:'~5,5 %', dividende:'1,98 €', secteur:'Assurance', lien:'https://www.boursorama.com/cours/1rPCS/' },
+    { nom:'Sanofi',          ticker:'SAN',   rendement:'~3,8 %', dividende:'3,76 €', secteur:'Santé',     lien:'https://www.boursorama.com/cours/1rPSAN/' },
+    { nom:'Publicis',        ticker:'PUB',   rendement:'~3,5 %', dividende:'3,40 €', secteur:'Médias',    lien:'https://www.boursorama.com/cours/1rPPUB/' },
+  ],
 };
 
 const BANKING_JSON_URL='https://raw.githubusercontent.com/laurentsar/flux-rss/master/www/data/banking.json';
@@ -1159,13 +1171,26 @@ function renderPlacementOffers(o){
       <span class="bk-note">Boosté ${esc(b.duree)} puis taux de base</span>
     </a>`).join('');
 
+  const actionRows = (o.top_actions||[]).map(a=>`
+    <a class="bk-row bk-link" href="${esc(a.lien)}" target="_blank" rel="noopener">
+      <span class="bk-name">${esc(a.nom)} <span class="bk-ticker">${esc(a.ticker)}</span></span>
+      <span class="bk-rate bk-net">${esc(a.rendement)}</span>
+      <span class="bk-cap">${esc(a.dividende)}/an</span>
+      <span class="bk-note">${esc(a.secteur)}</span>
+    </a>`).join('');
+
   const noteHtml = (o.note || o.note_livrets) ? `<div class="bk-alert">${esc(o.note || o.note_livrets)}</div>` : '';
   const primeEpSection = primeEpRows ? `
       <div class="bk-group-lbl" style="margin-top:12px">🏦 Primes d'ouverture — comptes d'épargne</div>
       <div class="bk-header"><span>Banque</span><span>Prime</span><span>Produit</span><span>Conditions</span></div>
       ${primeEpRows}` : '';
+  const actionSection = actionRows ? `
+      <div class="bk-group-lbl" style="margin-top:12px">📊 Top 10 actions à dividende (Euronext Paris) <span style="font-weight:400;opacity:.6;font-size:.72rem">— rendements indicatifs, vérifié ${updDate}</span></div>
+      <div class="bk-header"><span>Société</span><span>Rendement</span><span>Dividende</span><span>Secteur</span></div>
+      ${actionRows}
+      <div style="font-size:.72rem;color:var(--muted);padding:4px 4px 0;line-height:1.4">⚠️ Rendements indicatifs basés sur le cours actuel — peuvent varier quotidiennement. Hors fiscalité (PFU 30 % sauf PEA).</div>` : '';
   return `<details class="rl-section bk-section">
-    <summary class="rl-sh">💰 Meilleures offres bancaires <span class="bk-upd">vérifié ${updDate}</span></summary>
+    <summary class="rl-sh">💰 Meilleures offres bancaires &amp; placement <span class="bk-upd">vérifié ${updDate}</span></summary>
     <div class="bk-body">
       ${noteHtml}
       <div class="bk-group-lbl">📈 Livrets réglementés (taux nets, garantis)</div>
@@ -1176,7 +1201,7 @@ function renderPlacementOffers(o){
       ${primeRows}${primeEpSection}
       <div class="bk-group-lbl" style="margin-top:12px">🚀 Livrets boostés (taux temporaires)</div>
       <div class="bk-header"><span>Banque</span><span>Taux</span><span>Plafond</span><span>Durée</span></div>
-      ${boostRows}
+      ${boostRows}${actionSection}
     </div>
   </details>`;
 }

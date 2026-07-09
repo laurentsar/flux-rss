@@ -56,6 +56,19 @@ FALLBACK_BOOSTES = [
     {"banque": "Meilleurtaux",     "taux": "voir site", "duree": "boosté", "plafond": "100 000 €", "lien": "https://placement.meilleurtaux.com"},
 ]
 
+FALLBACK_TOP_ACTIONS = [
+    {"nom": "Orange",           "ticker": "ORA",  "rendement": "~8,5 %", "dividende": "0,70 €", "secteur": "Télécom",    "lien": "https://www.boursorama.com/cours/1rPORA/"},
+    {"nom": "BNP Paribas",      "ticker": "BNP",  "rendement": "~8,0 %", "dividende": "4,60 €", "secteur": "Banque",     "lien": "https://www.boursorama.com/cours/1rPBNP/"},
+    {"nom": "Société Générale", "ticker": "GLE",  "rendement": "~7,5 %", "dividende": "1,75 €", "secteur": "Banque",     "lien": "https://www.boursorama.com/cours/1rPGLE/"},
+    {"nom": "Crédit Agricole",  "ticker": "ACA",  "rendement": "~7,0 %", "dividende": "1,05 €", "secteur": "Banque",     "lien": "https://www.boursorama.com/cours/1rPACA/"},
+    {"nom": "Engie",            "ticker": "ENGI", "rendement": "~6,8 %", "dividende": "0,68 €", "secteur": "Énergie",    "lien": "https://www.boursorama.com/cours/1rPENGI/"},
+    {"nom": "Klépierre",        "ticker": "LI",   "rendement": "~6,5 %", "dividende": "1,75 €", "secteur": "Immobilier", "lien": "https://www.boursorama.com/cours/1rPLI/"},
+    {"nom": "TotalEnergies",    "ticker": "TTE",  "rendement": "~5,8 %", "dividende": "3,22 €", "secteur": "Énergie",    "lien": "https://www.boursorama.com/cours/1rPFP/"},
+    {"nom": "AXA",              "ticker": "CS",   "rendement": "~5,5 %", "dividende": "1,98 €", "secteur": "Assurance",  "lien": "https://www.boursorama.com/cours/1rPCS/"},
+    {"nom": "Sanofi",           "ticker": "SAN",  "rendement": "~3,8 %", "dividende": "3,76 €", "secteur": "Santé",      "lien": "https://www.boursorama.com/cours/1rPSAN/"},
+    {"nom": "Publicis",         "ticker": "PUB",  "rendement": "~3,5 %", "dividende": "3,40 €", "secteur": "Médias",     "lien": "https://www.boursorama.com/cours/1rPPUB/"},
+]
+
 
 # ---------------------------------------------------------------------------
 # Helpers réseau / parsing
@@ -284,7 +297,7 @@ def build_note(livrets):
 
 def main():
     now_str = datetime.datetime.now(PARIS).isoformat(timespec="seconds")
-    data = {"generated": now_str, "livrets": None, "primes": None, "primes_epargne": None, "livrets_boostes": None, "note": ""}
+    data = {"generated": now_str, "livrets": None, "primes": None, "primes_epargne": None, "livrets_boostes": None, "top_actions": None, "note": ""}
 
     print("=== Livrets réglementés ===")
     try:
@@ -311,6 +324,11 @@ def main():
     except Exception as e:
         print(f"  ÉCHEC scraping boostés ({e}) → repli sur données hardcodées")
         data["livrets_boostes"] = FALLBACK_BOOSTES
+
+    print("=== Top actions à dividende ===")
+    # Pas de scraping temps-réel — rendements indicatifs mis à jour manuellement
+    data["top_actions"] = FALLBACK_TOP_ACTIONS
+    print(f"    {len(FALLBACK_TOP_ACTIONS)} actions (hardcodées)")
 
     data["note"] = build_note(data["livrets"])
 
