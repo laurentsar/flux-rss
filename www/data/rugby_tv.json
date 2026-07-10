@@ -1,47 +1,8 @@
 {
- "generated": "2026-07-09T20:15:07+02:00",
+ "generated": "2026-07-10T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 25,
+ "count": 33,
  "programmes": [
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-07-09",
-   "time": "19:02",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Histoire de champions rugby",
-   "date": "2026-07-09",
-   "time": "19:22",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "ASM Romagnat / Stade Bordelais",
-   "date": "2026-07-09",
-   "time": "21:00",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-07-10",
@@ -49,19 +10,6 @@
    "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
    "chaine": [
     "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Championnat du monde U20",
-   "date": "2026-07-10",
-   "time": "13:30",
-   "desc": "A suivre, des rencontres disputées dans le cadre de cette compétition qui se déroule tous les ans et réservée aux espoirs du rugby âgés de m",
-   "chaine": [
-    "La Chaîne L'Équipe"
    ],
    "cats": [
     "rugby"
@@ -82,9 +30,22 @@
    "approx": false
   },
   {
+   "title": "Rugby : Championnat du monde U20",
+   "date": "2026-07-10",
+   "time": "14:00",
+   "desc": "A suivre, des rencontres disputées dans le cadre de cette compétition qui se déroule tous les ans et réservée aux espoirs du rugby âgés de m",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Rugby : Major League Rugby",
    "date": "2026-07-10",
-   "time": "15:00",
+   "time": "15:10",
    "desc": "Affiche à définir de la finale de la Major League Rugby 2026.",
    "chaine": [
     "Sport en France"
@@ -316,12 +277,155 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-12",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Major League Rugby",
+   "date": "2026-07-12",
+   "time": "08:00",
+   "desc": "Affiche à définir de la finale de la Major League Rugby 2026.",
+   "chaine": [
+    "Sport en France"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Rugby : Top 14",
    "date": "2026-07-12",
    "time": "16:55",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-12",
+   "time": "19:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : State of Origin",
+   "date": "2026-07-13",
+   "time": "00:45",
+   "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / Montpellier",
+   "date": "2026-07-13",
+   "time": "10:36",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Vannes / Provence Rugby",
+   "date": "2026-07-13",
+   "time": "12:18",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-07-13",
+   "time": "14:12",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat du monde U20",
+   "date": "2026-07-13",
+   "time": "15:51",
+   "desc": "En Direct.",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Le pacte des Louves (Bobigny Rugby)",
+   "date": "2026-07-13",
+   "time": "16:02",
+   "desc": "Elles sont agent de sécurité à la RATP, chargée de communication dans une ONG ou encore professeure d'E.P.S. le jour, mais aussi joueuses de",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Romagnat / Stade Bordelais",
+   "date": "2026-07-13",
+   "time": "16:31",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat du monde U20",
+   "date": "2026-07-13",
+   "time": "21:15",
+   "desc": "Rugby",
+   "chaine": [
+    "La Chaîne L'Équipe"
    ],
    "cats": [
     "rugby"
