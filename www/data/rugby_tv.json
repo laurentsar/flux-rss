@@ -1,47 +1,8 @@
 {
- "generated": "2026-07-10T20:15:03+02:00",
+ "generated": "2026-07-11T08:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 28,
+ "count": 31,
  "programmes": [
-  {
-   "title": "ASM Romagnat / Stade Bordelais",
-   "date": "2026-07-10",
-   "time": "18:37",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : State of Origin féminin",
-   "date": "2026-07-10",
-   "time": "19:30",
-   "desc": "Retransmission du State of Origin féminin, une compétition de rugby à XIII, opposant deux équipes australiennes, représentant deux états riv",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-07-10",
-   "time": "22:30",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby : Championnat des nations",
    "date": "2026-07-11",
@@ -277,6 +238,19 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-13",
+   "time": "10:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Toulouse / Montpellier",
    "date": "2026-07-13",
    "time": "10:36",
@@ -319,6 +293,19 @@
    "title": "Rugby : Championnat du monde U20",
    "date": "2026-07-13",
    "time": "15:51",
+   "desc": "Invaincus en phase de poules, les Bleuets retrouvent la Nouvelle-Zélande en demi-finale du championnat du monde U20. A Tbilissi, les \"Baby B",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "France / Nouvelle-Zélande",
+   "date": "2026-07-13",
+   "time": "15:51",
    "desc": "En Direct.",
    "chaine": [
     "La Chaîne L'Équipe"
@@ -355,12 +342,64 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : State of Origin",
+   "date": "2026-07-13",
+   "time": "19:00",
+   "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Rugby : Championnat du monde U20",
    "date": "2026-07-13",
    "time": "21:15",
-   "desc": "Rugby",
+   "desc": "Tenante du titre et première de sa poule, l'Afrique du Sud aborde cette demi-finale avec l'ambition de poursuivre sa domination dans la comp",
    "chaine": [
     "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / Montpellier",
+   "date": "2026-07-14",
+   "time": "18:54",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-07-14",
+   "time": "20:40",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Top 14",
+   "date": "2026-07-14",
+   "time": "21:03",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
    ],
    "cats": [
     "rugby"
