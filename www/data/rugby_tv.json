@@ -1,34 +1,8 @@
 {
- "generated": "2026-07-11T20:15:04+02:00",
+ "generated": "2026-07-12T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
  "count": 20,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-07-11",
-   "time": "21:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Championnat des nations",
-   "date": "2026-07-11",
-   "time": "21:00",
-   "desc": "Le tout nouveau Championnat des Nations a débuté le 4 juillet et se poursuit ce week-end. Pour rappel, cette nouvelle compétition réunit les",
-   "chaine": [
-    "TF1"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-07-12",
@@ -86,19 +60,6 @@
    "date": "2026-07-13",
    "time": "00:45",
    "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-07-13",
-   "time": "10:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
    "chaine": [
     "beIN Sports"
    ],
@@ -201,7 +162,7 @@
   {
    "title": "Rugby à XIII : State of Origin",
    "date": "2026-07-13",
-   "time": "19:00",
+   "time": "17:00",
    "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
    "chaine": [
     "beIN Sports"
@@ -218,6 +179,19 @@
    "desc": "Tenante du titre et première de sa poule, l'Afrique du Sud aborde cette demi-finale avec l'ambition de poursuivre sa domination dans la comp",
    "chaine": [
     "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-14",
+   "time": "14:30",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -254,6 +228,32 @@
    "title": "Rugby : Top 14",
    "date": "2026-07-14",
    "time": "21:03",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Top 14",
+   "date": "2026-07-15",
+   "time": "09:03",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "L'année Super Rugby Pacific",
+   "date": "2026-07-15",
+   "time": "16:30",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
