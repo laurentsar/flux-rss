@@ -1015,6 +1015,10 @@
           "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCSdJiWi0tq9CAx1bizne6mA",
           "pod": true,
           "kind": "video"
+        },
+        {
+          "name": "Voyage Pirate",
+          "url": "https://www.lesvoyagespirates.com/feed"
         }
       ],
       "feeds_en": [
