@@ -1,34 +1,8 @@
 {
- "generated": "2026-07-12T20:15:04+02:00",
+ "generated": "2026-07-13T08:15:04+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 17,
+ "count": 19,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-07-12",
-   "time": "19:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : State of Origin",
-   "date": "2026-07-13",
-   "time": "00:45",
-   "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Toulouse / Montpellier",
    "date": "2026-07-13",
@@ -215,6 +189,58 @@
    "title": "L'année Super Rugby Pacific",
    "date": "2026-07-15",
    "time": "16:30",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : State of Origin féminin",
+   "date": "2026-07-15",
+   "time": "23:00",
+   "desc": "Retransmission du State of Origin féminin, une compétition de rugby à XIII, opposant deux équipes australiennes, représentant deux états riv",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Top 14",
+   "date": "2026-07-16",
+   "time": "02:10",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "L'année Super Rugby Pacific",
+   "date": "2026-07-16",
+   "time": "09:43",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Top 14",
+   "date": "2026-07-16",
+   "time": "11:44",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
