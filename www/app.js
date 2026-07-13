@@ -2549,15 +2549,16 @@ async function init(){
     _swipeEl.style.transform=`translateX(${dx*0.35}px)`;
   },{passive:true});
 
-  function _swipeReset(){
+  document.addEventListener('touchend',e=>{
+    if(_txStart===null) return;
+    const dx=e.changedTouches[0].clientX-_txStart;
+    const dy=e.changedTouches[0].clientY-_tyStart;
+    const dt=Math.max(1,Date.now()-_tStart);
     _swipeEl.style.transition='transform .22s cubic-bezier(.25,.46,.45,.94)';
     _swipeEl.style.transform='';
     _txStart=null;_tyStart=null;_swipeLocked=false;
-  }
-  function _swipeCommit(dx){
-    _swipeReset();
-    const dt=Math.max(1,Date.now()-_tStart);
-    const vel=Math.abs(dx)/dt; // px/ms
+    if(Math.abs(dy)>Math.abs(dx)*0.75) return;
+    const vel=Math.abs(dx)/dt;
     if(Math.abs(dx)<20) return;
     if(Math.abs(dx)<50&&vel<0.3) return;
     const ids=['agenda',...DATA.categories.filter(c=>!c.off).map(c=>c.id)];
@@ -2565,13 +2566,13 @@ async function init(){
     if(idx===-1) return;
     const next=ids[idx+(dx<0?1:-1)];
     if(next) selectCat(next);
-  }
-
-  document.addEventListener('touchend',e=>{
-    if(!_swipeLocked){_swipeReset();return;}
-    _swipeCommit(e.changedTouches[0].clientX-_txStart);
   },{passive:true});
-  document.addEventListener('touchcancel',_swipeReset,{passive:true});
+
+  document.addEventListener('touchcancel',()=>{
+    _swipeEl.style.transition='transform .22s cubic-bezier(.25,.46,.45,.94)';
+    _swipeEl.style.transform='';
+    _txStart=null;_tyStart=null;_swipeLocked=false;
+  },{passive:true});
 
   // Pause toutes les animations CSS quand l'écran est éteint / app en arrière-plan
   document.addEventListener('visibilitychange', ()=>{
