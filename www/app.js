@@ -525,7 +525,7 @@ function hideRugbyLive(){
 }
 
 /* ---------- Changelog Live ---------- */
-let _clHtml = null;
+let _clHtml = {};
 let _clSeen = JSON.parse(localStorage.getItem('cl_seen') || '{}');
 function _showClNewBadge(catId){
   document.querySelector(`.chip[data-id="${catId}"]`)?.classList.add('chip-has-new');
@@ -536,7 +536,7 @@ function _clMarkSeen(catId, version, el){
   document.querySelector(`.chip[data-id="${catId}"]`)?.classList.remove('chip-has-new');
   el.querySelectorAll('.cl-new').forEach(b => b.remove());
   el.ontoggle = null;
-  _clHtml = document.getElementById('changelog-live')?.innerHTML || null;
+  _clHtml[catId] = document.getElementById('changelog-live')?.innerHTML || null;
 }
 
 // Extrait le vrai src d'une balise img (gère WordPress lazy-load : data-lazy-src / data-src)
@@ -804,7 +804,7 @@ async function loadChangelogLive(cat){
     : cat.id==='vr'        ? loadQuestChangelog
     : null;
   if (!feeds.length && !scraperFn){ hideChangelogLive(); return; }
-  if (_clHtml){ elChangelogLive.hidden=false; elChangelogLive.innerHTML=_clHtml; return; }
+  if (_clHtml[cat.id]){ elChangelogLive.hidden=false; elChangelogLive.innerHTML=_clHtml[cat.id]; return; }
   elChangelogLive.hidden = false;
   elChangelogLive.innerHTML = '<div class="cl-loading"><span class="spinner"></span> Changelog…</div>';
 
@@ -831,7 +831,7 @@ async function loadChangelogLive(cat){
         : '';
       const html = `<details class="rl-section" ${detailsAttr}><summary class="rl-sh">${label} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
       elChangelogLive.innerHTML = html;
-      if (!isNew) _clHtml = html;
+      if (!isNew) _clHtml[cat.id] = html;
       return;
     }
   }
@@ -876,12 +876,11 @@ async function loadChangelogLive(cat){
     : '';
   const html = `<details class="rl-section" ${rssDetailsAttr}><summary class="rl-sh">${label} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
   elChangelogLive.innerHTML = html;
-  if (!rssIsNew) _clHtml = html;
+  if (!rssIsNew) _clHtml[cat.id] = html;
 }
 
 function hideChangelogLive(){
   if (elChangelogLive){ elChangelogLive.hidden=true; elChangelogLive.innerHTML=''; }
-  _clHtml = null;
 }
 
 /* ---------- Football Live (France + Toulouse) ---------- */
@@ -1320,7 +1319,6 @@ function hidePlacementLive(){
 }
 
 async function loadCategory(cat, {silent=false}={}){
-  _clHtml = null;
   _footLiveHtml = null;
   current = cat.id;
   if (!hasNews(cat) && hasPods(cat)) currentTab='pods';      // catégorie 100% podcasts (ex. Podcasts globale)
