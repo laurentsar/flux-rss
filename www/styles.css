@@ -70,6 +70,7 @@ details.st-cat>summary.st-cat-sh::-webkit-details-marker{display:none}
 .st-cat-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 details.st-cat.off>summary.st-cat-sh .st-cat-name{text-decoration:line-through;color:var(--muted)}
 details.st-cat>.st-cat-body{padding:4px 10px 10px}
+details.st-cat:not([open])>.st-cat-body{display:none}
 .chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
 .chip{
