@@ -13,6 +13,7 @@ const CAT_COLORS = {
   placement:['#D97706','#78350F'],
   bricolage:['#B45309','#6B2E00'], byd:['#0F766E','#083A38'],
   football:['#1E3A8A','#0C1E4A'],
+  immobilier:['#C2410C','#6B2808'],
   agenda:['#6366F1','#312E81'],
   magazine:['#7B3F00','#3D1F00'],
 };
@@ -22,6 +23,7 @@ const CAT_LABELS = {
   jeux:'🎮 Jeux', voyage:'✈️ Voyage', tesla:'⚡ Tesla',
   placement:'💰 Placement', bricolage:'🔨 Bricolage', byd:'🛠️ BYD',
   football:'⚽ Football',
+  immobilier:'🏡 Immobilier',
 };
 const PER_FEED = 12;       // articles gardés par flux
 const MAX_SHOW = 60;       // articles affichés par catégorie
