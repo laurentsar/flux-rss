@@ -797,6 +797,7 @@ async function loadQuestChangelog(){
 
 async function loadChangelogLive(cat){
   if (!elChangelogLive) return;
+  const clCatId = cat.id;
   const feeds = (cat.feeds_changelog || []).filter(f => !f.off);
   const scraperFn = cat.id==='tesla' ? loadTeslaReleaseNotes
     : cat.id==='domotique' ? loadHAChangelog
@@ -831,8 +832,9 @@ async function loadChangelogLive(cat){
         ? `data-cl-cat="${cat.id}" data-cl-ver="${esc(release.version)}" ontoggle="if(this.open)_clMarkSeen(this.dataset.clCat,this.dataset.clVer,this)"`
         : '';
       const html = `<details class="rl-section" ${detailsAttr}><summary class="rl-sh">${label} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
+      if (current !== clCatId) return;
       elChangelogLive.innerHTML = html;
-      if (!isNew) _clHtml[cat.id] = html;
+      if (!isNew) _clHtml[clCatId] = html;
       return;
     }
   }
@@ -876,8 +878,9 @@ async function loadChangelogLive(cat){
     ? `data-cl-cat="${cat.id}" data-cl-ver="${esc(firstVer||'')}" ontoggle="if(this.open)_clMarkSeen(this.dataset.clCat,this.dataset.clVer,this)"`
     : '';
   const html = `<details class="rl-section" ${rssDetailsAttr}><summary class="rl-sh">${labelRss} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
+  if (current !== clCatId) return;
   elChangelogLive.innerHTML = html;
-  if (!rssIsNew) _clHtml[cat.id] = html;
+  if (!rssIsNew) _clHtml[clCatId] = html;
 }
 
 function hideChangelogLive(){
