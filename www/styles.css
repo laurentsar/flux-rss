@@ -56,6 +56,20 @@ body{
 .add-cat{display:flex;gap:6px;margin-top:8px}
 .add-cat input{flex:1}
 .hint{color:var(--muted);font-size:.8em;margin:2px 0 10px}
+/* ---- Settings sections & cat collapsibles ---- */
+details.st-section{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;overflow:hidden}
+details.st-section>summary.st-sh{list-style:none;cursor:pointer;padding:11px 14px;font-weight:700;font-size:.92em;display:flex;align-items:center;gap:8px;background:var(--card);user-select:none;-webkit-user-select:none}
+details.st-section>summary.st-sh::-webkit-details-marker{display:none}
+details.st-section>summary.st-sh::after{content:"▾";margin-left:auto;opacity:.5;transition:transform .2s}
+details.st-section:not([open])>summary.st-sh::after{transform:rotate(-90deg)}
+details.st-section>.st-body{padding:10px 14px}
+.st-sh-sub{font-weight:400;opacity:.6;font-size:.85em}
+details.st-cat{border:1px solid var(--line);border-left:4px solid var(--accent,#F26522);border-radius:8px;margin-bottom:8px;background:var(--card)}
+details.st-cat>summary.st-cat-sh{list-style:none;cursor:pointer;padding:8px 10px;display:flex;align-items:center;gap:6px;font-weight:700;font-size:.95em;user-select:none;-webkit-user-select:none}
+details.st-cat>summary.st-cat-sh::-webkit-details-marker{display:none}
+.st-cat-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+details.st-cat.off>summary.st-cat-sh .st-cat-name{text-decoration:line-through;color:var(--muted)}
+details.st-cat>.st-cat-body{padding:4px 10px 10px}
 .chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
 .chip{

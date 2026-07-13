@@ -2155,48 +2155,79 @@ function renderSettings(){
         <button class="iconbtn tg" data-act="toggle-feed" data-ci="${ci}" data-fi="${fi}" title="${f.off?'Activer':'Désactiver'}">${f.off?'🚫':'👁️'}</button>
         <input class="f-name" data-ci="${ci}" data-fi="${fi}" value="${esc(f.name)}">
         <input class="f-url" data-ci="${ci}" data-fi="${fi}" value="${esc(f.url)}">
-        <button class="iconbtn mv" data-act="feed-up" data-ci="${ci}" data-fi="${fi}" title="Monter le flux" ${fi===0?'disabled':''}>↑</button>
-        <button class="iconbtn mv" data-act="feed-down" data-ci="${ci}" data-fi="${fi}" title="Descendre le flux" ${fi===farr.length-1?'disabled':''}>↓</button>
+        <button class="iconbtn mv" data-act="feed-up" data-ci="${ci}" data-fi="${fi}" title="Monter" ${fi===0?'disabled':''}>↑</button>
+        <button class="iconbtn mv" data-act="feed-down" data-ci="${ci}" data-fi="${fi}" title="Descendre" ${fi===farr.length-1?'disabled':''}>↓</button>
         <button class="iconbtn" data-act="del-feed" data-ci="${ci}" data-fi="${fi}">✕</button>
       </div>`).join('');
     const isFirst = ci === 0, isLast = ci === DATA.categories.length - 1;
-    return `<div class="cat-block ${c.off?'off':''}" style="--accent:${color}">
-      <div class="cat-head">
-        <button class="iconbtn tg" data-act="toggle-cat" data-ci="${ci}" title="${c.off?'Activer la catégorie':'Désactiver la catégorie'}">${c.off?'🚫':'👁️'}</button>
-        <input class="cat-label" data-ci="${ci}" value="${esc(c.label)}">
-        <button class="iconbtn" data-act="cat-up" data-ci="${ci}" title="Monter" ${isFirst?'disabled':''}>↑</button>
-        <button class="iconbtn" data-act="cat-down" data-ci="${ci}" title="Descendre" ${isLast?'disabled':''}>↓</button>
+    return `<details class="st-cat ${c.off?'off':''}" style="--accent:${color}">
+      <summary class="st-cat-sh">
+        <button class="iconbtn tg" data-act="toggle-cat" data-ci="${ci}" title="${c.off?'Activer':'Désactiver'}">${c.off?'🚫':'👁️'}</button>
+        <span class="st-cat-name">${esc(c.label)}</span>
+        <button class="iconbtn mv" data-act="cat-up" data-ci="${ci}" title="Monter" ${isFirst?'disabled':''}>↑</button>
+        <button class="iconbtn mv" data-act="cat-down" data-ci="${ci}" title="Descendre" ${isLast?'disabled':''}>↓</button>
         <button class="iconbtn" data-act="del-cat" data-ci="${ci}">🗑️</button>
+      </summary>
+      <div class="st-cat-body">
+        <input class="cat-label" data-ci="${ci}" value="${esc(c.label)}" placeholder="Nom de la catégorie" style="width:100%;margin-bottom:8px">
+        ${feeds}
+        <div class="feed-add">
+          <input class="nf-name" data-ci="${ci}" placeholder="Nom du flux">
+          <input class="nf-url" data-ci="${ci}" placeholder="https://…/feed">
+          <button class="btn add" data-act="add-feed" data-ci="${ci}">+ Ajouter</button>
+        </div>
       </div>
-      ${feeds}
-      <div class="feed-add">
-        <input class="nf-name" data-ci="${ci}" placeholder="Nom du flux">
-        <input class="nf-url" data-ci="${ci}" placeholder="https://…/feed">
-        <button class="btn add" data-act="add-feed" data-ci="${ci}">+ Ajouter</button>
-      </div>
-    </div>`;
+    </details>`;
   }).join('');
   elCard.innerHTML = `
-    <div class="modal-head"><h2>⚙️ Sources ${lang==='en'?'🇬🇧 EN':'🇫🇷 FR'}</h2><button data-act="close">✕</button></div>
+    <div class="modal-head"><h2>⚙️ Réglages</h2><button data-act="close">✕</button></div>
     <div class="modal-body">
-      <div class="hint">Tu édites les sources <b>${lang==='en'?'anglaises 🇬🇧':'françaises 🇫🇷'}</b> (bascule via le drapeau en haut). 👁️/🚫 activer/désactiver · ↑↓ réordonner · ✕/🗑️ supprimer. Sauvegarde auto (conservée lors des MAJ).</div>
-      ${cats}
-      <div class="add-cat">
-        <input id="new-cat" placeholder="Nouvelle catégorie (ex : 🎮 Jeux)">
-        <button class="btn cat" data-act="add-cat">+ Catégorie</button>
-      </div>
-      <button class="btn reset" data-act="reset">↺ Restaurer les flux par défaut</button>
-      <div style="display:flex;gap:8px;margin-top:10px">
-        <button class="btn" style="flex:1;background:#1e293b;border:1px solid var(--line);color:#86efac" data-act="export-cfg">⬇ Exporter mes réglages</button>
-        <label class="btn" style="flex:1;background:#1e293b;border:1px solid var(--line);color:#93c5fd;text-align:center;cursor:pointer">
-          ⬆ Importer un backup<input type="file" accept=".json" style="display:none" id="import-cfg-file">
-        </label>
-      </div>
-      <div class="iptv-cfg" style="margin-top:14px;padding-top:12px;border-top:1px solid var(--line)">
-        <div class="hint">📺 <b>Lecteur IPTV</b> (optionnel) — modèle d'URL ouvert au clic sur une chaîne de l'agenda, pour voir le direct. Variables : <code>{chaine}</code> (nom de la chaîne), <code>{q}</code> (match). Aucun flux n'est fourni : renseigne ta propre source légale. Vide = pas de lien direct.</div>
-        <input id="iptv-tpl" placeholder="ex : http://mon-serveur/live/{chaine}.m3u8  ·  iptv://play?c={chaine}" value="${esc(getIptv())}" style="width:100%;margin-top:6px">
-      </div>
-      <div class="app-version">Flux RSS v${APP_VERSION}</div>
+
+      <details class="st-section" open>
+        <summary class="st-sh">📡 Sources <span class="st-sh-sub">${lang==='en'?'🇬🇧 EN':'🇫🇷 FR'}</span></summary>
+        <div class="st-body">
+          <div class="hint">👁️/🚫 activer · ↑↓ réordonner · ✕/🗑️ supprimer. Bascule de langue via le drapeau en haut. Sauvegarde auto.</div>
+          ${cats}
+          <div class="add-cat">
+            <input id="new-cat" placeholder="Nouvelle catégorie (ex : 🎮 Jeux)">
+            <button class="btn cat" data-act="add-cat">+ Catégorie</button>
+          </div>
+        </div>
+      </details>
+
+      <details class="st-section">
+        <summary class="st-sh">🔄 Mise à jour</summary>
+        <div class="st-body">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+            <span style="color:var(--muted);font-size:.88em">Version installée</span>
+            <span style="font-weight:700">v${APP_VERSION}</span>
+          </div>
+          <button class="btn" style="width:100%;background:#1e293b;border:1px solid var(--line)" data-act="check-update">🔄 Vérifier les mises à jour</button>
+          <div id="st-upd-status" style="text-align:center;font-size:.85em;margin-top:8px;min-height:1.2em"></div>
+        </div>
+      </details>
+
+      <details class="st-section">
+        <summary class="st-sh">🗄️ Sauvegarde</summary>
+        <div class="st-body" style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;gap:8px">
+            <button class="btn" style="flex:1;background:#1e293b;border:1px solid var(--line);color:#86efac" data-act="export-cfg">⬇ Exporter</button>
+            <label class="btn" style="flex:1;background:#1e293b;border:1px solid var(--line);color:#93c5fd;text-align:center;cursor:pointer">
+              ⬆ Importer<input type="file" accept=".json" style="display:none" id="import-cfg-file">
+            </label>
+          </div>
+          <button class="btn reset" data-act="reset">↺ Restaurer les flux par défaut</button>
+        </div>
+      </details>
+
+      <details class="st-section">
+        <summary class="st-sh">📺 IPTV</summary>
+        <div class="st-body">
+          <div class="hint">Modèle d'URL ouvert au clic sur une chaîne de l'agenda TV. Variables : <code>{chaine}</code>, <code>{q}</code>. Vide = pas de lien direct.</div>
+          <input id="iptv-tpl" placeholder="ex : http://mon-serveur/live/{chaine}.m3u8" value="${esc(getIptv())}" style="width:100%;margin-top:6px">
+        </div>
+      </details>
+
     </div>`;
 }
 
@@ -2210,9 +2241,32 @@ function onSettingsChange(e){
   saveConfig();
 }
 function onSettingsClick(e){
+  // Empêcher le toggle des <details> catégorie quand on clique sur un bouton dans le <summary>
+  if (e.target.closest('summary.st-cat-sh') && e.target.closest('[data-act]')) e.preventDefault();
   const btn=e.target.closest('[data-act]'); if(!btn) return;
   const act=btn.dataset.act, ci=+btn.dataset.ci, fi=+btn.dataset.fi;
   if (act==='close'){ closeSettings(); return; }
+  if (act==='check-update'){
+    const statusEl=document.getElementById('st-upd-status');
+    btn.disabled=true; btn.textContent='⏳ Vérification…';
+    if(statusEl) statusEl.textContent='';
+    (async()=>{
+      try{
+        const data=await fetchJson(`https://api.github.com/repos/${GITHUB_REPO}/releases/latest`);
+        const tag=data.tag_name||'';
+        if(!tag) throw new Error();
+        if(!versionGt(tag,APP_VERSION)){
+          if(statusEl) statusEl.innerHTML=`<span style="color:#22c55e">✅ Déjà à jour (v${APP_VERSION})</span>`;
+        } else {
+          const asset=(data.assets||[]).find(a=>a.name&&a.name.endsWith('.apk'));
+          if(statusEl) statusEl.innerHTML=`🆕 <b>${esc(tag)}</b> disponible`;
+          if(asset){ localStorage.removeItem('dismissedUpdate'); showUpdateBanner(tag,asset.browser_download_url); }
+        }
+      }catch(e){ if(statusEl) statusEl.innerHTML=`<span style="color:#f59e0b">⚠️ Impossible de vérifier</span>`; }
+      finally{ btn.disabled=false; btn.textContent='🔄 Vérifier les mises à jour'; }
+    })();
+    return;
+  }
   if (act==='del-feed'){ catFeeds(ci).splice(fi,1); }
   else if (act==='del-cat'){ if(!confirm('Supprimer cette catégorie ?')) return; DATA.categories.splice(ci,1); }
   else if (act==='toggle-cat'){ const c=DATA.categories[ci]; c.off=!c.off; }
