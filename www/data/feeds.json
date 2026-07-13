@@ -352,8 +352,8 @@
           "url": "https://www.darkreading.com/rss.xml"
         },
         {
-          "name": "The Register — Security",
-          "url": "https://www.theregister.com/security/headlines.atom"
+          "name": "The Register",
+          "url": "https://www.theregister.com/headlines.atom"
         },
         {
           "name": "Cybersecurity — Google News",
@@ -816,10 +816,6 @@
         {
           "name": "Enphase — Firmware & software updates",
           "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Enphase+%22release+notes%22+Envoy+IQ+firmware+update"
-        },
-        {
-          "name": "Enphase — Blog officiel",
-          "url": "https://enphase.com/rss.xml"
         }
       ]
     },
@@ -987,10 +983,6 @@
       "lang": "fr",
       "feeds": [
         {
-          "name": "Voyage Pirate",
-          "url": "https://www.lesvoyagespirates.com/feed"
-        },
-        {
           "name": "Billet avion pas cher — Google Actu",
           "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=billet+avion+pas+cher+promo"
         },
@@ -1026,10 +1018,6 @@
         }
       ],
       "feeds_en": [
-        {
-          "name": "Secret Flying",
-          "url": "https://www.secretflying.com/feed/"
-        },
         {
           "name": "Fly4free",
           "url": "https://www.fly4free.com/feed/"
@@ -1155,10 +1143,6 @@
           "url": "https://www.cotemaison.fr/feed/"
         },
         {
-          "name": "Batirama",
-          "url": "https://www.batirama.com/rss.xml"
-        },
-        {
           "name": "Bricolage — Google Actu",
           "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=bricolage+r%C3%A9novation+maison"
         },
@@ -1172,10 +1156,6 @@
         }
       ],
       "feeds_en": [
-        {
-          "name": "Instructables",
-          "url": "https://www.instructables.com/feed/"
-        },
         {
           "name": "DIY Network — Google News",
           "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=DIY+home+improvement"
@@ -1194,10 +1174,6 @@
         {
           "name": "Korben",
           "url": "https://korben.info/feed"
-        },
-        {
-          "name": "MCHobby",
-          "url": "https://www.mchobby.be/blog/feed/"
         },
         {
           "name": "Projets DIY — Google Actu",
@@ -1222,16 +1198,8 @@
           "url": "https://hackaday.com/blog/feed/"
         },
         {
-          "name": "Hackster.io",
-          "url": "https://www.hackster.io/rss"
-        },
-        {
           "name": "Arduino Blog",
           "url": "https://blog.arduino.cc/feed/"
-        },
-        {
-          "name": "Instructables",
-          "url": "https://www.instructables.com/feed/"
         },
         {
           "name": "Adafruit Blog",
@@ -1247,10 +1215,6 @@
         {
           "name": "L'Équipe Football",
           "url": "https://www.lequipe.fr/rss/actu_rss_Football.xml"
-        },
-        {
-          "name": "Foot Mercato",
-          "url": "https://www.footmercato.net/rss/"
         },
         {
           "name": "So Foot",
@@ -1310,18 +1274,6 @@
           "url": "https://edito.seloger.com/feed"
         },
         {
-          "name": "PAP — Actu immobilier",
-          "url": "https://www.pap.fr/rss/actu-immobilier"
-        },
-        {
-          "name": "Le Figaro — Immobilier",
-          "url": "https://immobilier.lefigaro.fr/rss/immobilier.xml"
-        },
-        {
-          "name": "Capital — Immobilier",
-          "url": "https://www.capital.fr/feed/immobilier"
-        },
-        {
           "name": "Toulouse — Google Actu",
           "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=immobilier+Toulouse+achat+vente"
         },
@@ -1344,16 +1296,24 @@
         {
           "name": "Maroc — investissement",
           "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=investissement+immobilier+Maroc"
+        },
+        {
+          "name": "Marché immobilier — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=march%C3%A9+immobilier+France+prix"
+        },
+        {
+          "name": "Taux immobilier — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=taux+immobilier+cr%C3%A9dit+pr%C3%AAt"
+        },
+        {
+          "name": "Actu immo — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=actualit%C3%A9+immobilier+achat+logement"
         }
       ],
       "feeds_en": [
         {
           "name": "Spain property — Google News",
           "url": "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=Spain+property+buy+market"
-        },
-        {
-          "name": "Kyero — Spain real estate blog",
-          "url": "https://www.kyero.com/en/blog/feed/"
         },
         {
           "name": "Marrakech real estate — Google News",
