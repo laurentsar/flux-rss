@@ -808,7 +808,8 @@ async function loadChangelogLive(cat){
   elChangelogLive.hidden = false;
   elChangelogLive.innerHTML = '<div class="cl-loading"><span class="spinner"></span> Changelog…</div>';
 
-  const label = cat.id==='ia' ? '🤖 Dernière release IA' : cat.id==='domotique' ? '🏠 Domotique — dernière mise à jour' : cat.id==='vr' ? '🥽 Dernière mise à jour Meta Quest' : cat.id==='solaire' ? '☀️ Mise à jour Enphase' : '⚡ Mise à jour Tesla';
+  const label = cat.id==='ia' ? '🤖 Dernière release Claude' : cat.id==='domotique' ? '🏠 Dernière version Home Assistant' : cat.id==='vr' ? '🥽 Dernière mise à jour Meta Quest' : cat.id==='solaire' ? '☀️ Mise à jour Enphase' : '⚡ Mise à jour Tesla';
+  const labelRss = cat.id==='ia' ? '🤖 Dernières releases IA' : cat.id==='domotique' ? '🏠 Domotique — dernière mise à jour' : label;
 
   if (scraperFn) {
     const release = await scraperFn();
@@ -874,7 +875,7 @@ async function loadChangelogLive(cat){
   const rssDetailsAttr = rssIsNew
     ? `data-cl-cat="${cat.id}" data-cl-ver="${esc(firstVer||'')}" ontoggle="if(this.open)_clMarkSeen(this.dataset.clCat,this.dataset.clVer,this)"`
     : '';
-  const html = `<details class="rl-section" ${rssDetailsAttr}><summary class="rl-sh">${label} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
+  const html = `<details class="rl-section" ${rssDetailsAttr}><summary class="rl-sh">${labelRss} ${verBadge}</summary><div class="cl-feat-list">${sections}</div></details>`;
   elChangelogLive.innerHTML = html;
   if (!rssIsNew) _clHtml[cat.id] = html;
 }
