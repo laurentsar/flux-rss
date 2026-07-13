@@ -68,7 +68,7 @@ body{
 .chip.chip-has-live::after{content:'';position:absolute;top:4px;right:4px;width:8px;height:8px;background:#ef4444;border-radius:50%;animation:livepulse 1s ease-in-out infinite}
 .chip.chip-has-new{position:relative}
 .chip.chip-has-new::after{content:'NEW';position:absolute;top:-7px;right:-4px;font-size:.5rem;font-weight:800;background:var(--a,#F26522);color:#fff;border-radius:4px;padding:1px 4px;letter-spacing:.04em;line-height:1.5}
-#main{padding:14px 14px 90px;max-width:760px;margin:0 auto}
+#main{padding:14px 14px 90px;max-width:760px;margin:0 auto;will-change:transform}
 .status{color:var(--muted);font-size:.9em;text-align:center;padding:8px 0 0}
 /* sous-onglets Articles / Podcasts */
 .subtabs{display:flex;gap:8px;margin:10px 0 0}

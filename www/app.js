@@ -2528,20 +2528,50 @@ async function init(){
     }
   }
   // Swipe horizontal → onglet suivant/précédent
-  let _txStart=null, _tyStart=null;
-  document.addEventListener('touchstart', e=>{ _txStart=e.touches[0].clientX; _tyStart=e.touches[0].clientY; },{passive:true});
-  document.addEventListener('touchend', e=>{
-    if (_txStart===null) return;
-    const dx=e.changedTouches[0].clientX-_txStart;
-    const dy=e.changedTouches[0].clientY-_tyStart;
-    _txStart=null; _tyStart=null;
-    if (Math.abs(dx)<60||Math.abs(dy)>Math.abs(dx)*0.8) return;
+  let _txStart=null,_tyStart=null,_tStart=null,_swipeLocked=false;
+  const _swipeEl=elMain;
+
+  document.addEventListener('touchstart',e=>{
+    _txStart=e.touches[0].clientX; _tyStart=e.touches[0].clientY;
+    _tStart=Date.now(); _swipeLocked=false;
+    _swipeEl.style.transition='none';
+  },{passive:true});
+
+  document.addEventListener('touchmove',e=>{
+    if(_txStart===null) return;
+    const dx=e.touches[0].clientX-_txStart;
+    const dy=e.touches[0].clientY-_tyStart;
+    if(!_swipeLocked){
+      if(Math.abs(dx)<8) return;
+      if(Math.abs(dy)>Math.abs(dx)*0.75){_txStart=null;_swipeEl.style.transform='';return;}
+      _swipeLocked=true;
+    }
+    _swipeEl.style.transform=`translateX(${dx*0.35}px)`;
+  },{passive:true});
+
+  function _swipeReset(){
+    _swipeEl.style.transition='transform .22s cubic-bezier(.25,.46,.45,.94)';
+    _swipeEl.style.transform='';
+    _txStart=null;_tyStart=null;_swipeLocked=false;
+  }
+  function _swipeCommit(dx){
+    _swipeReset();
+    const dt=Math.max(1,Date.now()-_tStart);
+    const vel=Math.abs(dx)/dt; // px/ms
+    if(Math.abs(dx)<20) return;
+    if(Math.abs(dx)<50&&vel<0.3) return;
     const ids=['agenda',...DATA.categories.filter(c=>!c.off).map(c=>c.id)];
     const idx=ids.indexOf(current);
-    if (idx===-1) return;
+    if(idx===-1) return;
     const next=ids[idx+(dx<0?1:-1)];
-    if (next) selectCat(next);
+    if(next) selectCat(next);
+  }
+
+  document.addEventListener('touchend',e=>{
+    if(!_swipeLocked){_swipeReset();return;}
+    _swipeCommit(e.changedTouches[0].clientX-_txStart);
   },{passive:true});
+  document.addEventListener('touchcancel',_swipeReset,{passive:true});
 
   // Pause toutes les animations CSS quand l'écran est éteint / app en arrière-plan
   document.addEventListener('visibilitychange', ()=>{
