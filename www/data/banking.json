@@ -1,84 +1,569 @@
 {
-  "generated": "2026-07-09T08:00:00+02:00",
-  "note": "⚠️ Révision des taux prévue le 1er août 2026 — vérifiez les nouveaux taux",
+  "generated": "2026-07-13T12:26:55+02:00",
   "livrets": [
-    {"nom": "Livret A",  "taux": "1,50 %", "plafond": "22 950 €",  "net": true,  "note": "Garanti, disponible, défiscalisé — hausse attendue le 1er août"},
-    {"nom": "LDDS",      "taux": "1,50 %", "plafond": "12 000 €",  "net": true,  "note": "Même taux que le Livret A — résidents fiscaux FR"},
-    {"nom": "LEP",       "taux": "2,50 %", "plafond": "10 000 €",  "net": true,  "note": "Sous conditions de revenus — hausse attendue le 1er août"},
-    {"nom": "PEL",       "taux": "2,25 %", "plafond": "61 200 €",  "net": false, "note": "Taux brut (ouvertures 2024+) — bloqué 4 ans minimum"},
-    {"nom": "CEL",       "taux": "1,00 %", "plafond": "15 300 €",  "net": false, "note": "Taux brut — droit à prêt immobilier"}
+    {
+      "nom": "Livret A",
+      "taux": "1,50 %",
+      "plafond": "22 950 €",
+      "net": true,
+      "note": "Garanti, disponible, défiscalisé"
+    },
+    {
+      "nom": "LDDS",
+      "taux": "1,50 %",
+      "plafond": "12 000 €",
+      "net": true,
+      "note": "Résidents fiscaux FR uniquement"
+    },
+    {
+      "nom": "LEP",
+      "taux": "2,50 %",
+      "plafond": "10 000 €",
+      "net": true,
+      "note": "Sous conditions de revenus"
+    },
+    {
+      "nom": "PEL",
+      "taux": "1,50 %",
+      "plafond": "61 200 €",
+      "net": false,
+      "note": "Taux brut — bloqué 4 ans minimum (ouvertures 2024+)"
+    },
+    {
+      "nom": "CEL",
+      "taux": "2,80 %",
+      "plafond": "15 300 €",
+      "net": false,
+      "note": "Taux brut — lié à un PEL"
+    }
   ],
   "primes": [
-    {"banque": "Hello bank!",  "offre": "Compte + Hello Prime offerte", "prime": "jusqu'à 300 €", "fin": "2026-08-10", "cond": "Conditions sur le site",          "lien": "https://www.hellobank.fr"},
-    {"banque": "BNP Paribas",  "offre": "Compte courant",               "prime": "jusqu'à 270 €", "fin": "2026-12-31", "cond": "Voir conditions sur le site",     "lien": "https://mabanque.bnpparibas.com"},
-    {"banque": "Fortuneo",     "offre": "Compte + CB (25 ans)",          "prime": "jusqu'à 250 €", "fin": "2026-12-31", "cond": "Mobilité bancaire neoChange",      "lien": "https://www.fortuneo.fr"},
-    {"banque": "Monabanq",     "offre": "Compte courant",                "prime": "jusqu'à 200 €", "fin": "2026-12-31", "cond": "80 € souscription + CB Visa Prem", "lien": "https://www.monabanq.com"}
+    {
+      "banque": "Hello bank!",
+      "offre": "Compte + Hello Prime offerte",
+      "prime": "jusqu'à 300 €",
+      "fin": "2026-08-10",
+      "cond": "Voir conditions sur le site",
+      "lien": "https://www.hellobank.fr"
+    },
+    {
+      "banque": "BNP Paribas",
+      "offre": "Compte courant",
+      "prime": "jusqu'à 270 €",
+      "fin": "2026-12-31",
+      "cond": "Voir conditions sur le site",
+      "lien": "https://mabanque.bnpparibas.com"
+    },
+    {
+      "banque": "Fortuneo",
+      "offre": "Compte + CB (25 ans)",
+      "prime": "jusqu'à 250 €",
+      "fin": "2026-12-31",
+      "cond": "Mobilité bancaire neoChange",
+      "lien": "https://www.fortuneo.fr"
+    },
+    {
+      "banque": "Monabanq",
+      "offre": "Compte courant",
+      "prime": "jusqu'à 200 €",
+      "fin": "2026-12-31",
+      "cond": "80 € souscription + CB Visa Premier",
+      "lien": "https://www.monabanq.com"
+    }
   ],
   "primes_epargne": [
-    {"banque": "Cashbee",          "offre": "Livret Cashbee Plus",   "prime": "50 €",          "fin": "2026-12-31", "cond": "Prime parrainage + taux boosté 3 mois",     "lien": "https://www.cashbee.fr"},
-    {"banque": "Fortuneo",         "offre": "Livret Fortuneo+",      "prime": "jusqu'à 80 €",  "fin": "2026-12-31", "cond": "Offre couplée à l'ouverture d'un compte",   "lien": "https://www.fortuneo.fr"},
-    {"banque": "BoursoBank",       "offre": "Livret BoursoLivret",   "prime": "voir site",     "fin": "2026-12-31", "cond": "Conditions selon offre en cours",            "lien": "https://www.boursobank.com"},
-    {"banque": "Placement Direct", "offre": "Livret bienvenue",      "prime": "taux boosté",   "fin": "2026-12-31", "cond": "Taux préférentiel garanti 3 mois",           "lien": "https://www.placementdirect.fr"}
+    {
+      "banque": "Cashbee",
+      "offre": "Livret Cashbee Plus",
+      "prime": "50 €",
+      "fin": "2026-12-31",
+      "cond": "Prime parrainage + taux boosté 3 mois",
+      "lien": "https://www.cashbee.fr"
+    },
+    {
+      "banque": "Fortuneo",
+      "offre": "Livret Fortuneo+",
+      "prime": "jusqu'à 80 €",
+      "fin": "2026-12-31",
+      "cond": "Offre couplée à l'ouverture d'un compte",
+      "lien": "https://www.fortuneo.fr"
+    },
+    {
+      "banque": "BoursoBank",
+      "offre": "Livret BoursoLivret",
+      "prime": "voir site",
+      "fin": "2026-12-31",
+      "cond": "Conditions selon offre en cours",
+      "lien": "https://www.boursobank.com"
+    },
+    {
+      "banque": "Placement Direct",
+      "offre": "Livret bienvenue",
+      "prime": "taux boosté",
+      "fin": "2026-12-31",
+      "cond": "Taux préférentiel garanti 3 mois",
+      "lien": "https://www.placementdirect.fr"
+    }
   ],
   "livrets_boostes": [
-    {"banque": "Distingo Bank",    "taux": "voir site", "duree": "boosté", "plafond": "150 000 €",  "lien": "https://www.distingo.com"},
-    {"banque": "Zesto (Renault)",  "taux": "voir site", "duree": "boosté", "plafond": "100 000 €",  "lien": "https://www.renaultbank.fr"},
-    {"banque": "Cashbee",          "taux": "voir site", "duree": "boosté", "plafond": "75 000 €",   "lien": "https://www.cashbee.fr"},
-    {"banque": "Placement Direct", "taux": "voir site", "duree": "boosté", "plafond": "100 000 €",  "lien": "https://www.placementdirect.fr"},
-    {"banque": "Meilleurtaux",     "taux": "voir site", "duree": "boosté", "plafond": "100 000 €",  "lien": "https://placement.meilleurtaux.com"}
+    {
+      "banque": "Distingo Bank",
+      "taux": "voir site",
+      "duree": "boosté",
+      "plafond": "voir site",
+      "lien": "https://www.distingo.com"
+    },
+    {
+      "banque": "Zesto (Renault)",
+      "taux": "0,80 %",
+      "duree": "boosté",
+      "plafond": "voir site",
+      "lien": "https://www.renaultbank.fr"
+    },
+    {
+      "banque": "Cashbee",
+      "taux": "6,00 %",
+      "duree": "2 mois",
+      "plafond": "voir site",
+      "lien": "https://www.cashbee.fr"
+    },
+    {
+      "banque": "Placement Direct",
+      "taux": "5,50 %",
+      "duree": "boosté",
+      "plafond": "voir site",
+      "lien": "https://www.placementdirect.fr"
+    },
+    {
+      "banque": "Meilleurtaux",
+      "taux": "5,50 %",
+      "duree": "2 mois",
+      "plafond": "voir site",
+      "lien": "https://placement.meilleurtaux.com"
+    },
+    {
+      "banque": "Ramify",
+      "taux": "5,35 %",
+      "duree": "2 mois",
+      "plafond": "voir site",
+      "lien": "https://www.ramify.fr"
+    }
   ],
   "top_actions": [
-    {"nom": "Brit. American Tobacco", "ticker": "BATS", "pays": "🇬🇧", "rendement": "~9,5 %", "dividende": "2,24 £", "secteur": "Tabac",   "marche": "LSE",      "lien": "https://www.boursorama.com/cours/1rPBATS/"},
-    {"nom": "Vodafone",               "ticker": "VOD",  "pays": "🇬🇧", "rendement": "~9,0 %", "dividende": "0,09 €", "secteur": "Télécom", "marche": "LSE",      "lien": "https://www.boursorama.com/cours/1rPVOD/"},
-    {"nom": "Orange",                 "ticker": "ORA",  "pays": "🇫🇷", "rendement": "~8,5 %", "dividende": "0,70 €", "secteur": "Télécom", "marche": "Euronext", "lien": "https://www.boursorama.com/cours/1rPORA/"},
-    {"nom": "Altria",                 "ticker": "MO",   "pays": "🇺🇸", "rendement": "~8,5 %", "dividende": "4,08 $", "secteur": "Tabac",   "marche": "NYSE",     "lien": "https://www.boursorama.com/cours/1rDMO/"},
-    {"nom": "Rio Tinto",              "ticker": "RIO",  "pays": "🇦🇺", "rendement": "~8,0 %", "dividende": "5,84 $", "secteur": "Mines",   "marche": "LSE/ASX",  "lien": "https://www.boursorama.com/cours/1rPRIO/"},
-    {"nom": "BNP Paribas",            "ticker": "BNP",  "pays": "🇫🇷", "rendement": "~8,0 %", "dividende": "4,60 €", "secteur": "Banque",  "marche": "Euronext", "lien": "https://www.boursorama.com/cours/1rPBNP/"},
-    {"nom": "Enbridge",               "ticker": "ENB",  "pays": "🇨🇦", "rendement": "~7,0 %", "dividende": "3,78 CA$","secteur": "Énergie","marche": "TSX",      "lien": "https://www.boursorama.com/cours/1rDENB/"},
-    {"nom": "AT&T",                   "ticker": "T",    "pays": "🇺🇸", "rendement": "~6,5 %", "dividende": "1,11 $", "secteur": "Télécom", "marche": "NYSE",     "lien": "https://www.boursorama.com/cours/1rDT/"},
-    {"nom": "BASF",                   "ticker": "BAS",  "pays": "🇩🇪", "rendement": "~6,5 %", "dividende": "2,25 €", "secteur": "Chimie",  "marche": "XETRA",    "lien": "https://www.boursorama.com/cours/1zBBAS/"},
-    {"nom": "Verizon",                "ticker": "VZ",   "pays": "🇺🇸", "rendement": "~6,5 %", "dividende": "2,66 $", "secteur": "Télécom", "marche": "NYSE",     "lien": "https://www.boursorama.com/cours/1rDVZ/"}
-  ],
-  "brokers": [
-    {"nom": "Trade Republic",       "pays": "🇩🇪", "frais_ordre": "1 €",              "garde": "0 €/an", "atouts": "PEA · CTO · épargne programmée · fractionnées · intérêts sur liquidités",           "lien": "https://www.traderepublic.com/fr-fr"},
-    {"nom": "DEGIRO",               "pays": "🇳🇱", "frais_ordre": "0,50 € + 0,004 %", "garde": "0 €/an", "atouts": "30+ bourses mondiales · app mobile · ETF Core gratuits",                            "lien": "https://www.degiro.fr"},
-    {"nom": "Bourse Direct",        "pays": "🇫🇷", "frais_ordre": "0,99 €",            "garde": "0 €/an", "atouts": "PEA · SRD · meilleur service client FR · courtier agréé AMF",                      "lien": "https://www.boursedirect.fr"},
-    {"nom": "XTB",                  "pays": "🇵🇱", "frais_ordre": "0 € < 100k €/mois","garde": "0 €/an", "atouts": "ETF gratuits · formation · CTO · levier · démo gratuite",                           "lien": "https://www.xtb.com/fr"},
-    {"nom": "Interactive Brokers",  "pays": "🇺🇸", "frais_ordre": "0,35–0,65 €",      "garde": "0 €/an", "atouts": "150+ marchés · multi-devises · options · professionnel · intérêts liquidités 4,5 %", "lien": "https://www.interactivebrokers.com"},
-    {"nom": "Boursorama Bourse",    "pays": "🇫🇷", "frais_ordre": "1,99 €",            "garde": "0 €/an", "atouts": "PEA · SRD · intégré au compte bancaire BoursoBank · bons plans",                   "lien": "https://www.boursorama.com/bourse"},
-    {"nom": "Saxo Banque",          "pays": "🇩🇰", "frais_ordre": "dès 3 €",           "garde": "0 €/an", "atouts": "Options · devises · CFD · gamme pro · analyse intégrée",                            "lien": "https://www.home.saxo/fr-fr"}
-  ],
-  "avantages_actionnaires": [
-    {"nom": "Eurotunnel",       "ticker": "GET",   "pays": "🇫🇷", "condition": "1 action nominative",    "avantage": "30 traversées Eurotunnel gratuites / an (valeur ~900 €)",                          "lien": "https://www.boursorama.com/cours/1rPGET/"},
-    {"nom": "Accor",            "ticker": "AC",    "pays": "🇫🇷", "condition": "Nominatif ≥ 1 an",       "avantage": "Carte Accor Plus offerte — 30 % de remise dans les hôtels du groupe",             "lien": "https://www.boursorama.com/cours/1rPAC/"},
-    {"nom": "Renault",          "ticker": "RNO",   "pays": "🇫🇷", "condition": "Nominatif pur ≥ 4 ans",  "avantage": "1 000 € de remise sur l'achat d'un véhicule neuf Renault ou Dacia",              "lien": "https://www.boursorama.com/cours/1rPRNO/"},
-    {"nom": "SEB",              "ticker": "SK",    "pays": "🇫🇷", "condition": "Nominatif pur ≥ 4 ans",  "avantage": "-20 % sur les produits du groupe (Tefal, Krups, Rowenta, Moulinex…)",            "lien": "https://www.boursorama.com/cours/1rPSK/"},
-    {"nom": "Hermès",           "ticker": "RMS",   "pays": "🇫🇷", "condition": "1 action + présence AG", "avantage": "Objet artisanal signé offert à l'AG (foulard, accessoire…) — très exclusif",    "lien": "https://www.boursorama.com/cours/1rPRMS/"},
-    {"nom": "LVMH",             "ticker": "MC",    "pays": "🇫🇷", "condition": "1 action + présence AG", "avantage": "Accès AG privé + cadeaux des maisons du groupe (mode, champagne…)",              "lien": "https://www.boursorama.com/cours/1rPMC/"},
-    {"nom": "Pernod Ricard",    "ticker": "RI",    "pays": "🇫🇷", "condition": "1 action + présence AG", "avantage": "Coffret de spiritueux offert à l'assemblée générale (~60 €)",                    "lien": "https://www.boursorama.com/cours/1rPRI/"},
-    {"nom": "Michelin",         "ticker": "ML",    "pays": "🇫🇷", "condition": "Nominatif ≥ 4 ans",      "avantage": "-30 % sur les pneumatiques via le réseau Euromaster",                            "lien": "https://www.boursorama.com/cours/1rPML/"},
-    {"nom": "Air France-KLM",   "ticker": "AF",    "pays": "🇫🇷", "condition": "Nominatif pur ≥ 2 ans",  "avantage": "Réduction sur billets Air France + dividende majoré +10 %",                      "lien": "https://www.boursorama.com/cours/1rPAF/"},
-    {"nom": "TotalEnergies",    "ticker": "TTE",   "pays": "🇫🇷", "condition": "Nominatif pur ≥ 2 ans",  "avantage": "Dividende majoré +10 % (plafond 0,5 % du capital social)",                       "lien": "https://www.boursorama.com/cours/1rPFP/"},
-    {"nom": "Saint-Gobain",     "ticker": "SGO",   "pays": "🇫🇷", "condition": "Nominatif pur ≥ 2 ans",  "avantage": "Dividende majoré +10 % (plafond 0,5 % du capital social)",                       "lien": "https://www.boursorama.com/cours/1rPSGO/"},
-    {"nom": "Vinci",            "ticker": "DG",    "pays": "🇫🇷", "condition": "Nominatif pur ≥ 2 ans",  "avantage": "Dividende majoré +10 % (plafond 0,5 % du capital social)",                       "lien": "https://www.boursorama.com/cours/1rPDG/"},
-    {"nom": "L'Oréal",          "ticker": "OR",    "pays": "🇫🇷", "condition": "Nominatif pur ≥ 2 ans",  "avantage": "Dividende majoré +10 % (plafond 0,5 % du capital social)",                       "lien": "https://www.boursorama.com/cours/1rPOR/"},
-    {"nom": "Danone",           "ticker": "BN",    "pays": "🇫🇷", "condition": "Nominatif pur ≥ 2 ans",  "avantage": "Dividende majoré +10 % (plafond 0,5 % du capital social)",                       "lien": "https://www.boursorama.com/cours/1rPBN/"},
-    {"nom": "Royal Caribbean",  "ticker": "RCL",   "pays": "🇺🇸", "condition": "≥ 100 actions",          "avantage": "$100–$250 de crédit à bord par croisière réservée (toutes compagnies du groupe)", "lien": "https://www.boursorama.com/cours/1rDRCL/"},
-    {"nom": "Carnival Corp.",   "ticker": "CCL",   "pays": "🇺🇸", "condition": "≥ 100 actions",          "avantage": "$50–$250 de crédit à bord par croisière (Carnival, Costa, MSC, P&O…)",           "lien": "https://www.boursorama.com/cours/1rDCCL/"},
-    {"nom": "Norwegian Cruise", "ticker": "NCLH",  "pays": "🇺🇸", "condition": "≥ 100 actions",          "avantage": "$50–$250 de crédit à bord par croisière Norwegian/Regent/Oceania",               "lien": "https://www.boursorama.com/cours/1rDNCLH/"},
-    {"nom": "Berkshire Hathaway","ticker": "BRK.B","pays": "🇺🇸", "condition": "1 action",               "avantage": "AG Omaha : -8 % GEICO assurance · remises Nebraska Furniture Mart, See's Candies, Borsheims bijouterie…", "lien": "https://www.boursorama.com/cours/1rDBRK/"},
-    {"nom": "Whitbread",        "ticker": "WTB",   "pays": "🇬🇧", "condition": "1 action nominative",    "avantage": "Carte de réduction Premier Inn + restaurants Beefeater / Bar+Block",              "lien": "https://www.boursorama.com/cours/1rPWTB/"}
+    {
+      "nom": "Brit. American Tobacco",
+      "ticker": "BATS",
+      "pays": "🇬🇧",
+      "rendement": "~9,5 %",
+      "dividende": "2,24 £",
+      "secteur": "Tabac",
+      "marche": "LSE",
+      "lien": "https://www.boursorama.com/cours/1rPBATS/"
+    },
+    {
+      "nom": "Vodafone",
+      "ticker": "VOD",
+      "pays": "🇬🇧",
+      "rendement": "~9,0 %",
+      "dividende": "0,09 €",
+      "secteur": "Télécom",
+      "marche": "LSE",
+      "lien": "https://www.boursorama.com/cours/1rPVOD/"
+    },
+    {
+      "nom": "Orange",
+      "ticker": "ORA",
+      "pays": "🇫🇷",
+      "rendement": "~8,5 %",
+      "dividende": "0,70 €",
+      "secteur": "Télécom",
+      "marche": "Euronext",
+      "lien": "https://www.boursorama.com/cours/1rPORA/"
+    },
+    {
+      "nom": "Altria",
+      "ticker": "MO",
+      "pays": "🇺🇸",
+      "rendement": "~8,5 %",
+      "dividende": "4,08 $",
+      "secteur": "Tabac",
+      "marche": "NYSE",
+      "lien": "https://www.boursorama.com/cours/1rDMO/"
+    },
+    {
+      "nom": "Rio Tinto",
+      "ticker": "RIO",
+      "pays": "🇦🇺",
+      "rendement": "~8,0 %",
+      "dividende": "5,84 $",
+      "secteur": "Mines",
+      "marche": "LSE/ASX",
+      "lien": "https://www.boursorama.com/cours/1rPRIO/"
+    },
+    {
+      "nom": "BNP Paribas",
+      "ticker": "BNP",
+      "pays": "🇫🇷",
+      "rendement": "~8,0 %",
+      "dividende": "4,60 €",
+      "secteur": "Banque",
+      "marche": "Euronext",
+      "lien": "https://www.boursorama.com/cours/1rPBNP/"
+    },
+    {
+      "nom": "Enbridge",
+      "ticker": "ENB",
+      "pays": "🇨🇦",
+      "rendement": "~7,0 %",
+      "dividende": "3,78 CA$",
+      "secteur": "Énergie",
+      "marche": "TSX",
+      "lien": "https://www.boursorama.com/cours/1rDENB/"
+    },
+    {
+      "nom": "AT&T",
+      "ticker": "T",
+      "pays": "🇺🇸",
+      "rendement": "~6,5 %",
+      "dividende": "1,11 $",
+      "secteur": "Télécom",
+      "marche": "NYSE",
+      "lien": "https://www.boursorama.com/cours/1rDT/"
+    },
+    {
+      "nom": "BASF",
+      "ticker": "BAS",
+      "pays": "🇩🇪",
+      "rendement": "~6,5 %",
+      "dividende": "2,25 €",
+      "secteur": "Chimie",
+      "marche": "XETRA",
+      "lien": "https://www.boursorama.com/cours/1zBBAS/"
+    },
+    {
+      "nom": "Verizon",
+      "ticker": "VZ",
+      "pays": "🇺🇸",
+      "rendement": "~6,5 %",
+      "dividende": "2,66 $",
+      "secteur": "Télécom",
+      "marche": "NYSE",
+      "lien": "https://www.boursorama.com/cours/1rDVZ/"
+    }
   ],
   "etf_dividendes": [
-    {"nom": "iShares MSCI Eur. High Dividend", "ticker": "IDVY", "eligible": "PEA", "rendement": "~4,5 %", "ter": "0,40 %", "frequence": "Trim.", "isin": "IE00B0M63284", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00B0M63284"},
-    {"nom": "BNP Easy MSCI Europe Dividend+",  "ticker": "EDIV", "eligible": "PEA", "rendement": "~4,5 %", "ter": "0,30 %", "frequence": "Sem.",  "isin": "FR0011550185", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=FR0011550185"},
-    {"nom": "Amundi MSCI Eur. High Dividend",  "ticker": "EHDV", "eligible": "PEA", "rendement": "~4,0 %", "ter": "0,30 %", "frequence": "Sem.",  "isin": "LU1681041114", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=LU1681041114"},
-    {"nom": "Lyxor MSCI Europe Value",         "ticker": "LVAL", "eligible": "PEA", "rendement": "~3,5 %", "ter": "0,20 %", "frequence": "Ann.",  "isin": "LU1215454460", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=LU1215454460"},
-    {"nom": "iShares STOXX Global Select Div", "ticker": "ISPA", "eligible": "CTO", "rendement": "~4,5 %", "ter": "0,46 %", "frequence": "Trim.", "isin": "DE0002635299", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=DE0002635299"},
-    {"nom": "Vanguard FTSE All-World Hi Div",  "ticker": "VHYL", "eligible": "CTO", "rendement": "~3,5 %", "ter": "0,29 %", "frequence": "Trim.", "isin": "IE00B8GKDB10", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00B8GKDB10"},
-    {"nom": "SPDR Global Dividend Aristocrats","ticker": "GBDV", "eligible": "CTO", "rendement": "~4,0 %", "ter": "0,45 %", "frequence": "Trim.", "isin": "IE00B9CQXS71", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00B9CQXS71"},
-    {"nom": "iShares MSCI World Quality Div",  "ticker": "WQDV", "eligible": "CTO", "rendement": "~3,5 %", "ter": "0,38 %", "frequence": "Trim.", "isin": "IE00BYYHSQ67", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00BYYHSQ67"},
-    {"nom": "Global X SuperDividend UCITS",    "ticker": "SDVD", "eligible": "CTO", "rendement": "~7,0 %", "ter": "0,45 %", "frequence": "Mens.", "isin": "IE00077FRP95", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00077FRP95"},
-    {"nom": "WisdomTree Global Qual. Div Gr.", "ticker": "GGRG", "eligible": "CTO", "rendement": "~2,5 %", "ter": "0,38 %", "frequence": "Trim.", "isin": "IE00BZ56RN96", "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00BZ56RN96"}
-  ]
+    {
+      "nom": "iShares MSCI Eur. High Dividend",
+      "ticker": "IDVY",
+      "eligible": "PEA",
+      "rendement": "~4,5 %",
+      "ter": "0,40 %",
+      "frequence": "Trim.",
+      "isin": "IE00B0M63284",
+      "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00B0M63284"
+    },
+    {
+      "nom": "BNP Easy MSCI Europe Dividend+",
+      "ticker": "EDIV",
+      "eligible": "PEA",
+      "rendement": "~4,5 %",
+      "ter": "0,30 %",
+      "frequence": "Sem.",
+      "isin": "FR0011550185",
+      "lien": "https://www.justetf.com/fr/etf-profile.html?isin=FR0011550185"
+    },
+    {
+      "nom": "Amundi MSCI Eur. High Dividend",
+      "ticker": "EHDV",
+      "eligible": "PEA",
+      "rendement": "~4,0 %",
+      "ter": "0,30 %",
+      "frequence": "Sem.",
+      "isin": "LU1681041114",
+      "lien": "https://www.justetf.com/fr/etf-profile.html?isin=LU1681041114"
+    },
+    {
+      "nom": "Lyxor MSCI Europe Value",
+      "ticker": "LVAL",
+      "eligible": "PEA",
+      "rendement": "~3,5 %",
+      "ter": "0,20 %",
+      "frequence": "Ann.",
+      "isin": "LU1215454460",
+      "lien": "https://www.justetf.com/fr/etf-profile.html?isin=LU1215454460"
+    },
+    {
+      "nom": "iShares STOXX Global Select Div",
+      "ticker": "ISPA",
+      "eligible": "CTO",
+      "rendement": "~4,5 %",
+      "ter": "0,46 %",
+      "frequence": "Trim.",
+      "isin": "DE0002635299",
+      "lien": "https://www.justetf.com/fr/etf-profile.html?isin=DE0002635299"
+    },
+    {
+      "nom": "Vanguard FTSE All-World Hi Div",
+      "ticker": "VHYL",
+      "eligible": "CTO",
+      "rendement": "~3,5 %",
+      "ter": "0,29 %",
+      "frequence": "Trim.",
+      "isin": "IE00B8GKDB10",
+      "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00B8GKDB10"
+    },
+    {
+      "nom": "SPDR Global Dividend Aristocrats",
+      "ticker": "GBDV",
+      "eligible": "CTO",
+      "rendement": "~4,0 %",
+      "ter": "0,45 %",
+      "frequence": "Trim.",
+      "isin": "IE00B9CQXS71",
+      "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00B9CQXS71"
+    },
+    {
+      "nom": "iShares MSCI World Quality Div",
+      "ticker": "WQDV",
+      "eligible": "CTO",
+      "rendement": "~3,5 %",
+      "ter": "0,38 %",
+      "frequence": "Trim.",
+      "isin": "IE00BYYHSQ67",
+      "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00BYYHSQ67"
+    },
+    {
+      "nom": "Global X SuperDividend UCITS",
+      "ticker": "SDVD",
+      "eligible": "CTO",
+      "rendement": "~7,0 %",
+      "ter": "0,45 %",
+      "frequence": "Mens.",
+      "isin": "IE00077FRP95",
+      "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00077FRP95"
+    },
+    {
+      "nom": "WisdomTree Global Qual. Div Gr.",
+      "ticker": "GGRG",
+      "eligible": "CTO",
+      "rendement": "~2,5 %",
+      "ter": "0,38 %",
+      "frequence": "Trim.",
+      "isin": "IE00BZ56RN96",
+      "lien": "https://www.justetf.com/fr/etf-profile.html?isin=IE00BZ56RN96"
+    }
+  ],
+  "brokers": [
+    {
+      "nom": "Trade Republic",
+      "pays": "🇩🇪",
+      "frais_ordre": "1 €",
+      "garde": "0 €/an",
+      "atouts": "PEA · CTO · épargne programmée · fractionnées · intérêts sur liquidités",
+      "lien": "https://www.traderepublic.com/fr-fr"
+    },
+    {
+      "nom": "DEGIRO",
+      "pays": "🇳🇱",
+      "frais_ordre": "0,50 € + 0,004 %",
+      "garde": "0 €/an",
+      "atouts": "30+ bourses mondiales · app mobile · ETF Core gratuits",
+      "lien": "https://www.degiro.fr"
+    },
+    {
+      "nom": "Bourse Direct",
+      "pays": "🇫🇷",
+      "frais_ordre": "0,99 €",
+      "garde": "0 €/an",
+      "atouts": "PEA · SRD · meilleur service client FR · courtier agréé AMF",
+      "lien": "https://www.boursedirect.fr"
+    },
+    {
+      "nom": "XTB",
+      "pays": "🇵🇱",
+      "frais_ordre": "0 € < 100k €/mois",
+      "garde": "0 €/an",
+      "atouts": "ETF gratuits · formation · CTO · levier · démo gratuite",
+      "lien": "https://www.xtb.com/fr"
+    },
+    {
+      "nom": "Interactive Brokers",
+      "pays": "🇺🇸",
+      "frais_ordre": "0,35–0,65 €",
+      "garde": "0 €/an",
+      "atouts": "150+ marchés · multi-devises · options · professionnel · intérêts liquidités 4,5 %",
+      "lien": "https://www.interactivebrokers.com"
+    },
+    {
+      "nom": "Boursorama Bourse",
+      "pays": "🇫🇷",
+      "frais_ordre": "1,99 €",
+      "garde": "0 €/an",
+      "atouts": "PEA · SRD · intégré au compte bancaire BoursoBank · bons plans",
+      "lien": "https://www.boursorama.com/bourse"
+    },
+    {
+      "nom": "Saxo Banque",
+      "pays": "🇩🇰",
+      "frais_ordre": "dès 3 €",
+      "garde": "0 €/an",
+      "atouts": "Options · devises · CFD · gamme pro · analyse intégrée",
+      "lien": "https://www.home.saxo/fr-fr"
+    }
+  ],
+  "avantages_actionnaires": [
+    {
+      "nom": "Eurotunnel",
+      "ticker": "GET",
+      "pays": "🇫🇷",
+      "condition": "1 action nominative",
+      "avantage": "30 traversées Eurotunnel gratuites / an (valeur ~900 €)",
+      "lien": "https://www.boursorama.com/cours/1rPGET/"
+    },
+    {
+      "nom": "Accor",
+      "ticker": "AC",
+      "pays": "🇫🇷",
+      "condition": "Nominatif ≥ 1 an",
+      "avantage": "Carte Accor Plus offerte — 30 % de remise dans les hôtels du groupe",
+      "lien": "https://www.boursorama.com/cours/1rPAC/"
+    },
+    {
+      "nom": "Renault",
+      "ticker": "RNO",
+      "pays": "🇫🇷",
+      "condition": "Nominatif pur ≥ 4 ans",
+      "avantage": "1 000 € de remise sur l'achat d'un véhicule neuf Renault ou Dacia",
+      "lien": "https://www.boursorama.com/cours/1rPRNO/"
+    },
+    {
+      "nom": "SEB",
+      "ticker": "SK",
+      "pays": "🇫🇷",
+      "condition": "Nominatif pur ≥ 4 ans",
+      "avantage": "-20 % sur les produits du groupe (Tefal, Krups, Rowenta, Moulinex…)",
+      "lien": "https://www.boursorama.com/cours/1rPSK/"
+    },
+    {
+      "nom": "Hermès",
+      "ticker": "RMS",
+      "pays": "🇫🇷",
+      "condition": "1 action + présence AG",
+      "avantage": "Objet artisanal signé offert à l'AG (foulard, accessoire…) — très exclusif",
+      "lien": "https://www.boursorama.com/cours/1rPRMS/"
+    },
+    {
+      "nom": "LVMH",
+      "ticker": "MC",
+      "pays": "🇫🇷",
+      "condition": "1 action + présence AG",
+      "avantage": "Accès AG privé + cadeaux des maisons du groupe (mode, champagne…)",
+      "lien": "https://www.boursorama.com/cours/1rPMC/"
+    },
+    {
+      "nom": "Pernod Ricard",
+      "ticker": "RI",
+      "pays": "🇫🇷",
+      "condition": "1 action + présence AG",
+      "avantage": "Coffret de spiritueux offert à l'assemblée générale (~60 €)",
+      "lien": "https://www.boursorama.com/cours/1rPRI/"
+    },
+    {
+      "nom": "Michelin",
+      "ticker": "ML",
+      "pays": "🇫🇷",
+      "condition": "Nominatif ≥ 4 ans",
+      "avantage": "-30 % sur les pneumatiques via le réseau Euromaster",
+      "lien": "https://www.boursorama.com/cours/1rPML/"
+    },
+    {
+      "nom": "Air France-KLM",
+      "ticker": "AF",
+      "pays": "🇫🇷",
+      "condition": "Nominatif pur ≥ 2 ans",
+      "avantage": "Réduction sur billets Air France + dividende majoré +10 %",
+      "lien": "https://www.boursorama.com/cours/1rPAF/"
+    },
+    {
+      "nom": "TotalEnergies",
+      "ticker": "TTE",
+      "pays": "🇫🇷",
+      "condition": "Nominatif pur ≥ 2 ans",
+      "avantage": "Dividende majoré +10 % (plafond 0,5 % du capital social)",
+      "lien": "https://www.boursorama.com/cours/1rPFP/"
+    },
+    {
+      "nom": "Saint-Gobain",
+      "ticker": "SGO",
+      "pays": "🇫🇷",
+      "condition": "Nominatif pur ≥ 2 ans",
+      "avantage": "Dividende majoré +10 % (plafond 0,5 % du capital social)",
+      "lien": "https://www.boursorama.com/cours/1rPSGO/"
+    },
+    {
+      "nom": "Vinci",
+      "ticker": "DG",
+      "pays": "🇫🇷",
+      "condition": "Nominatif pur ≥ 2 ans",
+      "avantage": "Dividende majoré +10 % (plafond 0,5 % du capital social)",
+      "lien": "https://www.boursorama.com/cours/1rPDG/"
+    },
+    {
+      "nom": "L'Oréal",
+      "ticker": "OR",
+      "pays": "🇫🇷",
+      "condition": "Nominatif pur ≥ 2 ans",
+      "avantage": "Dividende majoré +10 % (plafond 0,5 % du capital social)",
+      "lien": "https://www.boursorama.com/cours/1rPOR/"
+    },
+    {
+      "nom": "Danone",
+      "ticker": "BN",
+      "pays": "🇫🇷",
+      "condition": "Nominatif pur ≥ 2 ans",
+      "avantage": "Dividende majoré +10 % (plafond 0,5 % du capital social)",
+      "lien": "https://www.boursorama.com/cours/1rPBN/"
+    },
+    {
+      "nom": "Royal Caribbean",
+      "ticker": "RCL",
+      "pays": "🇺🇸",
+      "condition": "≥ 100 actions",
+      "avantage": "$100–$250 de crédit à bord par croisière réservée (toutes compagnies du groupe)",
+      "lien": "https://www.boursorama.com/cours/1rDRCL/"
+    },
+    {
+      "nom": "Carnival Corp.",
+      "ticker": "CCL",
+      "pays": "🇺🇸",
+      "condition": "≥ 100 actions",
+      "avantage": "$50–$250 de crédit à bord par croisière (Carnival, Costa, MSC, P&O…)",
+      "lien": "https://www.boursorama.com/cours/1rDCCL/"
+    },
+    {
+      "nom": "Norwegian Cruise",
+      "ticker": "NCLH",
+      "pays": "🇺🇸",
+      "condition": "≥ 100 actions",
+      "avantage": "$50–$250 de crédit à bord par croisière Norwegian/Regent/Oceania",
+      "lien": "https://www.boursorama.com/cours/1rDNCLH/"
+    },
+    {
+      "nom": "Berkshire Hathaway",
+      "ticker": "BRK.B",
+      "pays": "🇺🇸",
+      "condition": "1 action",
+      "avantage": "AG Omaha : -8 % GEICO assurance · remises Nebraska Furniture Mart, See's Candies, Borsheims bijouterie…",
+      "lien": "https://www.boursorama.com/cours/1rDBRK/"
+    },
+    {
+      "nom": "Whitbread",
+      "ticker": "WTB",
+      "pays": "🇬🇧",
+      "condition": "1 action nominative",
+      "avantage": "Carte de réduction Premier Inn + restaurants Beefeater / Bar+Block",
+      "lien": "https://www.boursorama.com/cours/1rPWTB/"
+    }
+  ],
+  "note": "⚠️ Révision des taux prévue le 1er août 2026 — vérifiez les nouveaux taux"
 }
