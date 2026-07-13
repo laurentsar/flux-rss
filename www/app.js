@@ -2183,7 +2183,7 @@ function renderSettings(){
     <div class="modal-head"><h2>⚙️ Réglages</h2><button data-act="close">✕</button></div>
     <div class="modal-body">
 
-      <details class="st-section" open>
+      <details class="st-section">
         <summary class="st-sh">📡 Sources <span class="st-sh-sub">${lang==='en'?'🇬🇧 EN':'🇫🇷 FR'}</span></summary>
         <div class="st-body">
           <div class="hint">👁️/🚫 activer · ↑↓ réordonner · ✕/🗑️ supprimer. Bascule de langue via le drapeau en haut. Sauvegarde auto.</div>
