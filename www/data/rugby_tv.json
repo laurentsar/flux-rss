@@ -1,34 +1,8 @@
 {
- "generated": "2026-07-15T08:15:05+02:00",
+ "generated": "2026-07-15T20:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 19,
+ "count": 17,
  "programmes": [
-  {
-   "title": "Rugby : Top 14",
-   "date": "2026-07-15",
-   "time": "09:03",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "L'année Super Rugby Pacific",
-   "date": "2026-07-15",
-   "time": "16:30",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : State of Origin féminin",
    "date": "2026-07-15",
