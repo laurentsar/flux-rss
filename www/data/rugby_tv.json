@@ -1,47 +1,8 @@
 {
- "generated": "2026-07-14T20:15:03+02:00",
+ "generated": "2026-07-15T08:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 14,
+ "count": 19,
  "programmes": [
-  {
-   "title": "Toulouse / Montpellier",
-   "date": "2026-07-14",
-   "time": "18:54",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-07-14",
-   "time": "20:40",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Top 14",
-   "date": "2026-07-14",
-   "time": "21:03",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby : Top 14",
    "date": "2026-07-15",
@@ -160,10 +121,62 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-17",
+   "time": "10:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-17",
+   "time": "12:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat du monde U20",
+   "date": "2026-07-17",
+   "time": "15:54",
+   "desc": "A suivre, des rencontres disputées dans le cadre de cette compétition qui se déroule tous les ans et réservée aux espoirs du rugby âgés de m",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Match de classement",
    "date": "2026-07-17",
    "time": "15:54",
    "desc": "En Direct.",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat du monde U20",
+   "date": "2026-07-17",
+   "time": "21:08",
+   "desc": "Invaincus en phase de poules, les Bleuets retrouvent la Nouvelle-Zélande en demi-finale du championnat du monde U20. A Tbilissi, les \"Baby B",
    "chaine": [
     "La Chaîne L'Équipe"
    ],
@@ -179,6 +192,58 @@
    "desc": "Rugby",
    "chaine": [
     "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-18",
+   "time": "00:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat du monde U20",
+   "date": "2026-07-18",
+   "time": "17:00",
+   "desc": "En Direct.",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Manager",
+   "date": "2026-07-18",
+   "time": "18:25",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "L'année Super Rugby Pacific",
+   "date": "2026-07-18",
+   "time": "18:58",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
    ],
    "cats": [
     "rugby"
