@@ -1,39 +1,13 @@
 {
- "generated": "2026-07-15T20:15:03+02:00",
+ "generated": "2026-07-16T08:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 17,
+ "count": 35,
  "programmes": [
-  {
-   "title": "Rugby à XIII : State of Origin féminin",
-   "date": "2026-07-15",
-   "time": "23:00",
-   "desc": "Retransmission du State of Origin féminin, une compétition de rugby à XIII, opposant deux équipes australiennes, représentant deux états riv",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Top 14",
-   "date": "2026-07-16",
-   "time": "02:10",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "L'année Super Rugby Pacific",
    "date": "2026-07-16",
-   "time": "09:43",
-   "desc": "Rugby",
+   "time": "09:45",
+   "desc": "La saison 2026 de Super Rugby Pacific a livré son verdict à Wellington, avec une finale 100 % néo-zélandaise entre les Hurricanes et les Chi",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -56,9 +30,35 @@
    "approx": false
   },
   {
+   "title": "Queensland Maroons / New South Wales Blues",
+   "date": "2026-07-16",
+   "time": "09:45",
+   "desc": "Rugby à XIII",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Top 14",
+   "date": "2026-07-16",
+   "time": "11:41",
+   "desc": "Le format La finale du Top 14 Made by Canal revient sur l'ultime rencontre du championnat, qui se déroulait au Stade de France entre Toulous",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Rugby : Top 14",
    "date": "2026-07-16",
-   "time": "11:44",
+   "time": "11:41",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
@@ -73,6 +73,19 @@
    "date": "2026-07-16",
    "time": "11:45",
    "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Penrith Panthers / Brisbane Broncos",
+   "date": "2026-07-16",
+   "time": "11:45",
+   "desc": "En Direct.",
    "chaine": [
     "beIN Sports"
    ],
@@ -108,10 +121,36 @@
    "approx": false
   },
   {
+   "title": "Penrith Panthers / Brisbane Broncos",
+   "date": "2026-07-17",
+   "time": "10:00",
+   "desc": "Rugby à XIII",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Rugby à XIII : NRL",
    "date": "2026-07-17",
    "time": "12:00",
    "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Sydney Roosters / Melbourne Storm",
+   "date": "2026-07-17",
+   "time": "12:00",
+   "desc": "En Direct.",
    "chaine": [
     "beIN Sports"
    ],
@@ -186,10 +225,101 @@
    "approx": false
   },
   {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-07-18",
+   "time": "09:00",
+   "desc": "Direction l'Eden Park d'Auckland pour suivre la rencontre opposant la Nouvelle-Zélande à l'Irlande dans le cadre de la troisième journée du ",
+   "chaine": [
+    "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-18",
+   "time": "09:30",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations, le mag",
+   "date": "2026-07-18",
+   "time": "10:20",
+   "desc": "Autour des matchs décisifs de la compétition, Isabelle Ithurburu vous donnera rendez-vous pour Le mag et sera accompagnée des anciens intern",
+   "chaine": [
+    "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-07-18",
+   "time": "10:30",
+   "desc": "Les Bleus de Maxime Lucu, nommé capitaine durant cette tournée d'été en l'absence d'Antoine Dupont, prennent la direction de Tokyo où ils af",
+   "chaine": [
+    "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-18",
+   "time": "11:30",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-07-18",
+   "time": "12:00",
+   "desc": "Lors de la journée 3, l'Australie affronte l'Italie dans le cadre du Championnat des Nations, une compétition qui oppose l'hémisphère nord à",
+   "chaine": [
+    "TMC"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-07-18",
+   "time": "15:00",
+   "desc": "Les Fidji ont perdu leur deux premiers matches, contre le Pays de Galles, puis l'Angleterre. Face aux Ecossais, les Fidji vont-ils réagir da",
+   "chaine": [
+    "TMC"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Rugby : Championnat du monde U20",
    "date": "2026-07-18",
    "time": "17:00",
-   "desc": "En Direct.",
+   "desc": "A suivre, des rencontres disputées dans le cadre de cette compétition qui se déroule tous les ans et réservée aux espoirs du rugby âgés de m",
    "chaine": [
     "La Chaîne L'Équipe"
    ],
@@ -199,10 +329,36 @@
    "approx": false
   },
   {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-07-18",
+   "time": "17:30",
+   "desc": "Direction le Hollywoodbets Kings Park de Durban pour suivre une rencontre explosive entre l'Afrique du Sud et le Pays de Galles.",
+   "chaine": [
+    "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Canal Rugby Manager",
    "date": "2026-07-18",
-   "time": "18:25",
+   "time": "18:30",
    "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Manager",
+   "date": "2026-07-18",
+   "time": "18:33",
+   "desc": "Une collection innovante centrée sur le décryptage tactique dans le rugby qui donne les clés des méthodes utilisées par les plus grands coac",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -214,7 +370,85 @@
   {
    "title": "L'année Super Rugby Pacific",
    "date": "2026-07-18",
-   "time": "18:58",
+   "time": "19:02",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "L'année Super Rugby Pacific",
+   "date": "2026-07-18",
+   "time": "19:05",
+   "desc": "La saison 2026 de Super Rugby Pacific a livré son verdict à Wellington, avec une finale 100 % néo-zélandaise entre les Hurricanes et les Chi",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-07-18",
+   "time": "21:00",
+   "desc": "Les joueurs de Steve Borthwick prennent la direction de l'Amérique du Sud, et plus précisément du bouillant stade Único Madre de Ciudades de",
+   "chaine": [
+    "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-19",
+   "time": "00:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Top 14",
+   "date": "2026-07-19",
+   "time": "00:22",
+   "desc": "Le format La finale du Top 14 Made by Canal revient sur l'ultime rencontre du championnat, qui se déroulait au Stade de France entre Toulous",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Top 14",
+   "date": "2026-07-19",
+   "time": "00:22",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Top 14",
+   "date": "2026-07-19",
+   "time": "17:36",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
