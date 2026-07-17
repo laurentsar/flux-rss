@@ -1,21 +1,8 @@
 {
- "generated": "2026-07-16T20:15:03+02:00",
+ "generated": "2026-07-17T08:15:02+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 28,
+ "count": 35,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-07-17",
-   "time": "00:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-07-17",
@@ -188,7 +175,7 @@
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-07-18",
-   "time": "11:30",
+   "time": "12:00",
    "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
    "chaine": [
     "beIN Sports"
@@ -228,7 +215,7 @@
    "title": "Rugby : Championnat du monde U20",
    "date": "2026-07-18",
    "time": "17:00",
-   "desc": "A suivre, des rencontres disputées dans le cadre de cette compétition qui se déroule tous les ans et réservée aux espoirs du rugby âgés de m",
+   "desc": "En Direct.",
    "chaine": [
     "La Chaîne L'Équipe"
    ],
@@ -244,6 +231,19 @@
    "desc": "Direction le Hollywoodbets Kings Park de Durban pour suivre une rencontre explosive entre l'Afrique du Sud et le Pays de Galles.",
    "chaine": [
     "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat du monde U20",
+   "date": "2026-07-18",
+   "time": "18:20",
+   "desc": "A suivre, des rencontres disputées dans le cadre de cette compétition qui se déroule tous les ans et réservée aux espoirs du rugby âgés de m",
+   "chaine": [
+    "La Chaîne L'Équipe"
    ],
    "cats": [
     "rugby"
@@ -355,10 +355,101 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-19",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Rugby : Top 14",
    "date": "2026-07-19",
    "time": "17:36",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / Montpellier",
+   "date": "2026-07-19",
+   "time": "17:42",
+   "desc": "Sur la pelouse du Stade de France, Toulouse défend de nouveau son titre acquis en 2025 contre l'UBB, mais cette fois face au Montpellier Hér",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-19",
+   "time": "22:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : State of Origin",
+   "date": "2026-07-20",
+   "time": "00:00",
+   "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Manager",
+   "date": "2026-07-20",
+   "time": "18:03",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "L'année Super Rugby Pacific",
+   "date": "2026-07-20",
+   "time": "18:33",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Manager",
+   "date": "2026-07-20",
+   "time": "20:29",
+   "desc": "Magazine sportif",
    "chaine": [
     "Canal+ Sport"
    ],
