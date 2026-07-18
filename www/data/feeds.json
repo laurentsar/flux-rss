@@ -562,6 +562,10 @@
         {
           "name": "Quinze Mondial",
           "url": "https://www.quinzemondial.com/feed/"
+        },
+        {
+          "name": "France -20 — Google Actu",
+          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=France+-20+rugby+U20+Tournoi+Six+Nations"
         }
       ],
       "feeds_en": [

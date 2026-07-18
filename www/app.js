@@ -395,6 +395,54 @@ function renderProD2Teams(matches){
   return `<details class="rl-section"><summary class="rl-sh">🏉 Brive & Colomiers — Pro D2</summary>${cards}</details>`;
 }
 
+/* --- U20 France — Six Nations des moins de 20 ans --- */
+async function loadU20Rugby(){
+  const yr = new Date().getFullYear();
+  for (const y of [yr+1, yr]){
+    const page = `Tournoi des Six Nations des moins de 20 ans ${y}`;
+    try{
+      const [r1,r2] = await Promise.allSettled([
+        fetch(wikiUrl(page,6)).then(r=>r.json()),
+        fetch(wikiUrl(page,5)).then(r=>r.json()),
+      ]);
+      const stHtml = r1.status==='fulfilled' ? r1.value?.parse?.text?.['*']||'' : '';
+      const calHtml = r2.status==='fulfilled' ? r2.value?.parse?.text?.['*']||'' : '';
+      if (stHtml||calHtml) return {stHtml,calHtml,year:y};
+    } catch(e){}
+  }
+  return null;
+}
+
+function renderU20Rugby(d){
+  if (!d) return '';
+  const {stHtml,calHtml,year} = d;
+  const SCORE_RE = /\b(\d+)\s*[-–]\s*(\d+)\b/;
+  const cleanTeam = s => s.replace(/\s*[-–]\s*20\b.*/i,'').trim();
+
+  let matchBlock = '';
+  if (calHtml){
+    const tables = parseWikitables(calHtml,'table');
+    const rows = tables.flat();
+    const frRows = rows.filter(r=>r.length>=4&&(/france/i.test(r[2]||'')||/france/i.test(r[4]||'')));
+    matchBlock = frRows.map(r=>{
+      const home=cleanTeam(r[2]||''), away=cleanTeam(r[4]||'');
+      const m=(r[3]||'').match(SCORE_RE);
+      if (!m) return `<div class="rl-match"><span class="rl-tn">${teamBadge(home)}${esc(home)}</span><span class="rl-sb"><span class="rl-vs">⏱</span></span><span class="rl-tn rl-tnr">${teamBadge(away)}${esc(away)}</span></div>`;
+      const hs=parseInt(m[1]),as_=parseInt(m[2]);
+      return `<div class="rl-match"><span class="rl-tn ${hs>as_?'rl-w':''}">${teamBadge(home)}${esc(home)}</span><span class="rl-sb"><b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b></span><span class="rl-tn rl-tnr ${as_>hs?'rl-w':''}">${teamBadge(away)}${esc(away)}</span></div>`;
+    }).join('');
+  }
+
+  let stBlock = '';
+  if (stHtml){
+    const tbls = parseWikitables(stHtml);
+    if (tbls[0]?.length>1) stBlock = renderRLStandings(tbls[0],`Classement Six Nations -20 ${year}`,6,1,0);
+  }
+
+  const resultsHtml = matchBlock ? `<details class="rl-section"><summary class="rl-sh">🇫🇷 France -20 — Six Nations ${year}</summary>${matchBlock}</details>` : '';
+  return resultsHtml+stBlock;
+}
+
 /* --- Championnat des nations : toutes les équipes --- */
 async function loadChampionnatNations(year){
   const page = `Championnat des nations ${year}`;
@@ -487,12 +535,13 @@ async function loadRugbyLive(opts={}){
   const top14 = `Championnat de France de rugby à XV ${season}`;
 
   const currentYear = new Date().getFullYear();
-  const [r1, r2, sofa, proD2, champNations] = await Promise.all([
+  const [r1, r2, sofa, proD2, champNations, u20] = await Promise.all([
     fetch(wikiUrl(top14,6)).then(r=>r.json()).catch(()=>null),
     fetch(wikiUrl(top14,7)).then(r=>r.json()).catch(()=>null),
     fetchSportsEvents(),
     loadProD2Teams(season),
     loadChampionnatNations(currentYear),
+    loadU20Rugby(),
   ]);
 
   _hasLiveSports = sofa.events.some(e=>e.status?.type==='inprogress');
@@ -515,6 +564,8 @@ async function loadRugbyLive(opts={}){
     }
   }
   if (proD2.length) html += renderProD2Teams(proD2);
+  const u20Html = renderU20Rugby(u20);
+  if (u20Html) html += u20Html;
   elRugbyLive.innerHTML = html || '<div class="rl-loading">Données non disponibles.</div>';
   _rugbyLiveHtml = elRugbyLive.innerHTML;
   _rugbyLiveTs = Date.now();
