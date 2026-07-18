@@ -443,6 +443,75 @@ function renderU20Rugby(d){
   return resultsHtml+stBlock;
 }
 
+/* --- U20 France — Coupe du monde junior --- */
+async function loadU20WorldChampionship(){
+  const yr = new Date().getFullYear();
+  for (const y of [yr, yr-1]){
+    const page = `Championnat du monde junior de rugby à XV ${y}`;
+    try {
+      const sd = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
+      const sects = sd?.parse?.sections||[];
+      if (!sects.length) continue;
+      const groupIdxs = sects.filter(s=>/^groupe\b/i.test(s.line)).map(s=>+s.index);
+      const finaleIdxs = sects.filter(s=>/demi.finale|troisième.place|3e place|finale\b|classement.final/i.test(s.line)).map(s=>+s.index);
+      if (!groupIdxs.length && !finaleIdxs.length) continue;
+      const allIdxs = [...new Set([...groupIdxs,...finaleIdxs])];
+      const fetched = await Promise.allSettled(
+        allIdxs.map(idx=>fetch(wikiUrl(page,idx)).then(r=>r.json()).then(d=>({idx,html:d?.parse?.text?.['*']||''})))
+      );
+      const byIdx = {};
+      fetched.filter(r=>r.status==='fulfilled').forEach(r=>{byIdx[r.value.idx]=r.value.html;});
+      const frGroupHtml = groupIdxs.map(i=>byIdx[i]||'').find(h=>/france/i.test(h))||'';
+      const knockoutHtml = finaleIdxs.map(i=>byIdx[i]||'').join('');
+      if (frGroupHtml||knockoutHtml) return {frGroupHtml,knockoutHtml,year:y};
+    } catch(e){}
+  }
+  return null;
+}
+
+function renderU20WorldChampionship(d){
+  if (!d) return '';
+  const {frGroupHtml,knockoutHtml,year} = d;
+  const SCORE_RE = /\b(\d+)\s*[-–]\s*(\d+)\b/;
+  const cleanTeam = s => s.replace(/\s*[-–]\s*20\b.*/i,'').trim();
+  const cleanScore = s => s.replace(/\s*\([^)]+\)/g,'').trim();
+
+  const extractFrRows = (html,t1col,scol,t2col) => {
+    if (!html) return [];
+    const rows = parseWikitables(html,'table').flat();
+    return rows.filter(r=>
+      r.length>Math.max(t1col,scol,t2col) &&
+      (/france/i.test(r[t1col]||'')||/france/i.test(r[t2col]||'')) &&
+      /\d\s*[-–]\s*\d/.test(cleanScore(r[scol]||''))
+    ).map(r=>({home:cleanTeam(r[t1col]||''),score:r[scol]||'',away:cleanTeam(r[t2col]||'')}));
+  };
+
+  const grpRows = extractFrRows(frGroupHtml,1,2,3).length
+    ? extractFrRows(frGroupHtml,1,2,3)
+    : extractFrRows(frGroupHtml,2,3,4);
+  const koRows = extractFrRows(knockoutHtml,1,2,3);
+
+  const toHtml = rows => rows.map(({home,score,away})=>{
+    const sc = cleanScore(score);
+    const m = sc.match(SCORE_RE);
+    if (!m) return `<div class="rl-match"><span class="rl-tn">${teamBadge(home)}${esc(home)}</span><span class="rl-sb"><span class="rl-vs">⏱</span></span><span class="rl-tn rl-tnr">${teamBadge(away)}${esc(away)}</span></div>`;
+    const hs=parseInt(m[1]),as_=parseInt(m[2]);
+    return `<div class="rl-match"><span class="rl-tn ${hs>as_?'rl-w':''}">${teamBadge(home)}${esc(home)}</span><span class="rl-sb"><b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b></span><span class="rl-tn rl-tnr ${as_>hs?'rl-w':''}">${teamBadge(away)}${esc(away)}</span></div>`;
+  }).join('');
+
+  const matchBlock = toHtml([...grpRows,...koRows]);
+  let stBlock = '';
+  if (knockoutHtml){
+    const tbls = parseWikitables(knockoutHtml,'table');
+    const stTbl = tbls.find(t=>t.length>3&&(t[0]||[]).some(c=>/classement|rang/i.test(String(c))));
+    if (stTbl?.length>1) stBlock = renderRLStandings(stTbl,`Classement CdM -20 ${year}`,4,1,0);
+  }
+  const resultsHtml = matchBlock
+    ? `<details class="rl-section"><summary class="rl-sh">🌍 France -20 — Coupe du monde ${year}</summary>${matchBlock}</details>`
+    : '';
+  return resultsHtml+stBlock;
+}
+
 /* --- Championnat des nations : toutes les équipes --- */
 async function loadChampionnatNations(year){
   const page = `Championnat des nations ${year}`;
@@ -535,13 +604,14 @@ async function loadRugbyLive(opts={}){
   const top14 = `Championnat de France de rugby à XV ${season}`;
 
   const currentYear = new Date().getFullYear();
-  const [r1, r2, sofa, proD2, champNations, u20] = await Promise.all([
+  const [r1, r2, sofa, proD2, champNations, u20, cdm] = await Promise.all([
     fetch(wikiUrl(top14,6)).then(r=>r.json()).catch(()=>null),
     fetch(wikiUrl(top14,7)).then(r=>r.json()).catch(()=>null),
     fetchSportsEvents(),
     loadProD2Teams(season),
     loadChampionnatNations(currentYear),
     loadU20Rugby(),
+    loadU20WorldChampionship(),
   ]);
 
   _hasLiveSports = sofa.events.some(e=>e.status?.type==='inprogress');
@@ -566,6 +636,8 @@ async function loadRugbyLive(opts={}){
   if (proD2.length) html += renderProD2Teams(proD2);
   const u20Html = renderU20Rugby(u20);
   if (u20Html) html += u20Html;
+  const cdmHtml = renderU20WorldChampionship(cdm);
+  if (cdmHtml) html += cdmHtml;
   elRugbyLive.innerHTML = html || '<div class="rl-loading">Données non disponibles.</div>';
   _rugbyLiveHtml = elRugbyLive.innerHTML;
   _rugbyLiveTs = Date.now();
