@@ -1,47 +1,8 @@
 {
- "generated": "2026-07-19T08:15:03+02:00",
+ "generated": "2026-07-19T20:15:08+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 26,
+ "count": 23,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-07-19",
-   "time": "08:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Top 14",
-   "date": "2026-07-19",
-   "time": "17:36",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulouse / Montpellier",
-   "date": "2026-07-19",
-   "time": "17:42",
-   "desc": "Sur la pelouse du Stade de France, Toulouse défend de nouveau son titre acquis en 2025 contre l'UBB, mais cette fois face au Montpellier Hér",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-07-19",
