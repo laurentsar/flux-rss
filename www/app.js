@@ -562,7 +562,8 @@ function renderChampionnatNations(journees){
 
 let _espnCache = null, _espnCacheTs = 0;
 let _frSocCache = null, _frSocCacheTs = 0;
-let _rugbyLiveHtml = '', _rugbyLiveTs = 0;
+let _rugbyMainHtml = '', _rugbyU20Html = '', _rugbyDataTs = 0;
+let _rugbySubMode = localStorage.getItem('rugbySubMode') || 'main';
 let _hasLiveSports = false;
 let _liveRefreshTimer = null;
 function stopLiveRefresh(){ if(_liveRefreshTimer){clearTimeout(_liveRefreshTimer);_liveRefreshTimer=null;} }
@@ -591,11 +592,17 @@ function manualRefreshLive(){
   else if (current==='agenda') reloadAgendaLive();
 }
 
+function showRugbyContent(){
+  if (!elRugbyLive) return;
+  const html = _rugbySubMode === 'u20' ? _rugbyU20Html : _rugbyMainHtml;
+  elRugbyLive.innerHTML = html || '<div class="rl-loading">Données non disponibles.</div>';
+}
+
 async function loadRugbyLive(opts={}){
   if (!elRugbyLive) return;
   elRugbyLive.hidden = false;
-  if (_rugbyLiveHtml && Date.now() - _rugbyLiveTs < 3 * 60 * 1000 && !opts.liveRefresh){
-    elRugbyLive.innerHTML = _rugbyLiveHtml;
+  if (_rugbyMainHtml && Date.now() - _rugbyDataTs < 3 * 60 * 1000 && !opts.liveRefresh){
+    showRugbyContent();
     return;
   }
   if (opts.liveRefresh) _espnCache = null;
@@ -616,13 +623,15 @@ async function loadRugbyLive(opts={}){
 
   _hasLiveSports = sofa.events.some(e=>e.status?.type==='inprogress');
   updateLiveBadge();
-  let html = '';
+
+  /* --- onglet principal : direct + Top 14 + Pro D2 + Champ. Nations --- */
+  let mainHtml = '';
   const champHtml = renderChampionnatNations(champNations);
-  if (sofa.error) html += `<details class="rl-section"><summary class="rl-sh">📡 Scores live</summary><div class="rl-loading">⚠️ ${sofa.error}</div></details>`;
-  else if (sofa.events.length || champHtml) html += renderLiveScores(sofa.events, champHtml);
+  if (sofa.error) mainHtml += `<div class="rl-section rl-live-section"><div class="rl-sh">📡 Scores live</div><div class="rl-loading">⚠️ ${sofa.error}</div></div>`;
+  else if (sofa.events.length || champHtml) mainHtml += renderLiveScores(sofa.events, champHtml);
   if (r1){
     const tbls = parseWikitables(r1?.parse?.text?.['*']||'');
-    if (tbls[0]) html += renderRLStandings(tbls[0],'Classement Top 14',14,6,2);
+    if (tbls[0]) mainHtml += renderRLStandings(tbls[0],'Classement Top 14',14,6,2);
   }
   if (r2){
     const tbls = parseWikitables(r2?.parse?.text?.['*']||'');
@@ -630,22 +639,30 @@ async function loadRugbyLive(opts={}){
     if (jtbls.length){
       _rlTop14Journees = jtbls;
       _rlTop14Shown = 2;
-      html += renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown);
+      mainHtml += renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown);
     }
   }
-  if (proD2.length) html += renderProD2Teams(proD2);
-  const u20Html = renderU20Rugby(u20);
-  if (u20Html) html += u20Html;
-  const cdmHtml = renderU20WorldChampionship(cdm);
-  if (cdmHtml) html += cdmHtml;
-  elRugbyLive.innerHTML = html || '<div class="rl-loading">Données non disponibles.</div>';
-  _rugbyLiveHtml = elRugbyLive.innerHTML;
-  _rugbyLiveTs = Date.now();
+  if (proD2.length) mainHtml += renderProD2Teams(proD2);
+
+  /* --- onglet -20 ans : Six Nations U20 + Coupe du monde --- */
+  let u20Html = '';
+  const sixNationsU20 = renderU20Rugby(u20);
+  if (sixNationsU20) u20Html += sixNationsU20;
+  const cdmU20 = renderU20WorldChampionship(cdm);
+  if (cdmU20) u20Html += cdmU20;
+  if (!u20Html) u20Html = '<div class="rl-loading">Données -20 ans non disponibles.</div>';
+
+  _rugbyMainHtml = mainHtml || '<div class="rl-loading">Données non disponibles.</div>';
+  _rugbyU20Html = u20Html;
+  _rugbyDataTs = Date.now();
+
+  showRugbyContent();
   if (_hasLiveSports) scheduleLiveRefresh(()=>loadRugbyLive({liveRefresh:true}));
 }
 
 function hideRugbyLive(){
   if (elRugbyLive){ elRugbyLive.hidden=true; elRugbyLive.innerHTML=''; }
+  _rugbyMainHtml = ''; _rugbyU20Html = ''; _rugbyDataTs = 0;
   stopLiveRefresh();
 }
 
@@ -1204,6 +1221,13 @@ function cacheKey(id, tab){ return 'feedcache:'+id+(tab==='pods'?':pod':''); }
 
 /* barre de sous-onglets Articles / Podcasts (affichée seulement si la catégorie a des podcasts) */
 function renderSubtabs(cat){
+  if (cat.id === 'rugby'){
+    elSubtabs.hidden = false;
+    elSubtabs.innerHTML =
+      `<button class="subtab${_rugbySubMode==='main'?' active':''}" data-rugby="main">🏉 Club & Intl</button>`+
+      `<button class="subtab${_rugbySubMode==='u20'?' active':''}" data-rugby="u20">🌱 -20 ans</button>`;
+    return;
+  }
   // sous-onglets seulement si la catégorie a À LA FOIS des articles et des podcasts
   if (!(hasPods(cat) && hasNews(cat))){ elSubtabs.hidden=true; elSubtabs.innerHTML=''; return; }
   elSubtabs.hidden=false;
@@ -2640,6 +2664,15 @@ async function init(){
   // article ouvert (carte courte ou « Lire l'article ») = consulté -> masqué et mémorisé
   elSubtabs.addEventListener('click', (e)=>{
     const b = e.target.closest('.subtab'); if(!b) return;
+    const rugbyMode = b.dataset.rugby;
+    if (rugbyMode){
+      if (rugbyMode === _rugbySubMode) return;
+      _rugbySubMode = rugbyMode;
+      localStorage.setItem('rugbySubMode', rugbyMode);
+      elSubtabs.querySelectorAll('.subtab').forEach(x=>x.classList.toggle('active', x.dataset.rugby===rugbyMode));
+      showRugbyContent();
+      return;
+    }
     const tab = b.dataset.tab;
     if (tab === currentTab) return;
     currentTab = tab;

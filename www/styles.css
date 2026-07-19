@@ -199,7 +199,9 @@ details.rl-section>.rl-table-wrap,details.rl-section>.rl-journee{margin-top:2px}
 .rl-live-dot{display:inline-block;width:8px;height:8px;background:#ef4444;border-radius:50%;animation:livepulse 1s ease-in-out infinite;margin-right:5px;vertical-align:middle;flex-shrink:0}
 @keyframes livepulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.65)}}
 .rl-live-section>summary.rl-sh{color:#ef4444;background:color-mix(in srgb,#ef4444 14%,transparent)}
+div.rl-live-section{margin-bottom:10px}
 div.rl-live-section>.rl-sh{font-weight:700;font-size:.9rem;color:#ef4444;padding:6px 10px;background:color-mix(in srgb,#ef4444 14%,transparent);border-radius:8px 8px 0 0;display:flex;align-items:center;justify-content:space-between}
+div.rl-live-section>.rl-jlbl{padding:0 2px;margin-top:6px}
 .rl-refresh-btn{background:none;border:none;color:inherit;font-size:1.1rem;cursor:pointer;padding:0 2px;opacity:.7;line-height:1;margin-left:auto}
 .rl-time{font-size:.75rem;color:var(--muted);font-weight:400;margin-left:4px}
 .rl-scorers{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);padding:2px 10px 6px;gap:8px}
