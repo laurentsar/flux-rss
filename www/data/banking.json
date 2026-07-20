@@ -1,16 +1,16 @@
 {
-  "generated": "2026-07-13T12:26:55+02:00",
+  "generated": "2026-07-20T12:11:33+02:00",
   "livrets": [
     {
       "nom": "Livret A",
-      "taux": "1,50 %",
+      "taux": "1,70 %",
       "plafond": "22 950 €",
       "net": true,
       "note": "Garanti, disponible, défiscalisé"
     },
     {
       "nom": "LDDS",
-      "taux": "1,50 %",
+      "taux": "1,70 %",
       "plafond": "12 000 €",
       "net": true,
       "note": "Résidents fiscaux FR uniquement"
@@ -24,7 +24,7 @@
     },
     {
       "nom": "PEL",
-      "taux": "1,50 %",
+      "taux": "1,70 %",
       "plafond": "61 200 €",
       "net": false,
       "note": "Taux brut — bloqué 4 ans minimum (ouvertures 2024+)"
@@ -130,7 +130,7 @@
     {
       "banque": "Placement Direct",
       "taux": "5,50 %",
-      "duree": "boosté",
+      "duree": "2 mois",
       "plafond": "voir site",
       "lien": "https://www.placementdirect.fr"
     },
