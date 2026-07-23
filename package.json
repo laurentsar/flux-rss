@@ -1,6 +1,6 @@
 {
   "name": "flux-rss",
-  "version": "5.26",
+  "version": "5.27",
   "private": true,
   "description": "Lecteur de flux RSS multi-thèmes (offline, fetch natif)",
   "scripts": {
