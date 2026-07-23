@@ -1,21 +1,8 @@
 {
- "generated": "2026-07-22T20:15:03+02:00",
+ "generated": "2026-07-23T08:15:04+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 21,
+ "count": 30,
  "programmes": [
-  {
-   "title": "Rugby à XIII : State of Origin",
-   "date": "2026-07-23",
-   "time": "00:15",
-   "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-07-23",
@@ -43,10 +30,23 @@
    "approx": false
   },
   {
+   "title": "Parramatta Eels / Penrith Panthers",
+   "date": "2026-07-23",
+   "time": "11:45",
+   "desc": "En Direct.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "L'année Super Rugby Pacific",
    "date": "2026-07-23",
    "time": "15:55",
-   "desc": "La saison 2026 de Super Rugby Pacific a livré son verdict à Wellington, avec une finale 100 % néo-zélandaise entre les Hurricanes et les Chi",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -58,8 +58,8 @@
   {
    "title": "L'année Super Rugby Pacific",
    "date": "2026-07-23",
-   "time": "15:56",
-   "desc": "Rugby",
+   "time": "16:20",
+   "desc": "La saison 2026 de Super Rugby Pacific a livré son verdict à Wellington, avec une finale 100 % néo-zélandaise entre les Hurricanes et les Chi",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -99,19 +99,6 @@
    "date": "2026-07-23",
    "time": "20:22",
    "desc": "Une collection innovante centrée sur le décryptage tactique dans le rugby qui donne les clés des méthodes utilisées par les plus grands coac",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Manager",
-   "date": "2026-07-23",
-   "time": "20:23",
-   "desc": "Magazine sportif",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -175,8 +162,8 @@
   {
    "title": "L'année Super Rugby Pacific",
    "date": "2026-07-24",
-   "time": "10:42",
-   "desc": "Rugby",
+   "time": "10:48",
+   "desc": "La saison 2026 de Super Rugby Pacific a livré son verdict à Wellington, avec une finale 100 % néo-zélandaise entre les Hurricanes et les Chi",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -189,7 +176,7 @@
    "title": "L'année Super Rugby Pacific",
    "date": "2026-07-24",
    "time": "10:49",
-   "desc": "La saison 2026 de Super Rugby Pacific a livré son verdict à Wellington, avec une finale 100 % néo-zélandaise entre les Hurricanes et les Chi",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -212,12 +199,12 @@
    "approx": false
   },
   {
-   "title": "Canal Rugby Manager",
+   "title": "South Sydney Rabbitohs / Melbourne Storm",
    "date": "2026-07-24",
-   "time": "12:44",
-   "desc": "Une collection innovante centrée sur le décryptage tactique dans le rugby qui donne les clés des méthodes utilisées par les plus grands coac",
+   "time": "12:00",
+   "desc": "En Direct.",
    "chaine": [
-    "Canal+ Sport"
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -227,8 +214,8 @@
   {
    "title": "Canal Rugby Manager",
    "date": "2026-07-24",
-   "time": "12:45",
-   "desc": "Magazine sportif",
+   "time": "12:44",
+   "desc": "Une collection innovante centrée sur le décryptage tactique dans le rugby qui donne les clés des méthodes utilisées par les plus grands coac",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -264,12 +251,142 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-25",
+   "time": "11:30",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "North Queensland Cowboys / Brisbane Broncos",
+   "date": "2026-07-25",
+   "time": "11:30",
+   "desc": "En Direct.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Rugby League: Super League Live: Leeds v Bradford",
    "date": "2026-07-25",
    "time": "18:15",
    "desc": "En Direct.",
    "chaine": [
     "BBC2"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Leigh Leopards / Warrington Wolves",
+   "date": "2026-07-25",
+   "time": "18:15",
+   "desc": "En Direct.",
+   "chaine": [
+    "BBC2"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-25",
+   "time": "21:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Champions Cup",
+   "date": "2026-07-25",
+   "time": "22:00",
+   "desc": "Tenants du titre depuis leur victoire en 2025 contre les Northampton Saints, les joueurs de l'UBB sont de nouveau en finale de la Champions ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Manly-Warringah Sea Eagles / Cronulla-Sutherland Sharks",
+   "date": "2026-07-26",
+   "time": "08:02",
+   "desc": "En Direct.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "L'année Super Rugby Pacific",
+   "date": "2026-07-26",
+   "time": "14:00",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Top 14",
+   "date": "2026-07-26",
+   "time": "15:55",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-07-26",
+   "time": "18:07",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Histoire de champions rugby",
+   "date": "2026-07-26",
+   "time": "18:26",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
    ],
    "cats": [
     "rugby"
