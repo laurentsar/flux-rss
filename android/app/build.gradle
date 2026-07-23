@@ -7,8 +7,8 @@ android {
         applicationId "com.laurent.fluxrss"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 52700
-        versionName "5.27"
+        versionCode 52800
+        versionName "5.28"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
