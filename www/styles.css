@@ -208,6 +208,25 @@ div.rl-live-section>.rl-jlbl{padding:0 2px;margin-top:6px}
 .rl-scorers span{flex:1}
 .rl-scorers span:last-child{text-align:right}
 
+/* ---- Webradio ---- */
+.radio-list{padding:4px 0 80px}
+.radio-card{display:flex;align-items:center;gap:12px;width:100%;padding:13px 14px;background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:8px;cursor:pointer;text-align:left;color:var(--text);transition:background .15s}
+.radio-card.playing{border-color:var(--a);background:color-mix(in srgb,var(--a) 10%,var(--card))}
+.radio-card:active{transform:scale(.98)}
+.radio-card-emoji{font-size:1.5rem;flex-shrink:0;width:34px;text-align:center}
+.radio-card-info{flex:1;min-width:0}
+.radio-card-name{font-size:.95rem;font-weight:700;color:var(--text)}
+.radio-card-status{font-size:.76rem;font-weight:600;color:var(--a);margin-top:2px;display:flex;align-items:center;gap:5px}
+.radio-card-status::before{content:'';display:inline-block;width:6px;height:6px;background:var(--a);border-radius:50%;animation:livepulse 1s ease-in-out infinite;flex-shrink:0}
+.radio-card-status.paused{color:var(--muted)}
+.radio-card-status.paused::before{animation:none;background:var(--muted)}
+.radio-card-pp{font-size:1.3rem;color:var(--a);flex-shrink:0}
+#radio-bar{position:fixed;left:12px;right:78px;bottom:calc(env(safe-area-inset-bottom) + 20px);z-index:19;display:flex;align-items:center;gap:8px;padding:9px 12px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,.35)}
+#radio-bar[hidden]{display:none}
+.radio-bar-info{flex:1;font-size:.84rem;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.radio-bar-pp{background:none;border:none;color:var(--a);cursor:pointer;font-size:1.2rem;padding:0 2px;flex-shrink:0}
+.radio-bar-stop{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.9rem;padding:0 2px;flex-shrink:0}
+
 /* ---- Offres bancaires (placement) ---- */
 .bk-section{margin-bottom:12px}
 .bk-section>summary.rl-sh{color:var(--a,#D97706);background:color-mix(in srgb,var(--a,#D97706) 12%,transparent)}

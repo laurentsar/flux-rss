@@ -25,6 +25,60 @@ const CAT_LABELS = {
   football:'⚽ Football',
   immobilier:'🏡 Immobilier',
 };
+/* --- stations webradio thématiques par catégorie --- */
+const WEBRADIOS = {
+  rugby:      [{n:'RMC',          e:'🎙️',u:'https://audio.bfmtv.com/rmc_128.mp3'},
+               {n:'RTL',          e:'📻', u:'https://streaming.rtl.fr/RTL-1-44-128'},
+               {n:'France Inter', e:'🇫🇷',u:'https://icecast.radiofrance.fr/franceinter-midfi.mp3'},
+               {n:'Europe 1',     e:'📡', u:'https://stream.europe1.fr/europe1.mp3'}],
+  football:   [{n:'RMC',          e:'🎙️',u:'https://audio.bfmtv.com/rmc_128.mp3'},
+               {n:'RTL',          e:'📻', u:'https://streaming.rtl.fr/RTL-1-44-128'},
+               {n:'France Inter', e:'🇫🇷',u:'https://icecast.radiofrance.fr/franceinter-midfi.mp3'},
+               {n:'Europe 1',     e:'📡', u:'https://stream.europe1.fr/europe1.mp3'}],
+  ia:         [{n:'France Culture',e:'📖',u:'https://icecast.radiofrance.fr/franceculture-midfi.mp3'},
+               {n:'France Inter', e:'🇫🇷',u:'https://icecast.radiofrance.fr/franceinter-midfi.mp3'},
+               {n:'Fip',          e:'🎵', u:'https://icecast.radiofrance.fr/fip-midfi.mp3'}],
+  cyber:      [{n:'France Culture',e:'📖',u:'https://icecast.radiofrance.fr/franceculture-midfi.mp3'},
+               {n:'BFM Business', e:'💼', u:'https://audio.bfmtv.com/bfmbusiness_128.mp3'},
+               {n:'France Inter', e:'🇫🇷',u:'https://icecast.radiofrance.fr/franceinter-midfi.mp3'}],
+  ve:         [{n:'BFM Business', e:'💼', u:'https://audio.bfmtv.com/bfmbusiness_128.mp3'},
+               {n:'France Inter', e:'🇫🇷',u:'https://icecast.radiofrance.fr/franceinter-midfi.mp3'},
+               {n:'Fip Electro',  e:'⚡', u:'https://icecast.radiofrance.fr/fipelectro-midfi.mp3'}],
+  tesla:      [{n:'BFM Business', e:'💼', u:'https://audio.bfmtv.com/bfmbusiness_128.mp3'},
+               {n:'France Inter', e:'🇫🇷',u:'https://icecast.radiofrance.fr/franceinter-midfi.mp3'},
+               {n:'Fip Electro',  e:'⚡', u:'https://icecast.radiofrance.fr/fipelectro-midfi.mp3'}],
+  vr:         [{n:"Mouv'",        e:'🎤', u:'https://icecast.radiofrance.fr/mouv-midfi.mp3'},
+               {n:'Fip Electro',  e:'⚡', u:'https://icecast.radiofrance.fr/fipelectro-midfi.mp3'},
+               {n:'France Culture',e:'📖',u:'https://icecast.radiofrance.fr/franceculture-midfi.mp3'}],
+  domotique:  [{n:'France Inter', e:'🇫🇷',u:'https://icecast.radiofrance.fr/franceinter-midfi.mp3'},
+               {n:'Fip',          e:'🎵', u:'https://icecast.radiofrance.fr/fip-midfi.mp3'},
+               {n:'France Culture',e:'📖',u:'https://icecast.radiofrance.fr/franceculture-midfi.mp3'}],
+  solaire:    [{n:'France Info',  e:'📡', u:'https://icecast.radiofrance.fr/franceinfo-midfi.mp3'},
+               {n:'France Culture',e:'📖',u:'https://icecast.radiofrance.fr/franceculture-midfi.mp3'},
+               {n:'Fip',          e:'🎵', u:'https://icecast.radiofrance.fr/fip-midfi.mp3'}],
+  deals_fr:   [{n:"Mouv'",        e:'🎤', u:'https://icecast.radiofrance.fr/mouv-midfi.mp3'},
+               {n:'Skyrock',      e:'🎸', u:'https://icecast.skyrock.fm/haut-debit/skyrock-mp3-128k.mp3'},
+               {n:'Fip Groove',   e:'🎺', u:'https://icecast.radiofrance.fr/fipgroove-midfi.mp3'}],
+  jeux:       [{n:"Mouv'",        e:'🎤', u:'https://icecast.radiofrance.fr/mouv-midfi.mp3'},
+               {n:'Fip Electro',  e:'⚡', u:'https://icecast.radiofrance.fr/fipelectro-midfi.mp3'},
+               {n:'Skyrock',      e:'🎸', u:'https://icecast.skyrock.fm/haut-debit/skyrock-mp3-128k.mp3'}],
+  voyage:     [{n:'Fip',          e:'🌍', u:'https://icecast.radiofrance.fr/fip-midfi.mp3'},
+               {n:'Fip Groove',   e:'🎺', u:'https://icecast.radiofrance.fr/fipgroove-midfi.mp3'},
+               {n:'France Inter', e:'🇫🇷',u:'https://icecast.radiofrance.fr/franceinter-midfi.mp3'}],
+  placement:  [{n:'BFM Business', e:'💼', u:'https://audio.bfmtv.com/bfmbusiness_128.mp3'},
+               {n:'RTL',          e:'📻', u:'https://streaming.rtl.fr/RTL-1-44-128'},
+               {n:'France Inter', e:'🇫🇷',u:'https://icecast.radiofrance.fr/franceinter-midfi.mp3'}],
+  bricolage:  [{n:'RTL',          e:'📻', u:'https://streaming.rtl.fr/RTL-1-44-128'},
+               {n:'France Inter', e:'🇫🇷',u:'https://icecast.radiofrance.fr/franceinter-midfi.mp3'},
+               {n:'Fip Rock',     e:'🎸', u:'https://icecast.radiofrance.fr/fiprock-midfi.mp3'}],
+  immobilier: [{n:'BFM Business', e:'💼', u:'https://audio.bfmtv.com/bfmbusiness_128.mp3'},
+               {n:'RTL',          e:'📻', u:'https://streaming.rtl.fr/RTL-1-44-128'},
+               {n:'France Inter', e:'🇫🇷',u:'https://icecast.radiofrance.fr/franceinter-midfi.mp3'}],
+  byd:        [{n:'France Inter', e:'🇫🇷',u:'https://icecast.radiofrance.fr/franceinter-midfi.mp3'},
+               {n:'BFM Business', e:'💼', u:'https://audio.bfmtv.com/bfmbusiness_128.mp3'},
+               {n:'Fip',          e:'🎵', u:'https://icecast.radiofrance.fr/fip-midfi.mp3'}],
+};
+
 const PER_FEED = 12;       // articles gardés par flux
 const MAX_SHOW = 60;       // articles affichés par catégorie
 const PROXY = 'https://api.allorigins.win/raw?url='; // repli CORS (PWA navigateur)
@@ -564,6 +618,7 @@ let _espnCache = null, _espnCacheTs = 0;
 let _frSocCache = null, _frSocCacheTs = 0;
 let _rugbyMainHtml = '', _rugbyU20Html = '', _rugbyDataTs = 0;
 let _rugbySubMode = localStorage.getItem('rugbySubMode') || 'main';
+let _audioEl = null, _radioNowPlaying = null;
 let _hasLiveSports = false;
 let _liveRefreshTimer = null;
 function stopLiveRefresh(){ if(_liveRefreshTimer){clearTimeout(_liveRefreshTimer);_liveRefreshTimer=null;} }
@@ -1221,19 +1276,23 @@ function cacheKey(id, tab){ return 'feedcache:'+id+(tab==='pods'?':pod':''); }
 
 /* barre de sous-onglets Articles / Podcasts (affichée seulement si la catégorie a des podcasts) */
 function renderSubtabs(cat){
+  const hasRadio = !!(WEBRADIOS[cat.id]?.length);
   if (cat.id === 'rugby'){
     elSubtabs.hidden = false;
+    const onRadio = currentTab === 'radio';
     elSubtabs.innerHTML =
-      `<button class="subtab${_rugbySubMode==='main'?' active':''}" data-rugby="main">🏉 Club & Intl</button>`+
-      `<button class="subtab${_rugbySubMode==='u20'?' active':''}" data-rugby="u20">🌱 -20 ans</button>`;
+      `<button class="subtab${_rugbySubMode==='main'&&!onRadio?' active':''}" data-rugby="main">🏉 Club & Intl</button>`+
+      `<button class="subtab${_rugbySubMode==='u20'&&!onRadio?' active':''}" data-rugby="u20">🌱 -20 ans</button>`+
+      (hasRadio?`<button class="subtab${onRadio?' active':''}" data-tab="radio">📻 Radio</button>`:'');
     return;
   }
-  // sous-onglets seulement si la catégorie a À LA FOIS des articles et des podcasts
-  if (!(hasPods(cat) && hasNews(cat))){ elSubtabs.hidden=true; elSubtabs.innerHTML=''; return; }
+  const hasPodSub = hasPods(cat) && hasNews(cat);
+  if (!hasPodSub && !hasRadio){ elSubtabs.hidden=true; elSubtabs.innerHTML=''; return; }
   elSubtabs.hidden=false;
-  elSubtabs.innerHTML =
-    `<button class="subtab${currentTab==='news'?' active':''}" data-tab="news">📰 Articles</button>`+
-    `<button class="subtab${currentTab==='pods'?' active':''}" data-tab="pods">🎙️ Podcasts</button>`;
+  let h = `<button class="subtab${currentTab==='news'?' active':''}" data-tab="news">📰 Articles</button>`;
+  if (hasPodSub) h += `<button class="subtab${currentTab==='pods'?' active':''}" data-tab="pods">🎙️ Podcasts</button>`;
+  if (hasRadio)  h += `<button class="subtab${currentTab==='radio'?' active':''}" data-tab="radio">📻 Radio</button>`;
+  elSubtabs.innerHTML = h;
 }
 
 /* ---------- Offres bancaires (placement) ---------- */
@@ -1471,11 +1530,81 @@ function hidePlacementLive(){
   elPlacementLive.innerHTML = '';
 }
 
+/* ---------- webradio ---------- */
+function renderRadioStations(stations){
+  if (!stations.length) return '<div class="rl-loading">Aucune webradio disponible.</div>';
+  const np = _radioNowPlaying;
+  const playing = np && _audioEl && !_audioEl.paused;
+  return `<div class="radio-list">${stations.map((s,i)=>{
+    const active = np?.u === s.u;
+    const status = active
+      ? `<div class="radio-card-status${playing?'':' paused'}">${playing?'En direct':'En pause'}</div>`
+      : '';
+    return `<button class="radio-card${active?' playing':''}" data-radio-idx="${i}">
+      <span class="radio-card-emoji">${esc(s.e||'📻')}</span>
+      <div class="radio-card-info"><div class="radio-card-name">${esc(s.n)}</div>${status}</div>
+      <span class="radio-card-pp">${active?(playing?'⏸':'▶'):'▶'}</span>
+    </button>`;
+  }).join('')}</div>`;
+}
+function loadRadioTab(cat){
+  hideChangelogLive(); hideRugbyLive(); hideFootballLive(); hidePlacementLive();
+  elArticles.innerHTML = renderRadioStations(WEBRADIOS[cat.id]||[]);
+  elStatus.textContent = '📻 Webradio';
+}
+function _reRenderRadioList(){
+  if (currentTab !== 'radio') return;
+  const cat = DATA?.categories?.find(c=>c.id===current);
+  if (cat) elArticles.innerHTML = renderRadioStations(WEBRADIOS[cat.id]||[]);
+}
+function updateRadioBar(){
+  const bar = document.getElementById('radio-bar');
+  if (!bar) return;
+  if (!_radioNowPlaying){ bar.hidden=true; return; }
+  const playing = _audioEl && !_audioEl.paused;
+  bar.hidden = false;
+  bar.innerHTML =
+    `<span class="radio-bar-info">${esc(_radioNowPlaying.e||'📻')} ${esc(_radioNowPlaying.n)}</span>`+
+    `<button class="radio-bar-pp" id="radio-bar-pp">${playing?'⏸':'▶'}</button>`+
+    `<button class="radio-bar-stop" id="radio-bar-stop">✕</button>`;
+  document.getElementById('radio-bar-pp').onclick = toggleRadio;
+  document.getElementById('radio-bar-stop').onclick = stopRadio;
+}
+function playStation(idx){
+  const stations = WEBRADIOS[current]||[];
+  const s = stations[idx]; if (!s) return;
+  if (!_audioEl){
+    _audioEl = new Audio();
+    _audioEl.preload = 'none';
+    _audioEl.onplay = _audioEl.onpause = ()=>{ updateRadioBar(); _reRenderRadioList(); };
+  }
+  if (_radioNowPlaying?.u === s.u){
+    _audioEl.paused ? _audioEl.play().catch(()=>{}) : _audioEl.pause();
+  } else {
+    _radioNowPlaying = s;
+    _audioEl.src = s.u;
+    _audioEl.play().catch(()=>{});
+  }
+  updateRadioBar();
+  _reRenderRadioList();
+}
+function toggleRadio(){
+  if (!_audioEl) return;
+  _audioEl.paused ? _audioEl.play().catch(()=>{}) : _audioEl.pause();
+}
+function stopRadio(){
+  if (_audioEl){ _audioEl.pause(); _audioEl.src=''; }
+  _radioNowPlaying = null;
+  updateRadioBar();
+  _reRenderRadioList();
+}
+
 async function loadCategory(cat, {silent=false}={}){
   _footLiveHtml = null;
   current = cat.id;
   if (!hasNews(cat) && hasPods(cat)) currentTab='pods';      // catégorie 100% podcasts (ex. Podcasts globale)
   else if (currentTab==='pods' && !hasPods(cat)) currentTab='news';
+  else if (currentTab==='radio' && !WEBRADIOS[cat.id]?.length) currentTab='news';
   const [a,b] = CAT_COLORS[cat.id] || ['#F26522','#A8400F'];
   document.documentElement.style.setProperty('--a',a);
   document.documentElement.style.setProperty('--b',b);
@@ -1486,6 +1615,8 @@ async function loadCategory(cat, {silent=false}={}){
   if (cat.id==='placement' && currentTab==='news') loadPlacementLive(); else hidePlacementLive();
   const _hasChangelog = cat.feeds_changelog?.length || ['tesla','domotique','ia','vr','solaire'].includes(cat.id);
   if (_hasChangelog && currentTab==='news') loadChangelogLive(cat); else hideChangelogLive();
+
+  if (currentTab === 'radio'){ loadRadioTab(cat); return; }
 
   // cache immédiat
   const cached = JSON.parse(localStorage.getItem(cacheKey(cat.id, currentTab)) || 'null');
@@ -2666,9 +2797,16 @@ async function init(){
     const b = e.target.closest('.subtab'); if(!b) return;
     const rugbyMode = b.dataset.rugby;
     if (rugbyMode){
-      if (rugbyMode === _rugbySubMode) return;
+      if (rugbyMode === _rugbySubMode && currentTab !== 'radio') return;
       _rugbySubMode = rugbyMode;
       localStorage.setItem('rugbySubMode', rugbyMode);
+      if (currentTab === 'radio'){
+        currentTab = 'news';
+        elArticles.innerHTML = ''; elStatus.textContent = '';
+        const cat = DATA.categories.find(c=>c.id===current);
+        if (cat){ renderSubtabs(cat); loadCategory(cat); }
+        return;
+      }
       elSubtabs.querySelectorAll('.subtab').forEach(x=>x.classList.toggle('active', x.dataset.rugby===rugbyMode));
       showRugbyContent();
       return;
@@ -2681,6 +2819,8 @@ async function init(){
     if (cat) loadCategory(cat);
   });
   elArticles.addEventListener('click', (e)=>{
+    const rc = e.target.closest('.radio-card');
+    if (rc){ playStation(parseInt(rc.dataset.radioIdx)); return; }
     const ml = e.target.closest('.mag-launch');
     if (ml){ e.preventDefault(); openMagazine(CAT_MAGAZINES[ml.dataset.mag]); return; }
     const a = e.target.closest('a.card, a.read'); if(!a || a.classList.contains('podlink') || currentTab==='pods') return;
