@@ -2497,6 +2497,7 @@ function renderSettings(){
             </label>
           </div>
           <button class="btn reset" data-act="reset">↺ Restaurer les flux par défaut</button>
+          <div id="backup-panel"></div>
         </div>
       </details>
 
@@ -2509,6 +2510,7 @@ function renderSettings(){
       </details>
 
     </div>`;
+  if (typeof AutoBackup !== 'undefined') AutoBackup.mount(document.getElementById('backup-panel'));
 }
 
 function onSettingsChange(e){
