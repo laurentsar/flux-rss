@@ -1,60 +1,8 @@
 {
- "generated": "2026-07-25T08:15:03+02:00",
+ "generated": "2026-07-25T20:15:02+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 25,
+ "count": 21,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-07-25",
-   "time": "11:30",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "North Queensland Cowboys / Brisbane Broncos",
-   "date": "2026-07-25",
-   "time": "11:30",
-   "desc": "En Direct.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby League: Super League Live: Leeds v Bradford",
-   "date": "2026-07-25",
-   "time": "18:15",
-   "desc": "En Direct.",
-   "chaine": [
-    "BBC2"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Leigh Leopards / Warrington Wolves",
-   "date": "2026-07-25",
-   "time": "18:15",
-   "desc": "En Direct.",
-   "chaine": [
-    "BBC2"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-07-25",
