@@ -1,21 +1,8 @@
 {
- "generated": "2026-07-24T20:15:07+02:00",
+ "generated": "2026-07-25T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 18,
+ "count": 25,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-07-24",
-   "time": "21:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-07-25",
@@ -124,6 +111,19 @@
    "title": "L'année Super Rugby Pacific",
    "date": "2026-07-26",
    "time": "14:00",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "L'année Super Rugby Pacific",
+   "date": "2026-07-26",
+   "time": "14:01",
    "desc": "La saison 2026 de Super Rugby Pacific a livré son verdict à Wellington, avec une finale 100 % néo-zélandaise entre les Hurricanes et les Chi",
    "chaine": [
     "Canal+ Sport"
@@ -176,6 +176,19 @@
    "title": "Fractionné Rugby",
    "date": "2026-07-26",
    "time": "18:07",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-07-26",
+   "time": "18:08",
    "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
@@ -189,7 +202,33 @@
    "title": "Histoire de champions rugby",
    "date": "2026-07-26",
    "time": "18:26",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Histoire de champions rugby",
+   "date": "2026-07-26",
+   "time": "18:27",
    "desc": "Histoire de champions rugby revisite les grandes figures et les moments marquants du rugby, en retraçant les parcours, exploits et épisodes ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Romagnat / Stade Bordelais",
+   "date": "2026-07-27",
+   "time": "10:44",
+   "desc": "Depuis le Stade Aguiléra à Biarritz. Lors des demi-finales, l'ASM Romagnat a battu Blagnac et le Stade Bordelais a pris le dessus sur Toulou",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -214,6 +253,19 @@
   {
    "title": "Le pacte des Louves (Bobigny Rugby)",
    "date": "2026-07-27",
+   "time": "12:28",
+   "desc": "Elles sont agent de sécurité à la RATP, chargée de communication dans une ONG ou encore professeure d’E.P.S. le jour… Mais aussi joueuses de",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Le pacte des Louves (Bobigny Rugby)",
+   "date": "2026-07-27",
    "time": "12:43",
    "desc": "Elles sont agent de sécurité à la RATP, chargée de communication dans une ONG ou encore professeure d'E.P.S. le jour, mais aussi joueuses de",
    "chaine": [
@@ -227,8 +279,47 @@
   {
    "title": "L'année Super Rugby Pacific",
    "date": "2026-07-27",
+   "time": "18:31",
+   "desc": "La saison 2026 de Super Rugby Pacific a livré son verdict à Wellington, avec une finale 100 % néo-zélandaise entre les Hurricanes et les Chi",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "L'année Super Rugby Pacific",
+   "date": "2026-07-27",
    "time": "18:32",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-07-28",
+   "time": "00:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-07-28",
+   "time": "20:37",
+   "desc": "Magazine sportif",
    "chaine": [
     "Canal+ Sport"
    ],
