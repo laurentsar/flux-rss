@@ -1,60 +1,8 @@
 {
- "generated": "2026-07-27T08:15:03+02:00",
+ "generated": "2026-07-27T20:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 19,
+ "count": 15,
  "programmes": [
-  {
-   "title": "ASM Romagnat / Stade Bordelais",
-   "date": "2026-07-27",
-   "time": "10:44",
-   "desc": "Depuis le Stade Aguiléra à Biarritz. Lors des demi-finales, l'ASM Romagnat a battu Blagnac et le Stade Bordelais a pris le dessus sur Toulou",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "ASM Romagnat / Stade Bordelais",
-   "date": "2026-07-27",
-   "time": "10:59",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Le pacte des Louves (Bobigny Rugby)",
-   "date": "2026-07-27",
-   "time": "12:28",
-   "desc": "Elles sont agent de sécurité à la RATP, chargée de communication dans une ONG ou encore professeure d’E.P.S. le jour… Mais aussi joueuses de",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Le pacte des Louves (Bobigny Rugby)",
-   "date": "2026-07-27",
-   "time": "12:43",
-   "desc": "Elles sont agent de sécurité à la RATP, chargée de communication dans une ONG ou encore professeure d'E.P.S. le jour, mais aussi joueuses de",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "L'année Super Rugby Pacific",
    "date": "2026-07-27",
