@@ -1,21 +1,8 @@
 {
- "generated": "2026-07-28T08:15:06+02:00",
+ "generated": "2026-07-28T20:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 16,
+ "count": 15,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-07-28",
-   "time": "10:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Fractionné Rugby",
    "date": "2026-07-28",
