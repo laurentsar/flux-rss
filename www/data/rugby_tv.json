@@ -1,21 +1,8 @@
 {
- "generated": "2026-07-29T20:15:05+02:00",
+ "generated": "2026-07-30T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 9,
+ "count": 15,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-07-30",
-   "time": "00:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-07-30",
@@ -114,6 +101,97 @@
    "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
    "chaine": [
     "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-01",
+   "time": "07:30",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-01",
+   "time": "09:30",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Champions Cup",
+   "date": "2026-08-01",
+   "time": "14:00",
+   "desc": "Tenants du titre depuis leur victoire en 2025 contre les Northampton Saints, les joueurs de l'UBB sont de nouveau en finale de la Champions ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : State of Origin",
+   "date": "2026-08-01",
+   "time": "18:00",
+   "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-01",
+   "time": "23:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Wests Tigers / Parramatta Eels",
+   "date": "2026-08-02",
+   "time": "08:02",
+   "desc": "En Direct.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "L'année Super Rugby Pacific",
+   "date": "2026-08-02",
+   "time": "10:32",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
    ],
    "cats": [
     "rugby"
