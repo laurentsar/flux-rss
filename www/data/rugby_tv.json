@@ -1,34 +1,8 @@
 {
- "generated": "2026-07-31T20:15:05+02:00",
+ "generated": "2026-08-01T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 12,
+ "count": 11,
  "programmes": [
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-07-31",
-   "time": "20:03",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-07-31",
-   "time": "22:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-08-01",
@@ -140,6 +114,19 @@
    "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
    "chaine": [
     "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Top 14",
+   "date": "2026-08-03",
+   "time": "13:11",
+   "desc": "Le format La finale du Top 14 Made by Canal revient sur l'ultime rencontre du championnat, qui se déroulait au Stade de France entre Toulous",
+   "chaine": [
+    "Canal+ Sport"
    ],
    "cats": [
     "rugby"
