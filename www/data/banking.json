@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-27T12:43:12+02:00",
+  "generated": "2026-08-03T12:42:47+02:00",
   "livrets": [
     {
       "nom": "Livret A",
@@ -119,34 +119,6 @@
       "duree": "boosté",
       "plafond": "voir site",
       "lien": "https://www.renaultbank.fr"
-    },
-    {
-      "banque": "Cashbee",
-      "taux": "6,00 %",
-      "duree": "2 mois",
-      "plafond": "voir site",
-      "lien": "https://www.cashbee.fr"
-    },
-    {
-      "banque": "Placement Direct",
-      "taux": "5,50 %",
-      "duree": "2 mois",
-      "plafond": "voir site",
-      "lien": "https://www.placementdirect.fr"
-    },
-    {
-      "banque": "Meilleurtaux",
-      "taux": "5,50 %",
-      "duree": "2 mois",
-      "plafond": "voir site",
-      "lien": "https://placement.meilleurtaux.com"
-    },
-    {
-      "banque": "Ramify",
-      "taux": "5,35 %",
-      "duree": "2 mois",
-      "plafond": "voir site",
-      "lien": "https://www.ramify.fr"
     }
   ],
   "top_actions": [
@@ -565,5 +537,5 @@
       "lien": "https://www.boursorama.com/cours/1rPWTB/"
     }
   ],
-  "note": "⚠️ Révision des taux prévue le 1er août 2026 — vérifiez les nouveaux taux"
+  "note": ""
 }
