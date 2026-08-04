@@ -1,7 +1,7 @@
 {
- "generated": "2026-08-03T20:15:06+02:00",
+ "generated": "2026-08-04T08:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 16,
+ "count": 28,
  "programmes": [
   {
    "title": "Rugby : Challenge Cup",
@@ -69,12 +69,12 @@
    "approx": false
   },
   {
-   "title": "Rugby : Champions Cup",
+   "title": "ASM Romagnat / Stade Bordelais",
    "date": "2026-08-04",
-   "time": "16:00",
-   "desc": "Tenants du titre depuis leur victoire en 2025 contre les Northampton Saints, les joueurs de l'UBB sont de nouveau en finale de la Champions ",
+   "time": "17:16",
+   "desc": "Depuis le Stade Aguiléra à Biarritz. Lors des demi-finales, l'ASM Romagnat a battu Blagnac et le Stade Bordelais a pris le dessus sur Toulou",
    "chaine": [
-    "beIN Sports"
+    "Canal+ Sport"
    ],
    "cats": [
     "rugby"
@@ -85,7 +85,7 @@
    "title": "ASM Romagnat / Stade Bordelais",
    "date": "2026-08-04",
    "time": "17:19",
-   "desc": "Depuis le Stade Aguiléra à Biarritz. Lors des demi-finales, l'ASM Romagnat a battu Blagnac et le Stade Bordelais a pris le dessus sur Toulou",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -110,8 +110,21 @@
   {
    "title": "Fractionné Rugby",
    "date": "2026-08-04",
-   "time": "20:38",
+   "time": "20:37",
    "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-08-04",
+   "time": "20:38",
+   "desc": "Magazine sportif",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -173,12 +186,64 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : State of Origin",
+   "date": "2026-08-06",
+   "time": "06:00",
+   "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-06",
+   "time": "09:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Rugby : Top 14",
    "date": "2026-08-06",
    "time": "10:50",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Top 14",
+   "date": "2026-08-06",
+   "time": "11:09",
+   "desc": "Le format La finale du Top 14 Made by Canal revient sur l'ultime rencontre du championnat, qui se déroulait au Stade de France entre Toulous",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-06",
+   "time": "11:45",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -199,10 +264,101 @@
    "approx": false
   },
   {
+   "title": "Fractionné Rugby",
+   "date": "2026-08-06",
+   "time": "13:23",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "L'année Super Rugby Pacific",
    "date": "2026-08-06",
    "time": "13:28",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "L'année Super Rugby Pacific",
+   "date": "2026-08-06",
+   "time": "13:46",
+   "desc": "La saison 2026 de Super Rugby Pacific a livré son verdict à Wellington, avec une finale 100 % néo-zélandaise entre les Hurricanes et les Chi",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-06",
+   "time": "22:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Top 14",
+   "date": "2026-08-07",
+   "time": "14:21",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "L'année Super Rugby Pacific",
+   "date": "2026-08-07",
+   "time": "16:33",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-08-07",
+   "time": "18:29",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Stormers / Nouvelle-Zélande",
+   "date": "2026-08-07",
+   "time": "18:52",
+   "desc": "En Direct.",
    "chaine": [
     "Canal+ Sport"
    ],
