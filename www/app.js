@@ -86,7 +86,13 @@ const MAX_SHOW = 60;       // articles affichés par catégorie
  * une passerelle. Une seule passerelle = panne totale du site quand elle tombe
  * (allorigins a répondu 522 pendant des heures) → on en essaie plusieurs et on
  * mémorise celle qui a répondu pour ne pas repayer le timeout à chaque flux. */
+/* Passerelle maison (Cloudflare Worker, cf. worker/proxy.js) : essayée en
+ * premier quand elle est configurée. Laisser '' pour ne garder que les
+ * passerelles publiques. Déploiement : worker/deploy.sh → reporter l'URL ici. */
+const WORKER_PROXY = '';   // ex. 'https://flux-rss-proxy.<sous-domaine>.workers.dev/?url='
+
 const PROXIES = [
+  ...(WORKER_PROXY ? [(u) => WORKER_PROXY + encodeURIComponent(u)] : []),
   (u) => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
   (u) => 'https://api.codetabs.com/v1/proxy/?quest=' + encodeURIComponent(u),
   (u) => 'https://proxy.cors.sh/' + u,
