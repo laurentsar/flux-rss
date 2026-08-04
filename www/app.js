@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.28';
+const APP_VERSION = '5.31';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -81,7 +81,19 @@ const WEBRADIOS = {
 
 const PER_FEED = 12;       // articles gardés par flux
 const MAX_SHOW = 60;       // articles affichés par catégorie
-const PROXY = 'https://api.allorigins.win/raw?url='; // repli CORS (PWA navigateur)
+/* Repli CORS pour la version web (PWA navigateur) : le navigateur refuse la
+ * lecture directe des flux qui n'envoient pas d'en-tête CORS, on passe donc par
+ * une passerelle. Une seule passerelle = panne totale du site quand elle tombe
+ * (allorigins a répondu 522 pendant des heures) → on en essaie plusieurs et on
+ * mémorise celle qui a répondu pour ne pas repayer le timeout à chaque flux. */
+const PROXIES = [
+  (u) => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
+  (u) => 'https://api.codetabs.com/v1/proxy/?quest=' + encodeURIComponent(u),
+  (u) => 'https://proxy.cors.sh/' + u,
+  (u) => 'https://api.cors.lol/?url=' + encodeURIComponent(u),
+];
+let proxyIdx = 0;          // dernière passerelle qui a fonctionné
+const PROXY_MS = 9000;    // timeout par passerelle
 
 const isNative = !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform());
 const isVR = /OculusBrowser/i.test(navigator.userAgent);
@@ -160,16 +172,31 @@ async function httpGet(url){
     return typeof r.data === 'string' ? r.data : JSON.stringify(r.data);
   }
 
-  // navigateur : direct avec timeout, puis repli proxy CORS avec timeout
+  // navigateur : direct avec timeout court (la plupart des flux n'envoient pas
+  // d'en-tête CORS et échouent tout de suite), puis repli sur les passerelles
   try{
-    const r = await fetchWithTimeout(url, {redirect:'follow'}, 10000);
+    const r = await fetchWithTimeout(url, {redirect:'follow'}, 6000);
     if (r.ok) return await r.text();
     throw new Error('http '+r.status);
   }catch(e){
-    const r = await fetchWithTimeout(PROXY + encodeURIComponent(url), {}, 10000);
-    if (!r.ok) throw new Error('proxy '+r.status);
-    return await r.text();
+    return await viaProxy(url);
   }
+}
+
+// Essaie les passerelles CORS en partant de la dernière qui a marché.
+async function viaProxy(url, asJson=false){
+  let lastErr;
+  for (let i = 0; i < PROXIES.length; i++){
+    const idx = (proxyIdx + i) % PROXIES.length;
+    try{
+      const r = await fetchWithTimeout(PROXIES[idx](url), {}, PROXY_MS);
+      if (!r.ok) throw new Error('proxy '+r.status);
+      const body = asJson ? await r.json() : await r.text();
+      proxyIdx = idx;                       // celle-ci répond : on la garde
+      return body;
+    }catch(err){ lastErr = err; }
+  }
+  throw lastErr || new Error('aucune passerelle CORS disponible');
 }
 
 async function fetchJson(url){
@@ -188,9 +215,7 @@ async function fetchJson(url){
     if (r.ok) return await r.json();
     throw new Error('http '+r.status);
   }catch(e){
-    const r = await fetchWithTimeout(PROXY + encodeURIComponent(url), {}, 10000);
-    if (!r.ok) throw new Error('proxy '+r.status);
-    return await r.json();
+    return await viaProxy(url, true);
   }
 }
 
@@ -243,6 +268,38 @@ function parseFeed(xmlText, source, kind){
     if (title && link) out.push({ title, link, date, ts: Date.parse(date)||0, summary, image, source, kind: kind||'news', audio });
   });
   return out.slice(0, PER_FEED);
+}
+
+/* Dernier recours navigateur : rss2json lit le flux côté serveur et renvoie du
+ * JSON déjà en-têté CORS. Utilisé seulement quand toutes les passerelles
+ * brutes ont échoué (l'APK n'en a jamais besoin). */
+async function fetchViaRss2json(url, source, kind){
+  const api = 'https://api.rss2json.com/v1/api.json?count=' + PER_FEED +
+              '&rss_url=' + encodeURIComponent(url);
+  const r = await fetchWithTimeout(api, {}, 12000);
+  if (!r.ok) throw new Error('rss2json '+r.status);
+  const d = await r.json();
+  if (!d || d.status !== 'ok' || !Array.isArray(d.items)) throw new Error('rss2json ko');
+  return d.items.map(it => {
+    // rss2json renvoie "2026-08-04 09:12:33" (UTC) : Date.parse échoue sur
+    // Safari sans le T ni le Z.
+    const date = String(it.pubDate||'').replace(' ', 'T').replace(/Z?$/, 'Z');
+    const rawSummary = it.description || it.content || '';
+    const enc = it.enclosure || {};
+    const audio = (kind && /audio|mpeg|mp3|m4a|ogg/i.test(enc.type||'') && enc.link) ? enc.link : '';
+    return {
+      title: it.title || '',
+      link: it.link || '',
+      date,
+      ts: Date.parse(date) || 0,
+      summary: rawSummary.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim(),
+      image: it.thumbnail || (/^image/i.test(enc.type||'') ? enc.link : '') ||
+             ((rawSummary.match(/<img[^>]+src=["']([^"']+)["']/i)||[])[1] || ''),
+      source,
+      kind: kind || 'news',
+      audio,
+    };
+  }).filter(it => it.title && it.link);
 }
 
 /* ---------- rugby live (classements + résultats via Wikipedia) ---------- */
@@ -1645,22 +1702,48 @@ async function loadCategory(cat, {silent=false}={}){
   }
   // Limite la concurrence : 2 requêtes simultanées sur connexion lente, 4 sinon
   const pool = makePool(isSlowConn ? 2 : 4);
-  const results = await Promise.allSettled(activeFeeds.map(f => pool(async () => {
-    const xml = await httpGet(f.url);
-    return parseFeed(xml, f.name, tab==='pods' ? (f.kind||'audio') : null);
+
+  // Dédoublonne, écarte les articles de plus de 15 j, trie du plus récent.
+  const prepare = (list) => {
+    const seen = new Set();
+    const cutoff = Date.now() - 15*24*3600*1000;
+    return list
+      .filter(it => it.link && !seen.has(it.link) && seen.add(it.link))
+      .filter(it => !it.ts || it.ts >= cutoff)
+      .sort((x,y) => y.ts - x.ts)
+      .slice(0, MAX_SHOW);
+  };
+
+  // Affichage au fil de l'eau : un flux lent (ou une passerelle CORS qui met
+  // 10 s à échouer) ne doit plus laisser la catégorie vide en attendant les
+  // autres. On repeint dès qu'un flux répond, avec un léger regroupement.
+  let acc = [], paintT = 0;
+  const paint = () => {
+    if (current !== cat.id || currentTab !== tab) return;
+    const partial = prepare(acc);
+    if (partial.length) render(partial, cat.id, Date.now());
+  };
+  const schedulePaint = () => { clearTimeout(paintT); paintT = setTimeout(paint, 200); };
+
+  await Promise.allSettled(activeFeeds.map(f => pool(async () => {
+    const kind = tab==='pods' ? (f.kind||'audio') : null;
+    let got;
+    try{
+      got = parseFeed(await httpGet(f.url), f.name, kind);
+      if (!got.length) throw new Error('flux vide');
+    }catch(e){
+      if (isNative) throw e;   // natif : pas de CORS, inutile de sous-traiter
+      got = await fetchViaRss2json(f.url, f.name, kind);
+    }
+    acc = acc.concat(got);
+    schedulePaint();
+    return got;
   })));
+  clearTimeout(paintT);
   elRefresh.classList.remove('spinning');
   if (current !== cat.id || currentTab !== tab) return; // l'utilisateur a changé de catégorie/onglet
 
-  let items = [];
-  let ok = 0;
-  results.forEach((r) => { if (r.status==='fulfilled'){ ok++; items = items.concat(r.value); } });
-  const _seen = new Set();
-  const _cutoff = Date.now() - 15*24*3600*1000;
-  items = items.filter(it => it.link && !_seen.has(it.link) && _seen.add(it.link));
-  items = items.filter(it => !it.ts || it.ts >= _cutoff);
-  items.sort((x,y)=> y.ts - x.ts);
-  items = items.slice(0, MAX_SHOW);
+  const items = prepare(acc);
 
   if (items.length){
     const ts = Date.now();
@@ -1669,7 +1752,7 @@ async function loadCategory(cat, {silent=false}={}){
   } else if (!cached){
     elStatus.textContent = isNative
       ? 'Aucun article récupéré. Vérifie ta connexion.'
-      : "Aucun article (le navigateur bloque souvent les flux : utilise l'APK).";
+      : "Aucun article : les passerelles CORS ne répondent pas. Réessaie plus tard (l'APK, elle, lit les flux directement).";
   }
 }
 
@@ -2482,7 +2565,8 @@ function renderSettings(){
             <span style="color:var(--muted);font-size:.88em">Version installée</span>
             <span style="font-weight:700">v${APP_VERSION}</span>
           </div>
-          <button class="btn" style="width:100%;background:#1e293b;border:1px solid var(--line)" data-act="check-update">🔄 Vérifier les mises à jour</button>
+          ${isNative ? `<button class="btn" style="width:100%;background:#1e293b;border:1px solid var(--line)" data-act="check-update">🔄 Vérifier les mises à jour</button>` :
+            `<div style="color:var(--muted);font-size:.85em">Version web : la mise à jour est automatique (il suffit de recharger la page).</div>`}
           <div id="st-upd-status" style="text-align:center;font-size:.85em;margin-top:8px;min-height:1.2em"></div>
         </div>
       </details>

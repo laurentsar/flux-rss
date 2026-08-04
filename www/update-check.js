@@ -16,6 +16,13 @@
   var CURRENT = window.APP_VERSION;
   if (!REPO || !CURRENT) return;
 
+  // La bannière propose le téléchargement d'un APK : elle n'a de sens que dans
+  // l'app Android. Sur la version web (GitHub Pages, PWA iPhone), la mise à
+  // jour arrive toute seule par le service worker → on ne l'affiche pas.
+  var isNative = !!(window.Capacitor && window.Capacitor.isNativePlatform &&
+                    window.Capacitor.isNativePlatform());
+  if (!isNative) return;
+
   var POLL_INTERVAL = 6 * 3600 * 1000; // 6 h
   var KEY_POLL = 'updPoll:' + REPO;
   var KEY_DISMISS = 'updDismiss:' + REPO;
