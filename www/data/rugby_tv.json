@@ -1,73 +1,8 @@
 {
- "generated": "2026-08-08T20:15:05+02:00",
+ "generated": "2026-08-09T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 28,
+ "count": 31,
  "programmes": [
-  {
-   "title": "Plateau rugby : Test-matches",
-   "date": "2026-08-08",
-   "time": "20:53",
-   "desc": "Avant le match, des spécialistes évaluent les forces en présence et décryptent les enjeux de la rencontre.",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Plateau rugby : Test-matches",
-   "date": "2026-08-08",
-   "time": "20:54",
-   "desc": "En Direct.",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Argentine / Afrique du Sud",
-   "date": "2026-08-08",
-   "time": "21:00",
-   "desc": "A Buenos Aires, l'Argentine accueille l'Afrique du Sud pour un test-match placé entre les trois premières journées du Championnat des Nation",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Argentine / Afrique du Sud",
-   "date": "2026-08-08",
-   "time": "23:58",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Argentine / Afrique du Sud",
-   "date": "2026-08-09",
-   "time": "00:00",
-   "desc": "A Buenos Aires, l'Argentine accueille l'Afrique du Sud pour un test-match placé entre les trois premières journées du Championnat des Nation",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-08-09",
@@ -303,6 +238,19 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-11",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Japon / Australie",
    "date": "2026-08-11",
    "time": "09:59",
@@ -319,9 +267,35 @@
    "title": "Argentine / Afrique du Sud",
    "date": "2026-08-11",
    "time": "11:41",
-   "desc": "Rugby",
+   "desc": "A Buenos Aires, l'Argentine accueille l'Afrique du Sud pour un test-match placé entre les trois premières journées du Championnat des Nation",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Challenge Cup",
+   "date": "2026-08-11",
+   "time": "14:30",
+   "desc": "La finale de la Challenge Cup se déroule au stade San Mamés de Bilbao, en Espagne. Le Montpellier Hérault Rugby va-t-il soulever le trophée ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : State of Origin",
+   "date": "2026-08-11",
+   "time": "18:00",
+   "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -332,7 +306,7 @@
    "title": "Fractionné Rugby",
    "date": "2026-08-11",
    "time": "18:30",
-   "desc": "Magazine sportif",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -345,9 +319,22 @@
    "title": "Sharks / Nouvelle-Zélande",
    "date": "2026-08-11",
    "time": "18:52",
-   "desc": "En Direct.",
+   "desc": "La tournée Rugby's Greatest Rivalry se poursuit à Durban avec un deuxième match entre les Sharks et les All Blacks. Quatre jours après leur ",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-11",
+   "time": "20:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -358,6 +345,58 @@
    "title": "Argentine / Afrique du Sud",
    "date": "2026-08-11",
    "time": "20:55",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Sharks / Nouvelle-Zélande",
+   "date": "2026-08-12",
+   "time": "07:35",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Argentine / Afrique du Sud",
+   "date": "2026-08-12",
+   "time": "09:18",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Sharks / Nouvelle-Zélande",
+   "date": "2026-08-12",
+   "time": "16:48",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Japon / Australie",
+   "date": "2026-08-12",
+   "time": "18:30",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
