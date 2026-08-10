@@ -1,60 +1,8 @@
 {
- "generated": "2026-08-10T08:15:03+02:00",
+ "generated": "2026-08-10T20:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 27,
+ "count": 23,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-08-10",
-   "time": "08:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Stormers / Nouvelle-Zélande",
-   "date": "2026-08-10",
-   "time": "14:08",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Stormers / Nouvelle-Zélande",
-   "date": "2026-08-10",
-   "time": "14:37",
-   "desc": "La tournée Rugby's Greatest Rivalry s'ouvre au DHL Stadium du Cap, avec une affiche entre les Stormers et les All Blacks. Ce premier rendez-",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Japon / Australie",
-   "date": "2026-08-10",
-   "time": "15:50",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Stormers / Nouvelle-Zélande",
    "date": "2026-08-10",
