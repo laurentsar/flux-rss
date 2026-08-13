@@ -1,86 +1,8 @@
 {
- "generated": "2026-08-13T08:15:03+02:00",
+ "generated": "2026-08-13T20:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 33,
+ "count": 27,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-08-13",
-   "time": "08:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Sharks / Nouvelle-Zélande",
-   "date": "2026-08-13",
-   "time": "09:59",
-   "desc": "La tournée Rugby's Greatest Rivalry se poursuit à Durban avec un deuxième match entre les Sharks et les All Blacks. Quatre jours après leur ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-08-13",
-   "time": "11:45",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Argentine / Afrique du Sud",
-   "date": "2026-08-13",
-   "time": "15:08",
-   "desc": "A Buenos Aires, l'Argentine accueille l'Afrique du Sud pour un test-match placé entre les trois premières journées du Championnat des Nation",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Sharks / Nouvelle-Zélande",
-   "date": "2026-08-13",
-   "time": "16:48",
-   "desc": "La tournée Rugby's Greatest Rivalry se poursuit à Durban avec un deuxième match entre les Sharks et les All Blacks. Quatre jours après leur ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : State of Origin",
-   "date": "2026-08-13",
-   "time": "18:00",
-   "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-08-13",
