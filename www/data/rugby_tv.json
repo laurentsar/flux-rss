@@ -1,21 +1,8 @@
 {
- "generated": "2026-08-14T20:15:03+02:00",
+ "generated": "2026-08-15T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 28,
+ "count": 38,
  "programmes": [
-  {
-   "title": "Plateau rugby : Test-matches",
-   "date": "2026-08-15",
-   "time": "07:07",
-   "desc": "En Direct.",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Plateau rugby : Test-matches",
    "date": "2026-08-15",
@@ -58,7 +45,7 @@
   {
    "title": "Australie / Japon",
    "date": "2026-08-15",
-   "time": "10:32",
+   "time": "10:31",
    "desc": "Une semaine après leur première confrontation disputée au Japon, les Wallabies retrouvent les Brave Blossoms au Queensland Country Bank Stad",
    "chaine": [
     "Canal+ Sport"
@@ -240,8 +227,21 @@
   {
    "title": "Australie / Japon",
    "date": "2026-08-16",
-   "time": "11:50",
+   "time": "11:46",
    "desc": "Une semaine après leur première confrontation disputée au Japon, les Wallabies retrouvent les Brave Blossoms au Queensland Country Bank Stad",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Japon",
+   "date": "2026-08-16",
+   "time": "11:50",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -266,8 +266,34 @@
   {
    "title": "Fractionné Rugby",
    "date": "2026-08-16",
-   "time": "13:31",
+   "time": "13:28",
    "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-08-16",
+   "time": "13:31",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Blue Bulls / Nouvelle-Zélande",
+   "date": "2026-08-16",
+   "time": "13:49",
+   "desc": "Troisième étape de la tournée Rugby's Greatest Rivalry pour les All Blacks, opposés aux Bulls à Pretoria. Après avoir affronté les Stormers ",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -280,7 +306,7 @@
    "title": "Blue Bulls / Nouvelle-Zélande",
    "date": "2026-08-16",
    "time": "13:52",
-   "desc": "Troisième étape de la tournée Rugby's Greatest Rivalry pour les All Blacks, opposés aux Bulls à Pretoria. Après avoir affronté les Stormers ",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -294,6 +320,32 @@
    "date": "2026-08-16",
    "time": "23:58",
    "desc": "Troisième étape de la tournée Rugby's Greatest Rivalry pour les All Blacks, opposés aux Bulls à Pretoria. Après avoir affronté les Stormers ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-17",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Top 14",
+   "date": "2026-08-17",
+   "time": "15:00",
+   "desc": "Le format La finale du Top 14 Made by Canal revient sur l'ultime rencontre du championnat, qui se déroulait au Stade de France entre Toulous",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -318,8 +370,34 @@
   {
    "title": "Histoire de champions rugby",
    "date": "2026-08-17",
+   "time": "17:13",
+   "desc": "Histoire de champions rugby revisite les grandes figures et les moments marquants du rugby, en retraçant les parcours, exploits et épisodes ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Histoire de champions rugby",
+   "date": "2026-08-17",
    "time": "17:16",
    "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Blue Bulls / Nouvelle-Zélande",
+   "date": "2026-08-17",
+   "time": "18:46",
+   "desc": "Troisième étape de la tournée Rugby's Greatest Rivalry pour les All Blacks, opposés aux Bulls à Pretoria. Après avoir affronté les Stormers ",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -345,7 +423,7 @@
    "title": "Fractionné Rugby",
    "date": "2026-08-17",
    "time": "20:36",
-   "desc": "Magazine sportif",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -358,7 +436,59 @@
    "title": "Australie / Japon",
    "date": "2026-08-17",
    "time": "21:00",
+   "desc": "Une semaine après leur première confrontation disputée au Japon, les Wallabies retrouvent les Brave Blossoms au Queensland Country Bank Stad",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-18",
+   "time": "00:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Blue Bulls / Nouvelle-Zélande",
+   "date": "2026-08-18",
+   "time": "16:54",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Japon",
+   "date": "2026-08-18",
+   "time": "18:40",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-08-18",
+   "time": "20:24",
+   "desc": "Magazine sportif",
    "chaine": [
     "Canal+ Sport"
    ],
