@@ -1,86 +1,8 @@
 {
- "generated": "2026-08-15T20:15:03+02:00",
+ "generated": "2026-08-16T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 28,
+ "count": 29,
  "programmes": [
-  {
-   "title": "Blue Bulls / Nouvelle-Zélande",
-   "date": "2026-08-15",
-   "time": "18:50",
-   "desc": "Troisième étape de la tournée Rugby's Greatest Rivalry pour les All Blacks, opposés aux Bulls à Pretoria. Après avoir affronté les Stormers ",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Blue Bulls / Nouvelle-Zélande",
-   "date": "2026-08-15",
-   "time": "21:00",
-   "desc": "Troisième étape de la tournée Rugby's Greatest Rivalry pour les All Blacks, opposés aux Bulls à Pretoria. Après avoir affronté les Stormers ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-08-15",
-   "time": "21:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Australie / Japon",
-   "date": "2026-08-15",
-   "time": "23:58",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Australie / Japon",
-   "date": "2026-08-16",
-   "time": "00:00",
-   "desc": "Une semaine après leur première confrontation disputée au Japon, les Wallabies retrouvent les Brave Blossoms au Queensland Country Bank Stad",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Champions Cup",
-   "date": "2026-08-16",
-   "time": "01:00",
-   "desc": "Tenants du titre depuis leur victoire en 2025 contre les Northampton Saints, les joueurs de l'UBB sont de nouveau en finale de la Champions ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-08-16",
@@ -329,10 +251,23 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-18",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Blue Bulls / Nouvelle-Zélande",
    "date": "2026-08-18",
    "time": "16:54",
-   "desc": "Rugby",
+   "desc": "Troisième étape de la tournée Rugby's Greatest Rivalry pour les All Blacks, opposés aux Bulls à Pretoria. Après avoir affronté les Stormers ",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -345,6 +280,71 @@
    "title": "Australie / Japon",
    "date": "2026-08-18",
    "time": "18:40",
+   "desc": "Une semaine après leur première confrontation disputée au Japon, les Wallabies retrouvent les Brave Blossoms au Queensland Country Bank Stad",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Challenge Cup",
+   "date": "2026-08-18",
+   "time": "20:00",
+   "desc": "La finale de la Challenge Cup se déroule au stade San Mamés de Bilbao, en Espagne. Le Montpellier Hérault Rugby va-t-il soulever le trophée ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-08-18",
+   "time": "20:24",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-19",
+   "time": "00:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Blue Bulls / Nouvelle-Zélande",
+   "date": "2026-08-19",
+   "time": "07:28",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Japon",
+   "date": "2026-08-19",
+   "time": "09:15",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
@@ -356,9 +356,22 @@
   },
   {
    "title": "Fractionné Rugby",
-   "date": "2026-08-18",
-   "time": "20:24",
+   "date": "2026-08-19",
+   "time": "10:57",
    "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Japon",
+   "date": "2026-08-19",
+   "time": "13:41",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
