@@ -1,21 +1,8 @@
 {
- "generated": "2026-08-16T20:15:03+02:00",
+ "generated": "2026-08-17T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 21,
+ "count": 26,
  "programmes": [
-  {
-   "title": "Blue Bulls / Nouvelle-Zélande",
-   "date": "2026-08-16",
-   "time": "23:58",
-   "desc": "Troisième étape de la tournée Rugby's Greatest Rivalry pour les All Blacks, opposés aux Bulls à Pretoria. Après avoir affronté les Stormers ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-08-17",
@@ -228,9 +215,22 @@
    "title": "Blue Bulls / Nouvelle-Zélande",
    "date": "2026-08-19",
    "time": "07:28",
-   "desc": "Rugby",
+   "desc": "Troisième étape de la tournée Rugby's Greatest Rivalry pour les All Blacks, opposés aux Bulls à Pretoria. Après avoir affronté les Stormers ",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-19",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -241,7 +241,7 @@
    "title": "Australie / Japon",
    "date": "2026-08-19",
    "time": "09:15",
-   "desc": "Rugby",
+   "desc": "Une semaine après leur première confrontation disputée au Japon, les Wallabies retrouvent les Brave Blossoms au Queensland Country Bank Stad",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -254,7 +254,7 @@
    "title": "Fractionné Rugby",
    "date": "2026-08-19",
    "time": "10:57",
-   "desc": "Magazine sportif",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -267,6 +267,71 @@
    "title": "Australie / Japon",
    "date": "2026-08-19",
    "time": "13:41",
+   "desc": "Une semaine après leur première confrontation disputée au Japon, les Wallabies retrouvent les Brave Blossoms au Queensland Country Bank Stad",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Provence Rugby - Perpignan",
+   "date": "2026-08-20",
+   "time": "16:31",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Top 14",
+   "date": "2026-08-20",
+   "time": "18:20",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-08-20",
+   "time": "20:34",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Melbourne Storm / Penrith Panthers",
+   "date": "2026-08-20",
+   "time": "21:00",
+   "desc": "Rugby à XIII",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Vannes / Provence Rugby",
+   "date": "2026-08-20",
+   "time": "21:00",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
