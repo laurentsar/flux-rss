@@ -1,73 +1,8 @@
 {
- "generated": "2026-08-17T08:15:03+02:00",
+ "generated": "2026-08-17T20:15:07+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 26,
+ "count": 21,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-08-17",
-   "time": "08:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Top 14",
-   "date": "2026-08-17",
-   "time": "15:00",
-   "desc": "Le format La finale du Top 14 Made by Canal revient sur l'ultime rencontre du championnat, qui se déroulait au Stade de France entre Toulous",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Top 14",
-   "date": "2026-08-17",
-   "time": "15:04",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Histoire de champions rugby",
-   "date": "2026-08-17",
-   "time": "17:13",
-   "desc": "Histoire de champions rugby revisite les grandes figures et les moments marquants du rugby, en retraçant les parcours, exploits et épisodes ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Histoire de champions rugby",
-   "date": "2026-08-17",
-   "time": "17:16",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Blue Bulls / Nouvelle-Zélande",
    "date": "2026-08-17",
