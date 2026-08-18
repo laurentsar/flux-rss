@@ -1,73 +1,8 @@
 {
- "generated": "2026-08-17T20:15:07+02:00",
+ "generated": "2026-08-18T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 21,
+ "count": 32,
  "programmes": [
-  {
-   "title": "Blue Bulls / Nouvelle-Zélande",
-   "date": "2026-08-17",
-   "time": "18:46",
-   "desc": "Troisième étape de la tournée Rugby's Greatest Rivalry pour les All Blacks, opposés aux Bulls à Pretoria. Après avoir affronté les Stormers ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Blue Bulls / Nouvelle-Zélande",
-   "date": "2026-08-17",
-   "time": "18:49",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-08-17",
-   "time": "20:36",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Australie / Japon",
-   "date": "2026-08-17",
-   "time": "21:00",
-   "desc": "Une semaine après leur première confrontation disputée au Japon, les Wallabies retrouvent les Brave Blossoms au Queensland Country Bank Stad",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-08-18",
-   "time": "00:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-08-18",
@@ -85,6 +20,19 @@
    "title": "Blue Bulls / Nouvelle-Zélande",
    "date": "2026-08-18",
    "time": "16:54",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Blue Bulls / Nouvelle-Zélande",
+   "date": "2026-08-18",
+   "time": "17:09",
    "desc": "Troisième étape de la tournée Rugby's Greatest Rivalry pour les All Blacks, opposés aux Bulls à Pretoria. Après avoir affronté les Stormers ",
    "chaine": [
     "Canal+ Sport"
@@ -98,6 +46,19 @@
    "title": "Australie / Japon",
    "date": "2026-08-18",
    "time": "18:40",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Japon",
+   "date": "2026-08-18",
+   "time": "18:51",
    "desc": "Une semaine après leur première confrontation disputée au Japon, les Wallabies retrouvent les Brave Blossoms au Queensland Country Bank Stad",
    "chaine": [
     "Canal+ Sport"
@@ -212,10 +173,62 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-20",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-20",
+   "time": "11:45",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Provence Rugby / Perpignan",
+   "date": "2026-08-20",
+   "time": "16:31",
+   "desc": "Qui de Provence Rugby ou de l'USA Perpignan sera en Top 14 pour la prochaine saison 2026/2027 ? Réponse à l'issue de ce barrage d'accession ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Provence Rugby - Perpignan",
    "date": "2026-08-20",
    "time": "16:31",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Top 14",
+   "date": "2026-08-20",
+   "time": "18:20",
+   "desc": "Le format La finale du Top 14 Made by Canal revient sur l'ultime rencontre du championnat, qui se déroulait au Stade de France entre Toulous",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -238,12 +251,51 @@
    "approx": false
   },
   {
+   "title": "Rugby : Champions Cup",
+   "date": "2026-08-20",
+   "time": "20:00",
+   "desc": "Tenants du titre depuis leur victoire en 2025 contre les Northampton Saints, les joueurs de l'UBB sont de nouveau en finale de la Champions ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Fractionné Rugby",
    "date": "2026-08-20",
    "time": "20:34",
-   "desc": "Magazine sportif",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Vannes / Provence Rugby",
+   "date": "2026-08-20",
+   "time": "21:00",
+   "desc": "Le 6 juin, Vannes, leader de la saison régulière, et Provence Rugby s'affrontaient en finale de Pro D2 au stade Ernest-Wallon de Toulouse. U",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-20",
+   "time": "21:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -264,12 +316,103 @@
    "approx": false
   },
   {
-   "title": "Vannes / Provence Rugby",
+   "title": "Rugby à XIII : State of Origin",
    "date": "2026-08-20",
-   "time": "21:00",
+   "time": "23:00",
+   "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Le pacte des Louves (Bobigny Rugby)",
+   "date": "2026-08-21",
+   "time": "11:25",
+   "desc": "Elles sont agent de sécurité à la RATP, chargée de communication dans une ONG ou encore professeure d'E.P.S. le jour, mais aussi joueuses de",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à 7 : In Extenso Supersevens",
+   "date": "2026-08-21",
+   "time": "11:55",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à 7 : In Extenso Supersevens",
+   "date": "2026-08-21",
+   "time": "14:34",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à 7 : In Extenso Supersevens",
+   "date": "2026-08-21",
+   "time": "17:36",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "L'année Super Rugby Pacific",
+   "date": "2026-08-21",
+   "time": "18:38",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à 7 : In Extenso Supersevens",
+   "date": "2026-08-21",
+   "time": "20:38",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "The Dolphins / Parramatta Eels",
+   "date": "2026-08-21",
+   "time": "21:00",
+   "desc": "Rugby à XIII",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
