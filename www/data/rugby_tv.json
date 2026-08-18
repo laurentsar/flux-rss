@@ -1,47 +1,8 @@
 {
- "generated": "2026-08-18T08:15:03+02:00",
+ "generated": "2026-08-18T20:15:06+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 32,
+ "count": 29,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-08-18",
-   "time": "08:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Blue Bulls / Nouvelle-Zélande",
-   "date": "2026-08-18",
-   "time": "16:54",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Blue Bulls / Nouvelle-Zélande",
-   "date": "2026-08-18",
-   "time": "17:09",
-   "desc": "Troisième étape de la tournée Rugby's Greatest Rivalry pour les All Blacks, opposés aux Bulls à Pretoria. Après avoir affronté les Stormers ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Australie / Japon",
    "date": "2026-08-18",
