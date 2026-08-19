@@ -1,12 +1,12 @@
 {
- "generated": "2026-08-18T20:15:06+02:00",
+ "generated": "2026-08-19T08:15:04+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 29,
+ "count": 40,
  "programmes": [
   {
-   "title": "Australie / Japon",
-   "date": "2026-08-18",
-   "time": "18:40",
+   "title": "Blue Bulls / Nouvelle-Zélande",
+   "date": "2026-08-19",
+   "time": "07:28",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
@@ -17,61 +17,9 @@
    "approx": false
   },
   {
-   "title": "Australie / Japon",
-   "date": "2026-08-18",
-   "time": "18:51",
-   "desc": "Une semaine après leur première confrontation disputée au Japon, les Wallabies retrouvent les Brave Blossoms au Queensland Country Bank Stad",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Challenge Cup",
-   "date": "2026-08-18",
-   "time": "20:00",
-   "desc": "La finale de la Challenge Cup se déroule au stade San Mamés de Bilbao, en Espagne. Le Montpellier Hérault Rugby va-t-il soulever le trophée ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-08-18",
-   "time": "20:24",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-08-19",
-   "time": "00:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
    "title": "Blue Bulls / Nouvelle-Zélande",
    "date": "2026-08-19",
-   "time": "07:28",
+   "time": "07:38",
    "desc": "Troisième étape de la tournée Rugby's Greatest Rivalry pour les All Blacks, opposés aux Bulls à Pretoria. Après avoir affronté les Stormers ",
    "chaine": [
     "Canal+ Sport"
@@ -98,6 +46,19 @@
    "title": "Australie / Japon",
    "date": "2026-08-19",
    "time": "09:15",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Japon",
+   "date": "2026-08-19",
+   "time": "09:20",
    "desc": "Une semaine après leur première confrontation disputée au Japon, les Wallabies retrouvent les Brave Blossoms au Queensland Country Bank Stad",
    "chaine": [
     "Canal+ Sport"
@@ -110,8 +71,34 @@
   {
    "title": "Fractionné Rugby",
    "date": "2026-08-19",
-   "time": "10:57",
+   "time": "10:51",
    "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-08-19",
+   "time": "10:57",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Japon",
+   "date": "2026-08-19",
+   "time": "13:39",
+   "desc": "Une semaine après leur première confrontation disputée au Japon, les Wallabies retrouvent les Brave Blossoms au Queensland Country Bank Stad",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -124,7 +111,7 @@
    "title": "Australie / Japon",
    "date": "2026-08-19",
    "time": "13:41",
-   "desc": "Une semaine après leur première confrontation disputée au Japon, les Wallabies retrouvent les Brave Blossoms au Queensland Country Bank Stad",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -290,11 +277,38 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-21",
+   "time": "10:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Le pacte des Louves (Bobigny Rugby)",
    "date": "2026-08-21",
    "time": "11:25",
-   "desc": "Elles sont agent de sécurité à la RATP, chargée de communication dans une ONG ou encore professeure d'E.P.S. le jour, mais aussi joueuses de",
+   "desc": "Elles sont agent de sécurité à la RATP, chargée de communication dans une ONG ou encore professeure d’E.P.S. le jour… Mais aussi joueuses de",
    "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "In Extenso Supersevens",
+   "date": "2026-08-21",
+   "time": "11:55",
+   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
+   "chaine": [
+    "Canal+ Live",
     "Canal+ Sport"
    ],
    "cats": [
@@ -316,11 +330,65 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-21",
+   "time": "12:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Challenge Cup",
+   "date": "2026-08-21",
+   "time": "13:00",
+   "desc": "La finale de la Challenge Cup se déroule au stade San Mamés de Bilbao, en Espagne. Le Montpellier Hérault Rugby va-t-il soulever le trophée ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "In Extenso Supersevens",
+   "date": "2026-08-21",
+   "time": "14:34",
+   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
+   "chaine": [
+    "Canal+ Live",
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Rugby à 7 : In Extenso Supersevens",
    "date": "2026-08-21",
    "time": "14:34",
    "desc": "En Direct.",
    "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "In Extenso Supersevens",
+   "date": "2026-08-21",
+   "time": "17:36",
+   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
+   "chaine": [
+    "Canal+ Live",
     "Canal+ Sport"
    ],
    "cats": [
@@ -345,8 +413,22 @@
    "title": "L'année Super Rugby Pacific",
    "date": "2026-08-21",
    "time": "18:38",
-   "desc": "Rugby",
+   "desc": "La saison 2026 de Super Rugby Pacific a livré son verdict à Wellington, avec une finale 100 % néo-zélandaise entre les Hurricanes et les Chi",
    "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "In Extenso Supersevens",
+   "date": "2026-08-21",
+   "time": "20:38",
+   "desc": "La phase de poules de l'étape de Biarritz de l'In Extenso Supersevens 2026 se déroule au Parc des Sports d'Aguilera. Cette première journée ",
+   "chaine": [
+    "Canal+ Live",
     "Canal+ Sport"
    ],
    "cats": [
@@ -374,6 +456,71 @@
    "desc": "Rugby à XIII",
    "chaine": [
     "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : State of Origin",
+   "date": "2026-08-21",
+   "time": "23:00",
+   "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Afrique du Sud / Nouvelle-Zélande",
+   "date": "2026-08-22",
+   "time": "16:55",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à 7 : In Extenso Supersevens",
+   "date": "2026-08-22",
+   "time": "18:57",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à 7 : In Extenso Supersevens",
+   "date": "2026-08-22",
+   "time": "19:58",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Afrique du Sud / Nouvelle-Zélande",
+   "date": "2026-08-22",
+   "time": "21:00",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
    ],
    "cats": [
     "rugby"
