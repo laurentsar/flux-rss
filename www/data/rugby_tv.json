@@ -1,7 +1,7 @@
 {
- "generated": "2026-08-19T20:15:03+02:00",
+ "generated": "2026-08-20T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 31,
+ "count": 49,
  "programmes": [
   {
    "title": "Rugby à XIII : NRL",
@@ -32,7 +32,7 @@
   {
    "title": "Provence Rugby / Perpignan",
    "date": "2026-08-20",
-   "time": "16:31",
+   "time": "16:27",
    "desc": "Qui de Provence Rugby ou de l'USA Perpignan sera en Top 14 pour la prochaine saison 2026/2027 ? Réponse à l'issue de ce barrage d'accession ",
    "chaine": [
     "Canal+ Sport"
@@ -58,7 +58,7 @@
   {
    "title": "Top 14",
    "date": "2026-08-20",
-   "time": "18:20",
+   "time": "18:17",
    "desc": "Le format La finale du Top 14 Made by Canal revient sur l'ultime rencontre du championnat, qui se déroulait au Stade de France entre Toulous",
    "chaine": [
     "Canal+ Sport"
@@ -97,8 +97,21 @@
   {
    "title": "Fractionné Rugby",
    "date": "2026-08-20",
-   "time": "20:34",
+   "time": "20:32",
    "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-08-20",
+   "time": "20:34",
+   "desc": "Magazine sportif",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -147,10 +160,36 @@
    "approx": false
   },
   {
+   "title": "Vannes - Provence Rugby",
+   "date": "2026-08-20",
+   "time": "21:00",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Rugby à XIII : State of Origin",
    "date": "2026-08-20",
    "time": "23:00",
    "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "New South Wales Blues / Queensland Maroons",
+   "date": "2026-08-20",
+   "time": "23:00",
+   "desc": "Rugby à XIII",
    "chaine": [
     "beIN Sports"
    ],
@@ -295,8 +334,21 @@
   {
    "title": "L'année Super Rugby Pacific",
    "date": "2026-08-21",
-   "time": "18:38",
+   "time": "18:37",
    "desc": "La saison 2026 de Super Rugby Pacific a livré son verdict à Wellington, avec une finale 100 % néo-zélandaise entre les Hurricanes et les Chi",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "L'année Super Rugby Pacific",
+   "date": "2026-08-21",
+   "time": "18:38",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -333,19 +385,6 @@
    "approx": false
   },
   {
-   "title": "The Dolphins / Parramatta Eels",
-   "date": "2026-08-21",
-   "time": "21:00",
-   "desc": "Rugby à XIII",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
    "title": "Rugby à XIII : State of Origin",
    "date": "2026-08-21",
    "time": "23:00",
@@ -359,11 +398,90 @@
    "approx": false
   },
   {
+   "title": "New South Wales Blues / Queensland Maroons",
+   "date": "2026-08-21",
+   "time": "23:00",
+   "desc": "Rugby à XIII",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-22",
+   "time": "07:30",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-22",
+   "time": "09:30",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "In Extenso Supersevens",
+   "date": "2026-08-22",
+   "time": "14:30",
+   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Afrique du Sud / Nouvelle-Zélande",
    "date": "2026-08-22",
    "time": "16:55",
-   "desc": "En Direct.",
+   "desc": "L'Afrique du Sud et la Nouvelle-Zélande ont créé le Rugby's Greatest Rivalry, une tournée de huit matchs qui remet au goût du jour les grand",
    "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "In Extenso Supersevens",
+   "date": "2026-08-22",
+   "time": "16:56",
+   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "In Extenso Supersevens",
+   "date": "2026-08-22",
+   "time": "18:57",
+   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
+   "chaine": [
+    "Canal+ Live",
     "Canal+ Sport"
    ],
    "cats": [
@@ -377,6 +495,20 @@
    "time": "18:57",
    "desc": "En Direct.",
    "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "In Extenso Supersevens",
+   "date": "2026-08-22",
+   "time": "19:58",
+   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
+   "chaine": [
+    "Canal+ Live",
     "Canal+ Sport"
    ],
    "cats": [
@@ -401,7 +533,111 @@
    "title": "Afrique du Sud / Nouvelle-Zélande",
    "date": "2026-08-22",
    "time": "21:00",
+   "desc": "L'Afrique du Sud et la Nouvelle-Zélande ont créé le Rugby's Greatest Rivalry, une tournée de huit matchs qui remet au goût du jour les grand",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "South Sydney Rabbitohs / New Zealand Warriors",
+   "date": "2026-08-22",
+   "time": "22:30",
+   "desc": "Rugby à XIII",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-22",
+   "time": "23:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "In Extenso Supersevens",
+   "date": "2026-08-23",
+   "time": "01:30",
+   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à 7 : In Extenso Supersevens",
+   "date": "2026-08-23",
+   "time": "01:30",
+   "desc": "Rugby à 7",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à 7 : In Extenso Supersevens",
+   "date": "2026-08-23",
+   "time": "09:53",
+   "desc": "Rugby à 7",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Histoire de champions rugby",
+   "date": "2026-08-23",
+   "time": "14:00",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Afrique du Sud / Nouvelle-Zélande",
+   "date": "2026-08-23",
+   "time": "15:33",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à 7 : In Extenso Supersevens",
+   "date": "2026-08-23",
+   "time": "18:16",
+   "desc": "Rugby à 7",
    "chaine": [
     "Canal+ Sport"
    ],
