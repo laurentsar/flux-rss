@@ -1,151 +1,8 @@
 {
- "generated": "2026-08-20T20:15:03+02:00",
+ "generated": "2026-08-21T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 45,
+ "count": 48,
  "programmes": [
-  {
-   "title": "Top 14",
-   "date": "2026-08-20",
-   "time": "18:17",
-   "desc": "Le format La finale du Top 14 Made by Canal revient sur l'ultime rencontre du championnat, qui se déroulait au Stade de France entre Toulous",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Top 14",
-   "date": "2026-08-20",
-   "time": "18:20",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Champions Cup",
-   "date": "2026-08-20",
-   "time": "20:00",
-   "desc": "Tenants du titre depuis leur victoire en 2025 contre les Northampton Saints, les joueurs de l'UBB sont de nouveau en finale de la Champions ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-08-20",
-   "time": "20:32",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-08-20",
-   "time": "20:34",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Vannes / Provence Rugby",
-   "date": "2026-08-20",
-   "time": "21:00",
-   "desc": "Le 6 juin, Vannes, leader de la saison régulière, et Provence Rugby s'affrontaient en finale de Pro D2 au stade Ernest-Wallon de Toulouse. U",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-08-20",
-   "time": "21:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Melbourne Storm / Penrith Panthers",
-   "date": "2026-08-20",
-   "time": "21:00",
-   "desc": "Rugby à XIII",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Vannes - Provence Rugby",
-   "date": "2026-08-20",
-   "time": "21:00",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : State of Origin",
-   "date": "2026-08-20",
-   "time": "23:00",
-   "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "New South Wales Blues / Queensland Maroons",
-   "date": "2026-08-20",
-   "time": "23:00",
-   "desc": "Rugby à XIII",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-08-21",
@@ -162,8 +19,21 @@
   {
    "title": "Le pacte des Louves (Bobigny Rugby)",
    "date": "2026-08-21",
-   "time": "11:25",
+   "time": "11:17",
    "desc": "Elles sont agent de sécurité à la RATP, chargée de communication dans une ONG ou encore professeure d’E.P.S. le jour… Mais aussi joueuses de",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Le pacte des Louves (Bobigny Rugby)",
+   "date": "2026-08-21",
+   "time": "11:25",
+   "desc": "Elles sont agent de sécurité à la RATP, chargée de communication dans une ONG ou encore professeure d'E.P.S. le jour, mais aussi joueuses de",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -176,7 +46,7 @@
    "title": "In Extenso Supersevens",
    "date": "2026-08-21",
    "time": "11:55",
-   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
+   "desc": "A suivre le championnat professionnel français des clubs de rugby à 7.",
    "chaine": [
     "Canal+ Live",
     "Canal+ Sport"
@@ -481,6 +351,19 @@
    "title": "Afrique du Sud / Nouvelle-Zélande",
    "date": "2026-08-22",
    "time": "21:00",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Afrique du Sud / Nouvelle-Zélande",
+   "date": "2026-08-22",
+   "time": "21:01",
    "desc": "L'Afrique du Sud et la Nouvelle-Zélande ont créé le Rugby's Greatest Rivalry, une tournée de huit matchs qui remet au goût du jour les grand",
    "chaine": [
     "Canal+ Sport"
@@ -543,10 +426,49 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-23",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "In Extenso Supersevens",
+   "date": "2026-08-23",
+   "time": "09:53",
+   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Rugby à 7 : In Extenso Supersevens",
    "date": "2026-08-23",
    "time": "09:53",
    "desc": "Rugby à 7",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Histoire de champions rugby",
+   "date": "2026-08-23",
+   "time": "13:57",
+   "desc": "Histoire de champions rugby revisite les grandes figures et les moments marquants du rugby, en retraçant les parcours, exploits et épisodes ",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -571,8 +493,34 @@
   {
    "title": "Afrique du Sud / Nouvelle-Zélande",
    "date": "2026-08-23",
+   "time": "15:30",
+   "desc": "L'Afrique du Sud et la Nouvelle-Zélande ont créé le Rugby's Greatest Rivalry, une tournée de huit matchs qui remet au goût du jour les grand",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Afrique du Sud / Nouvelle-Zélande",
+   "date": "2026-08-23",
    "time": "15:33",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "In Extenso Supersevens",
+   "date": "2026-08-23",
+   "time": "18:16",
+   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -585,6 +533,97 @@
    "title": "Rugby à 7 : In Extenso Supersevens",
    "date": "2026-08-23",
    "time": "18:16",
+   "desc": "Rugby à 7",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Afrique du Sud / Nouvelle-Zélande",
+   "date": "2026-08-23",
+   "time": "23:56",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Afrique du Sud / Nouvelle-Zélande",
+   "date": "2026-08-23",
+   "time": "23:57",
+   "desc": "L'Afrique du Sud et la Nouvelle-Zélande ont créé le Rugby's Greatest Rivalry, une tournée de huit matchs qui remet au goût du jour les grand",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "In Extenso Supersevens",
+   "date": "2026-08-24",
+   "time": "02:16",
+   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Pro D2",
+   "date": "2026-08-24",
+   "time": "13:44",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Vannes - Provence Rugby",
+   "date": "2026-08-24",
+   "time": "14:23",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Afrique du Sud / Nouvelle-Zélande",
+   "date": "2026-08-24",
+   "time": "18:47",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Etape de Biarritz. Les meilleurs moments",
+   "date": "2026-08-24",
+   "time": "21:00",
    "desc": "Rugby à 7",
    "chaine": [
     "Canal+ Sport"
