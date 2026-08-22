@@ -1,86 +1,8 @@
 {
- "generated": "2026-08-22T08:15:03+02:00",
+ "generated": "2026-08-22T20:15:02+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 44,
+ "count": 38,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-08-22",
-   "time": "07:30",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-08-22",
-   "time": "09:30",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "In Extenso Supersevens",
-   "date": "2026-08-22",
-   "time": "14:30",
-   "desc": "In Extenso Supersevens. Etape de La Rochelle. 8es de finale.",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Afrique du Sud / Nouvelle-Zélande",
-   "date": "2026-08-22",
-   "time": "16:55",
-   "desc": "En Direct.",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "In Extenso Supersevens",
-   "date": "2026-08-22",
-   "time": "16:56",
-   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Afrique du Sud / Nouvelle-Zélande",
-   "date": "2026-08-22",
-   "time": "17:00",
-   "desc": "L'Afrique du Sud et la Nouvelle-Zélande ont créé le Rugby's Greatest Rivalry, une tournée de huit matchs qui remet au goût du jour les grand",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "In Extenso Supersevens",
    "date": "2026-08-22",
