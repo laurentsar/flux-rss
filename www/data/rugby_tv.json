@@ -1,60 +1,8 @@
 {
- "generated": "2026-08-23T20:15:02+02:00",
+ "generated": "2026-08-24T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 27,
+ "count": 36,
  "programmes": [
-  {
-   "title": "Rugby à 7 : In Extenso Supersevens",
-   "date": "2026-08-23",
-   "time": "18:16",
-   "desc": "Rugby à 7",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Afrique du Sud / Nouvelle-Zélande",
-   "date": "2026-08-23",
-   "time": "23:56",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Afrique du Sud / Nouvelle-Zélande",
-   "date": "2026-08-24",
-   "time": "00:00",
-   "desc": "L'Afrique du Sud et la Nouvelle-Zélande ont créé le Rugby's Greatest Rivalry, une tournée de huit matchs qui remet au goût du jour les grand",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "In Extenso Supersevens",
-   "date": "2026-08-24",
-   "time": "02:15",
-   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-08-24",
@@ -319,6 +267,110 @@
    "title": "Afrique du Sud / Nouvelle-Zélande",
    "date": "2026-08-26",
    "time": "07:26",
+   "desc": "L'Afrique du Sud et la Nouvelle-Zélande ont créé le Rugby's Greatest Rivalry, une tournée de huit matchs qui remet au goût du jour les grand",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-26",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Lions / Nouvelle-Zélande",
+   "date": "2026-08-26",
+   "time": "09:07",
+   "desc": "Cette toute nouvelle série se déroule en Afrique du Sud. Dans le cadre de celle-ci, les Emirates Lions, la franchise locale de Johannesbourg",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Champions Cup",
+   "date": "2026-08-26",
+   "time": "14:00",
+   "desc": "Tenants du titre depuis leur victoire en 2025 contre les Northampton Saints, les joueurs de l'UBB sont de nouveau en finale de la Champions ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : State of Origin",
+   "date": "2026-08-26",
+   "time": "16:00",
+   "desc": "Retransmission du State of Origin, une compétition de rugby à XIII.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Etape de Biarritz. Les meilleurs moments",
+   "date": "2026-08-26",
+   "time": "17:27",
+   "desc": "L'étape de Biarritz de l'In Extenso Supersevens 2026 se déroulait au Parc des Sports d'Aguilera. La première journée inaugurale de la saison",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Etape de Biarritz. Les meilleurs moments",
+   "date": "2026-08-27",
+   "time": "01:15",
+   "desc": "L'étape de Biarritz de l'In Extenso Supersevens 2026 se déroulait au Parc des Sports d'Aguilera. La première journée inaugurale de la saison",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Etape de Biarritz. Les meilleurs moments",
+   "date": "2026-08-27",
+   "time": "08:00",
+   "desc": "Rugby à 7",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Afrique du Sud / Nouvelle-Zélande",
+   "date": "2026-08-27",
+   "time": "13:00",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
@@ -330,8 +382,8 @@
   },
   {
    "title": "Lions / Nouvelle-Zélande",
-   "date": "2026-08-26",
-   "time": "09:07",
+   "date": "2026-08-27",
+   "time": "14:42",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
@@ -342,10 +394,75 @@
    "approx": false
   },
   {
-   "title": "Etape de Biarritz. Les meilleurs moments",
-   "date": "2026-08-26",
-   "time": "17:27",
-   "desc": "Rugby à 7",
+   "title": "Vannes - Provence Rugby",
+   "date": "2026-08-27",
+   "time": "16:53",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby avant-match",
+   "date": "2026-08-27",
+   "time": "18:50",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Biarritz / Nice",
+   "date": "2026-08-27",
+   "time": "19:00",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby avant-match",
+   "date": "2026-08-27",
+   "time": "20:50",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Provence Rugby / Agen",
+   "date": "2026-08-27",
+   "time": "21:00",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby",
+   "date": "2026-08-27",
+   "time": "22:50",
+   "desc": "En Direct.",
    "chaine": [
     "Canal+ Sport"
    ],
