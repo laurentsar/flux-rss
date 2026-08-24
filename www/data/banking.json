@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-17T09:53:15+02:00",
+  "generated": "2026-08-24T09:57:42+02:00",
   "livrets": [
     {
       "nom": "Livret A",
@@ -31,7 +31,7 @@
     },
     {
       "nom": "CEL",
-      "taux": "2,80 %",
+      "taux": "1,25 %",
       "plafond": "15 300 €",
       "net": false,
       "note": "Taux brut — lié à un PEL"
