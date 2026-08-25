@@ -1,39 +1,13 @@
 {
- "generated": "2026-08-24T20:15:05+02:00",
+ "generated": "2026-08-25T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 30,
+ "count": 48,
  "programmes": [
   {
-   "title": "Afrique du Sud / Nouvelle-Zélande",
-   "date": "2026-08-24",
-   "time": "18:45",
-   "desc": "L'Afrique du Sud et la Nouvelle-Zélande ont créé le Rugby's Greatest Rivalry, une tournée de huit matchs qui remet au goût du jour les grand",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Afrique du Sud / Nouvelle-Zélande",
-   "date": "2026-08-24",
-   "time": "18:47",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
    "title": "Etape de Biarritz. Les meilleurs moments",
-   "date": "2026-08-24",
-   "time": "21:00",
-   "desc": "L'étape de Biarritz de l'In Extenso Supersevens 2026 se déroulait au Parc des Sports d'Aguilera. La première journée inaugurale de la saison",
+   "date": "2026-08-25",
+   "time": "07:32",
+   "desc": "Rugby à 7",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -45,7 +19,7 @@
   {
    "title": "Etape de Biarritz. Les meilleurs moments",
    "date": "2026-08-25",
-   "time": "07:32",
+   "time": "07:49",
    "desc": "L'étape de Biarritz de l'In Extenso Supersevens 2026 se déroulait au Parc des Sports d'Aguilera. La première journée inaugurale de la saison",
    "chaine": [
     "Canal+ Sport"
@@ -72,7 +46,7 @@
    "title": "Afrique du Sud / Nouvelle-Zélande",
    "date": "2026-08-25",
    "time": "09:33",
-   "desc": "L'Afrique du Sud et la Nouvelle-Zélande ont créé le Rugby's Greatest Rivalry, une tournée de huit matchs qui remet au goût du jour les grand",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -82,10 +56,10 @@
    "approx": false
   },
   {
-   "title": "Vannes / Provence Rugby",
+   "title": "Afrique du Sud / Nouvelle-Zélande",
    "date": "2026-08-25",
-   "time": "11:16",
-   "desc": "Le 6 juin, Vannes, leader de la saison régulière, et Provence Rugby s'affrontaient en finale de Pro D2 au stade Ernest-Wallon de Toulouse. U",
+   "time": "09:50",
+   "desc": "L'Afrique du Sud et la Nouvelle-Zélande ont créé le Rugby's Greatest Rivalry, une tournée de huit matchs qui remet au goût du jour les grand",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -108,9 +82,35 @@
    "approx": false
   },
   {
+   "title": "Vannes / Provence Rugby",
+   "date": "2026-08-25",
+   "time": "11:36",
+   "desc": "Le 6 juin, Vannes, leader de la saison régulière, et Provence Rugby s'affrontaient en finale de Pro D2 au stade Ernest-Wallon de Toulouse. U",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Fractionné Rugby",
    "date": "2026-08-25",
    "time": "13:10",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-08-25",
+   "time": "13:15",
    "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
@@ -149,8 +149,21 @@
   {
    "title": "Fractionné Rugby",
    "date": "2026-08-25",
-   "time": "18:39",
+   "time": "18:38",
    "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-08-25",
+   "time": "18:39",
+   "desc": "Magazine sportif",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -175,8 +188,21 @@
   {
    "title": "Etape de Biarritz. Les meilleurs moments",
    "date": "2026-08-25",
-   "time": "21:05",
+   "time": "21:00",
    "desc": "L'étape de Biarritz de l'In Extenso Supersevens 2026 se déroulait au Parc des Sports d'Aguilera. La première journée inaugurale de la saison",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Etape de Biarritz. Les meilleurs moments",
+   "date": "2026-08-25",
+   "time": "21:05",
+   "desc": "Rugby à 7",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -280,9 +306,35 @@
    "title": "Etape de Biarritz. Les meilleurs moments",
    "date": "2026-08-27",
    "time": "08:00",
-   "desc": "Rugby à 7",
+   "desc": "L'étape de Biarritz de l'In Extenso Supersevens 2026 se déroulait au Parc des Sports d'Aguilera. La première journée inaugurale de la saison",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-27",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-27",
+   "time": "11:45",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -293,7 +345,7 @@
    "title": "Afrique du Sud / Nouvelle-Zélande",
    "date": "2026-08-27",
    "time": "13:00",
-   "desc": "Rugby",
+   "desc": "L'Afrique du Sud et la Nouvelle-Zélande ont créé le Rugby's Greatest Rivalry, une tournée de huit matchs qui remet au goût du jour les grand",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -306,7 +358,20 @@
    "title": "Lions / Nouvelle-Zélande",
    "date": "2026-08-27",
    "time": "14:42",
-   "desc": "Rugby",
+   "desc": "Cette toute nouvelle série se déroule en Afrique du Sud. Dans le cadre de celle-ci, les Emirates Lions, la franchise locale de Johannesbourg",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Vannes / Provence Rugby",
+   "date": "2026-08-27",
+   "time": "16:53",
+   "desc": "Le 6 juin, Vannes, leader de la saison régulière, et Provence Rugby s'affrontaient en finale de Pro D2 au stade Ernest-Wallon de Toulouse. U",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -332,7 +397,7 @@
    "title": "Soir de rugby avant-match",
    "date": "2026-08-27",
    "time": "18:50",
-   "desc": "En Direct.",
+   "desc": "Soir de rugby avant-match présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'ambia",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -345,9 +410,74 @@
    "title": "Biarritz / Nice",
    "date": "2026-08-27",
    "time": "19:00",
-   "desc": "En Direct.",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Béziers / Oyonnax",
+   "date": "2026-08-27",
+   "time": "19:25",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Grenoble / Aurillac",
+   "date": "2026-08-27",
+   "time": "19:25",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soyaux-Angoulême / Colomiers",
+   "date": "2026-08-27",
+   "time": "19:25",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Dax / Narbonne",
+   "date": "2026-08-27",
+   "time": "19:25",
+   "desc": "Cette nouvelle saison de PRO D2 s'annonce intense avec seize clubs en lice pour décrocher le titre et viser la montée en Top 14, avec des af",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Nevers / Montauban",
+   "date": "2026-08-27",
+   "time": "19:25",
+   "desc": "Cette nouvelle saison de PRO D2 s'annonce intense avec seize clubs en lice pour décrocher le titre et viser la montée en Top 14, avec des af",
+   "chaine": [
+    "Canal+ Live"
    ],
    "cats": [
     "rugby"
@@ -358,7 +488,7 @@
    "title": "Soir de rugby avant-match",
    "date": "2026-08-27",
    "time": "20:50",
-   "desc": "En Direct.",
+   "desc": "Soir de rugby avant-match présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'ambia",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -371,9 +501,22 @@
    "title": "Provence Rugby / Agen",
    "date": "2026-08-27",
    "time": "21:00",
-   "desc": "En Direct.",
+   "desc": "Provence Rugby, malheureux face au RC Vannes (14-18), lors de la finale de Pro D2, le 6 juin dernier au stade Ernest-Wallon à Toulouse, puis",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-27",
+   "time": "21:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -384,6 +527,97 @@
    "title": "Soir de rugby",
    "date": "2026-08-27",
    "time": "22:50",
+   "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-08-28",
+   "time": "09:27",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Biarritz / Nice",
+   "date": "2026-08-28",
+   "time": "09:37",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Provence Rugby / Agen",
+   "date": "2026-08-28",
+   "time": "11:20",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à 7 : In Extenso Supersevens",
+   "date": "2026-08-28",
+   "time": "16:11",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à 7 : In Extenso Supersevens",
+   "date": "2026-08-28",
+   "time": "17:36",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à 7 : In Extenso Supersevens",
+   "date": "2026-08-28",
+   "time": "20:38",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Brive / Valence-Romans",
+   "date": "2026-08-28",
+   "time": "21:00",
    "desc": "En Direct.",
    "chaine": [
     "Canal+ Sport"
