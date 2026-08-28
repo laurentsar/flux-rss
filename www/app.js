@@ -1947,49 +1947,7 @@ function renderFranceLive(rugbyLive, soccerEvents){
 /* ---------- Agenda ---------- */
 let _agendaJson = null;
 let _upcomingRugby = null, _upcomingRugbyTs = 0;
-let _toulouseLiveCache = null, _toulouseLiveCacheTs = 0;
 let _agendaTimer = null;
-
-async function loadToulouseLiveEvents(){
-  if (_toulouseLiveCache && Date.now()-_toulouseLiveCacheTs < 30*60*1000) return _toulouseLiveCache;
-  const today = new Date().toISOString().slice(0,10);
-  const q = encodeURIComponent(`date_fin >= '${today}'`);
-  const url = `https://data.toulouse-metropole.fr/api/explore/v2.1/catalog/datasets/agenda-des-manifestations-culturelles-so-toulouse/records?limit=100&order_by=date_debut%20ASC&where=${q}&timezone=Europe%2FParis`;
-  try {
-    const data = await fetchJson(url);
-    const events = (data.results || []).map((r, i) => {
-      const title = r.nom_de_la_manifestation || r.titre || r.title || 'Événement';
-      const startRaw = r.date_debut || '';
-      const endRaw = r.date_fin || '';
-      const date = startRaw.slice(0,10);
-      const dateEnd = endRaw ? endRaw.slice(0,10) : undefined;
-      const desc = r.descriptif_court || r.description || r.resume || '';
-      const commune = r.commune || r.ville || r.nom_commune || '';
-      const locRaw = r.nom_du_lieu || r.lieu_nom || r.lieu || r.adresse || commune || 'Toulouse';
-      const loc = typeof locRaw === 'object' ? (locRaw.nom || String(commune) || 'Toulouse') : String(locRaw);
-      const link = r.url || r.url_de_la_page_web_de_l_evenement || undefined;
-      const communeStr = String(commune).toLowerCase();
-      const region = /colomiers/i.test(communeStr) ? 'Colomiers'
-        : communeStr ? 'Toulouse'
-        : 'Toulouse';
-      return {
-        id: 'tls-' + (r.identifiant || r.id_manifestation || i),
-        title: String(title),
-        desc: String(desc),
-        date,
-        dateEnd: dateEnd && dateEnd !== date ? dateEnd : undefined,
-        cats: ['voyage'],
-        loc,
-        approx: false,
-        region,
-        url: link || undefined,
-      };
-    }).filter(e => e.date && e.title);
-    _toulouseLiveCache = events;
-    _toulouseLiveCacheTs = Date.now();
-    return events;
-  } catch(e) { return []; }
-}
 
 async function loadAgendaEvents(){
   if (!_agendaJson){
@@ -1999,6 +1957,7 @@ async function loadAgendaEvents(){
   const now = Date.now();
   const horizon = Date.now() + 365*86400*1000;
   return (_agendaJson.events||[])
+    .filter(ev=>(ev.cats||[]).includes('rugby'))
     .filter(ev=>{
       const end = Date.parse(ev.dateEnd || ev.date);
       const start = Date.parse(ev.date);
@@ -2265,91 +2224,14 @@ async function loadRugbyEpg(){
   return out;
 }
 
-/* ---------- Autres sports France (agenda) ---------- */
-let _otherSportsCache=null, _otherSportsCacheTs=0;
-
-async function fetchOtherSportsFrance(){
-  if (_otherSportsCache && Date.now()-_otherSportsCacheTs<60*60*1000) return _otherSportsCache;
-  const fmt=d=>d.toISOString().slice(0,10);
-  const dates=Array.from({length:7},(_,i)=>fmt(new Date(Date.now()-i*86400000)));
-  const SPORTS=[
-    {slug:'basketball', icon:'🏀'},
-    {slug:'handball',   icon:'🤾'},
-    {slug:'volleyball', icon:'🏐'},
-    {slug:'ice-hockey', icon:'🏒'},
-  ];
-  const FR=/\bfrance\b/i;
-  const results=await Promise.allSettled(
-    SPORTS.flatMap(s=>dates.map(date=>
-      fetchJson(`https://api.sofascore.com/api/v1/sport/${s.slug}/scheduled-events/${date}`)
-        .then(d=>(d.events||[])
-          .filter(e=>FR.test(e.homeTeam?.name||'')||FR.test(e.awayTeam?.name||''))
-          .map(e=>{
-            const code=e.status?.code??-1;
-            const isLive=e.status?.type==='inprogress'||(code>=1&&code<100);
-            const isFin=e.status?.type==='finished'||code===100;
-            return {
-              id:`sofa-${s.slug}-${e.id}`,
-              homeTeam:{name:e.homeTeam?.name||'?'},
-              awayTeam:{name:e.awayTeam?.name||'?'},
-              homeScore:{current:e.homeScore?.current??e.homeScore?.display??''},
-              awayScore:{current:e.awayScore?.current??e.awayScore?.display??''},
-              status:{type:isLive?'inprogress':isFin?'finished':'notstarted', description:e.status?.description||''},
-              startTimestamp:e.startTimestamp||0,
-              tournament:{name:e.tournament?.name||s.slug, round:e.roundInfo?.name||''},
-              sportIcon:s.icon,
-            };
-          })
-        )
-    ))
-  );
-  const seen=new Set();
-  const events=results
-    .flatMap(r=>r.status==='fulfilled'?r.value:[])
-    .filter(e=>(e.status.type==='inprogress'||e.status.type==='finished')&&!seen.has(e.id)&&seen.add(e.id));
-  _otherSportsCache=events; _otherSportsCacheTs=Date.now();
-  return events;
-}
-
-function renderOtherSportsLive(events){
-  if (!events.length) return '';
-  const renderCard=e=>{
-    const live=e.status?.type==='inprogress', fin=e.status?.type==='finished';
-    const hs=String(e.homeScore?.current??''), as_=String(e.awayScore?.current??'');
-    const hw=fin&&parseInt(hs)>parseInt(as_), aw=fin&&parseInt(as_)>parseInt(hs);
-    const badge=live?'<span class="rl-live-dot"></span>':'';
-    const time=live?(e.status?.description||'⏱'):'';
-    const score=(live||fin)?`<b>${esc(hs)}</b><span class="rl-vs">–</span><b>${esc(as_)}</b>${time?`<span class="rl-time"> ${esc(time)}</span>`:''}`:'' ;
-    const icon=e.sportIcon||'🏅';
-    const hn=e.homeTeam?.name||'?', an=e.awayTeam?.name||'?';
-    const roundLbl=e.tournament?.round?` · ${esc(e.tournament.round)}`:'';
-    const compLine=e.tournament?.name?`<div class="rl-jlbl">${icon} ${esc(e.tournament.name)}${roundLbl}</div>`:'';
-    return compLine+`<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${icon} ${esc(hn)}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(an)}</span></div>`;
-  };
-  const liveEvts=events.filter(e=>e.status?.type==='inprogress');
-  const doneEvts=events.filter(e=>e.status?.type!=='inprogress');
-  let html='';
-  if(liveEvts.length)
-    html+=`<div class="rl-section rl-live-section"><div class="rl-sh">🔴 🇫🇷 France — En direct<button class="rl-refresh-btn" onclick="manualRefreshLive()" title="Actualiser">⟳</button></div>${liveEvts.map(renderCard).join('')}</div>`;
-  if(doneEvts.length)
-    html+=`<details class="rl-section"><summary class="rl-sh">🇫🇷 France — Résultats récents</summary>${doneEvts.map(renderCard).join('')}</details>`;
-  return html;
-}
-
 async function reloadAgendaLive(){
   const agLiveEl = document.getElementById('ag-live');
   if (!agLiveEl) return;
   const slow = slowConnection();
-  const [espnRugby, otherSports] = await Promise.all([
-    slow ? Promise.resolve({events:[]}) : fetchSportsEvents().catch(()=>({events:[]})),
-    slow ? Promise.resolve([]) : fetchOtherSportsFrance().catch(()=>[]),
-  ]);
+  const espnRugby = slow ? {events:[]} : await fetchSportsEvents().catch(()=>({events:[]}));
   const frRugbyLive=(espnRugby.events||[]).filter(e=>isFranceMatch(e)&&(e.status?.type==='inprogress'||e.status?.type==='finished'));
-  const rugbyLiveHtml=renderFranceLive(frRugbyLive,[]);
-  const otherSportsHtml=renderOtherSportsLive(otherSports);
-  const liveHtml=rugbyLiveHtml+otherSportsHtml;
-  agLiveEl.innerHTML=liveHtml;
-  const hasLive=[...(espnRugby.events||[]),...otherSports].some(e=>e.status?.type==='inprogress');
+  agLiveEl.innerHTML=renderFranceLive(frRugbyLive,[]);
+  const hasLive=(espnRugby.events||[]).some(e=>e.status?.type==='inprogress');
   if (hasLive) scheduleLiveRefresh(()=>reloadAgendaLive());
 }
 
@@ -2360,31 +2242,23 @@ async function loadAgenda(){
   elArticles.innerHTML='<div class="rl-loading"><span class="spinner"></span>Chargement de l\'agenda…</div>';
   elStatus.textContent='';
   const slow = slowConnection();
-  const [staticEvents, epgRugby, espnRugby, toulouseLive, otherSports] = await Promise.all([
+  const [staticEvents, epgRugby, espnRugby] = await Promise.all([
     loadAgendaEvents(),
     slow ? Promise.resolve([]) : loadRugbyEpg().catch(()=>[]),
     slow ? Promise.resolve({events:[]}) : fetchSportsEvents().catch(()=>({events:[]})),
-    slow ? Promise.resolve([]) : loadToulouseLiveEvents().catch(()=>[]),
-    slow ? Promise.resolve([]) : fetchOtherSportsFrance().catch(()=>[]),
   ]);
   // France rugby national live/terminé (inchangé)
   const frRugbyLive=(espnRugby.events||[]).filter(e=>isFranceMatch(e)&&(e.status?.type==='inprogress'||e.status?.type==='finished'));
-  const rugbyLiveHtml=renderFranceLive(frRugbyLive,[]);
-  const otherSportsHtml=renderOtherSportsLive(otherSports);
-  const liveHtml=rugbyLiveHtml+otherSportsHtml;
+  const liveHtml=renderFranceLive(frRugbyLive,[]);
   // Rugby = grille TV réelle (EPG, toutes chaînes) ; repli sur la liste figée.
   const rugbyAgenda = epgRugby.length ? epgRugby : upcomingRugbyShows(4);
-  // Fusion événements statiques + live Toulouse (dédoublonnage par titre+date)
-  const seenTls = new Set(staticEvents.map(e => e.title+'|'+e.date));
-  const tlsNew = toulouseLive.filter(e => !seenTls.has(e.title+'|'+e.date));
-  const allStatic = [...staticEvents, ...tlsNew];
-  const total=allStatic.length+rugbyAgenda.length;
-  elArticles.innerHTML=(liveHtml?`<div id="ag-live">${liveHtml}</div>`:'')+renderAgenda(allStatic,rugbyAgenda);
+  const total=staticEvents.length+rugbyAgenda.length;
+  elArticles.innerHTML=(liveHtml?`<div id="ag-live">${liveHtml}</div>`:'')+renderAgenda(staticEvents,rugbyAgenda);
   elStatus.textContent=`${total} événement${total>1?'s':''} à venir`;
-  const hasAgendaLive=[...(espnRugby.events||[]),...otherSports].some(e=>e.status?.type==='inprogress');
+  const hasAgendaLive=(espnRugby.events||[]).some(e=>e.status?.type==='inprogress');
   if (hasAgendaLive) scheduleLiveRefresh(()=>reloadAgendaLive());
   if (_agendaTimer) clearTimeout(_agendaTimer);
-  _agendaTimer = setTimeout(()=>{ if(current==='agenda'){ _toulouseLiveCache=null; loadAgenda(); } }, 3600000);
+  _agendaTimer = setTimeout(()=>{ if(current==='agenda'){ loadAgenda(); } }, 3600000);
 }
 
 /* ---------- Magazines / Cafeyn ---------- */
