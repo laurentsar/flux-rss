@@ -411,12 +411,28 @@ async function fetchSportsEvents(){
   }
 
   // Fetch all ESPN league scoreboards in parallel
-  const espnResults = await Promise.allSettled(
-    ESPN_IDS.map(id=>fetchJson(`${ESPN_BASE}/${id}/scoreboard`).then(d=>(d.events||[]).map(e=>parseEspnEvent(e,id))))
-  );
-  const events = espnResults.flatMap(r=>r.status==='fulfilled'?r.value:[]);
+  async function fetchAllEspn(){
+    const results = await Promise.allSettled(
+      ESPN_IDS.map(id=>fetchJson(`${ESPN_BASE}/${id}/scoreboard`).then(d=>(d.events||[]).map(e=>parseEspnEvent(e,id))))
+    );
+    return results.flatMap(r=>r.status==='fulfilled'?r.value:[]);
+  }
+
+  let events = await fetchAllEspn();
+  // Un échec total (0 événement sur les 5 ligues) est souvent transitoire
+  // (timeout réseau côté mobile) : on retente une fois avant d'abandonner.
+  if (!events.length){
+    await new Promise(res=>setTimeout(res,1500));
+    events = await fetchAllEspn();
+  }
 
   if (!events.length){
+    // Si on a déjà eu des données valides récemment, on les réaffiche
+    // (avec un avertissement) plutôt que d'effacer les scores affichés.
+    if (_espnLastGood && Date.now()-_espnLastGoodTs < 30*60*1000){
+      const r={events:_espnLastGood, error:null, stale:true};
+      _espnCache=r; _espnCacheTs=Date.now(); return r;
+    }
     const r={events:[], error:'Scores live indisponibles — <a href="https://www.flashscore.fr/rugby/" target="_blank" style="color:var(--accent)">Flashscore Rugby</a>'};
     _espnCache=r; _espnCacheTs=Date.now(); return r;
   }
@@ -429,6 +445,7 @@ async function fetchSportsEvents(){
   deduped.sort((a,b)=>{const o=t=>t==='inprogress'?0:t==='finished'?1:2;return o(a.status.type)-o(b.status.type)||(a.startTimestamp-b.startTimestamp);});
   const r={events:deduped, error:null};
   _espnCache=r; _espnCacheTs=Date.now();
+  _espnLastGood=deduped; _espnLastGoodTs=Date.now();
   return r;
 }
 
@@ -678,6 +695,7 @@ function renderChampionnatNations(journees){
 }
 
 let _espnCache = null, _espnCacheTs = 0;
+let _espnLastGood = null, _espnLastGoodTs = 0;
 let _frSocCache = null, _frSocCacheTs = 0;
 let _rugbyMainHtml = '', _rugbyU20Html = '', _rugbyDataTs = 0;
 let _rugbySubMode = localStorage.getItem('rugbySubMode') || 'main';
@@ -746,7 +764,10 @@ async function loadRugbyLive(opts={}){
   let mainHtml = '';
   const champHtml = renderChampionnatNations(champNations);
   if (sofa.error) mainHtml += `<div class="rl-section rl-live-section"><div class="rl-sh">📡 Scores live</div><div class="rl-loading">⚠️ ${sofa.error}</div></div>`;
-  else if (sofa.events.length || champHtml) mainHtml += renderLiveScores(sofa.events, champHtml);
+  else if (sofa.events.length || champHtml){
+    if (sofa.stale) mainHtml += `<div class="rl-loading">⚠️ Scores non actualisés (connexion instable)</div>`;
+    mainHtml += renderLiveScores(sofa.events, champHtml);
+  }
   if (r1){
     const tbls = parseWikitables(r1?.parse?.text?.['*']||'');
     if (tbls[0]) mainHtml += renderRLStandings(tbls[0],'Classement Top 14',14,6,2);
