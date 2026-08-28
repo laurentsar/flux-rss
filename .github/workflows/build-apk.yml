@@ -36,10 +36,12 @@ jobs:
       - name: Install JS deps
         run: npm install --no-audit --no-fund
 
-      - name: Sync APP_VERSION in app.js
+      - name: Sync APP_VERSION in app.js and index.html
         run: |
           VERSION=$(grep -oP 'versionName\s+"\K[^"]+' android/app/build.gradle)
           sed -i "s/const APP_VERSION = '[^']*'/const APP_VERSION = '$VERSION'/" www/app.js
+          sed -i "s/window.APP_VERSION='[^']*'/window.APP_VERSION='$VERSION'/" www/index.html
+          echo "APP_VERSION → $VERSION"
           echo "APP_VERSION → $VERSION"
 
       - name: Sync Capacitor (Android)
