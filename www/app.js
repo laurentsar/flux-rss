@@ -208,13 +208,17 @@ async function viaProxy(url, asJson=false){
 async function fetchJson(url){
   const BROWSER_UA = 'Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36';
   if (isNative && window.Capacitor.Plugins && window.Capacitor.Plugins.CapacitorHttp){
-    const r = await window.Capacitor.Plugins.CapacitorHttp.get({
-      url, headers:{'User-Agent':BROWSER_UA,'Accept':'application/json, */*'},
-      responseType:'text', connectTimeout:8000, readTimeout:10000,
-    });
-    if (r.status && r.status >= 400) throw new Error('HTTP '+r.status);
-    const text = typeof r.data === 'string' ? r.data : JSON.stringify(r.data);
-    return JSON.parse(text);
+    try{
+      const r = await window.Capacitor.Plugins.CapacitorHttp.get({
+        url, headers:{'User-Agent':BROWSER_UA,'Accept':'application/json, */*'},
+        responseType:'text', connectTimeout:8000, readTimeout:10000,
+      });
+      if (r.status && r.status >= 400) throw new Error('HTTP '+r.status);
+      const text = typeof r.data === 'string' ? r.data : JSON.stringify(r.data);
+      return JSON.parse(text);
+    }catch(e){
+      return await viaProxy(url, true);
+    }
   }
   try{
     const r = await fetchWithTimeout(url, {headers:{'Accept':'application/json'}}, 10000);
