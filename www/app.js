@@ -389,7 +389,8 @@ async function fetchSportsEvents(){
   if (_espnCache && Date.now()-_espnCacheTs < 3*60*1000) return _espnCache;
   // ESPN league IDs (confirmed via API exploration):
   // 270559 = French Top 14 | 180659 = Six Nations | 271937 = Champions Cup | 289688 = Autumn Nations
-  const ESPN_IDS = ['270559','180659','271937','289688','17567'];
+  // 17567 = Nations Championship | 289234 = International Test Match (amicaux internationaux)
+  const ESPN_IDS = ['270559','180659','271937','289688','17567','289234'];
   const ESPN_BASE = 'https://site.api.espn.com/apis/site/v2/sports/rugby';
 
   // Club IDs (Top 14, Champions Cup) vs international IDs
