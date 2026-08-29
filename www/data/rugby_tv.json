@@ -1,126 +1,8 @@
 {
- "generated": "2026-08-28T20:15:15+02:00",
+ "generated": "2026-08-29T08:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 63,
+ "count": 68,
  "programmes": [
-  {
-   "title": "In Extenso Supersevens",
-   "date": "2026-08-28",
-   "time": "20:38",
-   "desc": "L'étape de Pau de l'In Extenso Supersevens se déroule les 28 et 29 août 2026 au Stade du Hameau. La phase de poules se déroule lors de la pr",
-   "chaine": [
-    "Canal+ Live",
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à 7 : In Extenso Supersevens",
-   "date": "2026-08-28",
-   "time": "20:38",
-   "desc": "En Direct.",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Avant-match Pro D2",
-   "date": "2026-08-28",
-   "time": "20:50",
-   "desc": "Les ultimes informations avant le match de Pro D2, les compositions des équipes et les enjeux de la rencontre.",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Brive / Valence-Romans",
-   "date": "2026-08-28",
-   "time": "21:00",
-   "desc": "Le CA Brive accueille le Valence Romans Drôme Rugby, au stade Amédée-Domenech, pour le compte de la première journée de la saison 2026/2027 ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-08-28",
-   "time": "22:30",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Penrith Panthers / Canterbury-Bankstown Bulldogs",
-   "date": "2026-08-28",
-   "time": "22:30",
-   "desc": "Rugby à XIII",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Après-match Pro D2",
-   "date": "2026-08-28",
-   "time": "22:52",
-   "desc": "Suite à la rencontre de Pro D2, le magazine passe en revue les dernières actualités, les réactions des joueurs et des coachs et propose les ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à 7 : In Extenso Supersevens",
-   "date": "2026-08-29",
-   "time": "01:28",
-   "desc": "Rugby à 7",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "In Extenso Supersevens",
-   "date": "2026-08-29",
-   "time": "01:34",
-   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-08-29",
@@ -137,7 +19,7 @@
   {
    "title": "Provence Rugby / Agen",
    "date": "2026-08-29",
-   "time": "09:27",
+   "time": "09:26",
    "desc": "Provence Rugby, malheureux face au RC Vannes (14-18), lors de la finale de Pro D2, le 6 juin dernier au stade Ernest-Wallon à Toulouse, puis",
    "chaine": [
     "Canal+ Sport"
@@ -304,12 +186,12 @@
    "approx": false
   },
   {
-   "title": "Afrique du Sud / Nouvelle-Zélande",
+   "title": "In Extenso Supersevens",
    "date": "2026-08-29",
    "time": "17:00",
-   "desc": "Une semaine après le premier test-match disputé à Ellis Park, l'Afrique du Sud et la Nouvelle-Zélande se retrouvent au DHL Stadium du Cap po",
+   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
    "chaine": [
-    "Canal+"
+    "Canal+ Sport"
    ],
    "cats": [
     "rugby"
@@ -317,12 +199,12 @@
    "approx": false
   },
   {
-   "title": "In Extenso Supersevens",
+   "title": "Afrique du Sud / Nouvelle-Zélande",
    "date": "2026-08-29",
-   "time": "17:01",
-   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
+   "time": "17:00",
+   "desc": "Une semaine après le premier test-match disputé à Ellis Park, l'Afrique du Sud et la Nouvelle-Zélande se retrouvent au DHL Stadium du Cap po",
    "chaine": [
-    "Canal+ Sport"
+    "Canal+"
    ],
    "cats": [
     "rugby"
@@ -384,11 +266,23 @@
   {
    "title": "In Extenso Supersevens",
    "date": "2026-08-29",
+   "time": "18:57",
+   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "In Extenso Supersevens",
+   "date": "2026-08-29",
    "time": "18:58",
    "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
    "chaine": [
-    "Canal+ Live",
-    "Canal+ Sport"
+    "Canal+ Live"
    ],
    "cats": [
     "rugby"
@@ -682,10 +576,10 @@
    "approx": false
   },
   {
-   "title": "In Extenso Supersevens",
+   "title": "Rugby à 7 : In Extenso Supersevens",
    "date": "2026-08-30",
    "time": "23:10",
-   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
+   "desc": "Rugby à 7",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -695,10 +589,10 @@
    "approx": false
   },
   {
-   "title": "Rugby à 7 : In Extenso Supersevens",
+   "title": "In Extenso Supersevens",
    "date": "2026-08-30",
-   "time": "23:10",
-   "desc": "Rugby à 7",
+   "time": "23:13",
+   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -734,10 +628,49 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-08-31",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Argentine / Australie",
+   "date": "2026-08-31",
+   "time": "09:13",
+   "desc": "C'est dans le stade Estadio 23 de Agosto, situé à San Salvador de Jujuy, que les Pumas argentins accueillent les Wallabies australiens pour ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Argentine / Australie",
    "date": "2026-08-31",
    "time": "09:24",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Afrique du Sud / Nouvelle-Zélande",
+   "date": "2026-08-31",
+   "time": "10:54",
+   "desc": "Une semaine après le premier test-match disputé à Ellis Park, l'Afrique du Sud et la Nouvelle-Zélande se retrouvent au DHL Stadium du Cap po",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -762,6 +695,19 @@
   {
    "title": "Canal Rugby Manager",
    "date": "2026-08-31",
+   "time": "12:39",
+   "desc": "Une collection innovante centrée sur le décryptage tactique dans le rugby qui donne les clés des méthodes utilisées par les plus grands coac",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Manager",
+   "date": "2026-08-31",
    "time": "12:49",
    "desc": "Magazine sportif",
    "chaine": [
@@ -775,8 +721,34 @@
   {
    "title": "Soyaux-Angoulême / Colomiers",
    "date": "2026-08-31",
+   "time": "17:08",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soyaux-Angoulême / Colomiers",
+   "date": "2026-08-31",
    "time": "17:10",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Béziers / Oyonnax",
+   "date": "2026-08-31",
+   "time": "18:51",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -802,7 +774,7 @@
    "title": "Fractionné Rugby",
    "date": "2026-08-31",
    "time": "20:36",
-   "desc": "Magazine sportif",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -815,7 +787,98 @@
    "title": "Etape de Pau. Les meilleurs moments",
    "date": "2026-08-31",
    "time": "21:00",
+   "desc": "Retour sur les meilleurs moments de l'étape de Pau de l'In Extenso Supersevens. Pendant deux jours, le Stade du Hameau a accueilli les forma",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Etape de Pau. Les meilleurs moments",
+   "date": "2026-09-01",
+   "time": "01:00",
+   "desc": "Retour sur les meilleurs moments de l'étape de Pau de l'In Extenso Supersevens. Pendant deux jours, le Stade du Hameau a accueilli les forma",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Etape de Pau. Les meilleurs moments",
+   "date": "2026-09-01",
+   "time": "07:26",
    "desc": "Rugby à 7",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Dax / Narbonne",
+   "date": "2026-09-01",
+   "time": "09:27",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Grenoble / Aurillac",
+   "date": "2026-09-01",
+   "time": "11:10",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Nevers / Montauban",
+   "date": "2026-09-01",
+   "time": "18:51",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-09-01",
+   "time": "20:38",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Afrique du Sud / Nouvelle-Zélande",
+   "date": "2026-09-01",
+   "time": "21:00",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
