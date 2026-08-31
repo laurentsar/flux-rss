@@ -1,86 +1,8 @@
 {
- "generated": "2026-08-30T20:15:07+02:00",
+ "generated": "2026-08-31T08:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 38,
+ "count": 32,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-08-30",
-   "time": "22:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Parramatta Eels / Cronulla-Sutherland Sharks",
-   "date": "2026-08-30",
-   "time": "22:00",
-   "desc": "Rugby à XIII",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à 7 : In Extenso Supersevens",
-   "date": "2026-08-30",
-   "time": "23:10",
-   "desc": "Rugby à 7",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "In Extenso Supersevens",
-   "date": "2026-08-30",
-   "time": "23:13",
-   "desc": "Découvrez le premier championnat professionnel de rugby à 7 en France. Créée par la Ligue Nationale de Rugby en 2019, cette compétition orig",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Argentine / Australie",
-   "date": "2026-08-31",
-   "time": "00:00",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Argentine / Australie",
-   "date": "2026-08-31",
-   "time": "00:01",
-   "desc": "C'est dans le stade Estadio 23 de Agosto, situé à San Salvador de Jujuy, que les Pumas argentins accueillent les Wallabies australiens pour ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-08-31",
