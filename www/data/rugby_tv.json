@@ -1,229 +1,8 @@
 {
- "generated": "2026-09-01T20:15:03+02:00",
+ "generated": "2026-09-02T20:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
  "count": 36,
  "programmes": [
-  {
-   "title": "Nevers / Montauban",
-   "date": "2026-09-01",
-   "time": "18:47",
-   "desc": "Cette nouvelle saison de PRO D2 s'annonce intense avec seize clubs en lice pour décrocher le titre et viser la montée en Top 14, avec des af",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Nevers / Montauban",
-   "date": "2026-09-01",
-   "time": "18:51",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-09-01",
-   "time": "19:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-09-01",
-   "time": "20:35",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-09-01",
-   "time": "20:38",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Afrique du Sud / Nouvelle-Zélande",
-   "date": "2026-09-01",
-   "time": "21:00",
-   "desc": "Une semaine après le premier test-match disputé à Ellis Park, l'Afrique du Sud et la Nouvelle-Zélande se retrouvent au DHL Stadium du Cap po",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Brive / Valence-Romans",
-   "date": "2026-09-01",
-   "time": "22:38",
-   "desc": "Le CA Brive accueille le Valence Romans Drôme Rugby, au stade Amédée-Domenech, pour le compte de la première journée de la saison 2026/2027 ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Brive / Valence-Romans",
-   "date": "2026-09-01",
-   "time": "22:41",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-09-02",
-   "time": "00:15",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Argentine / Australie",
-   "date": "2026-09-02",
-   "time": "07:27",
-   "desc": "C'est dans le stade Estadio 23 de Agosto, situé à San Salvador de Jujuy, que les Pumas argentins accueillent les Wallabies australiens pour ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-09-02",
-   "time": "08:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Afrique du Sud / Nouvelle-Zélande",
-   "date": "2026-09-02",
-   "time": "09:10",
-   "desc": "Une semaine après le premier test-match disputé à Ellis Park, l'Afrique du Sud et la Nouvelle-Zélande se retrouvent au DHL Stadium du Cap po",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Biarritz / Nice",
-   "date": "2026-09-02",
-   "time": "10:52",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Argentine / Australie",
-   "date": "2026-09-02",
-   "time": "14:09",
-   "desc": "C'est dans le stade Estadio 23 de Agosto, situé à San Salvador de Jujuy, que les Pumas argentins accueillent les Wallabies australiens pour ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Afrique du Sud / Nouvelle-Zélande",
-   "date": "2026-09-02",
-   "time": "15:51",
-   "desc": "Une semaine après le premier test-match disputé à Ellis Park, l'Afrique du Sud et la Nouvelle-Zélande se retrouvent au DHL Stadium du Cap po",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-09-02",
-   "time": "17:33",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Etape de Pau. Les meilleurs moments",
-   "date": "2026-09-02",
-   "time": "17:54",
-   "desc": "Retour sur les meilleurs moments de l'étape de Pau de l'In Extenso Supersevens. Pendant deux jours, le Stade du Hameau a accueilli les forma",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Histoire de champions rugby",
    "date": "2026-09-02",
@@ -371,7 +150,7 @@
    "title": "Colomiers / Provence Rugby",
    "date": "2026-09-04",
    "time": "07:28",
-   "desc": "Rugby",
+   "desc": "Finaliste malheureux la saison dernière, battu par Vannes, après avoir terminé 3e de la phase régulière de Pro D2, Provence Rugby fait parti",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -394,10 +173,49 @@
    "approx": false
   },
   {
+   "title": "Etape de Pau. Les meilleurs moments",
+   "date": "2026-09-04",
+   "time": "10:00",
+   "desc": "Retour sur les meilleurs moments de l'étape de Pau de l'In Extenso Supersevens. Pendant deux jours, le Stade du Hameau a accueilli les forma",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-09-04",
+   "time": "10:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-09-04",
+   "time": "12:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Colomiers / Provence Rugby",
    "date": "2026-09-04",
    "time": "17:10",
-   "desc": "Rugby",
+   "desc": "Finaliste malheureux la saison dernière, battu par Vannes, après avoir terminé 3e de la phase régulière de Pro D2, Provence Rugby fait parti",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -410,7 +228,7 @@
    "title": "Soir de rugby avant-match",
    "date": "2026-09-04",
    "time": "18:50",
-   "desc": "En Direct.",
+   "desc": "Soir de rugby avant-match présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'ambia",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -423,9 +241,74 @@
    "title": "Montauban / Grenoble",
    "date": "2026-09-04",
    "time": "19:00",
-   "desc": "En Direct.",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Nice / Béziers",
+   "date": "2026-09-04",
+   "time": "19:26",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Oyonnax / Biarritz",
+   "date": "2026-09-04",
+   "time": "19:26",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Narbonne / Nevers",
+   "date": "2026-09-04",
+   "time": "19:26",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Aurillac / Dax",
+   "date": "2026-09-04",
+   "time": "19:26",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Valence-Romans / Soyaux-Angoulême",
+   "date": "2026-09-04",
+   "time": "19:26",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live"
    ],
    "cats": [
     "rugby"
@@ -436,7 +319,7 @@
    "title": "Soir de rugby avant-match",
    "date": "2026-09-04",
    "time": "20:50",
-   "desc": "En Direct.",
+   "desc": "Soir de rugby avant-match présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'ambia",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -449,9 +332,22 @@
    "title": "Agen / Brive",
    "date": "2026-09-04",
    "time": "21:00",
-   "desc": "En Direct.",
+   "desc": "La 2e journée de Pro D2 propose déjà un duel entre deux équipes qui se sont suivies au classement la saison dernière. Sixième et qualifié po",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-09-04",
+   "time": "21:45",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -462,9 +358,113 @@
    "title": "Soir de rugby",
    "date": "2026-09-04",
    "time": "22:51",
+   "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Agen / Brive",
+   "date": "2026-09-05",
+   "time": "10:32",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Cronulla-Sutherland Sharks / Melbourne Storm",
+   "date": "2026-09-05",
+   "time": "11:30",
+   "desc": "En Direct.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby League: Super League Live: Wakefield v Warrington",
+   "date": "2026-09-05",
+   "time": "15:45",
+   "desc": "En Direct.",
+   "chaine": [
+    "BBC2"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Afrique du Sud / Nouvelle-Zélande",
+   "date": "2026-09-05",
+   "time": "17:00",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Castres / Vannes",
+   "date": "2026-09-05",
+   "time": "18:50",
    "desc": "En Direct.",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Multiplex",
+   "date": "2026-09-05",
+   "time": "19:05",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Argentine / Australie",
+   "date": "2026-09-05",
+   "time": "20:55",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bordeaux-Bègles / Racing 92",
+   "date": "2026-09-05",
+   "time": "21:15",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
    ],
    "cats": [
     "rugby"
