@@ -1,34 +1,8 @@
 {
- "generated": "2026-09-02T20:15:05+02:00",
+ "generated": "2026-09-03T08:15:06+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 36,
+ "count": 61,
  "programmes": [
-  {
-   "title": "Histoire de champions rugby",
-   "date": "2026-09-02",
-   "time": "19:30",
-   "desc": "Histoire de champions rugby revisite les grandes figures et les moments marquants du rugby, en retraçant les parcours, exploits et épisodes ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Provence Rugby / Agen",
-   "date": "2026-09-02",
-   "time": "23:28",
-   "desc": "Provence Rugby, malheureux face au RC Vannes (14-18), lors de la finale de Pro D2, le 6 juin dernier au stade Ernest-Wallon à Toulouse, puis",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Etape de Pau. Les meilleurs moments",
    "date": "2026-09-03",
@@ -59,6 +33,19 @@
    "title": "Afrique du Sud / Nouvelle-Zélande",
    "date": "2026-09-03",
    "time": "16:49",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Afrique du Sud / Nouvelle-Zélande",
+   "date": "2026-09-03",
+   "time": "16:50",
    "desc": "Une semaine après le premier test-match disputé à Ellis Park, l'Afrique du Sud et la Nouvelle-Zélande se retrouvent au DHL Stadium du Cap po",
    "chaine": [
     "Canal+ Sport"
@@ -85,6 +72,19 @@
    "title": "Brive / Valence-Romans",
    "date": "2026-09-03",
    "time": "18:51",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Brive / Valence-Romans",
+   "date": "2026-09-03",
+   "time": "18:52",
    "desc": "Le CA Brive accueille le Valence Romans Drôme Rugby, au stade Amédée-Domenech, pour le compte de la première journée de la saison 2026/2027 ",
    "chaine": [
     "Canal+ Sport"
@@ -97,7 +97,7 @@
   {
    "title": "Après-match Pro D2",
    "date": "2026-09-03",
-   "time": "20:34",
+   "time": "20:35",
    "desc": "Suite à la rencontre de Pro D2, le magazine passe en revue les dernières actualités, les réactions des joueurs et des coachs et propose les ",
    "chaine": [
     "Canal+ Sport"
@@ -136,7 +136,7 @@
   {
    "title": "Après-match Pro D2",
    "date": "2026-09-03",
-   "time": "22:50",
+   "time": "22:52",
    "desc": "Suite à la rencontre de Pro D2, le magazine passe en revue les dernières actualités, les réactions des joueurs et des coachs et propose les ",
    "chaine": [
     "Canal+ Sport"
@@ -368,12 +368,51 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-09-05",
+   "time": "07:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-09-05",
+   "time": "09:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Agen / Brive",
    "date": "2026-09-05",
    "time": "10:32",
-   "desc": "Rugby",
+   "desc": "La 2e journée de Pro D2 propose déjà un duel entre deux équipes qui se sont suivies au classement la saison dernière. Sixième et qualifié po",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-09-05",
+   "time": "11:30",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -394,7 +433,46 @@
    "approx": false
   },
   {
-   "title": "Rugby League: Super League Live: Wakefield v Warrington",
+   "title": "Rugby magazine Occitanie",
+   "date": "2026-09-05",
+   "time": "12:37",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 3"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby magazine Nouvelle Aquitaine",
+   "date": "2026-09-05",
+   "time": "12:37",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 3"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby magazine Nouvelle Aquitaine",
+   "date": "2026-09-05",
+   "time": "12:38",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 3"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby League: Super League",
    "date": "2026-09-05",
    "time": "15:45",
    "desc": "En Direct.",
@@ -410,7 +488,7 @@
    "title": "Afrique du Sud / Nouvelle-Zélande",
    "date": "2026-09-05",
    "time": "17:00",
-   "desc": "En Direct.",
+   "desc": "Le 3e test-match entre l'Afrique du Sud et la Nouvelle-Zélande se déroule au FNB Stadium de Johannesburg. Il s'inscrit dans le cadre de la t",
    "chaine": [
     "Canal+"
    ],
@@ -423,9 +501,88 @@
    "title": "Castres / Vannes",
    "date": "2026-09-05",
    "time": "18:50",
-   "desc": "En Direct.",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "chaine": [
+    "Canal+ Live",
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bayonne / Toulon",
+   "date": "2026-09-05",
+   "time": "18:55",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Lyon / ASM Clermont",
+   "date": "2026-09-05",
+   "time": "18:55",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Stade Français Paris / Perpignan",
+   "date": "2026-09-05",
+   "time": "18:55",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Montpellier / Pau",
+   "date": "2026-09-05",
+   "time": "18:55",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Castres / Vannes",
+   "date": "2026-09-05",
+   "time": "18:55",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Avant-match Top 14",
+   "date": "2026-09-05",
+   "time": "19:01",
+   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
+   "chaine": [
+    "Canal+"
    ],
    "cats": [
     "rugby"
@@ -436,9 +593,22 @@
    "title": "Multiplex",
    "date": "2026-09-05",
    "time": "19:05",
-   "desc": "En Direct.",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
    "chaine": [
     "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-09-05",
+   "time": "20:45",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -459,9 +629,165 @@
    "approx": false
   },
   {
+   "title": "Argentine / Australie",
+   "date": "2026-09-05",
+   "time": "21:02",
+   "desc": "Après une première confrontation le 29 août dernier, Argentins et Australiens remettent le couvert dans cette 2e opposition amicale mais for",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Avant-match Top 14",
+   "date": "2026-09-05",
+   "time": "21:09",
+   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Bordeaux-Bègles / Racing 92",
    "date": "2026-09-05",
    "time": "21:15",
+   "desc": "L'Union Bordeaux-Bègles de Yannick Bru peut espérer s'imposer sur sa pelouse dès ce premier match de Top 14 de la nouvelle saison 2026/2027.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-09-05",
+   "time": "22:45",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club - 1re édition",
+   "date": "2026-09-05",
+   "time": "23:12",
+   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages inside et des interviews de personnalités du rugby afin de décrypter les enjeu",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-09-06",
+   "time": "12:25",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Currie Cup",
+   "date": "2026-09-06",
+   "time": "12:39",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bayonne / Toulon",
+   "date": "2026-09-06",
+   "time": "14:21",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Montpellier / Pau",
+   "date": "2026-09-06",
+   "time": "16:05",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bordeaux-Bègles / Racing 92",
+   "date": "2026-09-06",
+   "time": "17:47",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club",
+   "date": "2026-09-06",
+   "time": "20:25",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "La Rochelle / Toulouse",
+   "date": "2026-09-06",
+   "time": "21:05",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-09-06",
+   "time": "23:02",
    "desc": "En Direct.",
    "chaine": [
     "Canal+"
