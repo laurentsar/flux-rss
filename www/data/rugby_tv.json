@@ -1,60 +1,8 @@
 {
- "generated": "2026-09-03T08:15:06+02:00",
+ "generated": "2026-09-03T20:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 61,
+ "count": 57,
  "programmes": [
-  {
-   "title": "Etape de Pau. Les meilleurs moments",
-   "date": "2026-09-03",
-   "time": "08:00",
-   "desc": "Retour sur les meilleurs moments de l'étape de Pau de l'In Extenso Supersevens. Pendant deux jours, le Stade du Hameau a accueilli les forma",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-09-03",
-   "time": "08:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Afrique du Sud / Nouvelle-Zélande",
-   "date": "2026-09-03",
-   "time": "16:49",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Afrique du Sud / Nouvelle-Zélande",
-   "date": "2026-09-03",
-   "time": "16:50",
-   "desc": "Une semaine après le premier test-match disputé à Ellis Park, l'Afrique du Sud et la Nouvelle-Zélande se retrouvent au DHL Stadium du Cap po",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Fractionné Rugby",
    "date": "2026-09-03",
