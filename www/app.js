@@ -332,7 +332,13 @@ function parseWikitables(html, selector='table.wikitable'){
     const rows = [];
     tbl.querySelectorAll('tr').forEach(tr => {
       const cells = [];
-      tr.querySelectorAll('td,th').forEach(td => cells.push(td.textContent.replace(/\s+/g,' ').trim()));
+      tr.querySelectorAll('td,th').forEach(td => {
+        let txt = td.textContent.replace(/\s+/g,' ').trim();
+        // Modèle wikitext parfois cassé (match pas encore joué) : la cellule
+        // contient littéralement l'attribut style au lieu d'être vide.
+        if (/^style\s*=/.test(txt)) txt = '';
+        cells.push(txt);
+      });
       if (cells.length) rows.push(cells);
     });
     if (rows.length > 1) tables.push(rows);
@@ -502,7 +508,9 @@ function teamBadge(name){
 /* --- Pro D2 : Brive & Colomiers --- */
 const PRO_D2_TEAMS = ['Brive','Colomiers'];
 async function loadProD2Teams(season){
-  const page = `Pro D2 ${season}`;
+  // Titre canonique de l'article (le raccourci "Pro D2 {season}" est une
+  // redirection créée après coup : absente en tout début de saison).
+  const page = `Championnat de France de rugby à XV de 2e division ${season}`;
   try{
     const sectsData = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
     const sects = sectsData?.parse?.sections||[];
