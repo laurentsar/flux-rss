@@ -1,78 +1,13 @@
 {
- "generated": "2026-09-04T08:15:08+02:00",
+ "generated": "2026-09-04T20:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 50,
+ "count": 70,
  "programmes": [
   {
-   "title": "Colomiers / Provence Rugby",
+   "title": "Soir de rugby avant-match",
    "date": "2026-09-04",
-   "time": "07:28",
-   "desc": "Finaliste malheureux la saison dernière, battu par Vannes, après avoir terminé 3e de la phase régulière de Pro D2, Provence Rugby fait parti",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Etape de Pau. Les meilleurs moments",
-   "date": "2026-09-04",
-   "time": "09:58",
-   "desc": "Rugby à 7",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Etape de Pau. Les meilleurs moments",
-   "date": "2026-09-04",
-   "time": "10:00",
-   "desc": "Retour sur les meilleurs moments de l'étape de Pau de l'In Extenso Supersevens. Pendant deux jours, le Stade du Hameau a accueilli les forma",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-09-04",
-   "time": "10:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-09-04",
-   "time": "12:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Colomiers / Provence Rugby",
-   "date": "2026-09-04",
-   "time": "17:10",
-   "desc": "Finaliste malheureux la saison dernière, battu par Vannes, après avoir terminé 3e de la phase régulière de Pro D2, Provence Rugby fait parti",
+   "time": "18:50",
+   "desc": "En Direct.",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -84,7 +19,7 @@
   {
    "title": "Soir de rugby avant-match",
    "date": "2026-09-04",
-   "time": "18:50",
+   "time": "18:51",
    "desc": "Soir de rugby avant-match présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'ambia",
    "chaine": [
     "Canal+ Sport"
@@ -176,6 +111,19 @@
    "title": "Soir de rugby avant-match",
    "date": "2026-09-04",
    "time": "20:50",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby avant-match",
+   "date": "2026-09-04",
+   "time": "20:51",
    "desc": "Soir de rugby avant-match présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'ambia",
    "chaine": [
     "Canal+ Sport"
@@ -215,6 +163,19 @@
    "title": "Soir de rugby",
    "date": "2026-09-04",
    "time": "22:51",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby",
+   "date": "2026-09-04",
+   "time": "22:52",
    "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
    "chaine": [
     "Canal+ Sport"
@@ -253,8 +214,21 @@
   {
    "title": "Agen / Brive",
    "date": "2026-09-05",
-   "time": "10:32",
+   "time": "10:30",
    "desc": "La 2e journée de Pro D2 propose déjà un duel entre deux équipes qui se sont suivies au classement la saison dernière. Sixième et qualifié po",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Agen / Brive",
+   "date": "2026-09-05",
+   "time": "10:32",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -486,19 +460,6 @@
    "approx": false
   },
   {
-   "title": "Argentine / Australie",
-   "date": "2026-09-05",
-   "time": "21:02",
-   "desc": "Après une première confrontation le 29 août dernier, Argentins et Australiens remettent le couvert dans cette 2e opposition amicale mais for",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
    "title": "Avant-match Top 14",
    "date": "2026-09-05",
    "time": "21:09",
@@ -538,6 +499,19 @@
    "approx": false
   },
   {
+   "title": "Argentine / Australie",
+   "date": "2026-09-05",
+   "time": "23:04",
+   "desc": "Après une première confrontation le 29 août dernier, Argentins et Australiens remettent le couvert dans cette 2e opposition amicale mais for",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Canal Rugby Club - 1re édition",
    "date": "2026-09-05",
    "time": "23:12",
@@ -551,10 +525,36 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-09-06",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Fractionné Rugby",
    "date": "2026-09-06",
    "time": "12:25",
    "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-09-06",
+   "time": "12:32",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -577,10 +577,49 @@
    "approx": false
   },
   {
+   "title": "Griquas / Lions",
+   "date": "2026-09-06",
+   "time": "12:55",
+   "desc": "Les Suzuki Griquas, tenants du titre et les Toyota Cheetahs ont d'ores et blanc validé leur ticket pour les phases finales. Deux places en d",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Bayonne / Toulon",
    "date": "2026-09-06",
    "time": "14:21",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Manager",
+   "date": "2026-09-06",
+   "time": "14:55",
+   "desc": "Une collection innovante centrée sur le décryptage tactique dans le rugby qui donne les clés des méthodes utilisées par les plus grands coac",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Cheetahs / Pumas",
+   "date": "2026-09-06",
+   "time": "15:25",
+   "desc": "Les Suzuki Griquas, tenants du titre et les Toyota Cheetahs ont d'ores et blanc validé leur ticket pour les phases finales. Deux places en d",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -603,12 +642,51 @@
    "approx": false
   },
   {
+   "title": "Fractionné Rugby",
+   "date": "2026-09-06",
+   "time": "17:26",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bordeaux-Bègles / Racing 92",
+   "date": "2026-09-06",
+   "time": "17:39",
+   "desc": "L'Union Bordeaux-Bègles de Yannick Bru peut espérer s'imposer sur sa pelouse dès ce premier match de Top 14 de la nouvelle saison 2026/2027.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Bordeaux-Bègles / Racing 92",
    "date": "2026-09-06",
    "time": "17:47",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-09-06",
+   "time": "19:45",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -629,10 +707,36 @@
    "approx": false
   },
   {
+   "title": "Canal Rugby Club",
+   "date": "2026-09-06",
+   "time": "20:26",
+   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Avant-match Top 14",
+   "date": "2026-09-06",
+   "time": "21:02",
+   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "La Rochelle / Toulouse",
    "date": "2026-09-06",
    "time": "21:05",
-   "desc": "En Direct.",
+   "desc": "Nouvelle saison et déjà un énorme défi pour les Maritimes de La Rochelle avec la réception du champion de France en titre, le Stade Toulousa",
    "chaine": [
     "Canal+"
    ],
@@ -645,9 +749,165 @@
    "title": "Canal Rugby Club le débrief",
    "date": "2026-09-06",
    "time": "23:02",
-   "desc": "En Direct.",
+   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
    "chaine": [
     "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "La Rochelle / Toulouse",
+   "date": "2026-09-06",
+   "time": "23:24",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "La Rochelle / Toulouse",
+   "date": "2026-09-06",
+   "time": "23:25",
+   "desc": "Nouvelle saison et déjà un énorme défi pour les Maritimes de La Rochelle avec la réception du champion de France en titre, le Stade Toulousa",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Lyon / ASM Clermont",
+   "date": "2026-09-07",
+   "time": "09:11",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bordeaux-Bègles / Racing 92",
+   "date": "2026-09-07",
+   "time": "10:54",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club - 1re édition",
+   "date": "2026-09-07",
+   "time": "12:39",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Aurillac / Dax",
+   "date": "2026-09-07",
+   "time": "13:32",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Narbonne / Nevers",
+   "date": "2026-09-07",
+   "time": "15:15",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Currie Cup",
+   "date": "2026-09-07",
+   "time": "16:58",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Stade Français Paris / Perpignan",
+   "date": "2026-09-07",
+   "time": "18:40",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club",
+   "date": "2026-09-07",
+   "time": "20:24",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "La Rochelle / Toulouse",
+   "date": "2026-09-07",
+   "time": "21:00",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-09-07",
+   "time": "22:43",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
    ],
    "cats": [
     "rugby"
