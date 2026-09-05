@@ -368,13 +368,30 @@ function renderRLStandings(rows, label, maxRows=14, topN=6, botN=2){
   </details>`;
 }
 
+// Dernière journée (index 0-based) contenant au moins un score déjà joué.
+// -1 si la saison n'a pas encore commencé.
+function lastPlayedRound(tables){
+  let idx = -1;
+  tables.forEach((rows, i)=>{
+    const played = rows.some(r=>r.length>=5 && r[2]!=='' && r[3]!=='' && !isNaN(parseInt(r[2])) && !isNaN(parseInt(r[3])));
+    if (played) idx = i;
+  });
+  return idx;
+}
+
 function renderRLResults(tables, label, count=2){
   if (!tables || !tables.length) return '';
   const total = tables.length;
-  const shown = Math.min(count, total);
-  const recent = tables.slice(Math.max(0, total - shown));
+  // Le calendrier complet de la saison est publié dès le début (journées
+  // futures encore vides) : on ancre l'affichage sur la journée en cours
+  // (dernière jouée + 1), pas sur la fin du tableau qui peut être à des
+  // mois de distance.
+  const currentIdx = Math.min(lastPlayedRound(tables) + 1, total - 1);
+  const shown = Math.min(count, currentIdx + 1);
+  const startIdx = currentIdx + 1 - shown;
+  const recent = tables.slice(startIdx, currentIdx + 1);
   const matchesHtml = recent.map((rows, ji)=>{
-    const jn = total - shown + ji + 1;
+    const jn = startIdx + ji + 1;
     const cards = rows.map(r=>{
       if (r.length < 5) return '';
       const home = r[1], hs = r[2], as_ = r[3], away = r[4];
@@ -383,7 +400,7 @@ function renderRLResults(tables, label, count=2){
     }).filter(Boolean).join('');
     return `<div class="rl-journee"><span class="rl-jlbl">Journée ${jn}</span>${cards}</div>`;
   }).join('');
-  const remaining = total - shown;
+  const remaining = startIdx;
   const moreBtn = remaining > 0
     ? `<button class="rl-more-btn">📋 +${Math.min(3,remaining)} journée${Math.min(3,remaining)>1?'s':''}</button>`
     : '';
