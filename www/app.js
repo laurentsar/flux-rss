@@ -438,20 +438,33 @@ async function fetchSportsEvents(){
     };
   }
 
-  // Fetch all ESPN league scoreboards in parallel
+  // Fetch all ESPN league scoreboards in parallel. Une ligue qui échoue sur
+  // ce cycle (ex : rafraîchissement live toutes les 20 s) ne doit pas faire
+  // disparaître ses matchs de l'écran : on retombe sur sa dernière réponse
+  // valide (< 30 min) le temps qu'elle réponde à nouveau, au lieu de traiter
+  // "cette ligue n'a rien renvoyé" comme "ces matchs n'existent plus".
   async function fetchAllEspn(){
     const results = await Promise.allSettled(
       ESPN_IDS.map(id=>fetchJson(`${ESPN_BASE}/${id}/scoreboard`).then(d=>(d.events||[]).map(e=>parseEspnEvent(e,id))))
     );
-    return results.flatMap(r=>r.status==='fulfilled'?r.value:[]);
+    const now = Date.now();
+    let usedFallback = false;
+    const events = results.flatMap((r,i)=>{
+      const id = ESPN_IDS[i];
+      if (r.status==='fulfilled'){ _espnLeagueCache[id]={events:r.value,ts:now}; return r.value; }
+      const cached = _espnLeagueCache[id];
+      if (cached && now-cached.ts < 30*60*1000){ usedFallback=true; return cached.events; }
+      return [];
+    });
+    return {events, usedFallback};
   }
 
-  let events = await fetchAllEspn();
-  // Un échec total (0 événement sur les 5 ligues) est souvent transitoire
+  let {events, usedFallback} = await fetchAllEspn();
+  // Un échec total (0 événement sur toutes les ligues) est souvent transitoire
   // (timeout réseau côté mobile) : on retente une fois avant d'abandonner.
   if (!events.length){
     await new Promise(res=>setTimeout(res,1500));
-    events = await fetchAllEspn();
+    ({events, usedFallback} = await fetchAllEspn());
   }
 
   if (!events.length){
@@ -471,7 +484,7 @@ async function fetchSportsEvents(){
     .filter(e=>!seen.has(e.id)&&seen.add(e.id))
     .filter(e=>e.status.type!=='finished' || e.startTimestamp>cutoff);
   deduped.sort((a,b)=>{const o=t=>t==='inprogress'?0:t==='finished'?1:2;return o(a.status.type)-o(b.status.type)||(a.startTimestamp-b.startTimestamp);});
-  const r={events:deduped, error:null};
+  const r={events:deduped, error:null, stale: usedFallback || undefined};
   _espnCache=r; _espnCacheTs=Date.now();
   _espnLastGood=deduped; _espnLastGoodTs=Date.now();
   return r;
@@ -726,6 +739,7 @@ function renderChampionnatNations(journees){
 
 let _espnCache = null, _espnCacheTs = 0;
 let _espnLastGood = null, _espnLastGoodTs = 0;
+let _espnLeagueCache = {}; // id ligue ESPN -> {events, ts} : dernière réponse valide de CETTE ligue
 let _frSocCache = null, _frSocCacheTs = 0;
 let _rugbyMainHtml = '', _rugbyU20Html = '', _rugbyDataTs = 0;
 let _rugbySubMode = localStorage.getItem('rugbySubMode') || 'main';
