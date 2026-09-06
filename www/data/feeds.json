@@ -516,20 +516,12 @@
       "lang": "fr",
       "feeds": [
         {
-          "name": "XV de France — direct",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=XV+de+France+rugby+direct"
+          "name": "Rugbyrama — XV de France",
+          "url": "https://www.rugbyrama.fr/xv-de-france/rss.xml"
         },
         {
-          "name": "France rugby — score en direct",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=France+rugby+score+en+direct"
-        },
-        {
-          "name": "France rugby — résultat",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=France+rugby+r%C3%A9sultat+match"
-        },
-        {
-          "name": "Test match XV de France",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=test+match+XV+de+France"
+          "name": "L'Équipe — XV de France",
+          "url": "https://dwh.lequipe.fr/api/edito/rss?path=/Rugby/XV-de-France"
         },
         {
           "name": "Rugbyrama",
