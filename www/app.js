@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.42';
+const APP_VERSION = '5.43';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -2810,6 +2810,53 @@ async function init(){
       const xvIdx = DATA.categories.findIndex(c=>c.id==='xv_direct');
       if (xvIdx > -1){ DATA.categories.splice(xvIdx,1); changed=true; }
       if (localStorage.getItem('lastCat')==='xv_direct') localStorage.setItem('lastCat','rugby');
+    }
+    // v32 : purge des requêtes Google News redondantes (même sujet interrogé
+    // plusieurs fois -> articles en double), remplacées par de vrais flux
+    // dédiés (Rugby, Tesla, IA, Football, Domotique, VR) dans DEFAULTS.
+    // Retirer un flux de DEFAULTS ne le retire jamais tout seul d'une config
+    // déjà sauvegardée (mergeNew n'ajoute que du neuf) : purge explicite.
+    if (prevVer < 32){
+      const PURGE = new Set([
+        // Rugby — retirées de DEFAULTS en v31, jamais purgées jusqu'ici
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=XV+de+France+rugby+direct',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=France+rugby+score+en+direct',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=France+rugby+r%C3%A9sultat+match',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=test+match+XV+de+France',
+        // Tesla
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Model+Y',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Model+3',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+FSD+autonomie',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Cybertruck',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Superchargeur',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+mise+%C3%A0+jour+logicielle+firmware',
+        // IA
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=intelligence%20artificielle',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=ChatGPT%20OpenAI',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=IA%20g%C3%A9n%C3%A9rative',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Claude+Anthropic+mise+%C3%A0+jour+nouveaut%C3%A9',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Gemini+Google+IA+mise+%C3%A0+jour+nouveaut%C3%A9',
+        // Football
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Toulouse+FC+TFC+football',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=%C3%A9quipe+de+France+football+%22les+bleus%22',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Ligue+1+football+France',
+        // Domotique
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Home%20Assistant%20Matter',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Home+Assistant+mise+%C3%A0+jour+release',
+        // VR
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9alit%C3%A9%20virtuelle',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Meta%20Quest',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Apple%20Vision%20Pro',
+        'https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9alit%C3%A9%20augment%C3%A9e',
+      ]);
+      DATA.categories.forEach(c=>{
+        ['feeds','feeds_en'].forEach(k=>{
+          if (!Array.isArray(c[k])) return;
+          const before = c[k].length;
+          c[k] = c[k].filter(f=> !PURGE.has(f.url));
+          if (c[k].length !== before) changed=true;
+        });
+      });
     }
     // nouveaux flux par défaut -> AJOUTÉS EN FIN de leur catégorie, en préservant TON ordre,
     // tes renommages, tes désactivations ET tes suppressions (suivi via _knownDefaultFeeds).
