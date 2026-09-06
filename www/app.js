@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.31';
+const APP_VERSION = '5.39';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -110,7 +110,8 @@ let DATA = null;
 let current = null;
 let currentTab = 'news';   // 'news' = articles · 'pods' = podcasts
 let RENDERED = [];
-let lang = localStorage.getItem('srcLang') || 'fr';
+let lang = 'fr';
+try{ lang = localStorage.getItem('srcLang') || 'fr'; }catch(e){}
 let lastUpdated = '';
 let _rlTop14Journees = [];
 let _rlTop14Shown = 2;
@@ -322,6 +323,19 @@ function rugbySeason(){
 
 function wikiUrl(page, section){
   return `https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=text&section=${section}&format=json&origin=*`;
+}
+
+// Helpers Wikipedia partagés (avec timeout, contrairement à un fetch() nu) :
+// utilisés par toutes les pages de compétition (Top 14, Pro D2, U20,
+// Championnat des nations) pour lister les sections puis lire leur contenu.
+async function fetchWikiSections(page){
+  try{
+    const d = await fetchWithTimeout(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`, {}, 10000).then(r=>r.json());
+    return d?.parse?.sections||[];
+  }catch(e){ return []; }
+}
+async function fetchWikiSection(page, idx){
+  return fetchWithTimeout(wikiUrl(page, idx), {}, 10000).then(r=>r.json());
 }
 
 function parseWikitables(html, selector='table.wikitable'){
@@ -537,16 +551,18 @@ function teamBadge(name){
 
 /* --- Pro D2 : Brive & Colomiers --- */
 const PRO_D2_TEAMS = ['Brive','Colomiers'];
+let _proD2Cache = {}; // season -> {matches, ts} — évite de rescraper Wikipedia à chaque rafraîchissement live (20s)
 async function loadProD2Teams(season){
+  const cached = _proD2Cache[season];
+  if (cached && Date.now()-cached.ts < 15*60*1000) return cached.matches;
   // Titre canonique de l'article (le raccourci "Pro D2 {season}" est une
   // redirection créée après coup : absente en tout début de saison).
   const page = `Championnat de France de rugby à XV de 2e division ${season}`;
   try{
-    const sectsData = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
-    const sects = sectsData?.parse?.sections||[];
+    const sects = await fetchWikiSections(page);
     const idx = sects.find(s=>/résultats/i.test(s.line))?.index;
-    if (!idx) return [];
-    const d = await fetch(wikiUrl(page,parseInt(idx))).then(r=>r.json());
+    if (!idx) return cached ? cached.matches : [];
+    const d = await fetchWikiSection(page, parseInt(idx));
     const tbls = parseWikitables(d?.parse?.text?.['*']||'').filter(t=>t.length>=3 && t[0].length<=6);
     const matches = [];
     tbls.forEach((rows,ji)=>{
@@ -556,8 +572,9 @@ async function loadProD2Teams(season){
           matches.push({jn:ji+1,r});
       });
     });
+    _proD2Cache[season] = {matches, ts:Date.now()};
     return matches;
-  } catch(e){ return []; }
+  } catch(e){ return cached ? cached.matches : []; }
 }
 
 function renderProD2Teams(matches){
@@ -573,21 +590,26 @@ function renderProD2Teams(matches){
 }
 
 /* --- U20 France — Six Nations des moins de 20 ans --- */
+let _u20Cache = null, _u20CacheTs = 0; // évite de rescraper Wikipedia à chaque rafraîchissement live (20s)
 async function loadU20Rugby(){
+  if (_u20Cache && Date.now()-_u20CacheTs < 15*60*1000) return _u20Cache;
   const yr = new Date().getFullYear();
   for (const y of [yr+1, yr]){
     const page = `Tournoi des Six Nations des moins de 20 ans ${y}`;
     try{
       const [r1,r2] = await Promise.allSettled([
-        fetch(wikiUrl(page,6)).then(r=>r.json()),
-        fetch(wikiUrl(page,5)).then(r=>r.json()),
+        fetchWikiSection(page,6),
+        fetchWikiSection(page,5),
       ]);
       const stHtml = r1.status==='fulfilled' ? r1.value?.parse?.text?.['*']||'' : '';
       const calHtml = r2.status==='fulfilled' ? r2.value?.parse?.text?.['*']||'' : '';
-      if (stHtml||calHtml) return {stHtml,calHtml,year:y};
+      if (stHtml||calHtml){
+        _u20Cache = {stHtml,calHtml,year:y}; _u20CacheTs = Date.now();
+        return _u20Cache;
+      }
     } catch(e){}
   }
-  return null;
+  return _u20Cache;
 }
 
 function renderU20Rugby(d){
@@ -621,29 +643,33 @@ function renderU20Rugby(d){
 }
 
 /* --- U20 France — Coupe du monde junior --- */
+let _u20WcCache = null, _u20WcCacheTs = 0; // évite de rescraper Wikipedia à chaque rafraîchissement live (20s)
 async function loadU20WorldChampionship(){
+  if (_u20WcCache && Date.now()-_u20WcCacheTs < 15*60*1000) return _u20WcCache;
   const yr = new Date().getFullYear();
   for (const y of [yr, yr-1]){
     const page = `Championnat du monde junior de rugby à XV ${y}`;
     try {
-      const sd = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
-      const sects = sd?.parse?.sections||[];
+      const sects = await fetchWikiSections(page);
       if (!sects.length) continue;
       const groupIdxs = sects.filter(s=>/^groupe\b/i.test(s.line)).map(s=>+s.index);
       const finaleIdxs = sects.filter(s=>/demi.finale|troisième.place|3e place|finale\b|classement.final/i.test(s.line)).map(s=>+s.index);
       if (!groupIdxs.length && !finaleIdxs.length) continue;
       const allIdxs = [...new Set([...groupIdxs,...finaleIdxs])];
       const fetched = await Promise.allSettled(
-        allIdxs.map(idx=>fetch(wikiUrl(page,idx)).then(r=>r.json()).then(d=>({idx,html:d?.parse?.text?.['*']||''})))
+        allIdxs.map(idx=>fetchWikiSection(page,idx).then(d=>({idx,html:d?.parse?.text?.['*']||''})))
       );
       const byIdx = {};
       fetched.filter(r=>r.status==='fulfilled').forEach(r=>{byIdx[r.value.idx]=r.value.html;});
       const frGroupHtml = groupIdxs.map(i=>byIdx[i]||'').find(h=>/france/i.test(h))||'';
       const knockoutHtml = finaleIdxs.map(i=>byIdx[i]||'').join('');
-      if (frGroupHtml||knockoutHtml) return {frGroupHtml,knockoutHtml,year:y};
+      if (frGroupHtml||knockoutHtml){
+        _u20WcCache = {frGroupHtml,knockoutHtml,year:y}; _u20WcCacheTs = Date.now();
+        return _u20WcCache;
+      }
     } catch(e){}
   }
-  return null;
+  return _u20WcCache;
 }
 
 function renderU20WorldChampionship(d){
@@ -690,17 +716,21 @@ function renderU20WorldChampionship(d){
 }
 
 /* --- Championnat des nations : toutes les équipes --- */
+let _champNationsCache = {}; // year -> {data, ts} — évite de rescraper Wikipedia à chaque rafraîchissement live (20s)
 async function loadChampionnatNations(year){
+  const cached = _champNationsCache[year];
+  if (cached && Date.now()-cached.ts < 15*60*1000) return cached.data;
   const page = `Championnat des nations ${year}`;
   try{
-    const sd = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
-    const sects = (sd?.parse?.sections||[]).filter(s=>/journée/i.test(s.line));
-    if (!sects.length) return null;
+    const sects = (await fetchWikiSections(page)).filter(s=>/journée/i.test(s.line));
+    if (!sects.length) return cached ? cached.data : null;
     const results = await Promise.allSettled(
-      sects.map(s=>fetch(wikiUrl(page,parseInt(s.index))).then(r=>r.json()).then(d=>({label:s.line, html:d?.parse?.text?.['*']||''})))
+      sects.map(s=>fetchWikiSection(page,parseInt(s.index)).then(d=>({label:s.line, html:d?.parse?.text?.['*']||''})))
     );
-    return results.filter(r=>r.status==='fulfilled').map(r=>r.value).filter(v=>v.html);
-  } catch(e){ return null; }
+    const data = results.filter(r=>r.status==='fulfilled').map(r=>r.value).filter(v=>v.html);
+    _champNationsCache[year] = {data, ts:Date.now()};
+    return data;
+  } catch(e){ return cached ? cached.data : null; }
 }
 
 function renderChampionnatNations(journees){
@@ -782,25 +812,31 @@ function showRugbyContent(){
 // page les a scindés, sinon la section "Résultats" globale) sur la page
 // Wikipedia de la saison — évite de dépendre de numéros de section figés.
 let _top14SectionIdxCache = {}; // page -> {classementIdx, resultatsIdx, ts}
+let _top14ContentCache = {}; // "page|idx" -> {data, ts} — contenu Classement/Résultats, rarement modifié par les contributeurs Wikipedia
+async function fetchWikiSectionCached(page, idx, ttlMs){
+  const key = page+'|'+idx;
+  const cached = _top14ContentCache[key];
+  if (cached && Date.now()-cached.ts < ttlMs) return cached.data;
+  const data = await fetchWikiSection(page, idx).catch(()=>null);
+  if (data) _top14ContentCache[key] = {data, ts:Date.now()};
+  return data || (cached ? cached.data : null);
+}
 async function resolveTop14SectionIdx(page){
   const cached = _top14SectionIdxCache[page];
   if (cached && Date.now()-cached.ts < 30*60*1000) return cached;
-  try{
-    const sd = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
-    const sects = sd?.parse?.sections||[];
-    const classement = sects.find(s=>/classement/i.test(s.line));
-    const resultats = sects.find(s=>/détails des résultats/i.test(s.line))
-                    || sects.find(s=>/^résultats$/i.test(s.line.trim()));
-    const r = {
-      classementIdx: classement ? parseInt(classement.index) : null,
-      resultatsIdx: resultats ? parseInt(resultats.index) : null,
-      ts: Date.now(),
-    };
-    _top14SectionIdxCache[page] = r;
-    return r;
-  }catch(e){
-    return {classementIdx:null, resultatsIdx:null, ts:0};
-  }
+  const sects = await fetchWikiSections(page);
+  const classement = sects.find(s=>/classement/i.test(s.line));
+  const resultats = sects.find(s=>/détails des résultats/i.test(s.line))
+                  || sects.find(s=>/^résultats$/i.test(s.line.trim()));
+  const r = {
+    classementIdx: classement ? parseInt(classement.index) : null,
+    resultatsIdx: resultats ? parseInt(resultats.index) : null,
+    ts: Date.now(),
+  };
+  // Un échec réseau/API (sections vide) ne doit pas figer un résultat négatif
+  // pendant 30 min : on ne met en cache que les résolutions qui ont abouti.
+  if (r.classementIdx || r.resultatsIdx) _top14SectionIdxCache[page] = r;
+  return r;
 }
 
 async function loadRugbyLive(opts={}){
@@ -819,16 +855,22 @@ async function loadRugbyLive(opts={}){
   // Les index de section Wikipedia ne sont pas stables : la page se
   // réorganise en cours de saison (ex. "Résultats" se scinde en un tableau
   // récapitulatif + "Détails des résultats" dès que des matchs sont joués).
-  // On les résout dynamiquement plutôt que de figer des numéros.
-  const { classementIdx, resultatsIdx } = await resolveTop14SectionIdx(top14);
-  const [r1, r2, sofa, proD2, champNations, u20, cdm] = await Promise.all([
-    classementIdx ? fetch(wikiUrl(top14,classementIdx)).then(r=>r.json()).catch(()=>null) : Promise.resolve(null),
-    resultatsIdx ? fetch(wikiUrl(top14,resultatsIdx)).then(r=>r.json()).catch(()=>null) : Promise.resolve(null),
+  // On les résout dynamiquement plutôt que de figer des numéros — en
+  // parallèle des autres appels (qui n'en dépendent pas), pas avant eux.
+  const [{ classementIdx, resultatsIdx }, sofa, proD2, champNations, u20, cdm] = await Promise.all([
+    resolveTop14SectionIdx(top14),
     fetchSportsEvents(),
     loadProD2Teams(season),
     loadChampionnatNations(currentYear),
     loadU20Rugby(),
     loadU20WorldChampionship(),
+  ]);
+  // Contenu mis en cache 15 min : ces tableaux ne sont pas mis à jour par les
+  // contributeurs Wikipedia à la minute près, inutile de les rescraper à
+  // chaque rafraîchissement live (20s) pendant un match en direct.
+  const [r1, r2] = await Promise.all([
+    classementIdx ? fetchWikiSectionCached(top14,classementIdx,15*60*1000) : Promise.resolve(null),
+    resultatsIdx ? fetchWikiSectionCached(top14,resultatsIdx,15*60*1000) : Promise.resolve(null),
   ]);
 
   _hasLiveSports = sofa.events.some(e=>e.status?.type==='inprogress');
@@ -881,7 +923,8 @@ function hideRugbyLive(){
 
 /* ---------- Changelog Live ---------- */
 let _clHtml = {};
-let _clSeen = JSON.parse(localStorage.getItem('cl_seen') || '{}');
+let _clSeen = {};
+try{ _clSeen = JSON.parse(localStorage.getItem('cl_seen') || '{}'); }catch(e){}
 function _showClNewBadge(catId){
   document.querySelector(`.chip[data-id="${catId}"]`)?.classList.add('chip-has-new');
 }
@@ -1589,7 +1632,7 @@ function renderPlacementOffers(o){
 
   const actionRows = (o.top_actions||[]).map(a=>`
     <a class="bk-row bk-link" href="${esc(a.lien)}" target="_blank" rel="noopener">
-      <span class="bk-name">${a.pays||''} ${esc(a.nom)} <span class="bk-ticker">${esc(a.ticker)}</span></span>
+      <span class="bk-name">${esc(a.pays||'')} ${esc(a.nom)} <span class="bk-ticker">${esc(a.ticker)}</span></span>
       <span class="bk-rate bk-net">${esc(a.rendement)}</span>
       <span class="bk-cap">${esc(a.dividende)}/an</span>
       <span class="bk-note">${esc(a.secteur)}${a.marche?' · '+esc(a.marche):''}</span>
@@ -1597,7 +1640,7 @@ function renderPlacementOffers(o){
 
   const brokerRows = (o.brokers||[]).map(b=>`
     <a class="bk-row bk-link" href="${esc(b.lien)}" target="_blank" rel="noopener">
-      <span class="bk-name">${b.pays||''} ${esc(b.nom)}</span>
+      <span class="bk-name">${esc(b.pays||'')} ${esc(b.nom)}</span>
       <span class="bk-rate bk-bonus">${esc(b.frais_ordre)}</span>
       <span class="bk-cap">${esc(b.garde)}</span>
       <span class="bk-note">${esc(b.atouts)}</span>
@@ -1607,7 +1650,7 @@ function renderPlacementOffers(o){
   const SHOW_AV = 7;
   const avRows = _avList.map((a,i)=>`
     <a class="bk-row bk-link bk-av-row${i>=SHOW_AV?' bk-hidden':''}" href="${esc(a.lien)}" target="_blank" rel="noopener">
-      <span class="bk-name">${a.pays||''} ${esc(a.nom)} <span class="bk-ticker">${esc(a.ticker)}</span></span>
+      <span class="bk-name">${esc(a.pays||'')} ${esc(a.nom)} <span class="bk-ticker">${esc(a.ticker)}</span></span>
       <span class="bk-cap">${esc(a.condition)}</span>
       <span class="bk-note bk-av-span">${esc(a.avantage)}</span>
     </a>`).join('');
@@ -1677,7 +1720,7 @@ async function loadPlacementLive(){
   elPlacementLive.hidden = false;
   elPlacementLive.innerHTML = renderPlacementOffers();  // fallback rapide
   let data = null;
-  try{ data=await (await fetch(BANKING_JSON_URL+'?_='+Date.now(),{cache:'no-store'})).json(); }catch(e){}
+  try{ data=await (await fetchWithTimeout(BANKING_JSON_URL+'?_='+Date.now(),{cache:'no-store'},10000)).json(); }catch(e){}
   if (!data){ try{ data=await (await fetch('data/banking.json')).json(); }catch(e){} }
   if (data) elPlacementLive.innerHTML = renderPlacementOffers(data);
 }
@@ -1777,7 +1820,8 @@ async function loadCategory(cat, {silent=false}={}){
   if (currentTab === 'radio'){ loadRadioTab(cat); return; }
 
   // cache immédiat
-  const cached = JSON.parse(localStorage.getItem(cacheKey(cat.id, currentTab)) || 'null');
+  let cached = null;
+  try{ cached = JSON.parse(localStorage.getItem(cacheKey(cat.id, currentTab)) || 'null'); }catch(e){}
   if (cached?.items) { const _c=Date.now()-15*24*3600*1000; cached.items=cached.items.filter(it=>!it.ts||it.ts>=_c); }
   const isSlowConn = slowConnection();
   if (cached && cached.items && cached.items.length){
@@ -2258,7 +2302,7 @@ let _epgRugby=null, _epgRugbyTs=0;
 async function loadRugbyEpg(){
   if (_epgRugby && Date.now()-_epgRugbyTs < 30*60*1000) return _epgRugby;
   let data=null;
-  try{ data=await (await fetch(RUGBY_EPG_URL+'?_='+Date.now(),{cache:'no-store'})).json(); }catch(e){}
+  try{ data=await (await fetchWithTimeout(RUGBY_EPG_URL+'?_='+Date.now(),{cache:'no-store'},10000)).json(); }catch(e){}
   if (!data){ try{ data=await (await fetch('data/rugby_tv.json')).json(); }catch(e){} }
   const list=(data&&data.programmes)||[];
   const floor=Date.now()-3600000;
@@ -2693,7 +2737,12 @@ async function checkForUpdate(){
 
 /* ---------- init ---------- */
 async function init(){
-  DEFAULTS = await (await fetch('data/feeds.json')).json();
+  try{
+    DEFAULTS = await (await fetch('data/feeds.json')).json();
+  }catch(e){
+    elStatus.textContent = 'Erreur de chargement de la configuration — réinstallez l\'application.';
+    return;
+  }
   const saved = localStorage.getItem('fluxConfig');
   let restoredFromBackup = false;
   if (saved){
