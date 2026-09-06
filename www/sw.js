@@ -1,6 +1,6 @@
-const CACHE = 'flux-rss-app-v5.39';
+const CACHE = 'flux-rss-app-v5.41';
 const SHELL = [
-  './', './index.html', './styles.css', './app.js', './update-check.js', './autobackup.js',
+  './', './index.html', './styles.css', './app.js', './autobackup.js',
   './data/feeds.json', './data/events.json', './data/rugby_tv.json', './manifest.webmanifest',
   './img/icon-192.png', './img/icon-512.png',
 ];
@@ -8,12 +8,13 @@ self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(()=>self.skipWaiting()));
 });
 self.addEventListener('activate', (e) => {
+  // clients.claim() déclenche 'controllerchange' dans les pages ouvertes,
+  // qui rechargent déjà elles-mêmes (voir app.js) — inutile de forcer une
+  // navigation ici en plus, ça double le rechargement.
   e.waitUntil(
     caches.keys()
       .then(ks => Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k))))
       .then(() => self.clients.claim())
-      .then(() => self.clients.matchAll({ type: 'window' }))
-      .then(clients => Promise.all(clients.map(c => { try{ return c.url && c.navigate(c.url); }catch(e){} })))
   );
 });
 self.addEventListener('fetch', (e) => {
