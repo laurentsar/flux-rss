@@ -1,5 +1,5 @@
 {
-  "version": 31,
+  "version": 32,
   "generated": "2026-07-05",
   "categories": [
     {
@@ -89,38 +89,22 @@
           "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla"
         },
         {
-          "name": "Tesla Model Y — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Model+Y"
+          "name": "Numerama — Tesla",
+          "url": "https://www.numerama.com/tag/tesla/feed/"
         },
         {
-          "name": "Tesla Model 3 — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Model+3"
-        },
-        {
-          "name": "Tesla FSD — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+FSD+autonomie"
+          "name": "Automobile Propre — Tesla",
+          "url": "https://www.automobile-propre.com/tag/tesla/feed/"
         },
         {
           "name": "Elon Musk — Google Actu",
           "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Elon+Musk"
         },
         {
-          "name": "Tesla Cybertruck — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Cybertruck"
-        },
-        {
-          "name": "Superchargeur — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+Superchargeur"
-        },
-        {
           "name": "Automobile Propre (vidéo)",
           "url": "https://www.youtube.com/feeds/videos.xml?channel_id=UCjsgbvUWf6_gYe5Fc4xpSBg",
           "pod": true,
           "kind": "video"
-        },
-        {
-          "name": "Tesla mise à jour logicielle — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Tesla+mise+%C3%A0+jour+logicielle+firmware"
         }
       ],
       "feeds_en": [
@@ -208,24 +192,20 @@
           "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=casque%20VR"
         },
         {
-          "name": "Réalité virtuelle — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9alit%C3%A9%20virtuelle"
+          "name": "Frandroid — Meta Quest",
+          "url": "https://www.frandroid.com/tag/meta-quest/feed"
         },
         {
-          "name": "Meta Quest — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Meta%20Quest"
-        },
-        {
-          "name": "Apple Vision Pro — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Apple%20Vision%20Pro"
+          "name": "Numerama — Apple Vision Pro",
+          "url": "https://www.numerama.com/tag/apple-vision-pro/feed/"
         },
         {
           "name": "PlayStation VR — Google Actu",
           "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=PlayStation%20VR"
         },
         {
-          "name": "Réalité augmentée — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=r%C3%A9alit%C3%A9%20augment%C3%A9e"
+          "name": "Numerama — Réalité augmentée",
+          "url": "https://www.numerama.com/tag/realite-augmentee/feed/"
         },
         {
           "name": "ETR — Réalité étendue (vidéo)",
@@ -411,16 +391,8 @@
           "url": "https://www.01net.com/tag/intelligence-artificielle/feed/"
         },
         {
-          "name": "Intelligence artificielle — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=intelligence%20artificielle"
-        },
-        {
-          "name": "ChatGPT — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=ChatGPT%20OpenAI"
-        },
-        {
-          "name": "IA générative — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=IA%20g%C3%A9n%C3%A9rative"
+          "name": "Numerama — ChatGPT",
+          "url": "https://www.numerama.com/tag/chatgpt/feed/"
         },
         {
           "name": "Trench Tech",
@@ -435,12 +407,12 @@
           "kind": "video"
         },
         {
-          "name": "Claude / Anthropic — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Claude+Anthropic+mise+%C3%A0+jour+nouveaut%C3%A9"
+          "name": "Numerama — Anthropic",
+          "url": "https://www.numerama.com/tag/anthropic/feed/"
         },
         {
-          "name": "Gemini / Google — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Gemini+Google+IA+mise+%C3%A0+jour+nouveaut%C3%A9"
+          "name": "Numerama — Google Gemini",
+          "url": "https://www.numerama.com/tag/google-gemini/feed/"
         }
       ],
       "feeds_en": [
@@ -637,10 +609,6 @@
           "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=objet%20connect%C3%A9"
         },
         {
-          "name": "Home Assistant — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Home%20Assistant%20Matter"
-        },
-        {
           "name": "Maison intelligente — Google Actu",
           "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=maison%20intelligente%20domotique"
         },
@@ -663,10 +631,6 @@
         {
           "name": "Domo-blog — Releases Home Assistant",
           "url": "https://www.domo-blog.fr/feed/"
-        },
-        {
-          "name": "Home Assistant mise à jour — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Home+Assistant+mise+%C3%A0+jour+release"
         }
       ],
       "feeds_en": [
@@ -1221,16 +1185,16 @@
           "url": "https://www.sofoot.com/rss/"
         },
         {
-          "name": "Toulouse FC — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Toulouse+FC+TFC+football"
+          "name": "L'Équipe — Toulouse",
+          "url": "https://dwh.lequipe.fr/api/edito/rss?path=/Football/Toulouse"
         },
         {
-          "name": "Équipe de France — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=%C3%A9quipe+de+France+football+%22les+bleus%22"
+          "name": "L'Équipe — Bleus",
+          "url": "https://dwh.lequipe.fr/api/edito/rss?path=/Football/Bleus"
         },
         {
-          "name": "Ligue 1 — Google Actu",
-          "url": "https://news.google.com/rss/search?hl=fr&gl=FR&ceid=FR:fr&q=Ligue+1+football+France"
+          "name": "L'Équipe — Ligue 1",
+          "url": "https://dwh.lequipe.fr/api/edito/rss?path=/Football/Ligue-1"
         },
         {
           "name": "L'After Foot",
