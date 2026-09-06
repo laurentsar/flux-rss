@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.39';
+const APP_VERSION = '5.41';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -1314,6 +1314,41 @@ async function fetchMatchGoals(leagueId, eventId, homeTeamId){
   } catch(e){ return []; }
 }
 
+// Normalise un événement ESPN "soccer" brut vers le format interne commun,
+// partagé par fetchToulouseMatches/fetchWorldCupMatches/fetchFranceSoccer
+// (identiques à quelques champs près avant cette extraction).
+async function normalizeEspnSoccerEvent(e, {idPrefix, defaultTournament, defaultLeagueId, extra={}}){
+  const comps=e.competitions?.[0]?.competitors||[];
+  const home=comps.find(c=>c.homeAway==='home'), away=comps.find(c=>c.homeAway==='away');
+  const state=e.competitions?.[0]?.status?.type?.state||'';
+  const detail=e.competitions?.[0]?.status?.type?.shortDetail||'';
+  const live=state==='in', fin=state==='post';
+  const d=new Date(e.date||0);
+  const sbDetails=e.competitions?.[0]?.details||[];
+  let goals=sbDetails
+    .filter(dv=>/^goal/i.test(dv.type?.text||''))
+    .map(dv=>{
+      const min=dv.clock?.displayValue||(dv.clock?.value!=null?dv.clock.value+"'":'');
+      const nm=(dv.athletesInvolved?.[0]?.displayName||'').split(' ').slice(-1)[0];
+      return {nm, min, isHome:String(dv.team?.id)===String(home?.team?.id)};
+    });
+  if (!goals.length && (live||fin))
+    goals=await fetchMatchGoals(e._lid||defaultLeagueId, e.id, home?.team?.id);
+  return {
+    id:idPrefix+e.id,
+    homeTeam:{name:home?.team?.displayName||home?.team?.name||'?'},
+    awayTeam:{name:away?.team?.displayName||away?.team?.name||'?'},
+    homeScore:{current:home?.score??''},
+    awayScore:{current:away?.score??''},
+    status:{type:live?'inprogress':fin?'finished':'notstarted', description:detail},
+    startTimestamp:d.getTime()/1000,
+    date:d.toISOString().slice(0,10),
+    tournament:{name:e.league?.name||defaultTournament, round:e.competitions?.[0]?.notes?.[0]?.headline||''},
+    goals,
+    ...extra,
+  };
+}
+
 async function fetchToulouseMatches(){
   if (_toulouseCache && Date.now()-_toulouseCacheTs<5*60*1000) return _toulouseCache;
   const LIGUE_IDS=['fra.1','uefa.europa','uefa.conference'];
@@ -1331,37 +1366,8 @@ async function fetchToulouseMatches(){
     .filter(e=>(e.competitions?.[0]?.competitors||[]).some(c=>isToulouseTeam(c)))
     .filter(e=>!seen.has(e.id)&&seen.add(e.id));
 
-  const events=await Promise.all(raw.map(async e=>{
-    const comps=e.competitions?.[0]?.competitors||[];
-    const home=comps.find(c=>c.homeAway==='home'), away=comps.find(c=>c.homeAway==='away');
-    const state=e.competitions?.[0]?.status?.type?.state||'';
-    const detail=e.competitions?.[0]?.status?.type?.shortDetail||'';
-    const live=state==='in', fin=state==='post';
-    const d=new Date(e.date||0);
-    // Essai depuis le scoreboard d'abord, sinon fetch summary
-    const sbDetails=e.competitions?.[0]?.details||[];
-    let goals=sbDetails
-      .filter(dv=>/^goal/i.test(dv.type?.text||''))
-      .map(dv=>{
-        const min=dv.clock?.displayValue||(dv.clock?.value!=null?dv.clock.value+"'":'');
-        const nm=(dv.athletesInvolved?.[0]?.displayName||'').split(' ').slice(-1)[0];
-        return {nm, min, isHome:String(dv.team?.id)===String(home?.team?.id)};
-      });
-    if (!goals.length && (live||fin))
-      goals=await fetchMatchGoals(e._lid||'fra.1', e.id, home?.team?.id);
-    return {
-      id:'espn-tou-'+e.id,
-      homeTeam:{name:home?.team?.displayName||home?.team?.name||'?'},
-      awayTeam:{name:away?.team?.displayName||away?.team?.name||'?'},
-      homeScore:{current:home?.score??''},
-      awayScore:{current:away?.score??''},
-      status:{type:live?'inprogress':fin?'finished':'notstarted', description:detail},
-      startTimestamp:d.getTime()/1000,
-      date:d.toISOString().slice(0,10),
-      tournament:{name:e.league?.name||'Football',round:e.competitions?.[0]?.notes?.[0]?.headline||''},
-      goals,
-    };
-  }));
+  const events=await Promise.all(raw.map(e=>normalizeEspnSoccerEvent(e,
+    {idPrefix:'espn-tou-', defaultTournament:'Football', defaultLeagueId:'fra.1'})));
   _toulouseCache=events; _toulouseCacheTs=Date.now();
   return events;
 }
@@ -1408,33 +1414,8 @@ async function fetchWorldCupMatches(){
   const seen=new Set();
   const raw=results.flatMap(r=>r.status==='fulfilled'?r.value:[])
     .filter(e=>!seen.has(e.id)&&seen.add(e.id));
-  const events=await Promise.all(raw.map(async e=>{
-    const comps=e.competitions?.[0]?.competitors||[];
-    const home=comps.find(c=>c.homeAway==='home'),away=comps.find(c=>c.homeAway==='away');
-    const state=e.competitions?.[0]?.status?.type?.state||'';
-    const detail=e.competitions?.[0]?.status?.type?.shortDetail||'';
-    const live=state==='in',fin=state==='post';
-    const d=new Date(e.date||0);
-    const sbDetails=e.competitions?.[0]?.details||[];
-    let goals=sbDetails.filter(dv=>/^goal/i.test(dv.type?.text||'')).map(dv=>{
-      const min=dv.clock?.displayValue||(dv.clock?.value!=null?dv.clock.value+"'":'');
-      const nm=(dv.athletesInvolved?.[0]?.displayName||'').split(' ').slice(-1)[0];
-      return {nm,min,isHome:String(dv.team?.id)===String(home?.team?.id)};
-    });
-    if (!goals.length&&(live||fin)) goals=await fetchMatchGoals(WC_ID,e.id,home?.team?.id);
-    return {
-      id:'espn-wc-'+e.id,
-      homeTeam:{name:home?.team?.displayName||home?.team?.name||'?'},
-      awayTeam:{name:away?.team?.displayName||away?.team?.name||'?'},
-      homeScore:{current:home?.score??''},
-      awayScore:{current:away?.score??''},
-      status:{type:live?'inprogress':fin?'finished':'notstarted',description:detail},
-      startTimestamp:d.getTime()/1000,
-      date:d.toISOString().slice(0,10),
-      tournament:{name:e.league?.name||'FIFA World Cup',round:e.competitions?.[0]?.notes?.[0]?.headline||''},
-      goals,
-    };
-  }));
+  const events=await Promise.all(raw.map(e=>normalizeEspnSoccerEvent(e,
+    {idPrefix:'espn-wc-', defaultTournament:'FIFA World Cup', defaultLeagueId:WC_ID})));
   _worldCupCache=events; _worldCupCacheTs=Date.now();
   return events;
 }
@@ -1986,37 +1967,8 @@ async function fetchFranceSoccer(){
   const raw=results.flatMap(r=>r.status==='fulfilled'?r.value:[])
     .filter(e=>(e.competitions?.[0]?.competitors||[]).some(c=>isFR(c)))
     .filter(e=>!seen.has(e.id)&&seen.add(e.id));
-  const events=await Promise.all(raw.map(async e=>{
-    const comps=e.competitions?.[0]?.competitors||[];
-    const home=comps.find(c=>c.homeAway==='home'),away=comps.find(c=>c.homeAway==='away');
-    const state=e.competitions?.[0]?.status?.type?.state||'';
-    const detail=e.competitions?.[0]?.status?.type?.shortDetail||'';
-    const live=state==='in',fin=state==='post';
-    const d=new Date(e.date||0);
-    const sbDetails=e.competitions?.[0]?.details||[];
-    let goals=sbDetails
-      .filter(dv=>/^goal/i.test(dv.type?.text||''))
-      .map(dv=>{
-        const min=dv.clock?.displayValue||(dv.clock?.value!=null?dv.clock.value+"'":'');
-        const nm=(dv.athletesInvolved?.[0]?.displayName||'').split(' ').slice(-1)[0];
-        return {nm,min,isHome:String(dv.team?.id)===String(home?.team?.id)};
-      });
-    if (!goals.length && (live||fin))
-      goals=await fetchMatchGoals(e._lid||SOCCER_IDS[0], e.id, home?.team?.id);
-    return {
-      id:'espn-soc-'+e.id,
-      homeTeam:{name:home?.team?.displayName||home?.team?.name||'?'},
-      awayTeam:{name:away?.team?.displayName||away?.team?.name||'?'},
-      homeScore:{current:home?.score??''},
-      awayScore:{current:away?.score??''},
-      status:{type:live?'inprogress':fin?'finished':'notstarted',description:detail},
-      startTimestamp:d.getTime()/1000,
-      date:d.toISOString().slice(0,10),
-      tournament:{name:e.league?.name||'Football',round:e.competitions?.[0]?.notes?.[0]?.headline||''},
-      sport:'football',
-      goals,
-    };
-  }));
+  const events=await Promise.all(raw.map(e=>normalizeEspnSoccerEvent(e,
+    {idPrefix:'espn-soc-', defaultTournament:'Football', defaultLeagueId:SOCCER_IDS[0], extra:{sport:'football'}})));
   _frSocCache=events; _frSocCacheTs=Date.now();
   return events;
 }
@@ -2722,10 +2674,14 @@ function showUpdateBanner(tag, apkUrl){
   });
 }
 
+const UPDATE_POLL_INTERVAL = 6*3600*1000; // évite de cogner l'API GitHub (60 req/h non-authentifiées) à chaque lancement
 async function checkForUpdate(){
   if (!isNative || slowConnection()) return;
+  const lastPoll = parseInt(localStorage.getItem('updatePollTs'),10) || 0;
+  if (Date.now() - lastPoll < UPDATE_POLL_INTERVAL) return;
   try {
     const data = await fetchJson(`https://api.github.com/repos/${GITHUB_REPO}/releases/latest`);
+    localStorage.setItem('updatePollTs', String(Date.now()));
     const tag = data.tag_name || '';
     if (!tag || !versionGt(tag, APP_VERSION)) return;
     if (localStorage.getItem('dismissedUpdate') === tag) return;
