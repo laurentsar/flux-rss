@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.41';
+const APP_VERSION = '5.42';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -1829,14 +1829,24 @@ async function loadCategory(cat, {silent=false}={}){
   // Limite la concurrence : 2 requêtes simultanées sur connexion lente, 4 sinon
   const pool = makePool(isSlowConn ? 2 : 4);
 
-  // Dédoublonne, écarte les articles de plus de 15 j, trie du plus récent.
+  // Dédoublonne (URL, puis titre normalisé — Google News ressert souvent le
+  // même article sous des liens de redirection différents selon la requête),
+  // écarte les articles de plus de 15 j, trie du plus récent.
   const prepare = (list) => {
     const seen = new Set();
+    const seenTitles = new Set();
     const cutoff = Date.now() - 15*24*3600*1000;
     return list
       .filter(it => it.link && !seen.has(it.link) && seen.add(it.link))
       .filter(it => !it.ts || it.ts >= cutoff)
       .sort((x,y) => y.ts - x.ts)
+      .filter(it => {
+        const key = slug(it.title, '');
+        if (!key) return true; // titre atypique : ne pas dédoublonner à l'aveugle
+        if (seenTitles.has(key)) return false;
+        seenTitles.add(key);
+        return true;
+      })
       .slice(0, MAX_SHOW);
   };
 
@@ -2441,8 +2451,8 @@ function selectCat(id){
 /* ---------- configuration personnalisable ---------- */
 let DEFAULTS = null;
 const clone = (o) => JSON.parse(JSON.stringify(o));
-const slug = (s) => (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
-  .replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'') || 'cat';
+const slug = (s, fallback='cat') => (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')
+  .replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'') || fallback;
 let _savePrefTimer = null;
 function saveConfig(){
   const json = JSON.stringify(DATA);
