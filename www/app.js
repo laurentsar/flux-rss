@@ -778,6 +778,31 @@ function showRugbyContent(){
   elRugbyLive.innerHTML = html || '<div class="rl-loading">Données non disponibles.</div>';
 }
 
+// Résout les index de section "Classement" et "Résultats" (détaillés si la
+// page les a scindés, sinon la section "Résultats" globale) sur la page
+// Wikipedia de la saison — évite de dépendre de numéros de section figés.
+let _top14SectionIdxCache = {}; // page -> {classementIdx, resultatsIdx, ts}
+async function resolveTop14SectionIdx(page){
+  const cached = _top14SectionIdxCache[page];
+  if (cached && Date.now()-cached.ts < 30*60*1000) return cached;
+  try{
+    const sd = await fetch(`https://fr.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(page)}&prop=sections&format=json&origin=*`).then(r=>r.json());
+    const sects = sd?.parse?.sections||[];
+    const classement = sects.find(s=>/classement/i.test(s.line));
+    const resultats = sects.find(s=>/détails des résultats/i.test(s.line))
+                    || sects.find(s=>/^résultats$/i.test(s.line.trim()));
+    const r = {
+      classementIdx: classement ? parseInt(classement.index) : null,
+      resultatsIdx: resultats ? parseInt(resultats.index) : null,
+      ts: Date.now(),
+    };
+    _top14SectionIdxCache[page] = r;
+    return r;
+  }catch(e){
+    return {classementIdx:null, resultatsIdx:null, ts:0};
+  }
+}
+
 async function loadRugbyLive(opts={}){
   if (!elRugbyLive) return;
   elRugbyLive.hidden = false;
@@ -791,9 +816,14 @@ async function loadRugbyLive(opts={}){
   const top14 = `Championnat de France de rugby à XV ${season}`;
 
   const currentYear = new Date().getFullYear();
+  // Les index de section Wikipedia ne sont pas stables : la page se
+  // réorganise en cours de saison (ex. "Résultats" se scinde en un tableau
+  // récapitulatif + "Détails des résultats" dès que des matchs sont joués).
+  // On les résout dynamiquement plutôt que de figer des numéros.
+  const { classementIdx, resultatsIdx } = await resolveTop14SectionIdx(top14);
   const [r1, r2, sofa, proD2, champNations, u20, cdm] = await Promise.all([
-    fetch(wikiUrl(top14,6)).then(r=>r.json()).catch(()=>null),
-    fetch(wikiUrl(top14,7)).then(r=>r.json()).catch(()=>null),
+    classementIdx ? fetch(wikiUrl(top14,classementIdx)).then(r=>r.json()).catch(()=>null) : Promise.resolve(null),
+    resultatsIdx ? fetch(wikiUrl(top14,resultatsIdx)).then(r=>r.json()).catch(()=>null) : Promise.resolve(null),
     fetchSportsEvents(),
     loadProD2Teams(season),
     loadChampionnatNations(currentYear),
