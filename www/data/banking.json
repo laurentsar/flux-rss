@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-31T16:52:16+02:00",
+  "generated": "2026-09-07T15:18:42+02:00",
   "livrets": [
     {
       "nom": "Livret A",
@@ -108,17 +108,24 @@
   "livrets_boostes": [
     {
       "banque": "Distingo Bank",
-      "taux": "voir site",
+      "taux": "4,50 %",
       "duree": "boosté",
       "plafond": "voir site",
       "lien": "https://www.distingo.com"
     },
     {
       "banque": "Zesto (Renault)",
-      "taux": "0,80 %",
-      "duree": "boosté",
+      "taux": "3,10 %",
+      "duree": "6 mois",
       "plafond": "voir site",
       "lien": "https://www.renaultbank.fr"
+    },
+    {
+      "banque": "Cashbee",
+      "taux": "3,00 %",
+      "duree": "2 mois",
+      "plafond": "voir site",
+      "lien": "https://www.cashbee.fr"
     }
   ],
   "top_actions": [
