@@ -1,64 +1,12 @@
 {
- "generated": "2026-09-07T20:15:06+02:00",
+ "generated": "2026-09-08T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 20,
+ "count": 22,
  "programmes": [
-  {
-   "title": "Stade Français Paris / Perpignan",
-   "date": "2026-09-07",
-   "time": "18:40",
-   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club",
-   "date": "2026-09-07",
-   "time": "20:24",
-   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "La Rochelle / Toulouse",
-   "date": "2026-09-07",
-   "time": "21:00",
-   "desc": "Nouvelle saison et déjà un énorme défi pour les Maritimes de La Rochelle avec la réception du champion de France en titre, le Stade Toulousa",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-09-07",
-   "time": "22:43",
-   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Lyon / ASM Clermont",
    "date": "2026-09-08",
-   "time": "07:17",
+   "time": "06:43",
    "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
    "chaine": [
     "Canal+ Sport"
@@ -84,7 +32,7 @@
   {
    "title": "Bordeaux-Bègles / Racing 92",
    "date": "2026-09-08",
-   "time": "08:59",
+   "time": "08:31",
    "desc": "L'Union Bordeaux-Bègles de Yannick Bru peut espérer s'imposer sur sa pelouse dès ce premier match de Top 14 de la nouvelle saison 2026/2027.",
    "chaine": [
     "Canal+ Sport"
@@ -97,7 +45,7 @@
   {
    "title": "Canal Rugby Club",
    "date": "2026-09-08",
-   "time": "10:41",
+   "time": "10:08",
    "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
    "chaine": [
     "Canal+ Sport"
@@ -110,7 +58,7 @@
   {
    "title": "La Rochelle / Toulouse",
    "date": "2026-09-08",
-   "time": "11:12",
+   "time": "10:42",
    "desc": "Nouvelle saison et déjà un énorme défi pour les Maritimes de La Rochelle avec la réception du champion de France en titre, le Stade Toulousa",
    "chaine": [
     "Canal+ Sport"
@@ -123,7 +71,7 @@
   {
    "title": "Canal Rugby Club le débrief",
    "date": "2026-09-08",
-   "time": "12:56",
+   "time": "12:25",
    "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
    "chaine": [
     "Canal+ Sport"
@@ -136,7 +84,7 @@
   {
    "title": "Nice / Béziers",
    "date": "2026-09-08",
-   "time": "13:16",
+   "time": "12:48",
    "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
@@ -257,6 +205,84 @@
    "desc": "La finale de la Challenge Cup se déroule au stade San Mamés de Bilbao, en Espagne. Le Montpellier Hérault Rugby va-t-il soulever le trophée ",
    "chaine": [
     "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-09-10",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Argentine / Australie",
+   "date": "2026-09-10",
+   "time": "12:36",
+   "desc": "Après une première confrontation le 29 août dernier, Argentins et Australiens remettent le couvert dans cette 2e opposition amicale mais for",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bayonne / Toulon",
+   "date": "2026-09-10",
+   "time": "15:17",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Avant-match Pro D2",
+   "date": "2026-09-10",
+   "time": "20:50",
+   "desc": "Les ultimes informations avant le match de Pro D2, les compositions des équipes et les enjeux de la rencontre.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Biarritz / Colomiers",
+   "date": "2026-09-10",
+   "time": "21:00",
+   "desc": "Le club de Colomiers, qui avait été demi-finaliste la saison passée, mais qui s'était incliné contre Provence Rugby lors du dernier carré, e",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Après-match Pro D2",
+   "date": "2026-09-10",
+   "time": "22:50",
+   "desc": "Suite à la rencontre de Pro D2, le magazine passe en revue les dernières actualités, les réactions des joueurs et des coachs et propose les ",
+   "chaine": [
+    "Canal+ Sport"
    ],
    "cats": [
     "rugby"
