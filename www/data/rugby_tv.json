@@ -1,73 +1,8 @@
 {
- "generated": "2026-09-10T08:15:03+02:00",
+ "generated": "2026-09-10T20:15:06+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 48,
+ "count": 43,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-09-10",
-   "time": "08:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Argentine / Australie",
-   "date": "2026-09-10",
-   "time": "12:32",
-   "desc": "Après une première confrontation le 29 août dernier, Argentins et Australiens remettent le couvert dans cette 2e opposition amicale mais for",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Argentine / Australie",
-   "date": "2026-09-10",
-   "time": "12:43",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Bayonne / Toulon",
-   "date": "2026-09-10",
-   "time": "15:24",
-   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Bayonne / Toulon",
-   "date": "2026-09-10",
-   "time": "15:25",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Avant-match Pro D2",
    "date": "2026-09-10",
