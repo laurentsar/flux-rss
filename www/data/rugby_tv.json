@@ -1,21 +1,8 @@
 {
- "generated": "2026-09-09T20:15:03+02:00",
+ "generated": "2026-09-10T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 24,
+ "count": 48,
  "programmes": [
-  {
-   "title": "Rugby : Challenge Cup",
-   "date": "2026-09-09",
-   "time": "22:45",
-   "desc": "La finale de la Challenge Cup se déroule au stade San Mamés de Bilbao, en Espagne. Le Montpellier Hérault Rugby va-t-il soulever le trophée ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-09-10",
@@ -32,8 +19,34 @@
   {
    "title": "Argentine / Australie",
    "date": "2026-09-10",
-   "time": "12:43",
+   "time": "12:32",
    "desc": "Après une première confrontation le 29 août dernier, Argentins et Australiens remettent le couvert dans cette 2e opposition amicale mais for",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Argentine / Australie",
+   "date": "2026-09-10",
+   "time": "12:43",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bayonne / Toulon",
+   "date": "2026-09-10",
+   "time": "15:24",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -46,7 +59,7 @@
    "title": "Bayonne / Toulon",
    "date": "2026-09-10",
    "time": "15:25",
-   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -89,7 +102,19 @@
    "time": "22:50",
    "desc": "Suite à la rencontre de Pro D2, le magazine passe en revue les dernières actualités, les réactions des joueurs et des coachs et propose les ",
    "chaine": [
-    "Canal+ Live",
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Après-match Pro D2",
+   "date": "2026-09-10",
+   "time": "22:51",
+   "desc": "Suite à la rencontre de Pro D2, le magazine passe en revue les dernières actualités, les réactions des joueurs et des coachs et propose les ",
+   "chaine": [
     "Canal+ Sport"
    ],
    "cats": [
@@ -271,10 +296,205 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-09-12",
+   "time": "08:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-09-12",
+   "time": "11:45",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Cronulla-Sutherland Sharks / North Queensland Cowboys",
+   "date": "2026-09-12",
+   "time": "11:45",
+   "desc": "En Direct.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby magazine Occitanie",
+   "date": "2026-09-12",
+   "time": "12:37",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 3"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby magazine Nouvelle Aquitaine",
+   "date": "2026-09-12",
+   "time": "12:37",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 3"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby magazine Nouvelle Aquitaine",
+   "date": "2026-09-12",
+   "time": "12:38",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 3"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Avant-match Top 14",
+   "date": "2026-09-12",
+   "time": "16:13",
+   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Multiplex",
    "date": "2026-09-12",
    "time": "16:27",
-   "desc": "En Direct.",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Clermont / Stade Français Paris",
+   "date": "2026-09-12",
+   "time": "16:30",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Vannes / Montpellier",
+   "date": "2026-09-12",
+   "time": "16:30",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Pau / Bayonne",
+   "date": "2026-09-12",
+   "time": "16:30",
+   "desc": "Une confrontation attendue entre ces deux formations aux ambitions européennes et de phase finale. Les Palois ne doivent pas laisser passer ",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Perpignan / Castres",
+   "date": "2026-09-12",
+   "time": "16:30",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Racing 92 / Lyon",
+   "date": "2026-09-12",
+   "time": "16:30",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XV : Avant-match",
+   "date": "2026-09-12",
+   "time": "17:05",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 2"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : WXV Global Series",
+   "date": "2026-09-12",
+   "time": "17:35",
+   "desc": "Première édition de la WXV Global Series, qui succède à la WXV et propose des rencontres pour les 12 nations féminines participantes. Pour l",
+   "chaine": [
+    "France 2"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Débrief Top 14",
+   "date": "2026-09-12",
+   "time": "18:35",
+   "desc": "Les premières réactions après le match de Top 14, les analyses à chaud de la rencontre et l'état d'esprit des joueurs à la sortie de la pelo",
    "chaine": [
     "Canal+"
    ],
@@ -287,9 +507,24 @@
    "title": "Canal Rugby Club - 1re édition",
    "date": "2026-09-12",
    "time": "19:39",
-   "desc": "En Direct.",
+   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages inside et des interviews de personnalités du rugby afin de décrypter les enjeu",
    "chaine": [
-    "Canal+"
+    "Canal+",
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Avant-match Top 14",
+   "date": "2026-09-12",
+   "time": "20:55",
+   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
+   "chaine": [
+    "Canal+",
+    "Canal+ Live"
    ],
    "cats": [
     "rugby"
@@ -300,6 +535,86 @@
    "title": "Toulon / La Rochelle",
    "date": "2026-09-12",
    "time": "21:00",
+   "desc": "Pour le RC Toulon, la réception des Maritimes de La Rochelle constitue le tout premier choc de la saison, devant son public de Mayol.",
+   "chaine": [
+    "Canal+",
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Afrique du Sud / Nouvelle-Zélande",
+   "date": "2026-09-12",
+   "time": "22:53",
+   "desc": "Ce match constitue la quatrième et dernière confrontation entre les deux nations dans cette tournée en Afrique du Sud pour les All Blacks.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-09-12",
+   "time": "22:57",
+   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
+   "chaine": [
+    "Canal+",
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-09-12",
+   "time": "23:45",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Griquas / Pumas",
+   "date": "2026-09-13",
+   "time": "18:00",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club",
+   "date": "2026-09-13",
+   "time": "20:24",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / Bordeaux-Bègles",
+   "date": "2026-09-13",
+   "time": "21:05",
    "desc": "En Direct.",
    "chaine": [
     "Canal+"
@@ -311,8 +626,8 @@
   },
   {
    "title": "Canal Rugby Club le débrief",
-   "date": "2026-09-12",
-   "time": "22:56",
+   "date": "2026-09-13",
+   "time": "23:02",
    "desc": "En Direct.",
    "chaine": [
     "Canal+"
