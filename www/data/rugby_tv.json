@@ -1,21 +1,8 @@
 {
- "generated": "2026-09-11T08:15:05+02:00",
+ "generated": "2026-09-11T20:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 65,
+ "count": 64,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-09-11",
-   "time": "11:45",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Soir de rugby avant-match",
    "date": "2026-09-11",
