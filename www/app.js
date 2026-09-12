@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.43';
+const APP_VERSION = '5.44';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -114,7 +114,7 @@ let lang = 'fr';
 try{ lang = localStorage.getItem('srcLang') || 'fr'; }catch(e){}
 let lastUpdated = '';
 let _rlTop14Journees = [];
-let _rlTop14Shown = 2;
+let _rlTop14Shown = 1;
 
 /* ---------- articles lus (masqués une fois consultés) ---------- */
 const READ_KEY = 'readArticles';
@@ -360,6 +360,39 @@ function parseWikitables(html, selector='table.wikitable'){
   return tables;
 }
 
+// Variante de parseWikitables qui associe à chaque tableau la date qui le
+// précède dans la page (ex : "samedi 5 et dimanche 6 septembre 2026" avant
+// le tableau des résultats d'une journée) — le tableau lui-même ne contient
+// jamais la date, seulement les scores.
+function parseWikitablesWithDates(html, selector='table.wikitable'){
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html;
+  const tables = [];
+  tmp.querySelectorAll(selector).forEach(tbl => {
+    const rows = [];
+    tbl.querySelectorAll('tr').forEach(tr => {
+      const cells = [];
+      tr.querySelectorAll('td,th').forEach(td => {
+        let txt = td.textContent.replace(/\s+/g,' ').trim();
+        if (/^style\s*=/.test(txt)) txt = '';
+        cells.push(txt);
+      });
+      if (cells.length) rows.push(cells);
+    });
+    if (rows.length <= 1) return;
+    let date = '';
+    let prev = tbl.previousElementSibling, hops = 0;
+    while (prev && hops < 3){
+      if (prev.tagName === 'P'){ date = prev.textContent.replace(/\s+/g,' ').trim(); break; }
+      if (prev.tagName === 'DL') break; // marqueur "Nre journée" atteint : pas de date pour ce tableau
+      prev = prev.previousElementSibling;
+      hops++;
+    }
+    tables.push({rows, date});
+  });
+  return tables;
+}
+
 function parsePts(row){
   return parseInt((row[row.length-1]||'').replace(/[^\d]/g,''))||0;
 }
@@ -386,8 +419,8 @@ function renderRLStandings(rows, label, maxRows=14, topN=6, botN=2){
 // -1 si la saison n'a pas encore commencé.
 function lastPlayedRound(tables){
   let idx = -1;
-  tables.forEach((rows, i)=>{
-    const played = rows.some(r=>r.length>=5 && r[2]!=='' && r[3]!=='' && !isNaN(parseInt(r[2])) && !isNaN(parseInt(r[3])));
+  tables.forEach((t, i)=>{
+    const played = t.rows.some(r=>r.length>=5 && r[2]!=='' && r[3]!=='' && !isNaN(parseInt(r[2])) && !isNaN(parseInt(r[3])));
     if (played) idx = i;
   });
   return idx;
@@ -404,15 +437,16 @@ function renderRLResults(tables, label, count=2){
   const shown = Math.min(count, currentIdx + 1);
   const startIdx = currentIdx + 1 - shown;
   const recent = tables.slice(startIdx, currentIdx + 1);
-  const matchesHtml = recent.map((rows, ji)=>{
+  const matchesHtml = recent.map((t, ji)=>{
     const jn = startIdx + ji + 1;
-    const cards = rows.map(r=>{
+    const cards = t.rows.map(r=>{
       if (r.length < 5) return '';
       const home = r[1], hs = r[2], as_ = r[3], away = r[4];
       const hw = parseInt(hs)>parseInt(as_), aw = parseInt(as_)>parseInt(hs);
       return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(home)}</span><span class="rl-sb"><b>${esc(hs)}</b><span class="rl-vs">–</span><b>${esc(as_)}</b></span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(away)}</span></div>`;
     }).filter(Boolean).join('');
-    return `<div class="rl-journee"><span class="rl-jlbl">Journée ${jn}</span>${cards}</div>`;
+    const dateHtml = t.date ? `<span class="rl-jdate">${esc(t.date)}</span>` : '';
+    return `<div class="rl-journee"><span class="rl-jlbl">Journée ${jn}${dateHtml}</span>${cards}</div>`;
   }).join('');
   const remaining = startIdx;
   const moreBtn = remaining > 0
@@ -889,11 +923,11 @@ async function loadRugbyLive(opts={}){
     if (tbls[0]) mainHtml += renderRLStandings(tbls[0],'Classement Top 14',14,6,2);
   }
   if (r2){
-    const tbls = parseWikitables(r2?.parse?.text?.['*']||'');
-    const jtbls = tbls.filter(t=>t.length>=5 && t.length<=10 && t[0].length<=6);
+    const tbls = parseWikitablesWithDates(r2?.parse?.text?.['*']||'');
+    const jtbls = tbls.filter(t=>t.rows.length>=5 && t.rows.length<=10 && t.rows[0].length<=6);
     if (jtbls.length){
       _rlTop14Journees = jtbls;
-      _rlTop14Shown = 2;
+      _rlTop14Shown = 1;
       mainHtml += renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown);
     }
   }
