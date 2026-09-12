@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.50';
+const APP_VERSION = '5.51';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -2348,6 +2348,51 @@ function eventTs(ev){
   }
   return t;
 }
+function renderAgendaCard(ev){
+  const cats=ev.cats||[];
+  const color=(CAT_COLORS[cats[0]]||['#6366F1'])[0];
+  const dateLabel=fmtEventDate(ev.date,ev.dateEnd);
+  const timeHtml=ev.time?`<span class="ag-time"> ${esc(ev.time)}</span>`:'';
+  const approxHtml=ev.approx?'<span class="ag-approx">~approx.</span>':'';
+  const locHtml=ev.loc?`<div class="ag-loc">📍 ${esc(ev.loc)}</div>`:'';
+  const badges=cats.map(cid=>{
+    const lbl=CAT_LABELS[cid]||cid;
+    const c=(CAT_COLORS[cid]||['#6366F1'])[0];
+    return `<span class="ag-badge" style="background:${c}22;color:${c}">${esc(lbl)}</span>`;
+  }).join('');
+  const regionBadge=ev.region?`<span class="ag-badge ag-badge-local">📍 Local</span>`:'';
+  const chaines=ev.chaine?(Array.isArray(ev.chaine)?ev.chaine:[ev.chaine]):[];
+  const iptv=getIptv();
+  // Lien direct seulement si modèle IPTV renseigné ET carte non déjà cliquable
+  // (évite une balise <a> imbriquée dans le <a> de la carte).
+  const canLink=iptv && !ev.url;
+  const tvStyle='background:#11182788;color:#fff;border:1px solid #ffffff2e';
+  const tvHtml=chaines.map(ch=>{
+    if (canLink){
+      const url=iptvUrl(iptv, ch, ev.title);
+      return `<a class="ag-badge ag-tv" href="${esc(url)}" target="_blank" rel="noopener" title="Voir en direct (IPTV)" style="${tvStyle}">📺 ${esc(ch)} ▶</a>`;
+    }
+    return `<span class="ag-badge ag-tv" style="${tvStyle}">📺 ${esc(ch)}</span>`;
+  }).join('');
+  const Tag=ev.url?'a':'div';
+  const linkAttr=ev.url?` href="${esc(ev.url)}" target="_blank" rel="noopener"`:' ';
+  const compLine=ev.competition?`<div class="ag-comp">🏉 ${esc(ev.competition)}</div>`:'';
+  return `<${Tag} class="ag-card"${linkAttr}style="--accent:${color}">
+    <div class="ag-date">${esc(dateLabel)}${timeHtml}${approxHtml}</div>
+    <div class="ag-body">
+      ${compLine}<b>${esc(ev.title)}</b>
+      ${ev.desc?`<div class="ag-desc">${esc(ev.desc)}</div>`:''}
+      ${locHtml}
+      <div class="ag-badges">${badges}${regionBadge}${tvHtml}</div>
+    </div>
+  </${Tag}>`;
+}
+
+// HTML des événements au-delà de la semaine affichée par défaut (voir
+// renderAgenda) : calculé une fois, injecté seulement au clic sur le bouton
+// "+N événements" pour ne pas alourdir le rendu initial de l'agenda.
+let _agendaLaterHtml = '';
+
 function renderAgenda(staticEvents, matchEvents){
   const _now=Date.now();
   const _today=new Date(); _today.setHours(0,0,0,0);
@@ -2357,11 +2402,32 @@ function renderAgenda(staticEvents, matchEvents){
     .sort((a,b)=>eventTs(a)-eventTs(b));
   if (!all.length) return '<div class="rl-loading">Aucun événement à venir.</div>';
 
-  const byMonth={};
-  all.forEach(ev=>{
+  // Semaine en cours affichée directement, regroupée jour par jour ; le
+  // reste (souvent plusieurs mois, EPG rugby compris) est calculé mais
+  // seulement inséré dans le DOM à la demande — la majorité du volume
+  // n'est jamais rendue tant que l'utilisateur ne clique pas "+ voir plus".
+  const weekEnd = _today.getTime() + 7*86400000;
+  const weekEvents = all.filter(ev=>Date.parse(ev.date) < weekEnd);
+  const laterEvents = all.filter(ev=>Date.parse(ev.date) >= weekEnd);
+
+  const byDay={};
+  weekEvents.forEach(ev=>{
     const startD=new Date(Date.parse(ev.date));
-    // Events started in a past month → group under current month to avoid archive sections
-    const d=startD<_today && startD.getMonth()!==_today.getMonth() ? _today : startD;
+    const d=startD<_today ? _today : startD;
+    const key=localISO(d);
+    if (!byDay[key]) byDay[key]={
+      label:d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'}),
+      events:[]
+    };
+    byDay[key].events.push(ev);
+  });
+  const weekHtml = Object.values(byDay).map(day=>
+    `<div class="ag-day"><div class="ag-day-lbl">${esc(day.label)}</div>${day.events.map(renderAgendaCard).join('')}</div>`
+  ).join('');
+
+  const byMonth={};
+  laterEvents.forEach(ev=>{
+    const d=new Date(Date.parse(ev.date));
     const key=`${d.getFullYear()}-${d.getMonth()}`;
     if (!byMonth[key]) byMonth[key]={
       label:d.toLocaleDateString('fr-FR',{month:'long',year:'numeric'}),
@@ -2369,49 +2435,14 @@ function renderAgenda(staticEvents, matchEvents){
     };
     byMonth[key].events.push(ev);
   });
+  _agendaLaterHtml = Object.values(byMonth).map((month,idx)=>
+    `<details class="ag-month"${idx===0?' open':''}><summary class="ag-month-lbl">${esc(month.label)} <span class="ag-chev">▾</span></summary><div class="ag-month-body">${month.events.map(renderAgendaCard).join('')}</div></details>`
+  ).join('');
 
-  return Object.values(byMonth).map((month,idx)=>{
-    const cards=month.events.map(ev=>{
-      const cats=ev.cats||[];
-      const color=(CAT_COLORS[cats[0]]||['#6366F1'])[0];
-      const dateLabel=fmtEventDate(ev.date,ev.dateEnd);
-      const timeHtml=ev.time?`<span class="ag-time"> ${esc(ev.time)}</span>`:'';
-      const approxHtml=ev.approx?'<span class="ag-approx">~approx.</span>':'';
-      const locHtml=ev.loc?`<div class="ag-loc">📍 ${esc(ev.loc)}</div>`:'';
-      const badges=cats.map(cid=>{
-        const lbl=CAT_LABELS[cid]||cid;
-        const c=(CAT_COLORS[cid]||['#6366F1'])[0];
-        return `<span class="ag-badge" style="background:${c}22;color:${c}">${esc(lbl)}</span>`;
-      }).join('');
-      const regionBadge=ev.region?`<span class="ag-badge ag-badge-local">📍 Local</span>`:'';
-      const chaines=ev.chaine?(Array.isArray(ev.chaine)?ev.chaine:[ev.chaine]):[];
-      const iptv=getIptv();
-      // Lien direct seulement si modèle IPTV renseigné ET carte non déjà cliquable
-      // (évite une balise <a> imbriquée dans le <a> de la carte).
-      const canLink=iptv && !ev.url;
-      const tvStyle='background:#11182788;color:#fff;border:1px solid #ffffff2e';
-      const tvHtml=chaines.map(ch=>{
-        if (canLink){
-          const url=iptvUrl(iptv, ch, ev.title);
-          return `<a class="ag-badge ag-tv" href="${esc(url)}" target="_blank" rel="noopener" title="Voir en direct (IPTV)" style="${tvStyle}">📺 ${esc(ch)} ▶</a>`;
-        }
-        return `<span class="ag-badge ag-tv" style="${tvStyle}">📺 ${esc(ch)}</span>`;
-      }).join('');
-      const Tag=ev.url?'a':'div';
-      const linkAttr=ev.url?` href="${esc(ev.url)}" target="_blank" rel="noopener"`:' ';
-      const compLine=ev.competition?`<div class="ag-comp">🏉 ${esc(ev.competition)}</div>`:'';
-      return `<${Tag} class="ag-card"${linkAttr}style="--accent:${color}">
-        <div class="ag-date">${esc(dateLabel)}${timeHtml}${approxHtml}</div>
-        <div class="ag-body">
-          ${compLine}<b>${esc(ev.title)}</b>
-          ${ev.desc?`<div class="ag-desc">${esc(ev.desc)}</div>`:''}
-          ${locHtml}
-          <div class="ag-badges">${badges}${regionBadge}${tvHtml}</div>
-        </div>
-      </${Tag}>`;
-    }).join('');
-    return `<details class="ag-month"${idx===0?' open':''}><summary class="ag-month-lbl">${esc(month.label)} <span class="ag-chev">▾</span></summary><div class="ag-month-body">${cards}</div></details>`;
-  }).join('');
+  const moreBtn = laterEvents.length
+    ? `<button id="ag-more-btn" class="rl-more-btn">📋 +${laterEvents.length} événement${laterEvents.length>1?'s':''} à venir</button>`
+    : '';
+  return weekHtml + moreBtn;
 }
 
 /* Grille TV rugby = fichier généré par l'EPG (tools/rugby_epg.py, mis à jour
@@ -3125,6 +3156,7 @@ async function init(){
     if (cat) loadCategory(cat);
   });
   elArticles.addEventListener('click', (e)=>{
+    if (e.target.id==='ag-more-btn'){ e.target.outerHTML = _agendaLaterHtml; return; }
     const rc = e.target.closest('.radio-card');
     if (rc){ playStation(parseInt(rc.dataset.radioIdx)); return; }
     const ml = e.target.closest('.mag-launch');
