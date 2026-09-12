@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.48';
+const APP_VERSION = '5.49';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -884,7 +884,7 @@ let _espnCache = null, _espnCacheTs = 0;
 let _espnLastGood = null, _espnLastGoodTs = 0;
 let _espnLeagueCache = {}; // id ligue ESPN -> {events, ts} : dernière réponse valide de CETTE ligue
 let _frSocCache = null, _frSocCacheTs = 0;
-let _rugbyMainHtml = '', _rugbyU20Html = '', _rugbyDataTs = 0;
+let _rugbyMainHtml = '', _rugbyU20Html = '', _rugbyDataTs = 0, _rugbyU20Ts = 0;
 let _rugbySubMode = localStorage.getItem('rugbySubMode') || 'main';
 let _audioEl = null, _radioNowPlaying = null;
 let _hasLiveSports = false;
@@ -970,13 +970,14 @@ async function loadRugbyLive(opts={}){
   // récapitulatif + "Détails des résultats" dès que des matchs sont joués).
   // On les résout dynamiquement plutôt que de figer des numéros — en
   // parallèle des autres appels (qui n'en dépendent pas), pas avant eux.
-  const [{ classementIdx, resultatsIdx }, sofa, proD2, champNations, u20, cdm] = await Promise.all([
+  // Les données -20 ans (loadU20Rugby/loadU20WorldChampionship) ne sont PAS
+  // chargées ici : plusieurs scrapes Wikipedia à elles seules, inutiles tant
+  // que l'utilisateur n'a pas ouvert ce sous-onglet — voir loadRugbyU20().
+  const [{ classementIdx, resultatsIdx }, sofa, proD2, champNations] = await Promise.all([
     resolveTop14SectionIdx(top14),
     fetchSportsEvents(),
     loadProD2Teams(season),
     loadChampionnatNations(currentYear),
-    loadU20Rugby(),
-    loadU20WorldChampionship(),
   ]);
   // Contenu mis en cache 15 min : ces tableaux ne sont pas mis à jour par les
   // contributeurs Wikipedia à la minute près, inutile de les rescraper à
@@ -1015,25 +1016,39 @@ async function loadRugbyLive(opts={}){
   }
   if (proD2.length) mainHtml += renderProD2Teams(proD2);
 
-  /* --- onglet -20 ans : Six Nations U20 + Coupe du monde --- */
+  _rugbyMainHtml = mainHtml || '<div class="rl-loading">Données non disponibles.</div>';
+  _rugbyDataTs = Date.now();
+
+  showRugbyContent();
+  if (_hasLiveSports) scheduleLiveRefresh(()=>loadRugbyLive({liveRefresh:true}));
+  // Si l'utilisateur est déjà sur le sous-onglet -20 ans (ex. réouverture de
+  // l'app), charger ses données maintenant — sans bloquer l'affichage du
+  // Club & Intl ci-dessus, qui vient de se terminer.
+  if (_rugbySubMode === 'u20' && (!_rugbyU20Html || Date.now()-_rugbyU20Ts > 3*60*1000)) loadRugbyU20();
+}
+
+/* --- onglet -20 ans : Six Nations U20 + Coupe du monde (chargé à la demande,
+   seulement quand ce sous-onglet est ouvert — voir loadRugbyLive ci-dessus) --- */
+async function loadRugbyU20(){
+  if (_rugbyU20Html && Date.now()-_rugbyU20Ts < 3*60*1000){ showRugbyContent(); return; }
+  if (_rugbySubMode==='u20') elRugbyLive.innerHTML = '<div class="rl-loading"><span class="spinner"></span>Chargement -20 ans…</div>';
+  const [u20, cdm] = await Promise.all([
+    loadU20Rugby(),
+    loadU20WorldChampionship(),
+  ]);
   let u20Html = '';
   const sixNationsU20 = renderU20Rugby(u20);
   if (sixNationsU20) u20Html += sixNationsU20;
   const cdmU20 = renderU20WorldChampionship(cdm);
   if (cdmU20) u20Html += cdmU20;
-  if (!u20Html) u20Html = '<div class="rl-loading">Données -20 ans non disponibles.</div>';
-
-  _rugbyMainHtml = mainHtml || '<div class="rl-loading">Données non disponibles.</div>';
-  _rugbyU20Html = u20Html;
-  _rugbyDataTs = Date.now();
-
-  showRugbyContent();
-  if (_hasLiveSports) scheduleLiveRefresh(()=>loadRugbyLive({liveRefresh:true}));
+  _rugbyU20Html = u20Html || '<div class="rl-loading">Données -20 ans non disponibles.</div>';
+  _rugbyU20Ts = Date.now();
+  if (_rugbySubMode==='u20') showRugbyContent();
 }
 
 function hideRugbyLive(){
   if (elRugbyLive){ elRugbyLive.hidden=true; elRugbyLive.innerHTML=''; }
-  _rugbyMainHtml = ''; _rugbyU20Html = ''; _rugbyDataTs = 0;
+  _rugbyMainHtml = ''; _rugbyU20Html = ''; _rugbyDataTs = 0; _rugbyU20Ts = 0;
   stopLiveRefresh();
 }
 
@@ -1468,17 +1483,26 @@ async function normalizeEspnSoccerEvent(e, {idPrefix, defaultTournament, default
   };
 }
 
+// Construit une plage "AAAAMMJJ-AAAAMMJJ" (format accepté par l'API ESPN
+// scoreboard?dates=...) couvrant les `daysBack` derniers jours jusqu'à
+// aujourd'hui — un seul appel réseau au lieu d'un par jour couvert.
+function dateRange(daysBack){
+  const fmt=d=>d.toISOString().slice(0,10).replace(/-/g,'');
+  const start=new Date(Date.now()-daysBack*86400000);
+  return `${fmt(start)}-${fmt(new Date())}`;
+}
+
 async function fetchToulouseMatches(){
   if (_toulouseCache && Date.now()-_toulouseCacheTs<5*60*1000) return _toulouseCache;
   const LIGUE_IDS=['fra.1','uefa.europa','uefa.conference'];
   const BASE='https://site.api.espn.com/apis/site/v2/sports/soccer';
-  const yesterday=new Date(Date.now()-86400000);
-  const yDate=yesterday.toISOString().slice(0,10).replace(/-/g,'');
+  // ESPN accepte une plage "dates=AAAAMMJJ-AAAAMMJJ" en un seul appel : on
+  // évite ainsi de doubler le nombre de requêtes (hier + aujourd'hui), ce
+  // qui, cumulé sur les 3 ligues, ralentissait bien plus que nécessaire le
+  // chargement de l'onglet direct sur une connexion mobile.
+  const range=dateRange(1);
   const results=await Promise.allSettled(
-    LIGUE_IDS.flatMap(id=>[
-      fetchJson(`${BASE}/${id}/scoreboard`).then(d=>(d.events||[]).map(e=>({...e,_lid:id,_lname:d.leagues?.[0]?.name}))),
-      fetchJson(`${BASE}/${id}/scoreboard?dates=${yDate}`).then(d=>(d.events||[]).map(e=>({...e,_lid:id,_lname:d.leagues?.[0]?.name}))),
-    ])
+    LIGUE_IDS.map(id=>fetchJson(`${BASE}/${id}/scoreboard?dates=${range}`).then(d=>(d.events||[]).map(e=>({...e,_lid:id,_lname:d.leagues?.[0]?.name}))))
   );
   const seen=new Set();
   const raw=results.flatMap(r=>r.status==='fulfilled'?r.value:[])
@@ -1524,16 +1548,11 @@ async function fetchWorldCupMatches(){
   if (_worldCupCache && Date.now()-_worldCupCacheTs<5*60*1000) return _worldCupCache;
   const BASE='https://site.api.espn.com/apis/site/v2/sports/soccer';
   const WC_ID='fifa.world';
-  const dates=Array.from({length:7},(_,i)=>{
-    const d=new Date(Date.now()-i*86400000);
-    return d.toISOString().slice(0,10).replace(/-/g,'');
-  });
-  const results=await Promise.allSettled(
-    dates.map(dt=>fetchJson(`${BASE}/${WC_ID}/scoreboard?dates=${dt}`).then(r=>(r.events||[]).map(e=>({...e,_lid:WC_ID,_lname:r.leagues?.[0]?.name}))))
-  );
-  const seen=new Set();
-  const raw=results.flatMap(r=>r.status==='fulfilled'?r.value:[])
-    .filter(e=>!seen.has(e.id)&&seen.add(e.id));
+  // Une plage de 7 jours en un seul appel au lieu de 7 requêtes séparées
+  // (c'était l'un des plus gros contributeurs à la lenteur du direct foot :
+  // 7 requêtes ESPN simultanées rien que pour cette compétition).
+  const r=await fetchJson(`${BASE}/${WC_ID}/scoreboard?dates=${dateRange(6)}`).catch(()=>({events:[]}));
+  const raw=(r.events||[]).map(e=>({...e,_lid:WC_ID,_lname:r.leagues?.[0]?.name}));
   const events=await Promise.all(raw.map(e=>normalizeEspnSoccerEvent(e,
     {idPrefix:'espn-wc-', defaultTournament:'FIFA World Cup', defaultLeagueId:WC_ID})));
   _worldCupCache=events; _worldCupCacheTs=Date.now();
@@ -2085,13 +2104,8 @@ async function fetchFranceSoccer(){
   const SOCCER_IDS=['fifa.world','uefa.nations'];
   const BASE='https://site.api.espn.com/apis/site/v2/sports/soccer';
   function isFR(comp){ const n=(comp?.team?.name||'').toLowerCase(),a=(comp?.team?.abbreviation||'').toUpperCase(); return n.includes('france')||a==='FRA'; }
-  const yesterday=new Date(Date.now()-86400000);
-  const yDate=yesterday.toISOString().slice(0,10).replace(/-/g,'');
   const results=await Promise.allSettled(
-    SOCCER_IDS.flatMap(id=>[
-      fetchJson(`${BASE}/${id}/scoreboard`).then(d=>(d.events||[]).map(e=>({...e,_lid:id,_lname:d.leagues?.[0]?.name}))),
-      fetchJson(`${BASE}/${id}/scoreboard?dates=${yDate}`).then(d=>(d.events||[]).map(e=>({...e,_lid:id,_lname:d.leagues?.[0]?.name}))),
-    ])
+    SOCCER_IDS.map(id=>fetchJson(`${BASE}/${id}/scoreboard?dates=${dateRange(1)}`).then(d=>(d.events||[]).map(e=>({...e,_lid:id,_lname:d.leagues?.[0]?.name}))))
   );
   const seen=new Set();
   const raw=results.flatMap(r=>r.status==='fulfilled'?r.value:[])
@@ -2397,11 +2411,9 @@ function renderAgenda(staticEvents, matchEvents){
    reconstruire l'APK), avec repli sur la copie embarquée puis sur rien. */
 const RUGBY_EPG_URL='https://raw.githubusercontent.com/laurentsar/flux-rss/master/www/data/rugby_tv.json';
 let _epgRugby=null, _epgRugbyTs=0;
-async function loadRugbyEpg(){
-  if (_epgRugby && Date.now()-_epgRugbyTs < 30*60*1000) return _epgRugby;
-  let data=null;
-  try{ data=await (await fetchWithTimeout(RUGBY_EPG_URL+'?_='+Date.now(),{cache:'no-store'},10000)).json(); }catch(e){}
-  if (!data){ try{ data=await (await fetch('data/rugby_tv.json')).json(); }catch(e){} }
+// Filtre les programmes passés et associe chaque match à sa compétition
+// (ex : "Rugby : Top 14" générique + titre de match au même horaire).
+function processEpgData(data){
   const list=(data&&data.programmes)||[];
   const floor=Date.now()-3600000;
   const filtered=list.filter(p=>{
@@ -2431,8 +2443,31 @@ async function loadRugbyEpg(){
       p.competition=p.title.split(' : ').slice(1).join(' : ');
     }
   });
-  const out=filtered.filter(p=>!exclude.has(p));
+  return filtered.filter(p=>!exclude.has(p));
+}
+
+// Copie locale (embarquée dans l'APK, même origine) d'abord — quasi
+// instantanée — sans attendre le fichier distant (mis à jour par cron,
+// plus frais, mais sur un autre domaine donc parfois lent sur mobile).
+// Ce dernier n'est tenté qu'en arrière-plan et ne fait que rafraîchir
+// l'agenda déjà affiché s'il apporte du nouveau.
+async function loadRugbyEpg(){
+  if (_epgRugby && Date.now()-_epgRugbyTs < 30*60*1000) return _epgRugby;
+  let data=null;
+  try{ data=await (await fetch('data/rugby_tv.json')).json(); }catch(e){}
+  const out=processEpgData(data);
   _epgRugby=out; _epgRugbyTs=Date.now();
+  fetchWithTimeout(RUGBY_EPG_URL+'?_='+Date.now(),{cache:'no-store'},5000)
+    .then(r=>r.json())
+    .then(fresh=>{
+      // Met juste le cache à jour : un rechargement complet de l'agenda ici
+      // ferait clignoter la liste déjà affichée pour un gain minime ; la
+      // prochaine ouverture de l'onglet (ou le rafraîchissement horaire
+      // existant) profitera de cette version plus fraîche.
+      _epgRugby=processEpgData(fresh);
+      _epgRugbyTs=Date.now();
+    })
+    .catch(()=>{}); // repli silencieux sur la copie locale déjà affichée
   return out;
 }
 
@@ -3067,7 +3102,11 @@ async function init(){
         return;
       }
       elSubtabs.querySelectorAll('.subtab').forEach(x=>x.classList.toggle('active', x.dataset.rugby===rugbyMode));
-      showRugbyContent();
+      // -20 ans n'est chargé qu'à la demande (voir loadRugbyU20) : le premier
+      // clic déclenche le scrape, les suivants réutilisent le cache tant
+      // qu'il est frais.
+      if (rugbyMode==='u20') loadRugbyU20();
+      else showRugbyContent();
       return;
     }
     const tab = b.dataset.tab;
