@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.47';
+const APP_VERSION = '5.48';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -504,7 +504,10 @@ function renderRLResults(tables, label, count=2, espnEvents=[]){
     : '';
   // Ouvert par défaut dès qu'un match Top 14 est en direct : c'est
   // désormais l'unique endroit où le suivre (plus de bandeau séparé).
-  return `<details class="rl-section rl-results-top14"${hasLive?' open':''}><summary class="rl-sh">${hasLive?'🔴':'🏉'} ${esc(label)}${hasLive?' — En direct':''}</summary>${matchesHtml}${moreBtn}</details>`;
+  // Une seule chaîne pour toute la compétition (Canal+) : le badge va dans
+  // l'en-tête de section plutôt que répété sur chaque match.
+  const chaineHtml = chaineLinksHtml(rugbyChannel(label, null), label);
+  return `<details class="rl-section rl-results-top14"${hasLive?' open':''}><summary class="rl-sh">${hasLive?'🔴':'🏉'} ${esc(label)}${hasLive?' — En direct':''}${chaineHtml}</summary>${matchesHtml}${moreBtn}</details>`;
 }
 
 /* --- ESPN : résultats rugby (live + récents + à venir) --- */
@@ -519,7 +522,7 @@ async function fetchSportsEvents(){
   // Club IDs (Top 14, Champions Cup) vs international IDs
   const CLUB_IDS = new Set(['270559','271937']);
 
-  function parseEspnEvent(e, leagueId){
+  function parseEspnEvent(e, leagueId, leagueName){
     const comps = e.competitions?.[0]?.competitors||[];
     const home = comps.find(c=>c.homeAway==='home');
     const away = comps.find(c=>c.homeAway==='away');
@@ -532,7 +535,10 @@ async function fetchSportsEvents(){
       homeScore:{current:home?.score??''}, awayScore:{current:away?.score??''},
       status:{type:live?'inprogress':fin?'finished':'notstarted', description:detail},
       startTimestamp:new Date(e.date||0).getTime()/1000,
-      tournament:{name:e.league?.name||'', round:e.competitions?.[0]?.notes?.[0]?.headline||''},
+      // ESPN ne renseigne jamais e.league par évènement (toujours undefined) :
+      // le nom de la compétition n'existe qu'une fois, au sommet de la
+      // réponse du scoreboard (d.leagues[0].name) — d'où le paramètre.
+      tournament:{name:leagueName||'', round:e.competitions?.[0]?.notes?.[0]?.headline||''},
       leagueId,
       isClub: CLUB_IDS.has(leagueId),
     };
@@ -545,7 +551,10 @@ async function fetchSportsEvents(){
   // "cette ligue n'a rien renvoyé" comme "ces matchs n'existent plus".
   async function fetchAllEspn(){
     const results = await Promise.allSettled(
-      ESPN_IDS.map(id=>fetchJson(`${ESPN_BASE}/${id}/scoreboard`).then(d=>(d.events||[]).map(e=>parseEspnEvent(e,id))))
+      ESPN_IDS.map(id=>fetchJson(`${ESPN_BASE}/${id}/scoreboard`).then(d=>{
+        const leagueName = d.leagues?.[0]?.name;
+        return (d.events||[]).map(e=>parseEspnEvent(e,id,leagueName));
+      }))
     );
     const now = Date.now();
     let usedFallback = false;
@@ -615,7 +624,8 @@ function renderLiveScores(events, extraIntlHtml=''){
       const score = (live||fin) ? `<b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b>${time?`<span class="rl-time"> ${time}</span>`:''}` : `<span class="rl-vs">${time}</span>`;
       const hn=e.homeTeam?.name||'?', an=e.awayTeam?.name||'?';
       const roundLbl=e.tournament?.round?` · ${esc(e.tournament.round)}`:'';
-      const compLine=e.tournament?.name?`<div class="rl-jlbl">🏉 ${esc(e.tournament.name)}${roundLbl}</div>`:'';
+      const chaineHtml=chaineLinksHtml(rugbyChannel(e.tournament?.name, null), `${hn} - ${an}`);
+      const compLine=(e.tournament?.name||chaineHtml)?`<div class="rl-jlbl">🏉 ${esc(e.tournament?.name||'')}${roundLbl}${chaineHtml}</div>`:'';
       return compLine+`<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${teamBadge(hn)}${esc(hn)}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${teamBadge(an)}${esc(an)}</span></div>`;
     };
     const liveEvts = evts.filter(e=>e.status?.type==='inprogress');
@@ -1448,8 +1458,11 @@ async function normalizeEspnSoccerEvent(e, {idPrefix, defaultTournament, default
     awayScore:{current:away?.score??''},
     status:{type:live?'inprogress':fin?'finished':'notstarted', description:detail},
     startTimestamp:d.getTime()/1000,
+    // ESPN ne renseigne jamais e.league par évènement : le nom de la
+    // compétition n'existe qu'au sommet de la réponse scoreboard
+    // (d.leagues[0].name), propagé ici via e._lname par l'appelant.
     date:d.toISOString().slice(0,10),
-    tournament:{name:e.league?.name||defaultTournament, round:e.competitions?.[0]?.notes?.[0]?.headline||''},
+    tournament:{name:e._lname||defaultTournament, round:e.competitions?.[0]?.notes?.[0]?.headline||''},
     goals,
     ...extra,
   };
@@ -1463,8 +1476,8 @@ async function fetchToulouseMatches(){
   const yDate=yesterday.toISOString().slice(0,10).replace(/-/g,'');
   const results=await Promise.allSettled(
     LIGUE_IDS.flatMap(id=>[
-      fetchJson(`${BASE}/${id}/scoreboard`).then(d=>(d.events||[]).map(e=>({...e,_lid:id}))),
-      fetchJson(`${BASE}/${id}/scoreboard?dates=${yDate}`).then(d=>(d.events||[]).map(e=>({...e,_lid:id}))),
+      fetchJson(`${BASE}/${id}/scoreboard`).then(d=>(d.events||[]).map(e=>({...e,_lid:id,_lname:d.leagues?.[0]?.name}))),
+      fetchJson(`${BASE}/${id}/scoreboard?dates=${yDate}`).then(d=>(d.events||[]).map(e=>({...e,_lid:id,_lname:d.leagues?.[0]?.name}))),
     ])
   );
   const seen=new Set();
@@ -1493,7 +1506,8 @@ function renderFootMatchSection(title, events){
     const ag=gs.filter(g=>!g.isHome).map(g=>`${g.nm} ${g.min}`).join(', ');
     const scorerLine=(live||fin)&&gs.length?`<div class="rl-scorers"><span>${esc(hg)}</span><span>${esc(ag)}</span></div>`:'';
     const roundLbl=e.tournament?.round?` · ${esc(e.tournament.round)}`:'';
-    const compLine=e.tournament?.name?`<div class="rl-jlbl">⚽ ${esc(e.tournament.name)}${roundLbl}</div>`:'';
+    const chaineHtml=chaineLinksHtml(footChannel(e.tournament?.name), `${hn2} - ${an2}`);
+    const compLine=(e.tournament?.name||chaineHtml)?`<div class="rl-jlbl">⚽ ${esc(e.tournament?.name||'')}${roundLbl}${chaineHtml}</div>`:'';
     return compLine+matchCard+scorerLine;
   };
   const liveEvs=events.filter(e=>e.status?.type==='inprogress');
@@ -1515,7 +1529,7 @@ async function fetchWorldCupMatches(){
     return d.toISOString().slice(0,10).replace(/-/g,'');
   });
   const results=await Promise.allSettled(
-    dates.map(dt=>fetchJson(`${BASE}/${WC_ID}/scoreboard?dates=${dt}`).then(r=>(r.events||[]).map(e=>({...e,_lid:WC_ID}))))
+    dates.map(dt=>fetchJson(`${BASE}/${WC_ID}/scoreboard?dates=${dt}`).then(r=>(r.events||[]).map(e=>({...e,_lid:WC_ID,_lname:r.leagues?.[0]?.name}))))
   );
   const seen=new Set();
   const raw=results.flatMap(r=>r.status==='fulfilled'?r.value:[])
@@ -2075,8 +2089,8 @@ async function fetchFranceSoccer(){
   const yDate=yesterday.toISOString().slice(0,10).replace(/-/g,'');
   const results=await Promise.allSettled(
     SOCCER_IDS.flatMap(id=>[
-      fetchJson(`${BASE}/${id}/scoreboard`).then(d=>(d.events||[]).map(e=>({...e,_lid:id}))),
-      fetchJson(`${BASE}/${id}/scoreboard?dates=${yDate}`).then(d=>(d.events||[]).map(e=>({...e,_lid:id}))),
+      fetchJson(`${BASE}/${id}/scoreboard`).then(d=>(d.events||[]).map(e=>({...e,_lid:id,_lname:d.leagues?.[0]?.name}))),
+      fetchJson(`${BASE}/${id}/scoreboard?dates=${yDate}`).then(d=>(d.events||[]).map(e=>({...e,_lid:id,_lname:d.leagues?.[0]?.name}))),
     ])
   );
   const seen=new Set();
@@ -2113,7 +2127,9 @@ function renderFranceLive(rugbyLive, soccerEvents){
     const ag=gs.filter(g=>!g.isHome).map(g=>`${g.nm} ${g.min}`).join(', ');
     const scorerLine=(live||fin)&&gs.length?`<div class="rl-scorers"><span>${esc(hg)}</span><span>${esc(ag)}</span></div>`:'';
     const roundLbl=e.tournament?.round?` · ${esc(e.tournament.round)}`:'';
-    const compLine=e.tournament?.name?`<div class="rl-jlbl">${icon}${esc(e.tournament.name)}${roundLbl}</div>`:'';
+    const chans=e.sport==='football'?footChannel(e.tournament?.name):rugbyChannel(e.tournament?.name, null);
+    const chaineHtml=chaineLinksHtml(chans, `${hn2} - ${an2}`);
+    const compLine=(e.tournament?.name||chaineHtml)?`<div class="rl-jlbl">${icon}${esc(e.tournament?.name||'')}${roundLbl}${chaineHtml}</div>`:'';
     return compLine+matchCard+scorerLine;
   };
   const liveAll=all.filter(e=>e.status?.type==='inprogress');
@@ -2200,6 +2216,20 @@ function setIptv(v){ try{ v ? localStorage.setItem(IPTV_KEY, v) : localStorage.r
 function iptvUrl(tpl, chaine, title){
   return tpl.replace(/\{chaine\}/g, encodeURIComponent(chaine))
             .replace(/\{q\}/g, encodeURIComponent(title || ''));
+}
+// Petit(s) badge(s) chaîne, cliquables vers le lecteur IPTV si un modèle
+// d'URL est configuré (sinon simple indication de la chaîne) — utilisé par
+// les vues "direct" rugby et football, en plus de l'agenda.
+function chaineLinksHtml(chaines, queryTitle){
+  if (!chaines || !chaines.length) return '';
+  const iptv = getIptv();
+  return chaines.map(ch=>{
+    if (iptv){
+      const url = iptvUrl(iptv, ch, queryTitle);
+      return `<a class="rl-chaine" href="${esc(url)}" target="_blank" rel="noopener" title="Voir en direct (IPTV)">📺 ${esc(ch)} ▶</a>`;
+    }
+    return `<span class="rl-chaine">📺 ${esc(ch)}</span>`;
+  }).join('');
 }
 
 /* Émissions TV récurrentes consacrées au rugby (France) — ÉDITABLE.
