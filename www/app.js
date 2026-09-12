@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.45';
+const APP_VERSION = '5.46';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -443,14 +443,14 @@ function rugbyTeamsMatch(a, b){
   return ka === kb || ka.includes(kb) || kb.includes(ka);
 }
 // Retrouve, parmi les évènements ESPN Top 14, celui qui correspond à ce
-// match (Wikipédia ne donne qu'une date par journée, pas par match) pour en
-// extraire l'heure et la date exactes du coup d'envoi.
-function matchKickoff(home, away, espnEvents){
-  const e = (espnEvents||[]).find(ev=>
+// match (Wikipédia ne donne qu'une date par journée, pas par match, et son
+// tableau n'est mis à jour qu'après la rencontre — pendant le match, ESPN
+// est la seule source à jour).
+function matchEspnEvent(home, away, espnEvents){
+  return (espnEvents||[]).find(ev=>
     (rugbyTeamsMatch(home, ev.homeTeam?.name) && rugbyTeamsMatch(away, ev.awayTeam?.name)) ||
     (rugbyTeamsMatch(home, ev.awayTeam?.name) && rugbyTeamsMatch(away, ev.homeTeam?.name))
   );
-  return e ? e.startTimestamp : null;
 }
 function fmtKickoff(ts){
   if (!ts) return '';
@@ -468,15 +468,31 @@ function renderRLResults(tables, label, count=2, espnEvents=[]){
   const shown = Math.min(count, currentIdx + 1);
   const startIdx = currentIdx + 1 - shown;
   const recent = tables.slice(startIdx, currentIdx + 1);
+  let hasLive = false;
   const matchesHtml = recent.map((t, ji)=>{
     const jn = startIdx + ji + 1;
     const cards = t.rows.map(r=>{
       if (r.length < 5) return '';
-      const home = r[1], hs = r[2], as_ = r[3], away = r[4];
+      const home = r[1], away = r[4];
+      let hs = r[2], as_ = r[3];
+      const wikiPlayed = hs!=='' && as_!=='' && !isNaN(parseInt(hs)) && !isNaN(parseInt(as_));
+      // Tant que Wikipédia n'a pas encore inscrit le score (match en cours
+      // ou tout juste terminé), on affiche celui d'ESPN — la même source
+      // que le bandeau "en direct" — pour ne plus jamais se contredire.
+      const espnMatch = wikiPlayed ? null : matchEspnEvent(home, away, espnEvents);
+      const live = !!espnMatch && espnMatch.status?.type==='inprogress';
+      const espnFinished = !!espnMatch && espnMatch.status?.type==='finished';
+      if (live) hasLive = true;
+      if (espnMatch && (live || espnFinished)){
+        const swapped = rugbyTeamsMatch(home, espnMatch.awayTeam?.name) && !rugbyTeamsMatch(home, espnMatch.homeTeam?.name);
+        hs = (swapped ? espnMatch.awayScore : espnMatch.homeScore)?.current ?? '';
+        as_ = (swapped ? espnMatch.homeScore : espnMatch.awayScore)?.current ?? '';
+      }
       const hw = parseInt(hs)>parseInt(as_), aw = parseInt(as_)>parseInt(hs);
-      const kickoff = fmtKickoff(matchKickoff(home, away, espnEvents));
+      const badge = live ? '<span class="rl-live-dot"></span>' : '';
+      const kickoff = (!wikiPlayed && !live && !espnFinished) ? fmtKickoff(espnMatch?.startTimestamp) : '';
       const timeHtml = kickoff ? `<span class="rl-time">${esc(kickoff)}</span>` : '';
-      return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(home)}</span><span class="rl-sb"><b>${esc(hs)}</b><span class="rl-vs">–</span><b>${esc(as_)}</b>${timeHtml}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(away)}</span></div>`;
+      return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(home)}</span><span class="rl-sb">${badge}<b>${esc(hs)}</b><span class="rl-vs">–</span><b>${esc(as_)}</b>${timeHtml}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(away)}</span></div>`;
     }).filter(Boolean).join('');
     const dateHtml = t.date ? `<span class="rl-jdate">${esc(t.date)}</span>` : '';
     return `<div class="rl-journee"><span class="rl-jlbl">Journée ${jn}${dateHtml}</span>${cards}</div>`;
@@ -485,7 +501,9 @@ function renderRLResults(tables, label, count=2, espnEvents=[]){
   const moreBtn = remaining > 0
     ? `<button class="rl-more-btn">📋 +${Math.min(3,remaining)} journée${Math.min(3,remaining)>1?'s':''}</button>`
     : '';
-  return `<details class="rl-section rl-results-top14"><summary class="rl-sh">🏉 ${esc(label)}</summary>${matchesHtml}${moreBtn}</details>`;
+  // Ouvert par défaut dès qu'un match Top 14 est en direct : c'est
+  // désormais l'unique endroit où le suivre (plus de bandeau séparé).
+  return `<details class="rl-section rl-results-top14"${hasLive?' open':''}><summary class="rl-sh">${hasLive?'🔴':'🏉'} ${esc(label)}${hasLive?' — En direct':''}</summary>${matchesHtml}${moreBtn}</details>`;
 }
 
 /* --- ESPN : résultats rugby (live + récents + à venir) --- */
@@ -572,7 +590,12 @@ async function fetchSportsEvents(){
 }
 
 function renderLiveScores(events, extraIntlHtml=''){
-  const top14Events = events.filter(e=>e.isClub);
+  // Le Top 14 (leagueId 270559) a désormais sa propre vue unifiée dans
+  // "Résultats Top 14" (scores ESPN en direct + historique Wikipédia) : on
+  // évite de l'afficher une seconde fois ici, avec parfois un état différent
+  // (ex. score pas encore inscrit par Wikipédia pendant qu'ESPN le montre
+  // déjà en direct plus bas). Seule la Champions Cup reste dans ce bandeau.
+  const top14Events = events.filter(e=>e.isClub && e.leagueId!=='270559');
   const intlEvents  = events.filter(e=>!e.isClub).filter(e=>
     e.status?.type!=='notstarted' ||
     FR_RE.test(e.homeTeam?.name||'') || FR_RE.test(e.awayTeam?.name||'')
@@ -604,7 +627,7 @@ function renderLiveScores(events, extraIntlHtml=''){
       html += `<details class="rl-section"><summary class="rl-sh">${label}</summary>${doneCards}${extra}</details>`;
     return html;
   }
-  return section(top14Events,'🏆 Top 14 / Champions Cup') + section(intlEvents,'🌐 Matchs internationaux', extraIntlHtml);
+  return section(top14Events,'🏆 Champions Cup') + section(intlEvents,'🌐 Matchs internationaux', extraIntlHtml);
 }
 
 const FR_RE = /\bfrance\b/i;
