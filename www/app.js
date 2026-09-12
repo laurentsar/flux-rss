@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.49';
+const APP_VERSION = '5.50';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -973,18 +973,26 @@ async function loadRugbyLive(opts={}){
   // Les données -20 ans (loadU20Rugby/loadU20WorldChampionship) ne sont PAS
   // chargées ici : plusieurs scrapes Wikipedia à elles seules, inutiles tant
   // que l'utilisateur n'a pas ouvert ce sous-onglet — voir loadRugbyU20().
-  const [{ classementIdx, resultatsIdx }, sofa, proD2, champNations] = await Promise.all([
-    resolveTop14SectionIdx(top14),
-    fetchSportsEvents(),
-    loadProD2Teams(season),
-    loadChampionnatNations(currentYear),
-  ]);
+  //
+  // Les 4 appels ci-dessous sont lancés en parallèle SANS être tous attendus
+  // ensemble : classement/résultats ne dépendent que de la résolution des
+  // index de section, pas de ProD2/Championnat des Nations (qui peuvent
+  // chacun être plus lents, vu leurs propres chaînes de requêtes Wikipedia).
+  // Les attendre tous avant de lancer classement/résultats ajoutait un
+  // round-trip complet et inutile à la durée totale du chargement.
+  const sofaPromise = fetchSportsEvents();
+  const proD2Promise = loadProD2Teams(season);
+  const champNationsPromise = loadChampionnatNations(currentYear);
+  const { classementIdx, resultatsIdx } = await resolveTop14SectionIdx(top14);
   // Contenu mis en cache 15 min : ces tableaux ne sont pas mis à jour par les
   // contributeurs Wikipedia à la minute près, inutile de les rescraper à
   // chaque rafraîchissement live (20s) pendant un match en direct.
-  const [r1, r2] = await Promise.all([
+  const [r1, r2, sofa, proD2, champNations] = await Promise.all([
     classementIdx ? fetchWikiSectionCached(top14,classementIdx,15*60*1000) : Promise.resolve(null),
     resultatsIdx ? fetchWikiSectionCached(top14,resultatsIdx,15*60*1000) : Promise.resolve(null),
+    sofaPromise,
+    proD2Promise,
+    champNationsPromise,
   ]);
 
   _hasLiveSports = sofa.events.some(e=>e.status?.type==='inprogress');
@@ -3159,6 +3167,21 @@ async function init(){
     reader.readAsText(file);
   });
   elModal.addEventListener('click', (e)=>{ if(e.target===elModal) closeSettings(); });
+  // Badges chaîne (.rl-chaine en direct, .ag-tv agenda) : en natif, un flux
+  // (.m3u8...) cliqué dans la WebView déclenche son propre téléchargement au
+  // lieu de laisser Android proposer les applications compatibles (le
+  // lecteur IPTV installé) — on force donc un vrai Intent.ACTION_VIEW via le
+  // plugin natif, hors WebView, plutôt que la navigation par défaut du lien.
+  document.addEventListener('click', (e)=>{
+    const a = e.target.closest('a.rl-chaine, a.ag-tv');
+    if (!a) return;
+    const url = a.getAttribute('href');
+    if (!url) return;
+    if (isNative && window.Capacitor?.Plugins?.UpdatePlugin){
+      e.preventDefault();
+      window.Capacitor.Plugins.UpdatePlugin.openExternalUrl({url}).catch(()=>window.open(url,'_blank'));
+    }
+  });
   elRugbyLive.addEventListener('click', e=>{
     if (!e.target.classList.contains('rl-more-btn')) return;
     if (e.target.dataset.far){
