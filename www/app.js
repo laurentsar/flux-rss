@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.44';
+const APP_VERSION = '5.45';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -115,6 +115,7 @@ try{ lang = localStorage.getItem('srcLang') || 'fr'; }catch(e){}
 let lastUpdated = '';
 let _rlTop14Journees = [];
 let _rlTop14Shown = 1;
+let _rlTop14EspnEvents = [];
 
 /* ---------- articles lus (masqués une fois consultés) ---------- */
 const READ_KEY = 'readArticles';
@@ -426,7 +427,37 @@ function lastPlayedRound(tables){
   return idx;
 }
 
-function renderRLResults(tables, label, count=2){
+// Wikipédia n'abrège pas les noms d'équipes de la même façon qu'ESPN
+// ("Toulouse" vs "Stade Toulousain", "Paris" vs "Stade Francais Paris"...) :
+// on normalise vers une clé commune pour pouvoir rapprocher un match du
+// tableau Wikipédia de l'évènement ESPN correspondant (qui, lui, porte
+// l'heure exacte du coup d'envoi).
+function rugbyTeamKey(name){
+  const s = slug(name, '');
+  if (s === 'toulouse') return 'toulousain';
+  return s;
+}
+function rugbyTeamsMatch(a, b){
+  const ka = rugbyTeamKey(a), kb = rugbyTeamKey(b);
+  if (!ka || !kb) return false;
+  return ka === kb || ka.includes(kb) || kb.includes(ka);
+}
+// Retrouve, parmi les évènements ESPN Top 14, celui qui correspond à ce
+// match (Wikipédia ne donne qu'une date par journée, pas par match) pour en
+// extraire l'heure et la date exactes du coup d'envoi.
+function matchKickoff(home, away, espnEvents){
+  const e = (espnEvents||[]).find(ev=>
+    (rugbyTeamsMatch(home, ev.homeTeam?.name) && rugbyTeamsMatch(away, ev.awayTeam?.name)) ||
+    (rugbyTeamsMatch(home, ev.awayTeam?.name) && rugbyTeamsMatch(away, ev.homeTeam?.name))
+  );
+  return e ? e.startTimestamp : null;
+}
+function fmtKickoff(ts){
+  if (!ts) return '';
+  return new Date(ts*1000).toLocaleString('fr-FR',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}).replace('.','');
+}
+
+function renderRLResults(tables, label, count=2, espnEvents=[]){
   if (!tables || !tables.length) return '';
   const total = tables.length;
   // Le calendrier complet de la saison est publié dès le début (journées
@@ -443,7 +474,9 @@ function renderRLResults(tables, label, count=2){
       if (r.length < 5) return '';
       const home = r[1], hs = r[2], as_ = r[3], away = r[4];
       const hw = parseInt(hs)>parseInt(as_), aw = parseInt(as_)>parseInt(hs);
-      return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(home)}</span><span class="rl-sb"><b>${esc(hs)}</b><span class="rl-vs">–</span><b>${esc(as_)}</b></span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(away)}</span></div>`;
+      const kickoff = fmtKickoff(matchKickoff(home, away, espnEvents));
+      const timeHtml = kickoff ? `<span class="rl-time">${esc(kickoff)}</span>` : '';
+      return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(home)}</span><span class="rl-sb"><b>${esc(hs)}</b><span class="rl-vs">–</span><b>${esc(as_)}</b>${timeHtml}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(away)}</span></div>`;
     }).filter(Boolean).join('');
     const dateHtml = t.date ? `<span class="rl-jdate">${esc(t.date)}</span>` : '';
     return `<div class="rl-journee"><span class="rl-jlbl">Journée ${jn}${dateHtml}</span>${cards}</div>`;
@@ -928,7 +961,10 @@ async function loadRugbyLive(opts={}){
     if (jtbls.length){
       _rlTop14Journees = jtbls;
       _rlTop14Shown = 1;
-      mainHtml += renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown);
+      // Seuls les évènements ESPN de Top 14 (pas la Champions Cup) portent
+      // les mêmes affiches que le tableau de résultats Wikipédia.
+      _rlTop14EspnEvents = sofa.events.filter(e=>e.leagueId==='270559');
+      mainHtml += renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown,_rlTop14EspnEvents);
     }
   }
   if (proD2.length) mainHtml += renderProD2Teams(proD2);
@@ -3022,7 +3058,7 @@ async function init(){
     if (!e.target.classList.contains('rl-more-btn')) return;
     _rlTop14Shown = Math.min(_rlTop14Shown + 3, _rlTop14Journees.length);
     const el = elRugbyLive.querySelector('.rl-results-top14');
-    if (el) el.outerHTML = renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown);
+    if (el) el.outerHTML = renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown,_rlTop14EspnEvents);
   });
   if ('serviceWorker' in navigator){
     if (isNative){
