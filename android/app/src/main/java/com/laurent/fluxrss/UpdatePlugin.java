@@ -378,4 +378,24 @@ public class UpdatePlugin extends Plugin {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_GRANT_READ_URI_PERMISSION);
         ctx.startActivity(intent);
     }
+
+    /* ── Ouverture externe (IPTV, etc.) ─────────────────────────────────── */
+    // Un <a href> cliqué dans la WebView reste géré par elle : pour un flux
+    // (.m3u8...) qu'elle ne sait pas afficher, elle déclenche son propre
+    // DownloadListener au lieu de laisser Android proposer les applications
+    // capables de l'ouvrir (le lecteur IPTV installé, notamment). Un vrai
+    // Intent.ACTION_VIEW, lancé hors WebView, obtient le bon comportement.
+    @PluginMethod
+    public void openExternalUrl(PluginCall call) {
+        String url = call.getString("url");
+        if (url == null || url.isEmpty()) { call.reject("URL manquante"); return; }
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            getContext().startActivity(intent);
+            call.resolve();
+        } catch (Exception e) {
+            call.reject("Aucune application ne peut ouvrir ce lien : " + e.getMessage());
+        }
+    }
 }
