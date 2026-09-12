@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.46';
+const APP_VERSION = '5.47';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -116,6 +116,7 @@ let lastUpdated = '';
 let _rlTop14Journees = [];
 let _rlTop14Shown = 1;
 let _rlTop14EspnEvents = [];
+let _rlFarCache = {}; // clé de section ("cc"/"intl") -> HTML des matchs à venir lointains, masqués par défaut
 
 /* ---------- articles lus (masqués une fois consultés) ---------- */
 const READ_KEY = 'readArticles';
@@ -601,7 +602,7 @@ function renderLiveScores(events, extraIntlHtml=''){
     FR_RE.test(e.homeTeam?.name||'') || FR_RE.test(e.awayTeam?.name||'')
   );
 
-  function section(evts, label, extra=''){
+  function section(evts, label, key, extra=''){
     if (!evts.length && !extra) return '';
     const renderCard = e => {
       const st = e.status?.type;
@@ -619,15 +620,27 @@ function renderLiveScores(events, extraIntlHtml=''){
     };
     const liveEvts = evts.filter(e=>e.status?.type==='inprogress');
     const doneEvts = evts.filter(e=>e.status?.type!=='inprogress');
+    // Un match à venir dans plus de 4 jours (compétitions internationales
+    // dont le prochain rendez-vous est loin) encombre la section sans rien
+    // apporter d'actuel : masqué derrière un bouton plutôt qu'affiché d'office.
+    const FAR = 4*24*3600;
+    const now = Date.now()/1000;
+    const nearEvts = doneEvts.filter(e=>e.status?.type==='finished' || (e.startTimestamp-now)<=FAR);
+    const farEvts = doneEvts.filter(e=>e.status?.type!=='finished' && (e.startTimestamp-now)>FAR);
     let html = '';
     if(liveEvts.length)
       html += `<div class="rl-section rl-live-section"><div class="rl-sh">🔴 ${label} — En direct<button class="rl-refresh-btn" onclick="manualRefreshLive()" title="Actualiser">⟳</button></div>${liveEvts.map(renderCard).join('')}</div>`;
-    const doneCards = doneEvts.map(renderCard).join('');
-    if(doneCards || extra)
-      html += `<details class="rl-section"><summary class="rl-sh">${label}</summary>${doneCards}${extra}</details>`;
+    const nearCards = nearEvts.map(renderCard).join('');
+    let farBtn = '';
+    if (farEvts.length){
+      _rlFarCache[key] = farEvts.map(renderCard).join('');
+      farBtn = `<button class="rl-more-btn" data-far="${key}">📋 +${farEvts.length} match${farEvts.length>1?'s':''} à venir</button>`;
+    }
+    if(nearCards || farBtn || extra)
+      html += `<details class="rl-section"><summary class="rl-sh">${label}</summary>${nearCards}${farBtn}${extra}</details>`;
     return html;
   }
-  return section(top14Events,'🏆 Champions Cup') + section(intlEvents,'🌐 Matchs internationaux', extraIntlHtml);
+  return section(top14Events,'🏆 Champions Cup','cc') + section(intlEvents,'🌐 Matchs internationaux','intl',extraIntlHtml);
 }
 
 const FR_RE = /\bfrance\b/i;
@@ -3079,6 +3092,10 @@ async function init(){
   elModal.addEventListener('click', (e)=>{ if(e.target===elModal) closeSettings(); });
   elRugbyLive.addEventListener('click', e=>{
     if (!e.target.classList.contains('rl-more-btn')) return;
+    if (e.target.dataset.far){
+      e.target.outerHTML = _rlFarCache[e.target.dataset.far] || '';
+      return;
+    }
     _rlTop14Shown = Math.min(_rlTop14Shown + 3, _rlTop14Journees.length);
     const el = elRugbyLive.querySelector('.rl-results-top14');
     if (el) el.outerHTML = renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown,_rlTop14EspnEvents);
