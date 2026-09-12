@@ -268,6 +268,8 @@ details.bk-sub[open]>summary.bk-sub-sh{border-radius:6px 6px 0 0}
 .bk-sub-detail{font-weight:400;opacity:.6;font-size:.72rem}
 
 /* ---- Agenda ---- */
+.ag-day{margin-bottom:16px}
+.ag-day-lbl{font-weight:800;font-size:.85em;color:var(--muted);text-transform:capitalize;letter-spacing:.5px;padding:4px 0 8px;border-bottom:1px solid var(--line)}
 .ag-month{margin-bottom:20px}
 .ag-month>summary{cursor:pointer;list-style:none}
 .ag-month>summary::-webkit-details-marker{display:none}
