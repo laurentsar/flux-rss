@@ -1,103 +1,12 @@
 {
- "generated": "2026-09-14T20:15:07+02:00",
+ "generated": "2026-09-15T08:15:02+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 38,
+ "count": 48,
  "programmes": [
-  {
-   "title": "Pau / Bayonne",
-   "date": "2026-09-14",
-   "time": "18:36",
-   "desc": "Une confrontation attendue entre ces deux formations aux ambitions européennes et de phase finale. Les Palois ne doivent pas laisser passer ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Pau / Bayonne",
-   "date": "2026-09-14",
-   "time": "18:43",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club",
-   "date": "2026-09-14",
-   "time": "20:23",
-   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club",
-   "date": "2026-09-14",
-   "time": "20:25",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulouse / Bordeaux-Bègles",
-   "date": "2026-09-14",
-   "time": "21:00",
-   "desc": "Après sa défaite à La Rochelle, Toulouse voudra réagir devant son public. Une affiche de prestige entre deux formations qui trustent les tit",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-09-14",
-   "time": "22:41",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-09-14",
-   "time": "22:44",
-   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Vannes / Montpellier",
    "date": "2026-09-15",
-   "time": "07:07",
+   "time": "06:46",
    "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
    "chaine": [
     "Canal+ Sport"
@@ -136,7 +45,7 @@
   {
    "title": "Toulon / La Rochelle",
    "date": "2026-09-15",
-   "time": "08:50",
+   "time": "08:31",
    "desc": "Pour le RC Toulon, la réception des Maritimes de La Rochelle constitue le tout premier choc de la saison, devant son public de Mayol.",
    "chaine": [
     "Canal+ Sport"
@@ -162,8 +71,21 @@
   {
    "title": "Canal Rugby Club",
    "date": "2026-09-15",
-   "time": "10:33",
+   "time": "10:09",
    "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / Bordeaux-Bègles",
+   "date": "2026-09-15",
+   "time": "10:40",
+   "desc": "Après sa défaite à La Rochelle, Toulouse voudra réagir devant son public. Une affiche de prestige entre deux formations qui trustent les tit",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -188,19 +110,6 @@
   {
    "title": "Toulouse / Bordeaux-Bègles",
    "date": "2026-09-15",
-   "time": "11:06",
-   "desc": "Après sa défaite à La Rochelle, Toulouse voudra réagir devant son public. Une affiche de prestige entre deux formations qui trustent les tit",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulouse / Bordeaux-Bègles",
-   "date": "2026-09-15",
    "time": "11:22",
    "desc": "Rugby",
    "chaine": [
@@ -214,8 +123,21 @@
   {
    "title": "Canal Rugby Club le débrief",
    "date": "2026-09-15",
-   "time": "12:51",
+   "time": "12:22",
    "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Brive / Nice",
+   "date": "2026-09-15",
+   "time": "12:46",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -240,19 +162,6 @@
   {
    "title": "Brive / Nice",
    "date": "2026-09-15",
-   "time": "13:11",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Brive / Nice",
-   "date": "2026-09-15",
    "time": "13:25",
    "desc": "Rugby",
    "chaine": [
@@ -266,7 +175,7 @@
   {
    "title": "Dax / Valence-Romans",
    "date": "2026-09-15",
-   "time": "14:54",
+   "time": "14:25",
    "desc": "Cette nouvelle saison de PRO D2 s'annonce intense avec seize clubs en lice pour décrocher le titre et viser la montée en Top 14, avec des af",
    "chaine": [
     "Canal+ Sport"
@@ -305,8 +214,34 @@
   {
    "title": "Fractionné Rugby",
    "date": "2026-09-15",
-   "time": "20:38",
+   "time": "20:36",
    "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-09-15",
+   "time": "20:38",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Afrique du Sud / Nouvelle-Zélande",
+   "date": "2026-09-15",
+   "time": "21:00",
+   "desc": "Ce match constitue la quatrième et dernière confrontation entre les deux nations dans cette tournée en Afrique du Sud pour les All Blacks.",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -319,7 +254,20 @@
    "title": "Afrique du Sud / Nouvelle-Zélande",
    "date": "2026-09-15",
    "time": "22:41",
-   "desc": "Ce match constitue la quatrième et dernière confrontation entre les deux nations dans cette tournée en Afrique du Sud pour les All Blacks.",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Griquas / Pumas",
+   "date": "2026-09-15",
+   "time": "22:52",
+   "desc": "Le championnat de rugby de première division sud-africain se conclut avec cette finale très attendue. Après avoir largement défait les Lions",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -332,7 +280,7 @@
    "title": "Griquas / Pumas",
    "date": "2026-09-16",
    "time": "00:22",
-   "desc": "Le championnat de rugby de première division sud-africain se conclut avec cette finale très attendue. Après avoir largement défait les Lions",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -459,6 +407,32 @@
    "approx": false
   },
   {
+   "title": "Fractionné Rugby",
+   "date": "2026-09-17",
+   "time": "10:41",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulon / La Rochelle",
+   "date": "2026-09-17",
+   "time": "13:23",
+   "desc": "Pour le RC Toulon, la réception des Maritimes de La Rochelle constitue le tout premier choc de la saison, devant son public de Mayol.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Toulon / La Rochelle",
    "date": "2026-09-17",
    "time": "13:24",
@@ -475,8 +449,22 @@
    "title": "Afrique du Sud / Nouvelle-Zélande",
    "date": "2026-09-17",
    "time": "15:06",
-   "desc": "Rugby",
+   "desc": "Ce match constitue la quatrième et dernière confrontation entre les deux nations dans cette tournée en Afrique du Sud pour les All Blacks.",
    "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Avant-match Pro D2",
+   "date": "2026-09-17",
+   "time": "20:50",
+   "desc": "Les ultimes informations avant le match de Pro D2, les compositions des équipes et les enjeux de la rencontre.",
+   "chaine": [
+    "Canal+ Live",
     "Canal+ Sport"
    ],
    "cats": [
@@ -488,6 +476,151 @@
    "title": "Aurillac / Brive",
    "date": "2026-09-17",
    "time": "21:00",
+   "desc": "Candidat à la montée en Top 14, Brive entend bien ne pas laisser de points en route, et le déplacement à Aurillac, où les Corréziens partent",
+   "chaine": [
+    "Canal+ Live",
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Après-match Pro D2",
+   "date": "2026-09-17",
+   "time": "22:50",
+   "desc": "Suite à la rencontre de Pro D2, le magazine passe en revue les dernières actualités, les réactions des joueurs et des coachs et propose les ",
+   "chaine": [
+    "Canal+ Live",
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Aurillac / Brive",
+   "date": "2026-09-18",
+   "time": "09:32",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Afrique du Sud / Nouvelle-Zélande",
+   "date": "2026-09-18",
+   "time": "11:15",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Griquas / Pumas",
+   "date": "2026-09-18",
+   "time": "13:41",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / Bordeaux-Bègles",
+   "date": "2026-09-18",
+   "time": "15:23",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Aurillac / Brive",
+   "date": "2026-09-18",
+   "time": "17:06",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby avant-match",
+   "date": "2026-09-18",
+   "time": "18:50",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Nice / Grenoble",
+   "date": "2026-09-18",
+   "time": "19:00",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby avant-match",
+   "date": "2026-09-18",
+   "time": "20:50",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Agen / Oyonnax",
+   "date": "2026-09-18",
+   "time": "21:00",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby",
+   "date": "2026-09-18",
+   "time": "22:50",
    "desc": "En Direct.",
    "chaine": [
     "Canal+ Sport"
