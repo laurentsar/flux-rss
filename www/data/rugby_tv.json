@@ -1,86 +1,8 @@
 {
- "generated": "2026-09-17T08:15:03+02:00",
+ "generated": "2026-09-17T20:15:06+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 63,
+ "count": 57,
  "programmes": [
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-09-17",
-   "time": "10:41",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulon / La Rochelle",
-   "date": "2026-09-17",
-   "time": "12:14",
-   "desc": "Pour le RC Toulon, la réception des Maritimes de La Rochelle constitue le tout premier choc de la saison, devant son public de Mayol.",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulon / La Rochelle",
-   "date": "2026-09-17",
-   "time": "13:23",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Afrique du Sud / Nouvelle-Zélande",
-   "date": "2026-09-17",
-   "time": "13:49",
-   "desc": "Ce match constitue la quatrième et dernière confrontation entre les deux nations dans cette tournée en Afrique du Sud pour les All Blacks.",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Afrique du Sud - Nouvelle-Zélande",
-   "date": "2026-09-17",
-   "time": "15:06",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Grenoble / Agen",
-   "date": "2026-09-17",
-   "time": "16:39",
-   "desc": "Dans son département de l'Isère, le FC Grenoble espère que la nouvelle saison qui débute sera plus favorable que les précédentes. Les coachs",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Avant-match Pro D2",
    "date": "2026-09-17",
