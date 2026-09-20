@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.53';
+const APP_VERSION = '5.54';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -117,6 +117,8 @@ let _rlTop14Journees = [];
 let _rlTop14Shown = 1;
 let _rlTop14EspnEvents = [];
 let _rlFarCache = {}; // clé de section ("cc"/"intl") -> HTML des matchs à venir lointains, masqués par défaut
+let _proD2Journees = [];
+let _proD2Shown = 1;
 
 /* ---------- articles lus (masqués une fois consultés) ---------- */
 const READ_KEY = 'readArticles';
@@ -441,6 +443,35 @@ function lastPlayedRound(tables){
   return idx;
 }
 
+const MOIS_FR = {janvier:0,février:1,mars:2,avril:3,mai:4,juin:5,juillet:6,août:7,septembre:8,octobre:9,novembre:10,décembre:11};
+// Extrait la DERNIÈRE date complète mentionnée dans le texte d'une journée
+// (ex : "samedi 5 et dimanche 6 septembre 2026" → 6 septembre 2026), seule
+// date réellement exploitable puisque Wikipédia n'associe qu'une plage de
+// jours à toute la journée, jamais une date par match.
+function parseRoundEndDate(text){
+  if (!text) return null;
+  const re = /(\d{1,2})\s+(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\s+(\d{4})/gi;
+  let m, last=null;
+  while ((m = re.exec(text))) last = m;
+  if (!last) return null;
+  const month = MOIS_FR[last[2].toLowerCase()];
+  if (month==null) return null;
+  return new Date(parseInt(last[3]), month, parseInt(last[1]), 23, 59, 59);
+}
+// Journée à afficher par défaut : la dernière jouée reste affichée au moins
+// 3 jours après sa date (le temps de la commenter/revivre le week-end)
+// avant de basculer sur la suivante — au lieu de basculer dès qu'un score
+// y est inscrit, ce qui pouvait arriver en plein milieu du week-end de jeu.
+function currentRoundIdx(tables){
+  const total = tables.length;
+  const lastPlayed = lastPlayedRound(tables);
+  if (lastPlayed < 0) return 0;
+  const DWELL = 3*24*3600*1000;
+  const end = parseRoundEndDate(tables[lastPlayed].date);
+  const stillDwelling = end ? (Date.now() <= end.getTime() + DWELL) : false;
+  return Math.min(stillDwelling ? lastPlayed : lastPlayed+1, total-1);
+}
+
 // Wikipédia n'abrège pas les noms d'équipes de la même façon qu'ESPN
 // ("Toulouse" vs "Stade Toulousain", "Paris" vs "Stade Francais Paris"...) :
 // on normalise vers une clé commune pour pouvoir rapprocher un match du
@@ -471,14 +502,14 @@ function fmtKickoff(ts){
   return new Date(ts*1000).toLocaleString('fr-FR',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}).replace('.','');
 }
 
-function renderRLResults(tables, label, count=2, espnEvents=[]){
+function renderRLResults(tables, label, count=2, espnEvents=[], key='top14'){
   if (!tables || !tables.length) return '';
   const total = tables.length;
   // Le calendrier complet de la saison est publié dès le début (journées
-  // futures encore vides) : on ancre l'affichage sur la journée en cours
-  // (dernière jouée + 1), pas sur la fin du tableau qui peut être à des
-  // mois de distance.
-  const currentIdx = Math.min(lastPlayedRound(tables) + 1, total - 1);
+  // futures encore vides) : on ancre l'affichage sur la journée en cours,
+  // gardée au moins 3 jours après sa date (voir currentRoundIdx) plutôt que
+  // sur la fin du tableau qui peut être à des mois de distance.
+  const currentIdx = currentRoundIdx(tables);
   const shown = Math.min(count, currentIdx + 1);
   const startIdx = currentIdx + 1 - shown;
   const recent = tables.slice(startIdx, currentIdx + 1);
@@ -513,14 +544,14 @@ function renderRLResults(tables, label, count=2, espnEvents=[]){
   }).join('');
   const remaining = startIdx;
   const moreBtn = remaining > 0
-    ? `<button class="rl-more-btn">📋 +${Math.min(3,remaining)} journée${Math.min(3,remaining)>1?'s':''}</button>`
+    ? `<button class="rl-more-btn" data-key="${key}">📋 +${Math.min(3,remaining)} journée${Math.min(3,remaining)>1?'s':''}</button>`
     : '';
   // Ouvert par défaut dès qu'un match Top 14 est en direct : c'est
   // désormais l'unique endroit où le suivre (plus de bandeau séparé).
   // Une seule chaîne pour toute la compétition (Canal+) : le badge va dans
   // l'en-tête de section plutôt que répété sur chaque match.
   const chaineHtml = chaineLinksHtml(rugbyChannel(label, null), label);
-  return `<details class="rl-section rl-results-top14"${hasLive?' open':''}><summary class="rl-sh">${hasLive?'🔴':'🏉'} ${esc(label)}${hasLive?' — En direct':''}${chaineHtml}</summary>${matchesHtml}${moreBtn}</details>`;
+  return `<details class="rl-section rl-results-${key}"${hasLive?' open':''}><summary class="rl-sh">${hasLive?'🔴':'🏉'} ${esc(label)}${hasLive?' — En direct':''}${chaineHtml}</summary>${matchesHtml}${moreBtn}</details>`;
 }
 
 /* --- ESPN : résultats rugby (live + récents + à venir) --- */
@@ -689,30 +720,19 @@ async function loadProD2Teams(season){
     const idx = sects.find(s=>/résultats/i.test(s.line))?.index;
     if (!idx) return cached ? cached.matches : [];
     const d = await fetchWikiSection(page, parseInt(idx));
-    const tbls = parseWikitables(d?.parse?.text?.['*']||'').filter(t=>t.length>=3 && t[0].length<=6);
-    const matches = [];
-    tbls.forEach((rows,ji)=>{
-      rows.slice(1).forEach(r=>{
-        if (r.length<5) return;
-        if (PRO_D2_TEAMS.some(t=>(r[1]||'').toLowerCase().includes(t.toLowerCase())||(r[4]||'').toLowerCase().includes(t.toLowerCase())))
-          matches.push({jn:ji+1,r});
-      });
-    });
+    // parseWikitablesWithDates (plutôt que parseWikitables) pour récupérer,
+    // comme pour le Top 14, la date de chaque journée — permet d'afficher
+    // Pro D2 de la même façon (journée en cours + bouton "+N journées").
+    const tbls = parseWikitablesWithDates(d?.parse?.text?.['*']||'').filter(t=>t.rows.length>=3 && t.rows[0].length<=6);
+    const matches = tbls.map(t=>({
+      date: t.date,
+      rows: t.rows.slice(1).filter(r=>
+        r.length>=5 && PRO_D2_TEAMS.some(team=>(r[1]||'').toLowerCase().includes(team.toLowerCase())||(r[4]||'').toLowerCase().includes(team.toLowerCase()))
+      ),
+    }));
     _proD2Cache[season] = {matches, ts:Date.now()};
     return matches;
   } catch(e){ return cached ? cached.matches : []; }
-}
-
-function renderProD2Teams(matches){
-  if (!matches.length) return '';
-  const cards = matches.map(({r})=>{
-    const home=r[1],hs=r[2],as_=r[3],away=r[4];
-    const hw=parseInt(hs)>parseInt(as_), aw=parseInt(as_)>parseInt(hs);
-    const favH=PRO_D2_TEAMS.some(t=>(home||'').toLowerCase().includes(t.toLowerCase()));
-    const favA=PRO_D2_TEAMS.some(t=>(away||'').toLowerCase().includes(t.toLowerCase()));
-    return `<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${esc(home)}${favH?' ⭐':''}</span><span class="rl-sb"><b>${esc(hs)}</b><span class="rl-vs">–</span><b>${esc(as_)}</b></span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${esc(away)}${favA?' ⭐':''}</span></div>`;
-  }).join('');
-  return `<details class="rl-section"><summary class="rl-sh">🏉 Brive & Colomiers — Pro D2</summary>${cards}</details>`;
 }
 
 /* --- U20 France — Six Nations des moins de 20 ans --- */
@@ -1039,10 +1059,14 @@ async function loadRugbyLive(opts={}){
       // Seuls les évènements ESPN de Top 14 (pas la Champions Cup) portent
       // les mêmes affiches que le tableau de résultats Wikipédia.
       _rlTop14EspnEvents = sofa.events.filter(e=>e.leagueId==='270559');
-      mainHtml += renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown,_rlTop14EspnEvents);
+      mainHtml += renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown,_rlTop14EspnEvents,'top14');
     }
   }
-  if (proD2.length) mainHtml += renderProD2Teams(proD2);
+  if (proD2.length){
+    _proD2Journees = proD2;
+    _proD2Shown = 1;
+    mainHtml += renderRLResults(_proD2Journees,'Résultats Pro D2',_proD2Shown,[],'prod2');
+  }
 
   _rugbyMainHtml = mainHtml || '<div class="rl-loading">Données non disponibles.</div>';
   _rugbyDataTs = Date.now();
@@ -3247,9 +3271,15 @@ async function init(){
       e.target.outerHTML = _rlFarCache[e.target.dataset.far] || '';
       return;
     }
+    if (e.target.dataset.key==='prod2'){
+      _proD2Shown = Math.min(_proD2Shown + 3, _proD2Journees.length);
+      const el = elRugbyLive.querySelector('.rl-results-prod2');
+      if (el) el.outerHTML = renderRLResults(_proD2Journees,'Résultats Pro D2',_proD2Shown,[],'prod2');
+      return;
+    }
     _rlTop14Shown = Math.min(_rlTop14Shown + 3, _rlTop14Journees.length);
     const el = elRugbyLive.querySelector('.rl-results-top14');
-    if (el) el.outerHTML = renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown,_rlTop14EspnEvents);
+    if (el) el.outerHTML = renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown,_rlTop14EspnEvents,'top14');
   });
   if ('serviceWorker' in navigator){
     if (isNative){
