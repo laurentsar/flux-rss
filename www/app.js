@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.58';
+const APP_VERSION = '5.59';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -124,6 +124,8 @@ let _eliteOneShown = 1;
 let _eliteOneSeason = ''; // saison réellement utilisée (peut différer de _rugbySeason, voir loadEliteOne)
 let _rlCompHtml = {}; // clé compétition ("top14"/"prod2"/"xiii") -> HTML classement+résultats déjà généré
 let _rlCompMode = localStorage.getItem('rlCompMode') || 'top14'; // compétition actuellement affichée dans le menu
+const COMPS = ['top14','prod2','xiii'];
+const COMP_LABELS = {top14:'🏆 Top 14', prod2:'🥈 Pro D2', xiii:'🏉 XIII'};
 let _rugbySeason = ''; // saison en cours (ex "2025-2026"), pour déduire l'année des dates sans année (rugby à XIII)
 
 /* ---------- articles lus (masqués une fois consultés) ---------- */
@@ -1085,34 +1087,27 @@ async function loadRugbyLive(opts={}){
   // Les données -20 ans (loadU20Rugby/loadU20WorldChampionship) ne sont PAS
   // chargées ici : plusieurs scrapes Wikipedia à elles seules, inutiles tant
   // que l'utilisateur n'a pas ouvert ce sous-onglet — voir loadRugbyU20().
-  //
-  // Les 4 appels ci-dessous sont lancés en parallèle SANS être tous attendus
-  // ensemble : classement/résultats ne dépendent que de la résolution des
-  // index de section, pas de ProD2/Championnat des Nations (qui peuvent
-  // chacun être plus lents, vu leurs propres chaînes de requêtes Wikipedia).
-  // Les attendre tous avant de lancer classement/résultats ajoutait un
-  // round-trip complet et inutile à la durée totale du chargement.
+  // Pareil pour Pro D2 et Rugby à XIII depuis l'ajout du menu (PR précédente) :
+  // seule la compétition sélectionnée est réellement affichée, donc plus
+  // besoin de charger les deux autres d'office à chaque ouverture de
+  // l'onglet — voir loadCompContent(), appelé à la demande (clic sur le
+  // menu, ou juste après si c'était déjà la compétition choisie).
   const sofaPromise = fetchSportsEvents();
-  const proD2Promise = loadProD2Teams(season);
-  const eliteOnePromise = loadEliteOne(season);
   const champNationsPromise = loadChampionnatNations(currentYear);
   // withDeadline : filet de sécurité pour ne jamais rester bloqué sur le
   // spinner indéfiniment, quoi qu'il arrive à une requête — appliqué
   // individuellement à CHAQUE appel (pas au Promise.all global) pour qu'un
-  // seul appel lent (ex. Pro D2, qui enchaîne 2 requêtes Wikipedia et peut
-  // légitimement approcher 20s) ne fasse pas passer TOUT le reste — sofa,
-  // classement, résultats — à vide alors qu'ils avaient déjà répondu.
+  // seul appel lent ne fasse pas passer TOUT le reste — sofa, classement,
+  // résultats — à vide alors qu'ils avaient déjà répondu.
   const { classementIdx, resultatsIdx } = await withDeadline(
     resolveTop14SectionIdx(top14), 15000, {classementIdx:null, resultatsIdx:null});
   // Contenu mis en cache 15 min : ces tableaux ne sont pas mis à jour par les
   // contributeurs Wikipedia à la minute près, inutile de les rescraper à
   // chaque rafraîchissement live (20s) pendant un match en direct.
-  const [r1, r2, sofa, proD2, eliteOne, champNations] = await Promise.all([
+  const [r1, r2, sofa, champNations] = await Promise.all([
     withDeadline(classementIdx ? fetchWikiSectionCached(top14,classementIdx,15*60*1000) : Promise.resolve(null), 20000, null),
     withDeadline(resultatsIdx ? fetchWikiSectionCached(top14,resultatsIdx,15*60*1000) : Promise.resolve(null), 20000, null),
     withDeadline(sofaPromise, 25000, {events:[],error:null}),
-    withDeadline(proD2Promise, 20000, {standings:null, matches:[]}),
-    withDeadline(eliteOnePromise, 20000, {standings:null, journees:[]}),
     withDeadline(champNationsPromise, 20000, null),
   ]);
 
@@ -1147,37 +1142,23 @@ async function loadRugbyLive(opts={}){
       top14CompHtml += renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown,_rlTop14EspnEvents,'top14',season);
     }
   }
-  let prod2CompHtml = '';
-  if (proD2.standings) prod2CompHtml += renderRLStandings(proD2.standings,'Classement Pro D2',16,6,4);
-  if (proD2.matches.length){
-    _proD2Journees = proD2.matches;
-    _proD2Shown = 1;
-    prod2CompHtml += renderRLResults(_proD2Journees,'Résultats Pro D2',_proD2Shown,[],'prod2',season);
-  }
-  let xiiiCompHtml = '';
-  if (eliteOne.standings) xiiiCompHtml += renderRLStandings(eliteOne.standings,'Classement Rugby à XIII',14,6,2);
-  if (eliteOne.journees.length){
-    _eliteOneJournees = eliteOne.journees;
-    _eliteOneShown = 1;
-    _eliteOneSeason = eliteOne.season;
-    xiiiCompHtml += renderRLResults(_eliteOneJournees,'Résultats Rugby à XIII',_eliteOneShown,[],'xiii',_eliteOneSeason);
-  }
-  _rlCompHtml = {top14:top14CompHtml, prod2:prod2CompHtml, xiii:xiiiCompHtml};
-  const COMP_LABELS = {top14:'🏆 Top 14', prod2:'🥈 Pro D2', xiii:'🏉 XIII'};
-  const availableComps = Object.keys(_rlCompHtml).filter(k=>_rlCompHtml[k]);
-  if (availableComps.length){
-    if (!availableComps.includes(_rlCompMode)) _rlCompMode = availableComps[0];
-    const menuHtml = availableComps.length>1
-      ? `<div class="rl-comp-menu">${availableComps.map(k=>`<button class="rl-comp-btn${k===_rlCompMode?' active':''}" data-comp="${k}">${COMP_LABELS[k]}</button>`).join('')}</div>`
-      : '';
-    mainHtml += menuHtml + `<div id="rl-comp-content">${_rlCompHtml[_rlCompMode]}</div>`;
-  }
+  // Pro D2 et Rugby à XIII ne sont plus chargés ici (voir plus haut) : leur
+  // HTML n'existe pas encore tant que l'utilisateur n'a pas cliqué leur
+  // bouton de menu (ou que ce n'était déjà la compétition choisie).
+  _rlCompHtml = {top14: top14CompHtml || '<div class="rl-loading">Données non disponibles.</div>'};
+  if (!COMPS.includes(_rlCompMode)) _rlCompMode = 'top14';
+  const menuHtml = `<div class="rl-comp-menu">${COMPS.map(k=>`<button class="rl-comp-btn${k===_rlCompMode?' active':''}" data-comp="${k}">${COMP_LABELS[k]}</button>`).join('')}</div>`;
+  const initialContent = _rlCompMode==='top14' ? _rlCompHtml.top14 : '<div class="rl-loading"><span class="spinner"></span>Chargement…</div>';
+  mainHtml += menuHtml + `<div id="rl-comp-content">${initialContent}</div>`;
 
   _rugbyMainHtml = mainHtml || '<div class="rl-loading">Données non disponibles.</div>';
   _rugbyDataTs = Date.now();
 
   showRugbyContent();
   if (_hasLiveSports) scheduleLiveRefresh(()=>loadRugbyLive({liveRefresh:true}));
+  // La compétition choisie (mémorisée) n'est pas Top 14, dont les données
+  // viennent d'être chargées ci-dessus : il faut charger la sienne.
+  if (_rlCompMode !== 'top14') loadCompContent(_rlCompMode);
   // Si l'utilisateur est déjà sur le sous-onglet -20 ans (ex. réouverture de
   // l'app), charger ses données maintenant — sans bloquer l'affichage du
   // Club & Intl ci-dessus, qui vient de se terminer.
@@ -1201,6 +1182,46 @@ async function loadRugbyU20(){
   _rugbyU20Html = u20Html || '<div class="rl-loading">Données -20 ans non disponibles.</div>';
   _rugbyU20Ts = Date.now();
   if (_rugbySubMode==='u20') showRugbyContent();
+}
+
+// Injecte le HTML déjà en cache de la compétition choisie dans le menu
+// Top 14/Pro D2/XIII (voir loadCompContent ci-dessous pour le chargement).
+function showCompContent(){
+  const content = elRugbyLive?.querySelector('#rl-comp-content');
+  if (content) content.innerHTML = _rlCompHtml[_rlCompMode] || '';
+}
+// Pro D2 et Rugby à XIII ne sont chargés qu'à la demande (clic sur le menu),
+// contrairement à Top 14 chargé d'office par loadRugbyLive — ces deux
+// compétitions ont chacune leur propre chaîne de requêtes Wikipedia
+// (classement + résultats), inutile tant que l'utilisateur ne les regarde
+// pas.
+async function loadCompContent(key){
+  if (_rlCompHtml[key]){ if (_rlCompMode===key) showCompContent(); return; }
+  if (_rlCompMode===key){
+    const content = elRugbyLive?.querySelector('#rl-comp-content');
+    if (content) content.innerHTML = '<div class="rl-loading"><span class="spinner"></span>Chargement…</div>';
+  }
+  let html = '';
+  if (key==='prod2'){
+    const proD2 = await withDeadline(loadProD2Teams(_rugbySeason), 20000, {standings:null, matches:[]});
+    if (proD2.standings) html += renderRLStandings(proD2.standings,'Classement Pro D2',16,6,4);
+    if (proD2.matches.length){
+      _proD2Journees = proD2.matches;
+      _proD2Shown = 1;
+      html += renderRLResults(_proD2Journees,'Résultats Pro D2',_proD2Shown,[],'prod2',_rugbySeason);
+    }
+  } else if (key==='xiii'){
+    const eliteOne = await withDeadline(loadEliteOne(_rugbySeason), 20000, {standings:null, journees:[], season:_rugbySeason});
+    if (eliteOne.standings) html += renderRLStandings(eliteOne.standings,'Classement Rugby à XIII',14,6,2);
+    if (eliteOne.journees.length){
+      _eliteOneJournees = eliteOne.journees;
+      _eliteOneShown = 1;
+      _eliteOneSeason = eliteOne.season;
+      html += renderRLResults(_eliteOneJournees,'Résultats Rugby à XIII',_eliteOneShown,[],'xiii',_eliteOneSeason);
+    }
+  }
+  _rlCompHtml[key] = html || '<div class="rl-loading">Données non disponibles.</div>';
+  if (_rlCompMode===key) showCompContent();
 }
 
 function hideRugbyLive(){
@@ -3376,8 +3397,8 @@ async function init(){
       _rlCompMode = compBtn.dataset.comp;
       localStorage.setItem('rlCompMode', _rlCompMode);
       elRugbyLive.querySelectorAll('.rl-comp-btn').forEach(b=>b.classList.toggle('active', b.dataset.comp===_rlCompMode));
-      const content = elRugbyLive.querySelector('#rl-comp-content');
-      if (content) content.innerHTML = _rlCompHtml[_rlCompMode] || '';
+      if (_rlCompHtml[_rlCompMode]) showCompContent();
+      else loadCompContent(_rlCompMode);
       return;
     }
     if (!e.target.classList.contains('rl-more-btn')) return;
