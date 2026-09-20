@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.57';
+const APP_VERSION = '5.58';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -122,6 +122,8 @@ let _proD2Shown = 1;
 let _eliteOneJournees = [];
 let _eliteOneShown = 1;
 let _eliteOneSeason = ''; // saison réellement utilisée (peut différer de _rugbySeason, voir loadEliteOne)
+let _rlCompHtml = {}; // clé compétition ("top14"/"prod2"/"xiii") -> HTML classement+résultats déjà généré
+let _rlCompMode = localStorage.getItem('rlCompMode') || 'top14'; // compétition actuellement affichée dans le menu
 let _rugbySeason = ''; // saison en cours (ex "2025-2026"), pour déduire l'année des dates sans année (rugby à XIII)
 
 /* ---------- articles lus (masqués une fois consultés) ---------- */
@@ -735,10 +737,11 @@ function teamBadge(name){
 
 /* --- Pro D2 : Brive & Colomiers --- */
 const PRO_D2_TEAMS = ['Brive','Colomiers'];
-let _proD2Cache = {}; // season -> {matches, ts} — évite de rescraper Wikipedia à chaque rafraîchissement live (20s)
+let _proD2Cache = {}; // season -> {standings, matches, ts} — évite de rescraper Wikipedia à chaque rafraîchissement live (20s)
 async function loadProD2Teams(season){
   const cached = _proD2Cache[season];
-  if (cached && Date.now()-cached.ts < 15*60*1000) return cached.matches;
+  if (cached && Date.now()-cached.ts < 15*60*1000) return cached;
+  const empty = {standings:null, matches:[]};
   // Titre canonique de l'article (le raccourci "Pro D2 {season}" est une
   // redirection créée après coup : absente en tout début de saison).
   const page = `Championnat de France de rugby à XV de 2e division ${season}`;
@@ -748,13 +751,16 @@ async function loadProD2Teams(season){
     // à un simple test /résultats/i, qui matchait ici en premier "Résumé des
     // résultats" (un paragraphe de prose sans tableau, ajouté cette saison),
     // laissant Pro D2 vide.
-    const { resultatsIdx } = await resolveTop14SectionIdx(page);
-    if (!resultatsIdx) return cached ? cached.matches : [];
-    const d = await fetchWikiSection(page, resultatsIdx);
+    const { classementIdx, resultatsIdx } = await resolveTop14SectionIdx(page);
+    const [r1, r2] = await Promise.all([
+      classementIdx ? fetchWikiSectionCached(page,classementIdx,15*60*1000) : Promise.resolve(null),
+      resultatsIdx ? fetchWikiSectionCached(page,resultatsIdx,15*60*1000) : Promise.resolve(null),
+    ]);
+    const standings = r1 ? (parseWikitables(r1?.parse?.text?.['*']||'')[0] || null) : null;
     // parseWikitablesWithDates (plutôt que parseWikitables) pour récupérer,
     // comme pour le Top 14, la date de chaque journée — permet d'afficher
     // Pro D2 de la même façon (journée en cours + bouton "+N journées").
-    const tbls = parseWikitablesWithDates(d?.parse?.text?.['*']||'').filter(t=>t.rows.length>=3 && t.rows[0].length<=6);
+    const tbls = r2 ? parseWikitablesWithDates(r2?.parse?.text?.['*']||'').filter(t=>t.rows.length>=3 && t.rows[0].length<=6) : [];
     const matches = tbls.map(t=>({
       date: t.date,
       rows: t.rows.slice(1).filter(r=>
@@ -764,9 +770,9 @@ async function loadProD2Teams(season){
     // Ne met en cache que si on a effectivement trouvé quelque chose : un
     // raté réseau/parsing ponctuel ne doit pas figer un résultat vide
     // pendant 15 min alors que le prochain essai aurait pu réussir.
-    if (matches.length) _proD2Cache[season] = {matches, ts:Date.now()};
-    return matches.length ? matches : (cached ? cached.matches : []);
-  } catch(e){ return cached ? cached.matches : []; }
+    if (standings || matches.length) _proD2Cache[season] = {standings, matches, ts:Date.now()};
+    return (standings || matches.length) ? {standings, matches} : (cached || empty);
+  } catch(e){ return cached || empty; }
 }
 
 /* --- Rugby à XIII : Championnat de France (Elite One) --- */
@@ -1105,7 +1111,7 @@ async function loadRugbyLive(opts={}){
     withDeadline(classementIdx ? fetchWikiSectionCached(top14,classementIdx,15*60*1000) : Promise.resolve(null), 20000, null),
     withDeadline(resultatsIdx ? fetchWikiSectionCached(top14,resultatsIdx,15*60*1000) : Promise.resolve(null), 20000, null),
     withDeadline(sofaPromise, 25000, {events:[],error:null}),
-    withDeadline(proD2Promise, 20000, []),
+    withDeadline(proD2Promise, 20000, {standings:null, matches:[]}),
     withDeadline(eliteOnePromise, 20000, {standings:null, journees:[]}),
     withDeadline(champNationsPromise, 20000, null),
   ]);
@@ -1121,9 +1127,13 @@ async function loadRugbyLive(opts={}){
     if (sofa.stale) mainHtml += `<div class="rl-loading">⚠️ Scores non actualisés (connexion instable)</div>`;
     mainHtml += renderLiveScores(sofa.events, champHtml);
   }
+  // Top 14, Pro D2 et Rugby à XIII partagent le même menu (un seul affiché
+  // à la fois, classement + résultats groupés) plutôt que de tout empiler
+  // à la suite dans l'onglet Club & Intl.
+  let top14CompHtml = '';
   if (r1){
     const tbls = parseWikitables(r1?.parse?.text?.['*']||'');
-    if (tbls[0]) mainHtml += renderRLStandings(tbls[0],'Classement Top 14',14,6,2);
+    if (tbls[0]) top14CompHtml += renderRLStandings(tbls[0],'Classement Top 14',14,6,2);
   }
   if (r2){
     const tbls = parseWikitablesWithDates(r2?.parse?.text?.['*']||'');
@@ -1134,20 +1144,33 @@ async function loadRugbyLive(opts={}){
       // Seuls les évènements ESPN de Top 14 (pas la Champions Cup) portent
       // les mêmes affiches que le tableau de résultats Wikipédia.
       _rlTop14EspnEvents = sofa.events.filter(e=>e.leagueId==='270559');
-      mainHtml += renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown,_rlTop14EspnEvents,'top14',season);
+      top14CompHtml += renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown,_rlTop14EspnEvents,'top14',season);
     }
   }
-  if (proD2.length){
-    _proD2Journees = proD2;
+  let prod2CompHtml = '';
+  if (proD2.standings) prod2CompHtml += renderRLStandings(proD2.standings,'Classement Pro D2',16,6,4);
+  if (proD2.matches.length){
+    _proD2Journees = proD2.matches;
     _proD2Shown = 1;
-    mainHtml += renderRLResults(_proD2Journees,'Résultats Pro D2',_proD2Shown,[],'prod2',season);
+    prod2CompHtml += renderRLResults(_proD2Journees,'Résultats Pro D2',_proD2Shown,[],'prod2',season);
   }
-  if (eliteOne.standings) mainHtml += renderRLStandings(eliteOne.standings,'Classement Rugby à XIII',14,6,2);
+  let xiiiCompHtml = '';
+  if (eliteOne.standings) xiiiCompHtml += renderRLStandings(eliteOne.standings,'Classement Rugby à XIII',14,6,2);
   if (eliteOne.journees.length){
     _eliteOneJournees = eliteOne.journees;
     _eliteOneShown = 1;
     _eliteOneSeason = eliteOne.season;
-    mainHtml += renderRLResults(_eliteOneJournees,'Résultats Rugby à XIII',_eliteOneShown,[],'xiii',_eliteOneSeason);
+    xiiiCompHtml += renderRLResults(_eliteOneJournees,'Résultats Rugby à XIII',_eliteOneShown,[],'xiii',_eliteOneSeason);
+  }
+  _rlCompHtml = {top14:top14CompHtml, prod2:prod2CompHtml, xiii:xiiiCompHtml};
+  const COMP_LABELS = {top14:'🏆 Top 14', prod2:'🥈 Pro D2', xiii:'🏉 XIII'};
+  const availableComps = Object.keys(_rlCompHtml).filter(k=>_rlCompHtml[k]);
+  if (availableComps.length){
+    if (!availableComps.includes(_rlCompMode)) _rlCompMode = availableComps[0];
+    const menuHtml = availableComps.length>1
+      ? `<div class="rl-comp-menu">${availableComps.map(k=>`<button class="rl-comp-btn${k===_rlCompMode?' active':''}" data-comp="${k}">${COMP_LABELS[k]}</button>`).join('')}</div>`
+      : '';
+    mainHtml += menuHtml + `<div id="rl-comp-content">${_rlCompHtml[_rlCompMode]}</div>`;
   }
 
   _rugbyMainHtml = mainHtml || '<div class="rl-loading">Données non disponibles.</div>';
@@ -3348,6 +3371,15 @@ async function init(){
     }
   });
   elRugbyLive.addEventListener('click', e=>{
+    const compBtn = e.target.closest('.rl-comp-btn');
+    if (compBtn){
+      _rlCompMode = compBtn.dataset.comp;
+      localStorage.setItem('rlCompMode', _rlCompMode);
+      elRugbyLive.querySelectorAll('.rl-comp-btn').forEach(b=>b.classList.toggle('active', b.dataset.comp===_rlCompMode));
+      const content = elRugbyLive.querySelector('#rl-comp-content');
+      if (content) content.innerHTML = _rlCompHtml[_rlCompMode] || '';
+      return;
+    }
     if (!e.target.classList.contains('rl-more-btn')) return;
     if (e.target.dataset.far){
       e.target.outerHTML = _rlFarCache[e.target.dataset.far] || '';
