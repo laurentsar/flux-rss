@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.56';
+const APP_VERSION = '5.57';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -121,6 +121,7 @@ let _proD2Journees = [];
 let _proD2Shown = 1;
 let _eliteOneJournees = [];
 let _eliteOneShown = 1;
+let _eliteOneSeason = ''; // saison réellement utilisée (peut différer de _rugbySeason, voir loadEliteOne)
 let _rugbySeason = ''; // saison en cours (ex "2025-2026"), pour déduire l'année des dates sans année (rugby à XIII)
 
 /* ---------- articles lus (masqués une fois consultés) ---------- */
@@ -742,10 +743,14 @@ async function loadProD2Teams(season){
   // redirection créée après coup : absente en tout début de saison).
   const page = `Championnat de France de rugby à XV de 2e division ${season}`;
   try{
-    const sects = await fetchWikiSections(page);
-    const idx = sects.find(s=>/résultats/i.test(s.line))?.index;
-    if (!idx) return cached ? cached.matches : [];
-    const d = await fetchWikiSection(page, parseInt(idx));
+    // resolveTop14SectionIdx priorise "Détails des résultats" et ne se
+    // rabat sur "Résultats" que si le titre est EXACTEMENT ça — contrairement
+    // à un simple test /résultats/i, qui matchait ici en premier "Résumé des
+    // résultats" (un paragraphe de prose sans tableau, ajouté cette saison),
+    // laissant Pro D2 vide.
+    const { resultatsIdx } = await resolveTop14SectionIdx(page);
+    if (!resultatsIdx) return cached ? cached.matches : [];
+    const d = await fetchWikiSection(page, resultatsIdx);
     // parseWikitablesWithDates (plutôt que parseWikitables) pour récupérer,
     // comme pour le Top 14, la date de chaque journée — permet d'afficher
     // Pro D2 de la même façon (journée en cours + bouton "+N journées").
@@ -765,29 +770,41 @@ async function loadProD2Teams(season){
 }
 
 /* --- Rugby à XIII : Championnat de France (Elite One) --- */
-let _eliteOneCache = {}; // season -> {standings, journees, ts}
+let _eliteOneCache = {}; // season demandée -> {standings, journees, season (réel), ts}
 async function loadEliteOne(season){
   const cached = _eliteOneCache[season];
   if (cached && Date.now()-cached.ts < 15*60*1000) return cached;
-  const page = `Championnat de France de rugby à XIII ${season}`;
-  const empty = {standings:null, journees:[]};
-  try{
-    // resolveTop14SectionIdx est générique (cherche juste "classement" et
-    // "résultats"/"détails des résultats") : réutilisable telle quelle.
-    const { classementIdx, resultatsIdx } = await resolveTop14SectionIdx(page);
-    const [r1, r2] = await Promise.all([
-      classementIdx ? fetchWikiSectionCached(page,classementIdx,15*60*1000) : Promise.resolve(null),
-      resultatsIdx ? fetchWikiSectionCached(page,resultatsIdx,15*60*1000) : Promise.resolve(null),
-    ]);
-    const standings = r1 ? (parseWikitables(r1?.parse?.text?.['*']||'')[0] || null) : null;
-    // Contrairement au Top 14/Pro D2, le tableau de résultats du rugby à
-    // XIII n'a que 4 colonnes (pas de colonnes "essais" en périphérie) —
-    // géré directement dans renderRLResults (voir la variable `short`).
-    const journees = r2 ? parseWikitablesWithDates(r2?.parse?.text?.['*']||'').filter(t=>t.rows.length>=3 && t.rows.length<=12 && t.rows[0].length<=6) : [];
-    const out = {standings, journees};
-    if (standings || journees.length) _eliteOneCache[season] = {...out, ts:Date.now()};
-    return out;
-  } catch(e){ return cached || empty; }
+  const empty = {standings:null, journees:[], season};
+  // Le rugby à XIII ne suit pas forcément le même calendrier éditorial que
+  // le Top 14 sur Wikipédia : l'article de la nouvelle saison peut être créé
+  // plus tard. On retente avec la saison précédente si celle déduite par
+  // rugbySeason() n'existe pas encore.
+  const [y1,y2] = season.split('-').map(Number);
+  const seasonsToTry = (y1 && y2) ? [season, `${y1-1}-${y2-1}`] : [season];
+  for (const s of seasonsToTry){
+    const page = `Championnat de France de rugby à XIII ${s}`;
+    try{
+      // resolveTop14SectionIdx est générique (cherche juste "classement" et
+      // "résultats"/"détails des résultats") : réutilisable telle quelle.
+      const { classementIdx, resultatsIdx } = await resolveTop14SectionIdx(page);
+      if (!classementIdx && !resultatsIdx) continue; // page inexistante ou sans ces sections
+      const [r1, r2] = await Promise.all([
+        classementIdx ? fetchWikiSectionCached(page,classementIdx,15*60*1000) : Promise.resolve(null),
+        resultatsIdx ? fetchWikiSectionCached(page,resultatsIdx,15*60*1000) : Promise.resolve(null),
+      ]);
+      const standings = r1 ? (parseWikitables(r1?.parse?.text?.['*']||'')[0] || null) : null;
+      // Contrairement au Top 14/Pro D2, le tableau de résultats du rugby à
+      // XIII n'a que 4 colonnes (pas de colonnes "essais" en périphérie) —
+      // géré directement dans renderRLResults (voir la variable `short`).
+      const journees = r2 ? parseWikitablesWithDates(r2?.parse?.text?.['*']||'').filter(t=>t.rows.length>=3 && t.rows.length<=12 && t.rows[0].length<=6) : [];
+      if (standings || journees.length){
+        const out = {standings, journees, season:s};
+        _eliteOneCache[season] = {...out, ts:Date.now()};
+        return out;
+      }
+    } catch(e){}
+  }
+  return cached || empty;
 }
 
 /* --- U20 France — Six Nations des moins de 20 ans --- */
@@ -1129,7 +1146,8 @@ async function loadRugbyLive(opts={}){
   if (eliteOne.journees.length){
     _eliteOneJournees = eliteOne.journees;
     _eliteOneShown = 1;
-    mainHtml += renderRLResults(_eliteOneJournees,'Résultats Rugby à XIII',_eliteOneShown,[],'xiii',season);
+    _eliteOneSeason = eliteOne.season;
+    mainHtml += renderRLResults(_eliteOneJournees,'Résultats Rugby à XIII',_eliteOneShown,[],'xiii',_eliteOneSeason);
   }
 
   _rugbyMainHtml = mainHtml || '<div class="rl-loading">Données non disponibles.</div>';
@@ -3344,7 +3362,7 @@ async function init(){
     if (e.target.dataset.key==='xiii'){
       _eliteOneShown = Math.min(_eliteOneShown + 3, _eliteOneJournees.length);
       const el = elRugbyLive.querySelector('.rl-results-xiii');
-      if (el) el.outerHTML = renderRLResults(_eliteOneJournees,'Résultats Rugby à XIII',_eliteOneShown,[],'xiii',_rugbySeason);
+      if (el) el.outerHTML = renderRLResults(_eliteOneJournees,'Résultats Rugby à XIII',_eliteOneShown,[],'xiii',_eliteOneSeason);
       return;
     }
     _rlTop14Shown = Math.min(_rlTop14Shown + 3, _rlTop14Journees.length);
