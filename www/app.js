@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.55';
+const APP_VERSION = '5.56';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -756,8 +756,11 @@ async function loadProD2Teams(season){
         r.length>=5 && PRO_D2_TEAMS.some(team=>(r[1]||'').toLowerCase().includes(team.toLowerCase())||(r[4]||'').toLowerCase().includes(team.toLowerCase()))
       ),
     }));
-    _proD2Cache[season] = {matches, ts:Date.now()};
-    return matches;
+    // Ne met en cache que si on a effectivement trouvé quelque chose : un
+    // raté réseau/parsing ponctuel ne doit pas figer un résultat vide
+    // pendant 15 min alors que le prochain essai aurait pu réussir.
+    if (matches.length) _proD2Cache[season] = {matches, ts:Date.now()};
+    return matches.length ? matches : (cached ? cached.matches : []);
   } catch(e){ return cached ? cached.matches : []; }
 }
 
