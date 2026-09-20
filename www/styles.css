@@ -190,6 +190,9 @@ details.rl-section>.rl-table-wrap,details.rl-section>.rl-journee{margin-top:2px}
 .rl-jlbl{display:block;font-size:.78rem;font-weight:700;color:var(--muted);margin-bottom:4px;padding:0 2px}
 .rl-jdate{font-weight:400;font-style:italic;margin-left:6px;opacity:.75}
 .rl-chaine{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:999px;font-size:.85em;font-weight:600;background:#11182788;color:#fff;border:1px solid #ffffff2e;text-decoration:none;vertical-align:middle}
+.rl-comp-menu{display:flex;gap:6px;margin-bottom:10px}
+.rl-comp-btn{flex:1;border:1px solid var(--line);background:var(--card);color:var(--text);padding:8px 10px;border-radius:10px;font-size:.85em;font-weight:600;cursor:pointer}
+.rl-comp-btn.active{background:var(--a,#16A34A);border-color:transparent;color:#fff}
 a.rl-chaine:hover{outline:2px solid var(--a,#16A34A);outline-offset:1px}
 .rl-match{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:6px;padding:7px 10px;background:#1e293b;border-radius:8px;margin-bottom:4px}
 .rl-tn{font-size:.85rem;color:#c7ccd6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
