@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.54';
+const APP_VERSION = '5.55';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -119,6 +119,9 @@ let _rlTop14EspnEvents = [];
 let _rlFarCache = {}; // clé de section ("cc"/"intl") -> HTML des matchs à venir lointains, masqués par défaut
 let _proD2Journees = [];
 let _proD2Shown = 1;
+let _eliteOneJournees = [];
+let _eliteOneShown = 1;
+let _rugbySeason = ''; // saison en cours (ex "2025-2026"), pour déduire l'année des dates sans année (rugby à XIII)
 
 /* ---------- articles lus (masqués une fois consultés) ---------- */
 const READ_KEY = 'readArticles';
@@ -437,7 +440,11 @@ function renderRLStandings(rows, label, maxRows=14, topN=6, botN=2){
 function lastPlayedRound(tables){
   let idx = -1;
   tables.forEach((t, i)=>{
-    const played = t.rows.some(r=>r.length>=5 && r[2]!=='' && r[3]!=='' && !isNaN(parseInt(r[2])) && !isNaN(parseInt(r[3])));
+    const played = t.rows.some(r=>{
+      if (r.length < 4) return false;
+      const [hs, as_] = r.length < 5 ? [r[1], r[2]] : [r[2], r[3]];
+      return hs!=='' && as_!=='' && !isNaN(parseInt(hs)) && !isNaN(parseInt(as_));
+    });
     if (played) idx = i;
   });
   return idx;
@@ -448,26 +455,41 @@ const MOIS_FR = {janvier:0,février:1,mars:2,avril:3,mai:4,juin:5,juillet:6,aoû
 // (ex : "samedi 5 et dimanche 6 septembre 2026" → 6 septembre 2026), seule
 // date réellement exploitable puisque Wikipédia n'associe qu'une plage de
 // jours à toute la journée, jamais une date par match.
-function parseRoundEndDate(text){
+// `season` (ex "2025-2026") sert à déduire l'année quand le texte n'en
+// donne aucune (ex. rugby à XIII : "27-28 septembre", sans année).
+function parseRoundEndDate(text, season){
   if (!text) return null;
-  const re = /(\d{1,2})\s+(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\s+(\d{4})/gi;
+  const reY = /(\d{1,2})\s+(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)\s+(\d{4})/gi;
   let m, last=null;
-  while ((m = re.exec(text))) last = m;
-  if (!last) return null;
-  const month = MOIS_FR[last[2].toLowerCase()];
-  if (month==null) return null;
-  return new Date(parseInt(last[3]), month, parseInt(last[1]), 23, 59, 59);
+  while ((m = reY.exec(text))) last = m;
+  if (last){
+    const month = MOIS_FR[last[2].toLowerCase()];
+    if (month!=null) return new Date(parseInt(last[3]), month, parseInt(last[1]), 23, 59, 59);
+  }
+  const reNoY = /(?:(\d{1,2})-)?(\d{1,2})\s+(janvier|février|mars|avril|mai|juin|juillet|août|septembre|octobre|novembre|décembre)/i;
+  const m2 = text.match(reNoY);
+  if (m2 && season){
+    const parts = season.split('-').map(Number);
+    const [y1,y2] = parts;
+    const month = MOIS_FR[m2[3].toLowerCase()];
+    if (month!=null && y1 && y2){
+      // juil.-déc. = 1re année de la saison, janv.-juin = 2e année.
+      const year = month>=6 ? y1 : y2;
+      return new Date(year, month, parseInt(m2[2]), 23, 59, 59);
+    }
+  }
+  return null;
 }
 // Journée à afficher par défaut : la dernière jouée reste affichée au moins
 // 3 jours après sa date (le temps de la commenter/revivre le week-end)
 // avant de basculer sur la suivante — au lieu de basculer dès qu'un score
 // y est inscrit, ce qui pouvait arriver en plein milieu du week-end de jeu.
-function currentRoundIdx(tables){
+function currentRoundIdx(tables, season){
   const total = tables.length;
   const lastPlayed = lastPlayedRound(tables);
   if (lastPlayed < 0) return 0;
   const DWELL = 3*24*3600*1000;
-  const end = parseRoundEndDate(tables[lastPlayed].date);
+  const end = parseRoundEndDate(tables[lastPlayed].date, season);
   const stillDwelling = end ? (Date.now() <= end.getTime() + DWELL) : false;
   return Math.min(stillDwelling ? lastPlayed : lastPlayed+1, total-1);
 }
@@ -502,14 +524,14 @@ function fmtKickoff(ts){
   return new Date(ts*1000).toLocaleString('fr-FR',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}).replace('.','');
 }
 
-function renderRLResults(tables, label, count=2, espnEvents=[], key='top14'){
+function renderRLResults(tables, label, count=2, espnEvents=[], key='top14', season=''){
   if (!tables || !tables.length) return '';
   const total = tables.length;
   // Le calendrier complet de la saison est publié dès le début (journées
   // futures encore vides) : on ancre l'affichage sur la journée en cours,
   // gardée au moins 3 jours après sa date (voir currentRoundIdx) plutôt que
   // sur la fin du tableau qui peut être à des mois de distance.
-  const currentIdx = currentRoundIdx(tables);
+  const currentIdx = currentRoundIdx(tables, season);
   const shown = Math.min(count, currentIdx + 1);
   const startIdx = currentIdx + 1 - shown;
   const recent = tables.slice(startIdx, currentIdx + 1);
@@ -517,9 +539,13 @@ function renderRLResults(tables, label, count=2, espnEvents=[], key='top14'){
   const matchesHtml = recent.map((t, ji)=>{
     const jn = startIdx + ji + 1;
     const cards = t.rows.map(r=>{
-      if (r.length < 5) return '';
-      const home = r[1], away = r[4];
-      let hs = r[2], as_ = r[3];
+      if (r.length < 4) return '';
+      // Certaines compétitions (rugby à XIII) publient un tableau à 4
+      // colonnes (pas de colonnes "essais" en périphérie) : home/away sont
+      // alors en 0/3 au lieu de 1/4.
+      const short = r.length < 5;
+      const home = short ? r[0] : r[1], away = short ? r[3] : r[4];
+      let hs = short ? r[1] : r[2], as_ = short ? r[2] : r[3];
       const wikiPlayed = hs!=='' && as_!=='' && !isNaN(parseInt(hs)) && !isNaN(parseInt(as_));
       // Tant que Wikipédia n'a pas encore inscrit le score (match en cours
       // ou tout juste terminé), on affiche celui d'ESPN — la même source
@@ -733,6 +759,32 @@ async function loadProD2Teams(season){
     _proD2Cache[season] = {matches, ts:Date.now()};
     return matches;
   } catch(e){ return cached ? cached.matches : []; }
+}
+
+/* --- Rugby à XIII : Championnat de France (Elite One) --- */
+let _eliteOneCache = {}; // season -> {standings, journees, ts}
+async function loadEliteOne(season){
+  const cached = _eliteOneCache[season];
+  if (cached && Date.now()-cached.ts < 15*60*1000) return cached;
+  const page = `Championnat de France de rugby à XIII ${season}`;
+  const empty = {standings:null, journees:[]};
+  try{
+    // resolveTop14SectionIdx est générique (cherche juste "classement" et
+    // "résultats"/"détails des résultats") : réutilisable telle quelle.
+    const { classementIdx, resultatsIdx } = await resolveTop14SectionIdx(page);
+    const [r1, r2] = await Promise.all([
+      classementIdx ? fetchWikiSectionCached(page,classementIdx,15*60*1000) : Promise.resolve(null),
+      resultatsIdx ? fetchWikiSectionCached(page,resultatsIdx,15*60*1000) : Promise.resolve(null),
+    ]);
+    const standings = r1 ? (parseWikitables(r1?.parse?.text?.['*']||'')[0] || null) : null;
+    // Contrairement au Top 14/Pro D2, le tableau de résultats du rugby à
+    // XIII n'a que 4 colonnes (pas de colonnes "essais" en périphérie) —
+    // géré directement dans renderRLResults (voir la variable `short`).
+    const journees = r2 ? parseWikitablesWithDates(r2?.parse?.text?.['*']||'').filter(t=>t.rows.length>=3 && t.rows.length<=12 && t.rows[0].length<=6) : [];
+    const out = {standings, journees};
+    if (standings || journees.length) _eliteOneCache[season] = {...out, ts:Date.now()};
+    return out;
+  } catch(e){ return cached || empty; }
 }
 
 /* --- U20 France — Six Nations des moins de 20 ans --- */
@@ -995,6 +1047,7 @@ async function loadRugbyLive(opts={}){
   if (opts.liveRefresh) _espnCache = null;
   else elRugbyLive.innerHTML = '<div class="rl-loading"><span class="spinner"></span>Scores & classements…</div>';
   const season = rugbySeason();
+  _rugbySeason = season;
   const top14 = `Championnat de France de rugby à XV ${season}`;
 
   const currentYear = new Date().getFullYear();
@@ -1015,6 +1068,7 @@ async function loadRugbyLive(opts={}){
   // round-trip complet et inutile à la durée totale du chargement.
   const sofaPromise = fetchSportsEvents();
   const proD2Promise = loadProD2Teams(season);
+  const eliteOnePromise = loadEliteOne(season);
   const champNationsPromise = loadChampionnatNations(currentYear);
   // withDeadline : filet de sécurité pour ne jamais rester bloqué sur le
   // spinner indéfiniment, quoi qu'il arrive à une requête — appliqué
@@ -1027,11 +1081,12 @@ async function loadRugbyLive(opts={}){
   // Contenu mis en cache 15 min : ces tableaux ne sont pas mis à jour par les
   // contributeurs Wikipedia à la minute près, inutile de les rescraper à
   // chaque rafraîchissement live (20s) pendant un match en direct.
-  const [r1, r2, sofa, proD2, champNations] = await Promise.all([
+  const [r1, r2, sofa, proD2, eliteOne, champNations] = await Promise.all([
     withDeadline(classementIdx ? fetchWikiSectionCached(top14,classementIdx,15*60*1000) : Promise.resolve(null), 20000, null),
     withDeadline(resultatsIdx ? fetchWikiSectionCached(top14,resultatsIdx,15*60*1000) : Promise.resolve(null), 20000, null),
     withDeadline(sofaPromise, 25000, {events:[],error:null}),
     withDeadline(proD2Promise, 20000, []),
+    withDeadline(eliteOnePromise, 20000, {standings:null, journees:[]}),
     withDeadline(champNationsPromise, 20000, null),
   ]);
 
@@ -1059,13 +1114,19 @@ async function loadRugbyLive(opts={}){
       // Seuls les évènements ESPN de Top 14 (pas la Champions Cup) portent
       // les mêmes affiches que le tableau de résultats Wikipédia.
       _rlTop14EspnEvents = sofa.events.filter(e=>e.leagueId==='270559');
-      mainHtml += renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown,_rlTop14EspnEvents,'top14');
+      mainHtml += renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown,_rlTop14EspnEvents,'top14',season);
     }
   }
   if (proD2.length){
     _proD2Journees = proD2;
     _proD2Shown = 1;
-    mainHtml += renderRLResults(_proD2Journees,'Résultats Pro D2',_proD2Shown,[],'prod2');
+    mainHtml += renderRLResults(_proD2Journees,'Résultats Pro D2',_proD2Shown,[],'prod2',season);
+  }
+  if (eliteOne.standings) mainHtml += renderRLStandings(eliteOne.standings,'Classement Rugby à XIII',14,6,2);
+  if (eliteOne.journees.length){
+    _eliteOneJournees = eliteOne.journees;
+    _eliteOneShown = 1;
+    mainHtml += renderRLResults(_eliteOneJournees,'Résultats Rugby à XIII',_eliteOneShown,[],'xiii',season);
   }
 
   _rugbyMainHtml = mainHtml || '<div class="rl-loading">Données non disponibles.</div>';
@@ -3274,12 +3335,18 @@ async function init(){
     if (e.target.dataset.key==='prod2'){
       _proD2Shown = Math.min(_proD2Shown + 3, _proD2Journees.length);
       const el = elRugbyLive.querySelector('.rl-results-prod2');
-      if (el) el.outerHTML = renderRLResults(_proD2Journees,'Résultats Pro D2',_proD2Shown,[],'prod2');
+      if (el) el.outerHTML = renderRLResults(_proD2Journees,'Résultats Pro D2',_proD2Shown,[],'prod2',_rugbySeason);
+      return;
+    }
+    if (e.target.dataset.key==='xiii'){
+      _eliteOneShown = Math.min(_eliteOneShown + 3, _eliteOneJournees.length);
+      const el = elRugbyLive.querySelector('.rl-results-xiii');
+      if (el) el.outerHTML = renderRLResults(_eliteOneJournees,'Résultats Rugby à XIII',_eliteOneShown,[],'xiii',_rugbySeason);
       return;
     }
     _rlTop14Shown = Math.min(_rlTop14Shown + 3, _rlTop14Journees.length);
     const el = elRugbyLive.querySelector('.rl-results-top14');
-    if (el) el.outerHTML = renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown,_rlTop14EspnEvents,'top14');
+    if (el) el.outerHTML = renderRLResults(_rlTop14Journees,'Résultats Top 14',_rlTop14Shown,_rlTop14EspnEvents,'top14',_rugbySeason);
   });
   if ('serviceWorker' in navigator){
     if (isNative){
