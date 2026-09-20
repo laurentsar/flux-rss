@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.52';
+const APP_VERSION = '5.53';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -997,19 +997,23 @@ async function loadRugbyLive(opts={}){
   const proD2Promise = loadProD2Teams(season);
   const champNationsPromise = loadChampionnatNations(currentYear);
   // withDeadline : filet de sécurité pour ne jamais rester bloqué sur le
-  // spinner au-delà de quelques secondes, quoi qu'il arrive à une requête.
+  // spinner indéfiniment, quoi qu'il arrive à une requête — appliqué
+  // individuellement à CHAQUE appel (pas au Promise.all global) pour qu'un
+  // seul appel lent (ex. Pro D2, qui enchaîne 2 requêtes Wikipedia et peut
+  // légitimement approcher 20s) ne fasse pas passer TOUT le reste — sofa,
+  // classement, résultats — à vide alors qu'ils avaient déjà répondu.
   const { classementIdx, resultatsIdx } = await withDeadline(
-    resolveTop14SectionIdx(top14), 10000, {classementIdx:null, resultatsIdx:null});
+    resolveTop14SectionIdx(top14), 15000, {classementIdx:null, resultatsIdx:null});
   // Contenu mis en cache 15 min : ces tableaux ne sont pas mis à jour par les
   // contributeurs Wikipedia à la minute près, inutile de les rescraper à
   // chaque rafraîchissement live (20s) pendant un match en direct.
-  const [r1, r2, sofa, proD2, champNations] = await withDeadline(Promise.all([
-    classementIdx ? fetchWikiSectionCached(top14,classementIdx,15*60*1000) : Promise.resolve(null),
-    resultatsIdx ? fetchWikiSectionCached(top14,resultatsIdx,15*60*1000) : Promise.resolve(null),
-    sofaPromise,
-    proD2Promise,
-    champNationsPromise,
-  ]), 12000, [null, null, {events:[],error:null}, [], null]);
+  const [r1, r2, sofa, proD2, champNations] = await Promise.all([
+    withDeadline(classementIdx ? fetchWikiSectionCached(top14,classementIdx,15*60*1000) : Promise.resolve(null), 20000, null),
+    withDeadline(resultatsIdx ? fetchWikiSectionCached(top14,resultatsIdx,15*60*1000) : Promise.resolve(null), 20000, null),
+    withDeadline(sofaPromise, 25000, {events:[],error:null}),
+    withDeadline(proD2Promise, 20000, []),
+    withDeadline(champNationsPromise, 20000, null),
+  ]);
 
   _hasLiveSports = sofa.events.some(e=>e.status?.type==='inprogress');
   updateLiveBadge();
@@ -1589,11 +1593,14 @@ async function loadFootballLive(opts={}){
     elFootballLive.hidden=false; elFootballLive.innerHTML=_footLiveHtml; return;
   }
   if (opts.liveRefresh){ _frSocCache=null; _toulouseCache=null; _worldCupCache=null; }
-  const [frSoccer, toulouse, worldCup]=await withDeadline(Promise.all([
-    fetchFranceSoccer().catch(()=>[]),
-    fetchToulouseMatches().catch(()=>[]),
-    fetchWorldCupMatches().catch(()=>[]),
-  ]), 12000, [[],[],[]]);
+  // Un withDeadline par compétition (pas un seul autour du Promise.all) :
+  // sinon une compétition lente ferait retomber les deux autres à vide
+  // alors qu'elles avaient déjà répondu.
+  const [frSoccer, toulouse, worldCup]=await Promise.all([
+    withDeadline(fetchFranceSoccer().catch(()=>[]), 20000, []),
+    withDeadline(fetchToulouseMatches().catch(()=>[]), 20000, []),
+    withDeadline(fetchWorldCupMatches().catch(()=>[]), 20000, []),
+  ]);
   const frMatches=frSoccer.filter(e=>e.status?.type==='inprogress'||e.status?.type==='finished');
   const touMatches=toulouse.filter(e=>e.status?.type==='inprogress'||e.status?.type==='finished');
   const wcMatches=worldCup
@@ -2534,7 +2541,7 @@ async function reloadAgendaLive(){
   const agLiveEl = document.getElementById('ag-live');
   if (!agLiveEl) return;
   const slow = slowConnection();
-  const espnRugby = slow ? {events:[]} : await withDeadline(fetchSportsEvents().catch(()=>({events:[]})), 10000, {events:[]});
+  const espnRugby = slow ? {events:[]} : await withDeadline(fetchSportsEvents().catch(()=>({events:[]})), 25000, {events:[]});
   const frRugbyLive=(espnRugby.events||[]).filter(e=>isFranceMatch(e)&&(e.status?.type==='inprogress'||e.status?.type==='finished'));
   agLiveEl.innerHTML=renderFranceLive(frRugbyLive,[]);
   const hasLive=(espnRugby.events||[]).some(e=>e.status?.type==='inprogress');
@@ -2551,7 +2558,7 @@ async function loadAgenda(){
   const [staticEvents, epgRugby, espnRugby] = await Promise.all([
     withDeadline(loadAgendaEvents(), 10000, []),
     slow ? Promise.resolve([]) : withDeadline(loadRugbyEpg().catch(()=>[]), 10000, []),
-    slow ? Promise.resolve({events:[]}) : withDeadline(fetchSportsEvents().catch(()=>({events:[]})), 10000, {events:[]}),
+    slow ? Promise.resolve({events:[]}) : withDeadline(fetchSportsEvents().catch(()=>({events:[]})), 25000, {events:[]}),
   ]);
   // France rugby national live/terminé (inchangé)
   const frRugbyLive=(espnRugby.events||[]).filter(e=>isFranceMatch(e)&&(e.status?.type==='inprogress'||e.status?.type==='finished'));
