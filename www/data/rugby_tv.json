@@ -1,86 +1,8 @@
 {
- "generated": "2026-09-20T20:15:04+02:00",
+ "generated": "2026-09-21T08:15:04+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 43,
+ "count": 41,
  "programmes": [
-  {
-   "title": "Canal Rugby Club",
-   "date": "2026-09-20",
-   "time": "20:26",
-   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Avant-match Top 14",
-   "date": "2026-09-20",
-   "time": "21:03",
-   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Bordeaux-Bègles / Stade Français Paris",
-   "date": "2026-09-20",
-   "time": "21:05",
-   "desc": "En débutant sa campagne par un carton face au Racing 92 (64-5), l'UBB a envoyé un signal fort en ce début de saison, et voudra confirmer ses",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-09-20",
-   "time": "23:02",
-   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Bordeaux-Bègles / Stade Français Paris",
-   "date": "2026-09-20",
-   "time": "23:25",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Bordeaux-Bègles / Stade Français Paris",
-   "date": "2026-09-20",
-   "time": "23:35",
-   "desc": "En débutant sa campagne par un carton face au Racing 92 (64-5), l'UBB a envoyé un signal fort en ce début de saison, et voudra confirmer ses",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-09-21",
@@ -475,7 +397,7 @@
    "title": "Valence-Romans / Provence Rugby",
    "date": "2026-09-23",
    "time": "07:05",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -488,7 +410,7 @@
    "title": "Bayonne / ASM Clermont",
    "date": "2026-09-23",
    "time": "08:48",
-   "desc": "Rugby",
+   "desc": "A domicile, l'Aviron Bayonnais, qui sort d'une saison décevante en Top 14, voudra profiter de l'avantage du terrain pour s'imposer face à un",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -501,7 +423,7 @@
    "title": "Castres / Toulon",
    "date": "2026-09-23",
    "time": "10:31",
-   "desc": "Rugby",
+   "desc": "Le Castres Olympique de Louis Le Brun ne voudra rien lâcher à domicile face au RC Toulon, mais les Varois ont soif de revanche après une sai",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -514,7 +436,7 @@
    "title": "Fractionné Rugby",
    "date": "2026-09-23",
    "time": "13:18",
-   "desc": "Magazine sportif",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -527,7 +449,7 @@
    "title": "Agen / Oyonnax",
    "date": "2026-09-23",
    "time": "13:44",
-   "desc": "Rugby",
+   "desc": "Lourdement défait sur le terrain de Provence Rugby (44-10) en ouverture de la nouvelle saison, Agen doit se rassurer et profiter de l'avanta",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -540,7 +462,7 @@
    "title": "Bordeaux-Bègles / Stade Français Paris",
    "date": "2026-09-23",
    "time": "15:26",
-   "desc": "Rugby",
+   "desc": "En débutant sa campagne par un carton face au Racing 92 (64-5), l'UBB a envoyé un signal fort en ce début de saison, et voudra confirmer ses",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -553,7 +475,59 @@
    "title": "La Rochelle / Racing 92",
    "date": "2026-09-23",
    "time": "17:10",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bordeaux-Bègles / Stade Français Paris",
+   "date": "2026-09-23",
+   "time": "23:29",
+   "desc": "En débutant sa campagne par un carton face au Racing 92 (64-5), l'UBB a envoyé un signal fort en ce début de saison, et voudra confirmer ses",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Agen / Oyonnax",
+   "date": "2026-09-24",
+   "time": "18:30",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Manager",
+   "date": "2026-09-24",
+   "time": "20:14",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Brive / Colomiers",
+   "date": "2026-09-24",
+   "time": "21:00",
+   "desc": "En Direct.",
    "chaine": [
     "Canal+ Sport"
    ],
