@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14T15:41:41+02:00",
+  "generated": "2026-09-21T15:40:34+02:00",
   "livrets": [
     {
       "nom": "Livret A",
@@ -122,7 +122,7 @@
     },
     {
       "banque": "Cashbee",
-      "taux": "3,00 %",
+      "taux": "3,50 %",
       "duree": "2 mois",
       "plafond": "voir site",
       "lien": "https://www.cashbee.fr"
