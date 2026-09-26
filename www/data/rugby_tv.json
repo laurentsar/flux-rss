@@ -1,198 +1,13 @@
 {
- "generated": "2026-09-25T20:15:07+02:00",
+ "generated": "2026-09-26T08:15:06+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 64,
+ "count": 63,
  "programmes": [
   {
-   "title": "Fractionné Rugby",
-   "date": "2026-09-25",
-   "time": "18:30",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-09-25",
-   "time": "18:31",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Soir de rugby avant-match",
-   "date": "2026-09-25",
-   "time": "18:50",
-   "desc": "Soir de rugby avant-match présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'ambia",
-   "chaine": [
-    "Canal+ Live",
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Béziers / Narbonne",
-   "date": "2026-09-25",
-   "time": "19:00",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Live",
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Biarritz / Montauban",
-   "date": "2026-09-25",
-   "time": "19:26",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Oyonnax / Nevers",
-   "date": "2026-09-25",
-   "time": "19:26",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Provence Rugby / Aurillac",
-   "date": "2026-09-25",
-   "time": "19:26",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Soyaux-Angoulême / Agen",
-   "date": "2026-09-25",
-   "time": "19:26",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Dax / Nice",
-   "date": "2026-09-25",
-   "time": "19:26",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Soir de rugby avant-match",
-   "date": "2026-09-25",
-   "time": "20:50",
-   "desc": "Soir de rugby avant-match présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'ambia",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Soir de rugby avant-match",
-   "date": "2026-09-25",
-   "time": "20:51",
-   "desc": "Soir de rugby avant-match présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'ambia",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
    "title": "Grenoble / Valence-Romans",
-   "date": "2026-09-25",
-   "time": "21:00",
+   "date": "2026-09-26",
+   "time": "11:35",
    "desc": "Dans son antre du Stade des Alpes, Grenoble doit assumer son statut de prétendant à la montée avec la réception de Valence-Romans.",
-   "chaine": [
-    "Canal+ Live",
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-09-25",
-   "time": "21:45",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Soir de rugby",
-   "date": "2026-09-25",
-   "time": "22:50",
-   "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Soir de rugby",
-   "date": "2026-09-25",
-   "time": "22:51",
-   "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -205,7 +20,7 @@
    "title": "Grenoble / Valence-Romans",
    "date": "2026-09-26",
    "time": "11:36",
-   "desc": "Dans son antre du Stade des Alpes, Grenoble doit assumer son statut de prétendant à la montée avec la réception de Valence-Romans.",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -256,8 +71,21 @@
   {
    "title": "Soir de rugby",
    "date": "2026-09-26",
-   "time": "13:21",
+   "time": "13:20",
    "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby",
+   "date": "2026-09-26",
+   "time": "13:21",
+   "desc": "Magazine sportif",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -442,19 +270,7 @@
    "time": "19:35",
    "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages inside et des interviews de personnalités du rugby afin de décrypter les enjeu",
    "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club - 1re édition",
-   "date": "2026-09-26",
-   "time": "19:40",
-   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages inside et des interviews de personnalités du rugby afin de décrypter les enjeu",
-   "chaine": [
+    "Canal+",
     "Canal+ Live"
    ],
    "cats": [
@@ -468,7 +284,7 @@
    "time": "20:55",
    "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
    "chaine": [
-    "Canal+ Live"
+    "Canal+"
    ],
    "cats": [
     "rugby"
@@ -481,7 +297,7 @@
    "time": "20:56",
    "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
    "chaine": [
-    "Canal+"
+    "Canal+ Live"
    ],
    "cats": [
     "rugby"
@@ -492,22 +308,9 @@
    "title": "Pau / La Rochelle",
    "date": "2026-09-26",
    "time": "21:00",
-   "desc": "Au stade du Hameau, ce derby de la façade atlantique entre la Section Paloise et le Stade Rochelais met aux prises deux formations ambitieus",
+   "desc": "La Section Paloise, séduisante depuis l'entame de la saison et actuelle quatrième du classement, reçoit La Rochelle pour un duel qui s'annon",
    "chaine": [
     "Canal+",
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-09-26",
-   "time": "22:55",
-   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
-   "chaine": [
     "Canal+ Live"
    ],
    "cats": [
@@ -521,7 +324,8 @@
    "time": "22:57",
    "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
    "chaine": [
-    "Canal+"
+    "Canal+",
+    "Canal+ Live"
    ],
    "cats": [
     "rugby"
@@ -532,7 +336,7 @@
    "title": "Pau / La Rochelle",
    "date": "2026-09-27",
    "time": "01:01",
-   "desc": "Au stade du Hameau, ce derby de la façade atlantique entre la Section Paloise et le Stade Rochelais met aux prises deux formations ambitieus",
+   "desc": "La Section Paloise, séduisante depuis l'entame de la saison et actuelle quatrième du classement, reçoit La Rochelle pour un duel qui s'annon",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -557,8 +361,21 @@
   {
    "title": "Stade Français Paris / Lyon",
    "date": "2026-09-27",
-   "time": "09:56",
+   "time": "09:54",
    "desc": "Troisième du Top 14 la saison dernière, le Stade Français a débuté sa nouvelle campagne par une courte victoire à domicile face à Perpignan ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Stade Français Paris / Lyon",
+   "date": "2026-09-27",
+   "time": "09:56",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -583,8 +400,34 @@
   {
    "title": "Racing 92 / Bayonne",
    "date": "2026-09-27",
-   "time": "13:56",
+   "time": "13:54",
    "desc": "Lourdement défait à Bordeaux-Bègles (64-5) lors de la première journée, le Racing 92 doit se remobiliser pour lancer sa saison. Les Parisien",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Racing 92 / Bayonne",
+   "date": "2026-09-27",
+   "time": "13:56",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulon / Vannes",
+   "date": "2026-09-27",
+   "time": "15:38",
+   "desc": "Top 14. 4e journée. Toulon / Vannes.",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -597,7 +440,7 @@
    "title": "Toulon / Vannes",
    "date": "2026-09-27",
    "time": "15:40",
-   "desc": "Top 14. 4e journée. Toulon / Vannes.",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -701,7 +544,7 @@
    "title": "Toulouse / Montpellier",
    "date": "2026-09-27",
    "time": "21:05",
-   "desc": "Le choc de la 4e journée de Top 14 entre le Stade Toulousain et le Montpellier Hérault Rugby est le remake de la toute dernière finale du To",
+   "desc": "Trois mois après la finale remportée par les Toulousains au Stade de France (28-20), le champion en titre retrouve le finaliste malheureux p",
    "chaine": [
     "Canal+",
     "Canal+ Live"
@@ -728,6 +571,19 @@
    "title": "Canal Rugby Club le débrief",
    "date": "2026-09-27",
    "time": "23:01",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-09-27",
+   "time": "23:02",
    "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
    "chaine": [
     "Canal+"
@@ -741,9 +597,35 @@
    "title": "Toulouse / Montpellier",
    "date": "2026-09-28",
    "time": "00:01",
-   "desc": "Le choc de la 4e journée de Top 14 entre le Stade Toulousain et le Montpellier Hérault Rugby est le remake de la toute dernière finale du To",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / Montpellier",
+   "date": "2026-09-28",
+   "time": "00:03",
+   "desc": "Trois mois après la finale remportée par les Toulousains au Stade de France (28-20), le champion en titre retrouve le finaliste malheureux p",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-09-28",
+   "time": "09:30",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -754,7 +636,7 @@
    "title": "ASM Clermont / Castres",
    "date": "2026-09-28",
    "time": "09:52",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -767,7 +649,7 @@
    "title": "Canal Rugby Club - 1re édition",
    "date": "2026-09-28",
    "time": "11:38",
-   "desc": "Magazine sportif",
+   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages inside et des interviews de personnalités du rugby afin de décrypter les enjeu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -780,7 +662,7 @@
    "title": "Pau / La Rochelle",
    "date": "2026-09-28",
    "time": "12:48",
-   "desc": "Rugby",
+   "desc": "La Section Paloise, séduisante depuis l'entame de la saison et actuelle quatrième du classement, reçoit La Rochelle pour un duel qui s'annon",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -793,7 +675,7 @@
    "title": "Provence Rugby / Aurillac",
    "date": "2026-09-28",
    "time": "14:32",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -806,7 +688,7 @@
    "title": "Soyaux-Angoulême / Agen",
    "date": "2026-09-28",
    "time": "16:14",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -819,7 +701,7 @@
    "title": "La nuit du rugby",
    "date": "2026-09-28",
    "time": "19:02",
-   "desc": "En Direct.",
+   "desc": "La grande soirée du rugby, cru 2026, revient couronner les meilleurs talents du championnat dans la mythique salle de l'Olympia. L'occasion ",
    "chaine": [
     "Canal+"
    ],
@@ -832,7 +714,111 @@
    "title": "La nuit du rugby",
    "date": "2026-09-28",
    "time": "21:00",
+   "desc": "La grande soirée du rugby, cru 2026, revient couronner les meilleurs talents du championnat dans la mythique salle de l'Olympia. L'occasion ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "La nuit du rugby",
+   "date": "2026-09-29",
+   "time": "07:22",
    "desc": "Spectacle",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Pau / La Rochelle",
+   "date": "2026-09-29",
+   "time": "08:53",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club",
+   "date": "2026-09-29",
+   "time": "10:37",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / Montpellier",
+   "date": "2026-09-29",
+   "time": "11:16",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-09-29",
+   "time": "13:01",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Biarritz / Montauban",
+   "date": "2026-09-29",
+   "time": "15:22",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-09-29",
+   "time": "20:38",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Afrique du Sud",
+   "date": "2026-09-29",
+   "time": "21:00",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
