@@ -1,86 +1,8 @@
 {
- "generated": "2026-09-28T08:15:06+02:00",
+ "generated": "2026-09-28T20:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 31,
+ "count": 25,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-09-28",
-   "time": "09:30",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "ASM Clermont / Castres",
-   "date": "2026-09-28",
-   "time": "09:52",
-   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club - 1re édition",
-   "date": "2026-09-28",
-   "time": "11:38",
-   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages inside et des interviews de personnalités du rugby afin de décrypter les enjeu",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Pau / La Rochelle",
-   "date": "2026-09-28",
-   "time": "12:48",
-   "desc": "La Section Paloise, séduisante depuis l'entame de la saison et actuelle quatrième du classement, reçoit La Rochelle pour un duel qui s'annon",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Provence Rugby / Aurillac",
-   "date": "2026-09-28",
-   "time": "14:32",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Soyaux-Angoulême / Agen",
-   "date": "2026-09-28",
-   "time": "16:14",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "La nuit du rugby",
    "date": "2026-09-28",
