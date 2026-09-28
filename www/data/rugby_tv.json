@@ -1,139 +1,8 @@
 {
- "generated": "2026-09-27T20:15:05+02:00",
+ "generated": "2026-09-28T08:15:06+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 35,
+ "count": 31,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-09-27",
-   "time": "20:15",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club",
-   "date": "2026-09-27",
-   "time": "20:17",
-   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club",
-   "date": "2026-09-27",
-   "time": "20:18",
-   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Avant-match Top 14",
-   "date": "2026-09-27",
-   "time": "20:59",
-   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Avant-match Top 14",
-   "date": "2026-09-27",
-   "time": "21:00",
-   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulouse / Montpellier",
-   "date": "2026-09-27",
-   "time": "21:05",
-   "desc": "Trois mois après la finale remportée par les Toulousains au Stade de France (28-20), le champion en titre retrouve le finaliste malheureux p",
-   "chaine": [
-    "Canal+",
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-09-27",
-   "time": "22:59",
-   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-09-27",
-   "time": "23:02",
-   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulouse / Montpellier",
-   "date": "2026-09-28",
-   "time": "00:01",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulouse / Montpellier",
-   "date": "2026-09-28",
-   "time": "00:03",
-   "desc": "Trois mois après la finale remportée par les Toulousains au Stade de France (28-20), le champion en titre retrouve le finaliste malheureux p",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-09-28",
@@ -385,7 +254,7 @@
    "title": "Dax / Nice",
    "date": "2026-09-30",
    "time": "07:20",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -398,7 +267,7 @@
    "title": "Perpignan / Bordeaux-Bègles",
    "date": "2026-09-30",
    "time": "09:03",
-   "desc": "Rugby",
+   "desc": "L'USAP devrai profiter de l'avantage du terrain lors de la 4e journée et la réception de Bègles-Bordeaux pour engranger des points précieux ",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -411,7 +280,7 @@
    "title": "Racing 92 / Bayonne",
    "date": "2026-09-30",
    "time": "10:48",
-   "desc": "Rugby",
+   "desc": "Lourdement défait à Bordeaux-Bègles (64-5) lors de la première journée, le Racing 92 doit se remobiliser pour lancer sa saison. Les Parisien",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -424,7 +293,7 @@
    "title": "Toulouse / Montpellier",
    "date": "2026-09-30",
    "time": "16:30",
-   "desc": "Rugby",
+   "desc": "Trois mois après la finale remportée par les Toulousains au Stade de France (28-20), le champion en titre retrouve le finaliste malheureux p",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -437,7 +306,7 @@
    "title": "Australie / Afrique du Sud",
    "date": "2026-09-30",
    "time": "18:13",
-   "desc": "Rugby",
+   "desc": "Les champions du monde en titre sud-africains se déplacent à l'Optus Stadium de Perth pour un test-match qui fait déjà figure de préparation",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -450,7 +319,85 @@
    "title": "La nuit du rugby",
    "date": "2026-09-30",
    "time": "21:03",
-   "desc": "Spectacle",
+   "desc": "La grande soirée du rugby, cru 2026, revient couronner les meilleurs talents du championnat dans la mythique salle de l'Olympia. L'occasion ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Stade Français Paris / Lyon",
+   "date": "2026-09-30",
+   "time": "23:28",
+   "desc": "Troisième du Top 14 la saison dernière, le Stade Français a débuté sa nouvelle campagne par une courte victoire à domicile face à Perpignan ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Pau / La Rochelle",
+   "date": "2026-10-01",
+   "time": "13:46",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Afrique du Sud",
+   "date": "2026-10-01",
+   "time": "16:34",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Grenoble / Valence-Romans",
+   "date": "2026-10-01",
+   "time": "18:15",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby",
+   "date": "2026-10-01",
+   "time": "19:59",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Rugby's Greatest Rivalry",
+   "date": "2026-10-01",
+   "time": "21:00",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
