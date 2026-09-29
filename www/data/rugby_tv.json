@@ -1,25 +1,12 @@
 {
- "generated": "2026-09-28T20:15:05+02:00",
+ "generated": "2026-09-29T08:15:06+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 25,
+ "count": 38,
  "programmes": [
   {
    "title": "La nuit du rugby",
-   "date": "2026-09-28",
-   "time": "19:02",
-   "desc": "La grande soirée du rugby, cru 2026, revient couronner les meilleurs talents du championnat dans la mythique salle de l'Olympia. L'occasion ",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "La nuit du rugby",
-   "date": "2026-09-28",
-   "time": "21:00",
+   "date": "2026-09-29",
+   "time": "06:53",
    "desc": "La grande soirée du rugby, cru 2026, revient couronner les meilleurs talents du championnat dans la mythique salle de l'Olympia. L'occasion ",
    "chaine": [
     "Canal+ Sport"
@@ -33,7 +20,20 @@
    "title": "La nuit du rugby",
    "date": "2026-09-29",
    "time": "07:22",
-   "desc": "La grande soirée du rugby, cru 2026, revient couronner les meilleurs talents du championnat dans la mythique salle de l'Olympia. L'occasion ",
+   "desc": "Spectacle",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Pau / La Rochelle",
+   "date": "2026-09-29",
+   "time": "08:22",
+   "desc": "La Section Paloise, séduisante depuis l'entame de la saison et actuelle quatrième du classement, reçoit La Rochelle pour un duel qui s'annon",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -46,7 +46,20 @@
    "title": "Pau / La Rochelle",
    "date": "2026-09-29",
    "time": "08:53",
-   "desc": "La Section Paloise, séduisante depuis l'entame de la saison et actuelle quatrième du classement, reçoit La Rochelle pour un duel qui s'annon",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club",
+   "date": "2026-09-29",
+   "time": "10:02",
+   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -59,7 +72,20 @@
    "title": "Canal Rugby Club",
    "date": "2026-09-29",
    "time": "10:37",
-   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / Montpellier",
+   "date": "2026-09-29",
+   "time": "10:41",
+   "desc": "Trois mois après la finale remportée par les Toulousains au Stade de France (28-20), le champion en titre retrouve le finaliste malheureux p",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -72,7 +98,20 @@
    "title": "Toulouse / Montpellier",
    "date": "2026-09-29",
    "time": "11:16",
-   "desc": "Trois mois après la finale remportée par les Toulousains au Stade de France (28-20), le champion en titre retrouve le finaliste malheureux p",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-09-29",
+   "time": "12:19",
+   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -85,7 +124,20 @@
    "title": "Canal Rugby Club le débrief",
    "date": "2026-09-29",
    "time": "13:01",
-   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Biarritz / Montauban",
+   "date": "2026-09-29",
+   "time": "15:15",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -98,7 +150,20 @@
    "title": "Biarritz / Montauban",
    "date": "2026-09-29",
    "time": "15:22",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-09-29",
+   "time": "20:35",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -111,7 +176,20 @@
    "title": "Fractionné Rugby",
    "date": "2026-09-29",
    "time": "20:38",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club - 1re édition",
+   "date": "2026-09-29",
+   "time": "21:00",
+   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages \"inside\" et des interviews de personnalités du rugby afin de décrypter les enj",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -124,6 +202,19 @@
    "title": "Australie / Afrique du Sud",
    "date": "2026-09-29",
    "time": "21:00",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Afrique du Sud",
+   "date": "2026-09-29",
+   "time": "22:17",
    "desc": "Les champions du monde en titre sud-africains se déplacent à l'Optus Stadium de Perth pour un test-match qui fait déjà figure de préparation",
    "chaine": [
     "Canal+ Sport"
@@ -137,7 +228,7 @@
    "title": "La nuit du rugby",
    "date": "2026-09-29",
    "time": "22:41",
-   "desc": "La grande soirée du rugby, cru 2026, revient couronner les meilleurs talents du championnat dans la mythique salle de l'Olympia. L'occasion ",
+   "desc": "Spectacle",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -163,7 +254,20 @@
    "title": "Racing 92 / Bayonne",
    "date": "2026-09-30",
    "time": "00:11",
-   "desc": "Lourdement défait à Bordeaux-Bègles (64-5) lors de la première journée, le Racing 92 doit se remobiliser pour lancer sa saison. Les Parisien",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "La nuit du rugby",
+   "date": "2026-09-30",
+   "time": "00:13",
+   "desc": "La grande soirée du rugby, cru 2026, revient couronner les meilleurs talents du championnat dans la mythique salle de l'Olympia. L'occasion ",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -238,6 +342,19 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-09-30",
+   "time": "19:30",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "La nuit du rugby",
    "date": "2026-09-30",
    "time": "21:03",
@@ -267,7 +384,7 @@
    "title": "Pau / La Rochelle",
    "date": "2026-10-01",
    "time": "13:46",
-   "desc": "Rugby",
+   "desc": "La Section Paloise, séduisante depuis l'entame de la saison et actuelle quatrième du classement, reçoit La Rochelle pour un duel qui s'annon",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -280,7 +397,20 @@
    "title": "Australie / Afrique du Sud",
    "date": "2026-10-01",
    "time": "16:34",
-   "desc": "Rugby",
+   "desc": "Les champions du monde en titre sud-africains se déplacent à l'Optus Stadium de Perth pour un test-match qui fait déjà figure de préparation",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Grenoble - Valence Romans",
+   "date": "2026-10-01",
+   "time": "18:15",
+   "desc": "Dans son antre du Stade des Alpes, Grenoble doit assumer son statut de prétendant à la montée avec la réception de Valence-Romans.",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -306,7 +436,7 @@
    "title": "Soir de rugby",
    "date": "2026-10-01",
    "time": "19:59",
-   "desc": "Magazine sportif",
+   "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -319,6 +449,45 @@
    "title": "Rugby : Rugby's Greatest Rivalry",
    "date": "2026-10-01",
    "time": "21:00",
+   "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-10-02",
+   "time": "12:31",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Afrique du Sud",
+   "date": "2026-10-02",
+   "time": "12:47",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Rugby's Greatest Rivalry",
+   "date": "2026-10-02",
+   "time": "18:13",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
