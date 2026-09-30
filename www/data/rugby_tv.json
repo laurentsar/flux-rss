@@ -1,73 +1,8 @@
 {
- "generated": "2026-09-30T08:15:03+02:00",
+ "generated": "2026-09-30T20:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 25,
+ "count": 20,
  "programmes": [
-  {
-   "title": "Dax / Nice",
-   "date": "2026-09-30",
-   "time": "07:20",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Perpignan / Bordeaux-Bègles",
-   "date": "2026-09-30",
-   "time": "09:03",
-   "desc": "L'USAP devrai profiter de l'avantage du terrain lors de la 4e journée et la réception de Bègles-Bordeaux pour engranger des points précieux ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Racing 92 / Bayonne",
-   "date": "2026-09-30",
-   "time": "10:48",
-   "desc": "Lourdement défait à Bordeaux-Bègles (64-5) lors de la première journée, le Racing 92 doit se remobiliser pour lancer sa saison. Les Parisien",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulouse / Montpellier",
-   "date": "2026-09-30",
-   "time": "16:30",
-   "desc": "Trois mois après la finale remportée par les Toulousains au Stade de France (28-20), le champion en titre retrouve le finaliste malheureux p",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Australie / Afrique du Sud",
-   "date": "2026-09-30",
-   "time": "18:13",
-   "desc": "Les champions du monde en titre sud-africains se déplacent à l'Optus Stadium de Perth pour un test-match qui fait déjà figure de préparation",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-09-30",
