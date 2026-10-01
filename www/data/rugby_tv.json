@@ -1,39 +1,13 @@
 {
- "generated": "2026-09-30T20:15:03+02:00",
+ "generated": "2026-10-01T08:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 20,
+ "count": 42,
  "programmes": [
   {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-09-30",
-   "time": "19:30",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "La nuit du rugby",
-   "date": "2026-09-30",
-   "time": "21:03",
-   "desc": "La grande soirée du rugby, cru 2026, revient couronner les meilleurs talents du championnat dans la mythique salle de l'Olympia. L'occasion ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Stade Français Paris / Lyon",
-   "date": "2026-09-30",
-   "time": "23:28",
-   "desc": "Troisième du Top 14 la saison dernière, le Stade Français a débuté sa nouvelle campagne par une courte victoire à domicile face à Perpignan ",
+   "title": "Pau / La Rochelle",
+   "date": "2026-10-01",
+   "time": "13:37",
+   "desc": "La Section Paloise, séduisante depuis l'entame de la saison et actuelle quatrième du classement, reçoit La Rochelle pour un duel qui s'annon",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -46,7 +20,20 @@
    "title": "Pau / La Rochelle",
    "date": "2026-10-01",
    "time": "13:46",
-   "desc": "La Section Paloise, séduisante depuis l'entame de la saison et actuelle quatrième du classement, reçoit La Rochelle pour un duel qui s'annon",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Afrique du Sud",
+   "date": "2026-10-01",
+   "time": "16:25",
+   "desc": "Les champions du monde en titre sud-africains se déplacent à l'Optus Stadium de Perth pour un test-match qui fait déjà figure de préparation",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -59,7 +46,7 @@
    "title": "Australie / Afrique du Sud",
    "date": "2026-10-01",
    "time": "16:34",
-   "desc": "Les champions du monde en titre sud-africains se déplacent à l'Optus Stadium de Perth pour un test-match qui fait déjà figure de préparation",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -72,6 +59,19 @@
    "title": "Grenoble / Valence-Romans",
    "date": "2026-10-01",
    "time": "18:15",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Grenoble / Valence-Romans",
+   "date": "2026-10-01",
+   "time": "18:21",
    "desc": "Dans son antre du Stade des Alpes, Grenoble doit assumer son statut de prétendant à la montée avec la réception de Valence-Romans.",
    "chaine": [
     "Canal+ Sport"
@@ -84,8 +84,21 @@
   {
    "title": "Soir de rugby",
    "date": "2026-10-01",
-   "time": "19:59",
+   "time": "19:54",
    "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby",
+   "date": "2026-10-01",
+   "time": "19:59",
+   "desc": "Magazine sportif",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -97,7 +110,7 @@
   {
    "title": "Les meilleurs moments",
    "date": "2026-10-01",
-   "time": "21:00",
+   "time": "20:59",
    "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
    "chaine": [
     "Canal+ Sport"
@@ -108,7 +121,7 @@
    "approx": false
   },
   {
-   "title": "Rugby : Rugby's Greatest Rivalry",
+   "title": "Les meilleurs moments",
    "date": "2026-10-01",
    "time": "21:00",
    "desc": "Rugby",
@@ -160,19 +173,6 @@
    "approx": false
   },
   {
-   "title": "Rugby : Rugby's Greatest Rivalry",
-   "date": "2026-10-02",
-   "time": "18:13",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
    "title": "Rugby à XIII : NRL",
    "date": "2026-10-02",
    "time": "21:30",
@@ -186,12 +186,66 @@
    "approx": false
   },
   {
+   "title": "Rugby magazine Occitanie",
+   "date": "2026-10-03",
+   "time": "12:37",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 3"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby magazine Nouvelle Aquitaine",
+   "date": "2026-10-03",
+   "time": "12:37",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 3"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby magazine Nouvelle Aquitaine",
+   "date": "2026-10-03",
+   "time": "12:38",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 3"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Avant-match Top 14",
+   "date": "2026-10-03",
+   "time": "14:15",
+   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
+   "chaine": [
+    "Canal+",
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Bordeaux-Bègles / Lyon",
    "date": "2026-10-03",
    "time": "14:30",
-   "desc": "En Direct.",
+   "desc": "On peut s'attendre à un match engagé entre deux formations qui ont effectué une entame de saison plutôt performante. Après quatre journées, ",
    "chaine": [
-    "Canal+"
+    "Canal+",
+    "Canal+ Live"
    ],
    "cats": [
     "rugby"
@@ -202,7 +256,7 @@
    "title": "Multiplex",
    "date": "2026-10-03",
    "time": "16:27",
-   "desc": "En Direct.",
+   "desc": "Au programme : La Rochelle / Clermont, Bayonne / Stade Français, Racing 92 / Perpignan et Vannes / Pau.",
    "chaine": [
     "Canal+"
    ],
@@ -215,9 +269,88 @@
    "title": "Racing 92 / Perpignan",
    "date": "2026-10-03",
    "time": "16:30",
-   "desc": "En Direct.",
+   "desc": "Après deux premières journées difficiles, marquées par autant de défaites, le Racing 92 avait rebondi avec une victoire à domicile face à La",
    "chaine": [
+    "Canal+ Live",
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bayonne / Stade Français Paris",
+   "date": "2026-10-03",
+   "time": "16:30",
+   "desc": "C'est un Aviron Bayonnais en pleine dynamique positive qui reçoit le Stade Français pour le compte de la 5e journée de Top 14. Le club basqu",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "La Rochelle / ASM Clermont",
+   "date": "2026-10-03",
+   "time": "16:30",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Vannes / Pau",
+   "date": "2026-10-03",
+   "time": "16:30",
+   "desc": "Avec zéro point en quatre matchs, et une nouvelle défaite à Toulon (28-10) lors de la 4e journée, Vannes connaît une entame difficile en Top",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "A `venir : Canal Rugby Club - 1re édition",
+   "date": "2026-10-03",
+   "time": "18:30",
+   "desc": "Sport",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Débrief Top 14",
+   "date": "2026-10-03",
+   "time": "18:35",
+   "desc": "Les premières réactions après le match de Top 14, les analyses à chaud de la rencontre et l'état d'esprit des joueurs à la sortie de la pelo",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club - 1re édition",
+   "date": "2026-10-03",
+   "time": "19:27",
+   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages \"inside\" et des interviews de personnalités du rugby afin de décrypter les enj",
+   "chaine": [
+    "Canal+ Live"
    ],
    "cats": [
     "rugby"
@@ -238,9 +371,166 @@
    "approx": false
   },
   {
+   "title": "Canal Rugby Club - 1re édition",
+   "date": "2026-10-03",
+   "time": "19:40",
+   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages \"inside\" et des interviews de personnalités du rugby afin de décrypter les enj",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Avant-match Top 14",
+   "date": "2026-10-03",
+   "time": "20:41",
+   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Avant-match Top 14",
+   "date": "2026-10-03",
+   "time": "20:55",
+   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Castres / Toulouse",
    "date": "2026-10-03",
    "time": "21:00",
+   "desc": "Le derby d'Occitanie entre le Castres Olympique et le Stade Toulousain, comptant pour la 5e journée de Top 14, s'annonce comme l'un des somm",
+   "chaine": [
+    "Canal+",
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-10-03",
+   "time": "22:54",
+   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-10-03",
+   "time": "22:57",
+   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Les meilleurs moments",
+   "date": "2026-10-04",
+   "time": "12:33",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby League: Super League",
+   "date": "2026-10-04",
+   "time": "14:45",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "BBC2"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bordeaux-Bègles / Lyon",
+   "date": "2026-10-04",
+   "time": "14:54",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Racing 92 / Perpignan",
+   "date": "2026-10-04",
+   "time": "16:38",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bayonne / Stade Français Paris",
+   "date": "2026-10-04",
+   "time": "18:21",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club",
+   "date": "2026-10-04",
+   "time": "20:24",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Montpellier / Toulon",
+   "date": "2026-10-04",
+   "time": "21:05",
    "desc": "En Direct.",
    "chaine": [
     "Canal+"
@@ -252,8 +542,8 @@
   },
   {
    "title": "Canal Rugby Club le débrief",
-   "date": "2026-10-03",
-   "time": "22:57",
+   "date": "2026-10-04",
+   "time": "23:02",
    "desc": "En Direct.",
    "chaine": [
     "Canal+"
