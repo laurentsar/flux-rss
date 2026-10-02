@@ -1,60 +1,8 @@
 {
- "generated": "2026-10-02T08:15:05+02:00",
+ "generated": "2026-10-02T20:15:07+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 55,
+ "count": 51,
  "programmes": [
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-10-02",
-   "time": "12:31",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Australie - Afrique du Sud",
-   "date": "2026-10-02",
-   "time": "12:47",
-   "desc": "Les champions du monde en titre sud-africains se déplacent à l'Optus Stadium de Perth pour un test-match qui fait déjà figure de préparation",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Australie / Afrique du Sud",
-   "date": "2026-10-02",
-   "time": "12:47",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Les meilleurs moments",
-   "date": "2026-10-02",
-   "time": "18:13",
-   "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-10-02",
