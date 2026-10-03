@@ -1,21 +1,8 @@
 {
- "generated": "2026-10-02T20:15:07+02:00",
+ "generated": "2026-10-03T08:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 51,
+ "count": 54,
  "programmes": [
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-10-02",
-   "time": "21:30",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby magazine Occitanie",
    "date": "2026-10-03",
@@ -33,19 +20,6 @@
    "title": "Rugby magazine Nouvelle Aquitaine",
    "date": "2026-10-03",
    "time": "12:37",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "France 3"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby magazine Nouvelle Aquitaine",
-   "date": "2026-10-03",
-   "time": "12:38",
    "desc": "Magazine sportif",
    "chaine": [
     "France 3"
@@ -150,19 +124,6 @@
    "approx": false
   },
   {
-   "title": "A `venir : Canal Rugby Club - 1re édition",
-   "date": "2026-10-03",
-   "time": "18:30",
-   "desc": "Sport",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
    "title": "Débrief Top 14",
    "date": "2026-10-03",
    "time": "18:35",
@@ -176,10 +137,10 @@
    "approx": false
   },
   {
-   "title": "Canal Rugby Club - 1re édition",
+   "title": "A `venir : Canal Rugby Club - 1re édition",
    "date": "2026-10-03",
-   "time": "19:27",
-   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages \"inside\" et des interviews de personnalités du rugby afin de décrypter les enj",
+   "time": "18:40",
+   "desc": "Sport",
    "chaine": [
     "Canal+ Live"
    ],
@@ -194,19 +155,7 @@
    "time": "19:40",
    "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages \"inside\" et des interviews de personnalités du rugby afin de décrypter les enj",
    "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Avant-match Top 14",
-   "date": "2026-10-03",
-   "time": "20:41",
-   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
-   "chaine": [
+    "Canal+",
     "Canal+ Live"
    ],
    "cats": [
@@ -220,7 +169,8 @@
    "time": "20:55",
    "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
    "chaine": [
-    "Canal+"
+    "Canal+",
+    "Canal+ Live"
    ],
    "cats": [
     "rugby"
@@ -244,23 +194,11 @@
   {
    "title": "Canal Rugby Club le débrief",
    "date": "2026-10-03",
-   "time": "22:54",
-   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-10-03",
    "time": "22:57",
    "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
    "chaine": [
-    "Canal+"
+    "Canal+",
+    "Canal+ Live"
    ],
    "cats": [
     "rugby"
@@ -452,21 +390,8 @@
   {
    "title": "A `venir : Canal Rugby Club",
    "date": "2026-10-04",
-   "time": "19:21",
+   "time": "19:24",
    "desc": "Sport",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club",
-   "date": "2026-10-04",
-   "time": "20:21",
-   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
    "chaine": [
     "Canal+ Live"
    ],
@@ -481,7 +406,8 @@
    "time": "20:24",
    "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
    "chaine": [
-    "Canal+"
+    "Canal+",
+    "Canal+ Live"
    ],
    "cats": [
     "rugby"
@@ -491,7 +417,7 @@
   {
    "title": "Avant-match Top 14",
    "date": "2026-10-04",
-   "time": "20:53",
+   "time": "21:00",
    "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
    "chaine": [
     "Canal+ Live"
@@ -504,7 +430,7 @@
   {
    "title": "Avant-match Top 14",
    "date": "2026-10-04",
-   "time": "21:00",
+   "time": "21:01",
    "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
    "chaine": [
     "Canal+"
@@ -544,7 +470,7 @@
   {
    "title": "Canal Rugby Club le débrief",
    "date": "2026-10-04",
-   "time": "23:09",
+   "time": "23:10",
    "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
    "chaine": [
     "Canal+ Live"
@@ -558,7 +484,7 @@
    "title": "Racing 92 / Perpignan",
    "date": "2026-10-05",
    "time": "10:27",
-   "desc": "Rugby",
+   "desc": "Après deux premières journées difficiles, marquées par autant de défaites, le Racing 92 avait rebondi avec une victoire à domicile face à La",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -571,7 +497,7 @@
    "title": "Canal Rugby Club - 1re édition",
    "date": "2026-10-05",
    "time": "12:12",
-   "desc": "Magazine sportif",
+   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages \"inside\" et des interviews de personnalités du rugby afin de décrypter les enj",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -584,7 +510,7 @@
    "title": "Castres / Toulouse",
    "date": "2026-10-05",
    "time": "13:22",
-   "desc": "Rugby",
+   "desc": "Le derby d'Occitanie entre le Castres Olympique et le Stade Toulousain, comptant pour la 5e journée de Top 14, s'annonce comme l'un des somm",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -597,7 +523,7 @@
    "title": "Histoire de champions rugby",
    "date": "2026-10-05",
    "time": "15:05",
-   "desc": "Magazine sportif",
+   "desc": "Histoire de champions rugby revisite les grandes figures et les moments marquants du rugby, en retraçant les parcours, exploits et épisodes ",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -610,7 +536,7 @@
    "title": "Les meilleurs moments",
    "date": "2026-10-05",
    "time": "16:37",
-   "desc": "Rugby",
+   "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -623,7 +549,7 @@
    "title": "Vannes / Pau",
    "date": "2026-10-05",
    "time": "18:40",
-   "desc": "Rugby",
+   "desc": "Avec zéro point en quatre matchs, et une nouvelle défaite à Toulon (28-10) lors de la 4e journée, Vannes connaît une entame difficile en Top",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -636,7 +562,7 @@
    "title": "Canal Rugby Club",
    "date": "2026-10-05",
    "time": "20:24",
-   "desc": "Magazine sportif",
+   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -649,7 +575,7 @@
    "title": "Montpellier / Toulon",
    "date": "2026-10-05",
    "time": "21:00",
-   "desc": "Rugby",
+   "desc": "Le Montpellier Hérault Rugby reçoit le Rugby Club Toulonnais sur sa pelouse du Septeo Stadium pour un match qui s'annonce déjà crucial pour ",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -662,7 +588,124 @@
    "title": "Canal Rugby Club le débrief",
    "date": "2026-10-05",
    "time": "22:43",
+   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-10-05",
+   "time": "23:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bayonne / Stade Français Paris",
+   "date": "2026-10-06",
+   "time": "07:17",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Castres / Toulouse",
+   "date": "2026-10-06",
+   "time": "09:00",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club",
+   "date": "2026-10-06",
+   "time": "10:44",
    "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Montpellier / Toulon",
+   "date": "2026-10-06",
+   "time": "11:16",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-10-06",
+   "time": "13:02",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Racing 92 / Perpignan",
+   "date": "2026-10-06",
+   "time": "15:31",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-10-06",
+   "time": "20:38",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Waikato / Tasman",
+   "date": "2026-10-06",
+   "time": "21:00",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
