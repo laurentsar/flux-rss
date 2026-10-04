@@ -1,90 +1,8 @@
 {
- "generated": "2026-10-03T20:15:07+02:00",
+ "generated": "2026-10-04T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 45,
+ "count": 46,
  "programmes": [
-  {
-   "title": "Débrief Top 14",
-   "date": "2026-10-03",
-   "time": "18:35",
-   "desc": "Les premières réactions après le match de Top 14, les analyses à chaud de la rencontre et l'état d'esprit des joueurs à la sortie de la pelo",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "A `venir : Canal Rugby Club - 1re édition",
-   "date": "2026-10-03",
-   "time": "18:40",
-   "desc": "Sport",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club - 1re édition",
-   "date": "2026-10-03",
-   "time": "19:40",
-   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages \"inside\" et des interviews de personnalités du rugby afin de décrypter les enj",
-   "chaine": [
-    "Canal+",
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Avant-match Top 14",
-   "date": "2026-10-03",
-   "time": "20:55",
-   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
-   "chaine": [
-    "Canal+",
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Castres / Toulouse",
-   "date": "2026-10-03",
-   "time": "21:00",
-   "desc": "Le derby d'Occitanie entre le Castres Olympique et le Stade Toulousain, comptant pour la 5e journée de Top 14, s'annonce comme l'un des somm",
-   "chaine": [
-    "Canal+",
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-10-03",
-   "time": "22:57",
-   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
-   "chaine": [
-    "Canal+",
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII : NRL féminine",
    "date": "2026-10-04",
@@ -494,7 +412,7 @@
    "title": "Bayonne / Stade Français Paris",
    "date": "2026-10-06",
    "time": "07:17",
-   "desc": "Rugby",
+   "desc": "C'est un Aviron Bayonnais en pleine dynamique positive qui reçoit le Stade Français pour le compte de la 5e journée de Top 14. Le club basqu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -507,7 +425,7 @@
    "title": "Castres / Toulouse",
    "date": "2026-10-06",
    "time": "09:00",
-   "desc": "Rugby",
+   "desc": "Le derby d'Occitanie entre le Castres Olympique et le Stade Toulousain, comptant pour la 5e journée de Top 14, s'annonce comme l'un des somm",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -520,7 +438,7 @@
    "title": "Canal Rugby Club",
    "date": "2026-10-06",
    "time": "10:44",
-   "desc": "Magazine sportif",
+   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -533,7 +451,7 @@
    "title": "Montpellier / Toulon",
    "date": "2026-10-06",
    "time": "11:16",
-   "desc": "Rugby",
+   "desc": "Le Montpellier Hérault Rugby reçoit le Rugby Club Toulonnais sur sa pelouse du Septeo Stadium pour un match qui s'annonce déjà crucial pour ",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -546,7 +464,7 @@
    "title": "Canal Rugby Club le débrief",
    "date": "2026-10-06",
    "time": "13:02",
-   "desc": "Magazine sportif",
+   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -559,7 +477,7 @@
    "title": "Racing 92 / Perpignan",
    "date": "2026-10-06",
    "time": "15:31",
-   "desc": "Rugby",
+   "desc": "Après deux premières journées difficiles, marquées par autant de défaites, le Racing 92 avait rebondi avec une victoire à domicile face à La",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -572,9 +490,22 @@
    "title": "Fractionné Rugby",
    "date": "2026-10-06",
    "time": "20:38",
-   "desc": "Magazine sportif",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-10-06",
+   "time": "20:45",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -585,6 +516,84 @@
    "title": "Waikato / Tasman",
    "date": "2026-10-06",
    "time": "21:00",
+   "desc": "Championnat provincial de rugby à XV de Nouvelle-Zélande, le Hilux NPC 2026 réunit 14 équipes représentant les principales provinces du pays",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bordeaux-Bègles / Lyon",
+   "date": "2026-10-06",
+   "time": "22:41",
+   "desc": "On peut s'attendre à un match engagé entre deux formations qui ont effectué une entame de saison plutôt performante. Après quatre journées, ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Racing 92 / Perpignan",
+   "date": "2026-10-07",
+   "time": "07:22",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Vannes / Pau",
+   "date": "2026-10-07",
+   "time": "09:06",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Les meilleurs moments",
+   "date": "2026-10-07",
+   "time": "10:50",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bordeaux-Bègles / Lyon",
+   "date": "2026-10-07",
+   "time": "16:30",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Waikato / Tasman",
+   "date": "2026-10-07",
+   "time": "18:13",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
