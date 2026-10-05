@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-28T16:59:46+02:00",
+  "generated": "2026-10-05T17:35:59+02:00",
   "livrets": [
     {
       "nom": "Livret A",
@@ -109,7 +109,7 @@
     {
       "banque": "Distingo Bank",
       "taux": "4,50 %",
-      "duree": "boosté",
+      "duree": "3 mois",
       "plafond": "voir site",
       "lien": "https://www.distingo.com"
     },
