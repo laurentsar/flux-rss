@@ -1,73 +1,8 @@
 {
- "generated": "2026-10-05T08:15:06+02:00",
+ "generated": "2026-10-05T20:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 33,
+ "count": 28,
  "programmes": [
-  {
-   "title": "Racing 92 / Perpignan",
-   "date": "2026-10-05",
-   "time": "10:27",
-   "desc": "Après deux premières journées difficiles, marquées par autant de défaites, le Racing 92 avait rebondi avec une victoire à domicile face à La",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club - 1re édition",
-   "date": "2026-10-05",
-   "time": "12:12",
-   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages \"inside\" et des interviews de personnalités du rugby afin de décrypter les enj",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Castres / Toulouse",
-   "date": "2026-10-05",
-   "time": "13:22",
-   "desc": "Le derby d'Occitanie entre le Castres Olympique et le Stade Toulousain, comptant pour la 5e journée de Top 14, s'annonce comme l'un des somm",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Histoire de champions rugby",
-   "date": "2026-10-05",
-   "time": "15:05",
-   "desc": "Histoire de champions rugby revisite les grandes figures et les moments marquants du rugby, en retraçant les parcours, exploits et épisodes ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Les meilleurs moments",
-   "date": "2026-10-05",
-   "time": "16:37",
-   "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Vannes / Pau",
    "date": "2026-10-05",
