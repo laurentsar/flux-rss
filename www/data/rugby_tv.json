@@ -1,67 +1,15 @@
 {
- "generated": "2026-10-05T20:15:05+02:00",
+ "generated": "2026-10-06T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 28,
+ "count": 44,
  "programmes": [
   {
-   "title": "Vannes / Pau",
-   "date": "2026-10-05",
-   "time": "18:40",
-   "desc": "Avec zéro point en quatre matchs, et une nouvelle défaite à Toulon (28-10) lors de la 4e journée, Vannes connaît une entame difficile en Top",
+   "title": "Bayonne / Stade Français Paris",
+   "date": "2026-10-06",
+   "time": "07:09",
+   "desc": "C'est un Aviron Bayonnais en pleine dynamique positive qui reçoit le Stade Français pour le compte de la 5e journée de Top 14. Le club basqu",
    "chaine": [
     "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club",
-   "date": "2026-10-05",
-   "time": "20:24",
-   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Montpellier / Toulon",
-   "date": "2026-10-05",
-   "time": "21:00",
-   "desc": "Le Montpellier Hérault Rugby reçoit le Rugby Club Toulonnais sur sa pelouse du Septeo Stadium pour un match qui s'annonce déjà crucial pour ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-10-05",
-   "time": "22:43",
-   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-10-05",
-   "time": "23:00",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -72,7 +20,20 @@
    "title": "Bayonne / Stade Français Paris",
    "date": "2026-10-06",
    "time": "07:17",
-   "desc": "C'est un Aviron Bayonnais en pleine dynamique positive qui reçoit le Stade Français pour le compte de la 5e journée de Top 14. Le club basqu",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Castres / Toulouse",
+   "date": "2026-10-06",
+   "time": "08:47",
+   "desc": "Le derby d'Occitanie entre le Castres Olympique et le Stade Toulousain, comptant pour la 5e journée de Top 14, s'annonce comme l'un des somm",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -85,7 +46,20 @@
    "title": "Castres / Toulouse",
    "date": "2026-10-06",
    "time": "09:00",
-   "desc": "Le derby d'Occitanie entre le Castres Olympique et le Stade Toulousain, comptant pour la 5e journée de Top 14, s'annonce comme l'un des somm",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club",
+   "date": "2026-10-06",
+   "time": "10:28",
+   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -98,7 +72,20 @@
    "title": "Canal Rugby Club",
    "date": "2026-10-06",
    "time": "10:44",
-   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Montpellier / Toulon",
+   "date": "2026-10-06",
+   "time": "11:03",
+   "desc": "Le Montpellier Hérault Rugby reçoit le Rugby Club Toulonnais sur sa pelouse du Septeo Stadium pour un match qui s'annonce déjà crucial pour ",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -111,7 +98,33 @@
    "title": "Montpellier / Toulon",
    "date": "2026-10-06",
    "time": "11:16",
-   "desc": "Le Montpellier Hérault Rugby reçoit le Rugby Club Toulonnais sur sa pelouse du Septeo Stadium pour un match qui s'annonce déjà crucial pour ",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Râguebi - Supertaça",
+   "date": "2026-10-06",
+   "time": "12:31",
+   "desc": "Transmissão, em direto, do jogo de Râguebi, entre Benfica e GDS Cascais.",
+   "chaine": [
+    "Benfica TV"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-10-06",
+   "time": "12:47",
+   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -124,7 +137,20 @@
    "title": "Canal Rugby Club le débrief",
    "date": "2026-10-06",
    "time": "13:02",
-   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Racing 92 / Perpignan",
+   "date": "2026-10-06",
+   "time": "15:21",
+   "desc": "Après deux premières journées difficiles, marquées par autant de défaites, le Racing 92 avait rebondi avec une victoire à domicile face à La",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -137,7 +163,20 @@
    "title": "Racing 92 / Perpignan",
    "date": "2026-10-06",
    "time": "15:31",
-   "desc": "Après deux premières journées difficiles, marquées par autant de défaites, le Racing 92 avait rebondi avec une victoire à domicile face à La",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-10-06",
+   "time": "20:37",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -150,7 +189,7 @@
    "title": "Fractionné Rugby",
    "date": "2026-10-06",
    "time": "20:38",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "desc": "Magazine sportif",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -189,9 +228,35 @@
    "title": "Bordeaux-Bègles / Lyon",
    "date": "2026-10-06",
    "time": "22:41",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bordeaux-Bègles / Lyon",
+   "date": "2026-10-06",
+   "time": "22:42",
    "desc": "On peut s'attendre à un match engagé entre deux formations qui ont effectué une entame de saison plutôt performante. Après quatre journées, ",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Râguebi - Supertaça",
+   "date": "2026-10-07",
+   "time": "07:00",
+   "desc": "Transmissão, em direto, do jogo de Râguebi, entre Benfica e GDS Cascais.",
+   "chaine": [
+    "Benfica TV"
    ],
    "cats": [
     "rugby"
@@ -279,7 +344,7 @@
   {
    "title": "Rugby à XIII : NRL",
    "date": "2026-10-08",
-   "time": "00:30",
+   "time": "01:00",
    "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
    "chaine": [
     "beIN Sports"
@@ -290,10 +355,23 @@
    "approx": false
   },
   {
+   "title": "Râguebi - Supertaça",
+   "date": "2026-10-08",
+   "time": "05:30",
+   "desc": "Transmissão, em direto, do jogo de Râguebi, entre Benfica e GDS Cascais.",
+   "chaine": [
+    "Benfica TV"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Montpellier / Toulon",
    "date": "2026-10-08",
    "time": "12:28",
-   "desc": "Rugby",
+   "desc": "Le Montpellier Hérault Rugby reçoit le Rugby Club Toulonnais sur sa pelouse du Septeo Stadium pour un match qui s'annonce déjà crucial pour ",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -306,7 +384,7 @@
    "title": "Waikato / Tasman",
    "date": "2026-10-08",
    "time": "16:02",
-   "desc": "Rugby",
+   "desc": "Championnat provincial de rugby à XV de Nouvelle-Zélande, le Hilux NPC 2026 réunit 14 équipes représentant les principales provinces du pays",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -319,7 +397,7 @@
    "title": "Fractionné Rugby",
    "date": "2026-10-08",
    "time": "17:44",
-   "desc": "Magazine sportif",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -332,7 +410,7 @@
    "title": "Grenoble / Valence-Romans",
    "date": "2026-10-08",
    "time": "18:05",
-   "desc": "Rugby",
+   "desc": "Dans son antre du Stade des Alpes, Grenoble doit assumer son statut de prétendant à la montée avec la réception de Valence-Romans.",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -345,8 +423,22 @@
    "title": "Soir de rugby",
    "date": "2026-10-08",
    "time": "19:49",
-   "desc": "Magazine sportif",
+   "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
    "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Avant-match Pro D2",
+   "date": "2026-10-08",
+   "time": "20:50",
+   "desc": "Les ultimes informations avant le match de Pro D2, les compositions des équipes et les enjeux de la rencontre.",
+   "chaine": [
+    "Canal+ Live",
     "Canal+ Sport"
    ],
    "cats": [
@@ -358,6 +450,125 @@
    "title": "Montauban / Brive",
    "date": "2026-10-08",
    "time": "21:00",
+   "desc": "Avec cinq victoires en cinq matchs, dont un large succès à domicile face à Colomiers (41-26) lors de la 5e journée, Brive faisait partie des",
+   "chaine": [
+    "Canal+ Live",
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Après-match Pro D2",
+   "date": "2026-10-08",
+   "time": "22:50",
+   "desc": "Suite à la rencontre de Pro D2, le magazine passe en revue les dernières actualités, les réactions des joueurs et des coachs et propose les ",
+   "chaine": [
+    "Canal+ Live",
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Montauban / Brive",
+   "date": "2026-10-09",
+   "time": "08:09",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat national des provinces néo-zélandaises",
+   "date": "2026-10-09",
+   "time": "11:46",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Montauban / Brive",
+   "date": "2026-10-09",
+   "time": "17:05",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby avant-match",
+   "date": "2026-10-09",
+   "time": "18:50",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soyaux-Angoulême / Provence Rugby",
+   "date": "2026-10-09",
+   "time": "19:00",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby avant-match",
+   "date": "2026-10-09",
+   "time": "20:51",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Grenoble / Colomiers",
+   "date": "2026-10-09",
+   "time": "21:00",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby",
+   "date": "2026-10-09",
+   "time": "22:51",
    "desc": "En Direct.",
    "chaine": [
     "Canal+ Sport"
