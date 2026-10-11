@@ -1,307 +1,8 @@
 {
- "generated": "2026-10-11T08:15:04+02:00",
+ "generated": "2026-10-11T20:15:06+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 72,
+ "count": 50,
  "programmes": [
-  {
-   "title": "Agen / Dax",
-   "date": "2026-10-11",
-   "time": "07:18",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Agen / Dax",
-   "date": "2026-10-11",
-   "time": "07:33",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Nouvelle-Zélande / Australie",
-   "date": "2026-10-11",
-   "time": "09:01",
-   "desc": "Pour ce premier match de la Bledisloe Cup 2026, la Nouvelle-Zélande accueille l'Australie à l'Eden Park d'Auckland. La Bledisloe Cup se disp",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Nouvelle-Zélande / Australie",
-   "date": "2026-10-11",
-   "time": "09:15",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "ASM Clermont / Bordeaux-Bègles",
-   "date": "2026-10-11",
-   "time": "10:45",
-   "desc": "Le choc entre l'ASM Clermont Auvergne et l'Union Bordeaux-Bègles met aux prises deux équipes qui attaquent ce début d'automne avec des dynam",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "ASM Clermont / Bordeaux-Bègles",
-   "date": "2026-10-11",
-   "time": "10:58",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Perpignan / Vannes",
-   "date": "2026-10-11",
-   "time": "12:30",
-   "desc": "Perpignan a fait le plein de confiance avec une belle victoire à domicile face à Bordeaux-Bègles (38-25) lors de la 4e journée de championna",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Perpignan / Vannes",
-   "date": "2026-10-11",
-   "time": "12:42",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Lyon / La Rochelle",
-   "date": "2026-10-11",
-   "time": "14:15",
-   "desc": "Après un début de saison tonitruant, Lyon a connu son premier coup d'arrêt lors de la 4e journée en s'inclinant (31-10) sur le terrain du St",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Lyon / La Rochelle",
-   "date": "2026-10-11",
-   "time": "14:26",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "US Salles - Stade Langonnais",
-   "date": "2026-10-11",
-   "time": "14:40",
-   "desc": "Rugby",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "US Salles - Stade Langonnais",
-   "date": "2026-10-11",
-   "time": "14:55",
-   "desc": "Rugby",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Nationale 2",
-   "date": "2026-10-11",
-   "time": "15:40",
-   "desc": "Rugby",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Nationale 2",
-   "date": "2026-10-11",
-   "time": "15:55",
-   "desc": "Rugby",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Stade Français Paris / Montpellier",
-   "date": "2026-10-11",
-   "time": "16:00",
-   "desc": "Après un début de saison compliqué marqué par une seule victoire lors des trois premières journées, le Stade Français a su rebondir lors de ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "US Salles - Stade Langonnais",
-   "date": "2026-10-11",
-   "time": "16:00",
-   "desc": "Rugby",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Stade Français Paris / Montpellier",
-   "date": "2026-10-11",
-   "time": "16:10",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Nationale 2",
-   "date": "2026-10-11",
-   "time": "17:00",
-   "desc": "Rugby",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Union Bordeaux Bègles - Biarritz Olympique",
-   "date": "2026-10-11",
-   "time": "17:00",
-   "desc": "Rugby",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Pau / Castres",
-   "date": "2026-10-11",
-   "time": "17:45",
-   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Pau / Castres",
-   "date": "2026-10-11",
-   "time": "17:54",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Reichel Espoirs Élite",
-   "date": "2026-10-11",
-   "time": "18:00",
-   "desc": "Rugby",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Union Bordeaux Bègles - Biarritz Olympique",
-   "date": "2026-10-11",
-   "time": "18:00",
-   "desc": "Rugby",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby : Reichel Espoirs Élite",
    "date": "2026-10-11",
@@ -867,7 +568,7 @@
    "title": "Valence-Romans / Béziers",
    "date": "2026-10-14",
    "time": "07:24",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -880,7 +581,7 @@
    "title": "Nouvelle-Zélande / Australie",
    "date": "2026-10-14",
    "time": "09:07",
-   "desc": "Rugby",
+   "desc": "Pour ce premier match de la Bledisloe Cup 2026, la Nouvelle-Zélande accueille l'Australie à l'Eden Park d'Auckland. La Bledisloe Cup se disp",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -893,7 +594,7 @@
    "title": "Stade Français Paris / Montpellier",
    "date": "2026-10-14",
    "time": "10:50",
-   "desc": "Rugby",
+   "desc": "Après un début de saison compliqué marqué par une seule victoire lors des trois premières journées, le Stade Français a su rebondir lors de ",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -906,7 +607,7 @@
    "title": "Pau / Castres",
    "date": "2026-10-14",
    "time": "13:43",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -919,7 +620,7 @@
    "title": "Fractionné Rugby",
    "date": "2026-10-14",
    "time": "15:27",
-   "desc": "Magazine sportif",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -932,9 +633,22 @@
    "title": "Canterbury - Waikato",
    "date": "2026-10-14",
    "time": "15:48",
-   "desc": "Rugby",
+   "desc": "Championnat provincial de rugby à XV de Nouvelle-Zélande, le Hilux NPC 2026 réunit 14 équipes représentant les principales provinces du pays",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Champions Cup",
+   "date": "2026-10-14",
+   "time": "21:45",
+   "desc": "Tenants du titre depuis leur victoire en 2025 contre les Northampton Saints, les joueurs de l'UBB sont de nouveau en finale de la Champions ",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
