@@ -1,166 +1,8 @@
 {
- "generated": "2026-10-11T20:15:06+02:00",
+ "generated": "2026-10-12T08:15:06+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 50,
+ "count": 40,
  "programmes": [
-  {
-   "title": "Rugby : Reichel Espoirs Élite",
-   "date": "2026-10-11",
-   "time": "19:00",
-   "desc": "Rugby",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club",
-   "date": "2026-10-11",
-   "time": "20:25",
-   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
-   "chaine": [
-    "Canal+",
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Avant-match Top 14",
-   "date": "2026-10-11",
-   "time": "21:01",
-   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Avant-match Top 14",
-   "date": "2026-10-11",
-   "time": "21:02",
-   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulouse / Bayonne",
-   "date": "2026-10-11",
-   "time": "21:05",
-   "desc": "Cette rencontre met aux prises deux équipes ambitieuses du haut de tableau. Le Stade Toulousain, champion en titre, reçoit l'Aviron Bayonnai",
-   "chaine": [
-    "Canal+",
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Nationale 2",
-   "date": "2026-10-11",
-   "time": "22:00",
-   "desc": "Rugby",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "US Salles - Stade Langonnais",
-   "date": "2026-10-11",
-   "time": "22:00",
-   "desc": "Rugby",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Nationale 2",
-   "date": "2026-10-11",
-   "time": "23:00",
-   "desc": "Rugby",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "US Salles - Stade Langonnais",
-   "date": "2026-10-11",
-   "time": "23:00",
-   "desc": "Rugby",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-10-11",
-   "time": "23:02",
-   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "A `venir : Canal Rugby Club le débrief",
-   "date": "2026-10-11",
-   "time": "23:05",
-   "desc": "Sport",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-10-11",
-   "time": "23:09",
-   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Toulon / Racing 92",
    "date": "2026-10-12",
@@ -649,6 +491,32 @@
    "desc": "Tenants du titre depuis leur victoire en 2025 contre les Northampton Saints, les joueurs de l'UBB sont de nouveau en finale de la Champions ",
    "chaine": [
     "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Clermont / Bordeaux-Bègles",
+   "date": "2026-10-15",
+   "time": "14:55",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canterbury - Waikato",
+   "date": "2026-10-15",
+   "time": "16:38",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
    ],
    "cats": [
     "rugby"
