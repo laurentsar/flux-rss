@@ -1,47 +1,8 @@
 {
- "generated": "2026-10-13T20:15:06+02:00",
+ "generated": "2026-10-14T08:15:07+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 30,
+ "count": 70,
  "programmes": [
-  {
-   "title": "Northland Taniwha - Tasman Mako",
-   "date": "2026-10-14",
-   "time": "00:45",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Northland / Tasman",
-   "date": "2026-10-14",
-   "time": "00:46",
-   "desc": "Championnat provincial de rugby à XV de Nouvelle-Zélande, le Hilux NPC 2026 réunit 14 équipes représentant les principales provinces du pays",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Aurillac / Biarritz",
-   "date": "2026-10-14",
-   "time": "07:24",
-   "desc": "Cette nouvelle saison de PRO D2 s'annonce intense avec seize clubs en lice pour décrocher le titre et viser la montée en Top 14, avec des af",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Valence-Romans / Béziers",
    "date": "2026-10-14",
@@ -56,10 +17,10 @@
    "approx": false
   },
   {
-   "title": "Nouvelle-Zélande - Australie",
+   "title": "Aurillac / Biarritz",
    "date": "2026-10-14",
-   "time": "09:07",
-   "desc": "Pour ce premier match de la Bledisloe Cup 2026, la Nouvelle-Zélande accueille l'Australie à l'Eden Park d'Auckland. La Bledisloe Cup se disp",
+   "time": "07:32",
+   "desc": "Cette nouvelle saison de PRO D2 s'annonce intense avec seize clubs en lice pour décrocher le titre et viser la montée en Top 14, avec des af",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -82,9 +43,22 @@
    "approx": false
   },
   {
-   "title": "Stade Français Paris - Montpellier",
+   "title": "Nouvelle-Zélande / Australie",
    "date": "2026-10-14",
-   "time": "10:50",
+   "time": "09:09",
+   "desc": "Pour ce premier match de la Bledisloe Cup 2026, la Nouvelle-Zélande accueille l'Australie à l'Eden Park d'Auckland. La Bledisloe Cup se disp",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Stade Français Paris / Montpellier",
+   "date": "2026-10-14",
+   "time": "10:47",
    "desc": "Après un début de saison compliqué marqué par une seule victoire lors des trois premières journées, le Stade Français a su rebondir lors de ",
    "chaine": [
     "Canal+ Sport"
@@ -111,7 +85,7 @@
    "title": "Pau / Castres",
    "date": "2026-10-14",
    "time": "13:43",
-   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -121,10 +95,10 @@
    "approx": false
   },
   {
-   "title": "Fractionné Rugby",
+   "title": "Pau / Castres",
    "date": "2026-10-14",
-   "time": "15:26",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "time": "13:51",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -147,9 +121,22 @@
    "approx": false
   },
   {
+   "title": "Fractionné Rugby",
+   "date": "2026-10-14",
+   "time": "15:28",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Canterbury / Waikato",
    "date": "2026-10-14",
-   "time": "15:48",
+   "time": "15:45",
    "desc": "Championnat provincial de rugby à XV de Nouvelle-Zélande, le Hilux NPC 2026 réunit 14 équipes représentant les principales provinces du pays",
    "chaine": [
     "Canal+ Sport"
@@ -188,8 +175,21 @@
   {
    "title": "ASM Clermont / Bordeaux-Bègles",
    "date": "2026-10-15",
-   "time": "14:55",
+   "time": "14:53",
    "desc": "Le choc entre l'ASM Clermont Auvergne et l'Union Bordeaux-Bègles met aux prises deux équipes qui attaquent ce début d'automne avec des dynam",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Clermont / Bordeaux-Bègles",
+   "date": "2026-10-15",
+   "time": "14:55",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -201,7 +201,7 @@
   {
    "title": "Canterbury / Waikato",
    "date": "2026-10-15",
-   "time": "16:38",
+   "time": "16:31",
    "desc": "Championnat provincial de rugby à XV de Nouvelle-Zélande, le Hilux NPC 2026 réunit 14 équipes représentant les principales provinces du pays",
    "chaine": [
     "Canal+ Sport"
@@ -228,7 +228,33 @@
    "title": "Toulouse / Bayonne",
    "date": "2026-10-16",
    "time": "00:44",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / Bayonne",
+   "date": "2026-10-16",
+   "time": "00:45",
    "desc": "Cette rencontre met aux prises deux équipes ambitieuses du haut de tableau. Le Stade Toulousain, champion en titre, reçoit l'Aviron Bayonnai",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Northland / Otago",
+   "date": "2026-10-16",
+   "time": "08:05",
+   "desc": "Championnat provincial de rugby à XV de Nouvelle-Zélande, le Hilux NPC 2026 réunit 14 équipes représentant les principales provinces du pays",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -242,6 +268,32 @@
    "date": "2026-10-16",
    "time": "09:05",
    "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-10-16",
+   "time": "11:37",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Nouvelle-Zélande / Australie",
+   "date": "2026-10-16",
+   "time": "11:59",
+   "desc": "Pour ce premier match de la Bledisloe Cup 2026, la Nouvelle-Zélande accueille l'Australie à l'Eden Park d'Auckland. La Bledisloe Cup se disp",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -277,10 +329,36 @@
    "approx": false
   },
   {
+   "title": "ASM Clermont / Bordeaux-Bègles",
+   "date": "2026-10-16",
+   "time": "13:36",
+   "desc": "Le choc entre l'ASM Clermont Auvergne et l'Union Bordeaux-Bègles met aux prises deux équipes qui attaquent ce début d'automne avec des dynam",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Toulouse / Bayonne",
    "date": "2026-10-16",
    "time": "14:28",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / Bayonne",
+   "date": "2026-10-16",
+   "time": "15:15",
+   "desc": "Cette rencontre met aux prises deux équipes ambitieuses du haut de tableau. Le Stade Toulousain, champion en titre, reçoit l'Aviron Bayonnai",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -296,6 +374,32 @@
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Northland / Otago",
+   "date": "2026-10-16",
+   "time": "17:04",
+   "desc": "Championnat provincial de rugby à XV de Nouvelle-Zélande, le Hilux NPC 2026 réunit 14 équipes représentant les principales provinces du pays",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "A `venir : Soir de rugby avant-match",
+   "date": "2026-10-16",
+   "time": "17:50",
+   "desc": "Sport",
+   "chaine": [
+    "Canal+ Live"
    ],
    "cats": [
     "rugby"
@@ -319,7 +423,21 @@
    "title": "Soir de rugby avant-match",
    "date": "2026-10-16",
    "time": "18:50",
-   "desc": "En Direct.",
+   "desc": "\"Soir de rugby avant-match\" présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'amb",
+   "chaine": [
+    "Canal+ Live",
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby avant-match",
+   "date": "2026-10-16",
+   "time": "18:51",
+   "desc": "\"Soir de rugby avant-match\" présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'amb",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -332,9 +450,75 @@
    "title": "Oyonnax / Valence-Romans",
    "date": "2026-10-16",
    "time": "19:00",
-   "desc": "En Direct.",
+   "desc": "Invaincu après cinq journées de championnat, Oyonnax a l'occasion d'enfoncer le clou à l'occasion de la réception de Valence-Romans. Les Drô",
    "chaine": [
+    "Canal+ Live",
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Béziers / Aurillac",
+   "date": "2026-10-16",
+   "time": "19:26",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Nice / Provence Rugby",
+   "date": "2026-10-16",
+   "time": "19:26",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Dax / Montauban",
+   "date": "2026-10-16",
+   "time": "19:26",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Colomiers / Narbonne",
+   "date": "2026-10-16",
+   "time": "19:26",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby Pack",
+   "date": "2026-10-16",
+   "time": "20:30",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -345,9 +529,49 @@
    "title": "Soir de rugby avant-match",
    "date": "2026-10-16",
    "time": "20:50",
-   "desc": "En Direct.",
+   "desc": "\"Soir de rugby avant-match\" présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'amb",
+   "chaine": [
+    "Canal+ Live",
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby avant-match",
+   "date": "2026-10-16",
+   "time": "20:51",
+   "desc": "\"Soir de rugby avant-match\" présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'amb",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Challenge Cup",
+   "date": "2026-10-16",
+   "time": "20:54",
+   "desc": "Retransmission d'un match de Challenge Cup de rugby à XV.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Nevers / Agen",
+   "date": "2026-10-16",
+   "time": "20:55",
+   "desc": "Voilà un duel de bas de tableau dans ce championnat de Pro D2, avec deux équipes déjà en difficulté. Après cinq journées, Nevers pointait bo",
+   "chaine": [
+    "Canal+ Live"
    ],
    "cats": [
     "rugby"
@@ -371,9 +595,23 @@
    "title": "Biarritz / Soyaux-Angoulême",
    "date": "2026-10-16",
    "time": "21:00",
-   "desc": "En Direct.",
+   "desc": "Le Biarritz Olympique reçoit Soyaux-Angoulême pour une rencontre qui s'annonce importante entre deux clubs qui visent le top 6 et la qualifi",
    "chaine": [
+    "Canal+ Live",
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Champions Cup",
+   "date": "2026-10-16",
+   "time": "21:00",
+   "desc": "Double tenant du titre, Bordeaux-Bègles entame sa nouvelle campagne en Champions Cup avec le statut de favori. Une renommée qu'il faut faire",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -384,9 +622,296 @@
    "title": "Soir de rugby",
    "date": "2026-10-16",
    "time": "22:51",
+   "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
+   "chaine": [
+    "Canal+ Live",
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby Pack",
+   "date": "2026-10-16",
+   "time": "23:00",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Challenge Cup",
+   "date": "2026-10-16",
+   "time": "23:15",
+   "desc": "Retransmission d'un match de Challenge Cup de rugby à XV.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat national des provinces néo-zélandaises",
+   "date": "2026-10-17",
+   "time": "00:35",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat national des provinces néo-zélandaises",
+   "date": "2026-10-17",
+   "time": "00:36",
+   "desc": "Championnat provincial de rugby à XV de Nouvelle-Zélande, le Hilux NPC 2026 réunit 14 équipes représentant les principales provinces du pays",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Nouvelle-Zélande",
+   "date": "2026-10-17",
+   "time": "06:52",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat national des provinces néo-zélandaises",
+   "date": "2026-10-17",
+   "time": "07:35",
    "desc": "En Direct.",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Oyonnax / Valence-Romans",
+   "date": "2026-10-17",
+   "time": "10:09",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Biarritz / Soyaux-Angoulême",
+   "date": "2026-10-17",
+   "time": "11:51",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby",
+   "date": "2026-10-17",
+   "time": "13:35",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Lyon / Sharks",
+   "date": "2026-10-17",
+   "time": "14:00",
+   "desc": "En Direct.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Histoire de champions rugby",
+   "date": "2026-10-17",
+   "time": "14:08",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat national des provinces néo-zélandaises",
+   "date": "2026-10-17",
+   "time": "15:41",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby Pack",
+   "date": "2026-10-17",
+   "time": "16:00",
+   "desc": "En Direct.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Clermont / Leinster",
+   "date": "2026-10-17",
+   "time": "16:15",
+   "desc": "En Direct.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Nouvelle-Zélande",
+   "date": "2026-10-17",
+   "time": "17:24",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby Pack",
+   "date": "2026-10-17",
+   "time": "18:15",
+   "desc": "En Direct.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "La Rochelle / Lions",
+   "date": "2026-10-17",
+   "time": "18:30",
+   "desc": "En Direct.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Nouvelle-Zélande",
+   "date": "2026-10-17",
+   "time": "20:07",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby Pack",
+   "date": "2026-10-17",
+   "time": "20:30",
+   "desc": "En Direct.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bath / Montpellier",
+   "date": "2026-10-17",
+   "time": "20:55",
+   "desc": "En Direct.",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Brive / Grenoble",
+   "date": "2026-10-17",
+   "time": "21:00",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Munster / Racing 92",
+   "date": "2026-10-17",
+   "time": "21:00",
+   "desc": "En Direct.",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
