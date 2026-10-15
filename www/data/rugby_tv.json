@@ -1,60 +1,8 @@
 {
- "generated": "2026-10-15T08:15:03+02:00",
+ "generated": "2026-10-15T20:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 95,
+ "count": 91,
  "programmes": [
-  {
-   "title": "ASM Clermont / Bordeaux-Bègles",
-   "date": "2026-10-15",
-   "time": "14:53",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "ASM Clermont / Bordeaux-Bègles",
-   "date": "2026-10-15",
-   "time": "15:03",
-   "desc": "Le choc entre l'ASM Clermont Auvergne et l'Union Bordeaux-Bègles met aux prises deux équipes qui attaquent ce début d'automne avec des dynam",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canterbury / Waikato",
-   "date": "2026-10-15",
-   "time": "16:31",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Northland / Tasman",
-   "date": "2026-10-15",
-   "time": "16:41",
-   "desc": "Championnat provincial de rugby à XV de Nouvelle-Zélande, le Hilux NPC 2026 réunit 14 équipes représentant les principales provinces du pays",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Toulouse / Bayonne",
    "date": "2026-10-16",
