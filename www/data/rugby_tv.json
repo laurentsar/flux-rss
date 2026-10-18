@@ -1,245 +1,8 @@
 {
- "generated": "2026-10-17T20:15:06+02:00",
+ "generated": "2026-10-18T08:15:03+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 78,
+ "count": 73,
  "programmes": [
-  {
-   "title": "Connacht - Saracens",
-   "date": "2026-10-17",
-   "time": "18:25",
-   "desc": "En Direct.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Champions Cup",
-   "date": "2026-10-17",
-   "time": "18:30",
-   "desc": "Retransmission d'un match de Champions Cup de rugby à XV.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "La Rochelle / Lions",
-   "date": "2026-10-17",
-   "time": "18:30",
-   "desc": "En Direct.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Australie / Nouvelle-Zélande",
-   "date": "2026-10-17",
-   "time": "20:08",
-   "desc": "Le deuxième match de la Bledisloe Cup oppose l'Australie à la Nouvelle-Zélande, à l'Accor Stadium de Sydney. Le match aller s'est déroulé le",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby Pack",
-   "date": "2026-10-17",
-   "time": "20:30",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Avant-match Pro D2",
-   "date": "2026-10-17",
-   "time": "20:45",
-   "desc": "Les ultimes informations avant le match de Pro D2, les compositions des équipes et les enjeux de la rencontre.",
-   "chaine": [
-    "Canal+",
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Champions Cup",
-   "date": "2026-10-17",
-   "time": "20:54",
-   "desc": "Le Munster ouvre sa campagne européenne face au Racing 92. Dans une affiche de caractère, les Irlandais pourront s'appuyer sur Craig Casey e",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Munster / Racing 92",
-   "date": "2026-10-17",
-   "time": "20:54",
-   "desc": "En Direct.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Brive / Grenoble",
-   "date": "2026-10-17",
-   "time": "21:00",
-   "desc": "Cette rencontre de la 7e journée met aux prises deux des plus grosses écuries et des plus gros budgets de l'antichambre de l'élite : le lead",
-   "chaine": [
-    "Canal+",
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Champions Cup",
-   "date": "2026-10-17",
-   "time": "21:00",
-   "desc": "Retransmission d'un match de Champions Cup de rugby à XV.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Bath / Montpellier",
-   "date": "2026-10-17",
-   "time": "21:00",
-   "desc": "En Direct.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Après-match Pro D2",
-   "date": "2026-10-17",
-   "time": "22:56",
-   "desc": "Suite à la rencontre de Pro D2, le magazine passe en revue les dernières actualités, les réactions des joueurs et des coachs et propose les ",
-   "chaine": [
-    "Canal+",
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Champions Cup",
-   "date": "2026-10-17",
-   "time": "23:00",
-   "desc": "Le Munster ouvre sa campagne européenne face au Racing 92. Dans une affiche de caractère, les Irlandais pourront s'appuyer sur Craig Casey e",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Munster / Racing 92",
-   "date": "2026-10-17",
-   "time": "23:00",
-   "desc": "Rugby",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Brive / Grenoble",
-   "date": "2026-10-17",
-   "time": "23:11",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Brive / Grenoble",
-   "date": "2026-10-17",
-   "time": "23:44",
-   "desc": "Cette rencontre de la 7e journée met aux prises deux des plus grosses écuries et des plus gros budgets de l'antichambre de l'élite : le lead",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Champions Cup",
-   "date": "2026-10-18",
-   "time": "01:00",
-   "desc": "Double tenant du titre, Bordeaux-Bègles entame sa nouvelle campagne en Champions Cup avec le statut de favori. Une renommée qu'il faut faire",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Gloucester / Bordeaux-Bègles",
-   "date": "2026-10-18",
-   "time": "01:00",
-   "desc": "Rugby",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby : Champions Cup",
    "date": "2026-10-18",
@@ -945,8 +708,34 @@
   {
    "title": "Australie / Nouvelle-Zélande",
    "date": "2026-10-20",
+   "time": "07:26",
+   "desc": "Le deuxième match de la Bledisloe Cup oppose l'Australie à la Nouvelle-Zélande, à l'Accor Stadium de Sydney. Le match aller s'est déroulé le",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Nouvelle-Zélande",
+   "date": "2026-10-20",
    "time": "07:27",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Biarritz / Soyaux-Angoulême",
+   "date": "2026-10-20",
+   "time": "09:07",
+   "desc": "Le Biarritz Olympique reçoit Soyaux-Angoulême pour une rencontre qui s'annonce importante entre deux clubs qui visent le top 6 et la qualifi",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -971,6 +760,19 @@
   {
    "title": "Oyonnax / Valence-Romans",
    "date": "2026-10-20",
+   "time": "10:50",
+   "desc": "Invaincu après cinq journées de championnat, Oyonnax a l'occasion d'enfoncer le clou à l'occasion de la réception de Valence-Romans. Les Drô",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Oyonnax / Valence-Romans",
+   "date": "2026-10-20",
    "time": "10:51",
    "desc": "Rugby",
    "chaine": [
@@ -982,10 +784,23 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-10-20",
+   "time": "12:30",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Les meilleurs moments",
    "date": "2026-10-20",
    "time": "13:06",
-   "desc": "Rugby",
+   "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -1008,10 +823,127 @@
    "approx": false
   },
   {
+   "title": "Brive / Grenoble",
+   "date": "2026-10-20",
+   "time": "16:19",
+   "desc": "Cette rencontre de la 7e journée met aux prises deux des plus grosses écuries et des plus gros budgets de l'antichambre de l'élite : le lead",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Fractionné Rugby",
    "date": "2026-10-20",
    "time": "18:03",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Nouvelle-Zélande",
+   "date": "2026-10-21",
+   "time": "00:44",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Nouvelle-Zélande",
+   "date": "2026-10-21",
+   "time": "00:45",
+   "desc": "Le deuxième match de la Bledisloe Cup oppose l'Australie à la Nouvelle-Zélande, à l'Accor Stadium de Sydney. Le match aller s'est déroulé le",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Pro D2",
+   "date": "2026-10-21",
+   "time": "07:29",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Pro D2",
+   "date": "2026-10-21",
+   "time": "09:11",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Nouvelle-Zélande",
+   "date": "2026-10-21",
+   "time": "10:53",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Northland / Otago",
+   "date": "2026-10-21",
+   "time": "13:37",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-10-21",
+   "time": "15:20",
    "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canterbury / Taranaki",
+   "date": "2026-10-21",
+   "time": "15:41",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
