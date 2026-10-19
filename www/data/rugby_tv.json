@@ -1,138 +1,8 @@
 {
- "generated": "2026-10-18T20:15:07+02:00",
+ "generated": "2026-10-19T08:15:06+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 43,
+ "count": 39,
  "programmes": [
-  {
-   "title": "Northampton_ Cardif",
-   "date": "2026-10-18",
-   "time": "18:25",
-   "desc": "En Direct.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Histoire de champions rugby",
-   "date": "2026-10-18",
-   "time": "19:23",
-   "desc": "Histoire de champions rugby revisite les grandes figures et les moments marquants du rugby, en retraçant les parcours, exploits et épisodes ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Champions Cup",
-   "date": "2026-10-18",
-   "time": "20:30",
-   "desc": "Retransmission d'un match de Champions Cup de rugby à XV.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulouse / Exeter Chiefs",
-   "date": "2026-10-18",
-   "time": "20:30",
-   "desc": "Rugby",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Australie / Nouvelle-Zélande",
-   "date": "2026-10-18",
-   "time": "21:00",
-   "desc": "Le deuxième match de la Bledisloe Cup oppose l'Australie à la Nouvelle-Zélande, à l'Accor Stadium de Sydney. Le match aller s'est déroulé le",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Champions Cup",
-   "date": "2026-10-18",
-   "time": "22:30",
-   "desc": "Retransmission d'un match de Champions Cup de rugby à XV.",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "ASM Clermont / Leinster",
-   "date": "2026-10-18",
-   "time": "22:30",
-   "desc": "Rugby",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Les meilleurs moments",
-   "date": "2026-10-18",
-   "time": "22:41",
-   "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Les meilleurs moments",
-   "date": "2026-10-18",
-   "time": "22:42",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Après-match Pro D2",
-   "date": "2026-10-18",
-   "time": "22:54",
-   "desc": "Suite à la rencontre de Pro D2, le magazine passe en revue les dernières actualités, les réactions des joueurs et des coachs et propose les ",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Les meilleurs moments",
    "date": "2026-10-19",
@@ -488,7 +358,7 @@
    "title": "Rugby : Pro D2",
    "date": "2026-10-21",
    "time": "07:29",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -501,7 +371,7 @@
    "title": "Rugby : Pro D2",
    "date": "2026-10-21",
    "time": "09:11",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -514,7 +384,7 @@
    "title": "Australie / Nouvelle-Zélande",
    "date": "2026-10-21",
    "time": "10:53",
-   "desc": "Rugby",
+   "desc": "Le deuxième match de la Bledisloe Cup oppose l'Australie à la Nouvelle-Zélande, à l'Accor Stadium de Sydney. Le match aller s'est déroulé le",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -527,9 +397,22 @@
    "title": "Northland / Otago",
    "date": "2026-10-21",
    "time": "13:37",
-   "desc": "Rugby",
+   "desc": "Championnat provincial de rugby à XV de Nouvelle-Zélande, le Hilux NPC 2026 réunit 14 équipes représentant les principales provinces du pays",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-10-21",
+   "time": "15:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
    ],
    "cats": [
     "rugby"
@@ -540,7 +423,7 @@
    "title": "Fractionné Rugby",
    "date": "2026-10-21",
    "time": "15:20",
-   "desc": "Magazine sportif",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -553,7 +436,72 @@
    "title": "Canterbury / Taranaki",
    "date": "2026-10-21",
    "time": "15:41",
+   "desc": "Canterbury, champion en titre, et qui a terminé la saison régulière à la première place, part favori face à Taranaki pour une place en final",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII : NRL",
+   "date": "2026-10-21",
+   "time": "19:00",
+   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
+   "chaine": [
+    "beIN Sports"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat national des provinces néo-zélandaises",
+   "date": "2026-10-22",
+   "time": "10:27",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-10-22",
+   "time": "12:11",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat national des provinces néo-zélandaises",
+   "date": "2026-10-22",
+   "time": "12:33",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Montauban / Oyonnax",
+   "date": "2026-10-22",
+   "time": "21:00",
+   "desc": "En Direct.",
    "chaine": [
     "Canal+ Sport"
    ],
