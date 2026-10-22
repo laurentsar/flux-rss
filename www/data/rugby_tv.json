@@ -1,47 +1,8 @@
 {
- "generated": "2026-10-22T08:15:10+02:00",
+ "generated": "2026-10-22T20:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 41,
+ "count": 38,
  "programmes": [
-  {
-   "title": "Rugby : Championnat national des provinces néo-zélandaises",
-   "date": "2026-10-22",
-   "time": "10:27",
-   "desc": "Championnat provincial de rugby à XV de Nouvelle-Zélande, le Hilux NPC 2026 réunit 14 équipes représentant les principales provinces du pays",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-10-22",
-   "time": "12:11",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Championnat national des provinces néo-zélandaises",
-   "date": "2026-10-22",
-   "time": "12:33",
-   "desc": "Championnat provincial de rugby à XV de Nouvelle-Zélande, le Hilux NPC 2026 réunit 14 équipes représentant les principales provinces du pays",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Avant-match Pro D2",
    "date": "2026-10-22",
