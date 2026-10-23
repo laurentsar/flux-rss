@@ -1,60 +1,8 @@
 {
- "generated": "2026-10-22T20:15:05+02:00",
+ "generated": "2026-10-23T08:15:05+02:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 38,
+ "count": 34,
  "programmes": [
-  {
-   "title": "Avant-match Pro D2",
-   "date": "2026-10-22",
-   "time": "20:50",
-   "desc": "Les ultimes informations avant le match de Pro D2, les compositions des équipes et les enjeux de la rencontre.",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Montauban / Oyonnax",
-   "date": "2026-10-22",
-   "time": "21:00",
-   "desc": "Avec six victoires lors des six premières journées, dont un récent carton à Narbonne (14-57), Oyonnax s'est imposé comme solide leader du ch",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII : NRL",
-   "date": "2026-10-22",
-   "time": "22:30",
-   "desc": "La NRL, National Rugby League, est le championnat national australien et néo-zélandais de rugby à XIII, dans une compétition très populaire ",
-   "chaine": [
-    "beIN Sports"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Après-match Pro D2",
-   "date": "2026-10-22",
-   "time": "22:50",
-   "desc": "Suite à la rencontre de Pro D2, le magazine passe en revue les dernières actualités, les réactions des joueurs et des coachs et propose les ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Montauban / Oyonnax",
    "date": "2026-10-23",
