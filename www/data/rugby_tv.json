@@ -1,204 +1,8 @@
 {
- "generated": "2026-10-25T19:15:03+01:00",
+ "generated": "2026-10-26T07:15:06+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 64,
+ "count": 46,
  "programmes": [
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-10-25",
-   "time": "17:16",
-   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "La Rochelle / Lyon",
-   "date": "2026-10-25",
-   "time": "17:40",
-   "desc": "Sacrées championnes d'Elite 2 l'an passé, les Rochelaises vont découvrir l'Elite 1 ce soir à domicile à l'occasion de cette première journée",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Reichel Espoirs Élite",
-   "date": "2026-10-25",
-   "time": "17:55",
-   "desc": "Les espoirs de l'UBB enchaînent les victoires et se déplacent à Bayonne pour affronter l'Aviron Bayonnais.",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Aviron bayonnais - Union Bordeaux Bègles",
-   "date": "2026-10-25",
-   "time": "17:55",
-   "desc": "Rugby",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club",
-   "date": "2026-10-25",
-   "time": "19:25",
-   "desc": "En Direct.",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "La Rochelle / Bordeaux-Bègles",
-   "date": "2026-10-25",
-   "time": "20:05",
-   "desc": "En Direct.",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "A `venir : Canal Rugby Club",
-   "date": "2026-10-25",
-   "time": "20:21",
-   "desc": "Sport",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club",
-   "date": "2026-10-25",
-   "time": "20:22",
-   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club",
-   "date": "2026-10-25",
-   "time": "20:25",
-   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Avant-match Top 14",
-   "date": "2026-10-25",
-   "time": "20:54",
-   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Avant-match Top 14",
-   "date": "2026-10-25",
-   "time": "21:02",
-   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "La Rochelle / Bordeaux-Bègles",
-   "date": "2026-10-25",
-   "time": "21:05",
-   "desc": "Le match de clôture de la 7e journée de Top 14 oppose le Stade Rochelais à l'Union Bordeaux-Bègles et se dispute dans l'ambiance survoltée d",
-   "chaine": [
-    "Canal+",
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-10-25",
-   "time": "22:00",
-   "desc": "En Direct.",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-10-25",
-   "time": "23:00",
-   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "La Rochelle / Lyon",
-   "date": "2026-10-26",
-   "time": "07:54",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "La Rochelle / Lyon",
    "date": "2026-10-26",
@@ -215,7 +19,7 @@
   {
    "title": "Vannes / ASM Clermont",
    "date": "2026-10-26",
-   "time": "09:36",
+   "time": "10:36",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
@@ -241,7 +45,7 @@
   {
    "title": "Canal Rugby Club - 1re édition",
    "date": "2026-10-26",
-   "time": "11:21",
+   "time": "12:21",
    "desc": "Magazine sportif",
    "chaine": [
     "Canal+ Sport"
@@ -267,7 +71,7 @@
   {
    "title": "Toulon / Pau",
    "date": "2026-10-26",
-   "time": "12:31",
+   "time": "13:31",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
@@ -282,19 +86,6 @@
    "date": "2026-10-26",
    "time": "13:33",
    "desc": "Match des extrêmes entre le RC Toulonnais et la Section Paloise, à l'occasion de la 7e journée. Le RCT doit impérativement réagir à domicile",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canterbury / Northland",
-   "date": "2026-10-26",
-   "time": "14:14",
-   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -323,6 +114,19 @@
    "desc": "Rugby",
    "chaine": [
     "TV7 Bordeaux"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canterbury / Northland",
+   "date": "2026-10-26",
+   "time": "15:14",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
    ],
    "cats": [
     "rugby"
@@ -371,34 +175,8 @@
   {
    "title": "La Rochelle / Lyon",
    "date": "2026-10-26",
-   "time": "15:57",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "La Rochelle / Lyon",
-   "date": "2026-10-26",
    "time": "16:57",
    "desc": "Sacrées championnes d'Elite 2 l'an passé, les Rochelaises vont découvrir l'Elite 1 ce soir à domicile à l'occasion de cette première journée",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Bayonne / Lyon",
-   "date": "2026-10-26",
-   "time": "17:39",
-   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -421,22 +199,9 @@
    "approx": false
   },
   {
-   "title": "Canal Rugby Club",
+   "title": "Bayonne / Lyon",
    "date": "2026-10-26",
-   "time": "19:24",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "La Rochelle / Bordeaux-Bègles",
-   "date": "2026-10-26",
-   "time": "20:00",
+   "time": "18:39",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
@@ -475,32 +240,6 @@
   {
    "title": "Canal Rugby Club le débrief",
    "date": "2026-10-26",
-   "time": "21:44",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canterbury / Northland",
-   "date": "2026-10-26",
-   "time": "22:03",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-10-26",
    "time": "22:44",
    "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
    "chaine": [
@@ -527,19 +266,6 @@
   {
    "title": "Vannes / ASM Clermont",
    "date": "2026-10-27",
-   "time": "06:13",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Vannes / ASM Clermont",
-   "date": "2026-10-27",
    "time": "07:13",
    "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
    "chaine": [
@@ -553,47 +279,8 @@
   {
    "title": "Toulon / Pau",
    "date": "2026-10-27",
-   "time": "07:56",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulon / Pau",
-   "date": "2026-10-27",
    "time": "08:56",
    "desc": "Match des extrêmes entre le RC Toulonnais et la Section Paloise, à l'occasion de la 7e journée. Le RCT doit impérativement réagir à domicile",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club",
-   "date": "2026-10-27",
-   "time": "09:40",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "La Rochelle / Bordeaux-Bègles",
-   "date": "2026-10-27",
-   "time": "10:12",
-   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -631,19 +318,6 @@
   {
    "title": "Canal Rugby Club le débrief",
    "date": "2026-10-27",
-   "time": "11:58",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-10-27",
    "time": "12:58",
    "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
    "chaine": [
@@ -657,47 +331,8 @@
   {
    "title": "Aurillac / Nevers",
    "date": "2026-10-27",
-   "time": "14:19",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Aurillac / Nevers",
-   "date": "2026-10-27",
    "time": "15:19",
    "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-10-27",
-   "time": "19:38",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canterbury / Northland",
-   "date": "2026-10-27",
-   "time": "20:00",
-   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -735,19 +370,6 @@
   {
    "title": "La Rochelle / Bordeaux-Bègles",
    "date": "2026-10-27",
-   "time": "21:41",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "La Rochelle / Bordeaux-Bègles",
-   "date": "2026-10-27",
    "time": "22:41",
    "desc": "Le match de clôture de la 7e journée de Top 14 oppose le Stade Rochelais à l'Union Bordeaux-Bègles et se dispute dans l'ambiance survoltée d",
    "chaine": [
@@ -761,7 +383,33 @@
   {
    "title": "Valence-Romans / Colomiers",
    "date": "2026-10-28",
-   "time": "06:02",
+   "time": "07:02",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Valence-Romans / Colomiers",
+   "date": "2026-10-28",
+   "time": "07:23",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Provence Rugby / Béziers",
+   "date": "2026-10-28",
+   "time": "08:44",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
@@ -774,7 +422,20 @@
   {
    "title": "Provence Rugby / Béziers",
    "date": "2026-10-28",
-   "time": "07:44",
+   "time": "09:05",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bayonne / Lyon",
+   "date": "2026-10-28",
+   "time": "10:26",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
@@ -787,8 +448,8 @@
   {
    "title": "Bayonne / Lyon",
    "date": "2026-10-28",
-   "time": "09:26",
-   "desc": "Rugby",
+   "time": "10:47",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -800,7 +461,20 @@
   {
    "title": "La Rochelle / Lyon",
    "date": "2026-10-28",
-   "time": "13:50",
+   "time": "14:50",
+   "desc": "Sacrées championnes d'Elite 2 l'an passé, les Rochelaises vont découvrir l'Elite 1 ce soir à domicile à l'occasion de cette première journée",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "La Rochelle / Bordeaux-Bègles",
+   "date": "2026-10-28",
+   "time": "16:31",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
@@ -813,8 +487,8 @@
   {
    "title": "La Rochelle / Bordeaux-Bègles",
    "date": "2026-10-28",
-   "time": "15:31",
-   "desc": "Rugby",
+   "time": "16:32",
+   "desc": "Le match de clôture de la 7e journée de Top 14 oppose le Stade Rochelais à l'Union Bordeaux-Bègles et se dispute dans l'ambiance survoltée d",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -826,8 +500,99 @@
   {
    "title": "Canterbury / Northland",
    "date": "2026-10-28",
-   "time": "17:14",
+   "time": "18:14",
+   "desc": "Championnat provincial de rugby à XV de Nouvelle-Zélande, le Hilux NPC 2026 réunit 14 équipes représentant les principales provinces du pays",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulon / Pau",
+   "date": "2026-10-28",
+   "time": "23:28",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulon / Pau",
+   "date": "2026-10-28",
+   "time": "23:29",
+   "desc": "Match des extrêmes entre le RC Toulonnais et la Section Paloise, à l'occasion de la 7e journée. Le RCT doit impérativement réagir à domicile",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat national des provinces néo-zélandaises",
+   "date": "2026-10-29",
+   "time": "12:29",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "La Rochelle / Lyon",
+   "date": "2026-10-29",
+   "time": "16:26",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Grenoble / Biarritz",
+   "date": "2026-10-29",
+   "time": "18:07",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby",
+   "date": "2026-10-29",
+   "time": "19:50",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Dax / Provence Rugby",
+   "date": "2026-10-29",
+   "time": "21:00",
+   "desc": "En Direct.",
    "chaine": [
     "Canal+ Sport"
    ],
