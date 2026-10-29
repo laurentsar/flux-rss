@@ -1,60 +1,8 @@
 {
- "generated": "2026-10-29T07:15:06+01:00",
+ "generated": "2026-10-29T19:15:03+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 58,
+ "count": 54,
  "programmes": [
-  {
-   "title": "Canterbury / Northland",
-   "date": "2026-10-29",
-   "time": "12:27",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canterbury / Northland",
-   "date": "2026-10-29",
-   "time": "12:47",
-   "desc": "Championnat provincial de rugby à XV de Nouvelle-Zélande, le Hilux NPC 2026 réunit 14 équipes représentant les principales provinces du pays",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "La Rochelle / Lyon",
-   "date": "2026-10-29",
-   "time": "16:25",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "La Rochelle / Lyon",
-   "date": "2026-10-29",
-   "time": "16:48",
-   "desc": "Sacrées championnes d'Elite 2 l'an passé, les Rochelaises vont découvrir l'Elite 1 ce soir à domicile à l'occasion de cette première journée",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Grenoble / Biarritz",
    "date": "2026-10-29",
