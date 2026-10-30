@@ -1,12 +1,12 @@
 {
- "generated": "2026-10-29T19:15:03+01:00",
+ "generated": "2026-10-30T07:15:03+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 54,
+ "count": 85,
  "programmes": [
   {
-   "title": "Grenoble / Biarritz",
-   "date": "2026-10-29",
-   "time": "18:06",
+   "title": "Dax / Provence Rugby",
+   "date": "2026-10-30",
+   "time": "07:23",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
@@ -17,90 +17,9 @@
    "approx": false
   },
   {
-   "title": "Grenoble / Biarritz",
-   "date": "2026-10-29",
-   "time": "18:26",
-   "desc": "Un duel entre prétendants aux premières places en Pro D2 entre Grenoble, 6e au soir de la 5e journée, et un Biarritz Olympique qui pointait ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Soir de rugby",
-   "date": "2026-10-29",
-   "time": "19:49",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Soir de rugby",
-   "date": "2026-10-29",
-   "time": "20:01",
-   "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Avant-match Pro D2",
-   "date": "2026-10-29",
-   "time": "20:50",
-   "desc": "Les ultimes informations avant le match de Pro D2, les compositions des équipes et les enjeux de la rencontre.",
-   "chaine": [
-    "Canal+ Live",
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Dax / Provence Rugby",
-   "date": "2026-10-29",
-   "time": "21:00",
-   "desc": "C'est une équipe de Provence Rugby ambitieuse qui se déplace sur le terrain de Dax ce soir. A l'issue des six premières journées, marquées p",
-   "chaine": [
-    "Canal+ Live",
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Après-match Pro D2",
-   "date": "2026-10-29",
-   "time": "22:51",
-   "desc": "Suite à la rencontre de Pro D2, le magazine passe en revue les dernières actualités, les réactions des joueurs et des coachs et propose les ",
-   "chaine": [
-    "Canal+ Live",
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
    "title": "Dax / Provence Rugby",
    "date": "2026-10-30",
-   "time": "07:23",
+   "time": "07:33",
    "desc": "C'est une équipe de Provence Rugby ambitieuse qui se déplace sur le terrain de Dax ce soir. A l'issue des six premières journées, marquées p",
    "chaine": [
     "Canal+ Sport"
@@ -114,6 +33,19 @@
    "title": "La Rochelle / Bordeaux-Bègles",
    "date": "2026-10-30",
    "time": "09:07",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "La Rochelle / Bordeaux-Bègles",
+   "date": "2026-10-30",
+   "time": "09:17",
    "desc": "Le match de clôture de la 7e journée de Top 14 oppose le Stade Rochelais à l'Union Bordeaux-Bègles et se dispute dans l'ambiance survoltée d",
    "chaine": [
     "Canal+ Sport"
@@ -127,6 +59,19 @@
    "title": "Bayonne / Lyon",
    "date": "2026-10-30",
    "time": "10:50",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bayonne / Lyon",
+   "date": "2026-10-30",
+   "time": "10:59",
    "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
    "chaine": [
     "Canal+ Sport"
@@ -140,6 +85,19 @@
    "title": "Fractionné Rugby",
    "date": "2026-10-30",
    "time": "12:41",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-10-30",
+   "time": "12:48",
    "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
@@ -153,6 +111,19 @@
    "title": "La Rochelle / Lyon",
    "date": "2026-10-30",
    "time": "13:04",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "La Rochelle / Lyon",
+   "date": "2026-10-30",
+   "time": "13:10",
    "desc": "Sacrées championnes d'Elite 2 l'an passé, les Rochelaises vont découvrir l'Elite 1 ce soir à domicile à l'occasion de cette première journée",
    "chaine": [
     "Canal+ Sport"
@@ -166,6 +137,19 @@
    "title": "Canterbury / Northland",
    "date": "2026-10-30",
    "time": "14:46",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canterbury / Northland",
+   "date": "2026-10-30",
+   "time": "14:49",
    "desc": "Championnat provincial de rugby à XV de Nouvelle-Zélande, le Hilux NPC 2026 réunit 14 équipes représentant les principales provinces du pays",
    "chaine": [
     "Canal+ Sport"
@@ -178,8 +162,21 @@
   {
    "title": "Dax / Provence Rugby",
    "date": "2026-10-30",
-   "time": "16:29",
+   "time": "16:28",
    "desc": "C'est une équipe de Provence Rugby ambitieuse qui se déplace sur le terrain de Dax ce soir. A l'issue des six premières journées, marquées p",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Dax / Provence Rugby",
+   "date": "2026-10-30",
+   "time": "16:29",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -377,8 +374,34 @@
   {
    "title": "Colomiers / Agen",
    "date": "2026-10-31",
-   "time": "09:54",
+   "time": "09:48",
    "desc": "Pour Colomiers, la réception d'un concurrent direct au maintien est cruciale. Après avoir perdu des points précieux à domicile, une victoire",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Colomiers / Agen",
+   "date": "2026-10-31",
+   "time": "09:54",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Biarritz / Valence-Romans",
+   "date": "2026-10-31",
+   "time": "11:33",
+   "desc": "Le Biarritz Olympique réalise un très bon début de saison. Pour Thomas Dolhagaray et les Basques, l'enjeu sera de poursuivre sur cette belle",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -391,7 +414,7 @@
    "title": "Biarritz / Valence-Romans",
    "date": "2026-10-31",
    "time": "11:37",
-   "desc": "Le Biarritz Olympique réalise un très bon début de saison. Pour Thomas Dolhagaray et les Basques, l'enjeu sera de poursuivre sur cette belle",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -429,8 +452,21 @@
   {
    "title": "Soir de rugby",
    "date": "2026-10-31",
-   "time": "13:21",
+   "time": "13:19",
    "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby",
+   "date": "2026-10-31",
+   "time": "13:21",
+   "desc": "Magazine sportif",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -456,7 +492,7 @@
   {
    "title": "Avant-match Top 14",
    "date": "2026-10-31",
-   "time": "16:16",
+   "time": "16:15",
    "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
    "chaine": [
     "Canal+"
@@ -563,8 +599,20 @@
    "time": "19:39",
    "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages \"inside\" et des interviews de personnalités du rugby afin de décrypter les enj",
    "chaine": [
-    "Canal+",
     "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club - 1re édition",
+   "date": "2026-10-31",
+   "time": "19:40",
+   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages \"inside\" et des interviews de personnalités du rugby afin de décrypter les enj",
+   "chaine": [
+    "Canal+"
    ],
    "cats": [
     "rugby"
@@ -642,7 +690,7 @@
    "title": "Lyon / Vannes",
    "date": "2026-11-01",
    "time": "09:54",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -655,7 +703,7 @@
    "title": "Stade Français Paris / La Rochelle",
    "date": "2026-11-01",
    "time": "11:37",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -668,7 +716,7 @@
    "title": "Montpellier / Castres",
    "date": "2026-11-01",
    "time": "13:21",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -681,9 +729,22 @@
    "title": "Bordeaux-Bègles / Bayonne",
    "date": "2026-11-01",
    "time": "15:05",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Multiplex",
+   "date": "2026-11-01",
+   "time": "16:27",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
    ],
    "cats": [
     "rugby"
@@ -694,7 +755,7 @@
    "title": "ASM Clermont / Racing 92",
    "date": "2026-11-01",
    "time": "16:50",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -707,9 +768,348 @@
    "title": "Perpignan / Toulon",
    "date": "2026-11-01",
    "time": "18:34",
+   "desc": "Ce match entre l'USA Perpignan au RC Toulonnais met aux prises, au Stade Aimé-Giral, deux formations qui se retrouvent dans la deuxième moit",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club - 1re édition",
+   "date": "2026-11-01",
+   "time": "19:39",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "A `venir : Canal Rugby Club",
+   "date": "2026-11-01",
+   "time": "20:25",
+   "desc": "Sport",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club",
+   "date": "2026-11-01",
+   "time": "20:26",
+   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club",
+   "date": "2026-11-01",
+   "time": "20:34",
+   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Perpignan / Toulon",
+   "date": "2026-11-01",
+   "time": "21:00",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Avant-match Top 14",
+   "date": "2026-11-01",
+   "time": "21:02",
+   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Pau / Toulouse",
+   "date": "2026-11-01",
+   "time": "21:05",
+   "desc": "Ce match entre la Section Paloise et le Stade Toulousain s'annonce comme une confrontation au sommet du championnat puisqu'il oppose directe",
+   "chaine": [
+    "Canal+",
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-11-01",
+   "time": "22:57",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-11-01",
+   "time": "23:02",
+   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "A `venir : Canal Rugby Club le débrief",
+   "date": "2026-11-01",
+   "time": "23:05",
+   "desc": "Sport",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-11-01",
+   "time": "23:24",
+   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Pau / Toulouse",
+   "date": "2026-11-01",
+   "time": "23:59",
+   "desc": "Ce match entre la Section Paloise et le Stade Toulousain s'annonce comme une confrontation au sommet du championnat puisqu'il oppose directe",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Clermont / Racing 92",
+   "date": "2026-11-02",
+   "time": "08:54",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Montpellier / Castres",
+   "date": "2026-11-02",
+   "time": "10:37",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club - 1re édition",
+   "date": "2026-11-02",
+   "time": "12:22",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Perpignan / Toulon",
+   "date": "2026-11-02",
+   "time": "13:32",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Béziers / Grenoble",
+   "date": "2026-11-02",
+   "time": "15:15",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Montauban / Narbonne",
+   "date": "2026-11-02",
+   "time": "16:57",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Is+ Le Journal du Rugby",
+   "date": "2026-11-02",
+   "time": "18:30",
+   "desc": "En Direct.",
+   "chaine": [
+    "Infosport+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bordeaux-Bègles / Bayonne",
+   "date": "2026-11-02",
+   "time": "18:40",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club",
+   "date": "2026-11-02",
+   "time": "20:24",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club",
+   "date": "2026-11-02",
+   "time": "20:25",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Pau / Toulouse",
+   "date": "2026-11-02",
+   "time": "21:00",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Pau / Toulouse",
+   "date": "2026-11-02",
+   "time": "21:05",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-11-02",
+   "time": "22:43",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-11-02",
+   "time": "23:02",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
    ],
    "cats": [
     "rugby"
