@@ -1,86 +1,8 @@
 {
- "generated": "2026-11-02T07:15:05+01:00",
+ "generated": "2026-11-02T19:15:07+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 27,
+ "count": 21,
  "programmes": [
-  {
-   "title": "ASM Clermont / Racing 92",
-   "date": "2026-11-02",
-   "time": "08:54",
-   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Montpellier / Castres",
-   "date": "2026-11-02",
-   "time": "10:37",
-   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club - 1re édition",
-   "date": "2026-11-02",
-   "time": "12:22",
-   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages \"inside\" et des interviews de personnalités du rugby afin de décrypter les enj",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Perpignan / Toulon",
-   "date": "2026-11-02",
-   "time": "13:32",
-   "desc": "Ce match entre l'USA Perpignan au RC Toulonnais met aux prises, au Stade Aimé-Giral, deux formations qui se retrouvent dans la deuxième moit",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Béziers / Grenoble",
-   "date": "2026-11-02",
-   "time": "15:15",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Montauban / Narbonne",
-   "date": "2026-11-02",
-   "time": "16:57",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Is+ Le Journal du Rugby",
    "date": "2026-11-02",
