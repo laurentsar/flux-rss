@@ -1,21 +1,8 @@
 {
- "generated": "2026-11-03T19:15:03+01:00",
+ "generated": "2026-11-04T07:15:05+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 22,
+ "count": 21,
  "programmes": [
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-11-03",
-   "time": "18:08",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "ASM Clermont / Racing 92",
    "date": "2026-11-04",
