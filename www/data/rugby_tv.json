@@ -1,12 +1,25 @@
 {
- "generated": "2026-11-04T19:15:04+01:00",
+ "generated": "2026-11-05T07:15:03+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 52,
+ "count": 61,
  "programmes": [
   {
    "title": "Bordeaux-Bègles / Bayonne",
    "date": "2026-11-05",
    "time": "12:22",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bordeaux-Bègles / Bayonne",
+   "date": "2026-11-05",
+   "time": "13:23",
    "desc": "Après huit journées, Bordeaux-Bègles talonnait le champion en titre Toulouse. Le club girondin, qui ne comptait qu'un point de retard sur le",
    "chaine": [
     "Canal+ Sport"
@@ -20,6 +33,19 @@
    "title": "Pau / Toulouse",
    "date": "2026-11-05",
    "time": "14:06",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Pau / Toulouse",
+   "date": "2026-11-05",
+   "time": "15:05",
    "desc": "Ce match entre la Section Paloise et le Stade Toulousain s'annonce comme une confrontation au sommet du championnat puisqu'il oppose directe",
    "chaine": [
     "Canal+ Sport"
@@ -33,6 +59,19 @@
    "title": "Biarritz / Valence-Romans",
    "date": "2026-11-05",
    "time": "16:47",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Biarritz / Valence-Romans",
+   "date": "2026-11-05",
+   "time": "16:52",
    "desc": "Le Biarritz Olympique réalise un très bon début de saison. Pour Thomas Dolhagaray et les Basques, l'enjeu sera de poursuivre sur cette belle",
    "chaine": [
     "Canal+ Sport"
@@ -71,7 +110,7 @@
   {
    "title": "Après-match Pro D2",
    "date": "2026-11-05",
-   "time": "22:50",
+   "time": "22:51",
    "desc": "Suite à la rencontre de Pro D2, le magazine passe en revue les dernières actualités, les réactions des joueurs et des coachs et propose les ",
    "chaine": [
     "Canal+ Sport"
@@ -84,8 +123,8 @@
   {
    "title": "Agen / Biarritz",
    "date": "2026-11-06",
-   "time": "07:27",
-   "desc": "Rugby",
+   "time": "06:59",
+   "desc": "Le SUA, 10e avec 19 points après neuf journées, doit engranger des points pour s'éloigner du bas de tableau. Sixième avec 24 points, le BO v",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -98,7 +137,7 @@
    "title": "Agen / Biarritz",
    "date": "2026-11-06",
    "time": "07:43",
-   "desc": "Le SUA, 10e avec 19 points après neuf journées, doit engranger des points pour s'éloigner du bas de tableau. Sixième avec 24 points, le BO v",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -110,8 +149,8 @@
   {
    "title": "Les meilleurs moments",
    "date": "2026-11-06",
-   "time": "09:09",
-   "desc": "Rugby",
+   "time": "08:42",
+   "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -124,7 +163,7 @@
    "title": "Les meilleurs moments",
    "date": "2026-11-06",
    "time": "09:26",
-   "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -136,8 +175,8 @@
   {
    "title": "Fractionné Rugby",
    "date": "2026-11-06",
-   "time": "12:32",
-   "desc": "Magazine sportif",
+   "time": "12:04",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -150,7 +189,7 @@
    "title": "Fractionné Rugby",
    "date": "2026-11-06",
    "time": "12:48",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "desc": "Magazine sportif",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -162,8 +201,8 @@
   {
    "title": "Agen / Biarritz",
    "date": "2026-11-06",
-   "time": "17:27",
-   "desc": "Rugby",
+   "time": "17:41",
+   "desc": "Le SUA, 10e avec 19 points après neuf journées, doit engranger des points pour s'éloigner du bas de tableau. Sixième avec 24 points, le BO v",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -176,22 +215,9 @@
    "title": "Agen / Biarritz",
    "date": "2026-11-06",
    "time": "17:42",
-   "desc": "Le SUA, 10e avec 19 points après neuf journées, doit engranger des points pour s'éloigner du bas de tableau. Sixième avec 24 points, le BO v",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Is+ Le Journal du Rugby",
-   "date": "2026-11-06",
-   "time": "18:30",
-   "desc": "En Direct.",
-   "chaine": [
-    "Infosport+"
    ],
    "cats": [
     "rugby"
@@ -346,19 +372,6 @@
    "approx": false
   },
   {
-   "title": "Soyaux-Angoulême / Grenoble",
-   "date": "2026-11-07",
-   "time": "07:42",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
    "title": "Brive / Dax",
    "date": "2026-11-07",
    "time": "09:23",
@@ -372,36 +385,10 @@
    "approx": false
   },
   {
-   "title": "Brive / Dax",
-   "date": "2026-11-07",
-   "time": "09:25",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
    "title": "Provence Rugby / Oyonnax",
    "date": "2026-11-07",
    "time": "11:06",
    "desc": "Match au sommet et affiche de gala ce soir à Aix-en-Provence entre les deux équipes référence du championnat Pro D2, qui occupaient les deux",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Provence Rugby / Oyonnax",
-   "date": "2026-11-07",
-   "time": "11:07",
-   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -476,38 +463,13 @@
    "approx": false
   },
   {
-   "title": "Soir de rugby",
-   "date": "2026-11-07",
-   "time": "12:51",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
    "title": "Avant-match Top 14",
    "date": "2026-11-07",
    "time": "14:14",
    "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
    "chaine": [
+    "Canal+",
     "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Avant-match Top 14",
-   "date": "2026-11-07",
-   "time": "14:15",
-   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
-   "chaine": [
-    "Canal+"
    ],
    "cats": [
     "rugby"
@@ -648,6 +610,19 @@
    "title": "Canal Rugby Club - 1re édition",
    "date": "2026-11-07",
    "time": "19:47",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club - 1re édition",
+   "date": "2026-11-07",
+   "time": "19:48",
    "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages \"inside\" et des interviews de personnalités du rugby afin de décrypter les enj",
    "chaine": [
     "Canal+"
@@ -677,6 +652,149 @@
    "desc": "Autour de chaque match des Bleus, Isabelle Ithurburu présentera Le Mag en direct du stade, accompagnée de l'ancien international Christian C",
    "chaine": [
     "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Vannes / Bordeaux-Bègles",
+   "date": "2026-11-08",
+   "time": "01:40",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Vannes / Bordeaux-Bègles",
+   "date": "2026-11-08",
+   "time": "01:41",
+   "desc": "Après avoir investi le Roazhon Park de Rennes en début de saison, Vannes passe à la vitesse supérieure en délocalisant ce match contre Borde",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / ASM Clermont",
+   "date": "2026-11-08",
+   "time": "09:38",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Castres / Racing 92",
+   "date": "2026-11-08",
+   "time": "11:21",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Montpellier / Lyon",
+   "date": "2026-11-08",
+   "time": "13:05",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Vannes / Bordeaux-Bègles",
+   "date": "2026-11-08",
+   "time": "14:50",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Pau / Perpignan",
+   "date": "2026-11-08",
+   "time": "16:57",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulon / Stade Français Paris",
+   "date": "2026-11-08",
+   "time": "18:41",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club",
+   "date": "2026-11-08",
+   "time": "20:01",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "La Rochelle / Bayonne",
+   "date": "2026-11-08",
+   "time": "21:05",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-11-08",
+   "time": "23:02",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+"
    ],
    "cats": [
     "rugby"
