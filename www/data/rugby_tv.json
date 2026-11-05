@@ -1,86 +1,8 @@
 {
- "generated": "2026-11-05T07:15:03+01:00",
+ "generated": "2026-11-05T19:15:05+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 61,
+ "count": 55,
  "programmes": [
-  {
-   "title": "Bordeaux-Bègles / Bayonne",
-   "date": "2026-11-05",
-   "time": "12:22",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Bordeaux-Bègles / Bayonne",
-   "date": "2026-11-05",
-   "time": "13:23",
-   "desc": "Après huit journées, Bordeaux-Bègles talonnait le champion en titre Toulouse. Le club girondin, qui ne comptait qu'un point de retard sur le",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Pau / Toulouse",
-   "date": "2026-11-05",
-   "time": "14:06",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Pau / Toulouse",
-   "date": "2026-11-05",
-   "time": "15:05",
-   "desc": "Ce match entre la Section Paloise et le Stade Toulousain s'annonce comme une confrontation au sommet du championnat puisqu'il oppose directe",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Biarritz / Valence-Romans",
-   "date": "2026-11-05",
-   "time": "16:47",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Biarritz / Valence-Romans",
-   "date": "2026-11-05",
-   "time": "16:52",
-   "desc": "Le Biarritz Olympique réalise un très bon début de saison. Pour Thomas Dolhagaray et les Basques, l'enjeu sera de poursuivre sur cette belle",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Avant-match Pro D2",
    "date": "2026-11-05",
