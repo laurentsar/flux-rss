@@ -1,112 +1,8 @@
 {
- "generated": "2026-11-07T19:15:08+01:00",
+ "generated": "2026-11-08T07:18:07+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 45,
+ "count": 43,
  "programmes": [
-  {
-   "title": "Rugby : Championnat des nations",
-   "date": "2026-11-07",
-   "time": "17:30",
-   "desc": "Après une tournée estivale difficile, marquée notamment par une lourde défaite face à l'Afrique du Sud (43-0), le Pays de Galles doit se rel",
-   "chaine": [
-    "TMC"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Débrief Top 14",
-   "date": "2026-11-07",
-   "time": "18:35",
-   "desc": "Les premières réactions après le match de Top 14, les analyses à chaud de la rencontre et l'état d'esprit des joueurs à la sortie de la pelo",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club - 1re édition",
-   "date": "2026-11-07",
-   "time": "19:46",
-   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages \"inside\" et des interviews de personnalités du rugby afin de décrypter les enj",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club - 1re édition",
-   "date": "2026-11-07",
-   "time": "19:48",
-   "desc": "En Direct.",
-   "chaine": [
-    "Canal+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Championnat des nations",
-   "date": "2026-11-07",
-   "time": "21:00",
-   "desc": "Direction le Groupama Stadium de Lyon-Décines pour suivre la rencontre qui oppose le XV de France et l'équipe des Fidji, à l'occasion de la ",
-   "chaine": [
-    "TF1"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Championnat des nations, le mag",
-   "date": "2026-11-07",
-   "time": "23:00",
-   "desc": "Autour de chaque match des Bleus, Isabelle Ithurburu présentera Le Mag en direct du stade, accompagnée de l'ancien international Christian C",
-   "chaine": [
-    "TF1"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Vannes / Bordeaux-Bègles",
-   "date": "2026-11-08",
-   "time": "01:40",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulouse / ASM Clermont",
-   "date": "2026-11-08",
-   "time": "01:42",
-   "desc": "Sèchement battu à Pau (34-14) lors de la huitième journée, le Stade Toulousain se doit de réagir à l'occasion de la réception de Clermont. S",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Toulouse / ASM Clermont",
    "date": "2026-11-08",
@@ -245,19 +141,6 @@
    "desc": "En difficulté depuis le début de saison, Toulon a signé une victoire importante à Perpignan (24-25) lors de la huitième journée. Les Varois,",
    "chaine": [
     "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club",
-   "date": "2026-11-08",
-   "time": "20:02",
-   "desc": "En Direct.",
-   "chaine": [
-    "Canal+"
    ],
    "cats": [
     "rugby"
@@ -480,7 +363,7 @@
    "title": "Toulouse / ASM Clermont",
    "date": "2026-11-10",
    "time": "07:17",
-   "desc": "Rugby",
+   "desc": "Sèchement battu à Pau (34-14) lors de la huitième journée, le Stade Toulousain se doit de réagir à l'occasion de la réception de Clermont. S",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -493,7 +376,7 @@
    "title": "Pau / Perpignan",
    "date": "2026-11-10",
    "time": "09:00",
-   "desc": "Rugby",
+   "desc": "Après avoir fait chuter le leader Toulouse (34-14) lors de la huitième journée, Pau entend bien poursuivre sur la même dynamique en recevant",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -506,7 +389,7 @@
    "title": "Canal Rugby Club",
    "date": "2026-11-10",
    "time": "10:44",
-   "desc": "Magazine sportif",
+   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -519,7 +402,7 @@
    "title": "La Rochelle / Bayonne",
    "date": "2026-11-10",
    "time": "11:16",
-   "desc": "Rugby",
+   "desc": "La rencontre entre le Stade Rochelais et l'Aviron Bayonnais est l'affiche de clôture de la 9e journée du Top 14, au Stade Marcel-Deflandre.",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -532,7 +415,7 @@
    "title": "Canal Rugby Club le débrief",
    "date": "2026-11-10",
    "time": "13:02",
-   "desc": "Magazine sportif",
+   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -545,7 +428,7 @@
    "title": "Narbonne / Nice",
    "date": "2026-11-10",
    "time": "15:23",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -558,7 +441,7 @@
    "title": "Valence-Romans / Nevers",
    "date": "2026-11-10",
    "time": "17:05",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -571,7 +454,7 @@
    "title": "Fractionné Rugby",
    "date": "2026-11-10",
    "time": "20:38",
-   "desc": "Magazine sportif",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -584,6 +467,97 @@
    "title": "Nouvelle-Zélande / Australie",
    "date": "2026-11-10",
    "time": "21:00",
+   "desc": "Pour ce premier match de la Bledisloe Cup 2026, la Nouvelle-Zélande accueille l'Australie à l'Eden Park d'Auckland. La Bledisloe Cup se disp",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Nouvelle-Zélande",
+   "date": "2026-11-10",
+   "time": "22:36",
+   "desc": "Le deuxième match de la Bledisloe Cup oppose l'Australie à la Nouvelle-Zélande, à l'Accor Stadium de Sydney. Le match aller s'est déroulé le",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Pro D2",
+   "date": "2026-11-11",
+   "time": "10:00",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Pau / Perpignan",
+   "date": "2026-11-11",
+   "time": "11:43",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / ASM Clermont",
+   "date": "2026-11-11",
+   "time": "14:30",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-11-11",
+   "time": "16:14",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Nouvelle-Zélande / Australie",
+   "date": "2026-11-11",
+   "time": "16:35",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Nouvelle-Zélande",
+   "date": "2026-11-11",
+   "time": "18:13",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
