@@ -1,86 +1,8 @@
 {
- "generated": "2026-11-09T07:15:03+01:00",
+ "generated": "2026-11-09T19:15:04+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 29,
+ "count": 23,
  "programmes": [
-  {
-   "title": "Toulon / Stade Français Paris",
-   "date": "2026-11-09",
-   "time": "08:55",
-   "desc": "En difficulté depuis le début de saison, Toulon a signé une victoire importante à Perpignan (24-25) lors de la huitième journée. Les Varois,",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Vannes / Bordeaux-Bègles",
-   "date": "2026-11-09",
-   "time": "10:38",
-   "desc": "Après avoir investi le Roazhon Park de Rennes en début de saison, Vannes passe à la vitesse supérieure en délocalisant ce match contre Borde",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club - 1re édition",
-   "date": "2026-11-09",
-   "time": "12:21",
-   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages \"inside\" et des interviews de personnalités du rugby afin de décrypter les enj",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Aurillac / Montauban",
-   "date": "2026-11-09",
-   "time": "13:32",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Colomiers / Béziers",
-   "date": "2026-11-09",
-   "time": "15:14",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Pau / Perpignan",
-   "date": "2026-11-09",
-   "time": "16:56",
-   "desc": "Après avoir fait chuter le leader Toulouse (34-14) lors de la huitième journée, Pau entend bien poursuivre sur la même dynamique en recevant",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Toulouse / ASM Clermont",
    "date": "2026-11-09",
