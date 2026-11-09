@@ -1,77 +1,8 @@
 {
- "generated": "2026-11-08T19:15:06+01:00",
+ "generated": "2026-11-09T07:15:03+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 33,
+ "count": 29,
  "programmes": [
-  {
-   "title": "Toulon / Stade Français Paris",
-   "date": "2026-11-08",
-   "time": "18:41",
-   "desc": "En difficulté depuis le début de saison, Toulon a signé une victoire importante à Perpignan (24-25) lors de la huitième journée. Les Varois,",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club",
-   "date": "2026-11-08",
-   "time": "20:20",
-   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
-   "chaine": [
-    "Canal+",
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Avant-match Top 14",
-   "date": "2026-11-08",
-   "time": "21:01",
-   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
-   "chaine": [
-    "Canal+",
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "La Rochelle / Bayonne",
-   "date": "2026-11-08",
-   "time": "21:05",
-   "desc": "La rencontre entre le Stade Rochelais et l'Aviron Bayonnais est l'affiche de clôture de la 9e journée du Top 14, au Stade Marcel-Deflandre.",
-   "chaine": [
-    "Canal+",
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canal Rugby Club le débrief",
-   "date": "2026-11-08",
-   "time": "23:02",
-   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
-   "chaine": [
-    "Canal+",
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Toulon / Stade Français Paris",
    "date": "2026-11-09",
@@ -362,7 +293,7 @@
    "title": "Rugby : Pro D2",
    "date": "2026-11-11",
    "time": "10:00",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -375,7 +306,7 @@
    "title": "Pau / Perpignan",
    "date": "2026-11-11",
    "time": "11:43",
-   "desc": "Rugby",
+   "desc": "Après avoir fait chuter le leader Toulouse (34-14) lors de la huitième journée, Pau entend bien poursuivre sur la même dynamique en recevant",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -388,7 +319,7 @@
    "title": "Toulouse / ASM Clermont",
    "date": "2026-11-11",
    "time": "14:30",
-   "desc": "Rugby",
+   "desc": "Sèchement battu à Pau (34-14) lors de la huitième journée, le Stade Toulousain se doit de réagir à l'occasion de la réception de Clermont. S",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -401,7 +332,7 @@
    "title": "Fractionné Rugby",
    "date": "2026-11-11",
    "time": "16:14",
-   "desc": "Magazine sportif",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -414,7 +345,7 @@
    "title": "Nouvelle-Zélande / Australie",
    "date": "2026-11-11",
    "time": "16:35",
-   "desc": "Rugby",
+   "desc": "Pour ce premier match de la Bledisloe Cup 2026, la Nouvelle-Zélande accueille l'Australie à l'Eden Park d'Auckland. La Bledisloe Cup se disp",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -427,7 +358,20 @@
    "title": "Australie / Nouvelle-Zélande",
    "date": "2026-11-11",
    "time": "18:13",
-   "desc": "Rugby",
+   "desc": "Le deuxième match de la Bledisloe Cup oppose l'Australie à la Nouvelle-Zélande, à l'Accor Stadium de Sydney. Le match aller s'est déroulé le",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-11-12",
+   "time": "14:02",
+   "desc": "Magazine sportif",
    "chaine": [
     "Canal+ Sport"
    ],
