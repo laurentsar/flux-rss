@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T17:51:26+01:00",
+  "generated": "2026-11-09T18:12:15+01:00",
   "livrets": [
     {
       "nom": "Livret A",
@@ -115,17 +115,38 @@
     },
     {
       "banque": "Zesto (Renault)",
-      "taux": "3,10 %",
-      "duree": "6 mois",
+      "taux": "0,80 %",
+      "duree": "boosté",
       "plafond": "voir site",
       "lien": "https://www.renaultbank.fr"
     },
     {
       "banque": "Cashbee",
-      "taux": "3,50 %",
-      "duree": "2 mois",
+      "taux": "4,00 %",
+      "duree": "6 mois",
       "plafond": "voir site",
       "lien": "https://www.cashbee.fr"
+    },
+    {
+      "banque": "Placement Direct",
+      "taux": "4,00 %",
+      "duree": "6 mois",
+      "plafond": "voir site",
+      "lien": "https://www.placementdirect.fr"
+    },
+    {
+      "banque": "Meilleurtaux",
+      "taux": "4,00 %",
+      "duree": "6 mois",
+      "plafond": "voir site",
+      "lien": "https://placement.meilleurtaux.com"
+    },
+    {
+      "banque": "Ramify",
+      "taux": "4,05 %",
+      "duree": "6 mois",
+      "plafond": "voir site",
+      "lien": "https://www.ramify.fr"
     }
   ],
   "top_actions": [
