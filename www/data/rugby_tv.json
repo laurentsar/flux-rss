@@ -1,65 +1,39 @@
 {
- "generated": "2026-11-10T19:16:27+01:00",
+ "generated": "2026-11-11T07:15:10+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 13,
+ "count": 21,
  "programmes": [
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-11-10",
-   "time": "20:36",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-11-10",
-   "time": "20:38",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Nouvelle-Zélande / Australie",
-   "date": "2026-11-10",
-   "time": "21:00",
-   "desc": "Pour ce premier match de la Bledisloe Cup 2026, la Nouvelle-Zélande accueille l'Australie à l'Eden Park d'Auckland. La Bledisloe Cup se disp",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Australie / Nouvelle-Zélande",
-   "date": "2026-11-10",
-   "time": "22:36",
-   "desc": "Le deuxième match de la Bledisloe Cup oppose l'Australie à la Nouvelle-Zélande, à l'Accor Stadium de Sydney. Le match aller s'est déroulé le",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby : Pro D2",
    "date": "2026-11-11",
    "time": "10:00",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Provence Rugby / Oyonnax",
+   "date": "2026-11-11",
+   "time": "10:04",
+   "desc": "Match au sommet et affiche de gala ce soir à Aix-en-Provence entre les deux équipes référence du championnat Pro D2, qui occupaient les deux",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Pau / Perpignan",
+   "date": "2026-11-11",
+   "time": "11:39",
+   "desc": "Après avoir fait chuter le leader Toulouse (34-14) lors de la huitième journée, Pau entend bien poursuivre sur la même dynamique en recevant",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -72,7 +46,7 @@
    "title": "Pau / Perpignan",
    "date": "2026-11-11",
    "time": "11:43",
-   "desc": "Après avoir fait chuter le leader Toulouse (34-14) lors de la huitième journée, Pau entend bien poursuivre sur la même dynamique en recevant",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -85,6 +59,19 @@
    "title": "Toulouse / ASM Clermont",
    "date": "2026-11-11",
    "time": "14:30",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / ASM Clermont",
+   "date": "2026-11-11",
+   "time": "14:33",
    "desc": "Sèchement battu à Pau (34-14) lors de la huitième journée, le Stade Toulousain se doit de réagir à l'occasion de la réception de Clermont. S",
    "chaine": [
     "Canal+ Sport"
@@ -97,8 +84,34 @@
   {
    "title": "Fractionné Rugby",
    "date": "2026-11-11",
-   "time": "16:14",
+   "time": "16:12",
    "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-11-11",
+   "time": "16:14",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Nouvelle-Zélande / Australie",
+   "date": "2026-11-11",
+   "time": "16:31",
+   "desc": "Pour ce premier match de la Bledisloe Cup 2026, la Nouvelle-Zélande accueille l'Australie à l'Eden Park d'Auckland. La Bledisloe Cup se disp",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -111,7 +124,20 @@
    "title": "Nouvelle-Zélande / Australie",
    "date": "2026-11-11",
    "time": "16:35",
-   "desc": "Pour ce premier match de la Bledisloe Cup 2026, la Nouvelle-Zélande accueille l'Australie à l'Eden Park d'Auckland. La Bledisloe Cup se disp",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Nouvelle-Zélande",
+   "date": "2026-11-11",
+   "time": "18:08",
+   "desc": "Le deuxième match de la Bledisloe Cup oppose l'Australie à la Nouvelle-Zélande, à l'Accor Stadium de Sydney. Le match aller s'est déroulé le",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -124,7 +150,7 @@
    "title": "Australie / Nouvelle-Zélande",
    "date": "2026-11-11",
    "time": "18:13",
-   "desc": "Le deuxième match de la Bledisloe Cup oppose l'Australie à la Nouvelle-Zélande, à l'Accor Stadium de Sydney. Le match aller s'est déroulé le",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -137,6 +163,19 @@
    "title": "Fractionné Rugby",
    "date": "2026-11-12",
    "time": "14:02",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-11-12",
+   "time": "14:06",
    "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
@@ -160,9 +199,74 @@
    "approx": false
   },
   {
+   "title": "La Rochelle / Bayonne",
+   "date": "2026-11-13",
+   "time": "17:10",
+   "desc": "La rencontre entre le Stade Rochelais et l'Aviron Bayonnais est l'affiche de clôture de la 9e journée du Top 14, au Stade Marcel-Deflandre.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canterbury / Northland",
+   "date": "2026-11-13",
+   "time": "18:47",
+   "desc": "Titré il y a un an, Canterbury défend son titre en championnat national des provinces néo-zélandaises en affrontant Northland en finale.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Canterbury / Northland",
    "date": "2026-11-13",
    "time": "18:48",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-11-13",
+   "time": "21:00",
+   "desc": "Direction le Stade de France de Saint-Denis pour suivre une affiche explosive qui oppose le XV de France aux Springboks dans le cadre du Cha",
+   "chaine": [
+    "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations, le mag",
+   "date": "2026-11-13",
+   "time": "23:00",
+   "desc": "Autour de chaque match des Bleus, Isabelle Ithurburu présentera Le Mag en direct du stade, accompagnée de l'ancien international Christian C",
+   "chaine": [
+    "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Les meilleurs moments",
+   "date": "2026-11-14",
+   "time": "14:33",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
