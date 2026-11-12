@@ -1,34 +1,8 @@
 {
- "generated": "2026-11-11T19:15:07+01:00",
+ "generated": "2026-11-12T07:15:04+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 11,
+ "count": 17,
  "programmes": [
-  {
-   "title": "Australie / Nouvelle-Zélande",
-   "date": "2026-11-11",
-   "time": "18:08",
-   "desc": "Le deuxième match de la Bledisloe Cup oppose l'Australie à la Nouvelle-Zélande, à l'Accor Stadium de Sydney. Le match aller s'est déroulé le",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Australie / Nouvelle-Zélande",
-   "date": "2026-11-11",
-   "time": "18:13",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Fractionné Rugby",
    "date": "2026-11-12",
@@ -45,7 +19,7 @@
   {
    "title": "Fractionné Rugby",
    "date": "2026-11-12",
-   "time": "14:06",
+   "time": "14:03",
    "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
@@ -59,19 +33,6 @@
    "title": "La Rochelle / Bayonne",
    "date": "2026-11-13",
    "time": "17:05",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "La Rochelle / Bayonne",
-   "date": "2026-11-13",
-   "time": "17:10",
    "desc": "La rencontre entre le Stade Rochelais et l'Aviron Bayonnais est l'affiche de clôture de la 9e journée du Top 14, au Stade Marcel-Deflandre.",
    "chaine": [
     "Canal+ Sport"
@@ -82,9 +43,22 @@
    "approx": false
   },
   {
+   "title": "Le journal du rugby",
+   "date": "2026-11-13",
+   "time": "18:30",
+   "desc": "En Direct.",
+   "chaine": [
+    "Infosport+"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Canterbury / Northland",
    "date": "2026-11-13",
-   "time": "18:47",
+   "time": "18:42",
    "desc": "Titré il y a un an, Canterbury défend son titre en championnat national des provinces néo-zélandaises en affrontant Northland en finale.",
    "chaine": [
     "Canal+ Sport"
@@ -134,9 +108,113 @@
    "approx": false
   },
   {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-11-14",
+   "time": "12:30",
+   "desc": "Après trois défaites en autant de rencontres disputées, les Italiens vont tenter de relever la tête lors de cette rencontre à domicile face ",
+   "chaine": [
+    "TFX"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby magazine Occitanie",
+   "date": "2026-11-14",
+   "time": "12:37",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 3"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby magazine Nouvelle Aquitaine",
+   "date": "2026-11-14",
+   "time": "12:37",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 3"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby magazine Nouvelle Aquitaine",
+   "date": "2026-11-14",
+   "time": "12:40",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 3"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Les meilleurs moments",
    "date": "2026-11-14",
    "time": "14:33",
+   "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-11-14",
+   "time": "15:00",
+   "desc": "En tête de l'hémisphère sud, la Nouvelle-Zélande se déplace à Cardiff avec la ferme intention de prendre des points qui la rapprocheraient d",
+   "chaine": [
+    "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-11-14",
+   "time": "17:30",
+   "desc": "Dans son antre du Twickenham Stadium de Londres, le XV de la Rose va tenter de prendre le dessus sur le Japon pour conserver ses chances de ",
+   "chaine": [
+    "TFX"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-11-14",
+   "time": "21:00",
+   "desc": "Direction l'Aviva Stadium de Dublin pour suivre la rencontre qui oppose le XV du Trèfle aux imprévisibles \"Flying Fijians\" dans le cadre de ",
+   "chaine": [
+    "TFX"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canterbury / Northland",
+   "date": "2026-11-15",
+   "time": "17:22",
    "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
