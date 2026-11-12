@@ -1,34 +1,8 @@
 {
- "generated": "2026-11-12T07:15:04+01:00",
+ "generated": "2026-11-12T19:15:50+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 17,
+ "count": 15,
  "programmes": [
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-11-12",
-   "time": "14:02",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-11-12",
-   "time": "14:03",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "La Rochelle / Bayonne",
    "date": "2026-11-13",
