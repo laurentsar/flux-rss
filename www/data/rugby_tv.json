@@ -1,21 +1,8 @@
 {
- "generated": "2026-11-13T07:15:08+01:00",
+ "generated": "2026-11-13T19:15:18+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 20,
+ "count": 19,
  "programmes": [
-  {
-   "title": "La Rochelle / Bayonne",
-   "date": "2026-11-13",
-   "time": "17:05",
-   "desc": "La rencontre entre le Stade Rochelais et l'Aviron Bayonnais est l'affiche de clôture de la 9e journée du Top 14, au Stade Marcel-Deflandre.",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Le journal du rugby",
    "date": "2026-11-13",
