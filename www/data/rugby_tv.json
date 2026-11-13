@@ -1,7 +1,7 @@
 {
- "generated": "2026-11-12T19:15:50+01:00",
+ "generated": "2026-11-13T07:15:08+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 15,
+ "count": 20,
  "programmes": [
   {
    "title": "La Rochelle / Bayonne",
@@ -186,10 +186,75 @@
    "approx": false
   },
   {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-11-15",
+   "time": "16:00",
+   "desc": "Direction Edimbourg pour suivre la rencontre qui oppose l'Ecosse à l'Australie, deux équipes condamnées à s'imposer pour conserver des chanc",
+   "chaine": [
+    "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canterbury / Northland",
+   "date": "2026-11-15",
+   "time": "17:21",
+   "desc": "Titré il y a un an, Canterbury défend son titre en championnat national des provinces néo-zélandaises en affrontant Northland en finale.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Canterbury / Northland",
    "date": "2026-11-15",
    "time": "17:22",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / ASM Clermont",
+   "date": "2026-11-16",
+   "time": "11:11",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Pau / Perpignan",
+   "date": "2026-11-16",
+   "time": "13:24",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Histoire de champions rugby",
+   "date": "2026-11-16",
+   "time": "21:00",
+   "desc": "Magazine sportif",
    "chaine": [
     "Canal+ Sport"
    ],
