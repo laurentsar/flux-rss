@@ -1,34 +1,8 @@
 {
- "generated": "2026-11-15T07:15:07+01:00",
+ "generated": "2026-11-15T19:15:07+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 24,
+ "count": 22,
  "programmes": [
-  {
-   "title": "Rugby à XIII fauteuil : Coupe du monde",
-   "date": "2026-11-15",
-   "time": "14:10",
-   "desc": "France - Angleterre, finale de la Coupe du monde 2026 de rugby XIII fauteuil.",
-   "chaine": [
-    "Sport en France"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Championnat des nations",
-   "date": "2026-11-15",
-   "time": "16:00",
-   "desc": "Direction Edimbourg pour suivre la rencontre qui oppose l'Ecosse à l'Australie, deux équipes condamnées à s'imposer pour conserver des chanc",
-   "chaine": [
-    "TF1"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Canterbury / Northland",
    "date": "2026-11-15",
