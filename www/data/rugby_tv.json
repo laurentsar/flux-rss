@@ -1,47 +1,8 @@
 {
- "generated": "2026-11-14T19:15:07+01:00",
+ "generated": "2026-11-15T07:15:07+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 18,
+ "count": 24,
  "programmes": [
-  {
-   "title": "Rugby : Championnat des nations",
-   "date": "2026-11-14",
-   "time": "17:30",
-   "desc": "Dans son antre du Twickenham Stadium de Londres, le XV de la Rose va tenter de prendre le dessus sur le Japon pour conserver ses chances de ",
-   "chaine": [
-    "TFX"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Championnat des nations",
-   "date": "2026-11-14",
-   "time": "21:00",
-   "desc": "Direction l'Aviva Stadium de Dublin pour suivre la rencontre qui oppose le XV du Trèfle aux imprévisibles \"Flying Fijians\" dans le cadre de ",
-   "chaine": [
-    "TFX"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII fauteuil : Coupe du monde",
-   "date": "2026-11-14",
-   "time": "22:20",
-   "desc": "France - Angleterre, finale de la Coupe du monde 2026 de rugby XIII fauteuil.",
-   "chaine": [
-    "Sport en France"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII fauteuil : Coupe du monde",
    "date": "2026-11-15",
@@ -110,8 +71,34 @@
   {
    "title": "Toulouse / ASM Clermont",
    "date": "2026-11-16",
-   "time": "11:11",
+   "time": "10:54",
    "desc": "Sèchement battu à Pau (34-14) lors de la huitième journée, le Stade Toulousain se doit de réagir à l'occasion de la réception de Clermont. S",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Toulouse / ASM Clermont",
+   "date": "2026-11-16",
+   "time": "11:11",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Pau / Perpignan",
+   "date": "2026-11-16",
+   "time": "13:04",
+   "desc": "Après avoir fait chuter le leader Toulouse (34-14) lors de la huitième journée, Pau entend bien poursuivre sur la même dynamique en recevant",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -124,7 +111,7 @@
    "title": "Pau / Perpignan",
    "date": "2026-11-16",
    "time": "13:24",
-   "desc": "Après avoir fait chuter le leader Toulouse (34-14) lors de la huitième journée, Pau entend bien poursuivre sur la même dynamique en recevant",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -147,10 +134,49 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII fauteuil : Coupe du monde",
+   "date": "2026-11-16",
+   "time": "21:30",
+   "desc": "France - Angleterre, finale de la Coupe du monde 2026 de rugby XIII fauteuil.",
+   "chaine": [
+    "Sport en France"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Canterbury / Northland",
    "date": "2026-11-16",
    "time": "22:32",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canterbury / Northland",
+   "date": "2026-11-16",
+   "time": "22:33",
    "desc": "Titré il y a un an, Canterbury défend son titre en championnat national des provinces néo-zélandaises en affrontant Northland en finale.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Histoire de champions rugby",
+   "date": "2026-11-17",
+   "time": "07:16",
+   "desc": "Histoire de champions rugby revisite les grandes figures et les moments marquants du rugby, en retraçant les parcours, exploits et épisodes ",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -164,6 +190,19 @@
    "date": "2026-11-17",
    "time": "07:29",
    "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canterbury / Northland",
+   "date": "2026-11-17",
+   "time": "08:50",
+   "desc": "Titré il y a un an, Canterbury défend son titre en championnat national des provinces néo-zélandaises en affrontant Northland en finale.",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -189,7 +228,20 @@
    "title": "Agen / Biarritz",
    "date": "2026-11-17",
    "time": "17:09",
-   "desc": "Rugby",
+   "desc": "Le SUA, 10e avec 19 points après neuf journées, doit engranger des points pour s'éloigner du bas de tableau. Sixième avec 24 points, le BO v",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Nouvelle-Zélande",
+   "date": "2026-11-17",
+   "time": "18:46",
+   "desc": "Le deuxième match de la Bledisloe Cup oppose l'Australie à la Nouvelle-Zélande, à l'Accor Stadium de Sydney. Le match aller s'est déroulé le",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -203,6 +255,19 @@
    "date": "2026-11-17",
    "time": "18:51",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-11-17",
+   "time": "20:36",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -228,7 +293,20 @@
    "title": "Les meilleurs moments",
    "date": "2026-11-17",
    "time": "21:00",
-   "desc": "Rugby",
+   "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Pau / Perpignan",
+   "date": "2026-11-17",
+   "time": "23:02",
+   "desc": "Après avoir fait chuter le leader Toulouse (34-14) lors de la huitième journée, Pau entend bien poursuivre sur la même dynamique en recevant",
    "chaine": [
     "Canal+ Sport"
    ],
