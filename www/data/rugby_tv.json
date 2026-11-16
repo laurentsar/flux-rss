@@ -1,60 +1,8 @@
 {
- "generated": "2026-11-16T07:15:05+01:00",
+ "generated": "2026-11-16T19:15:09+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 24,
+ "count": 20,
  "programmes": [
-  {
-   "title": "Toulouse / ASM Clermont",
-   "date": "2026-11-16",
-   "time": "10:54",
-   "desc": "Sèchement battu à Pau (34-14) lors de la huitième journée, le Stade Toulousain se doit de réagir à l'occasion de la réception de Clermont. S",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Toulouse / ASM Clermont",
-   "date": "2026-11-16",
-   "time": "11:11",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Pau / Perpignan",
-   "date": "2026-11-16",
-   "time": "13:04",
-   "desc": "Après avoir fait chuter le leader Toulouse (34-14) lors de la huitième journée, Pau entend bien poursuivre sur la même dynamique en recevant",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Pau / Perpignan",
-   "date": "2026-11-16",
-   "time": "13:24",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Histoire de champions rugby",
    "date": "2026-11-16",
