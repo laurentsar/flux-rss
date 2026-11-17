@@ -1,86 +1,8 @@
 {
- "generated": "2026-11-17T07:15:03+01:00",
+ "generated": "2026-11-17T19:15:04+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 24,
+ "count": 18,
  "programmes": [
-  {
-   "title": "Histoire de champions rugby",
-   "date": "2026-11-17",
-   "time": "06:38",
-   "desc": "Histoire de champions rugby revisite les grandes figures et les moments marquants du rugby, en retraçant les parcours, exploits et épisodes ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Histoire de champions rugby",
-   "date": "2026-11-17",
-   "time": "07:29",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canterbury / Northland",
-   "date": "2026-11-17",
-   "time": "08:12",
-   "desc": "Titré il y a un an, Canterbury défend son titre en championnat national des provinces néo-zélandaises en affrontant Northland en finale.",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Canterbury / Northland",
-   "date": "2026-11-17",
-   "time": "09:02",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Agen / Biarritz",
-   "date": "2026-11-17",
-   "time": "17:09",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Agen / Biarritz",
-   "date": "2026-11-17",
-   "time": "17:10",
-   "desc": "Le SUA, 10e avec 19 points après neuf journées, doit engranger des points pour s'éloigner du bas de tableau. Sixième avec 24 points, le BO v",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Australie / Nouvelle-Zélande",
    "date": "2026-11-17",
