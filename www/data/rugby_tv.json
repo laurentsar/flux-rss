@@ -1,90 +1,12 @@
 {
- "generated": "2026-11-17T19:15:04+01:00",
+ "generated": "2026-11-18T07:15:03+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 18,
+ "count": 28,
  "programmes": [
-  {
-   "title": "Australie / Nouvelle-Zélande",
-   "date": "2026-11-17",
-   "time": "18:47",
-   "desc": "Le deuxième match de la Bledisloe Cup oppose l'Australie à la Nouvelle-Zélande, à l'Accor Stadium de Sydney. Le match aller s'est déroulé le",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Australie / Nouvelle-Zélande",
-   "date": "2026-11-17",
-   "time": "18:51",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-11-17",
-   "time": "20:37",
-   "desc": "Magazine sportif",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-11-17",
-   "time": "20:38",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Les meilleurs moments",
-   "date": "2026-11-17",
-   "time": "21:00",
-   "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Pau / Perpignan",
-   "date": "2026-11-17",
-   "time": "23:02",
-   "desc": "Après avoir fait chuter le leader Toulouse (34-14) lors de la huitième journée, Pau entend bien poursuivre sur la même dynamique en recevant",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Nouvelle-Zélande / Australie",
    "date": "2026-11-18",
-   "time": "07:24",
+   "time": "07:12",
    "desc": "Pour ce premier match de la Bledisloe Cup 2026, la Nouvelle-Zélande accueille l'Australie à l'Eden Park d'Auckland. La Bledisloe Cup se disp",
    "chaine": [
     "Canal+ Sport"
@@ -97,7 +19,7 @@
   {
    "title": "Australie / Nouvelle-Zélande",
    "date": "2026-11-18",
-   "time": "09:01",
+   "time": "08:51",
    "desc": "Le deuxième match de la Bledisloe Cup oppose l'Australie à la Nouvelle-Zélande, à l'Accor Stadium de Sydney. Le match aller s'est déroulé le",
    "chaine": [
     "Canal+ Sport"
@@ -110,7 +32,7 @@
   {
    "title": "Canterbury / Northland",
    "date": "2026-11-18",
-   "time": "10:43",
+   "time": "10:35",
    "desc": "Titré il y a un an, Canterbury défend son titre en championnat national des provinces néo-zélandaises en affrontant Northland en finale.",
    "chaine": [
     "Canal+ Sport"
@@ -121,9 +43,22 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII fauteuil : Coupe du monde",
+   "date": "2026-11-18",
+   "time": "15:30",
+   "desc": "France - Angleterre, finale de la Coupe du monde 2026 de rugby XIII fauteuil.",
+   "chaine": [
+    "Sport en France"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "La Rochelle / Bayonne",
    "date": "2026-11-18",
-   "time": "16:15",
+   "time": "16:11",
    "desc": "La rencontre entre le Stade Rochelais et l'Aviron Bayonnais est l'affiche de clôture de la 9e journée du Top 14, au Stade Marcel-Deflandre.",
    "chaine": [
     "Canal+ Sport"
@@ -136,7 +71,7 @@
   {
    "title": "Les meilleurs moments",
    "date": "2026-11-18",
-   "time": "17:53",
+   "time": "17:50",
    "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
    "chaine": [
     "Canal+ Sport"
@@ -149,7 +84,7 @@
   {
    "title": "Histoire de champions rugby",
    "date": "2026-11-19",
-   "time": "16:38",
+   "time": "16:33",
    "desc": "Histoire de champions rugby revisite les grandes figures et les moments marquants du rugby, en retraçant les parcours, exploits et épisodes ",
    "chaine": [
     "Canal+ Sport"
@@ -162,7 +97,7 @@
   {
    "title": "Provence Rugby / Oyonnax",
    "date": "2026-11-19",
-   "time": "18:12",
+   "time": "18:07",
    "desc": "Match au sommet et affiche de gala ce soir à Aix-en-Provence entre les deux équipes référence du championnat Pro D2, qui occupaient les deux",
    "chaine": [
     "Canal+ Sport"
@@ -175,7 +110,7 @@
   {
    "title": "Soir de rugby",
    "date": "2026-11-19",
-   "time": "19:48",
+   "time": "19:45",
    "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
    "chaine": [
     "Canal+ Sport"
@@ -191,6 +126,7 @@
    "time": "20:50",
    "desc": "Les ultimes informations avant le match de Pro D2, les compositions des équipes et les enjeux de la rencontre.",
    "chaine": [
+    "Canal+ Live",
     "Canal+ Sport"
    ],
    "cats": [
@@ -204,6 +140,7 @@
    "time": "21:00",
    "desc": "Après s'être emparé de la tête du championnat suite à son succès face à Oyonnax (32-23), Provence Rugby se déplace à Grenoble, 4e après un f",
    "chaine": [
+    "Canal+ Live",
     "Canal+ Sport"
    ],
    "cats": [
@@ -214,8 +151,35 @@
   {
    "title": "Après-match Pro D2",
    "date": "2026-11-19",
-   "time": "22:50",
+   "time": "22:54",
    "desc": "Suite à la rencontre de Pro D2, le magazine passe en revue les dernières actualités, les réactions des joueurs et des coachs et propose les ",
+   "chaine": [
+    "Canal+ Live",
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Les meilleurs moments",
+   "date": "2026-11-20",
+   "time": "02:42",
+   "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Grenoble / Provence Rugby",
+   "date": "2026-11-20",
+   "time": "09:29",
+   "desc": "Après s'être emparé de la tête du championnat suite à son succès face à Oyonnax (32-23), Provence Rugby se déplace à Grenoble, 4e après un f",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -227,8 +191,180 @@
   {
    "title": "Les meilleurs moments",
    "date": "2026-11-20",
-   "time": "02:41",
+   "time": "13:19",
    "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Grenoble / Provence Rugby",
+   "date": "2026-11-20",
+   "time": "17:02",
+   "desc": "Après s'être emparé de la tête du championnat suite à son succès face à Oyonnax (32-23), Provence Rugby se déplace à Grenoble, 4e après un f",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby avant-match",
+   "date": "2026-11-20",
+   "time": "18:50",
+   "desc": "\"Soir de rugby avant-match\" présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'amb",
+   "chaine": [
+    "Canal+ Live",
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Montauban / Agen",
+   "date": "2026-11-20",
+   "time": "19:00",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live",
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Béziers / Dax",
+   "date": "2026-11-20",
+   "time": "19:25",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Nice / Valence-Romans",
+   "date": "2026-11-20",
+   "time": "19:25",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Aurillac / Colomiers",
+   "date": "2026-11-20",
+   "time": "19:25",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Nevers / Soyaux-Angoulême",
+   "date": "2026-11-20",
+   "time": "19:25",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby avant-match",
+   "date": "2026-11-20",
+   "time": "20:50",
+   "desc": "\"Soir de rugby avant-match\" présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'amb",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby avant-match",
+   "date": "2026-11-20",
+   "time": "20:51",
+   "desc": "\"Soir de rugby avant-match\" présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'amb",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Biarritz / Narbonne",
+   "date": "2026-11-20",
+   "time": "20:55",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Oyonnax / Brive",
+   "date": "2026-11-20",
+   "time": "21:00",
+   "desc": "Après sa défaite sur le terrain de Provence Rugby lors de la 10e journée (32-23), Oyonnax a perdu son fauteuil de leader mais a bien l'inten",
+   "chaine": [
+    "Canal+ Live",
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby",
+   "date": "2026-11-20",
+   "time": "22:50",
+   "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
+   "chaine": [
+    "Canal+ Live"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby",
+   "date": "2026-11-20",
+   "time": "22:51",
+   "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
    "chaine": [
     "Canal+ Sport"
    ],
