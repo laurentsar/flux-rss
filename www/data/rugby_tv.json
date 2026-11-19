@@ -1,15 +1,15 @@
 {
- "generated": "2026-11-18T19:15:04+01:00",
+ "generated": "2026-11-19T07:15:03+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 23,
+ "count": 34,
  "programmes": [
   {
-   "title": "Les meilleurs moments",
-   "date": "2026-11-18",
-   "time": "17:50",
-   "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
+   "title": "Rugby à XIII fauteuil : Coupe du monde",
+   "date": "2026-11-19",
+   "time": "10:50",
+   "desc": "France - Angleterre, finale de la Coupe du monde 2026 de rugby XIII fauteuil.",
    "chaine": [
-    "Canal+ Sport"
+    "Sport en France"
    ],
    "cats": [
     "rugby"
@@ -98,6 +98,19 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII fauteuil : Coupe du monde",
+   "date": "2026-11-20",
+   "time": "01:05",
+   "desc": "France - Angleterre, finale de la Coupe du monde 2026 de rugby XIII fauteuil.",
+   "chaine": [
+    "Sport en France"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Les meilleurs moments",
    "date": "2026-11-20",
    "time": "02:42",
@@ -139,10 +152,23 @@
   {
    "title": "Grenoble / Provence Rugby",
    "date": "2026-11-20",
-   "time": "17:02",
+   "time": "17:01",
    "desc": "Après s'être emparé de la tête du championnat suite à son succès face à Oyonnax (32-23), Provence Rugby se déplace à Grenoble, 4e après un f",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Le journal du rugby",
+   "date": "2026-11-20",
+   "time": "18:30",
+   "desc": "En Direct.",
+   "chaine": [
+    "Infosport+"
    ],
    "cats": [
     "rugby"
@@ -298,10 +324,127 @@
   {
    "title": "Soir de rugby",
    "date": "2026-11-20",
-   "time": "22:51",
+   "time": "22:52",
    "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
    "chaine": [
     "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby magazine Occitanie",
+   "date": "2026-11-21",
+   "time": "12:37",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 3"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby magazine Nouvelle Aquitaine",
+   "date": "2026-11-21",
+   "time": "12:37",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 3"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby magazine Nouvelle Aquitaine",
+   "date": "2026-11-21",
+   "time": "12:40",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 3"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-11-21",
+   "time": "15:00",
+   "desc": "Direction Londres pour suivre une rencontre explosive entre le XV de la Rose et les All Blacks, deux équipes qui visent une qualification po",
+   "chaine": [
+    "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations, le mag",
+   "date": "2026-11-21",
+   "time": "17:15",
+   "desc": "Autour de chaque match des Bleus, Isabelle Ithurburu présentera Le Mag en direct du stade, accompagnée de l'ancien international Christian C",
+   "chaine": [
+    "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-11-21",
+   "time": "17:30",
+   "desc": "Face à ses supporters, l'Irlande doit prendre le dessus sur les redoutables Sud-Africains afin de conserver ses chances de disputer la final",
+   "chaine": [
+    "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-11-21",
+   "time": "21:00",
+   "desc": "Pour cette dernière journée de la phase de championnat, le XV de France retrouve l'Argentine avec l'ambition de conforter sa première place ",
+   "chaine": [
+    "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations, le mag",
+   "date": "2026-11-21",
+   "time": "23:00",
+   "desc": "Autour de chaque match des Bleus, Isabelle Ithurburu présentera Le Mag en direct du stade, accompagnée de l'ancien international Christian C",
+   "chaine": [
+    "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "After Rugby",
+   "date": "2026-11-21",
+   "time": "23:00",
+   "desc": "En Direct.",
+   "chaine": [
+    "RMC"
    ],
    "cats": [
     "rugby"
