@@ -1,34 +1,8 @@
 {
- "generated": "2026-11-19T07:15:03+01:00",
+ "generated": "2026-11-19T19:15:04+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 34,
+ "count": 32,
  "programmes": [
-  {
-   "title": "Rugby à XIII fauteuil : Coupe du monde",
-   "date": "2026-11-19",
-   "time": "10:50",
-   "desc": "France - Angleterre, finale de la Coupe du monde 2026 de rugby XIII fauteuil.",
-   "chaine": [
-    "Sport en France"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Histoire de champions rugby",
-   "date": "2026-11-19",
-   "time": "16:33",
-   "desc": "Histoire de champions rugby revisite les grandes figures et les moments marquants du rugby, en retraçant les parcours, exploits et épisodes ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Provence Rugby / Oyonnax",
    "date": "2026-11-19",
