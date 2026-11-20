@@ -1,10 +1,11 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.59';
+const APP_VERSION = '5.60';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
+  trends:['#EA4335','#7F1D1D'],
   ve:['#E31937','#7A0D1C'], vr:['#00BCD4','#00626E'], cyber:['#E67E22','#8A4A10'],
   ia:['#6366F1','#312E81'], rugby:['#16A34A','#0B5D2A'], domotique:['#0EA5E9','#075985'],
   solaire:['#F59E0B','#92600A'], deals_fr:['#27AE60','#145F34'], anglais:['#1E3A8A','#0C1E4A'],
@@ -2724,6 +2725,172 @@ async function loadAgenda(){
   _agendaTimer = setTimeout(()=>{ if(current==='agenda'){ loadAgenda(); } }, 3600000);
 }
 
+/* ---------- Tendances Google (actives, France) ---------- */
+// Flux officiel Google Trends « Tendances actuelles » : terme + trafic approximatif + heure.
+// Il ne contient plus d'articles -> au tap, 3 titres Google News sur le terme (chargés à la demande).
+const TRENDS_URL = 'https://trends.google.com/trending/rss?geo=FR';
+const TRENDS_NS  = 'https://trends.google.com/trending/rss';
+let _trendsTimer = null;
+
+function trendsNews(term){
+  return 'https://news.google.com/rss/search?q=' + encodeURIComponent(term) + '&hl=fr&gl=FR&ceid=FR:fr';
+}
+function agoFr(d){
+  const t = Date.parse(d); if (!t) return '';
+  const m = Math.max(0, Math.round((Date.now() - t) / 60000));
+  if (m < 60) return `il y a ${m} min`;
+  const h = Math.round(m / 60);
+  return h < 24 ? `il y a ${h} h` : fmtDate(d);
+}
+function trafficNum(s){
+  const m = String(s||'').replace(/[\s ]/g,'').match(/^([\d.,]+)\s*([KkMm])?/);
+  if (!m) return 0;
+  return parseFloat(m[1].replace(',', '.')) * (/k/i.test(m[2]||'') ? 1e3 : /m/i.test(m[2]||'') ? 1e6 : 1);
+}
+function parseTrends(xml){
+  const doc = new DOMParser().parseFromString(xml, 'text/xml');
+  if (doc.querySelector('parsererror')) return [];
+  const ht = (it, tag) => {
+    const n = it.getElementsByTagNameNS(TRENDS_NS, tag)[0] || it.getElementsByTagName('ht:'+tag)[0];
+    return n ? (n.textContent||'').trim() : '';
+  };
+  return [...doc.getElementsByTagName('item')].map(it => {
+    const news = [...(it.getElementsByTagNameNS(TRENDS_NS,'news_item').length
+      ? it.getElementsByTagNameNS(TRENDS_NS,'news_item') : it.getElementsByTagName('ht:news_item'))]
+      .map(n => ({title: ht(n,'news_item_title'), link: ht(n,'news_item_url'), source: ht(n,'news_item_source'),
+                   picture: ht(n,'news_item_picture')}))
+      .filter(n => n.title && n.link);
+    return {term: txt(it,'title'), traffic: ht(it,'approx_traffic'), date: txt(it,'pubDate'),
+            picture: ht(it,'picture'), news};
+  }).filter(t => t.term);
+}
+function renderTrendNews(list){
+  if (!list.length) return '<div class="tr-empty">Aucun article trouvé.</div>';
+  return list.slice(0, 3).map(n =>
+    `<a class="tr-news" href="${esc(n.link)}" target="_blank" rel="noopener">`+
+      `<span class="tr-news-t">${esc(n.title)}</span>`+
+      (n.source ? `<span class="tr-news-s">${esc(n.source)}${n.date ? ' · '+esc(agoFr(n.date)) : ''}</span>` : '')+
+    `</a>`).join('');
+}
+async function toggleTrend(el){
+  const box = el.querySelector('.tr-body');
+  if (!box) return;
+  if (!box.hidden){ box.hidden = true; el.classList.remove('open'); return; }
+  box.hidden = false; el.classList.add('open');
+  if (box.dataset.loaded) return;
+  box.innerHTML = '<div class="rl-loading"><span class="spinner"></span>Articles…</div>';
+  try{
+    let items;
+    try{ items = parseFeed(await httpGet(trendsNews(el.dataset.term)), 'Google News'); }
+    catch(e){ if (isNative) throw e; items = await fetchViaRss2json(trendsNews(el.dataset.term), 'Google News'); }
+    items = items
+      .map(it => {
+        // Google News : « Titre - Source » dans le titre
+        const m = (it.title||'').match(/^(.*) - ([^-]+)$/);
+        return {title: m ? m[1] : it.title, source: m ? m[2] : (it.source||''), link: it.link, date: it.date};
+      });
+    box.innerHTML = renderTrendNews(items);
+    box.dataset.loaded = '1';
+  }catch(e){
+    box.innerHTML = '<div class="tr-empty">Articles indisponibles (réseau).</div>';
+  }
+  box.insertAdjacentHTML('beforeend', trendLinks(el.dataset.term));
+}
+function trendLinks(term){
+  const q = encodeURIComponent(term);
+  return `<div class="tr-links"><a href="https://www.google.com/search?q=${q}" target="_blank" rel="noopener">🔍 Google</a>`+
+         `<a href="https://news.google.com/search?q=${q}&hl=fr&gl=FR&ceid=FR:fr" target="_blank" rel="noopener">📰 Google News</a></div>`;
+}
+// Image d'une tendance : ht:picture de Google si fourni, sinon vignette Wikipédia FR de la page
+// EXACTE du terme (redirections OK, homonymies exclues) — pas de recherche floue, qui donnait des
+// images hors-sujet sur les mots génériques. Mémorisé localement (terme -> url ou '').
+const WIKI_IMG = 'https://fr.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages|pageprops'+
+                 '&ppprop=disambiguation&piprop=thumbnail&pithumbsize=200&';
+const _wikiPool = makePool(3);
+let _trendImgCache = null;
+function trendImgCache(){
+  if (!_trendImgCache){ try{ _trendImgCache = JSON.parse(localStorage.getItem('trendImg')||'{}'); }catch(e){ _trendImgCache = {}; } }
+  return _trendImgCache;
+}
+function normTerm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,' ').trim(); }
+async function trendImage(term){
+  const cache = trendImgCache(), k = normTerm(term);
+  if (k in cache) return cache[k];
+  const ok = p => p && !('missing' in p) && !(p.pageprops && 'disambiguation' in p.pageprops) && p.thumbnail && p.thumbnail.source;
+  let url = '';
+  try{
+    const variants = [term, term.replace(/(^|[\s-])(\p{L})/gu, (m,a,b)=>a+b.toUpperCase())];
+    if (term.length <= 6) variants.push(term.toUpperCase());          // sigles : uefa -> UEFA
+    const titles = [...new Set(variants)].join('|');
+    const d = await fetchJson(WIKI_IMG + 'redirects=1&titles=' + encodeURIComponent(titles));
+    const hit = Object.values((d.query||{}).pages||{}).find(ok);
+    if (hit) url = hit.thumbnail.source;
+    else {
+      const r = await fetchJson(WIKI_IMG + 'generator=search&gsrlimit=5&gsrsearch=' + encodeURIComponent(term));
+      const m = Object.values((r.query||{}).pages||{})
+        .find(p => ok(p) && normTerm(p.title.replace(/\s*\(.*\)$/,'')) === k);
+      if (m) url = m.thumbnail.source;
+    }
+  }catch(e){ return ''; }            // réseau : on réessaiera au prochain chargement
+  cache[k] = url;
+  const keys = Object.keys(cache);
+  if (keys.length > 300) keys.slice(0, keys.length - 300).forEach(x => delete cache[x]);
+  try{ localStorage.setItem('trendImg', JSON.stringify(cache)); }catch(e){}
+  return url;
+}
+function fillTrendImages(list){
+  elArticles.querySelectorAll('.tr-item').forEach((el, i) => {
+    const t = list[i]; if (!t) return;
+    const put = url => {
+      if (!url || current !== 'trends') return;
+      const box = el.querySelector('.tr-img');
+      const img = new Image();
+      img.alt = ''; img.referrerPolicy = 'no-referrer';
+      img.onload = () => { box.replaceChildren(img, ...box.querySelectorAll('b')); box.classList.add('has-img'); };
+      img.src = url;
+    };
+    // Wikipédia d'abord (photo du sujet), sinon image fournie par Google (tendance ou 1er article)
+    const google = t.picture || (t.news.find(n => n.picture) || {}).picture || '';
+    _wikiPool(() => trendImage(t.term)).then(url => put(url || google));
+  });
+}
+async function loadTrends(){
+  hideChangelogLive(); hideRugbyLive(); hideFootballLive(); hidePlacementLive();
+  elSubtabs.hidden = true; elSubtabs.innerHTML = '';
+  elArticles.innerHTML = '<div class="rl-loading"><span class="spinner"></span>Chargement des tendances…</div>';
+  elStatus.textContent = '';
+  let list = [];
+  try{ list = parseTrends(await httpGet(TRENDS_URL)); }catch(e){}
+  // Web : passerelles CORS HS -> rss2json (sans le trafic, propre à Google)
+  if (!list.length && !isNative){
+    try{ list = (await fetchViaRss2json(TRENDS_URL, 'Google Trends'))
+      .map(it => ({term: it.title, traffic: '', date: it.date, news: []})).filter(t => t.term); }catch(e){}
+  }
+  if (current !== 'trends') return;
+  if (!list.length){
+    elArticles.innerHTML = '<div class="rl-loading">Tendances indisponibles. Réessaie plus tard.</div>';
+    return;
+  }
+  const max = Math.max(...list.map(t => trafficNum(t.traffic)), 1);
+  elArticles.innerHTML = '<div class="tr-head">🔥 Recherches en forte hausse en France — touche une tendance pour voir l\'actu</div>' +
+    list.map((t, i) => {
+      const w = Math.max(6, Math.round(100 * Math.log10(1 + trafficNum(t.traffic)) / Math.log10(1 + max)));
+      return `<div class="tr-item" data-term="${esc(t.term)}">`+
+        `<div class="tr-row"><span class="tr-img">${esc((t.term[0]||'?').toUpperCase())}<b>${i+1}</b></span>`+
+          `<span class="tr-main"><span class="tr-term">${esc(t.term)}</span>`+
+          `<span class="tr-meta">${t.traffic ? esc(t.traffic)+' recherches · ' : ''}${esc(agoFr(t.date))}</span>`+
+          (t.traffic ? `<span class="tr-bar"><i style="width:${w}%"></i></span>` : '')+`</span>`+
+          `<span class="tr-chev">›</span></div>`+
+        `<div class="tr-body" hidden>${t.news.length ? renderTrendNews(t.news) + trendLinks(t.term) : ''}</div>`+
+      `</div>`;
+    }).join('');
+  elArticles.querySelectorAll('.tr-body').forEach(b => { if (b.innerHTML) b.dataset.loaded = '1'; });
+  fillTrendImages(list);
+  elStatus.textContent = `${list.length} tendance${list.length>1?'s':''} · MAJ ${fmtDate(new Date().toString()).slice(6)}`;
+  if (_trendsTimer) clearTimeout(_trendsTimer);
+  _trendsTimer = setTimeout(()=>{ if (current==='trends') loadTrends(); }, 15*60000);
+}
+
 /* ---------- Magazines / Cafeyn ---------- */
 // Un magazine Cafeyn par catégorie (lanceur affiché en tête de l'onglet)
 const CAT_MAGAZINES = {
@@ -2800,6 +2967,7 @@ function renderChips(){
   const agStyle=agOn?`style="--a:${agA};--b:${agB}"`:'';
   elCats.innerHTML=
     `<button class="chip${agOn?' active':''}" data-id="agenda" ${agStyle}>📅 Agenda</button>`+
+    `<button class="chip${current==='trends'?' active':''}" data-id="trends">🔥 Tendances</button>`+
     DATA.categories.filter(c=>!c.off).map(c=>
       `<button class="chip" data-id="${c.id}">${esc(c.label)}</button>`).join('');
   elCats.querySelectorAll('.chip').forEach(btn=>{
@@ -2810,6 +2978,7 @@ function renderChips(){
 function selectCat(id){
   stopLiveRefresh();
   if (_agendaTimer) { clearTimeout(_agendaTimer); _agendaTimer = null; }
+  if (_trendsTimer) { clearTimeout(_trendsTimer); _trendsTimer = null; }
   localStorage.setItem('lastCat', id);
   elCats.querySelectorAll('.chip').forEach(b=>{
     const on=b.dataset.id===id;
@@ -2827,6 +2996,15 @@ function selectCat(id){
     document.documentElement.style.setProperty('--b',b);
     $('#hero-sub').textContent='📅 Agenda';
     loadAgenda();
+    return;
+  }
+  if (id==='trends'){
+    current='trends'; currentTab='news';
+    const [a,b]=CAT_COLORS.trends;
+    document.documentElement.style.setProperty('--a',a);
+    document.documentElement.style.setProperty('--b',b);
+    $('#hero-sub').textContent='🔥 Tendances Google';
+    loadTrends();
     return;
   }
   const cat = DATA.categories.find(c => c.id === id);
@@ -2860,7 +3038,7 @@ function firstEnabled(){ return DATA.categories.find(c=>!c.off); }
 function refreshAfterConfig(){
   if (!DATA.categories.length){ DATA.categories=clone(DEFAULTS.categories); saveConfig(); }
   renderChips();
-  if (current==='agenda'){ selectCat('agenda'); return; }
+  if (current==='agenda' || current==='trends'){ selectCat(current); return; }
   let cat = DATA.categories.find(c=>c.id===current && !c.off) || firstEnabled();
   if (cat){ selectCat(cat.id); }
   else { elCats.innerHTML=''; elArticles.innerHTML=''; elStatus.textContent='Toutes les catégories sont désactivées (⚙️).'; }
@@ -3279,8 +3457,8 @@ async function init(){
   if (verEl) verEl.textContent = 'v' + APP_VERSION;
   renderChips();
   const last = localStorage.getItem('lastCat');
-  if (last==='agenda'){
-    selectCat('agenda');
+  if (last==='agenda' || last==='trends'){
+    selectCat(last);
   } else {
     const startCat = DATA.categories.find(c=>c.id===last && !c.off) || firstEnabled();
     if (startCat) selectCat(startCat.id);
@@ -3299,6 +3477,7 @@ async function init(){
   }
   elRefresh.addEventListener('click', () => {
     if (current==='agenda'){ _upcomingRugby=null; _espnCache=null; _frSocCache=null; loadAgenda(); return; }
+    if (current==='trends'){ loadTrends(); return; }
     const cat = DATA.categories.find(c => c.id === current);
     if (cat) loadCategory(cat);
   });
@@ -3334,6 +3513,9 @@ async function init(){
   });
   elArticles.addEventListener('click', (e)=>{
     if (e.target.id==='ag-more-btn'){ e.target.outerHTML = _agendaLaterHtml; return; }
+    const tr = e.target.closest('.tr-row');
+    if (tr){ toggleTrend(tr.parentElement); return; }
+    if (e.target.closest('.tr-body')) return;
     const rc = e.target.closest('.radio-card');
     if (rc){ playStation(parseInt(rc.dataset.radioIdx)); return; }
     const ml = e.target.closest('.mag-launch');
@@ -3445,7 +3627,7 @@ async function init(){
     const dy=e.changedTouches[0].clientY-_tsY;
     _tsX=null; _tsY=null;
     if(Math.abs(dx)<40||Math.abs(dy)>Math.abs(dx)) return;
-    const ids=['agenda',...DATA.categories.filter(c=>!c.off).map(c=>c.id)];
+    const ids=['agenda','trends',...DATA.categories.filter(c=>!c.off).map(c=>c.id)];
     const idx=ids.indexOf(current);
     if(idx===-1) return;
     const next=ids[idx+(dx<0?1:-1)];

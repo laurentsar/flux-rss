@@ -345,3 +345,27 @@ a.ag-card:active{opacity:.8}
 .mag-launch .mag-sub{margin-left:6px;color:rgba(255,255,255,.72);font-size:.78em;font-weight:400}
 .mag-launch .mag-go{margin-left:auto;font-size:1.2em;opacity:.85}
 .vr .mag-launch:hover{outline:2px solid var(--accent,#F26522);outline-offset:2px}
+
+/* ---------- Tendances Google ---------- */
+.tr-head{color:var(--muted);font-size:.85em;padding:4px 2px 10px}
+.tr-item{background:var(--card,#111827);border:1px solid var(--line);border-radius:14px;margin-bottom:8px;overflow:hidden}
+.tr-item.open{border-color:var(--a)}
+.tr-row{display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer}
+.tr-img{position:relative;flex:0 0 56px;height:56px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:1.4em;color:#fff;background:linear-gradient(135deg,var(--a),var(--b))}
+.tr-img img{width:100%;height:100%;object-fit:cover;border-radius:12px;background:#fff}
+.tr-img b{position:absolute;top:-6px;left:-6px;min-width:20px;height:20px;padding:0 4px;border-radius:10px;display:grid;place-items:center;font-size:.55em;background:#0b1220;border:1px solid var(--a);color:#fff}
+.tr-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.tr-term{font-weight:700;text-transform:capitalize;overflow-wrap:anywhere}
+.tr-meta{color:var(--muted);font-size:.78em}
+.tr-bar{height:4px;border-radius:2px;background:var(--line);overflow:hidden}
+.tr-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--a),var(--b))}
+.tr-chev{color:var(--muted);font-size:1.3em;transition:transform .2s}
+.tr-item.open .tr-chev{transform:rotate(90deg)}
+.tr-body{padding:0 14px 12px 82px;display:flex;flex-direction:column;gap:8px}
+.tr-news{display:flex;flex-direction:column;gap:2px;color:var(--text);text-decoration:none;padding:6px 0;border-top:1px solid var(--line)}
+.tr-news-t{font-size:.9em;line-height:1.3}
+.tr-news-s{color:var(--muted);font-size:.75em}
+.tr-links{display:flex;gap:14px;font-size:.82em;padding-top:4px}
+.tr-links a{color:var(--a);text-decoration:none;font-weight:700}
+.tr-body[hidden]{display:none}
+.tr-empty{color:var(--muted);font-size:.85em}
