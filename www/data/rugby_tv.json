@@ -1,156 +1,8 @@
 {
- "generated": "2026-11-20T19:15:07+01:00",
+ "generated": "2026-11-21T07:15:07+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 28,
+ "count": 32,
  "programmes": [
-  {
-   "title": "Le journal du rugby",
-   "date": "2026-11-20",
-   "time": "18:30",
-   "desc": "En Direct.",
-   "chaine": [
-    "Infosport+"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Soir de rugby avant-match",
-   "date": "2026-11-20",
-   "time": "18:50",
-   "desc": "\"Soir de rugby avant-match\" présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'amb",
-   "chaine": [
-    "Canal+ Live",
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Montauban / Agen",
-   "date": "2026-11-20",
-   "time": "19:00",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Live",
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Béziers / Dax",
-   "date": "2026-11-20",
-   "time": "19:25",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Nice / Valence-Romans",
-   "date": "2026-11-20",
-   "time": "19:25",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Aurillac / Colomiers",
-   "date": "2026-11-20",
-   "time": "19:25",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Nevers / Soyaux-Angoulême",
-   "date": "2026-11-20",
-   "time": "19:25",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Soir de rugby avant-match",
-   "date": "2026-11-20",
-   "time": "20:51",
-   "desc": "\"Soir de rugby avant-match\" présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'amb",
-   "chaine": [
-    "Canal+ Live",
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Biarritz / Narbonne",
-   "date": "2026-11-20",
-   "time": "20:55",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Live"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Oyonnax / Brive",
-   "date": "2026-11-20",
-   "time": "21:00",
-   "desc": "Après sa défaite sur le terrain de Provence Rugby lors de la 10e journée (32-23), Oyonnax a perdu son fauteuil de leader mais a bien l'inten",
-   "chaine": [
-    "Canal+ Live",
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Soir de rugby",
-   "date": "2026-11-20",
-   "time": "22:52",
-   "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
-   "chaine": [
-    "Canal+ Live",
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby magazine Occitanie",
    "date": "2026-11-21",
@@ -191,12 +43,51 @@
    "approx": false
   },
   {
+   "title": "Rugby : Reichel Espoirs Élite",
+   "date": "2026-11-21",
+   "time": "14:40",
+   "desc": "Reprise du championnat espoirs. L'Union Bordeaux Bègles se déplace à Agen.",
+   "chaine": [
+    "TV7 Bordeaux"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Reichel Espoirs Élite",
+   "date": "2026-11-21",
+   "time": "14:55",
+   "desc": "Reprise du championnat espoirs. L'Union Bordeaux Bègles se déplace à Agen.",
+   "chaine": [
+    "TV7 Bordeaux"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Rugby : Championnat des nations",
    "date": "2026-11-21",
    "time": "15:00",
    "desc": "Direction Londres pour suivre une rencontre explosive entre le XV de la Rose et les All Blacks, deux équipes qui visent une qualification po",
    "chaine": [
     "TF1"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Reichel Espoirs Élite",
+   "date": "2026-11-21",
+   "time": "15:53",
+   "desc": "Reprise du championnat espoirs. L'Union Bordeaux Bègles se déplace à Agen.",
+   "chaine": [
+    "TV7 Bordeaux"
    ],
    "cats": [
     "rugby"
@@ -269,9 +160,22 @@
    "approx": false
   },
   {
+   "title": "Rugby à XIII fauteuil : Coupe du monde",
+   "date": "2026-11-22",
+   "time": "01:00",
+   "desc": "France - Angleterre, finale de la Coupe du monde 2026 de rugby XIII fauteuil.",
+   "chaine": [
+    "Sport en France"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Montauban / Agen",
    "date": "2026-11-22",
-   "time": "14:01",
+   "time": "14:02",
    "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
@@ -297,7 +201,7 @@
   {
    "title": "Oyonnax / Brive",
    "date": "2026-11-22",
-   "time": "15:44",
+   "time": "15:45",
    "desc": "Après sa défaite sur le terrain de Provence Rugby lors de la 10e journée (32-23), Oyonnax a perdu son fauteuil de leader mais a bien l'inten",
    "chaine": [
     "Canal+ Sport"
@@ -312,6 +216,45 @@
    "date": "2026-11-22",
    "time": "15:50",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Reichel Espoirs Élite",
+   "date": "2026-11-22",
+   "time": "17:00",
+   "desc": "Reprise du championnat espoirs. L'Union Bordeaux Bègles se déplace à Agen.",
+   "chaine": [
+    "TV7 Bordeaux"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Reichel Espoirs Élite",
+   "date": "2026-11-22",
+   "time": "17:55",
+   "desc": "Reprise du championnat espoirs. L'Union Bordeaux Bègles se déplace à Agen.",
+   "chaine": [
+    "TV7 Bordeaux"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Aurillac / Colomiers",
+   "date": "2026-11-23",
+   "time": "10:58",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -336,8 +279,34 @@
   {
    "title": "Fractionné Rugby",
    "date": "2026-11-23",
+   "time": "12:43",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-11-23",
    "time": "12:59",
    "desc": "Magazine sportif",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Les meilleurs moments",
+   "date": "2026-11-23",
+   "time": "13:07",
+   "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -360,10 +329,88 @@
    "approx": false
   },
   {
+   "title": "Rugby : Reichel Espoirs Élite",
+   "date": "2026-11-23",
+   "time": "14:50",
+   "desc": "Reprise du championnat espoirs. L'Union Bordeaux Bègles se déplace à Agen.",
+   "chaine": [
+    "TV7 Bordeaux"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Béziers / Dax",
+   "date": "2026-11-23",
+   "time": "16:29",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Béziers / Dax",
    "date": "2026-11-23",
    "time": "16:43",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Nevers / Soyaux-Angoulême",
+   "date": "2026-11-24",
+   "time": "07:28",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Nice / Valence-Romans",
+   "date": "2026-11-24",
+   "time": "09:11",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Australie / Nouvelle-Zélande",
+   "date": "2026-11-24",
+   "time": "10:53",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Fractionné Rugby",
+   "date": "2026-11-24",
+   "time": "18:08",
+   "desc": "Magazine sportif",
    "chaine": [
     "Canal+ Sport"
    ],
