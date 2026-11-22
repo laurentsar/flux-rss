@@ -1,73 +1,8 @@
 {
- "generated": "2026-11-21T19:15:09+01:00",
+ "generated": "2026-11-22T07:15:07+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 24,
+ "count": 23,
  "programmes": [
-  {
-   "title": "Rugby : Championnat des nations",
-   "date": "2026-11-21",
-   "time": "17:30",
-   "desc": "Face à ses supporters, l'Irlande doit prendre le dessus sur les redoutables Sud-Africains afin de conserver ses chances de disputer la final",
-   "chaine": [
-    "TF1"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Championnat des nations",
-   "date": "2026-11-21",
-   "time": "21:00",
-   "desc": "Pour cette dernière journée de la phase de championnat, le XV de France retrouve l'Argentine avec l'ambition de conforter sa première place ",
-   "chaine": [
-    "TF1"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Championnat des nations, le mag",
-   "date": "2026-11-21",
-   "time": "23:00",
-   "desc": "Autour de chaque match des Bleus, Isabelle Ithurburu présentera Le Mag en direct du stade, accompagnée de l'ancien international Christian C",
-   "chaine": [
-    "TF1"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "After Rugby",
-   "date": "2026-11-21",
-   "time": "23:00",
-   "desc": "En Direct.",
-   "chaine": [
-    "RMC"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby à XIII fauteuil : Coupe du monde",
-   "date": "2026-11-22",
-   "time": "01:00",
-   "desc": "France - Angleterre, finale de la Coupe du monde 2026 de rugby XIII fauteuil.",
-   "chaine": [
-    "Sport en France"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Montauban / Agen",
    "date": "2026-11-22",
@@ -140,6 +75,19 @@
    "desc": "Reprise du championnat espoirs. L'Union Bordeaux Bègles se déplace à Agen.",
    "chaine": [
     "TV7 Bordeaux"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Kanto University Rugby League",
+   "date": "2026-11-23",
+   "time": "06:00",
+   "desc": "Live from Chichibunomiya Rugby Stadium.",
+   "chaine": [
+    "NHK World Premium"
    ],
    "cats": [
     "rugby"
@@ -238,6 +186,19 @@
    "approx": false
   },
   {
+   "title": "Rugby : Reichel Espoirs Élite",
+   "date": "2026-11-23",
+   "time": "15:40",
+   "desc": "Reprise du championnat espoirs. L'Union Bordeaux Bègles se déplace à Agen.",
+   "chaine": [
+    "TV7 Bordeaux"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Béziers / Dax",
    "date": "2026-11-23",
    "time": "16:29",
@@ -267,7 +228,7 @@
    "title": "Nevers / Soyaux-Angoulême",
    "date": "2026-11-24",
    "time": "07:28",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -280,7 +241,7 @@
    "title": "Nice / Valence-Romans",
    "date": "2026-11-24",
    "time": "09:11",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -293,7 +254,7 @@
    "title": "Australie / Nouvelle-Zélande",
    "date": "2026-11-24",
    "time": "10:53",
-   "desc": "Rugby",
+   "desc": "Le deuxième match de la Bledisloe Cup oppose l'Australie à la Nouvelle-Zélande, à l'Accor Stadium de Sydney. Le match aller s'est déroulé le",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -306,7 +267,33 @@
    "title": "Fractionné Rugby",
    "date": "2026-11-24",
    "time": "18:08",
-   "desc": "Magazine sportif",
+   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Biarritz / Narbonne",
+   "date": "2026-11-25",
+   "time": "10:54",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Pro D2",
+   "date": "2026-11-25",
+   "time": "15:48",
+   "desc": "Rugby",
    "chaine": [
     "Canal+ Sport"
    ],
