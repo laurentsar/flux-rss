@@ -1,73 +1,8 @@
 {
- "generated": "2026-11-22T07:15:07+01:00",
+ "generated": "2026-11-22T19:15:06+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 23,
+ "count": 18,
  "programmes": [
-  {
-   "title": "Montauban / Agen",
-   "date": "2026-11-22",
-   "time": "14:02",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Montauban / Agen",
-   "date": "2026-11-22",
-   "time": "14:08",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Oyonnax / Brive",
-   "date": "2026-11-22",
-   "time": "15:45",
-   "desc": "Après sa défaite sur le terrain de Provence Rugby lors de la 10e journée (32-23), Oyonnax a perdu son fauteuil de leader mais a bien l'inten",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Oyonnax / Brive",
-   "date": "2026-11-22",
-   "time": "15:50",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Reichel Espoirs Élite",
-   "date": "2026-11-22",
-   "time": "17:00",
-   "desc": "Reprise du championnat espoirs. L'Union Bordeaux Bègles se déplace à Agen.",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby : Reichel Espoirs Élite",
    "date": "2026-11-22",
