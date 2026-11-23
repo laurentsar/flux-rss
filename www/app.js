@@ -2445,6 +2445,17 @@ function _memeEquipe(a, b){
   const A=_motsEquipe(a), B=_motsEquipe(b);
   return A.some(x=>B.some(y=>x===y || (x.length>=5 && y.length>=5 && (x.startsWith(y)||y.startsWith(x)))));
 }
+// Date/heure de la grille (heure de Paris) en horodatage absolu, quel que
+// soit le fuseau de l'appareil — comparable à startTimestamp (ESPN).
+function parisTs(date, time){
+  const [y,mo,d]=date.split('-').map(Number), [h,mi]=time.split(':').map(Number);
+  const guess=Date.UTC(y,mo-1,d,h,mi);
+  const f=Object.fromEntries(new Intl.DateTimeFormat('en-US',{timeZone:'Europe/Paris',hourCycle:'h23',
+    year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})
+    .formatToParts(new Date(guess)).map(x=>[x.type,x.value]));
+  const vu=Date.UTC(+f.year,+f.month-1,+f.day,+f.hour,+f.minute);
+  return (guess-(vu-guess))/1000;
+}
 function epgChaineMatch(home, away, startTs){
   let liste=null;
   try{ liste=_epgRugby; }catch(e){ return null; } // script pas encore entièrement évalué
@@ -2456,7 +2467,7 @@ function epgChaineMatch(home, away, startTs){
     if (parts.length!==2) continue;
     const ok=(_memeEquipe(parts[0],home)&&_memeEquipe(parts[1],away)) || (_memeEquipe(parts[0],away)&&_memeEquipe(parts[1],home));
     if (!ok) continue;
-    const ts=new Date(`${p.date}T${p.time}:00`).getTime()/1000;
+    const ts=parisTs(p.date, p.time);
     if (Math.abs(ts-startTs) > 3*3600) continue;
     return {chaine:p.chaine, tvg:p.tvg||null};
   }
