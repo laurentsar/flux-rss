@@ -1,7 +1,7 @@
 'use strict';
 
 /* ---------- config ---------- */
-const APP_VERSION = '5.61';
+const APP_VERSION = '5.62';
 const GITHUB_REPO = 'laurentsar/flux-rss';
 const PALETTE = ['#ef4444','#2563eb','#16a34a','#9333ea','#ea580c','#0891b2','#db2777','#4f46e5'];
 const CAT_COLORS = {
@@ -2408,10 +2408,19 @@ function footChannel(comp){
   return null;
 }
 
-/* Lecteur IPTV : modèle d'URL fourni par l'utilisateur (aucun flux embarqué).
-   Variables {chaine} et {q}. Vide = pas de lien direct. */
+/* Lecteur IPTV : modèle d'URL ouvert au clic sur une chaîne (aucun flux
+   embarqué). Variables {chaine} et {q}. Par défaut, l'appli « Lecteur IPTV »
+   reçoit le NOM de la chaîne et la retrouve elle-même dans la playlist
+   active (lecteuriptv://chaine, voir lecteur-iptv www/catalogue.js
+   trouverChaine). Un modèle personnel le remplace ; « aucun » = pas de lien. */
 const IPTV_KEY = 'iptvTemplate';
-function getIptv(){ try{ return localStorage.getItem(IPTV_KEY) || ''; }catch(e){ return ''; } }
+const IPTV_DEFAULT = 'lecteuriptv://chaine?nom={chaine}&q={q}';
+function getIptvSaisi(){ try{ return localStorage.getItem(IPTV_KEY) || ''; }catch(e){ return ''; } }
+function getIptv(){
+  const v = getIptvSaisi().trim();
+  if (/^(aucun|non|off|-)$/i.test(v)) return '';
+  return v || IPTV_DEFAULT;
+}
 function setIptv(v){ try{ v ? localStorage.setItem(IPTV_KEY, v) : localStorage.removeItem(IPTV_KEY); }catch(e){} }
 function iptvUrl(tpl, chaine, title){
   return tpl.replace(/\{chaine\}/g, encodeURIComponent(chaine))
@@ -3134,8 +3143,8 @@ function renderSettings(){
       <details class="st-section">
         <summary class="st-sh">📺 IPTV</summary>
         <div class="st-body">
-          <div class="hint">Modèle d'URL ouvert au clic sur une chaîne de l'agenda TV. Variables : <code>{chaine}</code>, <code>{q}</code>. Vide = pas de lien direct.</div>
-          <input id="iptv-tpl" placeholder="ex : http://mon-serveur/live/{chaine}.m3u8" value="${esc(getIptv())}" style="width:100%;margin-top:6px">
+          <div class="hint">Au clic sur une chaîne de l'agenda TV, l'appli <b>Lecteur IPTV</b> s'ouvre et retrouve la chaîne par son nom dans ta playlist. Pour une autre appli, saisis un modèle d'URL (variables <code>{chaine}</code>, <code>{q}</code>) ; <code>aucun</code> = pas de lien.</div>
+          <input id="iptv-tpl" placeholder="${esc(IPTV_DEFAULT)} (par défaut)" value="${esc(getIptvSaisi())}" style="width:100%;margin-top:6px">
         </div>
       </details>
 
