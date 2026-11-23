@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-23T19:15:04+01:00",
+ "generated": "2026-11-23T19:16:42+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
  "count": 8,
  "programmes": [
@@ -11,6 +11,12 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr",
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -24,6 +30,12 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr",
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -37,6 +49,12 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr",
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -50,6 +68,12 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr",
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -63,6 +87,12 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr",
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -76,6 +106,12 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr",
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -89,6 +125,11 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -102,6 +143,11 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
