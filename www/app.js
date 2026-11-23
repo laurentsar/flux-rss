@@ -700,7 +700,7 @@ function renderLiveScores(events, extraIntlHtml=''){
       const score = (live||fin) ? `<b>${hs}</b><span class="rl-vs">–</span><b>${as_}</b>${time?`<span class="rl-time"> ${time}</span>`:''}` : `<span class="rl-vs">${time}</span>`;
       const hn=e.homeTeam?.name||'?', an=e.awayTeam?.name||'?';
       const roundLbl=e.tournament?.round?` · ${esc(e.tournament.round)}`:'';
-      const chaineHtml=chaineLinksHtml(rugbyChannel(e.tournament?.name, null), `${hn} - ${an}`);
+      const chaineHtml=matchChaineHtml(e, rugbyChannel(e.tournament?.name, null), `${hn} - ${an}`);
       const compLine=(e.tournament?.name||chaineHtml)?`<div class="rl-jlbl">🏉 ${esc(e.tournament?.name||'')}${roundLbl}${chaineHtml}</div>`:'';
       return compLine+`<div class="rl-match"><span class="rl-tn ${hw?'rl-w':''}">${teamBadge(hn)}${esc(hn)}</span><span class="rl-sb">${badge}${score}</span><span class="rl-tn rl-tnr ${aw?'rl-w':''}">${teamBadge(an)}${esc(an)}</span></div>`;
     };
@@ -2324,7 +2324,7 @@ function renderFranceLive(rugbyLive, soccerEvents){
     const scorerLine=(live||fin)&&gs.length?`<div class="rl-scorers"><span>${esc(hg)}</span><span>${esc(ag)}</span></div>`:'';
     const roundLbl=e.tournament?.round?` · ${esc(e.tournament.round)}`:'';
     const chans=e.sport==='football'?footChannel(e.tournament?.name):rugbyChannel(e.tournament?.name, null);
-    const chaineHtml=chaineLinksHtml(chans, `${hn2} - ${an2}`);
+    const chaineHtml=matchChaineHtml(e, chans, `${hn2} - ${an2}`);
     const compLine=(e.tournament?.name||chaineHtml)?`<div class="rl-jlbl">${icon}${esc(e.tournament?.name||'')}${roundLbl}${chaineHtml}</div>`:'';
     return compLine+matchCard+scorerLine;
   };
@@ -2414,7 +2414,7 @@ function footChannel(comp){
    active (lecteuriptv://chaine, voir lecteur-iptv www/catalogue.js
    trouverChaine). Un modèle personnel le remplace ; « aucun » = pas de lien. */
 const IPTV_KEY = 'iptvTemplate';
-const IPTV_DEFAULT = 'lecteuriptv://chaine?nom={chaine}&q={q}';
+const IPTV_DEFAULT = 'lecteuriptv://chaine?nom={chaine}&id={id}&q={q}';
 function getIptvSaisi(){ try{ return localStorage.getItem(IPTV_KEY) || ''; }catch(e){ return ''; } }
 function getIptv(){
   const v = getIptvSaisi().trim();
@@ -2422,19 +2422,60 @@ function getIptv(){
   return v || IPTV_DEFAULT;
 }
 function setIptv(v){ try{ v ? localStorage.setItem(IPTV_KEY, v) : localStorage.removeItem(IPTV_KEY); }catch(e){} }
-function iptvUrl(tpl, chaine, title){
+// {id} : identifiant(s) EPG de la chaîne (« beIN.SPORTS.3.fr »), séparés par
+// des virgules — les mêmes que le tvg-id des playlists, ce qui permet au
+// lecteur d'ouvrir directement la bonne chaîne sans deviner d'après le nom.
+function iptvUrl(tpl, chaine, title, ids){
   return tpl.replace(/\{chaine\}/g, encodeURIComponent(chaine))
+            .replace(/\{id\}/g, encodeURIComponent((ids||[]).join(',')))
             .replace(/\{q\}/g, encodeURIComponent(title || ''));
+}
+function tvgIds(tvg, ch){ const v=tvg&&tvg[ch]; return Array.isArray(v)?v:(v?[v]:[]); }
+
+/* Chaîne RÉELLE d'un match rugby d'après la grille EPG (rugby_tv.json :
+   « Béziers / Dax » sur Canal+ Sport, avec son identifiant EPG), plutôt que
+   la chaîne supposée pour toute la compétition (RUGBY_TV). Les deux équipes
+   doivent se retrouver dans le titre, à moins de 3 h du coup d'envoi. */
+function _motsEquipe(s){
+  return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/[^a-z0-9]+/g,' ').split(' ')
+    .filter(w=>w.length>=3 && !/^(stade|club|rugby|racing|union|sporting|olympique|athletic|xv|rc|us|ca|as|fc|aviron|section|des|les)$/.test(w));
+}
+function _memeEquipe(a, b){
+  const A=_motsEquipe(a), B=_motsEquipe(b);
+  return A.some(x=>B.some(y=>x===y || (x.length>=5 && y.length>=5 && (x.startsWith(y)||y.startsWith(x)))));
+}
+function epgChaineMatch(home, away, startTs){
+  let liste=null;
+  try{ liste=_epgRugby; }catch(e){ return null; } // script pas encore entièrement évalué
+  if (!liste){ loadRugbyEpg().catch(()=>{}); return null; } // prêt au prochain affichage
+  if (!startTs) return null;
+  for (const p of liste){
+    if (!p.time || !p.chaine || !p.chaine.length) continue;
+    const parts=String(p.title||'').split(/\s+\/\s+|\s+-\s+/);
+    if (parts.length!==2) continue;
+    const ok=(_memeEquipe(parts[0],home)&&_memeEquipe(parts[1],away)) || (_memeEquipe(parts[0],away)&&_memeEquipe(parts[1],home));
+    if (!ok) continue;
+    const ts=new Date(`${p.date}T${p.time}:00`).getTime()/1000;
+    if (Math.abs(ts-startTs) > 3*3600) continue;
+    return {chaine:p.chaine, tvg:p.tvg||null};
+  }
+  return null;
+}
+// Badges d'un match : chaîne réelle (EPG) si trouvée, sinon celle de la compétition.
+function matchChaineHtml(e, fallback, title){
+  const m = e.sport==='football' ? null : epgChaineMatch(e.homeTeam?.name, e.awayTeam?.name, e.startTimestamp);
+  return m ? chaineLinksHtml(m.chaine, title, m.tvg) : chaineLinksHtml(fallback, title);
 }
 // Petit(s) badge(s) chaîne, cliquables vers le lecteur IPTV si un modèle
 // d'URL est configuré (sinon simple indication de la chaîne) — utilisé par
 // les vues "direct" rugby et football, en plus de l'agenda.
-function chaineLinksHtml(chaines, queryTitle){
+function chaineLinksHtml(chaines, queryTitle, tvg){
   if (!chaines || !chaines.length) return '';
   const iptv = getIptv();
   return chaines.map(ch=>{
     if (iptv){
-      const url = iptvUrl(iptv, ch, queryTitle);
+      const url = iptvUrl(iptv, ch, queryTitle, tvgIds(tvg, ch));
       return `<a class="rl-chaine" href="${esc(url)}" target="_blank" rel="noopener" title="Voir en direct (IPTV)">📺 ${esc(ch)} ▶</a>`;
     }
     return `<span class="rl-chaine">📺 ${esc(ch)}</span>`;
@@ -2556,7 +2597,7 @@ function renderAgendaCard(ev){
   const tvStyle='background:#11182788;color:#fff;border:1px solid #ffffff2e';
   const tvHtml=chaines.map(ch=>{
     if (canLink){
-      const url=iptvUrl(iptv, ch, ev.title);
+      const url=iptvUrl(iptv, ch, ev.title, tvgIds(ev.tvg, ch));
       return `<a class="ag-badge ag-tv" href="${esc(url)}" target="_blank" rel="noopener" title="Voir en direct (IPTV)" style="${tvStyle}">📺 ${esc(ch)} ▶</a>`;
     }
     return `<span class="ag-badge ag-tv" style="${tvStyle}">📺 ${esc(ch)}</span>`;

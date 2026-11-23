@@ -1,21 +1,8 @@
 {
- "generated": "2026-11-23T07:15:04+01:00",
+ "generated": "2026-11-23T10:51:24+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 19,
+ "count": 18,
  "programmes": [
-  {
-   "title": "Kanto University Rugby League",
-   "date": "2026-11-23",
-   "time": "06:00",
-   "desc": "Live from Chichibunomiya Rugby Stadium.",
-   "chaine": [
-    "NHK World Premium"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Aurillac / Colomiers",
    "date": "2026-11-23",
@@ -24,6 +11,11 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -37,6 +29,11 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -50,6 +47,11 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -63,6 +65,11 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -76,6 +83,11 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -89,6 +101,11 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -102,6 +119,11 @@
    "chaine": [
     "TV7 Bordeaux"
    ],
+   "tvg": {
+    "TV7 Bordeaux": [
+     "TV7.Bordeaux.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -115,6 +137,11 @@
    "chaine": [
     "TV7 Bordeaux"
    ],
+   "tvg": {
+    "TV7 Bordeaux": [
+     "TV7.Bordeaux.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -128,6 +155,11 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -141,6 +173,11 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -154,6 +191,12 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr",
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -167,6 +210,12 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr",
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -180,6 +229,12 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr",
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -193,6 +248,12 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr",
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -206,6 +267,12 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr",
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -219,6 +286,12 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr",
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -232,6 +305,11 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
@@ -245,6 +323,11 @@
    "chaine": [
     "Canal+ Sport"
    ],
+   "tvg": {
+    "Canal+ Sport": [
+     "Canal+.Sport.fr"
+    ]
+   },
    "cats": [
     "rugby"
    ],
