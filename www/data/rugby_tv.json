@@ -1,21 +1,8 @@
 {
- "generated": "2026-11-22T19:15:06+01:00",
+ "generated": "2026-11-23T07:15:04+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 18,
+ "count": 19,
  "programmes": [
-  {
-   "title": "Rugby : Reichel Espoirs Élite",
-   "date": "2026-11-22",
-   "time": "17:55",
-   "desc": "Reprise du championnat espoirs. L'Union Bordeaux Bègles se déplace à Agen.",
-   "chaine": [
-    "TV7 Bordeaux"
-   ],
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Kanto University Rugby League",
    "date": "2026-11-23",
@@ -215,7 +202,7 @@
    "title": "Biarritz / Narbonne",
    "date": "2026-11-25",
    "time": "10:54",
-   "desc": "Rugby",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
@@ -228,7 +215,33 @@
    "title": "Rugby : Pro D2",
    "date": "2026-11-25",
    "time": "15:48",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Oyonnax / Brive",
+   "date": "2026-11-26",
+   "time": "16:43",
    "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Brive / Biarritz",
+   "date": "2026-11-26",
+   "time": "21:00",
+   "desc": "En Direct.",
    "chaine": [
     "Canal+ Sport"
    ],
