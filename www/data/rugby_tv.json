@@ -1,20 +1,19 @@
 {
- "generated": "2026-11-23T19:16:42+01:00",
+ "generated": "2026-11-24T07:15:14+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 8,
+ "count": 15,
  "programmes": [
   {
    "title": "Nevers / Soyaux-Angoulême",
    "date": "2026-11-24",
-   "time": "07:28",
+   "time": "07:40",
    "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
    "tvg": {
     "Canal+ Sport": [
-     "CANAL+SPORT.fr",
-     "Canal+.Sport.fr"
+     "CANAL+SPORT.fr"
     ]
    },
    "cats": [
@@ -25,15 +24,14 @@
   {
    "title": "Nice / Valence-Romans",
    "date": "2026-11-24",
-   "time": "09:11",
+   "time": "09:17",
    "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
    ],
    "tvg": {
     "Canal+ Sport": [
-     "CANAL+SPORT.fr",
-     "Canal+.Sport.fr"
+     "CANAL+SPORT.fr"
     ]
    },
    "cats": [
@@ -51,7 +49,42 @@
    ],
    "tvg": {
     "Canal+ Sport": [
-     "CANAL+SPORT.fr",
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII fauteuil : Coupe du monde",
+   "date": "2026-11-24",
+   "time": "15:45",
+   "desc": "France - Angleterre, finale de la Coupe du monde 2026 de rugby XIII fauteuil.",
+   "chaine": [
+    "Sport en France"
+   ],
+   "tvg": {
+    "Sport en France": [
+     "Sport.en.France.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Oyonnax / Brive",
+   "date": "2026-11-24",
+   "time": "16:43",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
      "Canal+.Sport.fr"
     ]
    },
@@ -70,7 +103,42 @@
    ],
    "tvg": {
     "Canal+ Sport": [
-     "CANAL+SPORT.fr",
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Brive / Biarritz",
+   "date": "2026-11-24",
+   "time": "21:00",
+   "desc": "En Direct.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "Canal+.Sport.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Brive / Biarritz",
+   "date": "2026-11-25",
+   "time": "07:29",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
      "Canal+.Sport.fr"
     ]
    },
@@ -89,7 +157,24 @@
    ],
    "tvg": {
     "Canal+ Sport": [
-     "CANAL+SPORT.fr",
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Les meilleurs moments",
+   "date": "2026-11-25",
+   "time": "10:56",
+   "desc": "Rugby",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
      "Canal+.Sport.fr"
     ]
    },
@@ -108,8 +193,7 @@
    ],
    "tvg": {
     "Canal+ Sport": [
-     "CANAL+SPORT.fr",
-     "Canal+.Sport.fr"
+     "CANAL+SPORT.fr"
     ]
    },
    "cats": [
@@ -121,13 +205,31 @@
    "title": "Oyonnax / Brive",
    "date": "2026-11-26",
    "time": "16:43",
-   "desc": "Rugby",
+   "desc": "Après sa défaite sur le terrain de Provence Rugby lors de la 10e journée (32-23), Oyonnax a perdu son fauteuil de leader mais a bien l'inten",
    "chaine": [
     "Canal+ Sport"
    ],
    "tvg": {
     "Canal+ Sport": [
-     "Canal+.Sport.fr"
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Avant-match Pro D2",
+   "date": "2026-11-26",
+   "time": "20:50",
+   "desc": "Les ultimes informations avant le match de Pro D2, les compositions des équipes et les enjeux de la rencontre.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
     ]
    },
    "cats": [
@@ -139,13 +241,31 @@
    "title": "Brive / Biarritz",
    "date": "2026-11-26",
    "time": "21:00",
-   "desc": "En Direct.",
+   "desc": "Défaits sur le terrain du nouveau leader Oyonnax (32-22) lors de la 11e journée, Brive a perdu sa place sur le podium provisoire, mais compt",
    "chaine": [
     "Canal+ Sport"
    ],
    "tvg": {
     "Canal+ Sport": [
-     "Canal+.Sport.fr"
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Après-match Pro D2",
+   "date": "2026-11-26",
+   "time": "22:50",
+   "desc": "Suite à la rencontre de Pro D2, le magazine passe en revue les dernières actualités, les réactions des joueurs et des coachs et propose les ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
     ]
    },
    "cats": [
