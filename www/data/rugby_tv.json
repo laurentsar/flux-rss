@@ -1,44 +1,8 @@
 {
- "generated": "2026-11-24T19:15:06+01:00",
+ "generated": "2026-11-25T07:15:06+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 10,
+ "count": 24,
  "programmes": [
-  {
-   "title": "Fractionné Rugby",
-   "date": "2026-11-24",
-   "time": "18:08",
-   "desc": "Sport noble par excellence, le rugby figure parmi les disciplines les plus populaires. Garants du fairplay, les joueurs cachent de véritable",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "tvg": {
-    "Canal+ Sport": [
-     "CANAL+SPORT.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Brive / Biarritz",
-   "date": "2026-11-24",
-   "time": "21:00",
-   "desc": "En Direct.",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "tvg": {
-    "Canal+ Sport": [
-     "Canal+.Sport.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Brive / Biarritz",
    "date": "2026-11-25",
@@ -50,24 +14,6 @@
    "tvg": {
     "Canal+ Sport": [
      "Canal+.Sport.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Biarritz / Narbonne",
-   "date": "2026-11-25",
-   "time": "10:54",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "tvg": {
-    "Canal+ Sport": [
-     "CANAL+SPORT.fr"
     ]
    },
    "cats": [
@@ -94,9 +40,9 @@
    "approx": false
   },
   {
-   "title": "Rugby : Pro D2",
+   "title": "Béziers / Dax",
    "date": "2026-11-25",
-   "time": "15:48",
+   "time": "11:08",
    "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
@@ -104,6 +50,42 @@
    "tvg": {
     "Canal+ Sport": [
      "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Grenoble / Provence Rugby",
+   "date": "2026-11-25",
+   "time": "15:53",
+   "desc": "Après s'être emparé de la tête du championnat suite à son succès face à Oyonnax (32-23), Provence Rugby se déplace à Grenoble, 4e après un f",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby à XIII fauteuil : Coupe du monde",
+   "date": "2026-11-26",
+   "time": "15:50",
+   "desc": "France - Angleterre, finale de la Coupe du monde 2026 de rugby XIII fauteuil.",
+   "chaine": [
+    "Sport en France"
+   ],
+   "tvg": {
+    "Sport en France": [
+     "Sport.en.France.fr"
     ]
    },
    "cats": [
@@ -170,6 +152,296 @@
    "date": "2026-11-26",
    "time": "22:50",
    "desc": "Suite à la rencontre de Pro D2, le magazine passe en revue les dernières actualités, les réactions des joueurs et des coachs et propose les ",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Brive / Biarritz",
+   "date": "2026-11-27",
+   "time": "07:29",
+   "desc": "Défaits sur le terrain du nouveau leader Oyonnax (32-22) lors de la 11e journée, Brive a perdu sa place sur le podium provisoire, mais compt",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Les meilleurs moments",
+   "date": "2026-11-27",
+   "time": "10:56",
+   "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-11-27",
+   "time": "17:35",
+   "desc": "Les matchs de classement de ce week-end final du championnat des nations à Londres débutent avec ce premier affrontement entre l'Italie et l",
+   "chaine": [
+    "TFX"
+   ],
+   "tvg": {
+    "TFX": [
+     "TFX.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby avant-match",
+   "date": "2026-11-27",
+   "time": "18:50",
+   "desc": "\"Soir de rugby avant-match\" présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'amb",
+   "chaine": [
+    "Canal+ Live 1",
+    "Canal+ Sport 360"
+   ],
+   "tvg": {
+    "Canal+ Live 1": [
+     "CANAL+LIVE.1.fr"
+    ],
+    "Canal+ Sport 360": [
+     "CANAL+SPORT360.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Dax / Oyonnax",
+   "date": "2026-11-27",
+   "time": "19:00",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live 1",
+    "Canal+ Sport 360"
+   ],
+   "tvg": {
+    "Canal+ Live 1": [
+     "CANAL+LIVE.1.fr"
+    ],
+    "Canal+ Sport 360": [
+     "CANAL+SPORT360.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Agen / Béziers",
+   "date": "2026-11-27",
+   "time": "19:25",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live 3"
+   ],
+   "tvg": {
+    "Canal+ Live 3": [
+     "CANAL+LIVE.3.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soyaux-Angoulême / Nice",
+   "date": "2026-11-27",
+   "time": "19:25",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live 4"
+   ],
+   "tvg": {
+    "Canal+ Live 4": [
+     "CANAL+LIVE.4.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Colomiers / Nevers",
+   "date": "2026-11-27",
+   "time": "19:25",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live 5"
+   ],
+   "tvg": {
+    "Canal+ Live 5": [
+     "CANAL+LIVE.5.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Valence-Romans / Aurillac",
+   "date": "2026-11-27",
+   "time": "19:25",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Live 6"
+   ],
+   "tvg": {
+    "Canal+ Live 6": [
+     "CANAL+LIVE.6.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby avant-match",
+   "date": "2026-11-27",
+   "time": "20:50",
+   "desc": "\"Soir de rugby avant-match\" présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'amb",
+   "chaine": [
+    "Canal+ Live 1",
+    "Canal+ Sport 360"
+   ],
+   "tvg": {
+    "Canal+ Live 1": [
+     "CANAL+LIVE.1.fr"
+    ],
+    "Canal+ Sport 360": [
+     "CANAL+SPORT360.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Narbonne / Grenoble",
+   "date": "2026-11-27",
+   "time": "20:55",
+   "desc": "Vainqueur du leader Provence Rugby (41-30) lors de la 11e journée, Grenoble s'est hissé sur la troisième marche du podium provisoire de la P",
+   "chaine": [
+    "Canal+ Live 2"
+   ],
+   "tvg": {
+    "Canal+ Live 2": [
+     "CANAL+LIVE.2.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Provence Rugby / Montauban",
+   "date": "2026-11-27",
+   "time": "21:00",
+   "desc": "C'est une formation Provence Rugby pleine d'ambitions qui visera la victoire ce soir face à Montauban, dans son duel à distance qui l'oppose",
+   "chaine": [
+    "Canal+ Live 1",
+    "Canal+ Sport 360"
+   ],
+   "tvg": {
+    "Canal+ Live 1": [
+     "CANAL+LIVE.1.fr"
+    ],
+    "Canal+ Sport 360": [
+     "CANAL+SPORT360.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-11-27",
+   "time": "21:00",
+   "desc": "Les deux nations, qui ont toute deux terminé troisième de leur poule (Hémisphère nord et Hémisphère sud, respectivement), s'affrontent à Twi",
+   "chaine": [
+    "TF1"
+   ],
+   "tvg": {
+    "TF1": [
+     "TF1.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soir de rugby",
+   "date": "2026-11-27",
+   "time": "22:51",
+   "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
+   "chaine": [
+    "Canal+ Live 1",
+    "Canal+ Sport 360"
+   ],
+   "tvg": {
+    "Canal+ Live 1": [
+     "CANAL+LIVE.1.fr"
+    ],
+    "Canal+ Sport 360": [
+     "CANAL+SPORT360.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Narbonne / Grenoble",
+   "date": "2026-11-27",
+   "time": "23:51",
+   "desc": "Vainqueur du leader Provence Rugby (41-30) lors de la 11e journée, Grenoble s'est hissé sur la troisième marche du podium provisoire de la P",
    "chaine": [
     "Canal+ Sport"
    ],
