@@ -1,80 +1,8 @@
 {
- "generated": "2026-11-25T07:15:06+01:00",
+ "generated": "2026-11-25T19:15:03+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 24,
+ "count": 20,
  "programmes": [
-  {
-   "title": "Brive / Biarritz",
-   "date": "2026-11-25",
-   "time": "07:29",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "tvg": {
-    "Canal+ Sport": [
-     "Canal+.Sport.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Les meilleurs moments",
-   "date": "2026-11-25",
-   "time": "10:56",
-   "desc": "Rugby",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "tvg": {
-    "Canal+ Sport": [
-     "Canal+.Sport.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Béziers / Dax",
-   "date": "2026-11-25",
-   "time": "11:08",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "tvg": {
-    "Canal+ Sport": [
-     "CANAL+SPORT.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Grenoble / Provence Rugby",
-   "date": "2026-11-25",
-   "time": "15:53",
-   "desc": "Après s'être emparé de la tête du championnat suite à son succès face à Oyonnax (32-23), Provence Rugby se déplace à Grenoble, 4e après un f",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "tvg": {
-    "Canal+ Sport": [
-     "CANAL+SPORT.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby à XIII fauteuil : Coupe du monde",
    "date": "2026-11-26",
