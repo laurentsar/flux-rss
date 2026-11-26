@@ -1,44 +1,8 @@
 {
- "generated": "2026-11-26T07:15:07+01:00",
+ "generated": "2026-11-26T19:15:12+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 44,
+ "count": 42,
  "programmes": [
-  {
-   "title": "Rugby à XIII fauteuil : Coupe du monde",
-   "date": "2026-11-26",
-   "time": "15:50",
-   "desc": "France - Angleterre, finale de la Coupe du monde 2026 de rugby XIII fauteuil.",
-   "chaine": [
-    "Sport en France"
-   ],
-   "tvg": {
-    "Sport en France": [
-     "Sport.en.France.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Oyonnax / Brive",
-   "date": "2026-11-26",
-   "time": "16:51",
-   "desc": "Après sa défaite sur le terrain de Provence Rugby lors de la 10e journée (32-23), Oyonnax a perdu son fauteuil de leader mais a bien l'inten",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "tvg": {
-    "Canal+ Sport": [
-     "CANAL+SPORT.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Avant-match Pro D2",
    "date": "2026-11-26",
