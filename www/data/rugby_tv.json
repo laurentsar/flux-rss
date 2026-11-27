@@ -1,44 +1,8 @@
 {
- "generated": "2026-11-27T07:15:08+01:00",
+ "generated": "2026-11-27T19:15:09+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 55,
+ "count": 53,
  "programmes": [
-  {
-   "title": "Brive / Biarritz",
-   "date": "2026-11-27",
-   "time": "07:34",
-   "desc": "Défaits sur le terrain du nouveau leader Oyonnax (32-22) lors de la 11e journée, Brive a perdu sa place sur le podium provisoire, mais compt",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "tvg": {
-    "Canal+ Sport": [
-     "CANAL+SPORT.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Les meilleurs moments",
-   "date": "2026-11-27",
-   "time": "10:55",
-   "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "tvg": {
-    "Canal+ Sport": [
-     "CANAL+SPORT.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Rugby : Championnat des nations",
    "date": "2026-11-27",
