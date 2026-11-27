@@ -1,66 +1,12 @@
 {
- "generated": "2026-11-26T19:15:12+01:00",
+ "generated": "2026-11-27T07:15:08+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 42,
+ "count": 55,
  "programmes": [
-  {
-   "title": "Avant-match Pro D2",
-   "date": "2026-11-26",
-   "time": "20:51",
-   "desc": "Les ultimes informations avant le match de Pro D2, les compositions des équipes et les enjeux de la rencontre.",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "tvg": {
-    "Canal+ Sport": [
-     "CANAL+SPORT.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Brive / Biarritz",
-   "date": "2026-11-26",
-   "time": "21:00",
-   "desc": "Défaits sur le terrain du nouveau leader Oyonnax (32-22) lors de la 11e journée, Brive a perdu sa place sur le podium provisoire, mais compt",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "tvg": {
-    "Canal+ Sport": [
-     "CANAL+SPORT.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Après-match Pro D2",
-   "date": "2026-11-26",
-   "time": "22:51",
-   "desc": "Suite à la rencontre de Pro D2, le magazine passe en revue les dernières actualités, les réactions des joueurs et des coachs et propose les ",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "tvg": {
-    "Canal+ Sport": [
-     "CANAL+SPORT.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
   {
    "title": "Brive / Biarritz",
    "date": "2026-11-27",
-   "time": "07:29",
+   "time": "07:34",
    "desc": "Défaits sur le terrain du nouveau leader Oyonnax (32-22) lors de la 11e journée, Brive a perdu sa place sur le podium provisoire, mais compt",
    "chaine": [
     "Canal+ Sport"
@@ -78,7 +24,7 @@
   {
    "title": "Les meilleurs moments",
    "date": "2026-11-27",
-   "time": "10:58",
+   "time": "10:55",
    "desc": "La tournée de rugby néo-zélandaise en Afrique du Sud, présentée comme \"la plus grande rivalité du rugby\", est une tournée internationale pro",
    "chaine": [
     "Canal+ Sport"
@@ -350,7 +296,7 @@
   {
    "title": "Dax / Oyonnax",
    "date": "2026-11-28",
-   "time": "07:32",
+   "time": "07:30",
    "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
@@ -368,7 +314,7 @@
   {
    "title": "Provence Rugby / Montauban",
    "date": "2026-11-28",
-   "time": "09:15",
+   "time": "09:14",
    "desc": "C'est une formation Provence Rugby pleine d'ambitions qui visera la victoire ce soir face à Montauban, dans son duel à distance qui l'oppose",
    "chaine": [
     "Canal+ Sport"
@@ -376,6 +322,24 @@
    "tvg": {
     "Canal+ Sport": [
      "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby magazine Nouvelle Aquitaine",
+   "date": "2026-11-28",
+   "time": "12:32",
+   "desc": "Magazine sportif",
+   "chaine": [
+    "France 3 Nouvelle Aquitaine"
+   ],
+   "tvg": {
+    "France 3 Nouvelle Aquitaine": [
+     "France.3.Nouvelle.Aquitaine.fr"
     ]
    },
    "cats": [
@@ -796,8 +760,294 @@
   {
    "title": "Lyon / Toulouse",
    "date": "2026-11-29",
-   "time": "00:24",
+   "time": "00:25",
    "desc": "Leader du Top 14 après 9 journées, Toulouse se déplace sur la pelouse de Lyon, pour le compte de la 10e journée, avec des Toulousains qui so",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "La Rochelle / Perpignan",
+   "date": "2026-11-29",
+   "time": "07:43",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-11-29",
+   "time": "14:00",
+   "desc": "Quatrième de la poule Nord avec quatre victoires en six rencontres, l'Ecosse voudra conclure la compétition en beauté en allant chercher la ",
+   "chaine": [
+    "TF1"
+   ],
+   "tvg": {
+    "TF1": [
+     "TF1.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Bayonne / Castres",
+   "date": "2026-11-29",
+   "time": "14:01",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Fédérale 1",
+   "date": "2026-11-29",
+   "time": "15:15",
+   "desc": "L'AS Monaco rugby poursuit sa campagne en Fédérale 1 face à Bédarrides. Les Monégasques retrouvent leur public pour un nouveau combat à domi",
+   "chaine": [
+    "TVMonaco"
+   ],
+   "tvg": {
+    "TVMonaco": [
+     "TVMonaco.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Monaco - Bédarrides",
+   "date": "2026-11-29",
+   "time": "15:15",
+   "desc": "L'AS Monaco rugby poursuit sa campagne en Fédérale 1 face à Bédarrides. Les Monégasques retrouvent leur public pour un nouveau combat à domi",
+   "chaine": [
+    "TV MONACO"
+   ],
+   "tvg": {
+    "TV MONACO": [
+     "TV.MONACO.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Racing 92 / Pau",
+   "date": "2026-11-29",
+   "time": "15:44",
+   "desc": "Meilleure attaque du championnat, Pau ne vient pas en touriste sur le terrain du Racing 92, et entend bien ramener des points précieux de ce",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations, le mag",
+   "date": "2026-11-29",
+   "time": "16:25",
+   "desc": "Avant la grande finale France - Afrique du Sud, Isabelle Ithurburu proposera en direct de Twickenham un Mag exceptionnel avec notamment le d",
+   "chaine": [
+    "TF1"
+   ],
+   "tvg": {
+    "TF1": [
+     "TF1.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Championnat des nations",
+   "date": "2026-11-29",
+   "time": "17:30",
+   "desc": "C'est l'heure de la grande finale pour l'équipe de France, qui affronte ce soir l'Afrique du Sud à Twickenham pour le titre de la première é",
+   "chaine": [
+    "TF1"
+   ],
+   "tvg": {
+    "TF1": [
+     "TF1.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club",
+   "date": "2026-11-29",
+   "time": "20:25",
+   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
+   "chaine": [
+    "Canal+",
+    "Canal+ Live 1"
+   ],
+   "tvg": {
+    "Canal+": [
+     "CANAL+.UHD.HDR.fr",
+     "CANAL+.UHD.fr",
+     "CANAL+.fr"
+    ],
+    "Canal+ Live 1": [
+     "CANAL+LIVE.1.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Avant-match Top 14",
+   "date": "2026-11-29",
+   "time": "21:01",
+   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
+   "chaine": [
+    "Canal+"
+   ],
+   "tvg": {
+    "Canal+": [
+     "CANAL+.UHD.HDR.fr",
+     "CANAL+.UHD.fr",
+     "CANAL+.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Avant-match Top 14",
+   "date": "2026-11-29",
+   "time": "21:02",
+   "desc": "Le résumé des conférences de presse des protagonistes, les enjeux de la rencontre, et la présentation des deux équipes en lice à découvrir d",
+   "chaine": [
+    "Canal+ Live 1"
+   ],
+   "tvg": {
+    "Canal+ Live 1": [
+     "CANAL+LIVE.1.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Clermont / Toulon",
+   "date": "2026-11-29",
+   "time": "21:05",
+   "desc": "Pour clôturer cette 10e journée, Clermont reçoit Toulon. Malheureusement, le début de saison des Clermontois est loin de leurs attentes init",
+   "chaine": [
+    "Canal+",
+    "Canal+ Live 1"
+   ],
+   "tvg": {
+    "Canal+": [
+     "CANAL+.UHD.HDR.fr",
+     "CANAL+.UHD.fr",
+     "CANAL+.fr"
+    ],
+    "Canal+ Live 1": [
+     "CANAL+LIVE.1.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-11-29",
+   "time": "23:02",
+   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
+   "chaine": [
+    "Canal+"
+   ],
+   "tvg": {
+    "Canal+": [
+     "CANAL+.UHD.HDR.fr",
+     "CANAL+.UHD.fr",
+     "CANAL+.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-11-29",
+   "time": "23:14",
+   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
+   "chaine": [
+    "Canal+ Live 1"
+   ],
+   "tvg": {
+    "Canal+ Live 1": [
+     "CANAL+LIVE.1.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Clermont / Toulon",
+   "date": "2026-11-29",
+   "time": "23:27",
+   "desc": "Pour clôturer cette 10e journée, Clermont reçoit Toulon. Malheureusement, le début de saison des Clermontois est loin de leurs attentes init",
    "chaine": [
     "Canal+ Sport"
    ],
