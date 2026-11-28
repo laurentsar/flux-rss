@@ -1,255 +1,19 @@
 {
- "generated": "2026-11-27T19:15:09+01:00",
+ "generated": "2026-11-28T07:15:07+01:00",
  "source": "https://epgshare01.online/epgshare01/epg_ripper_FR1.xml.gz",
- "count": 53,
+ "count": 54,
  "programmes": [
   {
-   "title": "Rugby : Championnat des nations",
-   "date": "2026-11-27",
-   "time": "17:35",
-   "desc": "Les matchs de classement de ce week-end final du championnat des nations à Londres débutent avec ce premier affrontement entre l'Italie et l",
+   "title": "Rugby à 7 : Seven Nations Series",
+   "date": "2026-11-28",
+   "time": "07:00",
+   "desc": "Retransmission d'un match des tournois internationaux de rugby à 7, appelés les Seven Nations Series depuis 2023.",
    "chaine": [
-    "TFX"
+    "La Chaîne L'Équipe"
    ],
    "tvg": {
-    "TFX": [
-     "TFX.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Soir de rugby avant-match",
-   "date": "2026-11-27",
-   "time": "18:50",
-   "desc": "\"Soir de rugby avant-match\" présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'amb",
-   "chaine": [
-    "Canal+ Live 1",
-    "Canal+ Sport 360"
-   ],
-   "tvg": {
-    "Canal+ Live 1": [
-     "CANAL+LIVE.1.fr"
-    ],
-    "Canal+ Sport 360": [
-     "CANAL+SPORT360.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Dax / Oyonnax",
-   "date": "2026-11-27",
-   "time": "19:00",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Live 1",
-    "Canal+ Sport 360"
-   ],
-   "tvg": {
-    "Canal+ Live 1": [
-     "CANAL+LIVE.1.fr"
-    ],
-    "Canal+ Sport 360": [
-     "CANAL+SPORT360.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Agen / Béziers",
-   "date": "2026-11-27",
-   "time": "19:25",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Live 3"
-   ],
-   "tvg": {
-    "Canal+ Live 3": [
-     "CANAL+LIVE.3.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Soyaux-Angoulême / Nice",
-   "date": "2026-11-27",
-   "time": "19:25",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Live 4"
-   ],
-   "tvg": {
-    "Canal+ Live 4": [
-     "CANAL+LIVE.4.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Colomiers / Nevers",
-   "date": "2026-11-27",
-   "time": "19:25",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Live 5"
-   ],
-   "tvg": {
-    "Canal+ Live 5": [
-     "CANAL+LIVE.5.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Valence-Romans / Aurillac",
-   "date": "2026-11-27",
-   "time": "19:25",
-   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
-   "chaine": [
-    "Canal+ Live 6"
-   ],
-   "tvg": {
-    "Canal+ Live 6": [
-     "CANAL+LIVE.6.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Soir de rugby avant-match",
-   "date": "2026-11-27",
-   "time": "20:50",
-   "desc": "\"Soir de rugby avant-match\" présente les dernières informations de la rencontre de rugby à venir, avec les compositions des équipes et l'amb",
-   "chaine": [
-    "Canal+ Live 1",
-    "Canal+ Sport 360"
-   ],
-   "tvg": {
-    "Canal+ Live 1": [
-     "CANAL+LIVE.1.fr"
-    ],
-    "Canal+ Sport 360": [
-     "CANAL+SPORT360.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Narbonne / Grenoble",
-   "date": "2026-11-27",
-   "time": "20:55",
-   "desc": "Vainqueur du leader Provence Rugby (41-30) lors de la 11e journée, Grenoble s'est hissé sur la troisième marche du podium provisoire de la P",
-   "chaine": [
-    "Canal+ Live 2"
-   ],
-   "tvg": {
-    "Canal+ Live 2": [
-     "CANAL+LIVE.2.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Provence Rugby / Montauban",
-   "date": "2026-11-27",
-   "time": "21:00",
-   "desc": "C'est une formation Provence Rugby pleine d'ambitions qui visera la victoire ce soir face à Montauban, dans son duel à distance qui l'oppose",
-   "chaine": [
-    "Canal+ Live 1",
-    "Canal+ Sport 360"
-   ],
-   "tvg": {
-    "Canal+ Live 1": [
-     "CANAL+LIVE.1.fr"
-    ],
-    "Canal+ Sport 360": [
-     "CANAL+SPORT360.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Rugby : Championnat des nations",
-   "date": "2026-11-27",
-   "time": "21:00",
-   "desc": "Les deux nations, qui ont toute deux terminé troisième de leur poule (Hémisphère nord et Hémisphère sud, respectivement), s'affrontent à Twi",
-   "chaine": [
-    "TF1"
-   ],
-   "tvg": {
-    "TF1": [
-     "TF1.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Soir de rugby",
-   "date": "2026-11-27",
-   "time": "22:51",
-   "desc": "Tous les résumés des matches de Pro D2 de la soirée, des interviews et des analyses, avec les experts de la chaîne. Plus, avant chaque journ",
-   "chaine": [
-    "Canal+ Live 1",
-    "Canal+ Sport 360"
-   ],
-   "tvg": {
-    "Canal+ Live 1": [
-     "CANAL+LIVE.1.fr"
-    ],
-    "Canal+ Sport 360": [
-     "CANAL+SPORT360.fr"
-    ]
-   },
-   "cats": [
-    "rugby"
-   ],
-   "approx": false
-  },
-  {
-   "title": "Narbonne / Grenoble",
-   "date": "2026-11-27",
-   "time": "23:54",
-   "desc": "Vainqueur du leader Provence Rugby (41-30) lors de la 11e journée, Grenoble s'est hissé sur la troisième marche du podium provisoire de la P",
-   "chaine": [
-    "Canal+ Sport"
-   ],
-   "tvg": {
-    "Canal+ Sport": [
-     "CANAL+SPORT.fr"
+    "La Chaîne L'Équipe": [
+     "La.chaine.l’Équipe.fr"
     ]
    },
    "cats": [
@@ -260,7 +24,7 @@
   {
    "title": "Dax / Oyonnax",
    "date": "2026-11-28",
-   "time": "07:30",
+   "time": "07:32",
    "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
    "chaine": [
     "Canal+ Sport"
@@ -278,7 +42,7 @@
   {
    "title": "Provence Rugby / Montauban",
    "date": "2026-11-28",
-   "time": "09:14",
+   "time": "09:16",
    "desc": "C'est une formation Provence Rugby pleine d'ambitions qui visera la victoire ce soir face à Montauban, dans son duel à distance qui l'oppose",
    "chaine": [
     "Canal+ Sport"
@@ -355,7 +119,7 @@
    "title": "Rugby : Championnat des nations",
    "date": "2026-11-28",
    "time": "14:10",
-   "desc": "Du 27 au 29 novembre, le week-end final du Championnat des Nations conclura la première édition de cette nouvelle compétition internationale",
+   "desc": "Le Pays de Galles affronte le Japon à l'Allianz Stadium de Twickenham, à Londres, pour le match de classement de la 9e place de la première ",
    "chaine": [
     "TFX"
    ],
@@ -432,6 +196,24 @@
    "approx": false
   },
   {
+   "title": "Rugby : Reichel Espoirs Élite",
+   "date": "2026-11-28",
+   "time": "14:40",
+   "desc": "Rugby",
+   "chaine": [
+    "TV7 Bordeaux"
+   ],
+   "tvg": {
+    "TV7 Bordeaux": [
+     "TV7.Bordeaux.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Stade Français Paris / Vannes",
    "date": "2026-11-28",
    "time": "16:27",
@@ -453,7 +235,7 @@
    "title": "Multiplex",
    "date": "2026-11-28",
    "time": "16:27",
-   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "desc": "Au programme : Stade Français / Vannes, Bayonne / Castres, La Rochelle / Perpignan et Racing 92 / Pau.",
    "chaine": [
     "Canal+"
    ],
@@ -622,6 +404,24 @@
    "approx": false
   },
   {
+   "title": "Rugby à 7 : Seven Nations Series",
+   "date": "2026-11-28",
+   "time": "20:15",
+   "desc": "Suivez les manches de World Rugby Sevens Series, une série de tournois internationaux de rugby à sept.",
+   "chaine": [
+    "La Chaîne L'Équipe"
+   ],
+   "tvg": {
+    "La Chaîne L'Équipe": [
+     "La.chaine.l’Équipe.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
    "title": "Avant-match Top 14",
    "date": "2026-11-28",
    "time": "20:54",
@@ -724,7 +524,7 @@
   {
    "title": "Lyon / Toulouse",
    "date": "2026-11-29",
-   "time": "00:25",
+   "time": "00:24",
    "desc": "Leader du Top 14 après 9 journées, Toulouse se déplace sur la pelouse de Lyon, pour le compte de la 10e journée, avec des Toulousains qui so",
    "chaine": [
     "Canal+ Sport"
@@ -858,6 +658,24 @@
    "tvg": {
     "TF1": [
      "TF1.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Rugby : Reichel Espoirs Élite",
+   "date": "2026-11-29",
+   "time": "17:00",
+   "desc": "Rugby",
+   "chaine": [
+    "TV7 Bordeaux"
+   ],
+   "tvg": {
+    "TV7 Bordeaux": [
+     "TV7.Bordeaux.fr"
     ]
    },
    "cats": [
@@ -1012,6 +830,186 @@
    "date": "2026-11-29",
    "time": "23:27",
    "desc": "Pour clôturer cette 10e journée, Clermont reçoit Toulon. Malheureusement, le début de saison des Clermontois est loin de leurs attentes init",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Stade Français Paris / Vannes",
+   "date": "2026-11-30",
+   "time": "08:53",
+   "desc": "Sèchement battu à Toulon (43-23), le Stade Français doit rectifier le tir pour ne pas perdre le contact avec le top 6, et rester dans la cou",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Racing 92 / Pau",
+   "date": "2026-11-30",
+   "time": "10:37",
+   "desc": "Meilleure attaque du championnat, Pau ne vient pas en touriste sur le terrain du Racing 92, et entend bien ramener des points précieux de ce",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club - 1re édition",
+   "date": "2026-11-30",
+   "time": "12:22",
+   "desc": "Le Canal Rugby Club met à l'honneur le Top 14, des reportages \"inside\" et des interviews de personnalités du rugby afin de décrypter les enj",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Lyon / Toulouse",
+   "date": "2026-11-30",
+   "time": "13:32",
+   "desc": "Leader du Top 14 après 9 journées, Toulouse se déplace sur la pelouse de Lyon, pour le compte de la 10e journée, avec des Toulousains qui so",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Agen / Béziers",
+   "date": "2026-11-30",
+   "time": "15:15",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Soyaux-Angoulême / Nice",
+   "date": "2026-11-30",
+   "time": "16:57",
+   "desc": "Retransmission d'un match du championnat de France de deuxième division de rugby appelé Pro D2, une compétition de rugby à XV. Organisé depu",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "La Rochelle / Perpignan",
+   "date": "2026-11-30",
+   "time": "18:40",
+   "desc": "Retransmission d'un match du Top 14, championnat de France de rugby qui, chaque journée, voit s'affronter quatorze clubs professionnels.",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club",
+   "date": "2026-11-30",
+   "time": "20:24",
+   "desc": "Le magazine met à l'honneur le Top 14 dont les rencontres sont proposées en exclusivité et en intégralité sur les chaînes Canal+. L'émission",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "ASM Clermont / Toulon",
+   "date": "2026-11-30",
+   "time": "21:00",
+   "desc": "Pour clôturer cette 10e journée, Clermont reçoit Toulon. Malheureusement, le début de saison des Clermontois est loin de leurs attentes init",
+   "chaine": [
+    "Canal+ Sport"
+   ],
+   "tvg": {
+    "Canal+ Sport": [
+     "CANAL+SPORT.fr"
+    ]
+   },
+   "cats": [
+    "rugby"
+   ],
+   "approx": false
+  },
+  {
+   "title": "Canal Rugby Club le débrief",
+   "date": "2026-11-30",
+   "time": "22:41",
+   "desc": "Le Canal Rugby Club, l'émission référence du rugby encadre le grand match en prime avec un avant match complet et un debrief. L'ensemble des",
    "chaine": [
     "Canal+ Sport"
    ],
